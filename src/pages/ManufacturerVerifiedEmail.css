@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+
+body{
+    margin: 0px;
+    padding: 0px    ;
+}
+
+
+
+.email-verified-bg {
+  height: 100vh;
+  width: 100vw;
+  background-position: right;
+  background-repeat: no-repeat;
+  background: linear-gradient(180deg, #C2C0BD 0%, #C3BFBC 5.83%, #C3BFBC 13.8%, #C4C0BD 19.17%, #C3C0BD 25.74%, #C2BEBB 31.48%, #C0BCB9 39.17%, #BFBBB8 47.13%, #BBB7B4 57.78%, #B8B4B1 68.24%, #B5B1AE 81.53%, #AEAAA7 89.26%, #A8A39F 100%);
+}
+.email-verified-image {
+    background-image: url("../assets/emailverifiedbackground.jpg");
+    height: 100vh;
+    width: 100vw;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .modal-backdrop.show {
+    opacity: 0 !important; 
+}
+
+  .model .modal-content {
+    background: linear-gradient(
+        135.37deg,
+        rgba(0, 0, 0, 0.4) 4.29%,
+        rgba(255, 255, 255, 0.4) 95.6%
+      ),
+      rgba(235, 236, 240, 0.7);
+    background-blend-mode: soft-light, normal;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-sizing: border-box;
+    box-shadow: 8px 4px 14px rgba(0, 0, 0, 0.08),
+      inset 6px 5px 35px rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(12px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 40px;
+  
+    width: 767px;
+    height: 384px;
+  }
+  
+  
+  .model  .modal-header {
+    border-bottom: 0px;
+  }
+  
+  
+  .model  .modal-header .btn-close {
+    position: absolute;
+    top: -30px;
+    right: 0px;
+    outline: none;
+    box-shadow: none;
+  }
+  
+  
+  .model  .modal-header .btn-close:active {
+    box-shadow: none;
+    outline: none;
+  }
+  
+  
+  .model  .modal-body {
+    text-align: center;
+    justify-content: center;
+    padding: 0px 0px;
+  }
+  
+  
+  .model  .modal-body .modal-title {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 228%;
+    letter-spacing: 4px;
+    margin-top: 25px;
+    text-align: center;
+    color: #0064d8;
+  }
+  
+  
+  .model  .modal-body .modal-discription {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+    margin-top: 40px;
+    margin-bottom: 51px;
+  }
+  
+  .model  .modal-body .modal-timer {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 179%;
+    /* or 32px */
+    margin-top: 38px;
+    margin-bottom: 24px;
+    letter-spacing: 0.385em;
+    color: #0068da;
+  }
+  
+  
+  .model  .modal-body .modal-action{
+    background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #0062D7;
+    background-blend-mode: soft-light, normal;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-sizing: border-box;
+    box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
+    border-radius: 16px;
+    padding: 10px 38px;
+    
+  }
+  
+  
+  .model  .modal-body .modal-action span{
+    font-family: "Poppins";
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 27px;
+    color: #ffffff;
+  }
+
+  .modal-thanks{
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    margin-top: 20px;
+  }
