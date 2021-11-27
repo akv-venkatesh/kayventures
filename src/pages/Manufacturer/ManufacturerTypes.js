@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import { BsChevronRight, BsChevronLeft } from "react-icons/bs";
-import bag from "../assets/icons/bag.svg";
+import bag from "../../assets/icons/bag.svg";
 import { Link } from "react-router-dom";
 
 function ManufacturerTypes() {

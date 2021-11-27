@@ -16,7 +16,7 @@ body{
   background: linear-gradient(180deg, #C2C0BD 0%, #C3BFBC 5.83%, #C3BFBC 13.8%, #C4C0BD 19.17%, #C3C0BD 25.74%, #C2BEBB 31.48%, #C0BCB9 39.17%, #BFBBB8 47.13%, #BBB7B4 57.78%, #B8B4B1 68.24%, #B5B1AE 81.53%, #AEAAA7 89.26%, #A8A39F 100%);
 }
 .email-verified-image {
-    background-image: url("../assets/emailverifiedbackground.jpg");
+    background-image: url("../../assets/emailverifiedbackground.jpg");
     height: 100vh;
     width: 100vw;
     background-position: right;

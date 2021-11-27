@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
-import arrow_left from "../assets/icons/arrows/arrow-left.svg";
+import arrow_left from "../../assets/icons/arrows/arrow-left.svg";
 import {Modal,Button} from 'react-bootstrap';
 
 function ManufacturerPrimaryDetails() {

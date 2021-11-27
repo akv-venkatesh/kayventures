@@ -9,7 +9,7 @@ body {
 }
 
 .bg-img-sec {
-  background-image: url(../assets/Manufacturer-BG1\ 1.jpg);
+  background-image: url(../../assets/Manufacturer-BG1\ 1.jpg);
   /* background-size: 100vh; */
   background-position: center;
   background-size: cover;
@@ -25,7 +25,8 @@ body {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  font-size: 50px;
+  /* font-size: 50px; */
+  font-size: 3vw;
   line-height: 75px;
   text-transform: uppercase;
   color: #566180;
@@ -83,7 +84,7 @@ body {
   box-sizing: border-box;
   box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
   border-radius: 40px;
-  width: 450px;
+  width: 280px;
   height: 50px;
   outline: none;
   padding-left: 70px;
@@ -101,7 +102,7 @@ line-height: 53px;
   font-family: "Poppins";
 font-style: normal;
 font-weight: 300;
-font-size: 20px;
+font-size: 1q8px;
 line-height: 53px;
 color: #ACAAC2;
 }
@@ -117,7 +118,6 @@ color: #ACAAC2;
   top: 12.5px;
   left:20px;
   color: #ACAAC2;
-  
   font-size: 25px;
 }
 
@@ -165,8 +165,8 @@ color: #ACAAC2;
 
 .inside-label span:first-child {
   position: relative;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 8px;
   transform: scale(1);
   border: 2px solid #0062D7;
@@ -194,8 +194,8 @@ padding-left: 10px;
 font-family: "Poppins";
 font-style: normal;
 font-weight: normal;
-font-size: 18px;
-line-height: 30px;
+font-size: 16px;
+line-height: 20px;
 }
 
 .inside-label:hover span:first-child {
@@ -250,7 +250,7 @@ line-height: 30px;
 
 .register-buttons{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin-top: 50px;
 }
 
@@ -269,11 +269,11 @@ line-height: 30px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   color: #0062d7;
   /* padding: 8px 15px; */
-  width: 200px;
-height: 50px;
+  width: 120px;
+/* height: 50px; */
 display: flex;
 justify-content: center;
 align-items: center;
@@ -290,16 +290,95 @@ cursor: pointer;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   color: #fff;
-  /* padding: 8px 15px; */
-  width: 200px;
-height: 50px;
+  padding:6px 15px;
+  width: 120px;
+/* height: 50px; */
 
-  margin-left: 50px;
+  /* margin-left: 50px; */
   display: flex;
 justify-content: center;
 align-items: center;
 cursor: pointer;
 
+}
+
+
+
+
+/* latest */
+
+
+
+.register-card {
+  position: absolute;
+  width: auto;
+  height: auto;
+  right: 150px;
+  top: auto;
+  background: linear-gradient( 
+135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6% ), #ebecf0;
+  background-blend-mode: soft-light, normal;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-sizing: border-box;
+  box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+  border-radius: 40px;
+  padding: 40px;
+}
+
+.register-input {
+    background: linear-gradient( 
+317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18% ), #ebecf0;
+    background-blend-mode: soft-light, normal;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-sizing: border-box;
+    box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+    border-radius: 40px;
+    width: auto;
+    height: auto;
+    outline: none;
+    padding-left: 55px;
+    letter-spacing: -0.408px;
+    color: #0067E5;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 35px;
+}
+
+.input-with-icon {
+  position: relative;
+  margin-top: 25px;
+  align-items: baseline;
+}
+
+.input-with-icon .input-icon {
+  position: absolute;
+  top: 12.5px;
+  left: 20px;
+  color: #ACAAC2;
+  font-size: 17px;
+}
+
+.input-with-icon .showpassword{
+  position: absolute;
+  top: 12.5px;
+  right:20px;
+  color: #ACAAC2;
+  /* padding-left: 15px; */
+  font-size: 17px;
+} 
+
+
+.form-check{
+ margin-top: 20px;
+ padding-left:10px;
+}
+
+.register-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
 }

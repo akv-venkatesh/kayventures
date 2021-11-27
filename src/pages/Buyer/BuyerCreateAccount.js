@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./ManufacturerCreateAccount.css";
+import "./BuyerCreateAccount.css";
 import {
   FaUserCircle,
   FaEnvelope,
@@ -14,7 +14,7 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 
 
 
-class ManufacturerCreateAccount extends Component {
+class BuyerCreateAccount extends Component {
   constructor(props) {
     super(props);
 
@@ -36,8 +36,8 @@ togglePassword = () => {
         <div className="">
           <div className="row manu-container">
             <div className="col-sm-4 header-section">
-              <h3 className="manu-title">KAY VENTURES</h3>
-              <p className="manu-discription">
+              <h3 className="buyer-title">KAY VENTURES</h3>
+              <p className="buyer-discription">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -79,7 +79,7 @@ togglePassword = () => {
                 </div>
                 <div className="register-buttons">
                   <span className="login-button"><span>Log In</span></span>
-                  <Link to="/manufacturerbusinesscategory"><span className="signin-button"><span>Sign Up</span></span></Link>
+                  <Link to="/buyerbusinesscategory"><span className="signin-button"><span>Sign Up</span></span></Link>
                   {/* <button className="signin-button">Sign Up</button> */}
                 </div>
               </div>
@@ -91,4 +91,4 @@ togglePassword = () => {
   }
 }
 
-export default ManufacturerCreateAccount;
+export default BuyerCreateAccount;
