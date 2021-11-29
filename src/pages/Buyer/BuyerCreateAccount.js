@@ -50,7 +50,7 @@ togglePassword = () => {
 
                 <div className="input-with-icon">
                   <input type="text" className="register-input" id=""  placeholder='Name'/>
-                  <IoPersonCircleOutline className="input-icon" style={{fontSize: "30px"}}/>
+                  <IoPersonCircleOutline className="input-icon" style={{fontSize: "25px",top: "8px"}}/>
                 </div>
                 <div className="input-with-icon">
                   <input type="email" className="register-input" id="" placeholder='Email'/>

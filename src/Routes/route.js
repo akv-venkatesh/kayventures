@@ -32,7 +32,7 @@ const Routes = (props) => {
         component={ManufacturerVerifiedEmail}
       />
 
-      <Route exact path="//" component={BuyerJoinNow} />
+      <Route exact path="/buyer" component={BuyerJoinNow} />
 
     <Route
         path="/buyercreateaccount"
