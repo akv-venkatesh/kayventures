@@ -23,3 +23,6 @@ body::-webkit-scrollbar {
       inset 4px 4px 8px rgba(170, 179, 197, 0.25);
     border-radius: 20px;
   }
+  a{
+    text-decoration: none !important;
+  }

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./ManufacturerBusinessCategory.css";
-import { BsChevronRight } from "react-icons/bs";
+import { BsChevronRight,BsChevronLeft } from "react-icons/bs";
 
 function ManufacturerBusinessCategory() {
   const [Visibility, setVisibility] = useState("none");
@@ -23,15 +23,22 @@ function ManufacturerBusinessCategory() {
         <div className="category_container">
           <div className="choose_category_head">
             <h1>Choose your business category</h1>
-            <Link to="/manufacturertypes">
-              <div
-                className="category_next_btn"
-                style={{ display: Visibility }}
-              >
-                <span>Next </span>
-                <BsChevronRight className="BsChevronRight" />
-              </div>{" "}
-            </Link>
+            <div className="category_btn_section">
+                <div className="category_btn">
+                 <Link to="manufacturercreateaccount"> <div className="category_next_btn1">
+                    <BsChevronLeft className="category_BsChevronLeft" />
+                    <span>Back </span>
+                  </div>
+                  </Link>
+                  <Link to="manufacturertypes" >
+                    <div className="category_next_btn2" style={{display:Visibility}}>
+                      <span>Next </span>
+                      <BsChevronRight className="category_BsChevronRight" />
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            
           </div>
           <div className="category_section">
             <div class="category_item_section">
@@ -140,17 +147,7 @@ function ManufacturerBusinessCategory() {
           </div>
         </div>
       </div>
-      {/* <div style={{display:"flex"}}>
-      <Link to="/manufacturertypes">
-              <div
-                className="category_next_btn"
-                style={{ visibility: Visibility }}
-              >
-                <span>Next </span>
-                <BsChevronRight className="BsChevronRight" />
-              </div>{" "}
-            </Link>
-      </div> */}
+    
     </>
   );
 }

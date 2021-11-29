@@ -1,258 +1,258 @@
-
-
 /* ######################################### */
 /* BuyerTypes */
 /* ######################################### */
+.Buyertypes_category {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
 .Buyertypes_category_body {
-    display: flex;
-    justify-content: center;
-    /* flex-direction: column; */
-    margin: 100px 150px 40px 150px;
-  }
-  .Buyertypes_category_container {
-    width: 1246px;
-    height: 883px;
-    /* left: 1583px;
-    top: 148px; */
-  
-    background: rgba(225, 228, 234, 0.5);
-    backdrop-filter: blur(4px);
-  
-    border-radius: 40px;
-  }
-  .Buyertypes_choose_category_head {
-    padding-left: 160px;
-    padding-top: 80px;
-  }
-  .Buyertypes_choose_category_head h1 {
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 45px;
-    color: #566180;
-  }
-  .Buyertypes_category_section {
-    display: flex;
-    margin: 70px 40px 40px 40px;
-    padding: 250px 100px 0px 100px;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
-    height: 500px;
-    overflow: scroll;
-    overflow-x: hidden;
-  }
-  
-  .Buyertypes_category_section::-webkit-scrollbar {
-    width: 6px;
-    background: #e1e4ea;
-    box-shadow: inset -4px -4px 9px 2px rgba(255, 255, 255, 0.8),
-      inset 4px 4px 4px #aab3c5;
-    border-radius: 30px;
-  }
-  .Buyertypes_category_section::-webkit-scrollbar-thumb {
-    width: 12px;
-   
-    background: #e1e4ea;
-    box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.8), 4px 4px 16px #aab3c5,
-      inset -4px -4px 16px rgba(255, 255, 255, 0.5),
-      inset 4px 4px 8px rgba(170, 179, 197, 0.25);
-    border-radius: 20px;
-  }
-  .Buyertypes_category_item_section {
-    display: flex;
-    justify-content: center;
-  }
-  .Buyertypes_category_item {
-    width: 268.58px;
-    height: 205px;
-    margin: 30px;
-  
-    width: 245px;
-    height: 187px;
-  
-    background: linear-gradient(
-        135.37deg,
-        rgba(0, 0, 0, 0.4) 4.29%,
-        rgba(255, 255, 255, 0.4) 95.6%
-      ),
-      #ebecf0;
-    background-blend-mode: soft-light, normal;
-    box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
-    border-radius: 30px;
-    position: relative;
-  }
-  .Buyertypes_category_item img {
-    /* Width :140px;
+  display: flex;
+  justify-content: center;
+}
+.Buyertypes_category_container {
+  width: 1246px;
+  background: rgba(225, 228, 234, 0.5);
+  backdrop-filter: blur(4px);
+  border-radius: 40px;
+}
+.Buyertypes_choose_category_head {
+  padding-left: 160px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.Buyertypes_choose_category_head h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 45px;
+  color: #566180;
+}
+.Buyertypes_category_section {
+  display: flex;
+  margin: 10px 40px 40px 40px;
+  padding: 250px 100px 0px 100px;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  height: 500px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.Buyertypes_category_section::-webkit-scrollbar {
+  width: 6px;
+  background: #e1e4ea;
+  box-shadow: inset -4px -4px 9px 2px rgba(255, 255, 255, 0.8),
+    inset 4px 4px 4px #aab3c5;
+  border-radius: 30px;
+}
+.Buyertypes_category_section::-webkit-scrollbar-thumb {
+  width: 12px;
+
+  background: #e1e4ea;
+  box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.8), 4px 4px 16px #aab3c5,
+    inset -4px -4px 16px rgba(255, 255, 255, 0.5),
+    inset 4px 4px 8px rgba(170, 179, 197, 0.25);
+  border-radius: 20px;
+}
+.Buyertypes_category_item_section {
+  display: flex;
+  justify-content: center;
+}
+.Buyertypes_category_item {
+  width: 268.58px;
+  height: 205px;
+  margin: 30px;
+
+  width: 245px;
+  height: 187px;
+
+  background: linear-gradient(
+      135.37deg,
+      rgba(0, 0, 0, 0.4) 4.29%,
+      rgba(255, 255, 255, 0.4) 95.6%
+    ),
+    #ebecf0;
+  background-blend-mode: soft-light, normal;
+  box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+  border-radius: 30px;
+  position: relative;
+}
+.Buyertypes_category_item img {
+  /* Width :140px;
     Height :150px;   */
-    padding-left: 35px;
-    padding-top: 20px;
-    color: #0062d7;
-  }
-  .Buyertypes_category_item h1 {
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 115.5%;
-    padding-left: 35px;
-    padding-top: 25px;
-    /* or 21px */
-  
-    color: #0062d7;
-  }
-  
-  .Buyertypes_category_item_radio {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    width: 43.85px;
-    height: 43.85px;
-    background: linear-gradient(
-        317.7deg,
-        rgba(0, 0, 0, 0.4) 0%,
-        rgba(255, 255, 255, 0.4) 105.18%
-      ),
-      #ebecf0;
-    background-blend-mode: soft-light, normal;
-    box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
-    border-radius: 40px;
-  }
-  .Buyertypes_category_item_radio input[type="radio"] {
-    display: none;
-  }
-  .Buyertypes_category_item_radio label {
-    position: relative;
-    cursor: pointer;
-    font-weight: bold;
-    padding-right: 32px;
-  }
-  .Buyertypes_category_item_radio label:nth-last-child(1) {
-    padding-right: 0;
-  }
-  .Buyertypes_category_item_radio label::before {
-    position: absolute;
-    width: 36px;
-    height: 36px;
-    right: 15px;
-    top: 15px;
-  
-    background: linear-gradient(
-        317.7deg,
-        rgba(0, 0, 0, 0.4) 195.53%,
-        rgba(255, 255, 255, 0.4) 300.71%
-      ),
-      #ebecf0;
-    background-blend-mode: soft-light, normal;
-    box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
-    border-radius: 40px;
-  }
-  .Buyertypes_category_item_radio label::after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: rgba(122, 122, 122, 0);
-    left: 7px;
-    top: -2px;
-    margin: 0px 0px;
-    margin-left: 0;
-    border-radius: 50%;
-  
-    transition: all 0.2s;
-  }
-  .Buyertypes_category_item_radio input[type="radio"]:checked + label::after {
-    background: rgb(0, 98, 215);
-  }
-  
-  .Buyertypes_category_btn_section {
-    display: flex;
-    justify-content: center;
-    /* flex-direction: column; */
-    margin: 0px 150px 40px 150px;
-  }
-  .Buyertypes_category_btn {
-    width: 1246px;
-    display: flex;
-    justify-content: space-between;
-  }
-  .Buyertypes_category_next_btn1 {
-    position: relative;
-    cursor: pointer;
-    width: 157px;
-    height: 50px;
-    background: linear-gradient(
-        135.37deg,
-        rgba(0, 0, 0, 0.4) 4.29%,
-        rgba(255, 255, 255, 0.4) 95.6%
-      ),
-      #0062d7;
-    background-blend-mode: soft-light, normal;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-sizing: border-box;
-    box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
-    border-radius: 15px;
-  }
-  .Buyertypes_category_next_btn1 span {
-    padding: 7px 0px 0px 70px;
-    position: absolute;
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 25px;
-    line-height: 37px;
-    text-align: right;
-    color: #ffffff;
-  }
-  .Buyertypes_category_next_btn2 {
-    position: relative;
-    cursor: pointer;
-    width: 157px;
-    height: 50px;
-    background: linear-gradient(
-        135.37deg,
-        rgba(0, 0, 0, 0.4) 4.29%,
-        rgba(255, 255, 255, 0.4) 95.6%
-      ),
-      #0062d7;
-    background-blend-mode: soft-light, normal;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-sizing: border-box;
-    box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
-    border-radius: 15px;
-  }
-  .Buyertypes_category_next_btn2 span {
-    padding: 7px 0px 0px 25px;
-    position: absolute;
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 25px;
-    line-height: 37px;
-    text-align: left;
-    color: #ffffff;
-  }
-  .BsChevronRight {
-    position: absolute;
-    font-size: 25px;
-    top: 13px;
-    right: 18 px;
-    font-weight: 500;
-    color: #ffffff;
-  }
-  .BsChevronLeft {
-    position: absolute;
-    font-size: 25px;
-    top: 13px;
-    left: 18px;
-    font-weight: 500;
-    color: #ffffff;
-  }
-  
-  
-  /* ######################################### */
-  /* BuyerTypes */
-  /* ######################################### */
-  
+  padding-left: 35px;
+  padding-top: 20px;
+  color: #0062d7;
+}
+.Buyertypes_category_item h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 115.5%;
+  padding-left: 35px;
+  padding-top: 25px;
+  /* or 21px */
+
+  color: #0062d7;
+}
+
+.Buyertypes_category_item_radio {
+  position: absolute;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 20px;
+  width: 43.85px;
+  height: 43.85px;
+  background: linear-gradient(
+      317.7deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(255, 255, 255, 0.4) 105.18%
+    ),
+    #ebecf0;
+  background-blend-mode: soft-light, normal;
+  box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+  border-radius: 40px;
+}
+.Buyertypes_category_item_radio input[type="radio"] {
+  display: none;
+}
+.Buyertypes_category_item_radio label {
+  position: relative;
+  cursor: pointer;
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+}
+.Buyertypes_category_item_radio label:nth-last-child(1) {
+  padding-right: 0;
+}
+.Buyertypes_category_item_radio label::before {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+
+  background: linear-gradient(
+      317.7deg,
+      rgba(0, 0, 0, 0.4) 195.53%,
+      rgba(255, 255, 255, 0.4) 300.71%
+    ),
+    #ebecf0;
+  background-blend-mode: soft-light, normal;
+  box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+  border-radius: 40px;
+}
+.Buyertypes_category_item_radio label::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: rgba(122, 122, 122, 0);
+
+  margin: 0px 0px;
+  margin-left: 0;
+  border-radius: 50%;
+
+  transition: all 0.2s;
+}
+.Buyertypes_category_item_radio input[type="radio"]:checked + label::after {
+  background: rgb(0, 98, 215);
+}
+
+.Buyertypes_category_btn_section {
+  display: flex;
+  justify-content: center;
+  /* flex-direction: column; */
+  margin: 0px 150px 40px 150px;
+}
+.Buyertypes_category_btn {
+  /* width: 1246px; */
+  display: flex;
+  justify-content: space-around;
+}
+.Buyertypes_category_next_btn1 {
+  position: relative;
+  cursor: pointer;
+  width: 130px;
+  height: 45px;
+  background: linear-gradient(
+      135.37deg,
+      rgba(0, 0, 0, 0.4) 4.29%,
+      rgba(255, 255, 255, 0.4) 95.6%
+    ),
+    #0062d7;
+  background-blend-mode: soft-light, normal;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-sizing: border-box;
+  box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+  border-radius: 15px;
+  margin-right: 25px;
+}
+.Buyertypes_category_next_btn1 span {
+  padding: 5px 0px 0px 50px;
+  position: absolute;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 37px;
+  text-align: right;
+  color: #ffffff;
+}
+.Buyertypes_category_next_btn2 {
+  position: relative;
+  cursor: pointer;
+  width: 130px;
+  height: 45px;
+  background: linear-gradient(
+      135.37deg,
+      rgba(0, 0, 0, 0.4) 4.29%,
+      rgba(255, 255, 255, 0.4) 95.6%
+    ),
+    #0062d7;
+  background-blend-mode: soft-light, normal;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-sizing: border-box;
+  box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+  border-radius: 15px;
+}
+.Buyertypes_category_next_btn2 span {
+  padding: 5px 0px 0px 25px;
+  position: absolute;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 37px;
+  text-align: left;
+  color: #ffffff;
+}
+
+.Buyertypes_category_BsChevronRight {
+  position: absolute;
+  font-size: 22px;
+  top: 11px;
+  right: 18px;
+  font-weight: 500;
+  color: #ffffff;
+}
+.Buyertypes_category_BsChevronLeft {
+  position: absolute;
+  font-size: 22px;
+  top: 11px;
+  left: 18px;
+  font-weight: 500;
+  color: #ffffff;
+}
+/* ######################################### */
+/* BuyerTypes */
+/* ######################################### */

@@ -14,7 +14,7 @@ function BuyerPrimaryDetails() {
         <div className="primary_form_body">
           <form className="primary_form_container" >
             <div className="primary_form_head">
-             <Link to="/manufacturertypes"><img src={arrow_left}  style={{cursor:"pointer"}} /></Link>
+             <Link to="/buyertypes"><img src={arrow_left}  style={{cursor:"pointer"}} /></Link>
               <h1>
                 Primary details / <span>Buyer</span>
               </h1>
