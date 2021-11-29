@@ -1,0 +1,254 @@
+/* ######################################### */
+/* category */
+/* ######################################### */
+.category_body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* margin: 20px 0px 20px 0px; */
+  }
+  a{
+    text-decoration: none;
+  }
+  .category_container {
+    background: rgba(225, 228, 234, 0.5);
+    backdrop-filter: blur(4px);
+    border-radius: 40px;
+  
+  }
+  .choose_category_head {
+    padding-left: 100px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .choose_category_head h1 {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 45px;
+    color: #566180;
+  }
+  
+  .category_section {
+    display: flex;
+    margin: 0px 0px 20px 0px;
+    padding: 10px 100px;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+  }
+  .category_item_section {
+    display: flex;
+    justify-content: center;
+  }
+  .category_item {
+    width: 300px;
+    height: 222px;
+    margin: 30px;
+  
+    background: linear-gradient(
+        135.37deg,
+        rgba(0, 0, 0, 0.4) 4.29%,
+        rgba(255, 255, 255, 0.4) 95.6%
+      ),
+      #ebecf0;
+    /* background-blend-mode: soft-light, normal; */
+    box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+    border-radius: 30px;
+    position: relative;
+  }
+  .category_item_text {
+    position: absolute;
+    color: black;
+    z-index: 9999999999;
+    background: rgba(255, 255, 255, 0.9);
+    opacity: 1;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding: 15px 30px;
+    height: 85px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+  }
+  .category_item_text h3 {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 115.5%;
+    color: #0067e5;
+    /* or 21px */
+  
+    color: #0067e5;
+  }
+  .category_item_text p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 122%;
+    /* or 15px */
+    color: #566180;
+  }
+  
+  .category_item_img1 {
+    background-image: url("../../assets/categoryImage/1.png");
+  }
+  .category_item_img2 {
+    background-image: url("../../assets/categoryImage/2.png");
+  }
+  .category_item_img3 {
+    background-image: url("../../assets/categoryImage/3.png");
+  }
+  .category_item_img4 {
+    background-image: url("../../assets/categoryImage/4.png");
+  }
+  .category_item_img5 {
+    background-image: url("../../assets/categoryImage/5.png");
+  }
+  .category_item_img6 {
+    background-image: url("../../assets/categoryImage/6.png");
+  }
+  
+  .category_item_radio {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    right: 15px;
+    top: 15px;
+  
+    background: linear-gradient(
+        317.7deg,
+        rgba(0, 0, 0, 0.4) 195.53%,
+        rgba(255, 255, 255, 0.4) 300.71%
+      ),
+      #ebecf0;
+    background-blend-mode: soft-light, normal;
+    box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .category_item_radio input[type="radio"] {
+    display: none;
+  }
+  .category_item_radio label {
+    position: relative;
+    cursor: pointer;
+    font-weight: bold;
+    padding-right: 32px;
+    width: 30px;
+    height: 30px;
+  }
+  .category_item_radio label:nth-last-child(1) {
+    padding-right: 0;
+  }
+  .category_item_radio label::before {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    right: 15px;
+    top: 15px;
+  
+    background: linear-gradient(
+        317.7deg,
+        rgba(0, 0, 0, 0.4) 195.53%,
+        rgba(255, 255, 255, 0.4) 300.71%
+      ),
+      #ebecf0;
+    background-blend-mode: soft-light, normal;
+    box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+    border-radius: 40px;
+  }
+  .category_item_radio label::after {
+    content: "";
+    display: inline-block;
+    /* position: absolute; */
+    width: 30px;
+    height: 30px;
+    background: rgba(122, 122, 122, 0);
+    /* left: 3.9px; */
+    /* top: -14.4px; */
+    margin: 0px 0px;
+    margin-left: 0;
+    border-radius: 50%;
+  
+    transition: all 0.2s;
+  }
+  .category_item_radio input[type="radio"]:checked + label::after {
+    background: rgb(0, 98, 215);
+  }
+  .category_next_btn {
+    display: flex;
+    justify-content: end;
+    position: relative;
+    cursor: pointer;
+    margin-right: 100px;
+  }
+  .category_next_btn span {
+    background: linear-gradient(
+        135.37deg,
+        rgba(0, 0, 0, 0.4) 4.29%,
+        rgba(255, 255, 255, 0.4) 95.6%
+      ),
+      #0062d7;
+    background-blend-mode: soft-light, normal;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-sizing: border-box;
+    box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+    border-radius: 15px;
+    padding: 5px 25px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 37px;
+    width: 135px;
+    height: 50px;
+    text-align: left;
+  
+    color: #ffffff;
+  }
+  .category_next_btn  .BsChevronRight {
+    position: absolute;
+    font-size: 25px;
+    top: 13px;
+    right: 15px;
+    font-weight: 500;
+    color: #ffffff;
+  }
+  
+  /* Responsive  */
+  /* @media screen and (max-width: 1582px) {
+    .category_item_section {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  @media screen and (max-width: 675px) {
+    .category_body {
+      margin: 0px 0px 40px 0px;
+    }
+    .choose_category_head {
+      padding-left: 50px;
+      padding-top: 50px;
+    }
+    .category_next_btn {
+      display: flex;
+      justify-content: end;
+      position: relative;
+      padding-right: 10px;
+    }
+  } */
+  /* Responsive  */
+  /* ######################################### */
+  /*category*/
+  /* ######################################### */
+  

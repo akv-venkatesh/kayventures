@@ -2,15 +2,13 @@ import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./index.css";
+import "./BuyerBusinessCategory.css";
 import { BsChevronRight } from "react-icons/bs";
 
 function BuyerBusinessCategory() {
-  const [Visibility, setVisibility] = useState("hidden");
+  const [Visibility, setVisibility] = useState("none");
   const [selectedOption, setselectedOption] = useState(null);
-  
-  
-  
+
   const handleChange = (e) => {
     setselectedOption(e.target.value);
     if (e.target.value) {
@@ -19,13 +17,21 @@ function BuyerBusinessCategory() {
   };
   // console.log(selectedOption)
 
-
   return (
     <>
       <div className="category_body">
         <div className="category_container">
           <div className="choose_category_head">
             <h1>Choose your business category</h1>
+            <Link to="/buyertypes">
+              <div
+                className="category_next_btn"
+                style={{ display: Visibility }}
+              >
+                <span>Next </span>
+                <BsChevronRight className="BsChevronRight" />
+              </div>{" "}
+            </Link>
           </div>
           <div className="category_section">
             <div class="category_item_section">
@@ -133,11 +139,18 @@ function BuyerBusinessCategory() {
             </div>
           </div>
         </div>
-        <Link to="/manufacturertypes"><div className="category_next_btn" style={{ visibility: Visibility }}>
-          <span>Next </span>
-          <BsChevronRight className="BsChevronRight" />
-        </div> </Link>
       </div>
+      {/* <div style={{display:"flex"}}>
+      <Link to="/manufacturertypes">
+              <div
+                className="category_next_btn"
+                style={{ visibility: Visibility }}
+              >
+                <span>Next </span>
+                <BsChevronRight className="BsChevronRight" />
+              </div>{" "}
+            </Link>
+      </div> */}
     </>
   );
 }

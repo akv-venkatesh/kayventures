@@ -14,7 +14,7 @@ export const BuyerJoinNow = loadable(() => import('../pages//Buyer/BuyerJoinNow'
 export const BuyerCreateAccount = loadable(() => import('../pages/Buyer/BuyerCreateAccount'));
 export const BuyerBusinessCategory = loadable(() => import('../pages/Buyer/BuyerBusinessCategory'));
 export const BuyerPrimaryDetails = loadable(() => import('../pages/Buyer/BuyerPrimaryDetails'));
-// export const ManufacturerPrimaryDetails = loadable(() => import('../pages/Manufacturer/ManufacturerPrimaryDetails'));
+export const BuyerTypes = loadable(() => import('../pages/Buyer/BuyerTypes'));
 export const BuyerVerifiedEmail = loadable(() => import('../pages/Buyer/BuyerVerifiedEmail'));
 
 

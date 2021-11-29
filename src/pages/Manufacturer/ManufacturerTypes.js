@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./index.css";
+import "./ManufacturerTypes.css";
 import { BsChevronRight, BsChevronLeft } from "react-icons/bs";
 import bag from "../../assets/icons/bag.svg";
 import { Link } from "react-router-dom";
@@ -57,7 +57,7 @@ function ManufacturerTypes() {
               </div>
             </div>
             <div class="Manufacturertypes_category_item_section">
-              <div className="Manufacturertypes_category_item category_item_img1">
+              <div className="Manufacturertypes_category_item ">
                 <img src={bag} />
                 <h1>Weaving</h1>
                 <div className="Manufacturertypes_category_item_radio">
@@ -71,7 +71,7 @@ function ManufacturerTypes() {
                   <label for="Weaving"></label>
                 </div>
               </div>
-              <div className="Manufacturertypes_category_item category_item_img1">
+              <div className="Manufacturertypes_category_item ">
                 <img src={bag} />
                 <h1>Sewing</h1>
                 <div className="Manufacturertypes_category_item_radio">
