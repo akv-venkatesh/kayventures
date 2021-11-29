@@ -1,0 +1,331 @@
+$bg-color: #E5E5E5;
+$color: #566180;
+$hightlight-color: #0062D7;
+$btn-linear1 : rgba(0, 0, 0, 0.4) 4.29%;
+$btn-linear2 : rgba(255, 255, 255, 0.4) 95.6%;
+$btn-linear-deg : 135.37deg;
+$font-family: 'poppins', sans-serif;
+$error-color: #ff0808;
+$backdrop-color: rgba(184, 202, 216, 0.7);
+$modal-color: #EBECF0B2;
+
+
+body{
+	background-color: $bg-color;
+	color: $color;
+	font-family: $font-family;
+	min-height: 100vh;
+
+	.m-login{
+		h1{
+			font-weight: 600;
+			font-size: 50px;
+		}
+		.first-half{
+			p{
+				color: $color;
+				font-size: 15px;
+			}
+		}
+		.second-half{
+			.login-form{
+				width: 450px;
+				h2{
+					font-size: 30px;
+				}
+				box-shadow: 5px 5px 10px 0px #A6ABBD, -5px -5px 10px 0px #FAFBFF;
+				border-radius: 40px;
+				input{
+					&.form-control{
+						border-radius: 40px;
+						height: 50px;
+						padding-left: 50px;
+						padding-right: 50px;
+						background-color: transparent;
+						box-shadow: 3px 3px 10px 0px #A6ABBD inset, -3px -3px 10px 0px #FAFBFF inset;
+						user-select: none;
+						&.is-invalid{
+							background-image: none;
+						}
+					}
+					&:-webkit-autofill {
+						-webkit-background-clip: text;
+					}
+					&[type='password']{
+						-webkit-text-security: square
+					}
+				}
+				label{
+					font-size: 14px;
+					color: $hightlight-color;
+				}
+				.custom-control-input{
+					&~.custom-control-label{
+						&:before{
+							box-shadow: none;
+							background-color: transparent;
+							border: 2px solid $hightlight-color;
+							top: 0px;
+							width: 1.2rem;
+							height: 1.2rem;
+						}
+					}
+					&:checked{
+						&~.custom-control-label{
+							&:before{
+								background-color: $hightlight-color;
+								border: 2px solid $hightlight-color;
+							}
+							&:after{
+								content: none;
+							}
+						}
+					}
+				}
+				.validation-error{
+					position: absolute;
+				    right: 0;
+				    color: $error-color;
+				}
+				button{
+					&.login-submit{
+						height: 50px;
+						border-radius: 40px;
+						background: linear-gradient($btn-linear-deg, $btn-linear1, $btn-linear2), #0062D7;
+						color: white;
+						width: 200px;
+						border: none;
+						outline: none;
+						box-shadow: 5px 5px 10px 0px #A6ABBD, -5px -5px 10px 0px #FAFBFF;
+						background-blend-mode: soft-light, normal;
+					}
+				}
+				.field-icon{
+					position: absolute;
+					width: 50px;
+				}
+				.eye-icon{
+					position: absolute;
+					right: 0;
+					width: 50px;
+					cursor: pointer;
+				}
+			}
+		}
+		.modal{
+			.modal-dialog{
+				.modal-content{
+					background-color: $modal-color;
+					border: none;
+					border-radius: 30px;
+					box-shadow: 8px 4px 14px 0px #00000014, 6px 5px 35px 0px #FFFFFF59 inset;
+					.modal-header{
+						border: none;
+						h5{
+							text-transform: uppercase;
+							color: $hightlight-color;
+						}
+						.close{
+							position: absolute;
+							top: -25px;
+							right: 0px;
+							outline: none;
+						}
+					}
+					.modal-body{
+						p{
+							color: $error-color;
+						}
+					}
+					.modal-footer{
+						border: none;
+						button{
+							&.modal-signin{
+								width: 200px;
+								height: 50px;
+								border-radius: 40px;
+								border: none;
+								background: linear-gradient($btn-linear-deg, $btn-linear1, $btn-linear2), #0062D7;
+								background-blend-mode: soft-light, normal;
+								color: white;
+								outline: none;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.m-home{
+		.s-sec1{
+			flex: 0 0 60px;
+			max-width: 60px;
+		}
+		.s-sec2{
+			flex: 0 0 calc(100% - 60px);
+			max-width: calc(100% - 60px);
+		}
+
+		.m-home-navigation{
+			.side-navg{
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				background-color: #003778;
+				width:60px;
+				.navg-icons{
+					font-size:30px;
+					display:inline-block;
+					color:#fff;
+					cursor:pointer;
+				}
+			}
+		}
+		.navigation{
+			.menu-bar{
+				font-size: 22px;
+			}
+			ul{
+				li{
+					list-style-type: none;
+					color: #000;
+					position: relative;
+					&.active{
+						color: $hightlight-color;
+						font-weight: 500;
+					}
+					&:not(:last-child){
+						&:before{
+							content:"/";
+							position: absolute;
+							right: -12px;
+						}
+					}
+				}
+			}
+			h6{
+				color: #000;
+			}
+			p{
+				font-size: 14px;
+			}
+			.user-image{
+				width: 50px;
+				height: 50px;
+			}
+		}
+		.main-content-parent{
+			height: calc(100% - 50px);
+			.main-content{
+				box-shadow: 5px 5px 10px 0px #A6ABBD, -5px -5px 10px 0px #FAFBFF;
+				border-radius: 40px;
+				h1{
+					font-size: 30px;
+				}
+				p{
+					font-size: 14px;
+					color: $hightlight-color;
+				}
+				img{
+					width: 100%;
+					height: 100%;
+					object-fit: contain;
+					object-position:bottom;
+				}
+				.embed-responsive{
+					border-radius: 15px;
+					.overlay{
+						position: absolute;
+					    top: 0;
+					    right: 0;
+					    bottom: 0;
+					    left: 0;
+					    background-color: #F3F6F7;
+					    box-shadow: 4px 4px 4px 0px #AAB3C540, -4px -4px 4px 0px #FFFFFF80;
+					    .btn{
+					    	width: 50px;
+					    	height: 50px;
+					    	padding: 0px;
+					    }
+					}
+				}
+			}
+		}
+	}
+
+	.modal-backdrop.show{
+		background-color: $backdrop-color;
+		backdrop-filter: blur(21px);
+		opacity: unset;
+	}
+}
+
+
+@media screen and (min-width: 992px) {
+	body{
+		.App{
+			height: 100vh;
+		}
+	}
+}
+@media screen and (max-width: 991px) {
+	body{
+		.App{
+			.m-home{
+				.main-content-parent{
+					.main-content{
+						border-radius: 20px;
+						h1{
+							font-size: 24px;
+						}
+						img{
+							width: 100%;
+							height: auto;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width:767px){
+	body{
+		.m-home{
+			.s-sec1{
+				flex: 0 0 0px;
+				max-width: 0px;
+			}
+			.s-sec2{
+				flex: 0 0 calc(100%);
+				max-width: calc(100%);
+			}
+			.m-home-navigation{
+				.side-navg{
+					left:-70px;
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width: 575px) {
+	 body {
+	 	.m-login{
+	 		.first-half{
+	 			h1{
+	 				font-size: 32px;
+	 			}
+	 		}
+	 		.second-half{
+	 			.login-form{
+	 				width: 100%;
+	 				border-radius: 25px;
+	 				h2{
+	 					font-size: 20px;
+	 				}
+	 			}
+	 		}
+	 	}
+	}  
+}
