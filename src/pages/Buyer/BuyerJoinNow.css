@@ -1,12 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
-body {
-  background-color: #ebecf0;
-  /* overflow: hidden; */
-  overflow-x: hidden; 
-  margin: 0px;
-  padding: 0px;
-}
 
 .bg-img-sec {
   background-image: url(../../assets/Manufacturer-BG1\ 1.jpg);
@@ -25,7 +16,7 @@ body {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  font-size: 50px;
+  font-size: 3vw;
   line-height: 75px;
   text-transform: uppercase;
   color: #566180;

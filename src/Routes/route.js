@@ -12,7 +12,7 @@ import {
   BuyerLogin,
   BuyerHome
 } from "./asyncpages";
-import { BuyerJoinNow ,BuyerCreateAccount,BuyerBusinessCategory,BuyerPrimaryDetails,BuyerVerifiedEmail } from "./asyncpages";
+import { BuyerJoinNow ,BuyerCreateAccount,BuyerBusinessCategory,BuyerTypes,BuyerPrimaryDetails,BuyerVerifiedEmail } from "./asyncpages";
 
 const Routes = (props) => {
   return (
@@ -36,7 +36,7 @@ const Routes = (props) => {
         component={ManufacturerVerifiedEmail}
       />
 
-      {/* <Route exact path="//" component={BuyerJoinNow} /> */}
+      <Route exact path="/buyer" component={BuyerJoinNow} />
 
     <Route
         path="/buyercreateaccount"
@@ -48,8 +48,8 @@ const Routes = (props) => {
         component={BuyerBusinessCategory}
       />
 
-      {/*
-      <Route path="/manufacturertypes" component={ManufacturerTypes} />*/}
+      
+      <Route path="/buyertypes" component={BuyerTypes} />
       <Route
         path="/buyerprimarydetails"
         component={BuyerPrimaryDetails}

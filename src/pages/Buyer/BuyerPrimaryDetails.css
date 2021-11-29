@@ -1,0 +1,286 @@
+/* ######################################### */
+/* PrimaryForm */
+/* ######################################### */
+.primary_form_body {
+  width: auto;
+  margin-top: 34px;
+  margin-bottom: 34px;
+  background: rgba(225, 228, 234, 0.5);
+  backdrop-filter: blur(4px);
+  border-radius: 40px;
+}
+.primary_form_container {
+  padding: 40px 60px;
+}
+
+.primary_form_head h1 {
+  margin-top: 34px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 27px;
+  line-height: 45px;
+  color: #566180;
+}
+.primary_form_head h1 span {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 27px;
+  line-height: 45px;
+  color: #0062d7;
+}
+.primary_form_head p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  color: #566180;
+}
+.primary_form_details {
+  margin: 35px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.primary_form_details label {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 30px;
+  color: #566180;
+}
+.primary_form_details input {
+  background: linear-gradient(
+      317.7deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(255, 255, 255, 0.4) 105.18%
+    ),
+    #ebecf0;
+  background-blend-mode: soft-light, normal;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-sizing: border-box;
+  box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+  border-radius: 40px;
+  width: 300px;
+  height: 40px;
+  padding: 0px 30px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 40px;
+  margin-left: 30px;
+  /* or 265% */
+
+  /* display: flex;
+  align-items: center; */
+  letter-spacing: -0.408px;
+
+  color: #0062d7;
+  outline: none;
+}
+
+.primary_form_details input::placeholder {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 40px;
+  /* or 265% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.408px;
+
+  color: #acaac2;
+}
+.primary_form_btn {
+  display: flex;
+  justify-content: center;
+}
+.primary_form_btn span {
+  background: linear-gradient(
+      135.37deg,
+      rgba(0, 0, 0, 0.4) 4.29%,
+      rgba(255, 255, 255, 0.4) 95.6%
+    ),
+    #0062d7;
+  background-blend-mode: soft-light, normal;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-sizing: border-box;
+  box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+  border-radius: 40px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  color: #ffffff;
+  padding: 5px 40px;
+}
+.primary_form_alert {
+  display: flex;
+  justify-content: center;
+}
+.primary_form_alert span {
+  font-family: "Poppins";
+  padding-top: 25px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 22px;
+
+  color: #0067e5;
+}
+/* /* Model css  */
+
+.model {
+  background: rgba(184, 202, 216, 0.7);
+}
+.modal-content {
+  background: linear-gradient(
+      135.37deg,
+      rgba(0, 0, 0, 0.4) 4.29%,
+      rgba(255, 255, 255, 0.4) 95.6%
+    ),
+    rgba(235, 236, 240, 0.7);
+  background-blend-mode: soft-light, normal;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-sizing: border-box;
+  box-shadow: 8px 4px 14px rgba(0, 0, 0, 0.08),
+    inset 6px 5px 35px rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 40px;
+
+  width: 767px;
+  height: 384px;
+}
+
+.modal-header {
+  border-bottom: 0px;
+}
+
+.modal-header .btn-close {
+  position: absolute;
+  top: -30px;
+  right: 0px;
+  outline: none;
+  box-shadow: none;
+}
+
+.modal-header .btn-close:active {
+  box-shadow: none;
+  outline: none;
+}
+
+.modal-body {
+  text-align: center;
+  justify-content: center;
+  padding: 0px 150px;
+}
+
+.modal-body .modal-title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 45px;
+  margin-top: 45px;
+  text-align: center;
+  color: #0064d8;
+}
+
+.modal-body .modal-discription {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+}
+.modal-body .modal-timer {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 179%;
+  /* or 32px */
+  margin-top: 38px;
+  margin-bottom: 24px;
+  letter-spacing: 0.385em;
+
+  color: #0068da;
+}
+
+.modal-body .modal-action-resend {
+  background: linear-gradient(
+      135.37deg,
+      rgba(0, 0, 0, 0.4) 4.29%,
+      rgba(255, 255, 255, 0.4) 95.6%
+    ),
+    #0062d7;
+  background-blend-mode: soft-light, normal;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-sizing: border-box;
+  box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+  border-radius: 16px;
+  padding: 10px 28px;
+}
+
+.modal-body .modal-action-resend span {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  color: #ffffff;
+}
+
+/* Model css */
+
+/* Responsive  */
+/* @media screen and (max-width: 1016px) {
+  .primary_form_body {
+    width: 600px;
+    margin-top: 34px;
+    margin-bottom: 34px;
+    border-radius: 40px;
+  }
+  .primary_form_details {
+    margin: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 575px) {
+  .primary_form_body {
+    width: 412px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 40px;
+  }
+  .primary_form_container {
+    padding: 50px 20px;
+  }
+  .primary_form_details {
+    margin: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .primary_form_details input {
+    width: 100%;
+  }
+} */
+/* Responsive  */
+/* ######################################### */
+/* PrimaryForm */
+/* ######################################### */
