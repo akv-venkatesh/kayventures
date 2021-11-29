@@ -1,6 +1,14 @@
 import { combineReducers } from 'redux';
-import homepage_reducer from './homepage_reducer' ;
+import HomeReducer from './homepage_reducer' ;
+import LoginReducer from './login_reducer' ;
+import MHomeReducer from './m_home_reducer' ;
+import BHomeReducer from './buyer_reducer' ;
   
-export default combineReducers({
-	homepage_reducer:homepage_reducer,
-}) 
+const rootReducer = combineReducers({
+	homepage : HomeReducer,
+	loginpage : LoginReducer,
+	mhomepage : MHomeReducer,
+	bhomepage : BHomeReducer,
+})
+
+export default rootReducer; 
