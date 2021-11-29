@@ -6,7 +6,7 @@ import bag from "../../assets/icons/bag.svg";
 import { Link } from "react-router-dom";
 
 function ManufacturerTypes() {
-    
+  
 
   const [Visibility, setVisibility] = useState("none");
   const [selectedOption, setselectedOption] = useState(null);

@@ -6,7 +6,7 @@ import "./index.css";
 import { BsChevronRight } from "react-icons/bs";
 
 function ManufacturerBusinessCategory() {
-  const [Visibility, setVisibility] = useState("hidden");
+  const [Visibility, setVisibility] = useState("none");
   const [selectedOption, setselectedOption] = useState(null);
 
   const handleChange = (e) => {
@@ -26,7 +26,7 @@ function ManufacturerBusinessCategory() {
             <Link to="/manufacturertypes">
               <div
                 className="category_next_btn"
-                style={{ visibility: Visibility }}
+                style={{ display: Visibility }}
               >
                 <span>Next </span>
                 <BsChevronRight className="BsChevronRight" />
