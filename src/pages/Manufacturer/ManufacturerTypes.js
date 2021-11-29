@@ -6,10 +6,16 @@ import bag from "../../assets/icons/bag.svg";
 import { Link } from "react-router-dom";
 
 function ManufacturerTypes() {
+    
+
+  const [Visibility, setVisibility] = useState("none");
   const [selectedOption, setselectedOption] = useState(null);
 
   const handleChange = (e) => {
     setselectedOption(e.target.value);
+    if (e.target.value) {
+      setVisibility("");
+    }
   };
   return (
     <>
@@ -89,7 +95,7 @@ function ManufacturerTypes() {
             <BsChevronLeft className="Manufacturertypes_category_BsChevronLeft" />
             <span>Back </span>
           </div></Link>
-          <Link to="/manufacturerprimarydetails">
+          <Link to="/manufacturerprimarydetails" style={{display:Visibility}}>
             <div className="Manufacturertypes_category_next_btn2">
               <span>Next </span>
               <BsChevronRight className="Manufacturertypes_category_BsChevronRight" />
