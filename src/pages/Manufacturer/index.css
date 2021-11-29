@@ -516,8 +516,7 @@ body {
 /* ######################################### */
 
 .primary_form_body {
-  width: 1012px;
-
+  width: auto;
   margin-top: 34px;
   margin-bottom: 34px;
   background: rgba(225, 228, 234, 0.5);
@@ -525,7 +524,7 @@ body {
   border-radius: 40px;
 }
 .primary_form_container {
-  padding: 50px 100px;
+  padding: 40px 60px;
 }
 
 .primary_form_head h1 {
@@ -533,7 +532,7 @@ body {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 27px;
   line-height: 45px;
   color: #566180;
 }
@@ -541,7 +540,7 @@ body {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 27px;
   line-height: 45px;
   color: #0062d7;
 }
@@ -549,12 +548,12 @@ body {
   font-family: "Poppins";
   font-style: normal;
   font-weight: normal;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 22px;
   color: #566180;
 }
 .primary_form_details {
-  margin: 50px 0px;
+  margin: 35px 0px;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -563,7 +562,7 @@ body {
   font-family: "Poppins";
   font-style: normal;
   font-weight: normal;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 30px;
   color: #566180;
 }
@@ -579,15 +578,15 @@ body {
   box-sizing: border-box;
   box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
   border-radius: 40px;
-  width: 450px;
-  height: 50px;
-  padding: 0px 40px;
-
+  width: 300px;
+  height: 40px;
+  padding: 0px 30px;
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
-  font-size: 20px;
-  line-height: 53px;
+  font-size: 18px;
+  line-height: 40px;
+  margin-left: 30px;
   /* or 265% */
 
   /* display: flex;
@@ -602,8 +601,8 @@ body {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 300;
-  font-size: 20px;
-  line-height: 53px;
+  font-size: 18px;
+  line-height: 40px;
   /* or 265% */
 
   display: flex;
@@ -631,10 +630,10 @@ body {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 27px;
+  font-size: 16px;
+  line-height: 26px;
   color: #ffffff;
-  padding: 5px 50px;
+  padding: 5px 40px;
 }
 .primary_form_alert {
   display: flex;
@@ -642,7 +641,7 @@ body {
 }
 .primary_form_alert span {
   font-family: "Poppins";
-  padding-top: 40px;
+  padding-top: 25px;
   font-style: normal;
   font-weight: 300;
   font-size: 15px;
