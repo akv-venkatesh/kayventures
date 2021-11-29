@@ -13,6 +13,7 @@ function ManufacturerTypes() {
   };
   return (
     <>
+    <div className="Manufacturertypes_category" >
       <div className="Manufacturertypes_category_body">
         <div className="Manufacturertypes_category_container">
           <div className="Manufacturertypes_choose_category_head">
@@ -85,16 +86,17 @@ function ManufacturerTypes() {
       <div className="Manufacturertypes_category_btn_section">
         <div className="Manufacturertypes_category_btn">
           <Link to="/manufacturerbusinesscategory"><div className="Manufacturertypes_category_next_btn1">
-            <BsChevronLeft className="BsChevronLeft" />
+            <BsChevronLeft className="Manufacturertypes_category_BsChevronLeft" />
             <span>Back </span>
           </div></Link>
           <Link to="/manufacturerprimarydetails">
             <div className="Manufacturertypes_category_next_btn2">
               <span>Next </span>
-              <BsChevronRight className="BsChevronRight" />
+              <BsChevronRight className="Manufacturertypes_category_BsChevronRight" />
             </div>
           </Link>
         </div>
+      </div>
       </div>
     </>
   );
