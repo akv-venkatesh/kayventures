@@ -3,12 +3,13 @@ import { Route } from "react-router-dom";
 import {
   ManufacturerJoinNow,
   ManufacturerCreateAccount,
+  ManufacturerLogin,
   ManufacturerBusinessCategory,
   ManufacturerPrimaryDetails,
   ManufacturerVerifiedEmail,
-  ManufacturerTypes,
+  ManufacturerTypes,s
 } from "./asyncpages";
-import { BuyerJoinNow ,BuyerCreateAccount,BuyerBusinessCategory,BuyerTypes,BuyerPrimaryDetails,BuyerVerifiedEmail } from "./asyncpages";
+import { BuyerJoinNow ,BuyerCreateAccount,BuyerLogin,BuyerBusinessCategory,BuyerTypes,BuyerPrimaryDetails,BuyerVerifiedEmail } from "./asyncpages";
 
 const Routes = (props) => {
   return (
@@ -17,6 +18,10 @@ const Routes = (props) => {
       <Route
         path="/manufacturercreateaccount"
         component={ManufacturerCreateAccount}
+      />
+      <Route
+        path="/manufacturerlogin"
+        component={ManufacturerLogin}
       />
       <Route
         path="/manufacturerbusinesscategory"
@@ -37,6 +42,10 @@ const Routes = (props) => {
     <Route
         path="/buyercreateaccount"
         component={BuyerCreateAccount}
+      />
+      <Route
+        path="/buyerlogin"
+        component={BuyerLogin}
       />
       
       <Route

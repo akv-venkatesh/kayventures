@@ -18,7 +18,7 @@ function ManufacturerJoinNow() {
           </p>
           <Link to="/manufacturercreateaccount"><div className="manu-button"><span>Join Now</span></div></Link>
           <p className="manu-button-msg">
-            Already a member? Then&ensp;<a className='manu-button-msg-link'>Log In</a>
+            Already a member? Then&ensp;<Link to="/manufacturerlogin"><div className='manu-button-msg-link'>Log In</div></Link>
           </p>
         </div>
         <div class="col-sm-8 bg-img-sec"></div>

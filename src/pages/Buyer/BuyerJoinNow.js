@@ -18,7 +18,7 @@ function BuyerJoinNow() {
           </p>
           <Link to="/buyercreateaccount"><div className="buyer-button"><span>Join Now</span></div></Link>
           <p className="buyer-button-msg">
-            Already a member? Then&ensp;<a className='buyer-button-msg-link'>Log In</a>
+            Already a member? Then&ensp;<Link to="/buyerlogin"><div className='buyer-button-msg-link'>Log In</div></Link>
           </p>
         </div>
         <div class="col-sm-8 bg-img-sec"></div>
