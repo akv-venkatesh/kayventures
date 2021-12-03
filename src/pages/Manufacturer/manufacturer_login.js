@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Redirect, useHistory } from "react-router-dom";
 import '../m-login.scss';
 import { Formik, Field } from "formik";
@@ -9,8 +9,15 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { psw_vis } from '../../actions/login_actions';
 import { useDispatch, useSelector } from 'react-redux';	
 import $ from 'jquery';
+import {Modal,Button} from 'react-bootstrap';
+
 
 function ManufacturerLogin() {
+
+	const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 	const history = useHistory();
 
@@ -60,7 +67,7 @@ function ManufacturerLogin() {
 		    					onSubmit={(values, { setSubmitting }) => {
 		    						// setTimeout(() => {
 		    						// 	alert(JSON.stringify(values, null, 2));
-		    						$('#status-check').modal('show');
+		    						handleShow();
 		    						setSubmitting(false);
 		    						// }, 400);
 		    					}}
@@ -87,6 +94,7 @@ function ManufacturerLogin() {
 								    					onChange={handleChange}
 								    					onBlur={handleBlur}
 								    					value={values.email}
+								    					placeholder="Enter Email"
 								    					className={!(errors.email && touched.email && errors.email) ? 'form-control' : 'form-control is-invalid'}
 							    					/>
 							    				</div>
@@ -103,6 +111,7 @@ function ManufacturerLogin() {
 								    					onChange={handleChange}
 								    					onBlur={handleBlur}
 								    					value={values.password}
+								    					placeholder="Enter Password"
 								    					className={!(errors.password && touched.password && errors.password) ? 'form-control' : 'form-control is-invalid'}
 							    					/>
 							    					{
@@ -125,9 +134,9 @@ function ManufacturerLogin() {
 						    					</div>
 					    					</div>
 						    				<div className="text-end">
-						    					<Link to='manufacturer-home'><button type="submit" disabled={isSubmitting} className="mt-sm-4 mt-4 login-submit">
+						    					<button type="submit" disabled={isSubmitting} className="mt-sm-4 mt-4 login-submit">
 						    						Submit
-						    					</button></Link>
+						    					</button>
 						    				</div>
 				    					</form>
 			    					)
@@ -139,28 +148,21 @@ function ManufacturerLogin() {
 	    	</div>
 	    </section>
 
-	    <div className="modal fade" id="status-check" role="dialog" aria-labelledby="status-check" aria-hidden="true">
-		    <div className="modal-dialog modal-dialog-centered" role="document">
-			    <div className="modal-content">
-				    <div className="modal-header justify-content-center">
-					    <h5 className="modal-title" id="exampleModalLongTitle">Check Status</h5>
-					    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-					    	<span aria-hidden="true"><AiOutlineClose /></span>
-					    </button>
-				    </div>
-				    <div className="modal-body">
-				    	<div className="text-center">
-				    		<p className="m-0">Sorry,</p>
-				    		<p className="m-0">Something went wrong. Use Registration failed</p>
-				    	</div>
-				    </div>
-				    <div className="modal-footer flex-column">
-					    <button type="button" className="modal-signin" data-dismiss="modal" onClick={redirect}>Sign in</button>
-					    <p>Thanks</p>
-				    </div>
-			    </div>
-		    </div>
-	    </div>
+	    <Modal show={show} onHide={handleClose} centered>
+        <Modal.Header closeButton className="justify-content-center">
+          <Modal.Title>Check Status</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        	<div className="text-center">
+		    		<p className="m-0">Sorry,</p>
+		    		<p className="m-0">Something went wrong. Use Registration failed</p>
+		    	</div>
+        </Modal.Body>
+        <Modal.Footer className="modal-footer flex-column">
+          <button type="button" className="modal-signin" data-bs-dismiss="modal" onClick={redirect}>Sign in</button>
+					<p>Thanks</p>
+        </Modal.Footer>
+      </Modal>
 
     </div>
   );

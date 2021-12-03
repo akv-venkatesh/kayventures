@@ -152,19 +152,31 @@ body{
 		}
 	}
 
-	.m-home-navigation{
-		.side-navg{
+	
+	.m-home-navigation {
+		.side-navg {
 			position: fixed;
 			top: 0;
 			bottom: 0;
 			left: 0;
 			background-color: #003778;
-			width:60px;
-			.navg-icons{
-				font-size:30px;
-				display:inline-block;
-				color:#fff;
-				cursor:pointer;
+			width: 60px;
+			.icons {
+				transition: 0.5s;
+				&:hover {
+					box-shadow: 3px 3px 10px 0px #00000066, -3px -3px 4px 0px #0055a4;
+					border-radius: 10px;
+					transition: 0.5s;
+					width: 63px;
+					background-color: #003778;
+				}
+				.navg-icons {
+					font-size: 30px;
+					display: inline-block;
+					color: #fff;
+					cursor: pointer;
+				}
+				
 			}
 		}
 	}
@@ -244,6 +256,7 @@ body{
 					    left: 0;
 					    background-color: #F3F6F7;
 					    box-shadow: 4px 4px 4px 0px #AAB3C540, -4px -4px 4px 0px #FFFFFF80;
+					    border-radius: 15px;
 					    .btn{
 					    	width: 50px;
 					    	height: 50px;

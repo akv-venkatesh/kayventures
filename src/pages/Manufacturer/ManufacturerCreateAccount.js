@@ -79,7 +79,7 @@ togglePassword = () => {
                 </div>
                 <div className="register-buttons">
                   <span className="login-button"><span>Log In</span></span>
-                  <Link to="/manufacturerbusinesscategory"><span className="signin-button"><span>Sign Up</span></span></Link>
+                  <Link to="/businesscategory"><span className="signin-button"><span>Sign Up</span></span></Link>
                   {/* <button className="signin-button">Sign Up</button> */}
                 </div>
               </div>

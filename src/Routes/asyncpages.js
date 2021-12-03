@@ -3,7 +3,7 @@ import loadable from '@loadable/component'
 export const ManufacturerJoinNow = loadable(() => import('../pages/Manufacturer/ManufacturerJoinNow'));
 export const ManufacturerCreateAccount = loadable(() => import('../pages/Manufacturer/ManufacturerCreateAccount'));
 
-export const ManufacturerBusinessCategory = loadable(() => import('../pages/Manufacturer/ManufacturerBusinessCategory'));
+export const BusinessCategory = loadable(() => import('../pages/BusinessCategory'));
 export const ManufacturerTypes = loadable(() => import('../pages/Manufacturer/ManufacturerTypes'));
 export const ManufacturerPrimaryDetails = loadable(() => import('../pages/Manufacturer/ManufacturerPrimaryDetails'));
 export const ManufacturerVerifiedEmail = loadable(() => import('../pages/Manufacturer/ManufacturerVerifiedEmail'));

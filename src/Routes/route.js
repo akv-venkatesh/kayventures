@@ -4,7 +4,7 @@ import {
   ManufacturerJoinNow,
   ManufacturerCreateAccount,
   ManufacturerLogin,
-  ManufacturerBusinessCategory,
+  BusinessCategory,
   ManufacturerPrimaryDetails,
   ManufacturerVerifiedEmail,
   ManufacturerTypes,ManufacturerHome,ManufacturerKYCBusinessHr
@@ -24,8 +24,8 @@ const Routes = (props) => {
         component={ManufacturerLogin}
       />
       <Route
-        path="/manufacturerbusinesscategory"
-        component={ManufacturerBusinessCategory}
+        path="/businesscategory"
+        component={BusinessCategory}
       />
       <Route path="/manufacturertypes" component={ManufacturerTypes} />
       <Route
