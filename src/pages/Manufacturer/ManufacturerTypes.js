@@ -24,7 +24,7 @@ function ManufacturerTypes() {
               <h1>We are</h1>
               <div className="Manufacturertypes_category_btn_section">
                 <div className="Manufacturertypes_category_btn">
-                  <Link to="/manufacturerbusinesscategory">
+                  <Link to="/category">
                     <div className="Manufacturertypes_category_next_btn1">
                       <BsChevronLeft className="Manufacturertypes_category_BsChevronLeft" />
                       <span>Back </span>

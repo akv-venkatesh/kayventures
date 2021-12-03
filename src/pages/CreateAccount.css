@@ -1,6 +1,7 @@
 
+
 .bg-img-sec {
-  background-image: url(../../assets/Manufacturer-BG1\ 1.jpg);
+  background-image: url(../assets/Manufacturer-BG1\ 1.jpg);
   /* background-size: 100vh; */
   background-position: center;
   background-size: cover;
@@ -12,7 +13,7 @@
 .header-section {
   padding: 134px 89px 0px 89px;
 }
-.buyer-title {
+.manu-title {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
@@ -23,7 +24,7 @@
   color: #566180;
 }
 
-.buyer-discription {
+.manu-discription {
   font-family: "Poppins";
   font-style: normal;
   font-weight: normal;
@@ -284,3 +285,14 @@ align-items: center;
 cursor: pointer;
 
 }
+
+
+
+
+
+
+
+
+
+
+

@@ -2,12 +2,12 @@ import React, { useState } from "react";
 
 import { Link, useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./BusinessCategory.css";
+import "./Category.css";
 import { BsChevronRight,BsChevronLeft } from "react-icons/bs";
 import { setBusinessCategory } from '../actions/business_category';
 import { useDispatch, useSelector } from 'react-redux'; 
 
-function ManufacturerBusinessCategory() {
+function Category() {
 
   const state = useSelector(state => state);
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ function ManufacturerBusinessCategory() {
             <h1>Choose your business category</h1>
             <div className="category_btn_section">
                 <div className="category_btn">
-                 <Link to="manufacturercreateaccount"> <div className="category_next_btn1">
+                 <Link to="createaccount"> <div className="category_next_btn1">
                     <BsChevronLeft className="category_BsChevronLeft" />
                     <span>Back </span>
                   </div>
@@ -171,4 +171,4 @@ function ManufacturerBusinessCategory() {
   );
 }
 
-export default ManufacturerBusinessCategory;
+export default Category;

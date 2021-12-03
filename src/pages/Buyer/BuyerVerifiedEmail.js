@@ -27,11 +27,11 @@ function BuyerVerifiedEmail() {
           <Modal.Header closeButton></Modal.Header>
          
           <Modal.Body  >
-            <h4 className="modal-title">THANKS  FOR  SIGNINGUP!</h4>
-            <p className="modal-discription">Hi,<br /> You have successfully completed the verification process.</p>
+            <h4 className="modal-title">THANKS  FOR  SIGNING UP!</h4>
+            <h5 className="modal-discription">Hi,<br /> You have successfully completed the verification process.</h5>
           
             <span className="modal-action"><span>Verification completed</span></span>
-            <p className="modal-thanks">Thanks</p>
+            <h5 className="modal-thanks">Thanks</h5>
           </Modal.Body>
           
           

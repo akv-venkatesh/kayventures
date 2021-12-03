@@ -20,7 +20,7 @@ function BuyerTypes() {
               <h1>We are</h1>
               <div className="Buyertypes_category_btn_section">
                 <div className="Buyertypes_category_btn">
-                <Link to="buyerbusinesscategory"> <div className="Buyertypes_category_next_btn1">
+                <Link to="category"> <div className="Buyertypes_category_next_btn1">
                     <BsChevronLeft className="Buyertypes_category_BsChevronLeft" />
                     <span>Back </span>
                   </div>

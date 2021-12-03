@@ -1,18 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+  background-color: #ebecf0;
+  /* overflow: hidden; */
+  overflow-x: hidden; 
+  margin: 0px;
+  padding: 0px;
+}
 
 .bg-img-sec {
-  background-image: url(../../assets/Manufacturer-BG1\ 1.jpg);
+  background-image: url(../assets/Manufacturer-BG1\ 1.jpg);
   /* background-size: 100vh; */
   background-position: center;
   background-size: cover;
   height: 100vh;
   align-items: center  ;
   overflow: hidden; 
+
 }
 
 .header-section {
   padding: 134px 89px 0px 89px;
 }
-.buyer-title {
+.manu-title {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
@@ -22,7 +32,7 @@
   color: #566180;
 }
 
-.buyer-discription {
+.manu-discription {
   font-family: "Poppins";
   font-style: normal;
   font-weight: normal;
@@ -32,7 +42,7 @@
 
   margin-top: 50px;
 }
-.buyer-button {
+.manu-button {
   background: linear-gradient(
       135.37deg,
       rgba(0, 0, 0, 0.4) 4.29%,
@@ -59,7 +69,7 @@ a{
   text-decoration: none;
 
 }
-.buyer-button span{
+.manu-button span{
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
@@ -68,7 +78,7 @@ a{
   text-decoration: none;
 }
 
-.buyer-button-msg {
+.manu-button-msg {
   font-family: "Poppins";
   font-style: normal;
   font-weight: normal;
@@ -82,6 +92,6 @@ a{
 
   margin-top: 26px;
 }
-.buyer-button-msg-link {
+.manu-button-msg-link {
   color: #0062d7;
 }

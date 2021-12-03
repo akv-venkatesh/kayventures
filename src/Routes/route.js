@@ -1,31 +1,31 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import {
-  ManufacturerJoinNow,
-  ManufacturerCreateAccount,
+  JoinNow,
+  CreateAccount,
   ManufacturerLogin,
-  BusinessCategory,
+ Category,
   ManufacturerPrimaryDetails,
   ManufacturerVerifiedEmail,
   ManufacturerTypes,ManufacturerHome,ManufacturerKYCBusinessHr
 } from "./asyncpages";
-import { BuyerJoinNow ,BuyerCreateAccount,BuyerLogin,BuyerBusinessCategory,BuyerTypes,BuyerPrimaryDetails,BuyerVerifiedEmail,BuyerHome } from "./asyncpages";
+import { BuyerLogin,BuyerTypes,BuyerPrimaryDetails,BuyerVerifiedEmail,BuyerHome } from "./asyncpages";
 
 const Routes = (props) => {
   return (
     <div className="App">
-      <Route exact path="/" component={ManufacturerJoinNow} />
+      <Route exact path="/" component={JoinNow} />
       <Route
-        path="/manufacturercreateaccount"
-        component={ManufacturerCreateAccount}
+        path="/createaccount"
+        component={CreateAccount}
       />
       <Route
         path="/manufacturerlogin"
         component={ManufacturerLogin}
       />
       <Route
-        path="/businesscategory"
-        component={BusinessCategory}
+        path="/category"
+        component={Category}
       />
       <Route path="/manufacturertypes" component={ManufacturerTypes} />
       <Route
@@ -37,21 +37,14 @@ const Routes = (props) => {
         component={ManufacturerVerifiedEmail}
       />
 
-      <Route exact path="/buyer" component={BuyerJoinNow} />
 
-    <Route
-        path="/buyercreateaccount"
-        component={BuyerCreateAccount}
-      />
+    
       <Route
         path="/buyerlogin"
         component={BuyerLogin}
       />
       
-      <Route
-        path="/buyerbusinesscategory"
-        component={BuyerBusinessCategory}
-      />
+   
 
       
       <Route path="/buyertypes" component={BuyerTypes} />
