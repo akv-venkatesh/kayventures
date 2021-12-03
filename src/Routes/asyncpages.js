@@ -15,7 +15,6 @@ export const BuyerLogin = loadable(() => import('../pages/Buyer/buyer_login'));
 export const BuyerHome = loadable(() => import('../pages/Buyer/buyer_home'));
 export const BuyerJoinNow = loadable(() => import('../pages/Buyer/BuyerJoinNow'));
 export const BuyerCreateAccount = loadable(() => import('../pages/Buyer/BuyerCreateAccount'));
-
 export const BuyerBusinessCategory = loadable(() => import('../pages/Buyer/BuyerBusinessCategory'));
 export const BuyerPrimaryDetails = loadable(() => import('../pages/Buyer/BuyerPrimaryDetails'));
 export const BuyerTypes = loadable(() => import('../pages/Buyer/BuyerTypes'));
