@@ -1,0 +1,87 @@
+
+.bg-img-sec {
+  background-image: url(../../assets/Manufacturer-BG1\ 1.jpg);
+  /* background-size: 100vh; */
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  align-items: center  ;
+  overflow: hidden; 
+}
+
+.header-section {
+  padding: 134px 89px 0px 89px;
+}
+.buyer-title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 3vw;
+  line-height: 75px;
+  text-transform: uppercase;
+  color: #566180;
+}
+
+.buyer-discription {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  color: #566180;
+
+  margin-top: 50px;
+}
+.buyer-button {
+  background: linear-gradient(
+      135.37deg,
+      rgba(0, 0, 0, 0.4) 4.29%,
+      rgba(255, 255, 255, 0.4) 95.6%
+    ),
+    #ebecf0;
+  background-blend-mode: soft-light, normal;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-sizing: border-box;
+  box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+  border-radius: 40px;
+
+  width: 126px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+
+cursor: pointer;
+  margin-top: 72px;
+}
+a{
+  text-decoration: none;
+
+}
+.buyer-button span{
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: #0062d7;
+  text-decoration: none;
+}
+
+.buyer-button-msg {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #414a67;
+
+  margin-top: 26px;
+}
+.buyer-button-msg-link {
+  color: #0062d7;
+}

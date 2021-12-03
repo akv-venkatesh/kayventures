@@ -22,7 +22,7 @@ function BuyerVerifiedEmail() {
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered
-          className="model"
+          className="emailverifiedmodel "
         >
           <Modal.Header closeButton></Modal.Header>
          

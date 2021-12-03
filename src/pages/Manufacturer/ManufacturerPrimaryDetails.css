@@ -138,10 +138,10 @@
   }
   /* /* Model css  */
   
-  .model {
+  .verifyemailmodel {
     background: rgba(184, 202, 216, 0.7);
   }
-  .modal-content {
+  .verifyemailmodel .modal-content {
     background: linear-gradient(
         135.37deg,
         rgba(0, 0, 0, 0.4) 4.29%,
@@ -161,11 +161,11 @@
     height: 384px;
   }
   
-  .modal-header {
+  .verifyemailmodel .modal-header {
     border-bottom: 0px;
   }
   
-  .modal-header .btn-close {
+  .verifyemailmodel .modal-header .btn-close {
     position: absolute;
     top: -30px;
     right: 0px;
@@ -173,18 +173,18 @@
     box-shadow: none;
   }
   
-  .modal-header .btn-close:active {
+  .verifyemailmodel .modal-header .btn-close:active {
     box-shadow: none;
     outline: none;
   }
   
-  .modal-body {
+  .verifyemailmodel .modal-body {
     text-align: center;
     justify-content: center;
     padding: 0px 150px;
   }
   
-  .modal-body .modal-title {
+  .verifyemailmodel .modal-body .modal-title {
     font-family: "Poppins";
     font-style: normal;
     font-weight: 600;
@@ -195,7 +195,7 @@
     color: #0064d8;
   }
   
-  .modal-body .modal-discription {
+  .verifyemailmodel  .modal-body .modal-discription {
     font-family: "Poppins";
     font-style: normal;
     font-weight: normal;
@@ -206,7 +206,7 @@
     text-align: center;
     margin-top: 20px;
   }
-  .modal-body .modal-timer {
+  .verifyemailmodel .modal-body .modal-timer {
     font-family: "Poppins";
     font-style: normal;
     font-weight: 500;
@@ -220,7 +220,7 @@
     color: #0068da;
   }
   
-  .modal-body .modal-action-resend {
+  .verifyemailmodel .modal-body .modal-action-resend {
     background: linear-gradient(
         135.37deg,
         rgba(0, 0, 0, 0.4) 4.29%,
@@ -235,7 +235,7 @@
     padding: 10px 28px;
   }
   
-  .modal-body .modal-action-resend span {
+  .verifyemailmodel .modal-body .modal-action-resend span {
     font-family: "Poppins";
     font-style: normal;
     font-weight: 500;

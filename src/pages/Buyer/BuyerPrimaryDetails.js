@@ -76,7 +76,7 @@ function BuyerPrimaryDetails() {
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered
-          className="model"
+          className="sendmailmodel"
           onHide={()=>setShowModel(false)}
         >
           <Modal.Header closeButton></Modal.Header>

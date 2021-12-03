@@ -137,10 +137,10 @@
 }
 /* /* Model css  */
 
-.model {
+.sendmailmodel {
   background: rgba(184, 202, 216, 0.7);
 }
-.modal-content {
+.sendmailmodel  .modal-content {
   background: linear-gradient(
       135.37deg,
       rgba(0, 0, 0, 0.4) 4.29%,
@@ -160,11 +160,11 @@
   height: 384px;
 }
 
-.modal-header {
+.sendmailmodel .modal-header {
   border-bottom: 0px;
 }
 
-.modal-header .btn-close {
+.sendmailmodel  .modal-header .btn-close {
   position: absolute;
   top: -30px;
   right: 0px;
@@ -172,18 +172,18 @@
   box-shadow: none;
 }
 
-.modal-header .btn-close:active {
+.sendmailmodel  .modal-header .btn-close:active {
   box-shadow: none;
   outline: none;
 }
 
-.modal-body {
+.sendmailmodel  .modal-body {
   text-align: center;
   justify-content: center;
   padding: 0px 150px;
 }
 
-.modal-body .modal-title {
+.sendmailmodel  .modal-body .modal-title {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
@@ -194,7 +194,7 @@
   color: #0064d8;
 }
 
-.modal-body .modal-discription {
+.sendmailmodel  .modal-body .modal-discription {
   font-family: "Poppins";
   font-style: normal;
   font-weight: normal;
@@ -205,7 +205,7 @@
   text-align: center;
   margin-top: 20px;
 }
-.modal-body .modal-timer {
+.sendmailmodel  .modal-body .modal-timer {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
@@ -219,7 +219,7 @@
   color: #0068da;
 }
 
-.modal-body .modal-action-resend {
+.sendmailmodel  .modal-body .modal-action-resend {
   background: linear-gradient(
       135.37deg,
       rgba(0, 0, 0, 0.4) 4.29%,
@@ -234,7 +234,7 @@
   padding: 10px 28px;
 }
 
-.modal-body .modal-action-resend span {
+.sendmailmodel .modal-body .modal-action-resend span {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;

@@ -76,7 +76,7 @@ function ManufacturerPrimaryDetails() {
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered
-          className="model"
+          className="verifyemailmodel"
           onHide={()=>setShowModel(false)}
         >
           <Modal.Header closeButton></Modal.Header>

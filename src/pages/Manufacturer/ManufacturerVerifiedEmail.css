@@ -20,7 +20,7 @@
     opacity: 0 !important; 
 }
 
-  .model .modal-content {
+.verifyemailmodel1 .modal-content {
     background: linear-gradient(
         135.37deg,
         rgba(0, 0, 0, 0.4) 4.29%,
@@ -41,12 +41,12 @@
   }
   
   
-  .model  .modal-header {
+  .verifyemailmodel1  .modal-header {
     border-bottom: 0px;
   }
   
   
-  .model  .modal-header .btn-close {
+  .verifyemailmodel1  .modal-header .btn-close {
     position: absolute;
     top: -30px;
     right: 0px;
@@ -55,20 +55,20 @@
   }
   
   
-  .model  .modal-header .btn-close:active {
+  .verifyemailmodel1  .modal-header .btn-close:active {
     box-shadow: none;
     outline: none;
   }
   
   
-  .model  .modal-body {
+  .verifyemailmodel1 .modal-body {
     text-align: center;
     justify-content: center;
     padding: 0px 100px;
   }
   
   
-  .model  .modal-body .modal-title {
+  .verifyemailmodel1  .modal-body .modal-title {
     font-family: "Poppins";
     font-style: normal;
     font-weight: bold;
@@ -81,7 +81,7 @@
   }
   
   
-  .model  .modal-body .modal-discription {
+  .verifyemailmodel1  .modal-body .modal-discription {
     font-family: "Poppins";
     font-style: normal;
     font-weight: normal;
@@ -92,7 +92,7 @@
     justify-content: center;
   }
   
-  .model  .modal-body .modal-timer {
+  .verifyemailmodel1  .modal-body .modal-timer {
     font-family: "Poppins";
     font-style: normal;
     font-weight: 500;
@@ -106,7 +106,7 @@
   }
   
   
-  .model  .modal-body .modal-action{
+  .verifyemailmodel1  .modal-body .modal-action{
     background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #0062D7;
     background-blend-mode: soft-light, normal;
     border: 1px solid rgba(255, 255, 255, 0.4);
@@ -118,7 +118,7 @@
   }
   
   
-  .model  .modal-body .modal-action span{
+  .verifyemailmodel1  .modal-body .modal-action span{
     font-family: "Poppins";
 font-style: normal;
 font-weight: 500;
@@ -127,7 +127,7 @@ line-height: 27px;
     color: #ffffff;
   }
 
-  .modal-thanks{
+  .verifyemailmodel1 .modal-thanks{
     font-family: "Poppins";
     font-style: normal;
     font-weight: 600;
