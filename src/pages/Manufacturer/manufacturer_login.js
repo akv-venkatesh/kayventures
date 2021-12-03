@@ -114,14 +114,14 @@ function ManufacturerLogin() {
 						    						{errors.password && touched.password && errors.password}
 						    					</div>
 						    				</div>
-					    					<div className="d-flex justify-content-between mt-sm-5 mt-4 flex-wrap">
-						    					<div className="form-check me-3">
+					    					<div className="d-flex justify-content-between mt-sm-4 mt-4 ps-3	 flex-wrap">
+						    					<div className="form-check remember  me-3">
 							    					<Field type="checkbox" name="rememberme" value="1" className="form-check-input" id="rememberme"/>
 							    					<label className="form-check-label" htmlFor="rememberme">Remember Me</label>
 						    					</div>
-						    					<div className="form-check">
-							    					<Field type="checkbox" name="forgot-password" value="1" className="form-check-input" id="forgot-password"/>
-							    					<label className="form-check-label" htmlFor="forgot-password">Forgot password?</label>
+						    					<div className="form-check remember">
+							    					{/* <Field type="checkbox" name="forgot-password" value="1" className="form-check-input" id="forgot-password"/> */}
+							    					<label className="form-check-label" htmlFor="forgot-password" style={{cursor:"pointer"}}>Forgot password?</label>
 						    					</div>
 					    					</div>
 						    				<div className="text-end">
