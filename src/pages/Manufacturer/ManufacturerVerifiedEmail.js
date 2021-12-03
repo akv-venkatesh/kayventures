@@ -3,6 +3,7 @@ import "./ManufacturerVerifiedEmail.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import {Modal,Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 
@@ -26,11 +27,11 @@ function ManufacturerVerifiedEmail() {
         >
           <Modal.Header closeButton></Modal.Header>
          
-          <Modal.Body  >
+          <Modal.Body  className="text-center">
             <h4 className="modal-title">THANKS  FOR  SIGNINGUP!</h4>
             <p className="modal-discription">Hi,<br /> You have successfully completed the verification process.</p>
           
-            <span className="modal-action"><span>Verification completed</span></span>
+            <Link to='manufacturer-login'><span className="modal-action"><span>Verification completed</span></span></Link>
             <p className="modal-thanks">Thanks</p>
           </Modal.Body>
           

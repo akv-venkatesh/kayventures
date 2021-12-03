@@ -85,7 +85,7 @@ function ManufacturerPrimaryDetails() {
             <h4 className="modal-title">Email ID Verification</h4>
             <p className="modal-discription">Kindly verify your email id using the link sent to you. The link will be active till 30 minutes.</p>
             <p className="modal-timer">00:30</p>
-            <span className="modal-action-resend"><span>Resend</span></span>
+            <Link to='manufacturerverifiedemail'><span className="modal-action-resend"><span>Resend</span></span></Link>
           </Modal.Body>
           
           

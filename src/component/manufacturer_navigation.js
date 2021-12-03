@@ -16,11 +16,11 @@ function Home() {
   return (
     <div className='m-home-navigation'>
     	<div className='side-navg text-center'>
-    			<div><HiHome className="navg-icons my-3"/></div>
-    			<div><AiOutlineDashboard className="navg-icons my-4"/></div>
-    			<div><BiCog className="navg-icons my-4"/></div>
-    			<div><BsGlobe2 className="navg-icons my-4"/></div>
-    			<div><BsPlug className="navg-icons my-4"/></div>
+    			<div className="icons"><HiHome className="navg-icons my-3"/></div>
+    			<div className="icons"><AiOutlineDashboard className="navg-icons my-4"/></div>
+    			<Link to='manufacturer-settings' activeClassName="active"><div className="icons "><BiCog className="navg-icons my-4"/></div></Link>
+    			<div className="icons" className="icons"><BsGlobe2 className="navg-icons my-4"/></div>
+    			<div className="icons"><BsPlug className="navg-icons my-4"/></div>
     	</div>
     </div>
   );

@@ -1,0 +1,114 @@
+.tax_reg_body {
+  margin: 50px 30px 10px 115px;
+
+  padding: 0px 0px 20px;
+}
+.tax_reg_body .row {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+.tax_reg_body .row h3 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 45px;
+  color: #566180;
+}
+.tax_reg_body h3 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 45px;
+  color: #566180;
+}
+
+.tax_reg_body input::placeholder {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 53px;
+  letter-spacing: -0.408px;
+  color: #acaac2;
+}
+
+.tax_reg_body label {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 30px;
+  color: #566180;
+}
+.tax_reg_body label span {
+  color: red;
+}
+
+.taxreg-validity-select {
+  /* position: absolute; */
+  width: 450px;
+  height: 40px;
+  outline: none;
+  padding-left: 20px;
+  background: linear-gradient(
+      135.37deg,
+      rgba(0, 0, 0, 0.4) 4.29%,
+      rgba(255, 255, 255, 0.4) 95.6%
+    ),
+    #ebecf0;
+  background-blend-mode: soft-light, normal;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-sizing: border-box;
+  box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+  border-radius: 15px;
+  position: relative;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 30px;
+  /* identical to box height */
+
+  color: #566180;
+}
+
+.input-field {
+  width: 450px;
+  height: 40px;
+  background: linear-gradient(
+      317.7deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(255, 255, 255, 0.4) 105.18%
+    ),
+    #ebecf0;
+  background-blend-mode: soft-light, normal;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-sizing: border-box;
+  box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+  border-radius: 40px;
+  outline: none;
+  padding: 0px 20px 0px 20px;
+  color: #0062d7;
+}
+.Attach-file {
+  margin-left: 10px;
+  font-size: 16px;
+  line-height: 40px;
+  color: #0062d7;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+.select{
+  width: 450px;
+  height: 40px;
+ 
+}

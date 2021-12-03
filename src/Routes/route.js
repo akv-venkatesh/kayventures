@@ -10,7 +10,8 @@ import {
   ManufacturerHome,
   ManufacturerLogin,
   BuyerLogin,
-  BuyerHome
+  BuyerHome,
+  ManufacturerKYCBusinessHr
 } from "./asyncpages";
 import { BuyerJoinNow ,BuyerCreateAccount,BuyerBusinessCategory,BuyerTypes,BuyerPrimaryDetails,BuyerVerifiedEmail } from "./asyncpages";
 
@@ -62,6 +63,7 @@ const Routes = (props) => {
       <Route exact path='/manufacturer-home' component={ ManufacturerHome } />
       <Route exact path='/buyer-login' component={ BuyerLogin } />
       <Route exact path='/buyer-home' component={ BuyerHome } />
+      <Route exact path='/manufacturer-settings' component={ ManufacturerKYCBusinessHr } />
     </div>
   );
 };

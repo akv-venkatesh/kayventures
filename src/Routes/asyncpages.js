@@ -20,3 +20,6 @@ export const BuyerTypes = loadable(() => import('../pages/Buyer/BuyerTypes'));
 export const BuyerVerifiedEmail = loadable(() => import('../pages/Buyer/BuyerVerifiedEmail'));
 
 
+export const ManufacturerKYCBusinessHr = loadable(() => import('../pages/Manufacturer/settings/index'));
+
+

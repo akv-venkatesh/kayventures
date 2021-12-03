@@ -58,30 +58,24 @@ body{
 				label{
 					font-size: 14px;
 					color: $hightlight-color;
+					user-select:none;
 				}
-				.custom-control-input{
-					&~.custom-control-label{
-						&:before{
-							box-shadow: none;
-							background-color: transparent;
-							border: 2px solid $hightlight-color;
-							top: 0px;
-							width: 1.2rem;
-							height: 1.2rem;
+				.form-check{
+					.form-check-input{
+						&:checked[type=checkbox]{
+							background-image:none;
 						}
-					}
-					&:checked{
-						&~.custom-control-label{
-							&:before{
-								background-color: $hightlight-color;
-								border: 2px solid $hightlight-color;
-							}
-							&:after{
-								content: none;
-							}
+						&:checked {
+						    background-color: $hightlight-color;
+						    border-color: $hightlight-color;;
+						}
+						&:focus {
+						    border-color: $hightlight-color;
+						    box-shadow: unset;
 						}
 					}
 				}
+
 				.validation-error{
 					position: absolute;
 				    right: 0;
@@ -112,48 +106,100 @@ body{
 				}
 			}
 		}
-		.modal{
-			.modal-dialog{
-				.modal-content{
-					background-color: $modal-color;
+	}
+	
+	.modal{
+		.modal-dialog{
+			.modal-content{
+				background-color: $modal-color;
+				border: none;
+				border-radius: 30px;
+				box-shadow: 8px 4px 14px 0px #00000014, 6px 5px 35px 0px #FFFFFF59 inset;
+				.modal-header{
 					border: none;
-					border-radius: 30px;
-					box-shadow: 8px 4px 14px 0px #00000014, 6px 5px 35px 0px #FFFFFF59 inset;
-					.modal-header{
-						border: none;
-						h5{
-							text-transform: uppercase;
-							color: $hightlight-color;
-						}
-						.close{
-							position: absolute;
-							top: -25px;
-							right: 0px;
+					h5{
+						text-transform: uppercase;
+						color: $hightlight-color;
+					}
+					.btn-close{
+						position: absolute;
+						top: -25px;
+						right: 0px;
+						outline: none;
+					}
+				}
+				.modal-body{
+					p{
+						color: $error-color;
+					}
+				}
+				.modal-footer{
+					border: none;
+					button{
+						&.modal-signin{
+							width: 200px;
+							height: 50px;
+							border-radius: 40px;
+							border: none;
+							background: linear-gradient($btn-linear-deg, $btn-linear1, $btn-linear2), #0062D7;
+							background-blend-mode: soft-light, normal;
+							color: white;
 							outline: none;
-						}
-					}
-					.modal-body{
-						p{
-							color: $error-color;
-						}
-					}
-					.modal-footer{
-						border: none;
-						button{
-							&.modal-signin{
-								width: 200px;
-								height: 50px;
-								border-radius: 40px;
-								border: none;
-								background: linear-gradient($btn-linear-deg, $btn-linear1, $btn-linear2), #0062D7;
-								background-blend-mode: soft-light, normal;
-								color: white;
-								outline: none;
-							}
 						}
 					}
 				}
 			}
+		}
+	}
+
+	.m-home-navigation{
+		.side-navg{
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			background-color: #003778;
+			width:60px;
+			.navg-icons{
+				font-size:30px;
+				display:inline-block;
+				color:#fff;
+				cursor:pointer;
+			}
+		}
+	}
+
+	.navigation{
+		.menu-bar{
+			font-size: 22px;
+		}
+		ul{
+			li{
+				list-style-type: none;
+				color: #000;
+				position: relative;
+				&.active{
+					color: $hightlight-color;
+					font-weight: 500;
+				}
+				&:not(:last-child){
+					&:before{
+						content:"/";
+						position: absolute;
+						right: -12px;
+					}
+				}
+			}
+		}
+		h6{
+			color: #000;
+		}
+		p{
+			font-size: 14px;
+		}
+		.user-image{
+			width: 50px;
+			height: 50px;
 		}
 	}
 
@@ -165,56 +211,6 @@ body{
 		.s-sec2{
 			flex: 0 0 calc(100% - 60px);
 			max-width: calc(100% - 60px);
-		}
-
-		.m-home-navigation{
-			.side-navg{
-				position: fixed;
-				top: 0;
-				bottom: 0;
-				left: 0;
-				background-color: #003778;
-				width:60px;
-				.navg-icons{
-					font-size:30px;
-					display:inline-block;
-					color:#fff;
-					cursor:pointer;
-				}
-			}
-		}
-		.navigation{
-			.menu-bar{
-				font-size: 22px;
-			}
-			ul{
-				li{
-					list-style-type: none;
-					color: #000;
-					position: relative;
-					&.active{
-						color: $hightlight-color;
-						font-weight: 500;
-					}
-					&:not(:last-child){
-						&:before{
-							content:"/";
-							position: absolute;
-							right: -12px;
-						}
-					}
-				}
-			}
-			h6{
-				color: #000;
-			}
-			p{
-				font-size: 14px;
-			}
-			.user-image{
-				width: 50px;
-				height: 50px;
-			}
 		}
 		.main-content-parent{
 			height: calc(100% - 50px);
@@ -234,8 +230,12 @@ body{
 					object-fit: contain;
 					object-position:bottom;
 				}
-				.embed-responsive{
+				.ratio{
 					border-radius: 15px;
+					height: 100%;
+					iframe{
+						border-radius: 15px;
+					}
 					.overlay{
 						position: absolute;
 					    top: 0;
@@ -283,6 +283,9 @@ body{
 						img{
 							width: 100%;
 							height: auto;
+						}
+						.ratio{
+							--bs-aspect-ratio: 50%
 						}
 					}
 				}
