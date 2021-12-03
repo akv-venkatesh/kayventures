@@ -60,7 +60,7 @@ function Category() {
           <form onSubmit={setCategory}>
             <div className="category_section">
               <div class="category_item_section">
-                <div className="category_item category_item_img1">
+                <label  for="Buyer" className="category_item category_item_img1">
                   <div className="category_item_text">
                     <h3>Buyer</h3>
                     <p>Retailer, global brands</p>
@@ -75,8 +75,8 @@ function Category() {
                     />
                     <label for="Buyer"></label>
                   </div>
-                </div>
-                <div className="category_item category_item_img2">
+                </label>
+                <label for="Manufacturer" className="category_item category_item_img2">
                   <div className="category_item_text">
                     <h3>Manufacturer</h3>
                     <p>Apparel, fabric, yarn, fibre</p>
@@ -91,8 +91,8 @@ function Category() {
                     />
                     <label for="Manufacturer"></label>
                   </div>
-                </div>
-                <div className="category_item category_item_img3">
+                </label>
+                <label  for="JobContractor" className="category_item category_item_img3">
                   <div className="category_item_text">
                     <h3>Job Contractor</h3>
                     <p>Apparel, knitting</p>
@@ -107,10 +107,10 @@ function Category() {
                     />
                     <label for="JobContractor"></label>
                   </div>
-                </div>
+                </label>
               </div>
               <div class="category_item_section">
-                <div className="category_item category_item_img4">
+                <label for="ValueAddition" className="category_item category_item_img4">
                   <div className="category_item_text">
                     <h3>Value Addition</h3>
                     <p>Printing, emboidery, surface embellishments</p>
@@ -125,8 +125,8 @@ function Category() {
                     />
                     <label for="ValueAddition"></label>
                   </div>
-                </div>
-                <div className="category_item category_item_img5">
+                </label>
+                <label for="ProcessingFinishing" className="category_item category_item_img5">
                   <div className="category_item_text">
                     <h3>Processing & Finishing</h3>
                     <p>Pre-treatment, dying, finishing, and washing</p>
@@ -141,8 +141,8 @@ function Category() {
                     />
                     <label for="ProcessingFinishing"></label>
                   </div>
-                </div>
-                <div className="category_item category_item_img6">
+                </label>
+                <label for="ServiceProviders" className="category_item category_item_img6">
                   <div className="category_item_text">
                     <h3>Service Providers</h3>
                     <p>
@@ -160,7 +160,7 @@ function Category() {
                     />
                     <label for="ServiceProviders"></label>
                   </div>
-                </div>
+                </label>
               </div>
             </div>
           </form>

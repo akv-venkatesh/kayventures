@@ -44,7 +44,7 @@ function ManufacturerTypes() {
             </div>
             <div className="Manufacturertypes_category_section">
               <div class="Manufacturertypes_category_item_section">
-                <div className="Manufacturertypes_category_item ">
+                <label for="Spinning" className="Manufacturertypes_category_item ">
                   <img src={bag} />
                   <h1>Spinning</h1>
                   <div className="Manufacturertypes_category_item_radio">
@@ -57,8 +57,8 @@ function ManufacturerTypes() {
                     />
                     <label for="Spinning"></label>
                   </div>
-                </div>
-                <div className="Manufacturertypes_category_item ">
+                </label>
+                <label for="Knitting" className="Manufacturertypes_category_item ">
                   <img src={bag} />
                   <h1>Knitting </h1>
                   <div className="Manufacturertypes_category_item_radio">
@@ -71,10 +71,10 @@ function ManufacturerTypes() {
                     />
                     <label for="Knitting"></label>
                   </div>
-                </div>
+                </label>
               </div>
               <div class="Manufacturertypes_category_item_section">
-                <div className="Manufacturertypes_category_item ">
+                <label for="Weaving" className="Manufacturertypes_category_item ">
                   <img src={bag} />
                   <h1>Weaving</h1>
                   <div className="Manufacturertypes_category_item_radio">
@@ -87,8 +87,8 @@ function ManufacturerTypes() {
                     />
                     <label for="Weaving"></label>
                   </div>
-                </div>
-                <div className="Manufacturertypes_category_item ">
+                </label>
+                <label for="Sewing" className="Manufacturertypes_category_item ">
                   <img src={bag} />
                   <h1>Sewing</h1>
                   <div className="Manufacturertypes_category_item_radio">
@@ -101,7 +101,7 @@ function ManufacturerTypes() {
                     />
                     <label for="Sewing"></label>
                   </div>
-                </div>
+                </label>
               </div>
             </div>
           </div>

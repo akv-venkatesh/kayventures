@@ -7,9 +7,12 @@ import { Link } from "react-router-dom";
 
 function BuyerTypes() {
   const [selectedOption, setselectedOption] = useState(null);
-
+  const [Visibility, setVisibility] = useState("none");
   const handleChange = (e) => {
     setselectedOption(e.target.value);
+    if (e.target.value) {
+      setVisibility("");
+    }
   };
   return (
     <>
@@ -25,7 +28,7 @@ function BuyerTypes() {
                     <span>Back </span>
                   </div>
                   </Link>
-                  <Link to="buyerprimarydetails">
+                  <Link to="buyerprimarydetails" style={{ display: Visibility }}>
                     <div className="Buyertypes_category_next_btn2">
                       <span>Next </span>
                       <BsChevronRight className="Buyertypes_category_BsChevronRight" />
@@ -36,7 +39,7 @@ function BuyerTypes() {
             </div>
             <div className="Buyertypes_category_section">
               <div className="Buyertypes_category_item_section">
-                <div className="Buyertypes_category_item ">
+                <label  for="RetailChain" className="Buyertypes_category_item ">
                   <img src={bag} />
                   <h1>Retail Chain</h1>
                   <div className="Buyertypes_category_item_radio">
@@ -49,8 +52,8 @@ function BuyerTypes() {
                     />
                     <label for="RetailChain"></label>
                   </div>
-                </div>
-                <div className="Buyertypes_category_item ">
+                </label>
+                <label for="SpecialityChain" className="Buyertypes_category_item ">
                   <img src={bag} />
                   <h1>Speciality Chain</h1>
                   <div className="Buyertypes_category_item_radio">
@@ -63,8 +66,8 @@ function BuyerTypes() {
                     />
                     <label for="SpecialityChain"></label>
                   </div>
-                </div>
-                <div className="Buyertypes_category_item ">
+                </label>
+                <label for="RegionalChain" className="Buyertypes_category_item ">
                   <img src={bag} />
                   <h1>Regional Chain </h1>
                   <div className="Buyertypes_category_item_radio">
@@ -77,10 +80,10 @@ function BuyerTypes() {
                     />
                     <label for="RegionalChain"></label>
                   </div>
-                </div>
+                </label>
               </div>
               <div className="Buyertypes_category_item_section">
-                <div className="Buyertypes_category_item ">
+                <label for="DepatmentalStore" className="Buyertypes_category_item ">
                   <img src={bag} />
                   <h1>Depatmental Store</h1>
                   <div className="Buyertypes_category_item_radio">
@@ -93,8 +96,8 @@ function BuyerTypes() {
                     />
                     <label for="DepatmentalStore"></label>
                   </div>
-                </div>
-                <div className="Buyertypes_category_item ">
+                </label>
+                <label for="Standalonestoreretailer" className="Buyertypes_category_item ">
                   <img src={bag} />
                   <h1>Standalone store retailer</h1>
                   <div className="Buyertypes_category_item_radio">
@@ -107,8 +110,8 @@ function BuyerTypes() {
                     />
                     <label for="Standalonestoreretailer"></label>
                   </div>
-                </div>
-                <div className="Buyertypes_category_item ">
+                </label>
+                <label for="GlobaBrand" className="Buyertypes_category_item ">
                   <img src={bag} />
                   <h1>Globa Brand </h1>
                   <div className="Buyertypes_category_item_radio">
@@ -121,10 +124,10 @@ function BuyerTypes() {
                     />
                     <label for="GlobaBrand"></label>
                   </div>
-                </div>
+                </label>
               </div>
               <div className="Buyertypes_category_item_section">
-                <div className="Buyertypes_category_item ">
+                <label for="Spinning" className="Buyertypes_category_item ">
                   <img src={bag} />
                   <h1>Spinning</h1>
                   <div className="Buyertypes_category_item_radio">
@@ -137,8 +140,8 @@ function BuyerTypes() {
                     />
                     <label for="Spinning"></label>
                   </div>
-                </div>
-                <div className="Buyertypes_category_item ">
+                </label>
+                <label for="Spinnin" className="Buyertypes_category_item ">
                   <img src={bag} />
                   <h1>Spinning</h1>
                   <div className="Buyertypes_category_item_radio">
@@ -151,8 +154,8 @@ function BuyerTypes() {
                     />
                     <label for="Spinnin"></label>
                   </div>
-                </div>
-                <div className="Buyertypes_category_item ">
+                </label>
+                <label for="Knitting" className="Buyertypes_category_item ">
                   <img src={bag} />
                   <h1>Spinning </h1>
                   <div className="Buyertypes_category_item_radio">
@@ -165,7 +168,7 @@ function BuyerTypes() {
                     />
                     <label for="Knitting"></label>
                   </div>
-                </div>
+                </label>
               </div>
             </div>
           </div>

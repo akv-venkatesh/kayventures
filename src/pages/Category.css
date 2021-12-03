@@ -59,6 +59,7 @@
     box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
     border-radius: 30px;
     position: relative;
+    cursor: pointer;
   }
   .category_item_text {
     position: absolute;
@@ -177,10 +178,11 @@
     margin: 0px 0px;
     margin-left: 0;
     border-radius: 50%;
+    
   
     transition: all 0.2s;
   }
-  .category_item_radio input[type="radio"]:checked + label::after {
+  .category_item input[type="radio"]:checked + label::after {
     background: rgb(0, 98, 215);
   }
 

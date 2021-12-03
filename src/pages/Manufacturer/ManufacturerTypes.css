@@ -65,6 +65,7 @@
   box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
   border-radius: 30px;
   position: relative;
+  cursor:pointer;
 }
 .Manufacturertypes_category_item img {
   /* Width :140px;
