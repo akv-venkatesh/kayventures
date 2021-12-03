@@ -7,9 +7,9 @@ import {
   ManufacturerBusinessCategory,
   ManufacturerPrimaryDetails,
   ManufacturerVerifiedEmail,
-  ManufacturerTypes
+  ManufacturerTypes,ManufacturerHome,ManufacturerKYCBusinessHr
 } from "./asyncpages";
-import { BuyerJoinNow ,BuyerCreateAccount,BuyerLogin,BuyerBusinessCategory,BuyerTypes,BuyerPrimaryDetails,BuyerVerifiedEmail } from "./asyncpages";
+import { BuyerJoinNow ,BuyerCreateAccount,BuyerLogin,BuyerBusinessCategory,BuyerTypes,BuyerPrimaryDetails,BuyerVerifiedEmail,BuyerHome } from "./asyncpages";
 
 const Routes = (props) => {
   return (
