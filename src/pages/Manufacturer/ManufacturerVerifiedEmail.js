@@ -24,6 +24,7 @@ function ManufacturerVerifiedEmail() {
           aria-labelledby="contained-modal-title-vcenter"
           centered
           className="verifyemailmodel1"
+          backdropClassName="verifyemailmodel1"
         >
           <Modal.Header closeButton></Modal.Header>
          

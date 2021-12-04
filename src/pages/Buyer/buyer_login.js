@@ -144,30 +144,7 @@ function BuyerLogin() {
 	    	</div>
 	    </section>
 
-	    <div className="modal fade" id="status-check" role="dialog" aria-labelledby="status-check" aria-hidden="true">
-		    <div className="modal-dialog modal-dialog-centered" role="document">
-			    <div className="modal-content">
-				    <div className="modal-header justify-content-center">
-					    <h5 className="modal-title">Check Status</h5>
-					    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
-					    	<span aria-hidden="true"><AiOutlineClose /></span>
-					    </button>
-				    </div>
-				    <div className="modal-body">
-				    	<div className="text-center">
-				    		<p className="m-0">Sorry,</p>
-				    		<p className="m-0">Something went wrong. Use Registration failed</p>
-				    	</div>
-				    </div>
-				    <div className="modal-footer flex-column">
-					    <button type="button" className="modal-signin" data-bs-dismiss="modal" onClick={redirect}>Sign in</button>
-					    <p>Thanks</p>
-				    </div>
-			    </div>
-		    </div>
-	    </div>
-
-	    <Modal show={show} onHide={handleClose} centered>
+	    <Modal show={show} onHide={handleClose} centered className="checkstatus" backdropClassName="checkstatus">
         <Modal.Header closeButton className="justify-content-center">
           <Modal.Title>Check Status</Modal.Title>
         </Modal.Header>

@@ -124,42 +124,44 @@ body{
 	}
 	
 	.modal{
-		.modal-dialog{
-			.modal-content{
-				background-color: $modal-color;
-				border: none;
-				border-radius: 30px;
-				box-shadow: 8px 4px 14px 0px #00000014, 6px 5px 35px 0px #FFFFFF59 inset;
-				.modal-header{
+		&.checkstatus{
+			.modal-dialog{
+				.modal-content{
+					background-color: $modal-color;
 					border: none;
-					h5{
-						text-transform: uppercase;
-						color: $hightlight-color;
-					}
-					.btn-close{
-						position: absolute;
-						top: -25px;
-						right: 0px;
-						outline: none;
-					}
-				}
-				.modal-body{
-					p{
-						color: $error-color;
-					}
-				}
-				.modal-footer{
-					border: none;
-					button{
-						&.modal-signin{
-							width: 200px;
-							height: 50px;
-							border-radius: 40px;
-							border: none;
-							background: linear-gradient($btn-linear-deg, $btn-linear1, $btn-linear2), #0062D7;
-							background-blend-mode: soft-light, normal;
-							color: white;
+					border-radius: 30px;
+					box-shadow: 8px 4px 14px 0px #00000014, 6px 5px 35px 0px #FFFFFF59 inset;
+					.modal-header{
+						border: none;
+						h5{
+							text-transform: uppercase;
+							color: $hightlight-color;
+						}
+						.btn-close{
+							position: absolute;
+							top: -25px;
+							right: 0px;
 							outline: none;
+						}
+					}
+					.modal-body{
+						p{
+							color: $error-color;
+						}
+					}
+					.modal-footer{
+						border: none;
+						button{
+							&.modal-signin{
+								width: 200px;
+								height: 50px;
+								border-radius: 40px;
+								border: none;
+								background: linear-gradient($btn-linear-deg, $btn-linear1, $btn-linear2), #0062D7;
+								background-blend-mode: soft-light, normal;
+								color: white;
+								outline: none;
+							}
 						}
 					}
 				}
@@ -283,7 +285,7 @@ body{
 		}
 	}
 
-	.modal-backdrop.show{
+	.modal-backdrop.show.checkstatus{
 		background-color: $backdrop-color;
 		backdrop-filter: blur(21px);
 		opacity: unset;

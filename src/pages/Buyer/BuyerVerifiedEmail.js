@@ -23,6 +23,7 @@ function BuyerVerifiedEmail() {
           aria-labelledby="contained-modal-title-vcenter"
           centered
           className="emailverifiedmodel "
+          backdropClassName="emailverifiedmodel"
         >
           <Modal.Header closeButton></Modal.Header>
          

@@ -145,7 +145,7 @@ function ManufacturerLogin() {
 	    	</div>
 	    </section>
 
-	    <Modal show={show} onHide={handleClose} centered>
+	    <Modal show={show} onHide={handleClose} centered className="checkstatus" backdropClassName="checkstatus">
         <Modal.Header closeButton className="justify-content-center">
           <Modal.Title>Check Status</Modal.Title>
         </Modal.Header>
