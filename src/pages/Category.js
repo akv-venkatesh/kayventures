@@ -37,29 +37,13 @@ function Category() {
   return (
     <>
       <div className="category_body">
-        <div className="category_container">
+        <div className="category_container py-4">
           <div className="choose_category_head">
             <h1>Choose your business category</h1>
-            <div className="category_btn_section">
-                <div className="category_btn">
-                 <Link to="createaccount"> <div className="category_next_btn1">
-                    <BsChevronLeft className="category_BsChevronLeft" />
-                    <span>Back </span>
-                  </div>
-                  </Link>
-                  <div>
-                    <div className="category_next_btn2" style={{display:Visibility}} onClick={setCategory}>
-                      <span>Next </span>
-                      <BsChevronRight className="category_BsChevronRight" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            
           </div>
           <form onSubmit={setCategory}>
             <div className="category_section">
-              <div class="category_item_section">
+              <div class="category_item_section flex-wrap">
                 <label  for="Buyer" className="category_item category_item_img1">
                   <div className="category_item_text">
                     <h3>Buyer</h3>
@@ -108,8 +92,6 @@ function Category() {
                     <label for="JobContractor"></label>
                   </div>
                 </label>
-              </div>
-              <div class="category_item_section">
                 <label for="ValueAddition" className="category_item category_item_img4">
                   <div className="category_item_text">
                     <h3>Value Addition</h3>
@@ -164,6 +146,22 @@ function Category() {
               </div>
             </div>
           </form>
+        </div>
+        <div className="category_btn_section pt-4">
+          <div className="category_btn">
+            {/*<Link to="createaccount"> 
+              <div className="category_next_btn1">
+                <BsChevronLeft className="category_BsChevronLeft" />
+                <span>Back </span>
+              </div>
+            </Link>*/}
+            <div>
+              <div className="category_next_btn2" style={{display:Visibility}} onClick={setCategory}>
+                <span>Next </span>
+                <BsChevronRight className="category_BsChevronRight" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     

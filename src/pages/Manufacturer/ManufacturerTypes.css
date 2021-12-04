@@ -12,8 +12,8 @@
 .Manufacturertypes_category_body {
   display: flex;
   justify-content: center;
-  /* flex-direction: column; */
-
+  flex-direction: column;
+  align-items: center;
   /* margin: 50px 150px 50px 150px; */
 }
 .Manufacturertypes_category_container {
@@ -27,7 +27,6 @@
 }
 .Manufacturertypes_choose_category_head {
   padding-left: 150px;
-  padding-top: 20px;
   display: flex;
   justify-content: space-between;
 }
@@ -35,9 +34,10 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  font-size: 30px;
+  font-size: 24px;
   line-height: 45px;
   color: #566180;
+  margin: 0px;
 }
 .Manufacturertypes_category_section {
   display: flex;
@@ -51,8 +51,8 @@
   justify-content: center;
 }
 .Manufacturertypes_category_item {
-  width: 240px;
-  height: 185px;
+  width: 225px;
+  height: 160px;
   margin: 30px;
 
   background: linear-gradient(
@@ -70,9 +70,10 @@
 .Manufacturertypes_category_item img {
   /* Width :140px;
   Height :150px;   */
-  padding-left: 35px;
-  padding-top: 20px;
+  margin-left: 40px;
+  margin-top: 20px;
   color: #0062d7;
+  width: 60px;
 }
 .Manufacturertypes_category_item h1 {
   font-family: "Poppins";
@@ -81,7 +82,7 @@
   font-size: 18px;
   line-height: 115.5%;
   padding-left: 35px;
-  padding-top: 30px;
+  padding-top: 20px;
   /* or 21px */
 
   color: #0062d7;
@@ -153,9 +154,10 @@
 
 .Manufacturertypes_category_btn_section {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   /* flex-direction: column; */
-  margin: 0px 150px 0px 0px;
+  width: 946px;
+  height: 70px;
 }
 .Manufacturertypes_category_btn {
   display: flex;

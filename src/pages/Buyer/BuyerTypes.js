@@ -18,24 +18,9 @@ function BuyerTypes() {
     <>
       <div className="Buyertypes_category">
         <div className="Buyertypes_category_body">
-          <div className="Buyertypes_category_container">
+          <div className="Buyertypes_category_container py-4">
             <div className="Buyertypes_choose_category_head">
-              <h1>We are</h1>
-              <div className="Buyertypes_category_btn_section">
-                <div className="Buyertypes_category_btn">
-                <Link to="category"> <div className="Buyertypes_category_next_btn1">
-                    <BsChevronLeft className="Buyertypes_category_BsChevronLeft" />
-                    <span>Back </span>
-                  </div>
-                  </Link>
-                  <Link to="buyerprimarydetails" style={{ display: Visibility }}>
-                    <div className="Buyertypes_category_next_btn2">
-                      <span>Next </span>
-                      <BsChevronRight className="Buyertypes_category_BsChevronRight" />
-                    </div>
-                  </Link>
-                </div>
-              </div>
+              <h1 className="m-0">We are</h1>
             </div>
             <div className="Buyertypes_category_section">
               <div className="Buyertypes_category_item_section">
@@ -170,6 +155,21 @@ function BuyerTypes() {
                   </div>
                 </label>
               </div>
+            </div>
+          </div>
+          <div className="Buyertypes_category_btn_section pt-4">
+            <div className="Buyertypes_category_btn">
+            <Link to="category"> <div className="Buyertypes_category_next_btn1">
+                <BsChevronLeft className="Buyertypes_category_BsChevronLeft" />
+                <span>Back </span>
+              </div>
+              </Link>
+              <Link to="buyerprimarydetails" style={{ display: Visibility }}>
+                <div className="Buyertypes_category_next_btn2">
+                  <span>Next </span>
+                  <BsChevronRight className="Buyertypes_category_BsChevronRight" />
+                </div>
+              </Link>
             </div>
           </div>
         </div>

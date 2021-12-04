@@ -19,28 +19,9 @@ function ManufacturerTypes() {
     <>
       <div className="Manufacturertypes_category">
         <div className="Manufacturertypes_category_body">
-          <div className="Manufacturertypes_category_container">
+          <div className="Manufacturertypes_category_container py-4">
             <div className="Manufacturertypes_choose_category_head">
               <h1>We are</h1>
-              <div className="Manufacturertypes_category_btn_section">
-                <div className="Manufacturertypes_category_btn">
-                  <Link to="/category">
-                    <div className="Manufacturertypes_category_next_btn1">
-                      <BsChevronLeft className="Manufacturertypes_category_BsChevronLeft" />
-                      <span>Back </span>
-                    </div>
-                  </Link>
-                  <Link
-                    to="/manufacturerprimarydetails"
-                    style={{ display: Visibility }}
-                  >
-                    <div className="Manufacturertypes_category_next_btn2">
-                      <span>Next </span>
-                      <BsChevronRight className="Manufacturertypes_category_BsChevronRight" />
-                    </div>
-                  </Link>
-                </div>
-              </div>
             </div>
             <div className="Manufacturertypes_category_section">
               <div class="Manufacturertypes_category_item_section">
@@ -103,6 +84,25 @@ function ManufacturerTypes() {
                   </div>
                 </label>
               </div>
+            </div>
+          </div>
+          <div className="Manufacturertypes_category_btn_section pt-4">
+            <div className="Manufacturertypes_category_btn w-100">
+              <Link to="/category">
+                <div className="Manufacturertypes_category_next_btn1">
+                  <BsChevronLeft className="Manufacturertypes_category_BsChevronLeft" />
+                  <span>Back </span>
+                </div>
+              </Link>
+              <Link
+                to="/manufacturerprimarydetails"
+                style={{ display: Visibility }}
+              >
+                <div className="Manufacturertypes_category_next_btn2">
+                  <span>Next </span>
+                  <BsChevronRight className="Manufacturertypes_category_BsChevronRight" />
+                </div>
+              </Link>
             </div>
           </div>
         </div>

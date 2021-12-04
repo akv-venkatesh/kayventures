@@ -11,6 +11,8 @@
 .Buyertypes_category_body {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 .Buyertypes_category_container {
   width: 1246px;
@@ -20,7 +22,6 @@
 }
 .Buyertypes_choose_category_head {
   padding-left: 160px;
-  padding-top: 20px;
   display: flex;
   justify-content: space-between;
 }
@@ -34,9 +35,9 @@
 }
 .Buyertypes_category_section {
   display: flex;
-  margin: 10px 40px 40px 40px;
-  padding: 250px 100px 0px 100px;
-  justify-content: center;
+  /*margin: 10px 40px 40px 40px;*/
+  padding: 0px 100px 0px 100px;
+  /*justify-content: center;*/
   align-content: center;
   flex-direction: column;
   height: 500px;
@@ -65,13 +66,13 @@
   justify-content: center;
 }
 .Buyertypes_category_item {
-  width: 268.58px;
-  height: 205px;
-  margin: 30px;
+  /*width: 268.58px;
+  height: 205px;*/
+  margin: 40px;
 
-  width: 245px;
-  height: 187px;
-cursor: pointer;
+  width: 225px;
+  height: 160px;
+  cursor: pointer;
   background: linear-gradient(
       135.37deg,
       rgba(0, 0, 0, 0.4) 4.29%,
@@ -86,9 +87,10 @@ cursor: pointer;
 .Buyertypes_category_item img {
   /* Width :140px;
     Height :150px;   */
-  padding-left: 35px;
-  padding-top: 20px;
+  margin-left: 40px;
+  margin-top: 20px;
   color: #0062d7;
+  width: 60px;
 }
 .Buyertypes_category_item h1 {
   font-family: "Poppins";
@@ -97,7 +99,7 @@ cursor: pointer;
   font-size: 18px;
   line-height: 115.5%;
   padding-left: 35px;
-  padding-top: 25px;
+  padding-top: 20px;
   /* or 21px */
 
   color: #0062d7;
@@ -171,13 +173,12 @@ cursor: pointer;
 .Buyertypes_category_btn_section {
   display: flex;
   justify-content: center;
-  /* flex-direction: column; */
-  margin: 0px 150px 40px 150px;
+
 }
 .Buyertypes_category_btn {
-  /* width: 1246px; */
+  width: 1246px; 
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .Buyertypes_category_next_btn1 {
   position: relative;

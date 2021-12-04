@@ -128,10 +128,7 @@ function ManufacturerLogin() {
 							    					<Field type="checkbox" name="rememberme" value="1" className="form-check-input" id="rememberme"/>
 							    					<label className="form-check-label" htmlFor="rememberme">Remember Me</label>
 						    					</div>
-						    					<div className="form-check remember">
-							    					{/* <Field type="checkbox" name="forgot-password" value="1" className="form-check-input" id="forgot-password"/> */}
-							    					<label className="form-check-label" htmlFor="forgot-password" style={{cursor:"pointer"}}>Forgot password?</label>
-						    					</div>
+							    				<Link className="forgot-password">Forgot password?</Link>
 					    					</div>
 						    				<div className="text-end">
 						    					<button type="submit" disabled={isSubmitting} className="mt-sm-4 mt-4 login-submit">

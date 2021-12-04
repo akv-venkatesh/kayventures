@@ -93,6 +93,7 @@ function BuyerLogin() {
 								    					onChange={handleChange}
 								    					onBlur={handleBlur}
 								    					value={values.email}
+								    					placeholder='Enter Email'
 								    					className={!(errors.email && touched.email && errors.email) ? 'form-control' : 'form-control is-invalid'}
 							    					/>
 							    				</div>
@@ -109,6 +110,7 @@ function BuyerLogin() {
 								    					onChange={handleChange}
 								    					onBlur={handleBlur}
 								    					value={values.password}
+								    					placeholder='Enter Password'
 								    					className={!(errors.password && touched.password && errors.password) ? 'form-control' : 'form-control is-invalid'}
 							    					/>
 							    					{
@@ -120,15 +122,12 @@ function BuyerLogin() {
 						    						{errors.password && touched.password && errors.password}
 						    					</div>
 						    				</div>
-					    					<div className="d-flex justify-content-between mt-sm-5 mt-4 flex-wrap">
-						    					<div className="form-check me-3">
+					    					<div className="d-flex justify-content-between mt-sm-4 mt-4 flex-wrap ps-3">
+						    					<div className="form-check me-3 remember">
 							    					<Field type="checkbox" name="rememberme" value="1" className="form-check-input" id="rememberme"/>
 							    					<label className="form-check-label" htmlFor="rememberme">Remember Me</label>
 						    					</div>
-						    					<div className="form-check">
-							    					<Field type="checkbox" name="forgot-password" value="1" className="form-check-input" id="forgot-password"/>
-							    					<label className="form-check-label" htmlFor="forgot-password">Forgot password?</label>
-						    					</div>
+							    				<Link to="#" className="forgot-password">Forgot password?</Link>
 					    					</div>
 						    				<div className="text-end">
 						    					<button type="submit" disabled={isSubmitting} className="mt-sm-4 mt-4 login-submit">

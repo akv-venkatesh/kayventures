@@ -5,6 +5,7 @@
 /* ######################################### */
 .category_body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -15,11 +16,10 @@
     background: rgba(225, 228, 234, 0.5);
     backdrop-filter: blur(4px);
     border-radius: 40px;
-  
+    margin: 0px 100px;
   }
   .choose_category_head {
     padding-left: 100px;
-    padding-top: 20px;
     display: flex;
     justify-content: space-between;
   }
@@ -27,27 +27,44 @@
     font-family: "Poppins";
     font-style: normal;
     font-weight: 500;
-    font-size: 30px;
-    line-height: 45px;
+    font-size: 24px;
+    /*line-height: 45px;*/
     color: #566180;
   }
   
   .category_section {
     display: flex;
-    margin: 0px 0px 20px 0px;
-    padding: 10px 100px;
-    justify-content: center;
+    /*margin: 0px 0px 20px 0px;*/
+    margin: 0px 100px;
+    /*justify-content: center;*/
     align-content: center;
     flex-direction: column;
+    height: 500px;
+    overflow: auto;
+  }
+  .category_section::-webkit-scrollbar{
+      width: 10px;
+      background-color: #f8bbd0;
+  }
+  .category_section::-webkit-scrollbar-track{
+      -webkit-box-shadow: inset 0 0 6px #e9edf0;
+      background-color: lightgrey;
+      border-left: 2px solid #e9eaef;
+      border-right: 2px solid #e9edf0;
+  }
+  .category_section::-webkit-scrollbar-thumb{
+      border-radius: 20px;
+      box-shadow: -4px 1px 5px #d1d1d1;
+      background-color: #fff;
   }
   .category_item_section {
     display: flex;
     justify-content: center;
   }
   .category_item {
-    width: 300px;
-    height: 222px;
-    margin: 30px;
+    width: 275px;
+    height: 200px;
+    margin: 25px;
   
     background: linear-gradient(
         135.37deg,
@@ -70,8 +87,8 @@
     bottom: 0;
     right: 0;
     width: 100%;
-    padding: 15px 30px;
-    height: 85px;
+    padding: 12px 22px;
+    height: 75px;
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
   }
@@ -191,8 +208,11 @@
   .category_btn_section {
     display: flex;
     justify-content: center;
-    /* flex-direction: column; */
-    margin: 0px 100px 0px 0px;
+    align-items: flex-end;
+    flex-direction: column; 
+    padding: 0px 100px;
+    width: 100%;
+    height: 70px;
   }
   .category_btn {
     /* width: 1246px; */

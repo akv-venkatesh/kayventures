@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import '../pages/home.scss';
 import { setHeaderType } from '../actions/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { HiHome } from "react-icons/hi";

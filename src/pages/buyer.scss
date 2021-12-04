@@ -43,8 +43,10 @@ body{
 						background-color: transparent;
 						box-shadow: 3px 3px 10px 0px #A6ABBD inset, -3px -3px 10px 0px #FAFBFF inset;
 						user-select: none;
+						color: $hightlight-color;
 						&.is-invalid{
 							background-image: none;
+							color: $error-color;
 						}
 					}
 					&:-webkit-autofill {
@@ -53,14 +55,21 @@ body{
 					&[type='password']{
 						-webkit-text-security: square
 					}
+					&::placeholder{
+						color: #ACAAC2;
+					}
 				}
 				label{
 					font-size: 14px;
 					color: $hightlight-color;
+          			margin-top: 4px;
 					user-select:none;
 				}
 				.form-check{
 					.form-check-input{
+			            width: 20px;
+			            height: 20px;
+			            background-color: transparent;
 						&:checked[type=checkbox]{
 							background-image:none;
 						}
@@ -74,7 +83,12 @@ body{
 						}
 					}
 				}
-
+				.forgot-password{
+					font-size: 14px;
+					margin-top: 4px;
+					color: $hightlight-color;
+          			cursor: pointer;
+				}
 				.validation-error{
 					position: absolute;
 				    right: 0;
@@ -96,12 +110,14 @@ body{
 				.field-icon{
 					position: absolute;
 					width: 50px;
+					color: #ACAAC2;
 				}
 				.eye-icon{
 					position: absolute;
 					right: 0;
 					width: 50px;
 					cursor: pointer;
+					color: #ACAAC2;
 				}
 			}
 		}

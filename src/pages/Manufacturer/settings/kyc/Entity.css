@@ -14,7 +14,7 @@ input::-webkit-input-placeholder{
 .input-box{
     width: 100%;
     height: 40px;
-    padding: 5px 15px;
+    padding: 5px 30px;
     background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
     background-blend-mode: soft-light, normal;
     border: 1px solid rgba(255, 255, 255, 0.4);
@@ -28,7 +28,7 @@ input::-webkit-input-placeholder{
 .select-box{
     width: 100%;
     height: 40px;
-    padding: 5px 15px;
+    padding: 5px 30px;
     background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
     background-blend-mode: soft-light, normal;
     border: 1px solid rgba(255, 255, 255, 0.4);
