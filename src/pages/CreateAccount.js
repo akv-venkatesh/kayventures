@@ -70,7 +70,7 @@ togglePassword = () => {
                   <RiLockPasswordFill className="input-icon" />
                           {this.state.showPassword ? <FaEye className="showpassword" onClick={this.togglePassword}/> : <FaEyeSlash className="showpassword"  onClick={this.togglePassword}/> }
                 </div>
-                <div class="form-check">
+                <div class="form-check ps-2 pt-3">
                   <input class="main" id="remember" type="checkbox" style={{ display: "none"}}/>
                     <label class="inside-label" for="remember">
                         <span> </span>
