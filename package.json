@@ -1,30 +1,40 @@
 {
-  "name": "my-app",
-  
+  "name": "my-typescript",
+  "homepage": "https://pannaiyarbiriyani.com/kayventures/demo/#/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@loadable/component": "^5.15.0",
-    "@reduxjs/toolkit": "^1.6.2",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
+    "@testing-library/jest-dom": "^5.16.0",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^26.0.24",
+    "@types/jquery": "^3.5.9",
+    "@types/loadable__component": "^5.13.4",
+    "@types/node": "^12.20.37",
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "@types/react-loadable": "^5.5.6",
+    "@types/react-redux": "^7.1.20",
+    "@types/react-router-dom": "^5.3.2",
+    "axios": "^0.24.0",
     "bootstrap": "^5.1.3",
     "formik": "^2.2.9",
     "jquery": "^3.6.0",
     "react": "^17.0.2",
-    "react-bootstrap": "^2.0.2",
+    "react-bootstrap": "^2.0.3",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
+    "react-perfect-scrollbar": "^1.5.8",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "react-select": "^5.2.1",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
-    "sass": "^1.43.4",
-    "styled-components": "^5.3.3"
+    "sass": "^1.44.0",
+    "typescript": "^4.5.2",
+    "typescript-react-loadable-plugin": "^1.0.3",
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,7 +43,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [

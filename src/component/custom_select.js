@@ -1,11 +1,9 @@
 import $ from 'jquery';
-import Select, { components } from "react-select";
-import styled from "styled-components";
 import React, { useState,useEffect } from 'react';
 
 
 function CustomSelect() {
-	  useEffect(() => {
+	useEffect(() => {
 		document.getElementsByClassName('custom-select').outerHTML ='';
 		  const el1 = document.querySelector('.el1')
 		  const el2 = document.querySelector('.el2')
@@ -80,4 +78,4 @@ function CustomSelect() {
       return (<div></div>);
    }
 
-export default CustomSelect
+export default CustomSelect;

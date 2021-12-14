@@ -43,7 +43,7 @@ body {
             background-color: transparent;
             box-shadow: 3px 3px 10px 0px #a6abbd inset,
               -3px -3px 10px 0px #fafbff inset;
-            user-select: none;
+            // user-select: none;
             color: $hightlight-color;
             &.is-invalid {
               background-image: none;
@@ -194,22 +194,31 @@ body {
       left: 0;
       background-color: #003778;
       width: 60px;
-      .icons {
-        transition: 0.5s;
-        &:hover {
+      a{
+        &.active{
           box-shadow: 3px 3px 10px 0px #00000066, -3px -3px 4px 0px #0055a4;
           border-radius: 10px;
           transition: 0.5s;
           width: 63px;
           background-color: #003778;
+          display: block;
         }
-        .navg-icons {
-          font-size: 30px;
-          display: inline-block;
-          color: #fff;
-          cursor: pointer;
+        .icons {
+          transition: 0.5s;
+          &:hover {
+            box-shadow: 3px 3px 10px 0px #00000066, -3px -3px 4px 0px #0055a4;
+            border-radius: 10px;
+            transition: 0.5s;
+            width: 63px;
+            background-color: #003778;
+          }
+          .navg-icons {
+            font-size: 30px;
+            display: inline-block;
+            color: #fff;
+            cursor: pointer;
+          }
         }
-        
       }
     }
   }
@@ -380,28 +389,15 @@ body {
             }
             .tab-content {
               height: calc(100% - 100px);
-              overflow: auto;
               margin: 20px;
               &::-webkit-scrollbar {
-                width: 10px;
-                
+                width: 12px;
               }
               &::-webkit-scrollbar-track {
-                background: #e1e4ea;
-                box-shadow: inset -4px -4px 9px 2px rgba(255, 255, 255, 0.8),
-                  inset 4px 4px 4px #aab3c5;
-                border-radius: 30px;
-				width: 7px;
-                // transform: rotate(90deg);
+                background-color: lightgrey;
               }
               &::-webkit-scrollbar-thumb {
-                background: #e1e4ea;
-                box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.8),
-                  4px 4px 16px #aab3c5,
-                  inset -4px -4px 16px rgba(255, 255, 255, 0.5),
-                  inset 4px 4px 8px rgba(170, 179, 197, 0.25);
-                border-radius: 20px;
-				width: 10px;
+                background-color: grey;
               }
               .businesshour {
                 .form-bh {
@@ -559,28 +555,31 @@ body {
                   }
                   .end {
                     .file-upload {
-                      span {
-                        display: inline-block;
-                        width: 100%;
-                        height: 40px;
-                        padding: 0px 15px;
-                        line-height: 40px;
-                        background: linear-gradient(
-                            135.37deg,
-                            rgba(0, 0, 0, 0.4) 4.29%,
-                            rgba(255, 255, 255, 0.4) 95.6%
-                          ),
-                          #ebecf0;
-                        background-blend-mode: soft-light, normal;
-                        border: 1px solid rgba(255, 255, 255, 0.4);
-                        box-shadow: inset -3px -3px 10px #fafbff,
-                          inset 3px 3px 10px #a6abbd;
-                        border-radius: 40px;
-                        outline: none;
-                        color: unset;
-                        font-size: 14px;
-                        &#file-chosen {
+                      label {
+                        &#file-chosen{
+                          position: static;
+                          display: inline-block;
                           width: 100%;
+                          height: 40px;
+                          padding: 0px 15px;
+                          line-height: 40px;
+                          background: linear-gradient(
+                              135.37deg,
+                              rgba(0, 0, 0, 0.4) 4.29%,
+                              rgba(255, 255, 255, 0.4) 95.6%
+                            ),
+                            #ebecf0;
+                          background-blend-mode: soft-light, normal;
+                          border: 1px solid rgba(255, 255, 255, 0.4);
+                          box-shadow: inset -3px -3px 10px #fafbff,
+                            inset 3px 3px 10px #a6abbd;
+                          border-radius: 40px;
+                          outline: none;
+                          color: unset;
+                          font-size: 14px;
+                          &#file-chosen {
+                            width: 100%;
+                          }
                         }
                       }
                       label {

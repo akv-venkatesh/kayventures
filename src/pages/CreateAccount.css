@@ -48,7 +48,7 @@
   box-sizing: border-box;
   box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
   border-radius: 40px;
-  padding: 40px;
+  padding: 50px;
 }
 
 .register-card-title {
@@ -119,116 +119,6 @@ color: #ACAAC2;
   padding-left:10px;
 }*/
 
-.inside-label {
-  color: #0062D7;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  padding: 6px 8px;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: all 0.2s ease;
-}
-
-.inside-label:not(:last-child) {
-  margin-right: 6px;
-}
-
-
-
-.inside-label span {
-  float: left;
-  vertical-align: middle;
-  transform: translate3d(0, 0, 0);
-  font-weight: 800;
-}
-
-.inside-label span:first-child {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  border-radius: 5px;
-  transform: scale(1);
-  border: 2px solid #0062D7;
-  transition: all 0.2s ease;
-}
-
-.inside-label span:first-child svg {
-  position: absolute;
-  top: 2px;
-  left: 1px;
-  fill: none;
-  stroke: #0062D7;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 16px;
-  stroke-dashoffset: 16px;
-  transition: all 0.3s ease;
-  transition-delay: 0.1s;
-  transform: translate3d(0, 0, 0);
-}
-
-.inside-label span:last-child {
-padding-left: 10px;
-font-family: "Poppins";
-font-style: normal;
-font-weight: normal;
-font-size: 16px;
-line-height: 20px;
-}
-
-.inside-label:hover span:first-child {
-  border-color: #0062D7;
-}
-
-.main:checked + .inside-label span:first-child {
-  background: #0062D7;
-  border-color: #0062D7;
-  -webkit-animation: myAnimation 0.4s ease;
-          animation: myAnimation 0.4s ease;
-}
-
-.main:checked + .inside-label span:first-child svg {
-  stroke-dashoffset: 0;
-}
-
-.tick-icon {
-  position: absolute;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
-@media screen and (max-width: 650px) {
-  .inside-label {
-    width: 100%;
-    margin-bottom: 4px;
-    display: inline-block;
-  }
-
-  body {
-    width: auto;
-    display: inherit;
-    padding: 20px;
-  }
-}
-@-webkit-keyframes myAnimation {
-  50% {
-    transform: scale(0.9);
-  }
-}
-@keyframes myAnimation {
-  50% {
-    transform: scale(0.9);
-  }
-}
 
 .register-buttons {
   display: flex;
@@ -286,10 +176,79 @@ cursor: pointer;
 
 }
 
+.remember-me input[type=checkbox] + label {
+  display: block;
+  margin: 0.2em;
+  cursor: pointer;
+  padding: 0.2em;
+
+}
+.remember-me label{
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  color: #0062d7;
+}
+
+.remember-me input[type=checkbox] {
+  display: none;
+}
+
+.remember-me input[type=checkbox] + label:before {
+  content: "\2714";
+  border: 2px solid #0062D7;
+  border-radius: 0.3em;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  padding-left:2px;
+  margin-right: 10px;
+  color: transparent;
+  transition: 0.5s;
+  vertical-align: middle;
+  justify-content: center;
+}
+
+.remember-me input[type=checkbox] + label:active:before {
+  transform: scale(0);
+}
+
+.remember-me input[type=checkbox]:checked + label:before {
+  background-color: #0062D7;
+  border-color: #0062D7;
+  color: #fff;
+}
+
+.remember-me input[type=checkbox]:disabled + label:before {
+  transform: scale(1);
+  border-color: #aaa;
+}
+
+.remember-me input[type=checkbox]:checked:disabled + label:before {
+  transform: scale(1);
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255);
+}
 
 
 
+.required-mark{
+  color: #ff0808;
+}
+.input-field-container{
+  position: relative;
+}
 
+.validation-error {
+  color: #ff0808;
+  position: absolute;
+  font-size: 12px;
+  right: 20px;
+  bottom: -17px;
+}
 
 
 

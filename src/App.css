@@ -26,3 +26,28 @@ body::-webkit-scrollbar {
   a{
     text-decoration: none !important;
   }
+  .scrollbar-container .ps__rail-y {
+    right: 10px !important;
+    height: 150px;
+    background: #E1E4EA;
+    box-shadow: inset 2px 2px 5px #B8B9BE, inset -3px -3px 7px #fff;
+    border-radius: 30px;
+    opacity: 1;
+    width: 6px;
+}
+.scrollbar-container .ps__thumb-y {
+    width: 11px;
+    right: -1px;
+    background: #E6E7EE;
+    box-shadow: 2px 2px 4px #B8B9BE, -2px -2px 4px #fff;
+    border-radius: 20px;
+    border: 1px solid #D1D9E6;
+}
+.ps__rail-y:hover > .ps__thumb-y, .ps__rail-y:focus > .ps__thumb-y,
+.ps__rail-y.ps--clicking .ps__thumb-y{
+  background-color: #E6E7EE !important;
+}
+.ps__rail-y:active, .ps__rail-y:focus, .ps .ps__rail-x.ps--clicking, .ps .ps__rail-y.ps--clicking{
+  transform: scale(1.2);
+  transition: 0.2s;
+}

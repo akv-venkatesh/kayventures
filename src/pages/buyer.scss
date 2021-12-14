@@ -42,7 +42,7 @@ body{
 						padding-right: 50px;
 						background-color: transparent;
 						box-shadow: 3px 3px 10px 0px #A6ABBD inset, -3px -3px 10px 0px #FAFBFF inset;
-						user-select: none;
+						// user-select: none;
 						color: $hightlight-color;
 						&.is-invalid{
 							background-image: none;
