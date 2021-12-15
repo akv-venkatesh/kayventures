@@ -9,13 +9,13 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 function App() {
   return (
     <div>
-      {/* <BrowserRouter> */}
-    <HashRouter>
+      <BrowserRouter>
+   
         <Switch>
           <Routes />
         </Switch>
-        </HashRouter>
-      {/* </BrowserRouter> */}
+      
+      </BrowserRouter>
     </div>
   );
 }
