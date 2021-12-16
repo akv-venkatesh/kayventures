@@ -16,3 +16,4 @@ export const KYCBusinessHr = React.lazy(() => import('../pages/settings/index'))
 
 
 
+

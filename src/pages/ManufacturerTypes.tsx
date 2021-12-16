@@ -6,7 +6,7 @@ import {
   Nextbutton,
   DisableNextbutton,
 } from "../component/buttons/button";
-// import { BsChevronRight, BsChevronLeft } from "react-icons/bs";
+
 import bag from "../assets/icons/bag.svg";
 import { Link } from "react-router-dom";
 import 'react-perfect-scrollbar/dist/css/styles.css';
@@ -35,17 +35,22 @@ class ManufacturerTypes extends Component<{},typeState> {
   };
   render():JSX.Element{
     return (
-      <>
-        <div className="Manufacturertypes_category">
-          <div className="Manufacturertypes_category_body ">
-            <div className="Manufacturertypes_category_container py-4">
-              <div className="Manufacturertypes_choose_category_head">
-                <h1>Choose the type</h1>
-              </div>
-              <PerfectScrollbar>           
-              <div className="Manufacturertypes_category_section px-5">
-                <div className="Manufacturertypes_category_type">
-                  <label htmlFor="Manufacturer" className="m_category_item m_category_item_img1">
+          <>
+      <div className="Types_category">
+        <div className="Types_category_body ">
+          <div className="Types_category_container py-4">
+            <div className="Types_choose_category_head">
+              <h1>Choose the type</h1>
+            </div>
+            {/* </PerfectScrollbar> */}
+            <div className="Types_category_section px-5">
+              <div className="Types_category_section_container">
+                <div className="Types_category_type">
+                  {}
+                  <label
+                    htmlFor="Manufacturer"
+                    className="m_category_item m_category_item_img1"
+                  >
                     <div className="m_category_item_text">
                       <h3>Manufacturer</h3>
                       <p>Apparel, fabric, yarn, fibre</p>
@@ -63,11 +68,11 @@ class ManufacturerTypes extends Component<{},typeState> {
                     </div>
                   </label>
                 </div>
-                <div className="Manufacturertypes_category_type_item">
-                  <label htmlFor="Spinning" className="Manufacturertypes_category_item ">
+                <div className="Types_category_type_item">
+                  <label htmlFor="Spinning" className="Types_category_item ">
                     <img src={bag} />
                     <h1>Spinning</h1>
-                    <div className="Manufacturertypes_category_item_radio">
+                    <div className="Types_category_item_radio">
                       <input
                         type="checkbox"
                         id="Spinning"
@@ -78,10 +83,10 @@ class ManufacturerTypes extends Component<{},typeState> {
                       <label htmlFor="Spinning"></label>
                     </div>
                   </label>
-                  <label htmlFor="Knitting" className="Manufacturertypes_category_item ">
+                  <label htmlFor="Knitting" className="Types_category_item ">
                     <img src={bag} />
                     <h1>Knitting </h1>
-                    <div className="Manufacturertypes_category_item_radio">
+                    <div className="Types_category_item_radio">
                       <input
                         type="checkbox"
                         id="Knitting"
@@ -93,11 +98,11 @@ class ManufacturerTypes extends Component<{},typeState> {
                     </div>
                   </label>
                   {/* </div> */}
-                  {/* <div className="Manufacturertypes_category_item_section"> */}
-                  <label htmlFor="Weaving" className="Manufacturertypes_category_item ">
+                  {/* <div className="Types_category_item_section"> */}
+                  <label htmlFor="Weaving" className="Types_category_item ">
                     <img src={bag} />
                     <h1>Weaving</h1>
-                    <div className="Manufacturertypes_category_item_radio">
+                    <div className="Types_category_item_radio">
                       <input
                         type="checkbox"
                         id="Weaving"
@@ -108,10 +113,10 @@ class ManufacturerTypes extends Component<{},typeState> {
                       <label htmlFor="Weaving"></label>
                     </div>
                   </label>
-                  <label htmlFor="Sewing" className="Manufacturertypes_category_item ">
+                  <label htmlFor="Sewing" className="Types_category_item ">
                     <img src={bag} />
                     <h1>Sewing</h1>
-                    <div className="Manufacturertypes_category_item_radio">
+                    <div className="Types_category_item_radio">
                       <input
                         type="checkbox"
                         id="Sewing"
@@ -123,8 +128,11 @@ class ManufacturerTypes extends Component<{},typeState> {
                     </div>
                   </label>
                 </div>
-                <div className="Manufacturertypes_category_type">
-                  <label htmlFor="ProcessingFinishing" className="m_category_item m_category_item_img5">
+                <div className="Types_category_type">
+                  <label
+                    htmlFor="ProcessingFinishing"
+                    className="m_category_item m_category_item_img5"
+                  >
                     <div className="m_category_item_text">
                       <h3>Processing & Finishing</h3>
                       <p>Pre-treatment, dying, finishing, and washing</p>
@@ -138,110 +146,105 @@ class ManufacturerTypes extends Component<{},typeState> {
                         onChange={this.handleChange}
                         checked
                       />
+
                       <label htmlFor="ProcessingFinishing"></label>
                     </div>
                   </label>
                 </div>
-                <div className="Manufacturertypes_category_type_item">
-                  <label htmlFor="PreTreatment" className="Manufacturertypes_category_item ">
-                    <img src={bag} />
-                    <h1>PreTreatment</h1>
-                    <div className="Manufacturertypes_category_item_radio">
-                      <input
-                        type="checkbox"
-                        id="PreTreatment"
-                        name="PreTreatment"
-                        value="PreTreatment"
-                        onChange={this.handleChange}
-                      />
-                      <label htmlFor="PreTreatment"></label>
-                    </div>
-                  </label>
-                  <label htmlFor="Dyeing" className="Manufacturertypes_category_item ">
-                    <img src={bag} />
-                    <h1>Dyeing </h1>
-                    <div className="Manufacturertypes_category_item_radio">
-                      <input
-                        type="checkbox"
-                        id="Dyeing"
-                        name="Dyeing"
-                        value="Dyeing"
-                        onChange={this.handleChange}
-                      />
-                      <label htmlFor="Dyeing"></label>
-                    </div>
-                  </label>
-                  {/* </div> */}
-                  {/* <div className="Manufacturertypes_category_item_section"> */}
-                  <label htmlFor="Finishing" className="Manufacturertypes_category_item ">
-                    <img src={bag} />
-                    <h1>Finishing</h1>
-                    <div className="Manufacturertypes_category_item_radio">
-                      <input
-                        type="checkbox"
-                        id="Finishing"
-                        name="Finishing"
-                        value="Finishing"
-                        onChange={this.handleChange}
-                      />
-                      <label htmlFor="Weaving"></label>
-                    </div>
-                  </label>
-                  <label htmlFor="WashingGarments" className="Manufacturertypes_category_item ">
-                    <img src={bag} />
-                    <h1>Washing Garments</h1>
-                    <div className="Manufacturertypes_category_item_radio">
-                      <input
-                        type="checkbox"
-                        id="WashingGarments"
-                        name="WashingGarments"
-                        value="WashingGarments"
-                        onChange={this.handleChange}
-                      />
-                      <label htmlFor="WashingGarments"></label>
-                    </div>
-                  </label>
-                </div>
-  
-  
               </div>
-              </PerfectScrollbar>
-  
-              <div className="Manufacturertypes_category_btn_section pt-4 px-5">
-                <div className="Manufacturertypes_category_btn w-100">
-                  {/* <Link to="/category">
-                    <div className="Manufacturertypes_category_next_btn1">
-                      <BsChevronLeft className="Manufacturertypes_category_BsChevronLeft" />
-                      <span>Back </span>
-                    </div>
-                  </Link>
-                  <Link
-                    to="/primarydetails"
-                  // style={{ display: Visibility }}
-                  >
-                    <div className="Manufacturertypes_category_next_btn2">
-                      <span>Next </span>
-                      <BsChevronRight className="Manufacturertypes_category_BsChevronRight" />
-                    </div>
-                  </Link> */}
-                   <Link to="/category">
-                <Backbutton  />
-                </Link>
-                {/* <Link
-                  to="/primarydetails"
-                  style={{ display: Visibility }}
+
+              <div className="Types_category_type_item">
+                <label htmlFor="PreTreatment" className="Types_category_item ">
+                  <img src={bag} />
+                  <h1>PreTreatment</h1>
+                  <div className="Types_category_item_radio">
+                    <input
+                      type="checkbox"
+                      id="PreTreatment"
+                      name="PreTreatment"
+                      value="PreTreatment"
+                      onChange={this.handleChange}
+                    />
+                    <label htmlFor="PreTreatment"></label>
+                  </div>
+                </label>
+                <label htmlFor="Dyeing" className="Types_category_item ">
+                  <img src={bag} />
+                  <h1>Dyeing </h1>
+                  <div className="Types_category_item_radio">
+                    <input
+                      type="checkbox"
+                      id="Dyeing"
+                      name="Dyeing"
+                      value="Dyeing"
+                      onChange={this.handleChange}
+                    />
+                    <label htmlFor="Dyeing"></label>
+                  </div>
+                </label>
+                {/* </div> */}
+                {/* <div className="Types_category_item_section"> */}
+                <label htmlFor="Finishing" className="Types_category_item ">
+                  <img src={bag} />
+                  <h1>Finishing</h1>
+                  <div className="Types_category_item_radio">
+                    <input
+                      type="checkbox"
+                      id="Finishing"
+                      name="Finishing"
+                      value="Finishing"
+                      onChange={this.handleChange}
+                    />
+                    <label htmlFor="Weaving"></label>
+                  </div>
+                </label>
+                <label
+                  htmlFor="WashingGarments"
+                  className="Types_category_item "
                 >
-                  
-                </Link> */}
-                <div>{this.state.visibility ?   <Link to="/primarydetails"><Nextbutton  /></Link> : <DisableNextbutton  />}</div>
-  
-                </div>
+                  <img src={bag} />
+                  <h1>Washing Garments</h1>
+                  <div className="Types_category_item_radio">
+                    <input
+                      type="checkbox"
+                      id="WashingGarments"
+                      name="WashingGarments"
+                      value="WashingGarments"
+                      onChange={this.handleChange}
+                    />
+                    <label htmlFor="WashingGarments"></label>
+                  </div>
+                </label>
               </div>
             </div>
-  
+            {/* </PerfectScrollbar> */}
+            <div className="Types_category_btn_section pt-4 px-5">
+              <div className="Types_category_btn w-100">
+              
+                <Link to="/category">
+                  <Backbutton />
+                </Link>
+              
+                <div>
+                  {this.state.visibility ? (
+                    <Link to="/primarydetails">
+                      <Nextbutton />
+                    </Link>
+                  ) : (
+                    <DisableNextbutton />
+                  )}
+                </div>
+              </div>
+              
+            </div>
+         
           </div>
+          
         </div>
-      </>
+         
+      </div>
+    
+    </>
     );
   }
 }
