@@ -30,9 +30,11 @@ interface typestates{
 }
 
 class CreateAccount extends Component<typeprops, typestates > {
-  
-  state : Readonly<typestates> = {
-    showPassword: false,
+  constructor(props:any){
+    super(props);
+    this.state = {
+      showPassword: false,
+    }
   }
 
 
@@ -96,12 +98,12 @@ class CreateAccount extends Component<typeprops, typestates > {
               actions.setSubmitting(false);
             }}>
             {({ values,
-				    						errors,
-				    						touched,
-				    						handleChange,
-				    						handleBlur,
-				    						handleSubmit,
-				    						isSubmitting, }) => (
+                errors,
+                touched,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                isSubmitting, }) => (
             <form onSubmit={handleSubmit}>
                 <h3 className="register-card-title">Create Account</h3>
 

@@ -6,18 +6,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 
-function App() {
-  return (
-    <div>
-      <BrowserRouter>
-   
-        <Switch>
-          <Routes />
-        </Switch>
-      
-      </BrowserRouter>
-    </div>
-  );
+class App extends React.Component{
+  render():JSX.Element{
+    return (
+      <div>
+        <BrowserRouter>
+     
+          <Switch>
+            <Routes />
+          </Switch>
+        
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
 
 export default App;
