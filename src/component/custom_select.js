@@ -26,9 +26,9 @@ class CustomSelect extends React.Component {
 				c.innerHTML = selElmnt.options[j].innerHTML;
 				c.addEventListener("click", function(e) {
 					var y, i, k, s, h, sl, yl;
-					s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+					s = this.parentNode.parentNode.parentNode.getElementsByTagName("select")[0];
 					sl = s.length;
-					h = this.parentNode.previousSibling;
+					h = this.parentNode.parentNode.previousSibling;
 					for (i = 0; i < sl; i++) {
 					  	if (s.options[i].innerHTML == this.innerHTML) {
 							s.selectedIndex = i;
@@ -83,7 +83,7 @@ class CustomSelect extends React.Component {
 		}
 		document.addEventListener("click", closeAllSelect);
 	}
-  	render():JSX.Element{
+  	render(){	
   		return (<div></div>);
   	}
 }
