@@ -9,7 +9,7 @@ import {
   DisableNextbutton,
 } from "../component/buttons/button";
 
-import { setBusinessCategory } from "../actions/business_category";
+import { setBusinessCategory } from "../actions/business_category/business_category";
 import { useDispatch, useSelector, connect } from "react-redux";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar";
@@ -241,7 +241,6 @@ const mapStateToProps = (state:any) =>{
 const mapDispatchToProps = (dispatch, props) =>{
   return{
     BusinessCategory: category => {
-      console.log(category)
       dispatch(setBusinessCategory(category))
     }
   }

@@ -7,7 +7,6 @@ import { ImMenu } from "react-icons/im";
 import Navigation from '../../component/manufacturer_navigation';
 import CustomSelect from '../../component/custom_select';
 import KYC from './kyc/index';
-import ProductConfiguration from './ProductConfiguration/index';
 import $ from 'jquery';
 
 function ManufacturerSettings():JSX.Element {
@@ -60,8 +59,7 @@ function ManufacturerSettings():JSX.Element {
 			    			</div>
 			    			<div className="settings-menu-content h-100 px-5 py-3">
 			    				<div className="content h-100">
-			    					{/* <KYC /> */}
-									<ProductConfiguration/>
+			    					<KYC />
 			    				</div>
 			    			</div>
 			    		</div>
