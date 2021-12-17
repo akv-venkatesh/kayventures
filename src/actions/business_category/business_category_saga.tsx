@@ -47,8 +47,6 @@ function* getBusinessCategoryWatcher():Generator<StrictEffect> {
 // get type with id
 function* setCategory() {
   try {
-  	const data = 'success';
-    yield put(setBusinessCategorySuccess(data));
     const response: AxiosResponse = yield call(
       apibaseURL.get,
       "/user-management/business-group/{1}"
