@@ -221,15 +221,11 @@ class ManufacturerTypes extends Component<{},typeState> {
             <div className="Types_category_btn_section pt-4 px-5">
               <div className="Types_category_btn w-100">
               
-                <Link to="/category">
-                  <Backbutton />
-                </Link>
+                <Backbutton link="/category"/>
               
                 <div>
                   {this.state.visibility ? (
-                    <Link to="/primarydetails">
-                      <Nextbutton />
-                    </Link>
+                    <Nextbutton link="/primarydetails"/>
                   ) : (
                     <DisableNextbutton />
                   )}

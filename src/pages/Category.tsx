@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState ,useEffect} from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Category.css";
 import axios from "axios";
@@ -19,7 +19,8 @@ import { Dispatch } from "redux";
 interface typeState{
   Visibility:boolean,
   Category: string,
-  selectedOption: string
+  selectedOption: string,
+  back: boolean,
 }
 class Category extends Component<{},typeState>{
 
@@ -28,10 +29,15 @@ class Category extends Component<{},typeState>{
     this.state ={
       Visibility: false,
       Category: '',
-      selectedOption: ''
+      selectedOption: '',
+      back: false,
     }
   }
-
+  handleClick = ():void=>{
+    this.setState({
+      back: true
+    })
+  }
   // componentDidMount(){
   //   axios.get(`http://kv-stage-1013818088.ap-south-1.elb.amazonaws.com/user-management/business-group/all
   //   `)
@@ -60,6 +66,9 @@ class Category extends Component<{},typeState>{
   
 
   render():JSX.Element{
+    if(this.state.back){
+      <Redirect to='/creataccount' />
+    }
     return (
       <>
         <div className="category_body">
@@ -221,10 +230,15 @@ class Category extends Component<{},typeState>{
             </form>
             <div className="category_btn_section pt-4">
               <div className="category_btn">
-                <Link to="createaccount">
-                <Backbutton  />
-                </Link>
-                <div>{this.state.Visibility ?   <Link to="/types"><Nextbutton  /></Link> : <DisableNextbutton  />}</div>
+                <Backbutton link="/createaccount" />
+                <div>
+                  {this.state.Visibility ?   
+                    <Link to="/types">
+                      <Nextbutton  />
+                    </Link> : 
+                    <DisableNextbutton  />
+                  }
+                </div>
               </div>
             </div>
           </div>
@@ -238,9 +252,9 @@ const mapStateToProps = (state:any) =>{
   return state;
 }
 
-const mapDispatchToProps = (dispatch, props) =>{
+const mapDispatchToProps = (dispatch:any, props:any) =>{
   return{
-    BusinessCategory: category => {
+    BusinessCategory: (category:any) => {
       dispatch(setBusinessCategory(category))
     }
   }

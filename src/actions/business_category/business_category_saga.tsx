@@ -3,7 +3,6 @@ import { setBusinessCategory, setBusinessCategorySuccess } from './business_cate
 
 function* setCategory() {
   try {
-    console.log('error');
     const data = 'success';
     yield put(setBusinessCategorySuccess(data));
   } catch (error) {
