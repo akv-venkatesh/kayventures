@@ -1,3 +1,9 @@
+
+export const getBusinessCategory = (payload:any) =>
+ ({
+    type: 'GET_BUSINESS_CATEGORY',
+    payload,
+});
 export const setBusinessCategory = (payload:any) => ({
     type: 'SET_BUSINESS_CATEGORY',
     payload,
