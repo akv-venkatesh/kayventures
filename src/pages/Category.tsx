@@ -30,28 +30,16 @@ class Category extends Component<{}, typeState> {
       selectedOption: "",
     };
     }
-  }
 
   componentDidMount() {
-    // axios.get(`http://kv-stage-1013818088.ap-south-1.elb.amazonaws.com/user-management/business-group/all
-    // `)
-    // .then(res => {
-    //   this.setState({
-    //     Category: res.data.data.businessGroups[0]
-    //   })
-    //   console.log( res.data.data.businessGroups[0]);
-    // })
-    // Dispatch.(getBusinessCategory());
-  
-    // useDispatch(getBusinessCategory());
-    getBusinessCategory("");
+    this.props.getBusinessCategory();
   }
 
   handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     console.log(e.currentTarget.value);
     if (e.currentTarget.value) {
       this.setState({ Visibility: true });
-      // this.props.BusinessCategory(e.currentTarget.value);GET_BUSINESS_CATEGORY
+      this.props.setBusinessCategory(1);
       localStorage.setItem("business_category", e.currentTarget.value);
     }
     this.setState({ selectedOption: e.currentTarget.value });
@@ -72,11 +60,7 @@ class Category extends Component<{}, typeState> {
             </div>
             <form onSubmit={this.setCategory}>
               <div className="category_section">
-                <PerfectScrollbar
-                  onScrollY={(container) =>
-                    console.log(`scrolled to: ${container.scrollTop}.`)
-                  }
-                >
+                <PerfectScrollbar>
                   <div className="category_item_section flex-wrap">
                     <label
                       htmlFor="Buyer"
@@ -226,9 +210,7 @@ class Category extends Component<{}, typeState> {
                 <Backbutton link="/createaccount" />
                 <div>
                   {this.state.Visibility ?   
-                    <Link to="/types">
-                      <Nextbutton  />
-                    </Link> : 
+                    <Nextbutton link="/types" />:
                     <DisableNextbutton  />
                   }
                 </div>
@@ -247,8 +229,11 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch:any, props:any) => {
   return {
-    BusinessCategory: (category:string) => {
+    setBusinessCategory: (category:number) => {
       dispatch(setBusinessCategory(category));
+    },
+    getBusinessCategory: () => {
+      dispatch(getBusinessCategory('all'));
     },
   };
 };

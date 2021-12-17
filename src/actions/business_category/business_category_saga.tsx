@@ -2,6 +2,8 @@ import { takeEvery, all, call, put, takeLeading,StrictEffect } from "redux-saga/
 import {
   setBusinessCategory,
   setBusinessCategorySuccess,
+  getBusinessCategory,
+  getBusinessCategorySuccess,
 } from "./business_category";
 import { AxiosResponse } from "axios";
 import apibaseURL from "../../api";
@@ -10,10 +12,6 @@ interface datatype {
   type: string;
   payload: string;
 }
-
-
-
-
 
 // get category
 function* getCategory() {
@@ -25,39 +23,28 @@ function* getCategory() {
     console.log(response);
     switch (response.status) {
       case 200:
-        const data: datatype = {
-          type: "GET_BUSINESS_CATEGORY",
-          payload: response.data.data.businessGroups[0],
-        };
-console.log(data);
-        yield put(data);
+        const data:datatype = response.data.data.businessGroups;
+        console.log(data);
+        yield put(getBusinessCategorySuccess(data));
     }
-  } catch (error) {
-
+  }
+  catch (error) {
     const data = "failed";
     console.log("api error")
     yield put(setBusinessCategorySuccess(data));
   }
 }
 
-function* getBusinessCategoryWatcher():Generator<StrictEffect> {
-  yield takeEvery("GET_BUSINESS_CATEGORY", getCategory);
-}
-
 // get type with id
-function* setCategory() {
+function* setCategory(action:any) {
   try {
     const response: AxiosResponse = yield call(
       apibaseURL.get,
-      "/user-management/business-group/{1}"
+      ("/user-management/business-group/"+action.payload)
     );
     switch (response.status) {
       case 200:
-        const data: datatype = {
-          type: "SET_BUSINESS_CATEGORY",
-          payload: response.data.data.businessGroups[0],
-        };
-
+        const data:datatype = response.data.data;
         yield put(setBusinessCategorySuccess(data));
     }
   } catch (error) {
@@ -68,6 +55,9 @@ function* setCategory() {
 
 function* setCategoryWatcher():Generator<StrictEffect> {
   yield takeEvery("SET_BUSINESS_CATEGORY", setCategory);
+}
+function* getBusinessCategoryWatcher():Generator<StrictEffect> {
+  yield takeEvery("GET_BUSINESS_CATEGORY", getCategory);
 }
 
 

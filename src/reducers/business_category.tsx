@@ -2,6 +2,7 @@ var initialState = {
 	business_category: '',
   category:"",
   response: null,
+  business_category_single: '',
 }
 
 interface actiontype {
@@ -15,20 +16,16 @@ const BHomeReducer = (state=initialState, action:actiontype)=> {
   switch (action.type) {
 
     case 'GET_BUSINESS_CATEGORY':
-      console.log("working")
-      return {
-        ...state,
-        category: action.payload
-      };
     case 'SET_BUSINESS_CATEGORY':
-      return {
-        ...state,
-        business_category: action.payload
-      };
     case 'SET_BUSINESS_CATEGORY_SUCCESS':
       return {
         ...state,
-        response: action.payload
+        business_category_single: action.payload
+      };
+    case 'GET_BUSINESS_CATEGORY_SUCCESS':
+      return {
+        ...state,
+        business_category: action.payload
       };
     default:
       return state;
