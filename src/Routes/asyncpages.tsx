@@ -9,6 +9,9 @@ export const Category = React.lazy(() => import('../pages/Category'));
 export const Types = React.lazy(() => import('../pages/ManufacturerTypes'));
 export const PrimaryDetails = React.lazy(() => import('../pages/PrimaryDetails'));
 export const VerifiedEmail = React.lazy(() => import('../pages/VerifiedEmail'));
+export const VerifyEmailPending = React.lazy(() => import('../pages/VerifyEmailPending'));
+export const ProConfig = React.lazy(() => import('../pages/product_config'));
+
 export const Login = React.lazy(() => import('../pages/login'));
 export const Home = React.lazy(() => import('../pages/home'));
 

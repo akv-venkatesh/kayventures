@@ -9,7 +9,7 @@ interface typeState{
   showModel: boolean,
 }
 
-class ManufacturerVerifiedEmail extends React.Component<{},typeState> {
+class VerifiedEmail extends React.Component<{},typeState> {
     
     constructor(props:any){
       super(props);
@@ -45,11 +45,11 @@ class ManufacturerVerifiedEmail extends React.Component<{},typeState> {
             <Modal.Header closeButton></Modal.Header>
            
             <Modal.Body  className="text-center">
-              <h4 className="modal-title">THANKS  FOR  SIGNING UP!</h4>
-              <h5 className="modal-discription">Hi,<br /> You have successfully completed the verification process.</h5>
+              <h4 className="modal-title">THANKS FOR SIGNING UP!</h4>
+              <h5 className="modal-discription">Hi,<br />You have successfully completed the email verification process.</h5>
             
-              <Link to='login'><span className="modal-action"><span>Verification completed</span></span></Link>
-              <h5 className="modal-thanks">Thanks</h5>
+              <Link to='login'><span className="modal-action"><span>Proceed to Log In</span></span></Link>
+              <h5 className="modal-thanks">Verification Completed</h5>
             </Modal.Body>
             
             
@@ -60,5 +60,5 @@ class ManufacturerVerifiedEmail extends React.Component<{},typeState> {
     }
 }
 
-export default ManufacturerVerifiedEmail
+export default VerifiedEmail
 

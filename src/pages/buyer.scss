@@ -71,7 +71,7 @@ body{
 			            height: 20px;
 			            background-color: transparent;
 						&:checked[type=checkbox]{
-							background-image:none;
+							// background-image:none;
 						}
 						&:checked {
 						    background-color: $hightlight-color;

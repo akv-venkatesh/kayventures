@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { IoPersonCircleOutline } from "react-icons/io5";
-import {Formik} from 'formik'
+import {Formik , Field } from 'formik'
 
 interface MyFormValues {
   name?: string,
@@ -128,9 +128,9 @@ class CreateAccount extends Component<typeprops, typestates > {
                   <FaPhoneAlt className="input-icon" />
                   <div className="validation-error">{errors.phone && touched.phone && errors.phone}</div>
                 </div>
-                <div className="form-check ps-2 pt-3 remember-me">
-                  <input type="checkbox"  id="remember" name="11" />
-                  <label htmlFor="remember">Remember Me</label>
+                <div className="form-check pt-3 remember">
+                  <Field type="checkbox" name="rememberme" value="1" className="form-check-input" id="rememberme"/>
+							    <label className="form-check-label" htmlFor="rememberme">Remember Me</label>
                 </div>
                 <div className="register-buttons">
                   <span className="login-button"><span>Log In</span></span>
