@@ -13,6 +13,10 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 import { RiLockPasswordFill } from "react-icons/ri";
+import { useDispatch, useSelector, connect } from "react-redux";
+import { postUserLogin } from "../actions/business_category/business_category";
+
+
 import $ from 'jquery';
 import {Modal,Button} from 'react-bootstrap';
 
@@ -35,7 +39,8 @@ class ManufacturerLogin extends Component<{}, typeState > {
 			psw_vis: false,
 			submitSuccess: false,
 		}
-
+		console.log("LoginPage")
+console.log(props)
 	}
 
 	psw_visible = () =>{
@@ -198,4 +203,25 @@ class ManufacturerLogin extends Component<{}, typeState > {
 		);
 	}
 }
-export default  ManufacturerLogin;
+
+const mapStateToProps = (state: any) => {
+	return state;
+  };
+  
+  const mapDispatchToProps = (dispatch:any, props:any) => {
+	  
+	    dispatch(postUserLogin({"email": "bharath@emproto.com",
+		"password": "Emproto@2016"}));
+	return {
+	  // setBusinessCategory: (category:number) => {
+	  //   dispatch(setBusinessCategory(category));
+	  // },
+	  // getBusinessCategory: () => {
+	  //   dispatch(getBusinessCategory('all'));
+	  // },
+	};
+  };
+  
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManufacturerLogin);
+// export default  ManufacturerLogin;
