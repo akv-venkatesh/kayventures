@@ -22,7 +22,11 @@ interface typeState {
   selectedOption: string;
   categoryList:any
 }
-class Category extends Component<{}, typeState> {
+interface typeProps{
+  getBusinessCategory:() => void;
+  setBusinessCategory:() => void;
+}
+class Category extends Component<typeProps, typeState> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -31,8 +35,12 @@ class Category extends Component<{}, typeState> {
       selectedOption: "",
       categoryList:props.businesscategory.business_category,
     };
+<<<<<<< HEAD
 
     }
+=======
+  }
+>>>>>>> a9db7dd5413d03cfa727c8aab6e0d3ac8a7c015e
 
   componentDidMount() {
     this.props.getBusinessCategory();
@@ -44,7 +52,7 @@ class Category extends Component<{}, typeState> {
     console.log(e.currentTarget.value);
     if (e.currentTarget.value) {
       this.setState({ Visibility: true });
-      this.props.setBusinessCategory(1);
+      this.props.setBusinessCategory();
       localStorage.setItem("business_category", e.currentTarget.value);
     }
     this.setState({ selectedOption: e.currentTarget.value });

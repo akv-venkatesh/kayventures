@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 interface Props {
   children?: React.ReactNode;
   onClick?: () => void;
-  link?: string;
+  link?: any;
 }
 
 

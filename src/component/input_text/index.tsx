@@ -27,5 +27,3 @@ class index extends Component<Props, State> {
 }
 
 export default index
-
-tsce
