@@ -9,66 +9,60 @@ import {
   DisableNextbutton,
 } from "../component/buttons/button";
 
-import { setBusinessCategory } from "../actions/business_category/business_category";
+import { setBusinessCategory ,getBusinessCategory} from "../actions/business_category/business_category";
 import { useDispatch, useSelector, connect } from "react-redux";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { Component } from "react";
 import { Dispatch } from "redux";
 
-interface typeState{
-  Visibility:boolean,
-  Category: string,
-  selectedOption: string,
-  back: boolean,
+interface typeState {
+  Visibility: boolean;
+  Category: string;
+  selectedOption: string;
 }
-class Category extends Component<{},typeState>{
-
-  constructor(props:any){
+class Category extends Component<{}, typeState> {
+  constructor(props: any) {
     super(props);
-    this.state ={
+    this.state = {
       Visibility: false,
-      Category: '',
-      selectedOption: '',
-      back: false,
+      Category: "",
+      selectedOption: "",
+    };
     }
   }
-  handleClick = ():void=>{
-    this.setState({
-      back: true
-    })
+
+  componentDidMount() {
+    // axios.get(`http://kv-stage-1013818088.ap-south-1.elb.amazonaws.com/user-management/business-group/all
+    // `)
+    // .then(res => {
+    //   this.setState({
+    //     Category: res.data.data.businessGroups[0]
+    //   })
+    //   console.log( res.data.data.businessGroups[0]);
+    // })
+    // Dispatch.(getBusinessCategory());
+  
+    // useDispatch(getBusinessCategory());
+    getBusinessCategory("");
   }
-  // componentDidMount(){
-  //   axios.get(`http://kv-stage-1013818088.ap-south-1.elb.amazonaws.com/user-management/business-group/all
-  //   `)
-  //   .then(res => {
-  //     this.setState({
-  //       Category: res.data.data.businessGroups[0]
-  //     })
-  //     console.log( res.data.data.businessGroups[0]);
-  //   })
-  // }
 
   handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.currentTarget.value)
+    console.log(e.currentTarget.value);
     if (e.currentTarget.value) {
-      this.setState({Visibility: true});
-      this.props.BusinessCategory(e.currentTarget.value)
+      this.setState({ Visibility: true });
+      // this.props.BusinessCategory(e.currentTarget.value);GET_BUSINESS_CATEGORY
       localStorage.setItem("business_category", e.currentTarget.value);
     }
-    this.setState({selectedOption: e.currentTarget.value});
-    console.log('demo',this.state.selectedOption)
+    this.setState({ selectedOption: e.currentTarget.value });
+    console.log("demo", this.state.selectedOption);
   };
 
   setCategory = (): void => {
     localStorage.setItem("business_category", this.state.selectedOption);
   };
-  
 
-  render():JSX.Element{
-    if(this.state.back){
-      <Redirect to='/creataccount' />
-    }
+  render(): JSX.Element {
     return (
       <>
         <div className="category_body">
@@ -84,7 +78,6 @@ class Category extends Component<{},typeState>{
                   }
                 >
                   <div className="category_item_section flex-wrap">
-                  
                     <label
                       htmlFor="Buyer"
                       className="category_item category_item_img1"
@@ -248,16 +241,17 @@ class Category extends Component<{},typeState>{
   }
 }
 
-const mapStateToProps = (state:any) =>{
+const mapStateToProps = (state: any) => {
   return state;
-}
+};
 
-const mapDispatchToProps = (dispatch:any, props:any) =>{
-  return{
-    BusinessCategory: (category:any) => {
-      dispatch(setBusinessCategory(category))
-    }
-  }
-}
+const mapDispatchToProps = (dispatch:any, props:any) => {
+  return {
+    BusinessCategory: (category:string) => {
+      dispatch(setBusinessCategory(category));
+    },
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Category);
+// export default Category;
