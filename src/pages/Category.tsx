@@ -35,12 +35,7 @@ class Category extends Component<typeProps, typeState> {
       selectedOption: "",
       categoryList:props.businesscategory.business_category,
     };
-<<<<<<< HEAD
-
-    }
-=======
   }
->>>>>>> a9db7dd5413d03cfa727c8aab6e0d3ac8a7c015e
 
   componentDidMount() {
     this.props.getBusinessCategory();
