@@ -7,6 +7,7 @@ import CustomSelect from "../../../component/custom_select";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import $ from 'jquery';
+import { Button } from "react-bootstrap";
 
 
 function Entity() {
@@ -140,7 +141,7 @@ function Entity() {
           <div className="row mt-5">
 	    	  	<h3 className="col-md-6">.</h3>
 	    	  	<div className="col-md-6 text-end">
-              <button type="submit" disabled={isSubmitting} className="mt-sm-2 mt-1 submit-form">Save</button>
+              <Button type="submit" disabled={isSubmitting} className="mt-sm-2 mt-1 submit-form">Save</Button>
 	    	  	</div>
 	    	  </div>              
             </form>

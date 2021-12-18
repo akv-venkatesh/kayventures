@@ -8,23 +8,27 @@ import {
   Nextbutton,
   DisableNextbutton,
 } from "../component/buttons/button";
+import buttonarrowright from "../assets/icons/arrows/buttonarrowright.svg";
 
 import { setBusinessCategory ,getBusinessCategory} from "../actions/business_category/business_category";
 import { useDispatch, useSelector, connect } from "react-redux";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { Component } from "react";
-import { Dispatch } from "redux";
+import store from '../store/store';
+import { Button } from "react-bootstrap";
 
 interface typeState {
   Visibility: boolean;
   Category: string;
   selectedOption: string;
-  categoryList:any
+  categoryList?:any,
+  typeList?:any,
+  gettypes: boolean,
 }
 interface typeProps{
   getBusinessCategory:() => void;
-  setBusinessCategory:() => void;
+  setBusinessCategory:(arg:string) => void;
 }
 class Category extends Component<typeProps, typeState> {
   constructor(props: any) {
@@ -33,32 +37,44 @@ class Category extends Component<typeProps, typeState> {
       Visibility: false,
       Category: "",
       selectedOption: "",
-      categoryList:props.businesscategory.business_category,
+      categoryList: {},
+      gettypes: false,
+      typeList: {}
     };
+
+    store.subscribe(() => {
+      this.setState({
+        categoryList: store.getState().businesscategory,
+      });
+    });
   }
 
   componentDidMount() {
     this.props.getBusinessCategory();
-    // this.setState({ categoryList.push(props.businesscategory.business_category) })
-    // console.log("api done"+this.state.categoryList);
   }
 
   handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.currentTarget.value);
     if (e.currentTarget.value) {
       this.setState({ Visibility: true });
-      this.props.setBusinessCategory();
-      localStorage.setItem("business_category", e.currentTarget.value);
     }
     this.setState({ selectedOption: e.currentTarget.value });
-    // console.log("demo", this.state.selectedOption);
+    this.props.setBusinessCategory(e.currentTarget.value);
   };
 
-  setCategory = (): void => {
-    localStorage.setItem("business_category", this.state.selectedOption);
+  setCategory = (e:any) => {
+    e.preventDefault();
+    this.setState({
+      gettypes: true 
+    })
   };
 
   render(): JSX.Element {
+    if (this.state.gettypes == true) {
+      return <Redirect to={{
+        pathname: "/types",
+        state: this.state.categoryList.business_category_single
+      }} />
+    }
     return (
       <>
         <div className="category_body">
@@ -70,13 +86,12 @@ class Category extends Component<typeProps, typeState> {
               <div className="category_section">
                 <PerfectScrollbar>
                   <div className="category_item_section flex-wrap">
-                  {this.state.categoryList ? (
-                    this.state.categoryList.map((data:any) => {
-                      // var type: any = data;
-                      // console.log("Inner Map"+data);
+                  {this.state.categoryList.business_category ? (
+                    this.state.categoryList.business_category.map((data:any) => {
                       return (
                         <label
-                          htmlFor={data.id}
+                          key={'category'+data.id}
+                          htmlFor={'category'+data.id}
                           className="category_item "
                           style={{ backgroundImage: `url(${data.imageUrl})` }}
                         >
@@ -87,7 +102,7 @@ class Category extends Component<typeProps, typeState> {
                           <div className="category_item_radio">
                             <input
                               type="radio"
-                              id={data.id}
+                              id={'category'+data.id}
                               name="category"
                               value={data.id}
                               onChange={this.handleChange}
@@ -104,18 +119,21 @@ class Category extends Component<typeProps, typeState> {
                   </div>
                 </PerfectScrollbar>
               </div>
-            </form>
-            <div className="category_btn_section pt-4">
-              <div className="category_btn">
-                <Backbutton link="/createaccount" />
-                <div>
-                  {this.state.Visibility ?   
-                    <Nextbutton link="/types" />:
-                    <DisableNextbutton  />
-                  }
+              <div className="category_btn_section pt-4">
+                <div className="category_btn">
+                  <Backbutton link="/createaccount" />
+                  <div>
+                    {this.state.Visibility ?   
+                      <Button type="submit" className="cbtn next_btn">
+                        <span>Next </span>
+                        <img src={buttonarrowright} className="next_btn_right" />
+                      </Button>:
+                      <DisableNextbutton  />
+                    }
+                  </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </>
@@ -127,9 +145,11 @@ const mapStateToProps = (state: any) => {
   return state;
 };
 
+
 const mapDispatchToProps = (dispatch:any, props:any) => {
   return {
     setBusinessCategory: (category:number) => {
+      console.log(category);
       dispatch(setBusinessCategory(category));
     },
     getBusinessCategory: () => {

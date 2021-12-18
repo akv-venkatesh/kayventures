@@ -3,22 +3,21 @@ var initialState = {
   category:"",
   response: null,
   business_category_single: '',
-  loginDetails:""
+  login_details:""
 }
 
 interface actiontype {
   type: string,
-  payload?: string 
+  payload?: any 
 }
 
 const BHomeReducer = (state=initialState, action:actiontype)=> {
-  console.log("reduxworking");
 
   switch (action.type) {
 
     case 'GET_BUSINESS_CATEGORY':
     case 'SET_BUSINESS_CATEGORY':
-      case 'POST_LOGIN':
+    case 'LOGIN':
     case 'SET_BUSINESS_CATEGORY_SUCCESS':
       return {
         ...state,
@@ -29,12 +28,11 @@ const BHomeReducer = (state=initialState, action:actiontype)=> {
         ...state,
         business_category: action.payload
       };
-
-      case 'POST_LOGIN_SUCCESS':
-        return {
-          ...state,
-          loginDetails: action.payload
-        };
+    case 'LOGIN_SUCCESS':
+      return {
+        ...state,
+        login_details: action.payload
+      };
     default:
       return state;
   }

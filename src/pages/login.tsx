@@ -14,7 +14,7 @@ import { IoMail } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { useDispatch, useSelector, connect } from "react-redux";
-import { postUserLogin } from "../actions/business_category/business_category";
+import { login } from "../actions/login/login";
 
 
 import $ from 'jquery';
@@ -30,8 +30,11 @@ interface typeState{
 	psw_vis: boolean,
 	submitSuccess: boolean,
 }
+interface typeProps{
+	userLogin: (arg:{})=> void;
+}
 
-class ManufacturerLogin extends Component<{}, typeState > {
+class ManufacturerLogin extends Component<typeProps, typeState > {
 	constructor(props:any){
 		super(props);
 		this.state = {
@@ -39,8 +42,7 @@ class ManufacturerLogin extends Component<{}, typeState > {
 			psw_vis: false,
 			submitSuccess: false,
 		}
-		console.log("LoginPage")
-console.log(props)
+		console.log(props)
 	}
 
 	psw_visible = () =>{
@@ -100,13 +102,26 @@ console.log(props)
 											if(!values.password) {
 												errors = {...errors, password : 'Enter Password'};
 											}
-											else if(!['12345', '123456', 'password'].includes(values.password)){
-												errors = {...errors, password : 'Wrong Password'};
+											else if(!/^.{8,}/i.test(values.password)){
+												errors = {...errors, password : 'Psw should be 8 character'};
+											}
+											else if(!/^(?=.*\d).{8,}/.test(values.password)){
+												errors = {...errors, password : 'Psw should have atleat 1 numeric'};
+											}
+											else if(!/^(?=.*[a-z])/.test(values.password)){
+												errors = {...errors, password : 'Psw should have atleat 1 Lowercase'};
+											}
+											else if(!/^(?=.*[A-Z])/.test(values.password)){
+												errors = {...errors, password : 'Psw should have atleat 1 Uppercase'};
+											}
+											else if(!/[^a-zA-Z\d]/.test(values.password)){
+												errors = {...errors, password : 'Psw should have atleat 1 Special Char'};
 											}
 											return errors;
 										}}
 										onSubmit={(values,actions) => {
 											this.handleShow();
+											this.props.userLogin(values);
 											actions.setSubmitting(false);
 										}}
 									>
@@ -144,7 +159,7 @@ console.log(props)
 														<div className="mt-sm-5 mt-4 d-flex align-items-center">
 															<RiLockPasswordFill className="field-icon"/>
 															<input
-																type='password'
+																type={this.state.psw_vis? 'text':'password'}
 																name="password"
 																onChange={handleChange}
 																onBlur={handleBlur}
@@ -206,21 +221,15 @@ console.log(props)
 
 const mapStateToProps = (state: any) => {
 	return state;
-  };
+};
   
-  const mapDispatchToProps = (dispatch:any, props:any) => {
-	  
-	    dispatch(postUserLogin({"email": "bharath@emproto.com",
-		"password": "Emproto@2016"}));
+const mapDispatchToProps = (dispatch:any, props:any) => {
 	return {
-	  // setBusinessCategory: (category:number) => {
-	  //   dispatch(setBusinessCategory(category));
-	  // },
-	  // getBusinessCategory: () => {
-	  //   dispatch(getBusinessCategory('all'));
-	  // },
+	  	userLogin: (userDetail:{}) => {
+		  dispatch(login(userDetail));
+		},
 	};
-  };
+};
   
 
 export default connect(mapStateToProps, mapDispatchToProps)(ManufacturerLogin);

@@ -13,6 +13,7 @@ import bag from "../assets/icons/bag.svg";
 import { Link } from "react-router-dom";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import store from "../store/store";
 
 interface typeState{
   visibility: boolean,
@@ -23,12 +24,12 @@ interface typeState{
 class ManufacturerTypes extends Component<{},typeState> {
   constructor(props:any){
     super(props);
+    console.log(props);
     this.state = {
       visibility: false,
       selectedOption: '',
-      types:props.businesscategory.business_category_single,
+      types: props.location.state,
     }
-    console.log(props)
   }
 
 
@@ -74,173 +75,39 @@ class ManufacturerTypes extends Component<{},typeState> {
                     </label>
                   </div>
                   <div className="Types_category_type_item">
-
-
-
-                  {this.state.types ? (
-                    this.state.types.map((data:any) => {
-                      // var type: any = data;
-                      console.log("Inner Map"+data);
-                      return (
-                        <label htmlFor={data.id} className="Types_category_item ">
-                        <img src={bag} />
-                        <h1>{data.name}</h1>
-                        <div className="Types_category_item_radio">
-                          <input
-                            type="checkbox"
-                            id={data.id}
-                            name="types"
-                            value={data.id}
-                            onChange={this.handleChange}
-                          />
-                          <label htmlFor={data.id}></label>
-                        </div>
-                      </label>
-                      );
-                    })
-                  ) : (
-                    <div></div>
-                  )}
-                    
-                    {/* <label htmlFor="Knitting" className="Types_category_item ">
-                      <img src={bag} />
-                      <h1>Knitting </h1>
-                      <div className="Types_category_item_radio">
-                        <input
-                          type="checkbox"
-                          id="Knitting"
-                          name="Knitting"
-                          value="Knitting"
-                          onChange={this.handleChange}
-                        />
-                        <label htmlFor="Knitting"></label>
-                      </div>
-                    </label> */}
-                    {/* </div> */}
-                    {/* <div className="Types_category_item_section"> */}
-                    {/* <label htmlFor="Weaving" className="Types_category_item ">
-                      <img src={bag} />
-                      <h1>Weaving</h1>
-                      <div className="Types_category_item_radio">
-                        <input
-                          type="checkbox"
-                          id="Weaving"
-                          name="Weaving"
-                          value="Weaving"
-                          onChange={this.handleChange}
-                        />
-                        <label htmlFor="Weaving"></label>
-                      </div>
-                    </label>
-                    <label htmlFor="Sewing" className="Types_category_item ">
-                      <img src={bag} />
-                      <h1>Sewing</h1>
-                      <div className="Types_category_item_radio">
-                        <input
-                          type="checkbox"
-                          id="Sewing"
-                          name="Sewing"
-                          value="Sewing"
-                          onChange={this.handleChange}
-                        />
-                        <label htmlFor="Sewing"></label>
-                      </div>
-                    </label> */}
+                    {
+                      this.state.types ? (
+                        this.state.types.map((data:any, index:number) => {
+                          if(data.id !== 1){
+                            return (
+                              <label htmlFor={data.id} className="Types_category_item ">
+                                <img src={bag} />
+                                <h1>{data.name}</h1>
+                                <div className="Types_category_item_radio">
+                                  <input
+                                    type="checkbox"
+                                    id={data.id}
+                                    name="types"
+                                    value={data.id}
+                                    onChange={this.handleChange}
+                                  />
+                                  <label htmlFor={data.id}></label>
+                                </div>
+                              </label>
+                            );
+                          }
+                        })
+                      ) : (
+                        <div></div>
+                      )
+                    }
                   </div>
-                  {/* <div className="Types_category_type">
-                    <label
-                      htmlFor="ProcessingFinishing"
-                      className="m_category_item m_category_item_img5"
-                    >
-                      <div className="m_category_item_text">
-                        <h3>Processing & Finishing</h3>
-                        <p>Pre-treatment, dying, finishing, and washing</p>
-                      </div>
-                      <div className="m_category_item_radio">
-                        <input
-                          type="checkbox"
-                          id="ProcessingFinishing"
-                          name="ProcessingFinishing"
-                          value="ProcessingFinishing"
-                          onChange={this.handleChange}
-                          checked
-                        />
-
-                        <label htmlFor="ProcessingFinishing"></label>
-                      </div>
-                    </label>
-                  </div>
-                </div>
-
-                <div className="Types_category_type_item">
-                  <label htmlFor="PreTreatment" className="Types_category_item ">
-                    <img src={bag} />
-                    <h1>PreTreatment</h1>
-                    <div className="Types_category_item_radio">
-                      <input
-                        type="checkbox"
-                        id="PreTreatment"
-                        name="PreTreatment"
-                        value="PreTreatment"
-                        onChange={this.handleChange}
-                      />
-                      <label htmlFor="PreTreatment"></label>
-                    </div>
-                  </label>
-                  <label htmlFor="Dyeing" className="Types_category_item ">
-                    <img src={bag} />
-                    <h1>Dyeing </h1>
-                    <div className="Types_category_item_radio">
-                      <input
-                        type="checkbox"
-                        id="Dyeing"
-                        name="Dyeing"
-                        value="Dyeing"
-                        onChange={this.handleChange}
-                      />
-                      <label htmlFor="Dyeing"></label>
-                    </div>
-                  </label> */}
-                  {/* </div> */}
-                  {/* <div className="Types_category_item_section"> */}
-                  {/* <label htmlFor="Finishing" className="Types_category_item ">
-                    <img src={bag} />
-                    <h1>Finishing</h1>
-                    <div className="Types_category_item_radio">
-                      <input
-                        type="checkbox"
-                        id="Finishing"
-                        name="Finishing"
-                        value="Finishing"
-                        onChange={this.handleChange}
-                      />
-                      <label htmlFor="Weaving"></label>
-                    </div>
-                  </label>
-                  <label
-                    htmlFor="WashingGarments"
-                    className="Types_category_item "
-                  >
-                    <img src={bag} />
-                    <h1>Washing Garments</h1>
-                    <div className="Types_category_item_radio">
-                      <input
-                        type="checkbox"
-                        id="WashingGarments"
-                        name="WashingGarments"
-                        value="WashingGarments"
-                        onChange={this.handleChange}
-                      />
-                      <label htmlFor="WashingGarments"></label>
-                    </div>
-                  </label> */}
                 </div>
               </div>
-              <div className="Types_category_btn_section pt-4 px-5">
+            </PerfectScrollbar>
+            <div className="Types_category_btn_section pt-4 px-5">
               <div className="Types_category_btn w-100">
-              
                 <Backbutton link="/category"/>
-              
                 <div>
                   {this.state.visibility ? (
                     <Nextbutton link="/primarydetails"/>
@@ -249,15 +116,9 @@ class ManufacturerTypes extends Component<{},typeState> {
                   )}
                 </div>
               </div>
-              
             </div>
-            </PerfectScrollbar>
-         
-         
           </div>
-          
         </div>
-         
       </div>
     
     </>
