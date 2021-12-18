@@ -20,6 +20,7 @@ interface typeState {
   Visibility: boolean;
   Category: string;
   selectedOption: string;
+  categoryList:any
 }
 interface typeProps{
   getBusinessCategory:() => void;
@@ -32,11 +33,19 @@ class Category extends Component<typeProps, typeState> {
       Visibility: false,
       Category: "",
       selectedOption: "",
+      categoryList:props.businesscategory.business_category,
     };
+<<<<<<< HEAD
+
+    }
+=======
   }
+>>>>>>> a9db7dd5413d03cfa727c8aab6e0d3ac8a7c015e
 
   componentDidMount() {
     this.props.getBusinessCategory();
+    // this.setState({ categoryList.push(props.businesscategory.business_category) })
+    // console.log("api done"+this.state.categoryList);
   }
 
   handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +56,7 @@ class Category extends Component<typeProps, typeState> {
       localStorage.setItem("business_category", e.currentTarget.value);
     }
     this.setState({ selectedOption: e.currentTarget.value });
-    console.log("demo", this.state.selectedOption);
+    // console.log("demo", this.state.selectedOption);
   };
 
   setCategory = (): void => {
@@ -66,145 +75,37 @@ class Category extends Component<typeProps, typeState> {
               <div className="category_section">
                 <PerfectScrollbar>
                   <div className="category_item_section flex-wrap">
-                    <label
-                      htmlFor="Buyer"
-                      className="category_item category_item_img1"
-                    >
-                      <div className="category_item_text">
-                        <h3>Buyer</h3>
-                        <p>Retailer, global brands</p>
-                      </div>
-                      <div className="category_item_radio">
-                        <input
-                          type="radio"
-                          id="Buyer"
-                          name="category"
-                          value="Buyer"
-                          onChange={this.handleChange}
-                        />
-                        <label htmlFor="Buyer"></label>
-                      </div>
-                    </label>
-                    <label
-                      htmlFor="Manufacturer"
-                      className="category_item category_item_img2"
-                    >
-                      <div className="category_item_text">
-                        <h3>Manufacturer</h3>
-                        <p>Apparel, fabric, yarn, fibre</p>
-                      </div>
-                      <div className="category_item_radio">
-                        <input
-                          type="radio"
-                          id="Manufacturer"
-                          name="category"
-                          value="Manufacturer"
-                          onChange={this.handleChange}
-                        />
-                        <label htmlFor="Manufacturer"></label>
-                      </div>
-                    </label>
-                    <label
-                      htmlFor="JobContractor"
-                      className="category_item category_item_img3"
-                    >
-                      <div className="category_item_text">
-                        <h3>Job Contractor</h3>
-                        <p>Apparel, knitting</p>
-                      </div>
-                      <div className="category_item_radio">
-                        <input
-                          type="radio"
-                          id="JobContractor"
-                          name="category"
-                          value="JobContractor"
-                          onChange={this.handleChange}
-                        />
-                        <label htmlFor="JobContractor"></label>
-                      </div>
-                    </label>
-                    <label
-                      htmlFor="ValueAddition"
-                      className="category_item category_item_img4"
-                    >
-                      <div className="category_item_text">
-                        <h3>Value Addition</h3>
-                        <p>Printing, emboidery, surface embellishments</p>
-                      </div>
-                      <div className="category_item_radio">
-                        <input
-                          type="radio"
-                          id="ValueAddition"
-                          name="category"
-                          value="ValueAddition"
-                          onChange={this.handleChange}
-                        />
-                        <label htmlFor="ValueAddition"></label>
-                      </div>
-                    </label>
-                    <label
-                      htmlFor="ProcessingFinishing"
-                      className="category_item category_item_img5"
-                    >
-                      <div className="category_item_text">
-                        <h3>Processing & Finishing</h3>
-                        <p>Pre-treatment, dying, finishing, and washing</p>
-                      </div>
-                      <div className="category_item_radio">
-                        <input
-                          type="radio"
-                          id="ProcessingFinishing"
-                          name="category"
-                          value="ProcessingFinishing"
-                          onChange={this.handleChange}
-                        />
-                        <label htmlFor="ProcessingFinishing"></label>
-                      </div>
-                    </label>
-                    <label
-                      htmlFor="ServiceProviders"
-                      className="category_item category_item_img6"
-                    >
-                      <div className="category_item_text">
-                        <h3>Service Providers</h3>
-                        <p>
-                          Freight forwarders, inspection agencies, banks,
-                          certifying agencies
-                        </p>
-                      </div>
-                      <div className="category_item_radio">
-                        <input
-                          type="radio"
-                          id="ServiceProviders"
-                          name="category"
-                          value="ServiceProviders"
-                          onChange={this.handleChange}
-                        />
-                        <label htmlFor="ServiceProviders"></label>
-                      </div>
-                    </label>
-                    <label
-                      htmlFor="ServiceProviders"
-                      className="category_item category_item_img6"
-                    >
-                      <div className="category_item_text">
-                        <h3>Service Providers</h3>
-                        <p>
-                          Freight forwarders, inspection agencies, banks,
-                          certifying agencies
-                        </p>
-                      </div>
-                      <div className="category_item_radio">
-                        <input
-                          type="radio"
-                          id="ServiceProviders"
-                          name="category"
-                          value="ServiceProviders"
-                          onChange={this.handleChange}
-                        />
-                        <label htmlFor="ServiceProviders"></label>
-                      </div>
-                    </label>
+                  {this.state.categoryList ? (
+                    this.state.categoryList.map((data:any) => {
+                      // var type: any = data;
+                      // console.log("Inner Map"+data);
+                      return (
+                        <label
+                          htmlFor={data.id}
+                          className="category_item "
+                          style={{ backgroundImage: `url(${data.imageUrl})` }}
+                        >
+                          <div className="category_item_text">
+                            <h3>{data.name}</h3>
+                            <p>{data.description}</p>
+                          </div>
+                          <div className="category_item_radio">
+                            <input
+                              type="radio"
+                              id={data.id}
+                              name="category"
+                              value={data.id}
+                              onChange={this.handleChange}
+                            />
+                            <label htmlFor={data.id}></label>
+                          </div>
+                        </label>
+                      );
+                    })
+                  ) : (
+                    <div></div>
+                  )}
+                   
                   </div>
                 </PerfectScrollbar>
               </div>

@@ -6,6 +6,8 @@ import {
   Nextbutton,
   DisableNextbutton,
 } from "../component/buttons/button";
+import { useDispatch, useSelector, connect } from "react-redux";
+
 
 import bag from "../assets/icons/bag.svg";
 import { Link } from "react-router-dom";
@@ -14,7 +16,8 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 
 interface typeState{
   visibility: boolean,
-  selectedOption: string
+  selectedOption: string,
+  types:any
 }
 
 class ManufacturerTypes extends Component<{},typeState> {
@@ -22,8 +25,10 @@ class ManufacturerTypes extends Component<{},typeState> {
     super(props);
     this.state = {
       visibility: false,
-      selectedOption: ''
+      selectedOption: '',
+      types:props.businesscategory.business_category_single,
     }
+    console.log(props)
   }
 
 
@@ -69,21 +74,35 @@ class ManufacturerTypes extends Component<{},typeState> {
                     </label>
                   </div>
                   <div className="Types_category_type_item">
-                    <label htmlFor="Spinning" className="Types_category_item ">
-                      <img src={bag} />
-                      <h1>Spinning</h1>
-                      <div className="Types_category_item_radio">
-                        <input
-                          type="checkbox"
-                          id="Spinning"
-                          name="Spinning"
-                          value="Spinning"
-                          onChange={this.handleChange}
-                        />
-                        <label htmlFor="Spinning"></label>
-                      </div>
-                    </label>
-                    <label htmlFor="Knitting" className="Types_category_item ">
+
+
+
+                  {this.state.types ? (
+                    this.state.types.map((data:any) => {
+                      // var type: any = data;
+                      console.log("Inner Map"+data);
+                      return (
+                        <label htmlFor={data.id} className="Types_category_item ">
+                        <img src={bag} />
+                        <h1>{data.name}</h1>
+                        <div className="Types_category_item_radio">
+                          <input
+                            type="checkbox"
+                            id={data.id}
+                            name="types"
+                            value={data.id}
+                            onChange={this.handleChange}
+                          />
+                          <label htmlFor={data.id}></label>
+                        </div>
+                      </label>
+                      );
+                    })
+                  ) : (
+                    <div></div>
+                  )}
+                    
+                    {/* <label htmlFor="Knitting" className="Types_category_item ">
                       <img src={bag} />
                       <h1>Knitting </h1>
                       <div className="Types_category_item_radio">
@@ -96,10 +115,10 @@ class ManufacturerTypes extends Component<{},typeState> {
                         />
                         <label htmlFor="Knitting"></label>
                       </div>
-                    </label>
+                    </label> */}
                     {/* </div> */}
                     {/* <div className="Types_category_item_section"> */}
-                    <label htmlFor="Weaving" className="Types_category_item ">
+                    {/* <label htmlFor="Weaving" className="Types_category_item ">
                       <img src={bag} />
                       <h1>Weaving</h1>
                       <div className="Types_category_item_radio">
@@ -126,9 +145,9 @@ class ManufacturerTypes extends Component<{},typeState> {
                         />
                         <label htmlFor="Sewing"></label>
                       </div>
-                    </label>
+                    </label> */}
                   </div>
-                  <div className="Types_category_type">
+                  {/* <div className="Types_category_type">
                     <label
                       htmlFor="ProcessingFinishing"
                       className="m_category_item m_category_item_img5"
@@ -181,10 +200,10 @@ class ManufacturerTypes extends Component<{},typeState> {
                       />
                       <label htmlFor="Dyeing"></label>
                     </div>
-                  </label>
+                  </label> */}
                   {/* </div> */}
                   {/* <div className="Types_category_item_section"> */}
-                  <label htmlFor="Finishing" className="Types_category_item ">
+                  {/* <label htmlFor="Finishing" className="Types_category_item ">
                     <img src={bag} />
                     <h1>Finishing</h1>
                     <div className="Types_category_item_radio">
@@ -214,11 +233,10 @@ class ManufacturerTypes extends Component<{},typeState> {
                       />
                       <label htmlFor="WashingGarments"></label>
                     </div>
-                  </label>
+                  </label> */}
                 </div>
               </div>
-            </PerfectScrollbar>
-            <div className="Types_category_btn_section pt-4 px-5">
+              <div className="Types_category_btn_section pt-4 px-5">
               <div className="Types_category_btn w-100">
               
                 <Backbutton link="/category"/>
@@ -233,6 +251,8 @@ class ManufacturerTypes extends Component<{},typeState> {
               </div>
               
             </div>
+            </PerfectScrollbar>
+         
          
           </div>
           
@@ -245,4 +265,21 @@ class ManufacturerTypes extends Component<{},typeState> {
   }
 }
 
-export default ManufacturerTypes;
+
+const mapStateToProps = (state: any) => {
+  return state;
+};
+
+const mapDispatchToProps = (dispatch:any, props:any) => {
+  return {
+    // setBusinessCategory: (category:number) => {
+    //   dispatch(setBusinessCategory(category));
+    // },
+    // getBusinessCategory: () => {
+    //   dispatch(getBusinessCategory('all'));
+    // },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManufacturerTypes);
+// export default ManufacturerTypes;
