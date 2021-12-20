@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState ,useEffect} from "react";
+import React, { ChangeEvent, useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Category.css";
@@ -10,7 +10,7 @@ import {
 } from "../component/buttons/button";
 import buttonarrowright from "../assets/icons/arrows/buttonarrowright.svg";
 
-import { setBusinessCategory ,getBusinessCategory} from "../actions/business_category/business_category";
+import { setBusinessCategory, getBusinessCategory } from "../actions/business_category/business_category";
 import { useDispatch, useSelector, connect } from "react-redux";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar";
@@ -22,13 +22,13 @@ interface typeState {
   Visibility: boolean;
   Category: string;
   selectedOption: string;
-  categoryList?:any,
-  typeList?:any,
+  categoryList?: any,
+  typeList?: any,
   gettypes: boolean,
 }
-interface typeProps{
-  getBusinessCategory:() => void;
-  setBusinessCategory:(arg:string) => void;
+interface typeProps {
+  getBusinessCategory: () => void;
+  setBusinessCategory: (arg: string) => void;
 }
 class Category extends Component<typeProps, typeState> {
   constructor(props: any) {
@@ -61,16 +61,16 @@ class Category extends Component<typeProps, typeState> {
     this.props.setBusinessCategory(e.currentTarget.value);
   };
 
-  setCategory = (e:any) => {
+  setCategory = (e: any) => {
     e.preventDefault();
     this.setState({
-      gettypes: true 
+      gettypes: true
     })
   };
 
   render(): JSX.Element {
-    if (this.state.gettypes == true) {  
-      return <Navigate to="/types" state={this.state.categoryList } />;
+    if (this.state.gettypes == true) {
+      return <Navigate to="/types" state={this.state.categoryList} />;
     }
     return (
       <>
@@ -84,11 +84,11 @@ class Category extends Component<typeProps, typeState> {
                 <PerfectScrollbar>
                   <div className="category_item_section flex-wrap">
                     {this.state.categoryList.business_category ? (
-                      this.state.categoryList.business_category.map((data:any) => {
+                      this.state.categoryList.business_category.map((data: any) => {
                         return (
                           <label
-                            key={'category'+data.id}
-                            htmlFor={'category'+data.id}
+                            key={'category' + data.id}
+                            htmlFor={'category' + data.id}
                             className="category_item "
                             style={{ backgroundImage: `url(${data.imageUrl})` }}
                           >
@@ -99,7 +99,7 @@ class Category extends Component<typeProps, typeState> {
                             <div className="category_item_radio">
                               <input
                                 type="radio"
-                                id={'category'+data.id}
+                                id={'category' + data.id}
                                 name="category"
                                 value={data.id}
                                 onChange={this.handleChange}
@@ -112,7 +112,7 @@ class Category extends Component<typeProps, typeState> {
                     ) : (
                       <div></div>
                     )}
-                   
+
                   </div>
                 </PerfectScrollbar>
               </div>
@@ -120,12 +120,12 @@ class Category extends Component<typeProps, typeState> {
                 <div className="category_btn">
                   <Backbutton link="/createaccount" />
                   <div>
-                    {this.state.Visibility ?   
+                    {this.state.Visibility ?
                       <Button type="submit" className="cbtn next_btn">
                         <span>Next </span>
                         <img src={buttonarrowright} className="next_btn_right" />
-                      </Button>:
-                      <DisableNextbutton  />
+                      </Button> :
+                      <DisableNextbutton />
                     }
                   </div>
                 </div>
@@ -143,9 +143,9 @@ const mapStateToProps = (state: any) => {
 };
 
 
-const mapDispatchToProps = (dispatch:any, props:any) => {
+const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    setBusinessCategory: (category:number) => {
+    setBusinessCategory: (category: number) => {
       console.log(category);
       dispatch(setBusinessCategory(category));
     },
