@@ -77,7 +77,6 @@ class ProductConfiguration extends Component<{}, typeState> {
   check = (name:any) => {
     if(this.state.selected_product_item.length !== 0){
       return this.state.selected_product_item.some(function(el:any) {
-        console.log(el.name === name);
         return el.name === name;
       });
     }
@@ -85,37 +84,29 @@ class ProductConfiguration extends Component<{}, typeState> {
       return false;
     }
   }
-  productSelect = (event:ChangeEvent<HTMLInputElement>) =>{
+  productSelect = (event:ChangeEvent<HTMLInputElement>, item:any):any =>{
     if(event.currentTarget.checked){
       this.state.product_item.some((e:any, index:number)=>{
         e.data.some((data:any, i:number)=>{
-          if(data.name == event.currentTarget.value && !this.check(e.name)){
-            this.setState({
-              product_item_index: index
-            })
+          if(!this.check(e.name) && e.name == item){
             let obj = {"name": e.name, data:[]};
             let arr = this.state.selected_product_item;
             arr.push(obj);
             this.setState({
               selected_product_item : arr
             })
-            if(data.name == event.currentTarget.value && !this.check(e.name)){
-              this.setState({
-                product_item_index: index
-              })
-            }
           }
-          let obj = {"name": event.currentTarget.value};
-          let arr = this.state.selected_product_item;
-          if(this.state.selected_product_item[this.state.product_item_index].data.filter((checking:any) =>
-            checking.name == event.currentTarget.value).length == 0){
-            arr[this.state.product_item_index].data.push(obj);
-            this.setState({
-              selected_product_item: arr
-            },()=>{
-              console.log(this.state.selected_product_item);
-            });
-            return;
+          if(e.name == item){
+            let obj = {"name": event.currentTarget.value};
+            let arr = this.state.selected_product_item;
+            if(this.state.selected_product_item[index].data.filter((checking:any) =>
+              checking.name == event.currentTarget.value).length == 0){
+              arr[index].data.push(obj);
+              this.setState({
+                selected_product_item: arr
+              });
+              return;
+            }
           }
         })
       })
@@ -155,7 +146,7 @@ class ProductConfiguration extends Component<{}, typeState> {
                                                     <Form.Check.Input 
                                                       type="checkbox" 
                                                       id={item.name+j} 
-                                                      onChange={this.productSelect} 
+                                                      onChange={(e) => this.productSelect(e,product.name)} 
                                                       value={item.name}
                                                       hidden
                                                     />
@@ -260,19 +251,26 @@ class ProductConfiguration extends Component<{}, typeState> {
                             <h2>{state.line_number}</h2> : ' '
                           }
                           <ul className="p-0 m-0">
-                            <li className="add-machine-product-item py-2">
-                              <div className="main d-flex align-items-center">
-                                <BsChevronRight/>
-                                <p className="m-0 ps-2">Innerwear</p>
-                              </div>
-                              <div className="sub ps-4 d-flex align-items-center">
-                                <BsChevronRight/>
-                                <div className="d-flex ps-2">
-                                  <span>Knickers</span>
-                                  <span>Panties</span>
-                                </div>
-                              </div>
-                            </li>
+                            {
+                              state.selected_product_item.map((item:any, index:number)=>
+                                <li className="add-machine-product-item py-2">
+                                  <div className="main d-flex align-items-center">
+                                    <BsChevronRight/>
+                                    <p className="m-0 ps-2">{item.name}</p>
+                                  </div>
+                                  <div className="sub ps-4 d-flex align-items-center">
+                                    <BsChevronRight/>
+                                    <div className="d-flex ps-2">
+                                      {
+                                        item.data.map((subitem:any, i:number)=>
+                                          <span>{subitem.name}</span>
+                                        )
+                                      }
+                                    </div>
+                                  </div>
+                                </li>
+                              )
+                            }
                             <li className="add-machine-line-type py-2">
                               <div className="main d-flex align-items-center">
                                 <BsChevronRight />
