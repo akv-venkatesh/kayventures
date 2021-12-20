@@ -4,7 +4,6 @@ import Routes from "./Routes/route";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import CustomSelect from "./component/custom_select";
 
 
 class App extends React.Component{

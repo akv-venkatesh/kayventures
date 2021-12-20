@@ -8,7 +8,7 @@ import BusinessHr from './businessHours';
 import Rating from './rating';
 import ContactInfo from './ContactInformation';
 import TaxReg from './TaxRegistration';
-import Entity from './Entity'
+import Entity from './Entity';
 
 
 function ManufacturerSettingsKyc():JSX.Element {

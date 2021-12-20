@@ -11,6 +11,7 @@ import "./capacity.scss";
 import CustomSelect from '../../../component/custom_select';
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar"
+import { JsxFlags } from "typescript";
 
 
 interface typeState {
@@ -18,6 +19,8 @@ interface typeState {
   line_number: string;
   product_item: any;
   selected_product_item: any;
+  updatedState:any;
+  product_item_index: number,
 }
 
 class ProductConfiguration extends Component<{}, typeState> {
@@ -56,7 +59,10 @@ class ProductConfiguration extends Component<{}, typeState> {
           ]
         }
       ],
-      selected_product_item: []
+      selected_product_item: [],
+      updatedState: [],
+      product_item_index: 0,
+
     };
   }
 
@@ -71,27 +77,45 @@ class ProductConfiguration extends Component<{}, typeState> {
   check = (name:any) => {
     if(this.state.selected_product_item.length !== 0){
       return this.state.selected_product_item.some(function(el:any) {
-        console.log(el.name!==name)
-        return el.name !== name;
+        console.log(el.name === name);
+        return el.name === name;
       });
     }
     else{ 
-      return true;
+      return false;
     }
-    
-  } 
-
+  }
   productSelect = (event:ChangeEvent<HTMLInputElement>) =>{
     if(event.currentTarget.checked){
-      this.state.product_item.some((e:any)=>{
-        e.data.some((data:any)=>{
-          console.log(data.name);
-          if(data.name == event.currentTarget.value && this.check(e.name)){
+      this.state.product_item.some((e:any, index:number)=>{
+        e.data.some((data:any, i:number)=>{
+          if(data.name == event.currentTarget.value && !this.check(e.name)){
             this.setState({
-              selected_product_item : [...this.state.selected_product_item, {"name": e.name}]
+              product_item_index: index
+            })
+            let obj = {"name": e.name, data:[]};
+            let arr = this.state.selected_product_item;
+            arr.push(obj);
+            this.setState({
+              selected_product_item : arr
+            })
+            if(data.name == event.currentTarget.value && !this.check(e.name)){
+              this.setState({
+                product_item_index: index
+              })
+            }
+          }
+          let obj = {"name": event.currentTarget.value};
+          let arr = this.state.selected_product_item;
+          if(this.state.selected_product_item[this.state.product_item_index].data.filter((checking:any) =>
+            checking.name == event.currentTarget.value).length == 0){
+            arr[this.state.product_item_index].data.push(obj);
+            this.setState({
+              selected_product_item: arr
             },()=>{
               console.log(this.state.selected_product_item);
-            })
+            });
+            return;
           }
         })
       })

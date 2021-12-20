@@ -1,4 +1,3 @@
-// import loadable from '@loadable/component'
 import React from 'react';
 
 export const JoinNow = React.lazy(() => import('../pages/JoinNow'));
@@ -22,7 +21,7 @@ export const ProductGroups = React.lazy(() => import('../pages/ProductGroups/Pro
 export const SelectPlan = React.lazy(() => import('../pages/SelectPlan/SelectPlan'));
 export const KYC = React.lazy(() => import('../pages/settings/kyc'));
 
-export const Settings = React.lazy(() => import('../pages/settings'));
+export const Settings = React.lazy(() => import('../pages/settings/index'));
 
 
 

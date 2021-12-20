@@ -4,6 +4,7 @@ import React from 'react';
 
 class CustomSelect extends React.Component {
 	componentDidMount() {
+		console.log('success');
 		document.getElementsByClassName('custom-select').outerHTML ='';
 		const el1 = document.querySelector('.el1')
 		const el2 = document.querySelector('.el2')
