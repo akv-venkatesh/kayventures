@@ -126,7 +126,7 @@ function TaxRegistration():JSX.Element {
                     />
                     <Field
                       type="file"
-                      id="credit-file"
+                      id="GSTCertificate"
                       name="GSTCertificate"
                       hidden
                     />

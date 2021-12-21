@@ -1,0 +1,154 @@
+
+
+
+.email-verified-bg {
+  height: 100vh;
+  width: 100vw;
+  background-position: right;
+  background-repeat: no-repeat;
+  /* background: linear-gradient(180deg, #C2C0BD 0%, #C3BFBC 5.83%, #C3BFBC 13.8%, #C4C0BD 19.17%, #C3C0BD 25.74%, #C2BEBB 31.48%, #C0BCB9 39.17%, #BFBBB8 47.13%, #BBB7B4 57.78%, #B8B4B1 68.24%, #B5B1AE 81.53%, #AEAAA7 89.26%, #A8A39F 100%); */
+}
+.email-verified-image {
+    /* background-image: url("../assets/emailverifiedbackground.jpg"); */
+    height: 100vh;
+    width: 100vw;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .product_config {
+     background-color: rgba(5, 5, 5, 0.096);; 
+   }
+
+   .product_config .modal-lg{
+    max-width:70vw;
+   }
+
+.product_config  .modal-content {
+    background: linear-gradient(
+        135.37deg,
+        rgba(0, 0, 0, 0.4) 4.29%,
+        rgba(255, 255, 255, 0.4) 95.6%
+      ),
+      rgba(235, 236, 240, 0.7);
+    background-blend-mode: soft-light, normal;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-sizing: border-box;
+    box-shadow: 8px 4px 14px rgba(0, 0, 0, 0.08),
+      inset 6px 5px 35px rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(12px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 35px;
+    /* height: 70vh; */
+  }
+  
+  
+  .product_config .modal-header {
+    border-bottom: 0px;
+  }
+  
+  
+  .product_config  .modal-header .btn-close {
+    position: absolute;
+    top: -30px;
+    right: 0px;
+    outline: none;
+    box-shadow: none;
+  }
+  
+  
+  .product_config  .modal-header .btn-close:active {
+    box-shadow: none;
+    outline: none;
+  }
+  
+  
+  .product_config  .modal-body {
+    /* text-align: center; */
+    /* justify-content: center; */
+    padding: 0px 40px;
+  }
+  
+  .product_config  .modal-body .header_discription  {
+     /* position: relative; */
+     display: flex;
+  }
+  .product_config  .modal-body .header_discription .info-icon{
+       font-size: 22px;
+       color: #0068E5;
+ }
+ .product_config .modal-body .header_discription p{
+  font-size: 16px;
+  color: #0068E5;
+  margin-left: 6px;
+}
+.product_config .modal-body .discription{
+  font-size: 16px;
+  color: #0068E5;
+  /* margin-left: 28px; */
+}
+.product_config .modal-body .cat-img-bg{
+  background-color: floralwhite;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+.product_config .modal-body .cat-img-bg .cat-img{
+  width: 25px;
+}
+
+.product_config .modal-body .cat-name{
+  font-size: 16px;
+  color: #0068E5;
+  margin-top: 12px;
+  font-weight: 600;
+}
+  
+.product_config .modal-body .item-container{
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.product_config .modal-body .item-img-bg{
+  background-color: floralwhite;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.product_config .modal-body .item-img-bg .item-img{
+  width: 15px;
+}
+
+.product_config .modal-body .item-name-bg{
+  font-size: 16px;
+  color: #0068E5;
+  height: 48px;
+  margin-left: 15px; 
+  border-bottom: 1px solid #B8CAD8;
+  display: flex;
+  align-items: center;
+  padding: 0px;
+}
+
+.product_config .modal-body .item-name{
+  font-size: 16px;
+  color: #566180;
+  margin: 0%;
+}
+
+.scrollbar-container {
+  position: relative;
+  height:65vh !important;
+  margin:0px 0px 20px 0px;
+  padding-right: 20px;
+  overflow-x: hidden;
+}

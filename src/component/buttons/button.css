@@ -8,30 +8,20 @@
   border-radius: 8px;
   display: flex;
   align-items: center;
+  border: none;
 }
-
-.cbtn {
-    position: relative;
-    cursor: pointer;
-    width: 119px;
-    height: 35px;
-    background: #0068e5;
-    box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.79), 4px 4px 16px #b8cad8;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-  }
-  .dbtn {
-    position: relative;
-    cursor: pointer;
-    width: 119px;
-    height: 35px;
-    background: #CCCCCC;
-    box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.79), 4px 4px 16px #b8cad8;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-  }
+.dbtn {
+  position: relative;
+  cursor: pointer;
+  width: 119px;
+  height: 35px;
+  background: #CCCCCC;
+  box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.79), 4px 4px 16px #b8cad8;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  border: none;
+}
 .back_btn span {
   padding: 0px 0px 0px 50px;
   position: absolute;

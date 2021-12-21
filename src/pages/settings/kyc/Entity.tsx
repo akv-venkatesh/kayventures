@@ -7,6 +7,7 @@ import CustomSelect from "../../../component/custom_select";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import $ from 'jquery';
+import { Button } from "react-bootstrap";
 
 
 function Entity() {
@@ -78,15 +79,25 @@ function Entity() {
               <div className="row mt-5 d-flex align-items-center">
                 <h3 className="col-md-3">Constitution of the form<span className='required'> *</span></h3>
                 <div className="col-md-5">
-                        <div className="custom-select">
-						    					<Field as="select" name="x">
-									             	<option value="0">Select from options</option>
-									             	<option value="red">Private Limited Company</option>
-									             	<option value="green">LLP</option>
-									             	<option value="blue">Patnership</option>
-                                 <option value="blue">Sale Patnership</option>
-									           	</Field>
-						    				</div>
+                  <div className="custom-select">
+                    <Field as="select" name="x">
+                      <option value="0">Select from options</option>
+                      <option value="red">Private Limited Company</option>
+                      <option value="green">LLP</option>
+                      <option value="blue">Patnership</option>
+                      <option value="blue">Sale Patnership</option>
+                      <option value="0">Select from options</option>
+                      <option value="red">Private Limited Company</option>
+                      <option value="green">LLP</option>
+                      <option value="blue">Patnership</option>
+                      <option value="blue">Sale Patnership</option>
+                      <option value="0">Select from options</option>
+                      <option value="red">Private Limited Company</option>
+                      <option value="green">LLP</option>
+                      <option value="blue">Patnership</option>
+                      <option value="blue">Sale Patnership</option>
+                    </Field>
+                  </div>
                 </div>
               </div>
               <div className="row mt-5 d-flex align-items-center">
@@ -127,10 +138,10 @@ function Entity() {
 		      		</div>
 	    	  	</div>
 	    	  </div>
-              <div className="row mt-5">
+          <div className="row mt-5">
 	    	  	<h3 className="col-md-6">.</h3>
 	    	  	<div className="col-md-6 text-end">
-                    <button type="submit" disabled={isSubmitting} className="mt-sm-2 mt-1 submit-form">Save</button>
+              <Button type="submit" disabled={isSubmitting} className="mt-sm-2 mt-1 submit-form">Save</Button>
 	    	  	</div>
 	    	  </div>              
             </form>

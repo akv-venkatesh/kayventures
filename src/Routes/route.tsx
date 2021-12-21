@@ -1,23 +1,49 @@
 import React, { FC } from "react";
-import { Route } from "react-router-dom";
-import { JoinNow, CreateAccount, Login, Category, PrimaryDetails, VerifiedEmail, Types, Home, KYCBusinessHr, ProductConfiguration, ProductGroups, SelectPlan } from "./asyncpages";
+import { Route, Routes } from "react-router-dom";
+import {
+  JoinNow,
+  CreateAccount,
+  Login,
+  Category,
+  PrimaryDetails,
+  VerifiedEmail,
+  VerifyEmailPending,
+  ProConfig,
+  Types,
+  Home,
+  Settings,
+  ProConfigCapacity,
+  KYC,
+  ProductConfiguration,
+  ProductGroups,
+  SelectPlan
+} from "./asyncpages";
 
-const Routes: FC = (): JSX.Element => {
-  return (
-    <div className="App">
-      <Route exact path="/" component={JoinNow} />
-      <Route path="/createaccount" component={CreateAccount} />
-      <Route path="/category" component={Category} />
-      <Route path="/types" component={Types} />
-      <Route path="/primarydetails" component={PrimaryDetails} />
-      <Route path="/verifiedemail" component={VerifiedEmail} />
-      <Route exact path='/login' component={Login} />
-      <Route exact path='/home' component={Home} />
-      <Route exact path='/settings' component={KYCBusinessHr} />
-      <Route path='/productconfiguration' component={ProductConfiguration} />
-      <Route path='/productGroups' component={ProductGroups} />
-      <Route path='/SelectPlan' component={SelectPlan} />
-    </div>
-  );
+class Routers extends React.Component {
+  render(): JSX.Element {
+    return (
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<JoinNow />} />
+          <Route path="/createaccount" element={<CreateAccount />} />
+          <Route path="/category" element={<Category />} />
+          <Route path="/types" element={<Types />} />
+          <Route path="/primarydetails" element={<PrimaryDetails />} />
+          <Route path="/verifiedemail" element={<VerifiedEmail />} />
+          <Route path="/verifyemailpending" element={<VerifyEmailPending />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/productconfiguration' element={<ProductConfiguration />} />
+          <Route path='/productGroups' element={<ProductGroups />} />
+          <Route path='/SelectPlan' element={<SelectPlan />} />
+          <Route path='/settings' element={<Settings />} >
+            <Route path="kyc" element={<KYC />} />
+            <Route path="proconfig" element={<ProConfig />} />
+            <Route path="Capacity" element={<ProConfigCapacity />} />
+          </Route>
+        </Routes>
+      </div>
+    );
+  }
 };
-export default Routes;
+export default Routers;
