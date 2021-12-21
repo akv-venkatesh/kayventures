@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState ,useEffect} from "react";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Category.css";
 import axios from "axios";
@@ -69,11 +69,8 @@ class Category extends Component<typeProps, typeState> {
   };
 
   render(): JSX.Element {
-    if (this.state.gettypes == true) {
-      return <Redirect to={{
-        pathname: "/types",
-        state: this.state.categoryList.business_category_single
-      }} />
+    if (this.state.gettypes == true) {  
+      return <Navigate to="/types" state={this.state.categoryList } />;
     }
     return (
       <>
@@ -86,35 +83,35 @@ class Category extends Component<typeProps, typeState> {
               <div className="category_section">
                 <PerfectScrollbar>
                   <div className="category_item_section flex-wrap">
-                  {this.state.categoryList.business_category ? (
-                    this.state.categoryList.business_category.map((data:any) => {
-                      return (
-                        <label
-                          key={'category'+data.id}
-                          htmlFor={'category'+data.id}
-                          className="category_item "
-                          style={{ backgroundImage: `url(${data.imageUrl})` }}
-                        >
-                          <div className="category_item_text">
-                            <h3>{data.name}</h3>
-                            <p>{data.description}</p>
-                          </div>
-                          <div className="category_item_radio">
-                            <input
-                              type="radio"
-                              id={'category'+data.id}
-                              name="category"
-                              value={data.id}
-                              onChange={this.handleChange}
-                            />
-                            <label htmlFor={data.id}></label>
-                          </div>
-                        </label>
-                      );
-                    })
-                  ) : (
-                    <div></div>
-                  )}
+                    {this.state.categoryList.business_category ? (
+                      this.state.categoryList.business_category.map((data:any) => {
+                        return (
+                          <label
+                            key={'category'+data.id}
+                            htmlFor={'category'+data.id}
+                            className="category_item "
+                            style={{ backgroundImage: `url(${data.imageUrl})` }}
+                          >
+                            <div className="category_item_text">
+                              <h3>{data.name}</h3>
+                              <p>{data.description}</p>
+                            </div>
+                            <div className="category_item_radio">
+                              <input
+                                type="radio"
+                                id={'category'+data.id}
+                                name="category"
+                                value={data.id}
+                                onChange={this.handleChange}
+                              />
+                              <label htmlFor={data.id}></label>
+                            </div>
+                          </label>
+                        );
+                      })
+                    ) : (
+                      <div></div>
+                    )}
                    
                   </div>
                 </PerfectScrollbar>

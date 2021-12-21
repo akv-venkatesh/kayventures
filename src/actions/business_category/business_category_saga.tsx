@@ -9,8 +9,7 @@ import { AxiosResponse } from "axios";
 import apibaseURL from "../../api";
 
 interface datatype {
-  type: string;
-  payload: string;
+  name: string;
 }
 
 // get category
@@ -45,14 +44,15 @@ function* setCategory(action:any) {
     switch (response.status) {
       case 200:
         console.log(response);
-        const data:datatype = response.data.data;
+        const data:datatype[] = response.data.data;
         console.log("get type",data);
+        localStorage.setItem('business_category', data[0].name);
 
         yield put(setBusinessCategorySuccess(data));
         
     }
   } catch (error) {
-    const data = "failed";
+    const data = error;
     yield put(setBusinessCategorySuccess(data));
   }
 }

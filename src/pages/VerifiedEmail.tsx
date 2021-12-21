@@ -48,7 +48,11 @@ class VerifiedEmail extends React.Component<{},typeState> {
               <h4 className="modal-title">THANKS FOR SIGNING UP!</h4>
               <h5 className="modal-discription">Hi,<br />You have successfully completed the email verification process.</h5>
             
-              <Link to='login'><span className="modal-action"><span>Proceed to Log In</span></span></Link>
+              <Link to='/login'>
+                <span className="modal-action">
+                  <span>Proceed to Log In</span>
+                </span>
+              </Link>
               <h5 className="modal-thanks">Verification Completed</h5>
             </Modal.Body>
             

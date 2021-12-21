@@ -326,22 +326,26 @@ body {
         .settings-menu {
           flex: 0 0 80px;
           max-width: 80px;
-          .settings-icon {
-            width: 60px;
-            height: 60px;
-            padding: 10px;
-            margin: 10px 0px;
-            box-shadow: 4px 4px 10px 0px #a6abbd, -4px -4px 10px 0px #fafbff;
-            border-radius: 10px;
-            background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
-            background-blend-mode: soft-light, normal;
-            &.active {
-              background-color: #003778;
-              color: white;
-              box-shadow: 1px 1px 10px 0px #00000066,
-                -1px -1px 4px 0px #0055a480;
+          a{
+            color: unset;
+            &.active{
+              .settings-icon {
+                background-color: #003778;
+                color: white;
+                box-shadow: 1px 1px 10px 0px #00000066, -1px -1px 4px 0px #0055a480;
+              }
             }
-          }
+            .settings-icon {
+              width: 60px;
+              height: 60px;
+              padding: 10px;
+              margin: 10px 0px;
+              box-shadow: 4px 4px 10px 0px #a6abbd, -4px -4px 10px 0px #fafbff;
+              border-radius: 10px;
+              background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
+              background-blend-mode: soft-light, normal;
+            }
+          }   
           p {
             font-size: 12px;
           }
@@ -757,7 +761,7 @@ body {
       background-size: contain;
     }
     &.select-arrow-active {
-      z-index: 102;
+      z-index: 103;
       &:after {
         transform: rotate(180deg);
       }
@@ -780,9 +784,10 @@ body {
     border-radius:20px;
     &.selected{
       box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
+      z-index: 102;
     }
     .select-items {
-      height: 200px;
+      max-height: 200px;
       overflow:auto;
       margin: 10px 10px 10px 0px;
       &.select-hide {

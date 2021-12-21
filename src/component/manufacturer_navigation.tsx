@@ -10,27 +10,27 @@ class Home extends React.Component {
     return (
       <div className='m-home-navigation'>
         <div className='side-navg text-center'>
-            <NavLink to='/home' activeClassName="active">
+            <NavLink to='/home'>
               <div className="icons">
                 <HiHome className="navg-icons my-3"/>
               </div>
             </NavLink>
-            <NavLink to='/a' activeClassName="active">
+            <NavLink to='/a'>
               <div className="icons">
                 <AiOutlineDashboard className="navg-icons my-4"/>
               </div>
             </NavLink>
-            <NavLink to='/settings' activeClassName="active">
+            <NavLink to='/settings'>
               <div className="icons ">
                 <BiCog className="navg-icons my-4"/>
               </div>
             </NavLink>
-            <NavLink to='/b' activeClassName="active">
+            <NavLink to='/b'>
               <div className="icons">
                 <BsGlobe2 className="navg-icons my-4"/>
               </div>
             </NavLink>
-            <NavLink to='/c' activeClassName="active">
+            <NavLink to='/c'>
               <div className="icons">
                 <BsPlug className="navg-icons my-4"/>
               </div>

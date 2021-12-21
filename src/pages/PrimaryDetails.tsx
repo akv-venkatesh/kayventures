@@ -99,7 +99,7 @@ class ManufacturerPrimaryDetails extends Component<{},typeState> {
                   <div className="primary_form_head">
                     <Link to="/types"><img src={arrow_left} style={{ cursor: "pointer" }} /></Link>
                     <h1>
-                      Primary details / <span>Manufacturer</span>
+                      Primary details / <span>{localStorage.getItem('business_category')}</span>
                     </h1>
                     <p>Fill in the details to submit your application.</p>
                   </div>
@@ -218,7 +218,7 @@ class ManufacturerPrimaryDetails extends Component<{},typeState> {
               <h4 className="modal-title">Email Id Verification</h4>
               <h5 className="modal-discription">The link along with the first time test password will be provided for Log In once approved by Super Admin from Kay Ventures. Kindly verify your email id using the link sent to you.</h5>
               {/* <h5 className="modal-timer">00:30</h5> */}
-              <Link to='verifiedemail'><span className="modal-action-resend"><span>Proceed</span></span></Link>
+              <Link to='/verifiedemail'><span className="modal-action-resend"><span>Proceed</span></span></Link>
               <h5 className="modal-alert">The verification will be completed in 2-3 days.</h5>
             </Modal.Body>
           </Modal>

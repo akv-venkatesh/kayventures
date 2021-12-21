@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, Navigate, Outlet } from "react-router-dom";
 import '../m-login.scss';
 import { Formik, Field } from "formik";
 import { HiUserCircle, HiOutlineFingerPrint } from "react-icons/hi";
 import { ImMenu } from "react-icons/im";
 import Navigation from '../../component/manufacturer_navigation';
-import CustomSelect from '../../component/custom_select';
 import KYC from './kyc/index';
 import $ from 'jquery';
+import CustomSelect from '../../component/custom_select';
+import { NavLink } from 'react-router-dom';
 
 function ManufacturerSettings():JSX.Element {
 
@@ -40,26 +41,27 @@ function ManufacturerSettings():JSX.Element {
 		    		<div className="main-content-parent">
 			    		<div className="d-flex flex-wrap h-100">
 			    			<div className="settings-menu h-100 d-flex justify-content-center flex-column flex-wrap align-items-center">
-			    				<div className="text-center">
+			    				<NavLink to="/settings/kyc" className="text-center">
 			    					<HiOutlineFingerPrint className="settings-icon active"/>
 			    					<p>KYC</p>
-			    				</div>
-			    				<div className="text-center">
+			    				</NavLink>
+			    				<NavLink to="/settings/capacity" className="text-center">
 			    					<HiOutlineFingerPrint className="settings-icon"/>
 			    					<p>Product Configuration</p>
-			    				</div>
-			    				<div className="text-center">
+			    				</NavLink>
+			    				<NavLink to="/settings/operation" className="text-center">
 			    					<HiOutlineFingerPrint className="settings-icon"/>
 			    					<p>Operations</p>
-			    				</div>
-			    				<div className="text-center">
+			    				</NavLink>
+			    				<NavLink to="/settings/progress" className="text-center">
 			    					<HiOutlineFingerPrint className="settings-icon"/>
 			    					<p>Progress Report</p>
-			    				</div>
+			    				</NavLink>
 			    			</div>
 			    			<div className="settings-menu-content h-100 px-5 py-3">
+
 			    				<div className="content h-100">
-			    					<KYC />
+									<Outlet/>
 			    				</div>
 			    			</div>
 			    		</div>

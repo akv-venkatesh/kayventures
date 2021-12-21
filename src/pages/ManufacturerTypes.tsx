@@ -28,7 +28,7 @@ class ManufacturerTypes extends Component<{},typeState> {
     this.state = {
       visibility: false,
       selectedOption: '',
-      types: props.location.state,
+      types: props,
     }
   }
 
@@ -40,6 +40,7 @@ class ManufacturerTypes extends Component<{},typeState> {
     }
   };
   render():JSX.Element{
+    console.log(this.state.types);
     return (
           <>
       <div className="Types_category">
@@ -58,8 +59,8 @@ class ManufacturerTypes extends Component<{},typeState> {
                       className="m_category_item m_category_item_img1"
                     >
                       <div className="m_category_item_text">
-                        <h3>Manufacturer</h3>
-                        <p>Apparel, fabric, yarn, fibre</p>
+                        <h3>{this.state.types.businesscategory.business_category[0].name}</h3>
+                        <p>{this.state.types.businesscategory.business_category[0].description}</p>
                       </div>
                       <div className="m_category_item_radio">
                         <input
@@ -76,11 +77,11 @@ class ManufacturerTypes extends Component<{},typeState> {
                   </div>
                   <div className="Types_category_type_item">
                     {
-                      this.state.types ? (
-                        this.state.types.map((data:any, index:number) => {
+                      Object.entries(this.state.types.businesscategory.business_category_single).length !== 0 ? (
+                        this.state.types.businesscategory.business_category_single.map((data:any, index:number) => {
                           if(data.id !== 1){
                             return (
-                              <label htmlFor={data.id} className="Types_category_item ">
+                              <label htmlFor={data.id} key={data.id} className="Types_category_item ">
                                 <img src={bag} />
                                 <h1>{data.name}</h1>
                                 <div className="Types_category_item_radio">

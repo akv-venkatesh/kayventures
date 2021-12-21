@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect,useHistory } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import './buyer.scss';
 import {
 	Formik,
@@ -69,7 +69,7 @@ class ManufacturerLogin extends Component<typeProps, typeState > {
 
 	render():JSX.Element{
 		if (this.state.submitSuccess === true) {
-			return <Redirect to="/home" />
+			return <Navigate to="/home" />
 		}
 		return (
 			<div className='p-xl-5 h-100 m-login'>
