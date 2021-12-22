@@ -7,14 +7,12 @@ import { ImMenu } from "react-icons/im";
 import Navigation from '../../component/manufacturer_navigation';
 import KYC from './kyc/index';
 import $ from 'jquery';
-import CustomSelect from '../../component/custom_select';
 import { NavLink } from 'react-router-dom';
 
 function ManufacturerSettings():JSX.Element {
 
   	return (
 		<div className='d-flex flex-wrap h-100 m-settings'>
-			<CustomSelect />
 	    	<section className='s-sec1'>
 		    	<Navigation />
 		    </section>
