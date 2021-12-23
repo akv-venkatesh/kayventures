@@ -25,7 +25,8 @@ interface IState {
     items_confirm: boolean,
     final_confirm: boolean,
     summarize: boolean,
-    items_true: boolean
+    items_true: boolean,
+    item_confirm: boolean
 }
 class ProductGroups extends React.Component<IProps, IState>{
 
@@ -110,7 +111,8 @@ class ProductGroups extends React.Component<IProps, IState>{
             items_confirm: false,
             final_confirm: false,
             summarize: false,
-            items_true: false
+            items_true: false,
+            item_confirm: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmitSelect = this.handleSubmitSelect.bind(this);
@@ -168,12 +170,12 @@ class ProductGroups extends React.Component<IProps, IState>{
     handleChangeGroup = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.checked) {
             let a = 0;
-            this.state.group.some((evalue: any, index: number) => {
+            this.state.groups_values.some((evalue: any, index: number) => {
                 console.log("This selected groups", JSON.stringify(evalue));
                 evalue.data.some((data: any, i: number) => {
                     debugger;
                     console.log("This selected group", data);
-                    if (data.name == event.target.name && !this.check(evalue.name)) {
+                    if (data.name == event.target.value && !this.check(evalue.name)) {
                         let obj = { "name": evalue.name, data: [] };
                         let arr = [this.state.selected_items];
                         arr.push(obj);
@@ -202,77 +204,8 @@ class ProductGroups extends React.Component<IProps, IState>{
                 })
             })
         }
-        // var group_name: any = e.currentTarget.name;
-        // var group_items: any = e.currentTarget.value;
-        // var checked_group = e.currentTarget.checked;
-        // if (e.target.checked) {
-        //     if (!this.state.group.includes(e.target.name)) {
-        //         this.setState({
-        //             group: {
-        //                 name: [...this.state.group, e.target.name],
-        //                 data: [
-        //                     {
-        //                         items: [...this.state.group, e.target.value]
-        //                     }
-        //                 ]
-        //             },
-        //         }, () => {
-        //             console.log("Selected Values", this.state.group);
-        //         });
-        //     }
-        //     // else {
-        //     //     this.setState({
-        //     //         group: {
-        //     //             name: [...this.state.group.filter(value => value !== group_name)],
-        //     //             data: [
-        //     //                 {
-        //     //                     items: [...this.state.group.filter(items => items !== group_items)]
-        //     //                 }
-        //     //             ]
-        //     //         }
-        //     //     });
-        //     // }
-        // }
-
-        // if (!this.state.group.includes(e.target.name)) {
-        //     this.setState({
-        //         group: [{
-        //             name: [...this.state.group, e.target.name],
-        //             data: [
-        //                 {
-        //                     items: [...this.state.group, e.target.value]
-        //                 }
-        //             ]
-        //         }]
-        //     })
-        // }
-        //  else {
-        //     this.setState(prevState => ({ group: prevState.group.filter(value => value !== e.target.name) }));
-        // }
     }
-    // handleChangeGroups = (event: React.ChangeEvent<HTMLInputElement>) => {
-    //     var groups_name: any = e.currentTarget.name;
-    //     var checked_groups = e.currentTarget.checked;
-    //     if (checked_groups == true && groups_name != " ") {
-    //         this.setState({
-    //             groups_values: [...this.state.groups_values, groups_name],
-    //         }, () => {
-    //             console.log("Selected Values", this.state.groups_values);
-    //         });
-    //     }
-    //     else {
-    //         this.setState({
-    //             groups_values: [...this.state.groups_values.filter(e => e !== groups_name)],
-    //         });
-    //     }
-    //     if (event.target.checked) {
-    //         if (!this.state.groups_values.includes(event.target.name)) {
-    //             this.setState(prevState => ({ groups_values: [...prevState.groups_values, event.target.name] }))
-    //         }
-    //     } else {
-    //         this.setState(prevState => ({ groups_values: prevState.groups_values.filter(value => value !== event.target.name) }));
-    //     }
-    // }
+
     handleSubmitSelect = (e: React.MouseEvent<HTMLButtonElement>) => {
         this.setState({
             select_confirm: false,
@@ -366,6 +299,15 @@ class ProductGroups extends React.Component<IProps, IState>{
             final_confirm: false
         })
     }
+    handleSubmitItem = (e: React.MouseEvent<HTMLButtonElement>) => {
+        this.setState({
+            select_confirm: false,
+            group_confirm: false,
+            groups_confirm: false,
+            items_confirm: false,
+            item_confirm: true
+        })
+    }
     handleSubmitfinal = (e: React.MouseEvent<HTMLButtonElement>) => {
         this.setState({
             select_confirm: false,
@@ -386,7 +328,7 @@ class ProductGroups extends React.Component<IProps, IState>{
                         &nbsp;{product.name}
                     </span>
                     <label className="container w-25">
-                        <input type="checkbox" value={product.name} name={product.name} onChange={this.handleChangeGroup} required />
+                        <input type="checkbox" value={product.name} name={product.name} required />
                         <span className="checkmark"></span>
                     </label>
                 </li>
@@ -621,6 +563,70 @@ class ProductGroups extends React.Component<IProps, IState>{
                                                                 return <button className="px-2" value={value} key={index} onClick={this.handleClickGroup} >{value}<BiX className="float-end" /></button>
 
                                                             })}
+                                                        </ul>
+
+                                                    </div>
+                                                </PerfectScrollbar>
+                                            </div>
+                                            <div className="col-md-8 block-2">
+                                                <div className="box pt-4 mt-2">
+                                                    <p className="mb-4">Select items of selected group</p>
+
+                                                    <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
+                                                        <div className="product_categories categories">
+                                                            <div className="row">
+                                                                <ul className="category">
+                                                                    {this.renderValues1(this.state.groups_values)}
+                                                                    {/* {this.state.groups_values.map((items: any, index: number) => {
+                                                                        { this.renderValues(items) }
+                                                                    })} */}
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </PerfectScrollbar>
+                                                    <div className="col-md-12 pb-4">
+                                                        <div className="row ">
+                                                            <button type="button" className="btn btn-back mx-2 back" onClick={this.handleBackGroups}><AiFillCaretLeft />&emsp;Back</button>
+                                                            <button type="button" className="btn btn-default  mx-4 remove">Remove</button>
+                                                            <button type="button" className="btn btn-default  mx-4 save">Save</button>
+                                                            <button type="submit" className="btn btn-back mx-5 next" onClick={this.handleSubmitAgain}>Next&emsp;<AiFillCaretRight /></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> : null
+                            }
+                            {
+                                this.state.item_confirm ?
+                                    <div className="col-md-12 mt-2">
+                                        <div className="row">
+                                            <div className="col-md-4 block-1">
+                                                <p className="sewing mt-4 mx-4">Sewing</p>
+                                                <div className="garments d-flex py-3 px-3 position-relative mt-4">
+                                                    <label><AiOutlineSkin />&nbsp;Garments</label>
+                                                    <label className="container gar-con">
+                                                        <input type="checkbox" checked />
+                                                        <span className="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                                <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
+
+                                                    <div className="sub-categories mt-4">
+                                                        <ul className="mx-2">
+                                                            {this.state.select_values.map((value, index) => {
+                                                                console.log("Categories", value);
+                                                                console.log("Index", index);
+                                                                return <li key={index}>{value}</li>
+                                                            })}
+                                                        </ul>
+
+                                                        <ul className="sub-menus mx-2">
+                                                            {this.state.groups_values.map((value: any, index: any) => {
+                                                                return <button className="px-2" value={value} key={index}>{value}<BiX className="float-end" /></button>
+
+                                                            })}
+
                                                         </ul>
 
                                                     </div>
