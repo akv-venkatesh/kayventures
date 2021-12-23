@@ -14,12 +14,11 @@ interface IProps {
 }
 interface IState {
     select: string[];
-    group: string[];
-    groups: string[];
+    group: any;
     select_values: string[];
     group_values: string[];
-    groups_values: string[];
-    clicked_value: string[];
+    groups_values: any;
+    selected_items: any;
     select_confirm: boolean,
     group_confirm: boolean,
     groups_confirm: boolean,
@@ -34,12 +33,77 @@ class ProductGroups extends React.Component<IProps, IState>{
         super(props);
         this.state = {
             select: ["Woven", "Knitted", "Women", "men"],
-            group: ["UnderWear", "Workwear", "StreetWear", "NightWear", "Activewear", "Ceremonial", "Protectivewear", "Sportswear"],
-            groups: ["Slips", "Kinkers", "Bra-Top", "cheeky", "Chemise", "Pants", "Bra", "Brief", "Vests", "Tank", "Thong", "Hip Hugger"],
+            group: [
+                {
+                    name: "UnderWear",
+                    data: [
+                        {
+                            name: "Slips"
+                        },
+                        {
+                            name: "Kinkers"
+                        },
+                        {
+                            name: "Bra-Top"
+                        }
+                    ]
+                },
+                {
+                    name: "WorkWear",
+                    data: [
+                        {
+                            name: "Cheeky"
+                        },
+                        {
+                            name: "Chemise"
+                        }
+                    ]
+                },
+                {
+                    name: "Streetwear",
+                    data: [
+                        {
+                            name: "Pants"
+                        },
+                        {
+                            name: "Bra"
+                        }
+                    ]
+                },
+                {
+                    name: "NightWear",
+                    data: [
+                        {
+                            name: "Brief"
+                        },
+                        {
+                            name: "Vests"
+                        }
+                    ]
+                },
+                {
+                    name: "Activewear",
+                    data: [
+                        {
+                            name: "Tank"
+                        },
+                        {
+                            name: "Thong"
+                        }
+                    ]
+                },
+                {
+                    name: "Ceremonial",
+                    data: [
+                        {
+                            name: "Hip hugger"
+                        }
+                    ]
+                }],
+            selected_items: [],
             select_values: [],
             groups_values: [],
             group_values: [],
-            clicked_value: [],
             select_confirm: true,
             group_confirm: false,
             groups_confirm: false,
@@ -75,62 +139,163 @@ class ProductGroups extends React.Component<IProps, IState>{
             if (!this.state.select_values.includes(event.target.name)) {
                 this.setState(prevState => ({ select_values: [...prevState.select_values, event.target.name] }))
             }
-        } else {
-            this.setState(prevState => ({ select_values: prevState.select_values.filter(value => value !== event.target.name) }));
+            else {
+                this.setState(prevState => ({ select_values: prevState.select_values.filter(value => value !== event.target.name) }));
+            }
+        }
+    }
+    check = (name: any) => {
+        if (this.state.selected_items.length !== 0) {
+            return this.state.selected_items.some(function (el: any) {
+                return el.name === name;
+            });
+        }
+        else {
+            return false;
+        }
+    }
+    handleGroup = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+        if (event.target.checked) {
+            if (!this.state.group_values.includes(event.target.value)) {
+                this.setState(prevState => ({ group_values: [...prevState.group_values, event.target.value] }))
+            }
+            else {
+                this.setState(prevState => ({ group_values: prevState.group_values.filter(value => value !== event.target.value) }));
+            }
         }
     }
     handleChangeGroup = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.checked) {
+            let a = 0;
+            this.state.group.some((evalue: any, index: number) => {
+                console.log("This selected groups", JSON.stringify(evalue));
+                evalue.data.some((data: any, i: number) => {
+                    debugger;
+                    console.log("This selected group", data);
+                    if (data.name == event.target.name && !this.check(evalue.name)) {
+                        let obj = { "name": evalue.name, data: [] };
+                        let arr = [this.state.selected_items];
+                        arr.push(obj);
+                        this.setState({
+                            selected_items: arr
+                        })
+                        console.log("This selected group", this.state.selected_items);
+                    }
+                    let obj1 = { "name": event.target.value };
+                    let arr1 = this.state.selected_items;
+                    console.log("Select Items", this.state.selected_items);
+                    debugger;
+                    if (this.state.selected_items.data.filter((checking: any) =>
+                        checking.name == event.target.value).length == 0) {
+                        arr1[a].data.push(obj1);
+                        if (this.check(evalue.name)) {
+                            a = a + 1;
+                            console.log(a)
+                        }
+                        this.setState({
+                            selected_items: arr1
+                        }, () => {
+                            console.log(this.state.selected_items);
+                        });
+                    }
+                })
+            })
+        }
         // var group_name: any = e.currentTarget.name;
+        // var group_items: any = e.currentTarget.value;
         // var checked_group = e.currentTarget.checked;
-        // if (checked_group == true && group_name != " ") {
-        //     this.setState({
-        //         group_values: [...this.state.group_values, group_name],
-        //     }, () => {
-        //         console.log("Selected Values", this.state.group_values);
-        //     });
+        // if (e.target.checked) {
+        //     if (!this.state.group.includes(e.target.name)) {
+        //         this.setState({
+        //             group: {
+        //                 name: [...this.state.group, e.target.name],
+        //                 data: [
+        //                     {
+        //                         items: [...this.state.group, e.target.value]
+        //                     }
+        //                 ]
+        //             },
+        //         }, () => {
+        //             console.log("Selected Values", this.state.group);
+        //         });
+        //     }
+        //     // else {
+        //     //     this.setState({
+        //     //         group: {
+        //     //             name: [...this.state.group.filter(value => value !== group_name)],
+        //     //             data: [
+        //     //                 {
+        //     //                     items: [...this.state.group.filter(items => items !== group_items)]
+        //     //                 }
+        //     //             ]
+        //     //         }
+        //     //     });
+        //     // }
         // }
-        // else {
+
+        // if (!this.state.group.includes(e.target.name)) {
         //     this.setState({
-        //         group_values: [...this.state.group_values.filter(e => e !== group_name)],
-        //     });
+        //         group: [{
+        //             name: [...this.state.group, e.target.name],
+        //             data: [
+        //                 {
+        //                     items: [...this.state.group, e.target.value]
+        //                 }
+        //             ]
+        //         }]
+        //     })
         // }
-        if (event.target.checked) {
-            if (!this.state.group_values.includes(event.target.name)) {
-                this.setState(prevState => ({ group_values: [...prevState.group_values, event.target.name] }))
-            }
-        } else {
-            this.setState(prevState => ({ group_values: prevState.group_values.filter(value => value !== event.target.name) }));
-        }
+        //  else {
+        //     this.setState(prevState => ({ group: prevState.group.filter(value => value !== e.target.name) }));
+        // }
     }
-    handleChangeGroups = (event: React.ChangeEvent<HTMLInputElement>) => {
-        // var groups_name: any = e.currentTarget.name;
-        // var checked_groups = e.currentTarget.checked;
-        // if (checked_groups == true && groups_name != " ") {
-        //     this.setState({
-        //         groups_values: [...this.state.groups_values, groups_name],
-        //     }, () => {
-        //         console.log("Selected Values", this.state.groups_values);
-        //     });
-        // }
-        // else {
-        //     this.setState({
-        //         groups_values: [...this.state.groups_values.filter(e => e !== groups_name)],
-        //     });
-        // }
-        if (event.target.checked) {
-            if (!this.state.groups_values.includes(event.target.name)) {
-                this.setState(prevState => ({ groups_values: [...prevState.groups_values, event.target.name] }))
-            }
-        } else {
-            this.setState(prevState => ({ groups_values: prevState.groups_values.filter(value => value !== event.target.name) }));
-        }
-    }
+    // handleChangeGroups = (event: React.ChangeEvent<HTMLInputElement>) => {
+    //     var groups_name: any = e.currentTarget.name;
+    //     var checked_groups = e.currentTarget.checked;
+    //     if (checked_groups == true && groups_name != " ") {
+    //         this.setState({
+    //             groups_values: [...this.state.groups_values, groups_name],
+    //         }, () => {
+    //             console.log("Selected Values", this.state.groups_values);
+    //         });
+    //     }
+    //     else {
+    //         this.setState({
+    //             groups_values: [...this.state.groups_values.filter(e => e !== groups_name)],
+    //         });
+    //     }
+    //     if (event.target.checked) {
+    //         if (!this.state.groups_values.includes(event.target.name)) {
+    //             this.setState(prevState => ({ groups_values: [...prevState.groups_values, event.target.name] }))
+    //         }
+    //     } else {
+    //         this.setState(prevState => ({ groups_values: prevState.groups_values.filter(value => value !== event.target.name) }));
+    //     }
+    // }
     handleSubmitSelect = (e: React.MouseEvent<HTMLButtonElement>) => {
         this.setState({
             select_confirm: false,
             group_confirm: true
         });
     }
+    handleClickGroup = (e: React.MouseEvent<HTMLButtonElement>) => {
+        var click_group: any = (e.target as HTMLInputElement).value;
+        var group_temp: any = []
+        group_temp = this.state.group.filter((e: any) => {
+            return e.name == click_group
+        })
+        console.log("1", group_temp);
+        this.setState({
+            groups_confirm: false,
+            items_confirm: true,
+            groups_values: group_temp
+        })
+        setTimeout(() => {
+            console.log("2", this.state.groups_values);
+        }, 1000)
+    }
+
     handleSubmitGroup = (e: React.MouseEvent<HTMLButtonElement>) => {
         this.setState({
             select_confirm: false,
@@ -138,6 +303,15 @@ class ProductGroups extends React.Component<IProps, IState>{
         });
     }
     handleGoItems = (event: React.MouseEvent<HTMLButtonElement>) => {
+        this.setState(prevState => ({
+            group_values: {
+                ...prevState.group_values,
+                name: {
+                    ...prevState.group_values,
+                    name: (event.target as HTMLButtonElement).name
+                }
+            }
+        }))
         this.setState({
             groups_confirm: false,
             items_confirm: true
@@ -201,7 +375,37 @@ class ProductGroups extends React.Component<IProps, IState>{
             final_confirm: true
         })
     }
+
+    renderValues = (items: any) => {
+        const arr: any = [];
+        (items.data.forEach((product: any, i: number) => {
+            arr.push(
+                <li className="w-75 mx-3">
+                    <span className="w-50">
+                        <AiOutlineSkin />
+                        &nbsp;{product.name}
+                    </span>
+                    <label className="container w-25">
+                        <input type="checkbox" value={product.name} name={product.name} onChange={this.handleChangeGroup} required />
+                        <span className="checkmark"></span>
+                    </label>
+                </li>
+            )
+        }));
+        return arr;
+    }
+
+    renderValues1 = (product: any) => {
+        const arr: any = [];
+        (product.forEach((product: any, i: number) => {
+            const temp = this.renderValues(product);
+            arr.push(temp)
+        }));
+        return arr;
+    }
+
     render() {
+        console.log(this.state.groups_values);
         return (
             <>
                 <div className='d-flex flex-wrap h-100 m-settings'>
@@ -313,11 +517,10 @@ class ProductGroups extends React.Component<IProps, IState>{
                                                         <div className="product_categories categories">
                                                             <div className="row">
                                                                 <ul className="category">
-                                                                    {this.state.group.map((cat, index) => {
-                                                                        console.log("Hi", cat);
-                                                                        return <li className="w-75 mx-3"><span className="w-50"><AiOutlineSkin />&nbsp;{cat}</span>
+                                                                    {this.state.group.map((value: any, index: number) => {
+                                                                        return <li className="w-75 mx-3"><span className="w-50"><AiOutlineSkin />&nbsp;{value.name}</span>
                                                                             <label className="container w-25">
-                                                                                <input type="checkbox" value={index} name={cat} id={cat} onChange={this.handleChangeGroup} required />
+                                                                                <input type="checkbox" value={value.name} name={value.name} onChange={this.handleGroup} required />
                                                                                 <span className="checkmark"></span>
                                                                             </label>
                                                                         </li>
@@ -362,17 +565,13 @@ class ProductGroups extends React.Component<IProps, IState>{
                                                                 return <li key={index}>{value}</li>
                                                             })}
                                                         </ul>
-                                                        <ul className="sub-menus mx-2">
+                                                        <div className="sub-menus mx-2">
                                                             {this.state.group_values.map((value, index) => {
-                                                                return <button className="px-2" onClick={this.handleGoItems} name={value}>{value}<BiX className="float-end" /></button>
+                                                                return <button className="px-2" onClick={this.handleClickGroup} value={value}>{value}<BiX className="float-end" /></button>
                                                             })}
-                                                        </ul>
-                                                        <h5>Recently Searched</h5>
-                                                        <ul className="sub-menus mx-2">
-                                                            {this.state.clicked_value.map((value, index) => {
-                                                                return <button className="px-2" name={value}>{value}<BiX className="float-end" /></button>
-                                                            })}
-                                                        </ul>
+
+                                                        </div>
+
                                                     </div>
                                                 </PerfectScrollbar>
                                             </div>
@@ -418,8 +617,8 @@ class ProductGroups extends React.Component<IProps, IState>{
                                                         </ul>
 
                                                         <ul className="sub-menus mx-2">
-                                                            {this.state.group_values.map((value, index) => {
-                                                                return <button className="px-2" name={value} onClick={this.handleGoItems}>{value}<BiX className="float-end" /></button>
+                                                            {this.state.group_values.map((value, index: any) => {
+                                                                return <button className="px-2" value={value} key={index} onClick={this.handleClickGroup} >{value}<BiX className="float-end" /></button>
 
                                                             })}
                                                         </ul>
@@ -435,15 +634,10 @@ class ProductGroups extends React.Component<IProps, IState>{
                                                         <div className="product_categories categories">
                                                             <div className="row">
                                                                 <ul className="category">
-                                                                    {this.state.groups.map((items, index) => {
-                                                                        console.log("Hi", items);
-                                                                        return <li className="w-75 mx-3"><span className="w-50"><AiOutlineSkin />&nbsp;{items}</span>
-                                                                            <label className="container w-25">
-                                                                                <input type="checkbox" value={index} name={items} id={items} onChange={this.handleChangeGroups} required />
-                                                                                <span className="checkmark"></span>
-                                                                            </label>
-                                                                        </li>
-                                                                    })}
+                                                                    {this.renderValues1(this.state.groups_values)}
+                                                                    {/* {this.state.groups_values.map((items: any, index: number) => {
+                                                                        { this.renderValues(items) }
+                                                                    })} */}
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -486,16 +680,16 @@ class ProductGroups extends React.Component<IProps, IState>{
                                                             })}
                                                         </ul>
                                                         <ul className="sub-menus mx-2">
-                                                            {this.state.group_values.map((value, index) => {
-                                                                return <div id={value}>
-                                                                    <button className={value} value={index}>
+                                                            {this.state.group.map((value: any, index: any) => {
+                                                                return <div id={value.name}>
+                                                                    <button className={value.name} value={index.name}>
                                                                         {value}<BiX className="float-end" />
                                                                     </button>
                                                                 </div>
                                                             })}
                                                             <ul className="sub-menus-1">
-                                                                {this.state.groups_values.map((value, index) => {
-                                                                    return <li key={index} className="ps-4 mx-4">{value}<BiX className="float-end" /></li>
+                                                                {this.state.group.map((value: any, index: any) => {
+                                                                    return <li key={index} className="ps-4 mx-4">{value.data.items}<BiX className="float-end" /></li>
                                                                 })}
                                                             </ul>
                                                         </ul>
