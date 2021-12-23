@@ -22,6 +22,7 @@ export const SelectPlan = React.lazy(() => import('../pages/SelectPlan/SelectPla
 export const KYC = React.lazy(() => import('../pages/settings/kyc'));
 
 export const Settings = React.lazy(() => import('../pages/settings/index'));
+export const Pro_config = React.lazy(() => import('../pages/settings/ProductConfiguration'));
 
 
 

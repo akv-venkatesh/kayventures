@@ -16,7 +16,8 @@ import {
   KYC,
   ProductConfiguration,
   ProductGroups,
-  SelectPlan
+  SelectPlan,
+  Pro_config,
 } from "./asyncpages";
 
 import CustomSelect from "../component/custom_select";
@@ -39,6 +40,7 @@ class Routers extends React.Component {
           <Route path='/productconfiguration' element={<ProductConfiguration />} />
           <Route path='/productGroups' element={<ProductGroups />} />
           <Route path='/SelectPlan' element={<SelectPlan />} />
+          <Route path='/product-config' element={<Pro_config />} />
           <Route path='/settings' element={<Settings />} >
             <Route path="kyc" element={<KYC />} />
             <Route path="proconfig" element={<ProConfig />} />

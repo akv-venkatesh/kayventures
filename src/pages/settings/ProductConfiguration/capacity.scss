@@ -235,6 +235,7 @@ input
                     box-shadow: inset -5px -5px 10px #FAFBFF, inset 5px 5px 10px #A6ABBD;
                     border-radius: 20px;
                     p{
+                        white-space: nowrap;
                         font-size: 16px;
                         &.machine-count{
                             color: royalblue;
@@ -257,16 +258,29 @@ input
                             background: none;
                             outline: none;
                             font-size: 14px;
+                            color: #2f63d7;
+                            font-weight: 500;
+
+                        }
+                        &::-webkit-inner-spin-button, ::-webkit-outer-spin-button{
+                            -webkit-appearance: none;
+                            margin: 0;
+                        }
+                        &[type=number]{
+                            -moz-appearance: textfield;
                         }
                     }
             }
             .active-save-btn{
+                background: #3CD070;
+                box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.79), 4px 4px 16px #B8CAD8;
+                border-radius: 5px;
+                border: none;
                 &[disabled]{
-                        background-color: silver;
-                        border-radius: 5px;
-                        border: none;
-                        padding: 5px 15px;
-                        font-size: 14px;
+                    background-color: silver;
+                    border: none;
+                    padding: 5px 15px;
+                    font-size: 14px;
                 }
             }
         }
@@ -321,6 +335,10 @@ input
                 }
             }
             .active-btn{
+                background: #0062D7;
+                box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.79), 4px 4px 16px #B8CAD8;
+                border-radius: 5px;
+                border: none;
                 &[disabled]{
                     font-size: 14px;
                     padding: 5px 15px;
@@ -328,7 +346,11 @@ input
                     border: none;
                 }
             }
-            .active-btn-arrow{
+            .active-btn-save{
+                background: #3CD070;
+                box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.79), 4px 4px 16px #B8CAD8;
+                border-radius: 5px;
+                border: none;
                 &[disabled]{
                     font-size: 14px;
                     padding: 5px 15px;
@@ -355,4 +377,140 @@ input
             }
         }
     }
+}
+
+
+.capacity .modal-lg{
+    max-width:55vw;
+}
+.capacity  .modal-content {
+      /* background: linear-gradient(
+          135.37deg,
+          rgba(0, 0, 0, 0.4) 4.29%,
+          rgba(255, 255, 255, 0.4) 95.6%
+        ),
+        rgba(235, 236, 240, 0.7); */
+      background-color: #e6e7eb;
+      background-blend-mode: soft-light, normal;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-sizing: border-box;
+      box-shadow: 8px 4px 14px rgb(0 0 0 / 11%), inset 6px 5px 35px rgb(255 255 255 / 60%);
+      backdrop-filter: blur(12px);
+      /* Note: backdrop-filter has minimal browser support */
+      border-radius: 35px;
+      /* height: 70vh; */
+}
+    
+.capacity{
+    &.modal-backdrop{
+        background-color: rgba(184, 202, 216, 0.7);
+        backdrop-filter: blur(21px);
+        opacity: unset;
+    }
+}
+.capacity .modal-header {
+      border-bottom: 0px;
+}
+    
+    
+.capacity  .modal-header .btn-close {
+      position: absolute;
+      top: -30px;
+      right: 0px;
+      outline: none;
+      box-shadow: none;
+}
+    
+    
+.capacity  .modal-header .btn-close:active {
+      box-shadow: none;
+      outline: none;
+}
+    
+    
+.capacity  .modal-body {
+      /* text-align: center; */
+      /* justify-content: center; */
+      padding: 0px 40px;
+}
+    
+.capacity  .modal-body .header_discription  {
+       /* position: relative; */
+       display: flex;
+}
+.capacity  .modal-body .header_discription .info-icon{
+         font-size: 22px;
+         color: #0068E5;
+}
+.capacity .modal-body .header_discription p{
+    font-size: 11px;
+    font-weight: 500;
+    color: #0068E5;
+    margin: 3px 0 0 6px;
+}
+.capacity .modal-body .discription{
+    font-size: 16px;
+    color: #0068E5;
+    /* margin-left: 28px; */
+}
+
+
+.scrollbar-container {
+    position: relative;
+    height:65vh !important;
+    margin:0px 0px 20px 0px;
+    padding-right: 20px;
+    overflow-x: hidden;
+}
+.capacity .linenum1 h3{
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a68e5;
+    margin-bottom: 13px;
+}
+.capacity .linenum1 {
+    padding: 20px;    
+    
+}
+.capacity .ml-30{
+    margin-left: 30px;
+}
+.capacity .back-color {
+    padding: 20px;    
+    background: #dddedf;
+}
+.capacity ul{
+    color: rgba(0, 98, 215, 1);
+    padding-left: 0;
+
+}
+.capacity ul li{
+    list-style: none;    
+    margin: 4px 0px 0 20px;
+    font-size: 14px;
+}
+.capacity ul.totalcal li{
+    padding: 10px;
+}
+.capacity ul.totalcal span{
+    font-weight: 500;
+}
+.capacity ul li.active{
+    background: #d7d7d7;
+    margin-top: 11px;
+}
+.float-right{
+    float: right;
+}
+.capacity .total{
+    background: rgba(0, 98, 215, 1);
+    color: white;
+    padding: 11px;
+}
+.capacity .total p{
+    margin: 0;
+    margin-left: 8px;
+}
+.w-40{
+    width: 40%;
 }
