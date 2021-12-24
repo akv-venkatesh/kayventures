@@ -18,7 +18,7 @@ class JoinNow extends Component {
             </p>
             <Link to="/createaccount"><div className="manu-button"><span>Join Now</span></div></Link>
             <p className="manu-button-msg">
-              Already a member? Then&ensp;<Link to="/manufacturerlogin"><div className='manu-button-msg-link'>Log In</div></Link>
+              Already a member? Then&ensp;<Link to="/login"><div className='manu-button-msg-link'>Log In</div></Link>
             </p>
           </div>
           <div className="col-sm-8 bg-img-sec"></div>

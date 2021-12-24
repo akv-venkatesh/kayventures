@@ -16,8 +16,7 @@ export const Login = React.lazy(() => import('../pages/login'));
 export const Home = React.lazy(() => import('../pages/home'));
 
 export const KYCBusinessHr = React.lazy(() => import('../pages/settings/index'));
-export const ProductConfiguration = React.lazy(() => import('../pages/ProductConfiguration/ProductConfiguration'));
-export const ProductGroups = React.lazy(() => import('../pages/ProductGroups/ProductGroups'));
+export const Productconfig = React.lazy(() => import('../pages/settings/ProductConfiguration/configuration'));
 export const SelectPlan = React.lazy(() => import('../pages/SelectPlan/SelectPlan'));
 export const KYC = React.lazy(() => import('../pages/settings/kyc'));
 

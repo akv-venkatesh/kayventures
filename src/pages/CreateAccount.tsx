@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./CreateAccount.css";
 
@@ -13,6 +13,7 @@ import {
 import { RiLockPasswordFill } from "react-icons/ri";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import {Formik , Field } from 'formik'
+import { Button } from "react-bootstrap";
 
 interface MyFormValues {
   name?: string,
@@ -27,6 +28,7 @@ interface typeprops{
 
 interface typestates{
   showPassword: boolean,
+  submitted: boolean,
 }
 
 class CreateAccount extends Component<typeprops, typestates > {
@@ -34,6 +36,7 @@ class CreateAccount extends Component<typeprops, typestates > {
     super(props);
     this.state = {
       showPassword: false,
+      submitted: false,
     }
   }
 
@@ -45,7 +48,9 @@ class CreateAccount extends Component<typeprops, typestates > {
   }
 
   render():JSX.Element {
-
+    if(this.state.submitted){
+      return <Navigate to="/category"/>
+    }
     const initialValues: MyFormValues = {
       name:'',
       email:'',
@@ -82,7 +87,7 @@ class CreateAccount extends Component<typeprops, typestates > {
                 errors = { ...errors, email: 'Invalid Email Id' };
               }
               if (!values.name) {
-                errors = { ...errors, organization: 'Enter Organization' };
+                errors = { ...errors, name: 'Enter Name' };
               }
             
               if (!values.phone) {
@@ -95,6 +100,9 @@ class CreateAccount extends Component<typeprops, typestates > {
             }}
             onSubmit={(values,actions) => {
               // handleShow();
+              this.setState({
+                submitted: true
+              });
               actions.setSubmitting(false);
             }}>
             {({ values,
@@ -115,11 +123,14 @@ class CreateAccount extends Component<typeprops, typestates > {
                   <div className="validation-error">{errors.name && touched.name && errors.name}</div>
                 </div>
                 <div className="input-with-icon">
-                  <input type="email" className="register-input" id="" placeholder='Email'  name='email'   onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.email}/>
+                  <input  type="email" className="register-input" id="" placeholder='Email'  name='email'   onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.email}
+                          />
                   <FaEnvelope className="input-icon" />
-                  <div className="validation-error">{errors.email && touched.email && errors.email}</div>
+                  <div className="validation-error">
+                    {errors.email && touched.email && errors.email}
+                  </div>
                 </div>
                 <div className="input-with-icon">
                   <input type="text" className="register-input" id="" placeholder='Phone no.'  name='phone'   onChange={handleChange}
@@ -134,7 +145,9 @@ class CreateAccount extends Component<typeprops, typestates > {
                 </div>
                 <div className="register-buttons">
                   <span className="login-button"><span>Log In</span></span>
-                  <Link to="/category"><span className="signin-button"><span>Sign Up</span></span></Link>
+                  <Button className="signin-button-parent" type="submit">
+                    <span className="signin-button"><span>Next</span></span>
+                  </Button>
                   {/* <button className="signin-button">Sign Up</button> */}
                 </div>
                 </form>

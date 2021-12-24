@@ -14,6 +14,7 @@ import PerfectScrollbar from "react-perfect-scrollbar"
 import { JsxFlags } from "typescript";
 import { RiInformationFill } from "react-icons/ri";
 import { AiOutlineRight } from "react-icons/ai";
+import Select from 'react-select';
 
 
 interface typeState {
@@ -31,6 +32,26 @@ interface typeState {
   totalmachinecount: number;
   showsummary: boolean;
   showModel: boolean;
+  selectOptionline_number: any;
+}
+
+const customStyles = {
+  option: (provided:any, state:any) => ({
+    ...provided,
+    borderBottom: '1px dotted pink',
+    color: state.isSelected ? 'red' : 'blue',
+    padding: 20,
+  }),
+  control: () => ({
+    // none of react-select's styles are passed to <Control />
+    width: 200,
+  }),
+  singleValue: (provided:any, state:any) => {
+    const opacity = state.isDisabled ? 0.5 : 1;
+    const transition = 'opacity 300ms';
+
+    return { ...provided, opacity, transition };
+  }
 }
 
 class ProductConfiguration extends Component<{}, typeState> {
@@ -38,6 +59,11 @@ class ProductConfiguration extends Component<{}, typeState> {
     super(props);
     this.state = {
       showModel: false,
+      selectOptionline_number:[
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+      ],
       selectedOption: "",
       line_number: '',
       product_item: [
@@ -161,6 +187,7 @@ class ProductConfiguration extends Component<{}, typeState> {
     if(event.currentTarget.checked){
       this.state.product_item.some((e:any, index:number)=>{
         e.data.some((data:any, i:number)=>{
+          debugger;
           if(!this.check(e.name) && e.name == item){
             let obj = {"name": e.name, data:[]};
             let arr = this.state.selected_product_item;
@@ -217,7 +244,7 @@ class ProductConfiguration extends Component<{}, typeState> {
       totalmachinecount: counting
     })
     this.setState({
-      checkedMachine: []
+      checkedMachine: [],
     })
   }
 
@@ -246,6 +273,7 @@ class ProductConfiguration extends Component<{}, typeState> {
   render(): JSX.Element {
     const state = this.state;
     return (
+      <div className="content h-100">
         <div className="h-100 p-3">
           <CustomSelect/>
           <div className="h-100">
@@ -317,6 +345,10 @@ class ProductConfiguration extends Component<{}, typeState> {
                               <option value="Artificial">Artificial</option>
                             </Form.Select>
                           </div>
+                          {/* <Select
+                            styles={customStyles}
+                            options={state.selectOptionline_number} 
+                          /> */}
                         </div>
                       </div>
                     </div>
@@ -382,97 +414,117 @@ class ProductConfiguration extends Component<{}, typeState> {
                   </div>
                   <div className="sec3 h-100">
                     <div className="add-machine p-4 h-100 d-flex flex-column justify-content-between">
-                      <div>
-                        { state.line_number !== "" ?
-                          <h2>{state.line_number}</h2> : ' '
-                        }
-                        <ul className="p-0 m-0">
-                          {
-                            state.selected_product_item.map((item:any, index:number)=>
-                              <li className="add-machine-product-item py-2">
-                                <div className="main d-flex align-items-center">
-                                  <BsChevronRight/>
-                                  <p className="m-0 ps-2">{item.name}</p>
-                                </div>
-                                <div className="sub ps-4 d-flex align-items-center">
-                                  <BsChevronRight/>
-                                  <div className="d-flex ps-2">
-                                    {
-                                      item.data.map((subitem:any, i:number)=>
-                                        <span>{subitem.name}</span>
-                                      )
-                                    }
+                    { state.line_number=='' ?
+                      <div className="d-flex justify-content-center align-items-center h-100">
+                        <p>
+                          There's no Line Definition
+                        </p>
+                      </div> :
+                      <>
+                        <div>
+                          { state.line_number !== "" ?
+                            <h2>{state.line_number}</h2> : ' '
+                          }
+                          <ul className="p-0 m-0">
+                            {
+                              state.selected_product_item.map((item:any, index:number)=>
+                                <li className="add-machine-product-item py-2">
+                                  <div className="main d-flex align-items-center">
+                                    <BsChevronRight/>
+                                    <p className="m-0 ps-2">{item.name}</p>
                                   </div>
+                                  <div className="sub ps-4 d-flex align-items-center">
+                                    <BsChevronRight/>
+                                    <div className="d-flex ps-2">
+                                      {
+                                        item.data.map((subitem:any, i:number)=>
+                                          <span>{subitem.name}</span>
+                                        )
+                                      }
+                                    </div>
+                                  </div>
+                                </li>
+                              )
+                            }
+                            <li className="add-machine-line-type py-2">
+                              { 
+                                state.linetype ?
+                                <div className="main d-flex align-items-center">
+                                  <BsChevronRight />
+                                  <p className="m-0 ps-2">Open</p>
+                                </div>:
+                                <></>
+                              }
+                              { 
+                                state.materialtype ?
+                                <div className="main d-flex align-items-center">
+                                  <BsChevronRight />
+                                  <p className="m-0 ps-2">Natural</p>
+                                </div> :
+                                <></>
+                              }
+                            </li>
+                            
+                            <li className="add-machine-type py-2">
+                            {
+                              state.confirmedMachine.map((item:any, i:number)=>
+                                <div className="main d-flex align-items-center justify-content-between">
+                                  <div className="d-flex align-items-center">
+                                    <BsChevronRight />
+                                    <p className="m-0 ps-2">{item.name}</p>
+                                  </div>
+                                  <p className="m-0">{item.count}</p>
+                                </div>
+                              )
+                            }
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="total-machine">
+                          { state.totalmachinecount > 0 ? 
+                            <ul className="m-0 p-0 mb-4">
+                              <li className="">
+                                <div className="main d-flex justify-content-between align-items-center">
+                                  <p className="m-0">Total Machines Selected</p>
+                                  <p className="m-0">{state.totalmachinecount}</p>
                                 </div>
                               </li>
-                            )
+                            </ul> :
+                            <></>
                           }
-                          <li className="add-machine-line-type py-2">
-                            <div className="main d-flex align-items-center">
-                              <BsChevronRight />
-                              <p className="m-0 ps-2">Open</p>
-                            </div>
-                            <div className="main d-flex align-items-center">
-                              <BsChevronRight />
-                              <p className="m-0 ps-2">Natural</p>
-                            </div>
-                          </li>
-                          
-                          <li className="add-machine-type py-2">
-                          {
-                            state.confirmedMachine.map((item:any, i:number)=>
-                              <div className="main d-flex align-items-center justify-content-between">
-                                <div className="d-flex align-items-center">
-                                  <BsChevronRight />
-                                  <p className="m-0 ps-2">{item.name}</p>
-                                </div>
-                                <p className="m-0">{item.count}</p>
-                              </div>
-                            )
-                          }
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="total-machine">
-                        <ul className="m-0 p-0 mb-4">
-                          <li className="">
-                            <div className="main d-flex justify-content-between align-items-center">
-                              <p className="m-0">Total Machines Selected</p>
-                              <p className="m-0">{state.totalmachinecount}</p>
-                            </div>
-                          </li>
-                        </ul>
-                        <div className="d-flex justify-content-between">
-                          {
-                            !state.showsummary ? 
-                              <>
-                                <Button 
-                                  className="active-btn" 
-                                  disabled={state.confirmedMachine.length > 0 ? false : true}
-                                  onClick={this.showSummary}>
-                                  Add Machine
-                                </Button>
-                                <Button className="active-btn-save" disabled={state.confirmedMachine.length > 0 ? false : true}>
-                                  Save
-                                </Button>
-                              </> :
-                              <>
-                                <Button 
-                                  className="active-btn" 
-                                  disabled={state.confirmedMachine.length > 0 ? false : true}
-                                  >
-                                  Add Line
-                                </Button>
-                                <Button 
-                                  className="active-btn-save" 
-                                  disabled={state.confirmedMachine.length > 0 ? false : true}
-                                  onClick={this.handleShow}>
-                                  Summary
-                                </Button>
-                              </>
+                          <div className="d-flex justify-content-center">
+                            {
+                              !state.showsummary ? 
+                                <>
+                                  <Button 
+                                    className="active-btn" 
+                                    disabled={state.confirmedMachine.length > 0 ? false : true}
+                                    onClick={this.showSummary}>
+                                    Add Machine
+                                  </Button>
+                                  <Button className="active-btn-save ms-3" disabled={state.confirmedMachine.length > 0 ? false : true}>
+                                    Save
+                                  </Button>
+                                </> :
+                                <>
+                                  <Button 
+                                    className="active-btn" 
+                                    disabled={state.confirmedMachine.length > 0 ? false : true}
+                                    >
+                                    Add Line
+                                  </Button>
+                                  <Button 
+                                    className="active-btn ms-3" 
+                                    disabled={state.confirmedMachine.length > 0 ? false : true}
+                                    onClick={this.handleShow}>
+                                    Summary
+                                  </Button>
+                                </>
                             }
+                          </div>
                         </div>
-                      </div>
+                      </>
+                    }    
                     </div>
                   </div>
               </div>
@@ -564,6 +616,7 @@ class ProductConfiguration extends Component<{}, typeState> {
             </Modal.Body>
           </Modal>
         </div>
+      </div>
     );
   }
 }

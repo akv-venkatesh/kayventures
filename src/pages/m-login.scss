@@ -351,8 +351,10 @@ body {
           }
         }
         .settings-menu-content {
-          flex: 0 0 calc(100% - 80px);
-          max-width: calc(100% - 80px);
+          // flex: 0 0 calc(100% - 80px);
+          // max-width: calc(100% - 80px);
+          flex: 0 0 100%;
+          max-width: 100%;
           .content {
             box-shadow: 5px 5px 10px 0px #a6abbd, -5px -5px 10px 0px #fafbff;
             border-radius: 20px;

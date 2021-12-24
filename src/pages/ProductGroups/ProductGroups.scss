@@ -53,13 +53,22 @@ body .m-settings .s-sec2 {
 
         li {
             border-bottom: 1px solid #B8CAD8;
-            font-size: 20px;
+            font-size: 16px;
             color: #566180;
-            padding-bottom: 20px;
-            padding-top: 20px;
+            padding-bottom: 15px;
+            padding-top: 15px;
             text-transform: capitalize;
         }
     }
+}
+
+.sub-categories ul li:last-child {
+    content: none;
+    border-bottom: 0px;
+}
+
+.sub-cat {
+    background: #e5e5e5;
 }
 
 .box {
@@ -72,13 +81,18 @@ ul {
 
 .sewing {
     color: #0062d7;
-    font-size: 28px;
+    font-size: 21px;
     font-weight: 600;
 }
 
 label.radio-inline {
     position: absolute;
     right: 11px;
+}
+
+.btn-default.save {
+    background: #3CD070;
+    color: #fff;
 }
 
 .box {
@@ -96,7 +110,14 @@ label.radio-inline {
     p {
         font-size: 26px;
         font-family: Poppins;
+        color: #566180;
+        font-weight: 700;
+
     }
+}
+
+.accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
 }
 
 .category-1 {
@@ -162,26 +183,41 @@ label.radio-inline {
     border: 1px solid rgba(255, 255, 255, 0.4);
     box-sizing: border-box;
     box-shadow: inset -3px -3px 10px #FAFBFF, inset 3px 3px 10px #A6ABBD;
-    border-radius: 40px;
+    border-radius: 5px;
 }
 
 .categories .checkmark {
     left: 92px;
 }
 
-/* On mouse-over, add a grey background color */
-.container:hover input~.checkmark {
-    background-color: #ccc;
-}
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked~.checkmark:after {
+.container .garments input:checked~.checkmark:after {
     background-color: #2196F3;
     height: 17px;
     width: 17px;
-    border-radius: 50%;
+    border-radius: 5px;
     top: 3px;
     left: 3px;
+}
+
+.container .garments input:checked~.checkmark:after {
+    border-radius: 50%;
+}
+
+.container .garments .checkmark {
+    border-radius: 50%;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #fff;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+.accordion-header .accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -196,6 +232,22 @@ label.radio-inline {
     display: block;
 }
 
+.container .garments input:checked~.checkmark:after {
+    background: t;
+}
+
+.container .box .checkmark:after {
+    left: 9px ! important;
+    top: 5px ! important;
+    width: 5px ! important;
+    height: 10px ! important;
+    border: solid #0068E5;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
 .gar-con {
     position: absolute;
     left: 194px;
@@ -208,20 +260,36 @@ label.radio-inline {
     font-size: 15px;
 }
 
-.active span {
-    position: relative;
-    color: #0062D7;
-    font-weight: 800;
+.active {
+    border-bottom: 0px;
 
-    &:after {
-        content: ' ';
-        position: absolute;
-        border: 2px solid #0062D7;
-        width: 100%;
-        top: 47px;
-        left: 0px;
-        border-radius: 25px;
+    span {
+        position: relative;
+        color: #0062D7;
+        font-weight: 800;
+
+        &:after {
+            content: ' ';
+            position: absolute;
+            border: 2px solid #0062D7;
+            width: 100%;
+            top: 36px;
+            left: 0px;
+            border-radius: 25px;
+        }
     }
+}
+
+.accordion {
+    .active {
+        color: #fff;
+        background: #0068E5
+    }
+
+}
+
+.accordion .accordion-body {
+    padding: 0px;
 }
 
 .btn-back,
@@ -368,6 +436,33 @@ label.radio-inline {
     border-radius: 20px;
 }
 
+.scrollbar-container .ps__rail-y .ps__thumb-y {
+    top: 0px ! important;
+    left: -3px ! important;
+}
+
+.accordion-button {
+    padding: 0px;
+    background: transparent;
+    color: #fff;
+
+    &:after {
+        color: #fff;
+    }
+}
+
+@media screen and (max-width:1250px) {
+    .category {
+        width: 90%;
+    }
+
+    .btn-back,
+    .btn-default {
+        width: 105px;
+
+    }
+}
+
 @media screen and (max-width:1135px) {
     .list ul li span {
         font-size: 16px ! important;
@@ -434,6 +529,14 @@ label.radio-inline {
     .category {
         width: 90%;
     }
+
+    .sub-categories {
+        width: 100%;
+    }
+
+    .block-2 {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width:767px) {
@@ -473,7 +576,7 @@ label.radio-inline {
     }
 
     .product_categories .category {
-        column-count: 1
+        column-count: 2
     }
 
     .product_categories p {

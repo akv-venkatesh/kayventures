@@ -151,7 +151,22 @@ justify-content: center;
 align-items: center;
 cursor: pointer;
 }
-
+.signin-button-parent{
+  border: none;
+  background-color: transparent;
+  outline: none;
+  padding: 0px;
+  box-shadow: none;
+}
+.signin-button-parent:hover, .signin-button-parent:focus, .signin-button-parent:active{
+  border: none;
+  background-color: transparent;
+  outline: none;
+  box-shadow: none;
+}
+.signin-button-parent:active:focus{
+  box-shadow: none;
+}
 .signin-button {
   background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #0062D7;
   background-blend-mode: soft-light, normal;
