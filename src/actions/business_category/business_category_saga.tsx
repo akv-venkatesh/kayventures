@@ -15,9 +15,10 @@ interface datatype {
 // get category
 function* getCategory() {
   try {
+    const header = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjozOCwiZW1haWwiOiJrb3VzaGlrMUBlbXByb3RvLmNvbSIsInJvbGUiOiIyMDAyIn0sImlhdCI6MTY0MDM4NDAzMywiZXhwIjoxNjQwOTg4ODMzfQ.KuV3rlLWLzJGMtVHtxCc4OZdpgThKn4UDaKn213K3Fk"
     const response: AxiosResponse = yield call(
-      apibaseURL.get,
-      "/user-management/business-group/all"
+      apibaseURL.post,
+      "/user-management/businessCategories", header
     );
     switch (response.status) {
       case 200:
