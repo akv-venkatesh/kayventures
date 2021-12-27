@@ -486,6 +486,12 @@ label.radio-inline {
         4px 4px 16px #B8CAD8;
     border-radius: 8px;
     color: #fff;
+    &:disabled{
+        background: silver;
+    }
+    &:hover{
+        color: white;
+    }
 }
 
 .btn-default {

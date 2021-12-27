@@ -26,6 +26,7 @@ interface typeState{
     showModel:boolean,
     nextbtn: boolean,
     savebtn: boolean,
+    removebtn: boolean,
     group:string,
 }
 
@@ -125,6 +126,7 @@ class ProductGroups extends React.Component<{}, typeState> {
             completed:false,
             nextbtn: true,
             savebtn: true,
+            removebtn: true,
             group: '',
         }
     }
@@ -156,7 +158,8 @@ class ProductGroups extends React.Component<{}, typeState> {
           })
           if(this.state.selectedproducttype.length > 0){
             this.setState({
-              savebtn: false
+              savebtn: false,
+              removebtn: false,
             })
           }
       }
@@ -170,7 +173,8 @@ class ProductGroups extends React.Component<{}, typeState> {
         })
         if(arr.length == 0){
           this.setState({
-            savebtn: true
+            savebtn: true,
+            removebtn: true,
           })
         }
       }
@@ -181,6 +185,7 @@ class ProductGroups extends React.Component<{}, typeState> {
             productselection:true,
             nextbtn: true,
             savebtn: true,
+            removebtn: true,
         })
         $('.category input[type=checkbox]').prop("checked", false);
     }
@@ -196,7 +201,8 @@ class ProductGroups extends React.Component<{}, typeState> {
             })
             if(arr.length > 0){
               this.setState({
-                savebtn: false
+                savebtn: false,
+                removebtn: false,
               })
             }
         }
@@ -210,7 +216,8 @@ class ProductGroups extends React.Component<{}, typeState> {
             })
             if(arr.length == 0){
               this.setState({
-                savebtn: true
+                savebtn: true,
+                removebtn: true,
               })
             }
         }
@@ -221,6 +228,7 @@ class ProductGroups extends React.Component<{}, typeState> {
             groupselection:true,
             nextbtn: true,
             savebtn: true,
+            removebtn: true,
         })
         this.state.selectedgrouptype.some((item:any, i:number)=>{
             if(item.data.length>0){
@@ -273,48 +281,61 @@ class ProductGroups extends React.Component<{}, typeState> {
       }
     }
     groupitemselection = (e:ChangeEvent<HTMLInputElement>, item:any):any =>{
-        if(e.currentTarget.checked){
-            let obj = {name: e.currentTarget.value};
-            let arr = this.state.groupitemselection;
-            arr.push(obj);
+      if(e.currentTarget.checked){
+          let obj = {name: e.currentTarget.value};
+          let arr = this.state.groupitemselection;
+          arr.push(obj);
+          this.setState({
+              groupitemselection: arr
+          },()=>{
+              console.log(this.state.groupitemselection)
+          })
+          if(arr.length > 0){
             this.setState({
-                groupitemselection: arr
-            },()=>{
-                console.log(this.state.groupitemselection)
+              savebtn: false,
+              removebtn: false,
             })
-            if(arr.length > 0){
-              this.setState({
-                savebtn: false
-              })
-            }
+          }
+      }
+      else{
+        if(this.state.groupitemselection.length !== 0){
+          let arr = this.state.groupitemselection;
+          arr = arr.filter((items:any) => items.name !== e.currentTarget.value);
+          this.setState({
+              groupitemselection: arr
+          },()=>{
+              console.log(this.state.groupitemselection)
+          })
         }
         else{
-            if(this.state.groupitemselection.length !== 0){
-              let arr = this.state.groupitemselection;
-              arr = arr.filter((items:any) => items.name !== e.currentTarget.value);
+        }
+      }
+      this.state.selectedgrouptype.some((event:any, index:number)=>{
+          if(event.name==item){
+            if(this.state.groupitemselection.length !== 0 ){
+              let obj = this.state.groupitemselection[0];
+              let arr = this.state.selectedgrouptype;
+              arr[index].data.push(obj);
               this.setState({
-                  groupitemselection: arr
+                  selectedgrouptype: arr
               },()=>{
-                  console.log(this.state.groupitemselection)
+                  console.log(this.state.selectedgrouptype)
               })
             }
-        }
-        }
-        this.state.selectedgrouptype.some((e:any, index:number)=>{
-            if(e.name==item){
-                let obj = this.state.groupitemselection[0];
-                let arr = this.state.selectedgrouptype;
-                arr[index].data.push(obj);
-                this.setState({
-                    selectedgrouptype: arr
-                },()=>{
-                    console.log(this.state.selectedgrouptype)
-                })
+            else{
+              let obj = this.state.selectedgrouptype[index].data;
+              let arr = this.state.selectedgrouptype;
+              obj = obj.filter((items:any) => items.name !== e.currentTarget.value);
+              arr[index].data = obj;
+              this.setState({
+                selectedgrouptype: arr
+              })
             }
-        })
-        this.setState({
-            groupitemselection: []
-        })
+          }
+      })
+      this.setState({
+          groupitemselection: []
+      })
     }
 
     save = (e:MouseEvent<HTMLButtonElement>) =>{
@@ -326,22 +347,54 @@ class ProductGroups extends React.Component<{}, typeState> {
       $('.category input[type=checkbox]').prop("checked", false);
       this.setState({
         selectedproducttype: [],
-        savebtn: true
+        savebtn: true,
+        removebtn: true,
       })
     }
     groupremove = () =>{
       $('.category input[type=checkbox]').prop("checked", false);
       this.setState({
         selectedgrouptype: [],
-        savebtn: true
+        savebtn: true,
+        removebtn: true,
       })
     }
     groupitemremove = () =>{
       $('.category input[type=checkbox]').prop("checked", false);
       this.setState({
-        savebtn: true
+        savebtn: true,
+        removebtn: true,
       })
+
     }
+    productback = () =>{
+      
+    }
+    groupback = () =>{
+      this.setState({
+        displayState: this.state.producttype,
+        productselection:false,
+        nextbtn: true,
+        savebtn: true,
+        removebtn: true,
+        selectedgrouptype:[],
+        selectedproducttype:[],
+      })
+      $('.category input[type=checkbox]').prop("checked", false);
+    }
+    groupitemback = () => {
+      this.setState({
+        displayState: this.state.grouptype,
+        productselection:true,
+        nextbtn: true,
+        savebtn: true,
+        removebtn: true,
+        selectedgrouptype:[],
+        groupselection:false,
+      })
+      $('.category input[type=checkbox]').prop("checked", false);
+    }
+
 
     render() {
         const state = this.state;
@@ -453,7 +506,13 @@ class ProductGroups extends React.Component<{}, typeState> {
                                           {
                                             !state.completed ?
                                           <>
-                                            <button type="button" className="btn btn-back mx-2 back float-start"><AiFillCaretLeft />&emsp;Back</button>
+                                            <button 
+                                              type="button" 
+                                              className="btn btn-back mx-2 back float-start"
+                                              onClick={!state.productselection ? this.productback : (!state.groupselection ? this.groupback : this.groupitemback)}
+                                              >
+                                              <AiFillCaretLeft />&emsp;Back
+                                            </button>
                                             <div className="w-50 m-auto">
                                                 <button 
                                                   type="button" 
