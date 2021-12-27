@@ -299,9 +299,9 @@ class ProductGroups extends React.Component<{}, typeState> {
               })
             }
         }
-        this.state.selectedgrouptype.some((event:any, index:number)=>{
-            if(event.name==item){
-              if(this.state.groupitemselection.length !== 0 ){
+        }
+        this.state.selectedgrouptype.some((e:any, index:number)=>{
+            if(e.name==item){
                 let obj = this.state.groupitemselection[0];
                 let arr = this.state.selectedgrouptype;
                 arr[index].data.push(obj);
@@ -310,16 +310,6 @@ class ProductGroups extends React.Component<{}, typeState> {
                 },()=>{
                     console.log(this.state.selectedgrouptype)
                 })
-              }
-              else{
-                let obj = this.state.selectedgrouptype[index].data;
-                let arr = this.state.selectedgrouptype;
-                obj = obj.filter((items:any) => items.name !== e.currentTarget.value);
-                arr[index].data = obj;
-                this.setState({
-                  selectedgrouptype: arr
-                })
-              }
             }
         })
         this.setState({
@@ -357,8 +347,8 @@ class ProductGroups extends React.Component<{}, typeState> {
         const state = this.state;
         return (
             <>
-                <div className="mt-2 h-100">
-                    <div className="d-flex h-100">
+                <div className="mt-2">
+                    <div className="d-flex">
                         <div className="block-1">
                             <p className="sewing mt-4 mx-4">Sewing</p>
                             <div className="garments d-flex py-3 px-3 position-relative mt-4">

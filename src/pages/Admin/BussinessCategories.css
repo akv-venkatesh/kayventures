@@ -1,0 +1,176 @@
+.bussiness_nav{
+    flex: 0 0 250px;
+    max-width: 250px;
+}
+body .b-home-navigation .side-navg{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #003778;
+    width: 250px;
+}
+body .b-home-navigation .side-navg a .icons{
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 0px;
+    color: white;
+    font-size: 15px;
+    padding: 0px 10px;
+    height: 60px;
+    margin-bottom: 20px;
+}
+body .b-home-navigation .side-navg a .icons:hover {
+    box-shadow: 3px 3px 10px 0px #00000066, -3px -3px 4px 0px #0055a4;
+    border-radius: 10px;
+    transition: 0.5s;
+    width: auto;
+    background-color: #003778;
+    padding: 0px 10px;
+    height: 60px;
+}
+body .b-home-navigation .side-navg a .icons.active {
+    box-shadow: 3px 3px 10px 0px #00000066, -3px -3px 4px 0px #0055a4;
+    border-radius: 10px;
+    transition: 0.5s;
+    width: auto;
+    background-color: #003778;
+    padding: 0px 10px;
+    height: 60px;
+}
+body .b-home-navigation .side-navg a .icons .navg-icons {
+    font-size: 30px;
+    display: inline-block;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 12px;
+}
+body .b-settings .s-sec2 {
+    background-color: #EBECF0;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(100% - 300px);
+    max-width: calc(100% - 300px);
+    
+}
+body .b-settings table.table.table-hover th {
+    background: blue;
+    background: rgba(0, 55, 120, 1);
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 15px;
+}
+body .b-settings table.table.table-hover td {
+    font-size: 13px;
+    padding: 20px;
+    color: rgba(86, 97, 128, 1);
+}
+body .b-settings table tr{
+    border-bottom: 1px solid #ADCEF5;;
+}
+body .b-settings .iconadd{
+    color: rgba(0, 55, 120, 1) !important;
+    font-size: 25px !important;
+    padding: 4px !important;
+}
+.tablebtn{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.tablebtn .cbtn{
+    margin-right: 25px;
+}
+body .b-settings .btncon{
+    margin-right: 20px;
+}
+body .b-settings .main-content-parent{
+    background: linear-gradient(
+175.84deg, rgba(0, 0, 0, 0.4) 49.46%, rgba(255, 255, 255, 0.4) 135.58%), #EBECF0;
+    background-blend-mode: soft-light, normal;
+    box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+    border-radius: 20px;
+    padding: 13px;
+}
+.ReactTable .rt-thead .rt-th.-cursor-pointer, .ReactTable .rt-thead .rt-td.-cursor-pointer{
+    background: rgba(0, 55, 120, 1);
+    color: white;
+    text-align: left;
+    padding: 10px;
+    font-size: 14px;
+}
+.ReactTable .rt-tbody .rt-tr-group{
+    border: unset;
+    border-bottom: 1px solid #ADCEF5 !important;
+}
+.ReactTable .rt-th, .ReactTable .rt-td{
+    padding: 20px 8px !important;
+    font-size: 13px;
+    color: rgba(86, 97, 128, 1);
+    font-weight: 500;
+}
+.ReactTable .-pagination .-btn{
+    background: #0068e5 !important;
+    color: white !important;
+}
+.pagination-bottom{
+    display: flex;
+    justify-content: flex-end;
+    margin: 44px 0;
+}
+.ReactTable .-pagination .-btn[disabled]{
+    border-radius: 10px !important;
+}
+.ReactTable .-pagination{
+    box-shadow: unset !important;
+    border-top: unset !important;
+    margin-right: 9%;
+}
+.ReactTable .-pagination .-btn{
+    height: 40px!important;
+    border-radius: 10px!important;
+    padding: 6px 28px!important;
+    position: relative;
+}
+.ReactTable .-pagination input{
+    border: unset!important;
+    background: unset!important;
+    padding: 0;
+    width: 39px !important;
+    margin-right: -6px;
+}
+.ReactTable .-pagination .-pageSizeOptions{
+    display: none;
+}
+.-btn::after {
+    font-family: FontAwesome;
+    content: '\f0d9'
+}
+.-btn::after {
+    background-repeat: no-repeat;
+    color: white;
+    right: 10px;
+    position: absolute;
+    background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='caret-right' class='svg-inline--fa fa-caret-right fa-w-6' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 512'%3E%3Cpath fill='%23fff' d='M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z'%3E%3C/path%3E%3C/svg%3E");
+  }
+  .ReactTable{
+      border:unset !important;
+      padding: 12px;
+  }
+  .-previous .-btn::after {
+    left: 10px;
+    right: unset;
+    transform: rotate(180deg);
+}
+.ReactTable .rt-thead.-header {
+    box-shadow: unset !important;
+}
+.ReactTable .rt-thead .rt-resizable-header{
+    padding: 10px!important;
+}
+.ReactTable .rt-table{
+    border-radius: 10px;
+}

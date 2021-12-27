@@ -18,41 +18,40 @@ function ManufacturerSettingsKyc():JSX.Element {
 
 
   	return (
-		<div className="content h-100">
-			<Tabs
-				defaultActiveKey="entity"
-				id="settings-tab"
-				// activeKey={key}
-				// onSelect={(k) => setKey(k)}
-				// className=""
-			>
-				<Tab eventKey="entity" title="Entity">
-					<div className="h-100">
-						<Entity />
-					</div>
-				</Tab>
-				<Tab eventKey="taxRegistraton" title="Tax Registraton">
-					<div className="h-100">
-						<TaxReg/>
-					</div>
-				</Tab>
-				<Tab eventKey="rating" title="Rating & Evaluation">
-					<div className="h-100">
-						<Rating />
-					</div>
-				</Tab>
-				<Tab eventKey="contact" title="Contact Information">
-					<div className="h-100">
-						<ContactInfo />
-					</div>
-				</Tab>
-				<Tab eventKey="businessHours" title="Business Hours">
-					<div className="h-100">
-						<BusinessHr />
-					</div>
-				</Tab>
-			</Tabs>
-		</div>
+		 
+	    <Tabs
+  			defaultActiveKey="entity"
+	      	id="settings-tab"
+	      	// activeKey={key}
+	      	// onSelect={(k) => setKey(k)}
+	      	// className=""
+	    >
+	      	<Tab eventKey="entity" title="Entity">
+		        <div className="h-100">
+		        	<Entity />
+		        </div>
+	      	</Tab>
+	      	<Tab eventKey="taxRegistraton" title="Tax Registraton">
+		        <div className="h-100">
+		        	<TaxReg/>
+		        </div>
+	      	</Tab>
+	      	<Tab eventKey="rating" title="Rating & Evaluation">
+	      		<div className="h-100">
+	      	  		<Rating />
+	      	  	</div>
+	      	</Tab>
+	      	<Tab eventKey="contact" title="Contact Information">
+		        <div className="h-100">
+		        	<ContactInfo />
+		        </div>
+	      	</Tab>
+	      	<Tab eventKey="businessHours" title="Business Hours">
+	      		<div className="h-100">
+	      			<BusinessHr />
+	      		</div>
+	      	</Tab>
+	    </Tabs>
 	);
 }
 export default  ManufacturerSettingsKyc;
