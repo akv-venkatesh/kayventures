@@ -95,6 +95,9 @@ label.radio-inline {
         font-weight: 700;
 
     }
+    .select-category{
+        height: calc(100% - 125px);
+    }
 }
 
 .accordion-button::after {
@@ -430,14 +433,6 @@ label.radio-inline {
     padding: 10px ! important;
 }
 
-.scrollbar-container {
-    height: 350px ! important;
-}
-
-.box .scrollbar-container {
-    height: 350px;
-}
-
 .remove {
     position: relative
 }
@@ -474,6 +469,12 @@ label.radio-inline {
         4px 4px 16px #B8CAD8;
     border-radius: 8px;
     color: #fff;
+    &:disabled{
+        background: silver;
+    }
+    &:hover{
+        color: #fff;
+    }
 }
 
 .btn-default {
@@ -482,18 +483,6 @@ label.radio-inline {
     border-radius: 8px;
 }
 
-.scrollable-container .ps__thumb-y {
-    top: 0px;
-    height: 64px;
-    background: #E1E4EA;
-    box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.8), 4px 4px 16px #AAB3C5, inset -4px -4px 16px rgba(255, 255, 255, 0.5), inset 4px 4px 8px rgba(170, 179, 197, 0.25);
-    border-radius: 20px;
-}
-
-.scrollbar-container .ps__rail-y .ps__thumb-y {
-    top: 0px ! important;
-    left: -3px ! important;
-}
 
 .accordion-button {
     padding: 0px;
@@ -820,12 +809,4 @@ label.radio-inline {
   font-size: 16px;
   color: #566180;
   margin: 0%;
-}
-
-.scrollbar-container {
-  position: relative;
-  height:65vh !important;
-  margin:0px 0px 20px 0px;
-  padding-right: 20px;
-  overflow-x: hidden;
 }
