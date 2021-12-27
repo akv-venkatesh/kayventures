@@ -25,6 +25,8 @@ interface typeState{
     completed:boolean,
     showModel:boolean,
     nextbtn: boolean,
+    savebtn: boolean,
+    group:string,
 }
 
 class ProductGroups extends React.Component<{}, typeState> {
@@ -122,6 +124,8 @@ class ProductGroups extends React.Component<{}, typeState> {
             groupitemselection:[],
             completed:false,
             nextbtn: true,
+            savebtn: true,
+            group: '',
         }
     }
 
@@ -141,31 +145,42 @@ class ProductGroups extends React.Component<{}, typeState> {
         })
     }
     selectproducttype = (e: ChangeEvent<HTMLInputElement>) =>{
-        if(e.currentTarget.checked){
-            let obj = {name: e.currentTarget.value};
-            let arr = this.state.selectedproducttype;
-            arr.push(obj);
+      if(e.currentTarget.checked){
+          let obj = {name: e.currentTarget.value};
+          let arr = this.state.selectedproducttype;
+          arr.push(obj);
+          this.setState({
+              selectedproducttype: arr
+          },()=>{
+              console.log(this.state.selectedproducttype)
+          })
+          if(this.state.selectedproducttype.length > 0){
             this.setState({
-                selectedproducttype: arr
-            },()=>{
-                console.log(this.state.selectedproducttype)
+              savebtn: false
             })
+          }
+      }
+      else{
+        let arr = this.state.selectedproducttype;
+        arr = arr.filter((item:any) => item.name !== e.currentTarget.value);
+        this.setState({
+            selectedproducttype: arr
+        },()=>{
+            console.log(this.state.selectedproducttype)
+        })
+        if(arr.length == 0){
+          this.setState({
+            savebtn: true
+          })
         }
-        else{
-            let arr = this.state.selectedproducttype;
-            arr = arr.filter((item:any) => item.name !== e.currentTarget.value);
-            this.setState({
-                selectedproducttype: arr
-            },()=>{
-                console.log(this.state.selectedproducttype)
-            })
-        }
+      }
     }
     showgroup = (e: MouseEvent<HTMLButtonElement>) =>{
         this.setState({
             displayState: this.state.grouptype,
             productselection:true,
             nextbtn: true,
+            savebtn: true,
         })
         $('.category input[type=checkbox]').prop("checked", false);
     }
@@ -179,6 +194,11 @@ class ProductGroups extends React.Component<{}, typeState> {
             },()=>{
                 console.log(this.state.selectedgrouptype)
             })
+            if(arr.length > 0){
+              this.setState({
+                savebtn: false
+              })
+            }
         }
         else{
             let arr = this.state.selectedgrouptype;
@@ -188,6 +208,11 @@ class ProductGroups extends React.Component<{}, typeState> {
             },()=>{
                 console.log(this.state.selectedgrouptype)
             })
+            if(arr.length == 0){
+              this.setState({
+                savebtn: true
+              })
+            }
         }
     }
     showgroupitem = (e:MouseEvent<HTMLButtonElement>)=>{
@@ -195,6 +220,7 @@ class ProductGroups extends React.Component<{}, typeState> {
             displayState: [],
             groupselection:true,
             nextbtn: true,
+            savebtn: true,
         })
         this.state.selectedgrouptype.some((item:any, i:number)=>{
             if(item.data.length>0){
@@ -210,36 +236,41 @@ class ProductGroups extends React.Component<{}, typeState> {
         })
     }
     displaygroupitem = (e:MouseEvent<HTMLElement>, item:any):any =>{
-      let arrs:any = [];
-      this.state.grouptype.some((e:any, index:number)=>{
-        if(e.name==item){
-          e.data.some((event:any, i: number)=>{
-            let obj ={name:event.name, parent:item};
-            let arr = arrs;
-            arr.push(obj);
-            this.setState({
-                displayState:arr
+      if(!this.state.completed){
+        this.setState({
+          group: item
+        })
+        let arrs:any = [];
+        this.state.grouptype.some((e:any, index:number)=>{
+          if(e.name==item){
+            e.data.some((event:any, i: number)=>{
+              let obj ={name:event.name, parent:item};
+              let arr = arrs;
+              arr.push(obj);
+              this.setState({
+                  displayState:arr
+              })
             })
-          })
-        }
-        // e.data.some((event:any, i: number)=>{
-        //   this.state.selectedgrouptype.some((el:any, j:number)=>{
-        //     if(e.name==item){
-        //       if(el.data.length !== 0){
-        //         el.data((em:any, k:number)=>{
-        //           if(event.name !== em.name){
-        //             $('.category input[type=checkbox]').eq(i).prop("checked", false);
-        //           }
-        //           else{
-        //             $('.category input[type=checkbox]').prop("checked", false);
-        //           }
-        //         })
-        //       }
-        //     }
-        //   })
-        // })
-        $('.category input[type=checkbox]').prop("checked", false);
-      })
+          }
+          // e.data.some((event:any, i: number)=>{
+          //   this.state.selectedgrouptype.some((el:any, j:number)=>{
+          //     if(e.name==item){
+          //       if(el.data.length !== 0){
+          //         el.data((em:any, k:number)=>{
+          //           if(event.name !== em.name){
+          //             $('.category input[type=checkbox]').eq(i).prop("checked", false);
+          //           }
+          //           else{
+          //             $('.category input[type=checkbox]').prop("checked", false);
+          //           }
+          //         })
+          //       }
+          //     }
+          //   })
+          // })
+          $('.category input[type=checkbox]').prop("checked", false);
+        })
+      }
     }
     groupitemselection = (e:ChangeEvent<HTMLInputElement>, item:any):any =>{
         if(e.currentTarget.checked){
@@ -251,6 +282,11 @@ class ProductGroups extends React.Component<{}, typeState> {
             },()=>{
                 console.log(this.state.groupitemselection)
             })
+            if(arr.length > 0){
+              this.setState({
+                savebtn: false
+              })
+            }
         }
         else{
             if(this.state.groupitemselection.length !== 0){
@@ -261,9 +297,6 @@ class ProductGroups extends React.Component<{}, typeState> {
               },()=>{
                   console.log(this.state.groupitemselection)
               })
-            }
-            else{
-
             }
         }
         this.state.selectedgrouptype.some((event:any, index:number)=>{
@@ -297,6 +330,26 @@ class ProductGroups extends React.Component<{}, typeState> {
     save = (e:MouseEvent<HTMLButtonElement>) =>{
       this.setState({
         nextbtn: false
+      })
+    }
+    productremove = () =>{
+      $('.category input[type=checkbox]').prop("checked", false);
+      this.setState({
+        selectedproducttype: [],
+        savebtn: true
+      })
+    }
+    groupremove = () =>{
+      $('.category input[type=checkbox]').prop("checked", false);
+      this.setState({
+        selectedgrouptype: [],
+        savebtn: true
+      })
+    }
+    groupitemremove = () =>{
+      $('.category input[type=checkbox]').prop("checked", false);
+      this.setState({
+        savebtn: true
       })
     }
 
@@ -355,61 +408,95 @@ class ProductGroups extends React.Component<{}, typeState> {
                         </div>
                         <div className="block-2">
                             <div className="box py-3 mt-2 h-100">
-                                <p className="mb-4">Select</p>
+                              {
+                                state.displayState.length !== 0 ?
+                                (
+                                  !state.productselection ?
+                                  <p className="mb-4">Select</p>:
+                                  !state.groupselection ?
+                                  <p className="mb-4">Select product group</p>:
+                                  !state.completed ?
+                                  <p className="mb-4">Select product items of {state.group}</p>:
+                                  <></>
+                                ):
+                                <></>
+                              }
                                 <div className="select-category">
-                                  <PerfectScrollbar >
-                                    <ul className="category">
-                                        {  
-                                            state.displayState.map((tag:any, i:number)=>
-                                                <div>
-                                                    <input 
-                                                        type="checkbox" 
-                                                        value={tag.name} 
-                                                        name={tag.name} 
-                                                        id={tag.name}
-                                                        required 
-                                                        hidden
-                                                        onChange={!state.productselection ? this.selectproducttype : (!state.groupselection ? this.selectgrouptype : (e)=>this.groupitemselection(e,tag.parent)) }/>
-                                                    <label className="w-100 py-2 d-flex" key={'productType'+i} htmlFor={tag.name}>
-                                                        <p className="w-50 m-0">{tag.name}</p>
-                                                        <span className="checkmark"></span>
-                                                    </label>
-                                                </div>
-                                            )
-                                        }
-                                    </ul>
-                                  </PerfectScrollbar>
+                                  {
+                                    state.displayState.length !== 0 ?
+                                    <PerfectScrollbar >
+                                      <ul className="category">
+                                          {  
+                                              state.displayState.map((tag:any, i:number)=>
+                                                  <div>
+                                                      <input 
+                                                          type="checkbox" 
+                                                          value={tag.name} 
+                                                          name={tag.name} 
+                                                          id={tag.name}
+                                                          required 
+                                                          hidden
+                                                          onChange={!state.productselection ? this.selectproducttype : (!state.groupselection ? this.selectgrouptype : (e)=>this.groupitemselection(e,tag.parent)) }/>
+                                                      <label className="w-100 py-2 d-flex" key={'productType'+i} htmlFor={tag.name}>
+                                                          <p className="w-50 m-0">{tag.name}</p>
+                                                          <span className="checkmark"></span>
+                                                      </label>
+                                                  </div>
+                                              )
+                                          }
+                                      </ul>
+                                    </PerfectScrollbar> :
+                                    
+                                    !state.completed ?
+                                      <div className="empty-data d-flex h-100 justify-content-center align-items-center">
+                                        <p>Click on the selected Product groups </p>
+                                      </div> :
+                                      <div className="empty-data d-flex h-100 justify-content-center align-items-center">
+                                        <p>Click on the summary button to view the selection  </p>
+                                      </div>
+                                    
+                                  }
                                 </div>
-                                <div className="col-md-12 pb-4">
+                                <div className="pb-4">
                                     <div className="row ">
                                         <div className="w-100">
+                                          {
+                                            !state.completed ?
+                                          <>
                                             <button type="button" className="btn btn-back mx-2 back float-start"><AiFillCaretLeft />&emsp;Back</button>
                                             <div className="w-50 m-auto">
-                                                <button type="button" className="btn btn-default  mx-4 remove">Remove</button>
+                                                <button 
+                                                  type="button" 
+                                                  className="btn btn-default mx-4 remove"
+                                                  onClick={!state.productselection ? this.productremove : (!state.groupselection ? this.groupremove : this.groupitemremove)}
+                                                  >
+                                                  Remove
+                                                </button>
                                                 <button 
                                                   type="button" 
                                                   className="btn btn-default mx-4 save"
+                                                  disabled={state.savebtn}
                                                   onClick={this.save}
                                                   >
                                                   Save
                                                 </button>
                                             </div>
-                                            {
-                                                !state.completed ?
-                                                <button 
-                                                    type="submit" 
-                                                    className="btn btn-back mx-5 next float-end"
-                                                    onClick={!state.productselection ? this.showgroup : this.showgroupitem}
-                                                    disabled = {state.nextbtn}
-                                                    >Next&emsp;<AiFillCaretRight />
-                                                </button> :
-                                                <button 
-                                                    type="submit"   
-                                                    className="btn btn-back mx-5 next float-end"
-                                                    onClick={this.handleShow}
-                                                    >Summary
-                                                </button>
-                                            }
+                                                
+                                            <button 
+                                                type="submit" 
+                                                className="btn btn-back mx-5 next float-end"
+                                                onClick={!state.productselection ? this.showgroup : this.showgroupitem}
+                                                disabled = {state.nextbtn}
+                                                >Next&emsp;<AiFillCaretRight />
+                                            </button>
+                                          </> :
+                                          <button 
+                                              type="submit"   
+                                              className="btn btn-back mx-5 next float-end"
+                                              onClick={this.handleShow}
+                                              >Summary
+                                          </button>
+                                          }
                                         </div>
                                     </div>
                                 </div>

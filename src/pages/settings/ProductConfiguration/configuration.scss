@@ -74,6 +74,9 @@ label.radio-inline {
 .btn-default.save {
     background: #3CD070;
     color: #fff;
+    &:disabled{
+        background: silver;
+    }
 }
 
 .box {
@@ -89,14 +92,20 @@ label.radio-inline {
     padding-left: 55px;
 
     p {
-        font-size: 26px;
+        font-size: 22px;
         font-family: Poppins;
         color: #566180;
-        font-weight: 700;
+        font-weight: 500;
 
     }
     .select-category{
         height: calc(100% - 125px);
+        .empty-data{
+            p{
+                font-size: 16px;
+                font-weight: 400;
+            }
+        }
     }
 }
 
