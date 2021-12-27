@@ -1,0 +1,46 @@
+// admin profile dropdown css
+a {
+  color: #566180;
+}
+.dropdown {
+  .dropdown-toggle {
+    outline: none !important;
+    box-shadow: none;
+
+    &::after {
+      // visibility: hidden;
+      content: url("../../assets/icons/arrows/chevron-top.svg");
+      display: inline-block;
+      border-top: 0px;
+      opacity: 0.5;
+    }
+  }
+  .dropdown-menu {
+    // background: linear-gradient(175.84deg, rgba(0, 0, 0, 0.4) 49.46%, rgba(255, 255, 255, 0.4) 135.58%), #EBECF0;
+    // background-blend-mode: soft-light, normal;
+    // box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
+    border-radius: 20px;
+
+    background: linear-gradient(0deg, #ebecf0, #ebecf0), #ebecf0;
+    border: 1px dashed rgba(255, 255, 255, 0.4);
+    box-sizing: border-box;
+    box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+
+    width: 400px;
+    margin-top: 10px;
+    padding: 10px;
+    .dropdown-item {
+      padding: 15px 10px 15px 0px;
+      border-bottom: 1px solid #c9cbcf;
+      color: #2c2c2c;
+      &:active {
+        background-color: transparent;
+        color: unset;
+      }
+      &:hover {
+        background-color: transparent;
+        color: unset;
+      }
+    }
+  }
+}

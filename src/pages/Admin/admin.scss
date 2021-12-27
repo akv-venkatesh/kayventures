@@ -1,0 +1,961 @@
+$bg-color: #e5e5e5;
+$color: #566180;
+$hightlight-color: #0062d7;
+$btn-linear1: rgba(0, 0, 0, 0.4) 4.29%;
+$btn-linear2: rgba(255, 255, 255, 0.4) 95.6%;
+$btn-linear-deg: 135.37deg;
+$font-family: "poppins", sans-serif;
+$error-color: #ff0808;
+$backdrop-color: rgba(184, 202, 216, 0.7);
+
+a{
+  color: #2C2C2C !important;
+}
+.admin-settings {
+  .s-sec1 {
+    flex: 0 0 300px;
+    max-width: 300px;
+  }
+  .s-sec2 {
+    background-color: #ebecf0;
+    flex: 0 0 calc(100% - 300px);
+    max-width: calc(100% - 300px);
+    .main-content-parent {
+      height: calc(100% - 100px);
+      .settings-menu-content {
+        flex: 0 0 calc(100% - 0px);
+        max-width: calc(100% - 0px);
+        .content {
+          box-shadow: 5px 5px 10px 0px #a6abbd, -5px -5px 10px 0px #fafbff;
+          border-radius: 20px;
+          background: linear-gradient(
+              135.37deg,
+              rgba(0, 0, 0, 0.4) 4.29%,
+              rgba(255, 255, 255, 0.4) 95.6%
+            ),
+            #ebecf0;
+          background-blend-mode: soft-light, normal;
+        }
+      }
+    }
+
+    .main-content-parent-height-50 {
+      height: calc(100% - 50px);
+      .settings-menu-content {
+        flex: 0 0 calc(100% - 0px);
+        max-width: calc(100% - 0px);
+        .superadmin-title {
+        }
+        .content {
+          box-shadow: 5px 5px 10px 0px #a6abbd, -5px -5px 10px 0px #fafbff;
+          border-radius: 20px;
+          background: linear-gradient(
+              135.37deg,
+              rgba(0, 0, 0, 0.4) 4.29%,
+              rgba(255, 255, 255, 0.4) 95.6%
+            ),
+            #ebecf0;
+          background-blend-mode: soft-light, normal;
+        }
+      }
+    }
+  }
+}
+#superadmin-title-text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 45px;
+  padding-left: 20px;
+  /* identical to box height */
+
+  color: #566180;
+}
+.navigation {
+  .input-box {
+    &.form-control {
+      border-radius: 40px;
+      height: 40px;
+      padding-left: 20px;
+      padding-right: 20px;
+      background-color: transparent;
+      width: 900px;
+      box-shadow: 3px 3px 10px 0px #a6abbd inset,
+        -3px -3px 10px 0px #fafbff inset;
+      // user-select: none;
+      color: $hightlight-color;
+      &.is-invalid {
+        background-image: none;
+        color: $error-color;
+      }
+    }
+  }
+  h6 {
+    color: #000;
+  }
+  p {
+    font-size: 14px;
+  }
+  .user-image {
+    width: 50px;
+    height: 50px;
+  }
+  .user-arrow {
+    width: 30px;
+    height: 30px;
+    color: #797f93;
+  }
+}
+.category-search {
+  .input-box {
+    &.form-control {
+      border-radius: 40px;
+      height: 40px;
+      padding-left: 20px;
+      padding-right: 20px;
+      background-color: transparent;
+      width: 300px;
+      box-shadow: 3px 3px 10px 0px #a6abbd inset,
+        -3px -3px 10px 0px #fafbff inset;
+      // user-select: none;
+      color: $hightlight-color;
+      &.is-invalid {
+        background-image: none;
+        color: $error-color;
+      }
+    }
+  }
+}
+.admin-home-navigation {
+  .side-navg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #003778;
+    width: 300px;
+
+    a {
+      &.active {
+        box-shadow: 3px 3px 10px 0px #00000066, -3px -3px 4px 0px #0055a4;
+        border-radius: 10px;
+        transition: 0.5s;
+        width: 305px;
+        background-color: #003778;
+        display: block;
+      }
+      .icon {
+        transition: 0.5s;
+        color: #fff;
+        padding: 0px 20px;
+        .navg-icons {
+          font-size: 30px;
+          display: inline-block;
+          color: #fff;
+          cursor: pointer;
+          // padding:0px 20px;
+        }
+      }
+      .icons-first {
+        margin-top: 40%;
+      }
+      .icons {
+        transition: 0.5s;
+        color: #fff;
+        padding: 0px 20px;
+        &:hover {
+          box-shadow: 3px 3px 10px 0px #00000066, -3px -3px 4px 0px #0055a4;
+          border-radius: 10px;
+          transition: 0.5s;
+          width: 305px;
+          background-color: #003778;
+        }
+        .navg-icons {
+          font-size: 30px;
+          display: inline-block;
+          color: #fff;
+          cursor: pointer;
+        }
+        span {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 300;
+          font-size: 18px;
+          padding-left: 15px;
+        }
+      }
+    }
+  }
+}
+
+.invite_sadmin {
+  h1 {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 54px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #3f4954;
+  }
+  .invite_section {
+    h1 {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 35px;
+      line-height: 60px;
+      /* identical to box height */
+
+      text-align: center;
+
+      color: #6c9bcf;
+    }
+
+    .invite-btn {
+      width: 230px;
+      height: 50px;
+
+      background: linear-gradient(
+          175.84deg,
+          rgba(0, 0, 0, 0.4) 49.46%,
+          rgba(255, 255, 255, 0.4) 135.58%
+        ),
+        #0062d7;
+      background-blend-mode: soft-light, normal;
+      // border: 1px dashed rgba(255, 255, 255, 0.4);
+      box-sizing: border-box;
+      box-shadow: -6px -6px 13px #fafbff, 6px 6px 13px #a6abbd;
+      border-radius: 52px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      span {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 36px;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.invite_sadmin_email {
+  padding: 100px 0px 0px 0px;
+  h1 {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 54px;
+    /* identical to box height */
+    color: #3f4954;
+    text-align: center;
+  }
+  .invite_email_body {
+    width: 500px;
+    height: 329px;
+
+    background: linear-gradient(
+        175.84deg,
+        rgba(0, 0, 0, 0.4) 49.46%,
+        rgba(255, 255, 255, 0.4) 135.58%
+      ),
+      #ebecf0;
+    background-blend-mode: soft-light, normal;
+    border: 1px dashed rgba(255, 255, 255, 0.4);
+    box-sizing: border-box;
+    box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+    border-radius: 40px;
+
+    .invite_email_field {
+      span {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 45px;
+        color: #566180;
+      }
+      .invite_email_ifield {
+        position: relative;
+        .invite_email_inputfield {
+          width: 100%;
+          height: 40px;
+
+          background: linear-gradient(
+              264.35deg,
+              rgba(0, 0, 0, 0.4) -45.5%,
+              rgba(255, 255, 255, 0.4) 46.39%
+            ),
+            #ebecf0;
+          background-blend-mode: soft-light, normal;
+          border: 1px dashed rgba(255, 255, 255, 0.4);
+          box-sizing: border-box;
+          box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+          border-radius: 40px;
+          outline: none;
+          // text-align: center;
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 300;
+          font-size: 20px;
+          line-height: 30px;
+          padding: 10px 20px 10px 60px;
+          /* identical to box height */
+
+          color: #006cdd;
+          &::placeholder {
+            color: #006cdd;
+          }
+        }
+        .mail-icon {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          color: #acaac2;
+          font-size: 22px;
+        }
+      }
+    }
+
+    .sendinvite-section {
+      .sendinvite-btn {
+        width: 150px;
+        height: 40px;
+
+        background: linear-gradient(
+            175.84deg,
+            rgba(0, 0, 0, 0.4) 49.46%,
+            rgba(255, 255, 255, 0.4) 135.58%
+          ),
+          #0062d7;
+        background-blend-mode: soft-light, normal;
+        // border: 1px dashed rgba(255, 255, 255, 0.4);
+        box-sizing: border-box;
+        box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        outline: none;
+        cursor: pointer;
+
+        span {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 27px;
+
+          text-align: center;
+
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+.invite_sadmin_e_successfully {
+  padding: 100px 0px 0px 0px;
+  h1 {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 54px;
+    color: #3f4954;
+    text-align: center;
+  }
+  .invite_e_successfully_body {
+    width: 820px;
+    height: 250px;
+    left: 0px;
+    top: 0px;
+
+    background: linear-gradient(
+        175.84deg,
+        rgba(0, 0, 0, 0.4) 49.46%,
+        rgba(255, 255, 255, 0.4) 135.58%
+      ),
+      #ebecf0;
+    background-blend-mode: soft-light, normal;
+    border: 1px dashed rgba(255, 255, 255, 0.4);
+    box-sizing: border-box;
+    box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+    border-radius: 40px;
+
+    .invite_e_successfully_field {
+      .invite_e_successfully_field_text {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 36px;
+
+        color: #838e9a;
+        .admin_email_id {
+          color: #003778;
+          font-weight: 600;
+        }
+      }
+    }
+    .Back-btn {
+      width: 150px;
+      height: 40px;
+
+      background: linear-gradient(
+          175.84deg,
+          rgba(0, 0, 0, 0.4) 49.46%,
+          rgba(255, 255, 255, 0.4) 135.58%
+        ),
+        #0062d7;
+      background-blend-mode: soft-light, normal;
+      // border: 1px dashed rgba(255, 255, 255, 0.4);
+      box-sizing: border-box;
+      box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+      border-radius: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      span {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 27px;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.superadmin-table {
+  padding: 30px;
+
+  .sa-table {
+    thead tr {
+      background: #003778;
+      border-radius: 10px;
+
+      /* identical to box height */
+    }
+    thead tr th {
+      padding: 10px 20px;
+      font-size: 20px;
+      font-family: "Poppins";
+
+      color: #ffffff;
+    }
+    tbody tr td {
+      padding: 20px 20px;
+
+      color: #ffffff;
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 30px;
+      /* identical to box height */
+
+      color: #566180;
+    }
+  }
+
+  .superadmin-table-footer {
+    margin: 0px 0px 10px 0px;
+    .invite-sadmin {
+      position: absolute;
+      width: 344px;
+      height: 50px;
+      bottom: 100px;
+
+      background: linear-gradient(
+          175.84deg,
+          rgba(0, 0, 0, 0.4) 49.46%,
+          rgba(255, 255, 255, 0.4) 135.58%
+        ),
+        #0062d7;
+      background-blend-mode: soft-light, normal;
+      // border: 1px dashed rgba(255, 255, 255, 0.4);
+      box-sizing: border-box;
+      box-shadow: -6px -6px 13px #fafbff, 6px 6px 13px #a6abbd;
+      cursor: pointer;
+      border-radius: 52px;
+      span {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+        /* identical to box height */
+
+        text-align: center;
+
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+// Edit Admin Acc Info
+.admin_edit_body {
+  // overflow: hidden;
+}
+.admin_edit_acc_info {
+  .admin_edit_acc_info-title {
+    span {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 36px;
+      /* identical to box height */
+
+      color: #536273;
+    }
+  }
+  .edit-profile-box {
+    width: 403px;
+    height: 142px;
+
+    background: linear-gradient(
+        175.84deg,
+        rgba(0, 0, 0, 0.4) 49.46%,
+        rgba(255, 255, 255, 0.4) 135.58%
+      ),
+      #ebecf0;
+    background-blend-mode: soft-light, normal;
+    box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+    border-radius: 17px;
+
+    .edit-profile-profile {
+      padding-left: 30px;
+      .user-image {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    .edit-profile-profile-icon {
+      width: 29px;
+      height: 29px;
+      background: linear-gradient(
+          175.84deg,
+          rgba(0, 0, 0, 0.4) 49.46%,
+          rgba(255, 255, 255, 0.4) 135.58%
+        ),
+        #ebecf0;
+      background-blend-mode: soft-light, normal;
+      // border: 0.5px dashed rgba(255, 255, 255, 0.4);
+      box-sizing: border-box;
+      box-shadow: -4px -4px 8px #fafbff, 4px 4px 8px #a6abbd;
+      display: flex;
+      justify-content: center;
+      border-radius: 40px;
+      align-items: center;
+      margin-right: 20px;
+      .user-edit-icon {
+        font-size: 20px;
+      }
+    }
+  }
+  .field {
+    .field-name {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 27px;
+      /* identical to box height */
+
+      color: #566180;
+
+      .required {
+        color: #ff0808;
+      }
+    }
+    .input-field {
+      width: 450px;
+      height: 40px;
+      padding-left: 30px;
+      color: #0062d7;
+
+      background: linear-gradient(
+          264.35deg,
+          rgba(0, 0, 0, 0.4) -45.5%,
+          rgba(255, 255, 255, 0.4) 46.39%
+        ),
+        #ebecf0;
+      background-blend-mode: soft-light, normal;
+      border: 1px dashed rgba(255, 255, 255, 0.4);
+      box-sizing: border-box;
+      box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+      border-radius: 40px;
+      outline: none;
+      &::placeholder {
+        color: #0062d7;
+      }
+    }
+    .input-field-textarea {
+      width: 450px;
+      height: 140px;
+      padding-left: 30px;
+      padding-top: 10px;
+      color: #0062d7;
+
+      background: linear-gradient(
+          264.35deg,
+          rgba(0, 0, 0, 0.4) -45.5%,
+          rgba(255, 255, 255, 0.4) 46.39%
+        ),
+        #ebecf0;
+      background-blend-mode: soft-light, normal;
+      border: 1px dashed rgba(255, 255, 255, 0.4);
+      box-sizing: border-box;
+      box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+      border-radius: 40px;
+      outline: none;
+      &::placeholder {
+        color: #0062d7;
+      }
+    }
+  }
+  .btn-section {
+    .save-btn {
+      width: 200px;
+      height: 50px;
+      margin: 50px 0px 30px 0px;
+
+      background: linear-gradient(
+          175.84deg,
+          rgba(0, 0, 0, 0.4) 49.46%,
+          rgba(255, 255, 255, 0.4) 135.58%
+        ),
+        #0062d7;
+      background-blend-mode: soft-light, normal;
+      // border: 1px dashed rgba(255, 255, 255, 0.4);
+      box-sizing: border-box;
+      box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+      border-radius: 40px;
+      span {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 27px;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.admin_edit_body {
+  // overflow: hidden;
+}
+.admin_change_pass {
+  .admin_change_pass_title {
+    span {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 36px;
+      /* identical to box height */
+
+      color: #536273;
+    }
+  }
+
+  .field {
+    .field-name {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 27px;
+      /* identical to box height */
+
+      color: #566180;
+
+      .required {
+        color: #ff0808;
+      }
+    }
+    .field-input-icons {
+      position: relative;
+      .lockicon {
+        position: absolute;
+        color: rgba(172, 170, 194, 1);
+        font-size: 20px;
+        top: 10px;
+        left: 20px;
+      }
+      .eye-icon {
+        position: absolute;
+        color: rgba(172, 170, 194, 1);
+        font-size: 20px;
+        top: 12px;
+        right: 20px;
+      }
+
+      .input-field {
+        width: 450px;
+        height: 40px;
+        padding-left: 60px;
+        color: #0062d7;
+        // position: absolute;
+
+        background: linear-gradient(
+            264.35deg,
+            rgba(0, 0, 0, 0.4) -45.5%,
+            rgba(255, 255, 255, 0.4) 46.39%
+          ),
+          #ebecf0;
+        background-blend-mode: soft-light, normal;
+        border: 1px dashed rgba(255, 255, 255, 0.4);
+        box-sizing: border-box;
+        box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+        border-radius: 40px;
+        outline: none;
+        &::placeholder {
+          color: #0062d7;
+        }
+      }
+    }
+  }
+  .btn-section {
+    .save-btn {
+      width: 200px;
+      height: 50px;
+      margin: 100px 0px 30px 0px;
+
+      background: linear-gradient(
+          175.84deg,
+          rgba(0, 0, 0, 0.4) 49.46%,
+          rgba(255, 255, 255, 0.4) 135.58%
+        ),
+        #0062d7;
+      background-blend-mode: soft-light, normal;
+      // border: 1px dashed rgba(255, 255, 255, 0.4);
+      box-sizing: border-box;
+      box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+      border-radius: 40px;
+      span {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 27px;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+// admin login
+
+.adminlogin-container {
+  width: 1242px;
+  height: 694px;
+  background: linear-gradient(0deg, #ebecf0, #ebecf0), #ebecf0;
+  box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+  border-radius: 40px;
+  .login{
+    h1{
+      
+font-family: "Poppins";
+font-style: normal;
+font-weight: normal;
+font-size: 48px;
+line-height: 72px;
+/* identical to box height */
+
+
+color: #8B9CAE;
+
+    }
+
+  }
+}
+
+@media screen and (min-width: 992px) {
+  body {
+    .App {
+      height: 100vh;
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  body {
+    .App {
+      .m-home {
+        .main-content-parent {
+          .main-content {
+            border-radius: 20px;
+            h1 {
+              font-size: 24px;
+            }
+            img {
+              width: 100%;
+              height: auto;
+            }
+            .ratio {
+              --bs-aspect-ratio: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  body {
+    .m-home {
+      .s-sec1 {
+        flex: 0 0 0px;
+        max-width: 0px;
+      }
+      .s-sec2 {
+        flex: 0 0 calc(100%);
+        max-width: calc(100%);
+      }
+      .m-home-navigation {
+        .side-navg {
+          left: -70px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 575px) {
+  body {
+    .m-login {
+      .first-half {
+        h1 {
+          font-size: 32px;
+        }
+      }
+      .second-half {
+        .login-form {
+          width: 100%;
+          border-radius: 25px;
+          h2 {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+.custom-select {
+  position: relative;
+  font-family: $font-family;
+  select {
+    display: none;
+  }
+  .select-selected {
+    width: 100%;
+    height: 40px;
+    padding: 0px 30px;
+    line-height: 40px;
+    background: linear-gradient(
+        135.37deg,
+        rgba(0, 0, 0, 0.4) 4.29%,
+        rgba(255, 255, 255, 0.4) 95.6%
+      ),
+      #ebecf0;
+    background-blend-mode: soft-light, normal;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+    border-radius: 40px;
+    outline: none;
+    color: unset;
+    z-index: 100;
+    position: relative;
+    cursor: pointer;
+    font-size: 14px;
+    &:after {
+      position: absolute;
+      content: "";
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      right: 35px;
+      width: 18px;
+      height: 10px;
+      background-image: url("data:image/svg+xml,%3Csvg width='22' height='13' viewBox='0 0 22 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.0264 11.031L21.0004 1' stroke='%23797F93' stroke-width='2' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M11.0282 11.031L1 1' stroke='%23797F93' stroke-width='2' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    &.select-arrow-active {
+      z-index: 103;
+      &:after {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .select-items-scroll {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    padding-top: 40px;
+    background: linear-gradient(
+        135.37deg,
+        rgba(0, 0, 0, 0.4) 4.29%,
+        rgba(255, 255, 255, 0.4) 95.6%
+      ),
+      #ebecf0;
+    background-blend-mode: soft-light, normal;
+    border-radius: 20px;
+    &.selected {
+      box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+      z-index: 102;
+    }
+    .select-items {
+      max-height: 200px;
+      overflow: auto;
+      margin: 10px 10px 10px 0px;
+      &.select-hide {
+        display: none;
+      }
+      div {
+        color: unset;
+        padding: 10px 0px;
+        margin: 0px 30px;
+        border: 1px solid transparent;
+        border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        font-size: 13px;
+      }
+      &::-webkit-scrollbar {
+        width: 12px;
+      }
+      &::-webkit-scrollbar-track {
+        border: 3px solid #edeef1;
+        background: #e1e4ea;
+        box-shadow: inset -4px -6px 4px 2px rgb(255 255 255 / 80%),
+          inset 4px 4px 4px #aab3c5;
+        border-radius: 30px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #e6e7ee;
+        box-shadow: 2px 2px 4px #b8b9be, -2px -2px 4px #fff;
+        border-radius: 20px;
+        border: 1px solid #dddddd;
+      }
+    }
+  }
+}

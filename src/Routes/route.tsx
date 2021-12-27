@@ -17,6 +17,7 @@ import {
   Productconfig,
   SelectPlan,
   Pro_config,
+  Admin,Superadmin, AdmineditAccInfo,AdminChangePass,AdminRegister,AdminBussinessCategories
 } from "./asyncpages";
 
 import CustomSelect from "../component/custom_select";
@@ -45,6 +46,17 @@ class Routers extends React.Component {
             <Route path="Capacity" element={<ProConfigCapacity />} />
             <Route path="productconfiguration" element={<Productconfig/>}/>
           </Route>
+
+
+          <Route path='/admin' element={<Admin />} />
+          <Route path='/admin-register' element={<AdminRegister />} />
+          <Route path='/admin-bizcategories' element={<AdminBussinessCategories />} />
+          <Route path='/admin/change-pass' element={<AdminChangePass />} />
+          <Route path='/admin/edit-acc-info' element={<AdmineditAccInfo />} />
+        
+         
+          <Route path='/superadmin' element={<Superadmin />} />
+
         </Routes>
       </div>
     );

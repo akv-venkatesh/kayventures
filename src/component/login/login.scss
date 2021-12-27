@@ -1,0 +1,137 @@
+$bg-color: #e5e5e5;
+$color: #566180;
+$hightlight-color: #0062d7;
+$btn-linear1: rgba(0, 0, 0, 0.4) 4.29%;
+$btn-linear2: rgba(255, 255, 255, 0.4) 95.6%;
+$btn-linear-deg: 135.37deg;
+$font-family: "poppins", sans-serif;
+$error-color: #ff0808;
+$backdrop-color: rgba(184, 202, 216, 0.7);
+$modal-color: #ebecf0b2;
+
+.login-form {
+  width: 450px;
+  h2 {
+    font-size: 30px;
+    color: #566180;
+  }
+  box-shadow: 5px 5px 10px 0px #a6abbd, -5px -5px 10px 0px #fafbff;
+  border-radius: 40px;
+  input {
+    &.form-control {
+      border-radius: 40px;
+      height: 50px;
+      padding-left: 50px;
+      padding-right: 50px;
+      background-color: transparent;
+      box-shadow: 3px 3px 10px 0px #a6abbd inset,
+        -3px -3px 10px 0px #fafbff inset;
+      // user-select: none;
+      color: $hightlight-color;
+      &.is-invalid {
+        background-image: none;
+        color: $error-color;
+      }
+    }
+    &:-webkit-autofill {
+      -webkit-background-clip: text;
+    }
+    &[type="password"] {
+      -webkit-text-security: square;
+    }
+    &::placeholder {
+      color: #acaac2;
+    }
+  }
+  label {
+    font-size: 14px;
+    color: $hightlight-color;
+    margin-top: 4px;
+    user-select: none;
+  }
+  .form-check {
+    .form-check-input {
+      width: 20px;
+      height: 20px;
+      background-color: transparent;
+      &:checked[type="checkbox"] {
+        // background-image:none;
+      }
+      &:checked {
+        background-color: $hightlight-color;
+        border-color: $hightlight-color;
+      }
+      &:focus {
+        border-color: $hightlight-color;
+        box-shadow: unset;
+      }
+    }
+  }
+  .forgot-password {
+    font-size: 14px;
+    margin-top: 4px;
+    color: $hightlight-color;
+    cursor: pointer;
+  }
+  .validation-error {
+    position: absolute;
+    right: 0;
+    color: $error-color;
+  }
+  button {
+    &.login-submit {
+      height: 50px;
+      border-radius: 40px;
+      background: linear-gradient($btn-linear-deg, $btn-linear1, $btn-linear2),
+        #0062d7;
+      color: white;
+      width: 200px;
+      border: none;
+      outline: none;
+      box-shadow: 5px 5px 10px 0px #a6abbd, -5px -5px 10px 0px #fafbff;
+      background-blend-mode: soft-light, normal;
+    }
+    &.login-Login {
+      height: 50px;
+
+      color: #0062d7;
+      width: 200px;
+      //   border: none;
+      //   outline: none;
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 27px;
+      /* identical to box height */
+
+      text-align: center;
+
+      color: #0062d7;
+
+      background: linear-gradient(
+          175.84deg,
+          rgba(0, 0, 0, 0.4) 49.46%,
+          rgba(255, 255, 255, 0.4) 135.58%
+        ),
+        #ebecf0;
+      background-blend-mode: soft-light, normal;
+      border: 1px dashed rgba(255, 255, 255, 0.4);
+      box-sizing: border-box;
+      box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+      border-radius: 40px;
+    }
+  }
+  .field-icon {
+    position: absolute;
+    width: 50px;
+    color: #acaac2;
+  }
+  .eye-icon {
+    position: absolute;
+    right: 0;
+    width: 50px;
+    cursor: pointer;
+    color: #acaac2;
+  }
+}

@@ -14,7 +14,9 @@ import PerfectScrollbar from "react-perfect-scrollbar"
 import { JsxFlags } from "typescript";
 import { RiInformationFill } from "react-icons/ri";
 import { AiOutlineRight } from "react-icons/ai";
-import Select from 'react-select';
+// import Select from 'react-select';
+
+import Select from '../../../component/dropdown_select/slelect';
 
 
 interface typeState {
@@ -36,7 +38,7 @@ interface typeState {
 }
 
 const customStyles = {
-  option: (provided:any, state:any) => ({
+  option: (provided: any, state: any) => ({
     ...provided,
     borderBottom: '1px dotted pink',
     color: state.isSelected ? 'red' : 'blue',
@@ -46,7 +48,7 @@ const customStyles = {
     // none of react-select's styles are passed to <Control />
     width: 200,
   }),
-  singleValue: (provided:any, state:any) => {
+  singleValue: (provided: any, state: any) => {
     const opacity = state.isDisabled ? 0.5 : 1;
     const transition = 'opacity 300ms';
 
@@ -59,7 +61,7 @@ class ProductConfiguration extends Component<{}, typeState> {
     super(props);
     this.state = {
       showModel: false,
-      selectOptionline_number:[
+      selectOptionline_number: [
         { value: 'chocolate', label: 'Chocolate' },
         { value: 'strawberry', label: 'Strawberry' },
         { value: 'vanilla', label: 'Vanilla' }
@@ -100,7 +102,7 @@ class ProductConfiguration extends Component<{}, typeState> {
       product_item_index: 0,
       linetype: '',
       materialtype: '',
-      machinery:[
+      machinery: [
         {
           name: 'Single Needle',
           needle_count: 50,
@@ -146,7 +148,7 @@ class ProductConfiguration extends Component<{}, typeState> {
           needle_count: 60,
         }
       ],
-      checkedMachine:[],
+      checkedMachine: [],
       confirmedMachine: [],
       machineCount: 0,
       totalmachinecount: 0,
@@ -154,53 +156,56 @@ class ProductConfiguration extends Component<{}, typeState> {
     };
   }
 
+
+
+
   handleShow = () => {
     this.setState({
       showModel: true,
     });
   };
-  handleHide = ()=>{
+  handleHide = () => {
     this.setState({
       showModel: false
     })
   }
 
-  line_no_change = (e:ChangeEvent<HTMLInputElement>) =>{
-    if(e.currentTarget.value){
+  line_no_change = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.currentTarget.value) {
       this.setState({
         line_number: e.currentTarget.value
       })
     }
   }
 
-  check = (name:any) => {
-    if(this.state.selected_product_item.length !== 0){
-      return this.state.selected_product_item.some(function(el:any) {
+  check = (name: any) => {
+    if (this.state.selected_product_item.length !== 0) {
+      return this.state.selected_product_item.some(function (el: any) {
         return el.name === name;
       });
     }
-    else{ 
+    else {
       return false;
     }
   }
-  productSelect = (event:ChangeEvent<HTMLInputElement>, item:any):any =>{
-    if(event.currentTarget.checked){
-      this.state.product_item.some((e:any, index:number)=>{
-        e.data.some((data:any, i:number)=>{
+  productSelect = (event: ChangeEvent<HTMLInputElement>, item: any): any => {
+    if (event.currentTarget.checked) {
+      this.state.product_item.some((e: any, index: number) => {
+        e.data.some((data: any, i: number) => {
           debugger;
-          if(!this.check(e.name) && e.name == item){
-            let obj = {"name": e.name, data:[]};
+          if (!this.check(e.name) && e.name == item) {
+            let obj = { "name": e.name, data: [] };
             let arr = this.state.selected_product_item;
             arr.push(obj);
             this.setState({
-              selected_product_item : arr
+              selected_product_item: arr
             })
           }
-          if(e.name == item){
-            let obj = {"name": event.currentTarget.value};
+          if (e.name == item) {
+            let obj = { "name": event.currentTarget.value };
             let arr = this.state.selected_product_item;
-            if(this.state.selected_product_item[index].data.filter((checking:any) =>
-              checking.name == event.currentTarget.value).length == 0){
+            if (this.state.selected_product_item[index].data.filter((checking: any) =>
+              checking.name == event.currentTarget.value).length == 0) {
               arr[index].data.push(obj);
               this.setState({
                 selected_product_item: arr
@@ -213,11 +218,11 @@ class ProductConfiguration extends Component<{}, typeState> {
     }
   }
 
-  lineTypeChange = (event:ChangeEvent<HTMLSelectElement>) =>{
+  lineTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
     alert();
     this.setState({
       linetype: event.currentTarget.value
-    },()=>{
+    }, () => {
       console.log(this.state.linetype);
     })
   }
@@ -227,17 +232,17 @@ class ProductConfiguration extends Component<{}, typeState> {
     })
   }
 
-  confirmMachine = (event: MouseEvent<HTMLButtonElement>, count:number) => {
-    let obj = {name: this.state.checkedMachine.name, count: count};
+  confirmMachine = (event: MouseEvent<HTMLButtonElement>, count: number) => {
+    let obj = { name: this.state.checkedMachine.name, count: count };
     let arr = this.state.confirmedMachine;
     arr.push(obj);
     this.setState({
       confirmedMachine: arr
-    },()=>{
+    }, () => {
       console.log(this.state.confirmedMachine);
     })
     let counting = 0;
-    this.state.confirmedMachine.some((data:any, index:number)=>{
+    this.state.confirmedMachine.some((data: any, index: number) => {
       counting = counting + data.count;
     })
     this.setState({
@@ -250,128 +255,139 @@ class ProductConfiguration extends Component<{}, typeState> {
 
   selectMachine = (event: ChangeEvent<HTMLInputElement>) => {
     console.log(event.target.value, event.target.dataset.needlecount)
-    let obj = {name: event.target.value, needle_count: event.target.dataset.needlecount};
+    let obj = { name: event.target.value, needle_count: event.target.dataset.needlecount };
     this.setState({
       checkedMachine: obj
-    },()=>{
+    }, () => {
       console.log(this.state.checkedMachine);
     })
   }
 
-  machineCount = (event: ChangeEvent<HTMLInputElement>) =>{
+  machineCount = (event: ChangeEvent<HTMLInputElement>) => {
     this.setState({
       machineCount: parseInt(event.target.value) > 0 ? parseInt(event.target.value) : 0
     })
   }
 
-  showSummary = (event: MouseEvent<HTMLButtonElement>) =>{
+  showSummary = (event: MouseEvent<HTMLButtonElement>) => {
     this.setState({
       showsummary: !this.state.showsummary
     })
   }
 
   render(): JSX.Element {
+
+
     const state = this.state;
+
+
+    const LineTypeOptions = [
+      { value: 'Open', label: 'Open' },
+      { value: 'Reserved', label: 'Reserved' },
+
+
+    ]
+
+    const Material_type = [
+      { value: 'Natural', label: 'Natural' },
+      { value: 'Artificial', label: 'Artificial' },
+
+    ]
+
     return (
       <div className="content h-100">
         <div className="h-100 p-3">
-          <CustomSelect/>
+          <CustomSelect />
           <div className="h-100">
-              <div className="url-btn">
-                  
-              </div>
-              <div className="d-flex capacity h-100">
-                  <div className="sec1 h-100">
-                    <div className="mb-3">
-                      <Form.Control type="text" placeholder="Enter Line Number" onChange={this.line_no_change}/>
-                    </div>
-                    <div className="d-flex flex-column justify-content-between product-item-parent">
-                      <div className="product-item scroll d-flex">
-                        <div className="w-100">
-                          <h2 className="m-0 py-3">Select Product Item</h2>
-                            <PerfectScrollbar>
-                              <Accordion>
-                                {
-                                  state.product_item.map((product:any, i:number)=>{
-                                    return(
-                                      <Accordion.Item eventKey={'a'+i} className="mb-2" key={product.name+i}>
-                                        <Accordion.Header>{product.name}</Accordion.Header>
-                                        <Accordion.Body className="p-0">
-                                          <div className="dropdown active ms-3">
-                                            {
-                                              product.data.map((item:any, j:number)=>
-                                                <div className="py-2 px-4 wear" key={item.name+j}>
-                                                  <Form.Check.Input 
-                                                    type="checkbox" 
-                                                    id={item.name+j} 
-                                                    onChange={(e) => this.productSelect(e,product.name)} 
-                                                    value={item.name}
-                                                    hidden
-                                                  />
-                                                  <Form.Check.Label htmlFor={item.name+j} className="w-100 pe-3">
-                                                    <div className="d-flex justify-content-between">
-                                                      <p className="m-0">{item.name}</p>
-                                                      <span className="d-block"></span>
-                                                    </div>
-                                                  </Form.Check.Label>
-                                                </div>
-                                              )
-                                            }
+            <div className="url-btn">
+
+            </div>
+            <div className="d-flex capacity h-100">
+              <div className="sec1 h-100">
+                <div className="mb-3">
+                  <Form.Control type="text" placeholder="Enter Line Number" onChange={this.line_no_change} />
+                </div>
+                <div className="d-flex flex-column justify-content-between product-item-parent">
+                  <div className="product-item scroll d-flex">
+                    <div className="w-100">
+                      <h2 className="m-0 py-3">Select Product Item</h2>
+                      <PerfectScrollbar>
+                        <Accordion>
+                          {
+                            state.product_item.map((product: any, i: number) => {
+                              return (
+                                <Accordion.Item eventKey={'a' + i} className="mb-2" key={product.name + i}>
+                                  <Accordion.Header>{product.name}</Accordion.Header>
+                                  <Accordion.Body className="p-0">
+                                    <div className="dropdown active ms-3">
+                                      {
+                                        product.data.map((item: any, j: number) =>
+                                          <div className="py-2 px-4 wear" key={item.name + j}>
+                                            <Form.Check.Input
+                                              type="checkbox"
+                                              id={item.name + j}
+                                              onChange={(e) => this.productSelect(e, product.name)}
+                                              value={item.name}
+                                              hidden
+                                            />
+                                            <Form.Check.Label htmlFor={item.name + j} className="w-100 pe-3">
+                                              <div className="d-flex justify-content-between">
+                                                <p className="m-0">{item.name}</p>
+                                                <span className="d-block"></span>
+                                              </div>
+                                            </Form.Check.Label>
                                           </div>
-                                        </Accordion.Body>
-                                      </Accordion.Item>
-                                    )
-                                  })
-                                }
-                              </Accordion>
-                            </PerfectScrollbar>
-                        </div>
+                                        )
+                                      }
+                                    </div>
+                                  </Accordion.Body>
+                                </Accordion.Item>
+                              )
+                            })
+                          }
+                        </Accordion>
+                      </PerfectScrollbar>
+                    </div>
+                  </div>
+
+                  <div className="product-item down-content">
+                    <h2 className="m-0 py-3">Line Definition</h2>
+                    <div>
+                      <div className=" mb-3">
+                      <Select options={LineTypeOptions} width='200px' position='top' placeholder='Line type'></Select>
                       </div>
 
-                      <div className="product-item down-content">
-                        <h2 className="m-0 py-3">Line Definition</h2>
-                        <div>
-                          <div className="custom-select mb-3">
-                            <Form.Select defaultValue="Choose..." onChange={this.lineTypeChange}>
-                              <option value="">Line type</option>
-                              <option value="open">Open</option>
-                              <option value="reserved">Reserved</option>
-                            </Form.Select>
-                          </div>
-                          <div className="custom-select mb-2">
-                            <Form.Select defaultValue="Choose..." onChange={this.materialTypeChange}>
-                              <option value="">Material type</option>
-                              <option value="Natural">Natural</option>
-                              <option value="Artificial">Artificial</option>
-                            </Form.Select>
-                          </div>
-                          {/* <Select
+                      <div className=" mb-2">
+                      <Select options={Material_type} width='200px' position='top' placeholder='Material type'></Select>
+                      </div>
+
+                      {/* <Select
                             styles={customStyles}
                             options={state.selectOptionline_number} 
                           /> */}
-                        </div>
-                      </div>
                     </div>
                   </div>
-                  <div className="sec2 h-100">
-                    <div className="product-machinery h-100">
-                      <div className="h-100">
-                        <h2 className="m-0 py-3">Select the machinery</h2>
-                        <div className="scroll pb-3">
-                          <PerfectScrollbar>
-                            <div className="d-flex flex-wrap pe-4">
-                              {state.machinery.map((name: any, i:number) =>
-                              <div className="item text-center" key={'check'+i}>
-                                <Form.Check.Input
-                                  type="radio"
-                                  id={'machine'+i}
-                                  name="machine"
-                                  value={name.name}
-                                  data-needlecount = {name.needle_count}
-                                  hidden
-                                  onChange={this.selectMachine}
-                                />
-                                <Form.Check.Label htmlFor={'machine'+i}>
+                </div>
+              </div>
+              <div className="sec2 h-100">
+                <div className="product-machinery h-100">
+                  <div className="h-100">
+                    <h2 className="m-0 py-3">Select the machinery</h2>
+                    <div className="scroll pb-3">
+                      <PerfectScrollbar>
+                        <div className="d-flex flex-wrap pe-4">
+                          {state.machinery.map((name: any, i: number) =>
+                            <div className="item text-center" key={'check' + i}>
+                              <Form.Check.Input
+                                type="radio"
+                                id={'machine' + i}
+                                name="machine"
+                                value={name.name}
+                                data-needlecount={name.needle_count}
+                                hidden
+                                onChange={this.selectMachine}
+                              />
+                              <Form.Check.Label htmlFor={'machine' + i}>
                                 <div className="">
                                   <div className="d-flex">
                                     <div className="image">
@@ -388,86 +404,86 @@ class ProductConfiguration extends Component<{}, typeState> {
                                   </div>
                                 </div>
                               </Form.Check.Label>
-                              </div>
-                              )}
                             </div>
-                          </PerfectScrollbar>
+                          )}
                         </div>
-                        <div className="selected-content d-flex justify-content-center align-items-center">
-                          <div className="d-flex px-3 py-2 align-items-center box">
-                            <p className="m-0">{state.checkedMachine.name?state.checkedMachine.name:'Machine' }</p>
-                            <Form.Control type="number" placeholder="Enter no of machines" onChange={this.machineCount}/>
-                            <span className="divider"></span>
-                            <p className="machine-count m-0">{state.checkedMachine.needle_count}</p>
-                          </div>
-                          <div className="ms-3">
-                            <Button 
-                              className="active-save-btn" 
-                              disabled={state.checkedMachine.name&& state.machineCount ? false : true} 
-                              onClick={(e)=>this.confirmMachine(e, state.machineCount)}>
-                              Save
-                            </Button>
-                          </div>
-                        </div>
+                      </PerfectScrollbar>
+                    </div>
+                    <div className="selected-content d-flex justify-content-center align-items-center">
+                      <div className="d-flex px-3 py-2 align-items-center box">
+                        <p className="m-0">{state.checkedMachine.name ? state.checkedMachine.name : 'Machine'}</p>
+                        <Form.Control type="number" placeholder="Enter no of machines" onChange={this.machineCount} />
+                        <span className="divider"></span>
+                        <p className="machine-count m-0">{state.checkedMachine.needle_count}</p>
+                      </div>
+                      <div className="ms-3">
+                        <Button
+                          className="active-save-btn"
+                          disabled={state.checkedMachine.name && state.machineCount ? false : true}
+                          onClick={(e) => this.confirmMachine(e, state.machineCount)}>
+                          Save
+                        </Button>
                       </div>
                     </div>
                   </div>
-                  <div className="sec3 h-100">
-                    <div className="add-machine p-4 h-100 d-flex flex-column justify-content-between">
-                    { state.line_number=='' ?
-                      <div className="d-flex justify-content-center align-items-center h-100">
-                        <p>
-                          There's no Line Definition
-                        </p>
-                      </div> :
-                      <>
-                        <div>
-                          { state.line_number !== "" ?
-                            <h2>{state.line_number}</h2> : ' '
+                </div>
+              </div>
+              <div className="sec3 h-100">
+                <div className="add-machine p-4 h-100 d-flex flex-column justify-content-between">
+                  {state.line_number == '' ?
+                    <div className="d-flex justify-content-center align-items-center h-100">
+                      <p>
+                        There's no Line Definition
+                      </p>
+                    </div> :
+                    <>
+                      <div>
+                        {state.line_number !== "" ?
+                          <h2>{state.line_number}</h2> : ' '
+                        }
+                        <ul className="p-0 m-0">
+                          {
+                            state.selected_product_item.map((item: any, index: number) =>
+                              <li className="add-machine-product-item py-2">
+                                <div className="main d-flex align-items-center">
+                                  <BsChevronRight />
+                                  <p className="m-0 ps-2">{item.name}</p>
+                                </div>
+                                <div className="sub ps-4 d-flex align-items-center">
+                                  <BsChevronRight />
+                                  <div className="d-flex ps-2">
+                                    {
+                                      item.data.map((subitem: any, i: number) =>
+                                        <span>{subitem.name}</span>
+                                      )
+                                    }
+                                  </div>
+                                </div>
+                              </li>
+                            )
                           }
-                          <ul className="p-0 m-0">
+                          <li className="add-machine-line-type py-2">
                             {
-                              state.selected_product_item.map((item:any, index:number)=>
-                                <li className="add-machine-product-item py-2">
-                                  <div className="main d-flex align-items-center">
-                                    <BsChevronRight/>
-                                    <p className="m-0 ps-2">{item.name}</p>
-                                  </div>
-                                  <div className="sub ps-4 d-flex align-items-center">
-                                    <BsChevronRight/>
-                                    <div className="d-flex ps-2">
-                                      {
-                                        item.data.map((subitem:any, i:number)=>
-                                          <span>{subitem.name}</span>
-                                        )
-                                      }
-                                    </div>
-                                  </div>
-                                </li>
-                              )
-                            }
-                            <li className="add-machine-line-type py-2">
-                              { 
-                                state.linetype ?
+                              state.linetype ?
                                 <div className="main d-flex align-items-center">
                                   <BsChevronRight />
                                   <p className="m-0 ps-2">Open</p>
-                                </div>:
+                                </div> :
                                 <></>
-                              }
-                              { 
-                                state.materialtype ?
+                            }
+                            {
+                              state.materialtype ?
                                 <div className="main d-flex align-items-center">
                                   <BsChevronRight />
                                   <p className="m-0 ps-2">Natural</p>
                                 </div> :
                                 <></>
-                              }
-                            </li>
-                            
-                            <li className="add-machine-type py-2">
+                            }
+                          </li>
+
+                          <li className="add-machine-type py-2">
                             {
-                              state.confirmedMachine.map((item:any, i:number)=>
+                              state.confirmedMachine.map((item: any, i: number) =>
                                 <div className="main d-flex align-items-center justify-content-between">
                                   <div className="d-flex align-items-center">
                                     <BsChevronRight />
@@ -477,57 +493,57 @@ class ProductConfiguration extends Component<{}, typeState> {
                                 </div>
                               )
                             }
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="total-machine">
+                        {state.totalmachinecount > 0 ?
+                          <ul className="m-0 p-0 mb-4">
+                            <li className="">
+                              <div className="main d-flex justify-content-between align-items-center">
+                                <p className="m-0">Total Machines Selected</p>
+                                <p className="m-0">{state.totalmachinecount}</p>
+                              </div>
                             </li>
-                          </ul>
-                        </div>
-                        <div className="total-machine">
-                          { state.totalmachinecount > 0 ? 
-                            <ul className="m-0 p-0 mb-4">
-                              <li className="">
-                                <div className="main d-flex justify-content-between align-items-center">
-                                  <p className="m-0">Total Machines Selected</p>
-                                  <p className="m-0">{state.totalmachinecount}</p>
-                                </div>
-                              </li>
-                            </ul> :
-                            <></>
+                          </ul> :
+                          <></>
+                        }
+                        <div className="d-flex justify-content-center">
+                          {
+                            !state.showsummary ?
+                              <>
+                                <Button
+                                  className="active-btn"
+                                  disabled={state.confirmedMachine.length > 0 ? false : true}
+                                  onClick={this.showSummary}>
+                                  Add Machine
+                                </Button>
+                                <Button className="active-btn-save ms-3" disabled={state.confirmedMachine.length > 0 ? false : true}>
+                                  Save
+                                </Button>
+                              </> :
+                              <>
+                                <Button
+                                  className="active-btn"
+                                  disabled={state.confirmedMachine.length > 0 ? false : true}
+                                >
+                                  Add Line
+                                </Button>
+                                <Button
+                                  className="active-btn ms-3"
+                                  disabled={state.confirmedMachine.length > 0 ? false : true}
+                                  onClick={this.handleShow}>
+                                  Summary
+                                </Button>
+                              </>
                           }
-                          <div className="d-flex justify-content-center">
-                            {
-                              !state.showsummary ? 
-                                <>
-                                  <Button 
-                                    className="active-btn" 
-                                    disabled={state.confirmedMachine.length > 0 ? false : true}
-                                    onClick={this.showSummary}>
-                                    Add Machine
-                                  </Button>
-                                  <Button className="active-btn-save ms-3" disabled={state.confirmedMachine.length > 0 ? false : true}>
-                                    Save
-                                  </Button>
-                                </> :
-                                <>
-                                  <Button 
-                                    className="active-btn" 
-                                    disabled={state.confirmedMachine.length > 0 ? false : true}
-                                    >
-                                    Add Line
-                                  </Button>
-                                  <Button 
-                                    className="active-btn ms-3" 
-                                    disabled={state.confirmedMachine.length > 0 ? false : true}
-                                    onClick={this.handleShow}>
-                                    Summary
-                                  </Button>
-                                </>
-                            }
-                          </div>
                         </div>
-                      </>
-                    }    
-                    </div>
-                  </div>
+                      </div>
+                    </>
+                  }
+                </div>
               </div>
+            </div>
           </div>
           <Modal
             show={state.showModel}
@@ -543,7 +559,7 @@ class ProductConfiguration extends Component<{}, typeState> {
               <div className="header_discription">
                 <RiInformationFill className="info-icon" />
                 <p>
-                You have successfully completed your product configuration for garments. You have spinning weaving and knitting to complete.
+                  You have successfully completed your product configuration for garments. You have spinning weaving and knitting to complete.
                 </p>
               </div>
               <div className="row">
@@ -558,43 +574,17 @@ class ProductConfiguration extends Component<{}, typeState> {
                       <div className="col-md-12">
                         <div className="linenum1 back-color">
                           <ul>
-                            <h3>Line number 1</h3>                        
-                              <AiOutlineRight />
-                              <span>Innerwear</span>
-                              <li className="ml-5">
-                                <AiOutlineRight />
-                                <span className="text-muted">Knickers | Panties</span>
-                              </li>
-                          </ul>
-                          <ul className="totalcal">                        
-                              <AiOutlineRight /><span>Open</span>
-                              <AiOutlineRight className="ml-30"/><span>Natural</span>
-                              <li className="ml-5 w-40 active">
-                                <AiOutlineRight />
-                                <span>Single Needle<span className="float-right">30</span></span>
-                              </li>
-                              <li className="ml-5 w-40">
-                                <AiOutlineRight />
-                                <span>Double Needle<span className="float-right">30</span></span>
-                              </li>
-                              
-                          </ul>
-                          <div className="total"><p className="w-40">Total Machines Selected<span className="float-right">30</span>
-                          </p></div>
-                        </div>
-                        <div className="linenum1">
-                        <ul>
-                          <h3>Line number 1</h3>                        
+                            <h3>Line number 1</h3>
                             <AiOutlineRight />
                             <span>Innerwear</span>
                             <li className="ml-5">
                               <AiOutlineRight />
                               <span className="text-muted">Knickers | Panties</span>
                             </li>
-                        </ul>
-                        <ul className="totalcal">                        
+                          </ul>
+                          <ul className="totalcal">
                             <AiOutlineRight /><span>Open</span>
-                            <AiOutlineRight className="ml-30"/><span>Natural</span>
+                            <AiOutlineRight className="ml-30" /><span>Natural</span>
                             <li className="ml-5 w-40 active">
                               <AiOutlineRight />
                               <span>Single Needle<span className="float-right">30</span></span>
@@ -603,11 +593,37 @@ class ProductConfiguration extends Component<{}, typeState> {
                               <AiOutlineRight />
                               <span>Double Needle<span className="float-right">30</span></span>
                             </li>
-                            
-                        </ul>
-                        <div className="total"><p className="w-40">Total Machines Selected<span className="float-right">30</span>
-                        </p></div>
-                      </div>
+
+                          </ul>
+                          <div className="total"><p className="w-40">Total Machines Selected<span className="float-right">30</span>
+                          </p></div>
+                        </div>
+                        <div className="linenum1">
+                          <ul>
+                            <h3>Line number 1</h3>
+                            <AiOutlineRight />
+                            <span>Innerwear</span>
+                            <li className="ml-5">
+                              <AiOutlineRight />
+                              <span className="text-muted">Knickers | Panties</span>
+                            </li>
+                          </ul>
+                          <ul className="totalcal">
+                            <AiOutlineRight /><span>Open</span>
+                            <AiOutlineRight className="ml-30" /><span>Natural</span>
+                            <li className="ml-5 w-40 active">
+                              <AiOutlineRight />
+                              <span>Single Needle<span className="float-right">30</span></span>
+                            </li>
+                            <li className="ml-5 w-40">
+                              <AiOutlineRight />
+                              <span>Double Needle<span className="float-right">30</span></span>
+                            </li>
+
+                          </ul>
+                          <div className="total"><p className="w-40">Total Machines Selected<span className="float-right">30</span>
+                          </p></div>
+                        </div>
                       </div>
                     </div>
                   </PerfectScrollbar>
