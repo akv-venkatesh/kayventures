@@ -12,7 +12,6 @@ import { useDispatch, useSelector, connect } from "react-redux";
 
 interface typeState {
   showModal: boolean,
-  formsubmited:boolean
 }
 interface MyFormValues {
   organization?: string,
@@ -34,25 +33,7 @@ class ManufacturerPrimaryDetails extends Component<typeProps, typeState> {
     super(props);
     this.state = {
       showModal: false,
-      formsubmited:false
     }
-
-    console.log(props);
-    // if(this.props.businesscategory.primary_details_status){
-
-    // }
-  }
-  componentDidMount() {
-
-    if(this.props.businesscategory.primary_details_status){
-alert("work");
-    }
-}
-  handleShow = () => {
-  
-    this.setState({
-      showModal: true
-    })
   }
   handleHide = () => {
     this.setState({
@@ -71,12 +52,6 @@ alert("work");
   };
 
   render(): JSX.Element {
-
-//  if(formsubmited){
-
-//     }
-
-
     console.log(this.props);
     return (
       <>
@@ -115,7 +90,6 @@ alert("work");
               onSubmit={(values, actions) => {
                 this.props.setPrimaryDetails(values);
                 console.log("form props",this.props);
-                this.handleShow();
 
 
                 actions.setSubmitting(false);
@@ -224,7 +198,7 @@ alert("work");
                     </div>
                   </div>
                   <div className="primary_form_btn" style={{ display: "flex", justifyContent: "center" }}>
-                    <button type="submit" onClick={() => this.handleShow} disabled={isSubmitting}>
+                    <button type="submit" disabled={isSubmitting}>
                       Submit
                     </button >
                   </div>
@@ -238,7 +212,7 @@ alert("work");
         </div>
 
         <Modal
-          show={this.state.showModal}
+          show={this.props.businesscategory.primary_details_status}
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered

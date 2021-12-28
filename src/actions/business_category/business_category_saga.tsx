@@ -100,14 +100,12 @@ function* setPrimaryDetails(action: any) {
       case 200:
         yield put(setPrimaryDetailsSuccess(true));
         localStorage.setItem("primary_user_details", JSON.stringify(primarydetails));
-
         console.log("primary details done")
-
+      
     }
   } catch (error) {
     const data = error;
-    console.log(data);
-    yield put(setPrimaryDetailsSuccess(data));
+    yield put(setPrimaryDetailsSuccess(false));
   }
 }
 
