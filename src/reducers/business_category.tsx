@@ -3,7 +3,8 @@ var initialState = {
   category:"",
   response: null,
   business_category_single: '',
-  login_details:""
+  login_details:"",
+  Types:['2','3']
 }
 
 interface actiontype {
@@ -18,6 +19,7 @@ const BHomeReducer = (state=initialState, action:actiontype)=> {
     case 'GET_BUSINESS_CATEGORY':
     case 'SET_BUSINESS_CATEGORY':
     case 'LOGIN':
+    case'SET_PRIMARY_DETAILS':
     case 'SET_BUSINESS_CATEGORY_SUCCESS':
       return {
         ...state,
@@ -33,6 +35,12 @@ const BHomeReducer = (state=initialState, action:actiontype)=> {
         ...state,
         login_details: action.payload
       };
+      case 'TYPES':
+        return {
+          ...state,
+          Types: action.payload
+        };
+      
     default:
       return state;
   }

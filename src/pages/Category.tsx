@@ -10,7 +10,7 @@ import {
 } from "../component/buttons/button";
 import buttonarrowright from "../assets/icons/arrows/buttonarrowright.svg";
 
-import { setBusinessCategory, getBusinessCategory } from "../actions/business_category/business_category";
+import { setBusinessCategory, getBusinessCategory,setBusinessCategorySuccess } from "../actions/business_category/business_category";
 import { useDispatch, useSelector, connect } from "react-redux";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar";
@@ -90,7 +90,10 @@ class Category extends Component<typeProps, typeState> {
                             key={'category' + data.id}
                             htmlFor={'category' + data.id}
                             className="category_item "
-                            style={{ backgroundImage: `url(${data.imageUrl})` }}
+                            style={{ backgroundImage:
+                               `url(https://www.pannaiyarbiriyani.com/kayventures/demo/static/media/1.4f4bf3e1.png)` 
+                              //  `url(${data.imageUrl})` 
+                            }}
                           >
                             <div className="category_item_text">
                               <h3>{data.name}</h3>
@@ -147,7 +150,7 @@ const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
     setBusinessCategory: (category: number) => {
       console.log(category);
-      dispatch(setBusinessCategory(category));
+      dispatch(setBusinessCategorySuccess(category));
     },
     getBusinessCategory: () => {
       dispatch(getBusinessCategory('all'));

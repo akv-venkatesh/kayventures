@@ -9,7 +9,8 @@ body {
 }
 
 .bg-img-sec {
-  background-image: url(../assets/Manufacturer-BG1\ 1.jpg);
+  background-image: url(../assets/Manufacturer-BG1.jpg);
+  /* background-image: url(https://image.freepik.com/free-photo/hey-give-me-high-five-friendly-joyful-charismatic-girlfriend-with-blond-afro-haircut-winter-stylish-sweater-raising-palm-greet-friend-wave-smiling-joyfully-cute-camera-white-wall_176420-35245.jpg); */
   /* background-size: 100vh; */
   background-position: center;
   background-size: cover;

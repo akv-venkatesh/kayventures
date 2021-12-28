@@ -1,13 +1,16 @@
 
 
 .bg-img-sec {
-  background-image: url(../assets/Manufacturer-BG1\ 1.jpg);
+  background-image: url(../assets/Manufacturer-BG2.jpg);
   /* background-size: 100vh; */
-  background-position: center;
+  /* background-position: right; */
   background-size: cover;
   height: 100vh;
   align-items: center;
   justify-content: center;
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+  background-color: #f9f9f9;
 }
 
 .header-section {

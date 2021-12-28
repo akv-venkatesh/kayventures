@@ -1,6 +1,7 @@
 {
   "name": "my-typescript",
   "version": "0.1.0",
+
   "private": true,
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.16",
