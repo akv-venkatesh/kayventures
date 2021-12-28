@@ -87,6 +87,13 @@
   
     color: #0062d7;
     outline: none;
+    -moz-appearance: text;
+  }
+
+  .adminreg_details input::-webkit-outer-spin-button,
+  .adminreg_details input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
   
   .adminreg_details input::placeholder {
