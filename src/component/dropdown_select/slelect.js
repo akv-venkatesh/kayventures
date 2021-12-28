@@ -21,6 +21,10 @@ class slelect extends Component {
     this.setState({isOpen:false,menuOpened:false})
   }
 
+  handleChange = (e)=>{
+    this.props.onChange(e);
+  }
+
   render() {
     const {isOpen} = this.state;
 
@@ -109,7 +113,16 @@ class slelect extends Component {
  
     return (
       <div style={{width:this.props.width}}>
-        <Select {...this.props} isOpen={isOpen} className='' onMenuOpen={this.onMenuOpen}  onMenuClose={this.onMenuClose} styles={customStyles} menuPlacement="auto"  onChange={value => console.log(value)} />
+        <Select 
+          {...this.props} 
+          isOpen={isOpen} 
+          className='' 
+          onMenuOpen={this.onMenuOpen}  
+          onMenuClose={this.onMenuClose} 
+          styles={customStyles} 
+          menuPlacement="auto"  
+          onChange={this.handleChange} 
+        />
       </div>
     );
   }

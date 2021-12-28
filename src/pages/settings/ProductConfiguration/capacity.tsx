@@ -17,8 +17,10 @@ import { AiOutlineRight } from "react-icons/ai";
 // import Select from 'react-select';
 
 import Select from '../../../component/dropdown_select/slelect';
-
-
+import $ from 'jquery';
+interface typeProps{
+  value:string,
+}
 interface typeState {
   selectedOption: string;
   line_number: string;
@@ -34,7 +36,7 @@ interface typeState {
   totalmachinecount: number;
   showsummary: boolean;
   showModel: boolean;
-  selectOptionline_number: any;
+  disable_input: boolean;
 }
 
 const customStyles = {
@@ -56,16 +58,11 @@ const customStyles = {
   }
 }
 
-class ProductConfiguration extends Component<{}, typeState> {
+class ProductConfiguration extends Component<typeProps, typeState> {
   constructor(props: any) {
     super(props);
     this.state = {
       showModel: false,
-      selectOptionline_number: [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
-      ],
       selectedOption: "",
       line_number: '',
       product_item: [
@@ -153,6 +150,7 @@ class ProductConfiguration extends Component<{}, typeState> {
       machineCount: 0,
       totalmachinecount: 0,
       showsummary: false,
+      disable_input: false,
     };
   }
 
@@ -171,7 +169,7 @@ class ProductConfiguration extends Component<{}, typeState> {
   }
 
   line_no_change = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.currentTarget.value) {
+    if (e.currentTarget.value || e.currentTarget.value == "") {
       this.setState({
         line_number: e.currentTarget.value
       })
@@ -192,7 +190,6 @@ class ProductConfiguration extends Component<{}, typeState> {
     if (event.currentTarget.checked) {
       this.state.product_item.some((e: any, index: number) => {
         e.data.some((data: any, i: number) => {
-          debugger;
           if (!this.check(e.name) && e.name == item) {
             let obj = { "name": e.name, data: [] };
             let arr = this.state.selected_product_item;
@@ -216,19 +213,54 @@ class ProductConfiguration extends Component<{}, typeState> {
         })
       })
     }
+    else{
+      this.state.product_item.some((e: any, index: number) => {
+        e.data.some((data: any, i: number) => {
+          if (data.name == event.currentTarget.value) {
+            let obj = this.state.selected_product_item;
+            let arr = this.state.selected_product_item[index].data;
+            arr = arr.filter((el:any) => data.name !== el.name);
+            obj[index].data = arr;
+            this.setState({
+              selected_product_item: obj
+            })
+            if (arr.length == 0) {
+              let arrs = this.state.selected_product_item;
+              arrs = arrs.filter((el:any) => e.name !== el.name);
+              this.setState({
+                selected_product_item: arrs
+              })
+            }
+          }
+        })
+      })
+
+      // let arr = this.state.selectedproducttype;
+      // arr = arr.filter((item:any) => item.name !== e.currentTarget.value);
+      // this.setState({
+      //     selectedproducttype: arr
+      // },()=>{
+      //     console.log(this.state.selectedproducttype)
+      // })
+      // if(arr.length == 0){
+      //   this.setState({
+      //     savebtn: true,
+      //     removebtn: true,
+      //   })
+      // }
+    }
   }
 
   lineTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    alert();
+    let value:any = event;
     this.setState({
-      linetype: event.currentTarget.value
-    }, () => {
-      console.log(this.state.linetype);
+      linetype: value.value
     })
   }
   materialTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    let value:any = event;
     this.setState({
-      materialtype: event.currentTarget.value
+      materialtype: value.value
     })
   }
 
@@ -250,6 +282,17 @@ class ProductConfiguration extends Component<{}, typeState> {
     })
     this.setState({
       checkedMachine: [],
+    })
+    this.setState({
+      disable_input: true
+    })
+    $('input[type=number]').val('');
+    $('.sec2 .product-machinery .item input[type=radio]').prop("checked", false);
+  }
+
+  addMachine = (event:MouseEvent<HTMLButtonElement>) =>{
+    this.setState({
+      disable_input: false,
     })
   }
 
@@ -282,15 +325,15 @@ class ProductConfiguration extends Component<{}, typeState> {
 
 
     const LineTypeOptions = [
-      { value: 'Open', label: 'Open' },
-      { value: 'Reserved', label: 'Reserved' },
+      { value: 'Open', label: 'Open', disabled: state.disable_input},
+      { value: 'Reserved', label: 'Reserved', disabled: state.disable_input},
 
 
     ]
 
     const Material_type = [
-      { value: 'Natural', label: 'Natural' },
-      { value: 'Artificial', label: 'Artificial' },
+      { value: 'Natural', label: 'Natural', disabled: state.disable_input},
+      { value: 'Artificial', label: 'Artificial',  disabled: state.disable_input},
 
     ]
 
@@ -305,7 +348,12 @@ class ProductConfiguration extends Component<{}, typeState> {
             <div className="d-flex capacity h-100">
               <div className="sec1 h-100">
                 <div className="mb-3">
-                  <Form.Control type="text" placeholder="Enter Line Number" onChange={this.line_no_change} />
+                  <Form.Control 
+                    type="text" 
+                    placeholder="Enter Line Number" 
+                    onChange={this.line_no_change} 
+                    disabled={state.disable_input}
+                  />
                 </div>
                 <div className="d-flex flex-column justify-content-between product-item-parent">
                   <div className="product-item scroll d-flex">
@@ -329,6 +377,7 @@ class ProductConfiguration extends Component<{}, typeState> {
                                               onChange={(e) => this.productSelect(e, product.name)}
                                               value={item.name}
                                               hidden
+                                              disabled={state.disable_input}
                                             />
                                             <Form.Check.Label htmlFor={item.name + j} className="w-100 pe-3">
                                               <div className="d-flex justify-content-between">
@@ -354,17 +403,29 @@ class ProductConfiguration extends Component<{}, typeState> {
                     <h2 className="m-0 py-3">Line Definition</h2>
                     <div>
                       <div className=" mb-3">
-                      <Select options={LineTypeOptions} width='200px' position='top' placeholder='Line type'></Select>
+                        <Select 
+                          options={LineTypeOptions} 
+                          width='200px' 
+                          position='top' 
+                          placeholder='Line type'
+                          onChange={this.lineTypeChange}
+                          isOptionDisabled={(option:any) => option.disabled}
+                        >
+                        </Select>
                       </div>
 
                       <div className=" mb-2">
-                      <Select options={Material_type} width='200px' position='top' placeholder='Material type'></Select>
+                        <Select 
+                          options={Material_type} 
+                          width='200px' 
+                          position='top'
+                          laceholder='Material type'
+                          onChange={this.materialTypeChange}
+                          disabled={state.disable_input}
+                          isOptionDisabled={(option:any) => option.disabled}
+                        >
+                        </Select>
                       </div>
-
-                      {/* <Select
-                            styles={customStyles}
-                            options={state.selectOptionline_number} 
-                          /> */}
                     </div>
                   </div>
                 </div>
@@ -385,6 +446,7 @@ class ProductConfiguration extends Component<{}, typeState> {
                                 value={name.name}
                                 data-needlecount={name.needle_count}
                                 hidden
+                                disabled={state.disable_input}
                                 onChange={this.selectMachine}
                               />
                               <Form.Check.Label htmlFor={'machine' + i}>
@@ -412,14 +474,19 @@ class ProductConfiguration extends Component<{}, typeState> {
                     <div className="selected-content d-flex justify-content-center align-items-center">
                       <div className="d-flex px-3 py-2 align-items-center box">
                         <p className="m-0">{state.checkedMachine.name ? state.checkedMachine.name : 'Machine'}</p>
-                        <Form.Control type="number" placeholder="Enter no of machines" onChange={this.machineCount} />
+                        <Form.Control 
+                          type="number" 
+                          placeholder="Enter no of machines" 
+                          onChange={this.machineCount} 
+                          disabled={state.disable_input}
+                        />
                         <span className="divider"></span>
                         <p className="machine-count m-0">{state.checkedMachine.needle_count}</p>
                       </div>
                       <div className="ms-3">
                         <Button
                           className="active-save-btn"
-                          disabled={state.checkedMachine.name && state.machineCount ? false : true}
+                          disabled={state.checkedMachine.name && state.machineCount && state.line_number && state.linetype && state.materialtype && state.selected_product_item.length !== 0 ? false : true}
                           onClick={(e) => this.confirmMachine(e, state.machineCount)}>
                           Save
                         </Button>
@@ -467,7 +534,7 @@ class ProductConfiguration extends Component<{}, typeState> {
                               state.linetype ?
                                 <div className="main d-flex align-items-center">
                                   <BsChevronRight />
-                                  <p className="m-0 ps-2">Open</p>
+                                  <p className="m-0 ps-2">{state.linetype}</p>
                                 </div> :
                                 <></>
                             }
@@ -475,7 +542,7 @@ class ProductConfiguration extends Component<{}, typeState> {
                               state.materialtype ?
                                 <div className="main d-flex align-items-center">
                                   <BsChevronRight />
-                                  <p className="m-0 ps-2">Natural</p>
+                                  <p className="m-0 ps-2">{state.materialtype}</p>
                                 </div> :
                                 <></>
                             }
@@ -515,10 +582,15 @@ class ProductConfiguration extends Component<{}, typeState> {
                                 <Button
                                   className="active-btn"
                                   disabled={state.confirmedMachine.length > 0 ? false : true}
-                                  onClick={this.showSummary}>
+                                  onClick={this.addMachine}
+                                  >
                                   Add Machine
                                 </Button>
-                                <Button className="active-btn-save ms-3" disabled={state.confirmedMachine.length > 0 ? false : true}>
+                                <Button 
+                                  className="active-btn-save ms-3" 
+                                  disabled={state.confirmedMachine.length > 0 ? false : true}
+                                  onClick={this.showSummary}
+                                  >
                                   Save
                                 </Button>
                               </> :
