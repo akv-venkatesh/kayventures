@@ -10,7 +10,7 @@ import {
 } from "../component/buttons/button";
 import buttonarrowright from "../assets/icons/arrows/buttonarrowright.svg";
 
-import { setBusinessCategory, getBusinessCategory,setBusinessCategorySuccess } from "../actions/business_category/business_category";
+import { setBusCategory, getBusinessCategory } from "../actions/business_category/business_category";
 import { useDispatch, useSelector, connect } from "react-redux";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar";
@@ -28,7 +28,7 @@ interface typeState {
 }
 interface typeProps {
   getBusinessCategory: () => void;
-  setBusinessCategory: (arg: string) => void;
+  setBusCategory: (arg: string) => void;
 }
 class Category extends Component<typeProps, typeState> {
   constructor(props: any) {
@@ -59,7 +59,7 @@ class Category extends Component<typeProps, typeState> {
       this.setState({ Visibility: true });
     }
     this.setState({ selectedOption: e.currentTarget.value });
-    this.props.setBusinessCategory(e.currentTarget.value);
+    this.props.setBusCategory(e.currentTarget.value);
   };
 
   setCategory = (e: any) => {
@@ -71,7 +71,7 @@ class Category extends Component<typeProps, typeState> {
 
   render(): JSX.Element {
     if (this.state.gettypes == true) {
-      localStorage.setItem("business_category_types", JSON.stringify(this.state.categoryList));
+      localStorage.setItem("business_category", JSON.stringify(this.state.categoryList));
       return <Navigate to="/types" state={this.state.categoryList} />;
     }
     return (
@@ -150,9 +150,11 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    setBusinessCategory: (category: number) => {
+    setBusCategory: (category: number) => {
       console.log(category);
-      dispatch(setBusinessCategorySuccess(category));
+      dispatch(setBusCategory(category));
+    localStorage.setItem("business_category_id",JSON.stringify(category));
+
     },
     getBusinessCategory: () => {
       dispatch(getBusinessCategory('all'));

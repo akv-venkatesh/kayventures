@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import store from "../store/store";
-import { setBusinessCategory, getBusinessCategory, setTypes } from "../actions/business_category/business_category";
+import {setTypes } from "../actions/business_category/business_category";
 import { parse } from "path";
 
 interface typeState {
@@ -38,22 +38,17 @@ class ManufacturerTypes extends Component<typeProps, typeState> {
       types: props,
       subcategory: []
     }
- 
+
   }
   componentDidMount() {
-
-
-
-  }
-
-  handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+}
+handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 
     this.setState({ selectedOption: e.target.value });
     let newArray = [...this.state.subcategory, e.target.id];
     if (this.state.subcategory.includes(e.target.id)) {
       newArray = newArray.filter(day => day !== e.target.id);
     }
-
     if (newArray.length > 0) {
       this.setState({ visibility: true });
     } else {
@@ -62,16 +57,18 @@ class ManufacturerTypes extends Component<typeProps, typeState> {
     this.setState({
       subcategory: newArray
     });
-
-    this.props.setTypes(newArray);
-    // localStorage.setItem("business_category", this.state.types.businesscategory.business_category[parseInt(this.state.types.businesscategory.business_category_single) - 1].name);
+    let result = newArray;
+    this.props.setTypes(result);
+    localStorage.setItem("business_category_types", JSON.stringify(result));
   };
 
 
   render(): JSX.Element {
-    let types: any = localStorage.getItem("business_category_types");
+
+    let types: any = localStorage.getItem("business_category");
     let type = JSON.parse(types);
     // console.log(type.business_category[0]);
+    localStorage.setItem("business_category_name", type.business_category[parseInt(type.business_category_single) - 1].name);
     return (
       <>
         <div className="Types_category">
@@ -91,8 +88,8 @@ class ManufacturerTypes extends Component<typeProps, typeState> {
                           className="m_category_item m_category_item_img1"
                         >
                           <div className="m_category_item_text">
-                            <h3>{type.business_category[0].name}</h3>
-                            <p>{type.business_category[0].description}</p>
+                            <h3>{type.business_category[parseInt(type.business_category_single) - 1].name}</h3>
+                            <p>{type.business_category[parseInt(type.business_category_single) - 1].description}</p>
                           </div>
                           <div className="m_category_item_radio">
                             <input
@@ -113,7 +110,9 @@ class ManufacturerTypes extends Component<typeProps, typeState> {
 
                           Object.entries(type).length !== 0 ? (
                             type.business_category[parseInt(type.business_category_single) - 1].children.map((data: any, index: number) => {
+
                               if (data.id !== 1) {
+
                                 return (
                                   <label htmlFor={data.id} key={data.id} className="Types_category_item ">
                                     <img src={bag} />
