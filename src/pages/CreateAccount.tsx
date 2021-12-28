@@ -140,8 +140,8 @@ class CreateAccount extends Component<typeprops, typestates > {
                   <div className="validation-error">{errors.phone && touched.phone && errors.phone}</div>
                 </div>
                 <div className="form-check pt-3 remember">
-                  <Field type="checkbox" name="rememberme" value="1" className="form-check-input" id="rememberme"/>
-							    <label className="form-check-label" htmlFor="rememberme">Remember Me</label>
+                  {/* <Field type="checkbox" name="rememberme" value="1" className="form-check-input" id="rememberme"/>
+							    <label className="form-check-label" htmlFor="rememberme">Remember Me</label> */}
                 </div>
                 <div className="register-buttons">
                   <span className="login-button"><span>Log In</span></span>

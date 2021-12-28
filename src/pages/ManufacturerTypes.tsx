@@ -15,6 +15,7 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import store from "../store/store";
 import { setBusinessCategory, getBusinessCategory, setTypes } from "../actions/business_category/business_category";
+import { parse } from "path";
 
 interface typeState {
   visibility: boolean,
@@ -24,26 +25,26 @@ interface typeState {
 }
 interface typeProps {
   // setTypes: () => void;
-  setTypes: () => void;
+  setTypes: (arg: any[]) => void;
 }
 class ManufacturerTypes extends Component<typeProps, typeState> {
   constructor(props: any) {
 
     super(props);
-    console.log(props);
+    // console.log(props);
     this.state = {
       visibility: false,
       selectedOption: '',
       types: props,
       subcategory: []
     }
-    // this.state.types.businesscategory.Types
-    console.log(this.state.types.businesscategory.Types);
+ 
+  }
+  componentDidMount() {
+
+
 
   }
-  // componentDidMount() {
-  //   this.props.setTypes();
-  // }
 
   handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 
@@ -62,21 +63,15 @@ class ManufacturerTypes extends Component<typeProps, typeState> {
       subcategory: newArray
     });
 
-    localStorage.setItem("business_category", this.state.types.businesscategory.business_category[parseInt(this.state.types.businesscategory.business_category_single) - 1].name);
+    this.props.setTypes(newArray);
+    // localStorage.setItem("business_category", this.state.types.businesscategory.business_category[parseInt(this.state.types.businesscategory.business_category_single) - 1].name);
   };
 
-  // setCategory = (e: any) => {
-  //   e.preventDefault();
-  //   console.log(e.target.value.types);
-  // };
-  // setvalue = (e: any) => {
-
-  // }
 
   render(): JSX.Element {
-    // console.log(this.state.types.businesscategory.business_category[parseInt(this.state.types.businesscategory.business_category_single)]);
-    // console.log(parseInt(this.state.types.businesscategory.business_category_single)-1);
-    console.log(this.state.subcategory);
+    let types: any = localStorage.getItem("business_category_types");
+    let type = JSON.parse(types);
+    // console.log(type.business_category[0]);
     return (
       <>
         <div className="Types_category">
@@ -96,8 +91,8 @@ class ManufacturerTypes extends Component<typeProps, typeState> {
                           className="m_category_item m_category_item_img1"
                         >
                           <div className="m_category_item_text">
-                            <h3>{this.state.types.businesscategory.business_category[parseInt(this.state.types.businesscategory.business_category_single) - 1].name}</h3>
-                            <p>{this.state.types.businesscategory.business_category[parseInt(this.state.types.businesscategory.business_category_single) - 1].description}</p>
+                            <h3>{type.business_category[0].name}</h3>
+                            <p>{type.business_category[0].description}</p>
                           </div>
                           <div className="m_category_item_radio">
                             <input
@@ -116,8 +111,8 @@ class ManufacturerTypes extends Component<typeProps, typeState> {
 
                         {
 
-                          Object.entries(this.state.types.businesscategory).length !== 0 ? (
-                            this.state.types.businesscategory.business_category[parseInt(this.state.types.businesscategory.business_category_single) - 1].children.map((data: any, index: number) => {
+                          Object.entries(type).length !== 0 ? (
+                            type.business_category[parseInt(type.business_category_single) - 1].children.map((data: any, index: number) => {
                               if (data.id !== 1) {
                                 return (
                                   <label htmlFor={data.id} key={data.id} className="Types_category_item ">
@@ -142,34 +137,6 @@ class ManufacturerTypes extends Component<typeProps, typeState> {
                               <div></div>
                             )
                         }
-
-
-                        {/* {
-                      Object.entries(this.state.types.businesscategory.business_category_single).length !== 0 ? (
-                        this.state.types.businesscategory.business_category_single.map((data:any, index:number) => {
-                          if(data.id !== 1){
-                            return (
-                              <label htmlFor={data.id} key={data.id} className="Types_category_item ">
-                                <img src={bag} />
-                                <h1>{data.name}</h1>
-                                <div className="Types_category_item_radio">
-                                  <input
-                                    type="checkbox"
-                                    id={data.id}
-                                    name="types"
-                                    value={data.id}
-                                    onChange={this.handleChange}
-                                  />
-                                  <label htmlFor={data.id}></label>
-                                </div>
-                              </label>
-                            );
-                          }
-                        })
-                      ) : (
-                        <div></div>
-                      )
-                    } */}
                       </div>
                     </div>
                   </div>
@@ -203,11 +170,12 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    setTypes: (category: String[]) => {
-      dispatch(setTypes("category"));
+    setTypes: (Types: any) => {
+      // console.log(Types);
+      dispatch(setTypes(Types));
     }
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ManufacturerTypes);
-// export default ManufacturerTypes;
+

@@ -3,15 +3,16 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./PrimaryDetails.css";
 import arrow_left from "../assets/icons/arrows/arrow-left.svg";
-import {Modal,Button} from 'react-bootstrap';
-import {Formik} from 'formik'
+import { Modal, Button } from 'react-bootstrap';
+import { Formik } from 'formik'
 import { Component } from "react";
 import { setPrimaryDetails } from "../actions/business_category/business_category";
 import { useDispatch, useSelector, connect } from "react-redux";
 
 
-interface typeState{
-  showModal: boolean
+interface typeState {
+  showModal: boolean,
+  formsubmited:boolean
 }
 interface MyFormValues {
   organization?: string,
@@ -25,16 +26,30 @@ interface MyFormValues {
 
 interface typeProps {
   setPrimaryDetails: (arg: Object) => void;
+  businesscategory:any
 }
-class ManufacturerPrimaryDetails extends Component<typeProps,typeState> {
+class ManufacturerPrimaryDetails extends Component<typeProps, typeState> {
 
-  constructor(props:any){
+  constructor(props: any) {
     super(props);
     this.state = {
-      showModal: false
+      showModal: false,
+      formsubmited:false
     }
+
+    console.log(props);
+    // if(this.props.businesscategory.primary_details_status){
+
+    // }
   }
+  componentDidMount() {
+
+    if(this.props.businesscategory.primary_details_status){
+alert("work");
+    }
+}
   handleShow = () => {
+  
     this.setState({
       showModal: true
     })
@@ -46,21 +61,28 @@ class ManufacturerPrimaryDetails extends Component<typeProps,typeState> {
   }
 
   initialValues: MyFormValues = {
-    organization:'',
-    location:'',
-    personName:'',
-    designation:'',
-    email:'',
-    phone:'',
-    urlLink:'',
+    organization: '',
+    location: '',
+    personName: '',
+    designation: '',
+    email: '',
+    phone: '',
+    urlLink: '',
   };
 
-  render():JSX.Element{
+  render(): JSX.Element {
+
+//  if(formsubmited){
+
+//     }
+
+
+    console.log(this.props);
     return (
       <>
         <div className="d-flex justify-content-center">
           <div className="primary_form_body">
-          <Formik initialValues={this.initialValues}
+            <Formik initialValues={this.initialValues}
               validate={values => {
                 let errors = {};
                 if (!values.email) {
@@ -90,13 +112,12 @@ class ManufacturerPrimaryDetails extends Component<typeProps,typeState> {
                 }
                 return errors;
               }}
-              onSubmit={(values,actions) => {
-                // this.handleShow();
-                // console.log(values);
-                // this.props.setPrimaryDetails(JSON.stringify(values, null, 2);
-                alert(JSON.stringify(values, null, 2));
-                // alert(values);
-                
+              onSubmit={(values, actions) => {
+                this.props.setPrimaryDetails(values);
+                console.log("form props",this.props);
+                this.handleShow();
+
+
                 actions.setSubmitting(false);
               }}>
               {({ values,
@@ -118,74 +139,74 @@ class ManufacturerPrimaryDetails extends Component<typeProps,typeState> {
                     <div className="primary_form_details">
                       <label>Organization <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                        <input type="text" 
-                        name="organization"
-                        placeholder="Name" 
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.organization}/>
+                        <input type="text"
+                          name="organization"
+                          placeholder="Name"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.organization} />
                         <div className="validation-error">{errors.organization && touched.organization && errors.organization}</div>
                       </div>
                     </div>
                     <div className="primary_form_details">
                       <label>Location <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                      <input type="text" placeholder="Current location" 
-                      name="location"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.location}/>
-                      <div className="validation-error">{errors.location && touched.location && errors.location}</div>
-                      </div>                    
+                        <input type="text" placeholder="Current location"
+                          name="location"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.location} />
+                        <div className="validation-error">{errors.location && touched.location && errors.location}</div>
+                      </div>
                     </div>
                     <div className="primary_form_details">
                       <label>Name of the person <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                      <input type="text" placeholder="Name" 
-                      name="personName"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.personName}
-                      />
-                      <div className="validation-error">{errors.personName && touched.personName && errors.personName}</div>
+                        <input type="text" placeholder="Name"
+                          name="personName"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.personName}
+                        />
+                        <div className="validation-error">{errors.personName && touched.personName && errors.personName}</div>
                       </div>
                     </div>
                     <div className="primary_form_details">
                       <label>Designation <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                      <input
-                        type="text"
-                        name="designation"
-                        placeholder="Director, head, etc Copy"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.designation}
-                      />
-                      <div className="validation-error">{errors.designation && touched.designation && errors.designation}</div>
+                        <input
+                          type="text"
+                          name="designation"
+                          placeholder="Director, head, etc Copy"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.designation}
+                        />
+                        <div className="validation-error">{errors.designation && touched.designation && errors.designation}</div>
                       </div>
                     </div>
-  
+
                     <div className="primary_form_details">
                       <label>E-mail Id(Compant Id) <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                      <input type="text" placeholder="company@xyz.com" 
-                      name="email"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.email}/>
-                      <div className="validation-error">{errors.email && touched.email && errors.email}</div>
+                        <input type="text" placeholder="company@xyz.com"
+                          name="email"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.email} />
+                        <div className="validation-error">{errors.email && touched.email && errors.email}</div>
                       </div>
                     </div>
                     <div className="primary_form_details">
                       <label>Phone No. <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                      <input type="text" placeholder="+91 XXXXXXXXXXX" 
-                      name="phone"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.phone}
-                      />
-                      <div className="validation-error">{errors.phone && touched.phone && errors.phone}</div>
+                        <input type="text" placeholder="+91 XXXXXXXXXXX"
+                          name="phone"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.phone}
+                        />
+                        <div className="validation-error">{errors.phone && touched.phone && errors.phone}</div>
                       </div>
                     </div>
                     <div className="primary_form_details">
@@ -198,7 +219,7 @@ class ManufacturerPrimaryDetails extends Component<typeProps,typeState> {
                         onBlur={handleBlur}
                         value={values.urlLink}
                       />
-                      {/* <div className="validation-error">{errors.urlLink && touched.urlLink && errors.urlLink}</div> */}
+                        {/* <div className="validation-error">{errors.urlLink && touched.urlLink && errors.urlLink}</div> */}
                       </div>
                     </div>
                   </div>
@@ -211,28 +232,28 @@ class ManufacturerPrimaryDetails extends Component<typeProps,typeState> {
                     <span>Please click on the link sent to validate your email id.</span>
                   </div>
                 </form>
-            )}
+              )}
             </Formik>
           </div>
         </div>
 
         <Modal
-            show={this.state.showModal}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-            className="verifyemailmodel"
-            onHide={()=>this.handleHide()}
-          >
-            <Modal.Header closeButton></Modal.Header>
-            <Modal.Body  >
-              <h4 className="modal-title">Email Id Verification</h4>
-              <h5 className="modal-discription">The link along with the first time test password will be provided for Log In once approved by Super Admin from Kay Ventures. Kindly verify your email id using the link sent to you.</h5>
-              {/* <h5 className="modal-timer">00:30</h5> */}
-              <Link to='/verifiedemail'><span className="modal-action-resend"><span>Proceed</span></span></Link>
-              <h5 className="modal-alert">The verification will be completed in 2-3 days.</h5>
-            </Modal.Body>
-          </Modal>
+          show={this.state.showModal}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+          className="verifyemailmodel"
+          onHide={() => this.handleHide()}
+        >
+          <Modal.Header closeButton></Modal.Header>
+          <Modal.Body  >
+            <h4 className="modal-title">Email Id Verification</h4>
+            <h5 className="modal-discription">The link along with the first time test password will be provided for Log In once approved by Super Admin from Kay Ventures. Kindly verify your email id using the link sent to you.</h5>
+            {/* <h5 className="modal-timer">00:30</h5> */}
+            <Link to='/verifiedemail'><span className="modal-action-resend"><span>Proceed</span></span></Link>
+            <h5 className="modal-alert">The verification will be completed in 2-3 days.</h5>
+          </Modal.Body>
+        </Modal>
       </>
     );
   }
@@ -246,11 +267,12 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    setPrimaryDetails: (category: Object) => {
-      console.log(category);
-      dispatch(setPrimaryDetails(category));
+    setPrimaryDetails: (primarydetails: Object) => {
+     
+      dispatch(setPrimaryDetails(primarydetails));
+      
     },
-    
+
   };
 };
 

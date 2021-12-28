@@ -1,29 +1,31 @@
 var initialState = {
-	business_category: '',
-  category:"",
+  business_category: '',
+  category: "",
   response: null,
   business_category_single: '',
-  login_details:"",
-  Types:['2','3']
+  login_details: "",
+  primary_details_status: false,
+  Types: []
 }
 
 interface actiontype {
   type: string,
-  payload?: any 
+  payload?: any
 }
 
-const BHomeReducer = (state=initialState, action:actiontype)=> {
+const BHomeReducer = (state = initialState, action: actiontype) => {
 
   switch (action.type) {
 
     case 'GET_BUSINESS_CATEGORY':
     case 'SET_BUSINESS_CATEGORY':
     case 'LOGIN':
-    case'SET_PRIMARY_DETAILS':
+    case 'SET_PRIMARY_DETAILS':
     case 'SET_BUSINESS_CATEGORY_SUCCESS':
       return {
         ...state,
-        business_category_single: action.payload
+        business_category_single: action.payload,
+
       };
     case 'GET_BUSINESS_CATEGORY_SUCCESS':
       return {
@@ -35,12 +37,18 @@ const BHomeReducer = (state=initialState, action:actiontype)=> {
         ...state,
         login_details: action.payload
       };
-      case 'TYPES':
-        return {
-          ...state,
-          Types: action.payload
-        };
-      
+    case 'SET_PRIMARY_DETAILS_SUCCESS':
+      return {
+        ...state,
+        primary_details_status: action.payload
+      };
+    case 'TYPES':
+      console.log(action.payload);
+      return {
+        ...state,
+        Types: action.payload
+      };
+
     default:
       return state;
   }

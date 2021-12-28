@@ -46,6 +46,7 @@ class Category extends Component<typeProps, typeState> {
       this.setState({
         categoryList: store.getState().businesscategory,
       });
+     
     });
   }
 
@@ -70,6 +71,7 @@ class Category extends Component<typeProps, typeState> {
 
   render(): JSX.Element {
     if (this.state.gettypes == true) {
+      localStorage.setItem("business_category_types", JSON.stringify(this.state.categoryList));
       return <Navigate to="/types" state={this.state.categoryList} />;
     }
     return (

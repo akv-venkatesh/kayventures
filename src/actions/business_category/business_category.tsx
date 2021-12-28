@@ -29,7 +29,7 @@ export const setPrimaryDetails = (payload:any) => ({
     type: 'SET_PRIMARY_DETAILS',
     payload,
 });
-// export const setPrimaryDetailsSuccess = (payload:any) => ({
-//     type: 'SET_PRIMARY_DETAILS_SUCCESS',
-//     payload,
-// });
+export const setPrimaryDetailsSuccess = (payload:any) => ({
+    type: 'SET_PRIMARY_DETAILS_SUCCESS',
+    payload,
+});

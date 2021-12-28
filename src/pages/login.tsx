@@ -72,9 +72,11 @@ class ManufacturerLogin extends Component<typeProps, typeState > {
 		if (this.state.submitSuccess === true) {
 			return <Navigate to="/home" />
 		}
+
+	
 		return (
 			<div className='p-xl-5 h-100 m-login'>
-				
+			
 				<section className="p-sm-5 py-5 h-100">
 					<div className="container-fluid h-100">
 						<div className="row h-100">
