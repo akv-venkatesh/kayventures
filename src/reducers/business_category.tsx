@@ -18,10 +18,9 @@ const BHomeReducer = (state = initialState, action: actiontype) => {
   switch (action.type) {
 
     case 'GET_BUSINESS_CATEGORY':
-    case 'SET_BUSINESS_CATEGORY':
     case 'LOGIN':
     case 'SET_PRIMARY_DETAILS':
-    case 'SET_BUSINESS_CATEGORY_SUCCESS':
+    case 'SET_BUSINESS_CATEGORY':
       return {
         ...state,
         business_category_single: action.payload,

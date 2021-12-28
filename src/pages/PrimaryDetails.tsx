@@ -8,6 +8,7 @@ import { Formik } from 'formik'
 import { Component } from "react";
 import { setPrimaryDetails } from "../actions/business_category/business_category";
 import { useDispatch, useSelector, connect } from "react-redux";
+import Category from "./Category";
 
 
 interface typeState {
@@ -25,7 +26,7 @@ interface MyFormValues {
 
 interface typeProps {
   setPrimaryDetails: (arg: Object) => void;
-  businesscategory:any
+  businesscategory: any
 }
 class ManufacturerPrimaryDetails extends Component<typeProps, typeState> {
 
@@ -35,6 +36,15 @@ class ManufacturerPrimaryDetails extends Component<typeProps, typeState> {
       showModal: false,
     }
   }
+
+
+
+  componentDidMount() {
+
+
+
+  }
+
   handleHide = () => {
     this.setState({
       showModal: false
@@ -88,10 +98,10 @@ class ManufacturerPrimaryDetails extends Component<typeProps, typeState> {
                 return errors;
               }}
               onSubmit={(values, actions) => {
-                this.props.setPrimaryDetails(values);
-                console.log("form props",this.props);
-
-
+                var x: any = localStorage.getItem('business_category_id');
+                var category_id = JSON.parse(x);
+                var category_types = localStorage.getItem('business_category_types')
+                this.props.setPrimaryDetails({ values, "categoryId": category_id, "subCategoryIds": category_types });
                 actions.setSubmitting(false);
               }}>
               {({ values,
@@ -105,7 +115,7 @@ class ManufacturerPrimaryDetails extends Component<typeProps, typeState> {
                   <div className="primary_form_head">
                     <Link to="/types"><img src={arrow_left} style={{ cursor: "pointer" }} /></Link>
                     <h1>
-                      Primary details / <span>{localStorage.getItem('business_category')}</span>
+                      Primary details / <span>{localStorage.getItem('business_category_name')}</span>
                     </h1>
                     <p>Fill in the details to submit your application.</p>
                   </div>
@@ -242,9 +252,9 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
     setPrimaryDetails: (primarydetails: Object) => {
-     
+
       dispatch(setPrimaryDetails(primarydetails));
-      
+
     },
 
   };

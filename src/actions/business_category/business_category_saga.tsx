@@ -1,7 +1,7 @@
 import { takeEvery, all, call, put, takeLeading, StrictEffect } from "redux-saga/effects";
 import {
-  setBusinessCategory,
-  setBusinessCategorySuccess,
+  
+  setBusCategory,
   getBusinessCategory,
   getBusinessCategorySuccess,
   setPrimaryDetailsSuccess
@@ -16,12 +16,12 @@ interface datatype {
 // get category
 function* getCategory() {
   try {
-    // const header = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjozOCwiZW1haWwiOiJrb3VzaGlrMUBlbXByb3RvLmNvbSIsInJvbGUiOiIyMDAyIn0sImlhdCI6MTY0MDM4NDAzMywiZXhwIjoxNjQwOTg4ODMzfQ.KuV3rlLWLzJGMtVHtxCc4OZdpgThKn4UDaKn213K3Fk"
+
     const response: AxiosResponse = yield call(
       apibaseURL.get,
       "/user-management/businessCategories"
     );
-    // console.log(response);
+
 
     switch (response.status) {
       case 200:
@@ -34,74 +34,40 @@ function* getCategory() {
     const data = "failed";
     console.log("api error")
 
-    yield put(setBusinessCategorySuccess(data));
+    yield put(getBusinessCategorySuccess(data));
   }
-}
-
-// get type with id
-function* setCategory(action: any) {
-  // try {
-  //   const response: AxiosResponse = yield call(
-  //     apibaseURL.get,
-  //     ("/user-management/business-group-types/" + action.payload)
-  //   );
-  //   switch (response.status) {
-  //     case 200:
-  //       // console.log(response);
-  //       const data: datatype[] = response.data.data;
-  //       // console.log("get type", data);
-  //       localStorage.setItem('business_category', data[0].name);
-
-  //       yield put(setBusinessCategorySuccess(data));
-
-  //   }
-  // } catch (error) {
-  //   const data = error;
-  //   yield put(setBusinessCategorySuccess(data));
-  // }
 }
 
 // primary detailes
 function* setPrimaryDetails(action: any) {
-
+  let typeIds: any = JSON.parse(action.payload.subCategoryIds)
+  let subCategoryIds = typeIds.map((i: any) => Number(i))
   let details = {
     "user": {
-      "name": action.payload.personName,
-      "email": action.payload.email,
-      "phoneNumber": action.payload.phone,
-      "categoryId": 1,
-      "subCategoryIds": [2, 3],
-      "organisationName": action.payload.organization,
-      "location": action.payload.location,
+      "name": action.payload.values.personName,
+      "email": action.payload.values.email,
+      "phoneNumber": action.payload.values.phone,
+      "categoryId": Number(action.payload.categoryId),
+      "subCategoryIds": subCategoryIds,
+      "organisationName": action.payload.values.organization,
+      "location": action.payload.values.location,
       "designationId": 1,
-      "url": action.payload.urlLink
+      "url": action.payload.values.urlLink
     }
   }
-  let primarydetails = JSON.stringify(details)
-  // console.log(primarydetails);
 
-
+  console.log(details);
   try {
-    const response: AxiosResponse = yield call(apibaseURL.post, "/user-management/biz-category-user-signup",{
-      "user": {
-        "name": action.payload.personName,
-        "email": action.payload.email,
-        "phoneNumber": action.payload.phone,
-        "categoryId": 1,
-        "subCategoryIds": [2, 3],
-        "organisationName": action.payload.organization,
-        "location": action.payload.location,
-        "designationId": 1,
-        "url": action.payload.urlLink
-      }
-    });
+    const response: AxiosResponse = yield call(apibaseURL.post, "/user-management/biz-category-user-signup",
+      details
+    );
     // console.log(response.statusText);
     switch (response.status) {
       case 200:
         yield put(setPrimaryDetailsSuccess(true));
-        localStorage.setItem("primary_user_details", JSON.stringify(primarydetails));
+        localStorage.setItem("primary_user_details", JSON.stringify(details));
         console.log("primary details done")
-      
+
     }
   } catch (error) {
     const data = error;
@@ -110,9 +76,7 @@ function* setPrimaryDetails(action: any) {
 }
 
 
-function* setCategoryWatcher(): Generator<StrictEffect> {
-  yield takeEvery("SET_BUSINESS_CATEGORY", setCategory);
-}
+
 function* getBusinessCategoryWatcher(): Generator<StrictEffect> {
   yield takeEvery("GET_BUSINESS_CATEGORY", getCategory);
 }
@@ -122,5 +86,5 @@ function* setPrimaryDetailsWatcher(): Generator<StrictEffect> {
 }
 
 export default function* postsSaga() {
-  yield all([setCategoryWatcher(), getBusinessCategoryWatcher(), setPrimaryDetailsWatcher()]);
+  yield all([getBusinessCategoryWatcher(), setPrimaryDetailsWatcher()]);
 }
