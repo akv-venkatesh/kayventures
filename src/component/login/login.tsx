@@ -16,10 +16,11 @@ import {
   import { IoMail } from "react-icons/io5";
   import { AiOutlineClose } from "react-icons/ai";
   import { RiLockPasswordFill } from "react-icons/ri";
-  import { useDispatch, useSelector, connect } from "react-redux";
+  import { connect } from "react-redux";
 
 
   import { login } from "../../actions/login/login";
+  import { adminlogin, adminLoginSuccess } from '../../actions/admin/login';
   
   import $ from 'jquery';
   import {Modal,Button} from 'react-bootstrap';
@@ -37,6 +38,7 @@ import {
   }
   interface typeProps{
       userLogin: (arg:{})=> void;
+	  adminuserLogin: (arg:{}) => void;
 	  formName:string,
 	  buttonName:string
   }
@@ -45,14 +47,12 @@ import {
 class Login extends Component<typeProps, typeState > {
     constructor(props:any){
 		super(props);
+		console.log(props);
 		this.state = {
 			show: false,
 			psw_vis: false,
 			submitSuccess: false,
 		}
-		console.log("props");
-		console.log(props);
-		console.log("props");
 	}
 
 	psw_visible = () =>{
@@ -117,7 +117,12 @@ class Login extends Component<typeProps, typeState > {
 										}}
 										onSubmit={(values,actions) => {
 											this.handleShow();
-											this.props.userLogin(values);
+											if(this.props.formName == 'login'){
+												this.props.userLogin(values);
+											}
+											if(this.props.formName == 'Super Admin Login'){
+												this.props.adminuserLogin(values);
+											}
 											actions.setSubmitting(false);
 										}}
 									>
@@ -207,7 +212,10 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch:any, props:any) => {
 	return {
 	  	userLogin: (userDetail:{}) => {
-		  dispatch(login(userDetail));
+		  	dispatch(login(userDetail));
+		},
+		adminuserLogin: (userDetail:{}) => {
+			dispatch(adminlogin(userDetail));
 		},
 	};
 };
