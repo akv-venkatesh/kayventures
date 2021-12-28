@@ -6,6 +6,9 @@ import arrow_left from "../assets/icons/arrows/arrow-left.svg";
 import {Modal,Button} from 'react-bootstrap';
 import {Formik} from 'formik'
 import { Component } from "react";
+import { setPrimaryDetails } from "../actions/business_category/business_category";
+import { useDispatch, useSelector, connect } from "react-redux";
+
 
 interface typeState{
   showModal: boolean
@@ -20,7 +23,10 @@ interface MyFormValues {
   urlLink?: string,
 }
 
-class ManufacturerPrimaryDetails extends Component<{},typeState> {
+interface typeProps {
+  setPrimaryDetails: (arg: Object) => void;
+}
+class ManufacturerPrimaryDetails extends Component<typeProps,typeState> {
 
   constructor(props:any){
     super(props);
@@ -79,13 +85,18 @@ class ManufacturerPrimaryDetails extends Component<{},typeState> {
                 if (!values.phone) {
                   errors = { ...errors, phone: 'Enter Phone No' };
                 }
-                // if (!values.urlLink) {
-                //   errors = { ...errors, urlLink: 'Enter URL link' };
-                // }
+                if (!values.urlLink) {
+                  errors = { ...errors, urlLink: 'Enter URL link' };
+                }
                 return errors;
               }}
               onSubmit={(values,actions) => {
-                this.handleShow();
+                // this.handleShow();
+                // console.log(values);
+                // this.props.setPrimaryDetails(JSON.stringify(values, null, 2);
+                alert(JSON.stringify(values, null, 2));
+                // alert(values);
+                
                 actions.setSubmitting(false);
               }}>
               {({ values,
@@ -227,4 +238,20 @@ class ManufacturerPrimaryDetails extends Component<{},typeState> {
   }
 }
 
-export default ManufacturerPrimaryDetails;
+
+const mapStateToProps = (state: any) => {
+  return state;
+};
+
+
+const mapDispatchToProps = (dispatch: any, props: any) => {
+  return {
+    setPrimaryDetails: (category: Object) => {
+      console.log(category);
+      dispatch(setPrimaryDetails(category));
+    },
+    
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManufacturerPrimaryDetails);

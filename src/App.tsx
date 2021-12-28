@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter } from "react-router-dom";
+import {BrowserRouter,HashRouter } from "react-router-dom";
 import Routes from "./Routes/route";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,9 +10,11 @@ class App extends React.Component{
   render():JSX.Element{
     return (
       <div>
-        <BrowserRouter>
-            <Routes />        
-        </BrowserRouter>
+        {/* <BrowserRouter> */}
+        <HashRouter>
+            <Routes />     
+            </HashRouter>   
+        {/* </BrowserRouter> */}
       </div>
     );
   }
