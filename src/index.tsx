@@ -9,7 +9,7 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <Provider store={store}>
     <Suspense fallback={<div>Loading...</div>}> 
-      <App />
+      <App/>
     </Suspense>
   </Provider>,
   document.getElementById('root')

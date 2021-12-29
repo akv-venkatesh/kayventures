@@ -16,10 +16,15 @@ class JoinNow extends Component {
               ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
               aliquip ex ea commodo consequat.
             </p>
-            <Link to="/createaccount"><div className="manu-button"><span>Join Now</span></div></Link>
-            <p className="manu-button-msg">
-              Already a member? Then&ensp;<Link to="/login"><div className='manu-button-msg-link'>Log In</div></Link>
-            </p>
+            {/* 
+              <Link to="/createaccount">
+                <div className="manu-button"><span>Join Now</span></div>
+              </Link>
+              <p className="manu-button-msg">
+                Already a member? Then&ensp;
+                <Link to="/login">Log In</Link>
+              </p> 
+            */}
           </div>
           <div className="col-sm-8 bg-img-sec"></div>
         </div>

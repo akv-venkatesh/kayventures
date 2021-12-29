@@ -20,13 +20,10 @@ import {
   Admin,Superadmin, AdmineditAccInfo,AdminChangePass,AdminRegister,AdminBussinessCategories
 } from "./asyncpages";
 
-import CustomSelect from "../component/custom_select";
-
 class Routers extends React.Component {
   render(): JSX.Element {
     return (
       <div className="App">
-        <CustomSelect />
         <Routes>
           <Route path="/" element={<JoinNow />} />
           <Route path="/createaccount" element={<CreateAccount />} />

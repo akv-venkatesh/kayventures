@@ -76,7 +76,7 @@ class Category extends Component<typeProps, typeState> {
     }
     return (
       <>
-        <div className="category_body">
+        <div className="category_body" data-testid="test">
           <div className="category_container py-4">
             <div className="choose_category_head">
               <h1>Choose business category</h1>
@@ -109,7 +109,7 @@ class Category extends Component<typeProps, typeState> {
                                 value={data.id}
                                 onChange={this.handleChange}
                               />
-                              <label htmlFor={data.id}></label>
+                              <label htmlFor={'category'+data.id}></label>
                             </div>
                           </label>
                         );
@@ -123,15 +123,16 @@ class Category extends Component<typeProps, typeState> {
               </div>
               <div className="category_btn_section pt-4">
                 <div className="category_btn">
-                  <Backbutton link="/createaccount" />
+                  {/* <Backbutton link="/createaccount" /> */}
                   <div>
-                    {this.state.Visibility ?
+                    {/* {this.state.Visibility ? */}
                       <Button type="submit" className="cbtn next_btn">
                         <span>Next </span>
                         <img src={buttonarrowright} className="next_btn_right" />
-                      </Button> :
-                      <DisableNextbutton />
-                    }
+                      </Button>
+                       {/* <DisableNextbutton /> */}
+                      <></>
+                    {/* } */}
                   </div>
                 </div>
               </div>

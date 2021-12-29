@@ -6,15 +6,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 
+
 class App extends React.Component{
   render():JSX.Element{
     return (
       <div>
-        {/* <BrowserRouter> */}
-        <HashRouter>
-            <Routes />     
-            </HashRouter>   
-        {/* </BrowserRouter> */}
+        <BrowserRouter>
+        {/* <HashRouter> */}
+          <Routes />     
+        {/* </HashRouter>    */}
+        </BrowserRouter>
       </div>
     );
   }
