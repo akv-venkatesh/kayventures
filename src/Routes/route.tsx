@@ -13,7 +13,7 @@ import {
   Home,
   Settings,
   ProConfigCapacity,
-  KYC,
+  KYC,Organization,Organizationinfo,OrganizationinfoModal,
   Productconfig,
   SelectPlan,
   Pro_config,
@@ -50,6 +50,9 @@ class Routers extends React.Component {
             <Route path="proconfig" element={<ProConfig />} />
             <Route path="Capacity" element={<ProConfigCapacity />} />
             <Route path="productconfiguration" element={<Productconfig />} />
+            <Route path="Organization" element={<Organization />} />
+            <Route path="Organizationinfo" element={<Organizationinfo />} />
+            <Route path="OrganizationinfoModal" element={<OrganizationinfoModal />} />
           </Route>
 
 

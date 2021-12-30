@@ -40,7 +40,7 @@ class ManufacturerHome extends Component<{}, typeState> {
 									<ImMenu className="d-md-none menu-bar" />
 								</div>
 								<ul className="d-flex mb-0 ps-0">
-									<li className="me-3">{localStorage.getItem('business_category')}</li>
+									<li className="me-3">{localStorage.getItem('business_category_name')}</li>
 									<li className="me-3 active">Home</li>
 								</ul>
 							</div>

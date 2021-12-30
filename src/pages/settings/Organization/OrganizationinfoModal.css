@@ -1,0 +1,107 @@
+body{
+    font-family: poppins;
+}
+
+.organizationinfomodal {
+    background: #c7d4df;
+     
+}
+.organizationinfomodal .modal-lg{
+    max-width:55vw;
+}
+.organizationinfomodal  .modal-content {
+      /* background: linear-gradient(
+          135.37deg,
+          rgba(0, 0, 0, 0.4) 4.29%,
+          rgba(255, 255, 255, 0.4) 95.6%
+        ),
+        rgba(235, 236, 240, 0.7); */
+      background-color: #e6e7eb;
+      background-blend-mode: soft-light, normal;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-sizing: border-box;
+      box-shadow: 8px 4px 14px rgb(0 0 0 / 11%), inset 6px 5px 35px rgb(255 255 255 / 60%);
+      backdrop-filter: blur(12px);
+      /* Note: backdrop-filter has minimal browser support */
+      border-radius: 35px;
+      /* height: 70vh; */
+}
+    
+    
+.organizationinfomodal .modal-header {
+      border-bottom: 0px;
+}
+    
+    
+.organizationinfomodal  .modal-header .btn-close {
+      position: absolute;
+      top: -23px;
+      right: 0px;
+      outline: none;
+      box-shadow: none;
+}
+    
+    
+.organizationinfomodal  .modal-header .btn-close:active {
+      box-shadow: none;
+      outline: none;
+}
+    
+    
+.organizationinfomodal  .modal-body {
+      /* text-align: center; */
+      /* justify-content: center; */
+      padding: 0px 40px 0 60px;
+}
+    
+.organizationinfomodal  .modal-body .header_discription  {
+       /* position: relative; */
+       display: flex;
+       margin-bottom: 0px;
+}
+.organizationinfomodal  .modal-body .header_discription .info-icon{
+         font-size: 22px;
+         color: #0068E5;
+}
+.organizationinfomodal .modal-body .header_discription p{
+    font-size: 16px;
+    font-weight: 600;
+    color: #0068E5;
+    margin: 3px 0 20px 6px;
+}
+.organizationinfomodal .modal-body .discription{
+    font-size: 16px;
+    color: #0068E5;
+    /* margin-left: 28px; */
+}
+
+
+.scrollbar-container {
+    position: relative;
+    height:65vh !important;
+    margin:0px 0px 20px 0px;
+    padding-right: 20px;
+    overflow-x: hidden;
+}
+.organizationinfomodal .modalorgani svg{
+    color: #1a68e5;
+    font-size: 50px;
+    font-weight: 600;
+}
+.organizationinfomodal .modalorgani{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.organizationinfomodal .modalorgani p{
+    color: #1a68e5;
+    font-weight: 600;
+    margin-top: 6px;
+    margin-left: 8px;
+}
+.organizationinfomodal .pdf1 {
+    width: 25%;
+    margin: 40px 0;
+}
+
+

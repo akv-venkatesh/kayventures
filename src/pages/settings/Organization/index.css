@@ -1,0 +1,146 @@
+.organization h4{
+    font-size: 17px;
+    font-weight: 600;
+    display: inline-block;
+}
+.organization .content{
+    height: calc(100% - 30px);
+    background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0 !important;
+    background-blend-mode: soft-light, normal !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd !important;
+    border-radius: 40px !important;
+}
+.organization .titleimg{
+    width: 15px;
+    margin-right: 10px;
+}
+.organization .title{
+    margin-left: 15px;
+    height: 30px;
+}
+.organization .orgcon{
+    width: 30%;
+    margin:auto;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.organization .imgshow{
+    background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
+    background-blend-mode: soft-light, normal;
+    box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
+    border-radius: 25px;
+    width: 145px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+}
+.organization .imgshow img{
+    height: 45px;
+    margin-top: 17px;
+}
+.organization .imgshow p{
+    font-size: 16px;
+    font-weight: 600;
+    color: #1862d7;
+    line-height: 1.2;
+}
+.organization .add-btn {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(
+135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
+    background-blend-mode: soft-light, normal;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-sizing: border-box;
+    box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+    border-radius: 40px;
+    color: #0067E5;
+}
+.organization .add-button {
+    display: flex;
+    align-items: baseline;
+    border: 2px dashed #ACAAC2;
+    border-radius: 30px;
+    padding: 3px 10px;
+}
+.add-icon {
+    font-size: 12px;
+}
+.add-button span {
+    color: #adafb1;
+    margin-right: 20px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 22px;
+}
+.organization .addfac{
+    color: rgba(0, 98, 215, 1);
+    font-size: 13px;
+    font-weight: 500;
+}
+.organization .clickadd{
+    color: #1862d7;
+    font-size: 12px;
+    font-weight: 600;
+}
+.organization .clickadd svg{
+    margin-right: 10px;
+    font-size: 17px;
+}
+.organization .btn-back {
+    width: unset !important;
+    padding: 2px 20px;
+    background: rgba(204, 204, 204, 1);
+    box-shadow: -4px -4px 16px 2px rgb(255 255 255 / 79%), 4px 4px 16px #b8cad8;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+}
+button.btn.btn-back.mx-2.back.float-start svg {
+    font-size: 26px;
+    margin-left: -18px;
+}
+button.btn.btn-back.mx-2.next.float-end svg {
+    font-size: 26px;
+    margin-right: -18px;
+}
+.btn-default {
+    background: #FFFFFF;
+    box-shadow: -4px -4px 16px 2px rgb(255 255 255 / 79%), 4px 4px 16px #b8cad8;
+    border-radius: 8px;
+    color: rgba(65, 74, 103, 1);
+    font-size: 13px;
+}
+.remove {
+    position: relative;
+}
+.remove:after {
+    content: " ";
+    position: absolute;
+    background: rgba(0, 0, 0, 0.2);
+    height: 38px;
+    width: 2px;
+    top: 0px;
+    right: -28px;
+}
+.btn-default.save {
+    background: #3CD070;
+    color: #fff;
+}
+.btn-back:disabled {
+    background: silver;
+}
+.float-start {
+    float: left!important;
+}
