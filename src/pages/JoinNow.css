@@ -95,4 +95,5 @@ a{
 }
 .manu-button-msg-link {
   color: #0062d7;
-}
+  cursor: pointer;
+} 

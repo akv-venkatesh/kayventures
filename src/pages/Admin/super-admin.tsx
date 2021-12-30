@@ -31,7 +31,7 @@ class superadmin extends Component<{}, typeState> {
     constructor(props: any) {
         super(props);
         this.state = {
-            SuperAdmin: true,
+            SuperAdmin: false,
             inviteAdmin: true,
             invitemail: false,
             emailsuccess: false
