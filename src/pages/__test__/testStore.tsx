@@ -12,7 +12,6 @@ export  const testStore = (initialState:any) => {
 };
 
 export const findByTestAtrr = (component:any, attr:any) => {
-    console.log(component);
     const wrapper = component.getByTestId(attr);
     return wrapper;
 };

@@ -1,6 +1,6 @@
 import Category from '../Category';
 import {render, screen} from '@testing-library/react';
-import{testStore,findByTestAtrr} from "./testStore"
+import{testStore} from "./testStore"
 
 let wrapper:any;
 
@@ -13,6 +13,6 @@ beforeEach(() => {
     wrapper = setup({});
 });
 test('initial test by text',()=>{
-    const component = findByTestAtrr(wrapper, 'test');
+    const component = wrapper.getByText(/Choose business category/i)
     expect(component).toBeInTheDocument;
 })

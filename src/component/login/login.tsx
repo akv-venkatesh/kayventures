@@ -117,7 +117,7 @@ class Login extends Component<typeProps, typeState > {
 										}}
 										onSubmit={(values,actions) => {
 											this.handleShow();
-											if(this.props.formName == 'login'){
+											if(this.props.formName == 'Login'){
 												this.props.userLogin(values);
 											}
 											if(this.props.formName == 'Super Admin Login'){
