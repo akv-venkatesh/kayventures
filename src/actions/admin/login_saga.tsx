@@ -15,7 +15,7 @@ function* adminLogin(action:any) {
   try {
     const response: AxiosResponse = yield call(
       apibaseURL.post,
-      "/user-management/sign-in",action.payload
+      "/user-management/authenticate",action.payload
     );
     switch (response.status) {
       case 200:
