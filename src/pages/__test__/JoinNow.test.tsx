@@ -1,5 +1,5 @@
 import Joinnow from '../JoinNow';
-import {render, screen} from '@testing-library/react';
+import {render, screen ,fireEvent} from '@testing-library/react';
 import { testStore } from "./testStore";
 import { MemoryRouter as Router } from 'react-router-dom';
 let wrapper: any;
@@ -12,10 +12,14 @@ beforeEach(() => {
     wrapper = setup({});
 });
 
-test('initial test by role',()=>{
+test('initial test ',()=>{
 const headingElement = screen.getByRole('heading', {name : 'KAY VENTURES'});
+const paraElement = screen.getByTestId('para');
 const joinnowElement = screen.getByText('Join Now');
 expect(headingElement).toBeInTheDocument;
+expect(paraElement).toHaveTextContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
 expect(joinnowElement).toBeInTheDocument;
   
+const joinnowbutton = wrapper.queryByTitle("joinnow");
+// fireEvent.click(joinnowbutton);
 })

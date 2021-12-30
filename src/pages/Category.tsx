@@ -10,6 +10,7 @@ import {
 } from "../component/buttons/button";
 import buttonarrowright from "../assets/icons/arrows/buttonarrowright.svg";
 
+
 import { setBusCategory, getBusinessCategory } from "../actions/business_category/business_category";
 import { useDispatch, useSelector, connect } from "react-redux";
 import "react-perfect-scrollbar/dist/css/styles.css";
@@ -43,7 +44,7 @@ class Category extends Component<typeProps, typeState> {
       gettypes: false,
       typeList: {}
     };
-
+console.log(props);
     store.subscribe(() => {
       this.setState({
         categoryList: store.getState().businesscategory,
@@ -54,6 +55,116 @@ class Category extends Component<typeProps, typeState> {
 
   componentDidMount() {
     this.props.getBusinessCategory();
+  //   this.setState({categoryList:{business_category:[
+  //     {
+  //         "id": 1,
+  //         "name": "Manufacturer",
+  //         "description": "Apparel, Fabric, Yarn, Fibre",
+  //         "imageUrl": "https://www.shutterstock.com/image-photo/interior-garment-factory-shop-closes-making-724014595",
+  //         "imageDetails": {
+  //             "key": "s3-manufacturer-key",
+  //             "name": "manufacturer.jpeg",
+  //             "value": {
+  //                 "url": "https://www.shutterstock.com/image-photo/interior-garment-factory-shop-closes-making-724014595",
+  //                 "size": "1MB",
+  //                 "width": "100px",
+  //                 "height": "100px",
+  //                 "imageType": "jpeg"
+  //             }
+  //         },
+  //         "parentId": null,
+  //         "hierarchyLevel": 1,
+  //         "createdAt": "2021-12-27T07:04:52.597Z",
+  //         "updatedAt": "2021-12-27T07:04:52.597Z",
+  //         "children": [
+  //             {
+  //                 "id": 3,
+  //                 "name": "Fabric",
+  //                 "description": "Apparel, Fabric, Yarn, Fibre",
+  //                 "imageUrl": "https://www.shutterstock.com/image-photo/interior-garment-factory-shop-closes-making-724014595",
+  //                 "imageDetails": {
+  //                     "key": "s3-buyer-key",
+  //                     "name": "buyer.jpeg",
+  //                     "value": {
+  //                         "url": "https://www.shutterstock.com/image-photo/interior-garment-factory-shop-closes-making-724014595",
+  //                         "size": "1MB",
+  //                         "width": "100px",
+  //                         "height": "100px",
+  //                         "imageType": "jpeg"
+  //                     }
+  //                 },
+  //                 "parentId": 1,
+  //                 "hierarchyLevel": 2,
+  //                 "createdAt": "2021-12-27T07:05:23.052Z",
+  //                 "updatedAt": "2021-12-27T07:05:23.052Z"
+  //             },
+  //             {
+  //                 "id": 4,
+  //                 "name": "Yarn",
+  //                 "description": "Apparel, Fabric, Yarn, Fibre",
+  //                 "imageUrl": "https://www.shutterstock.com/image-photo/interior-garment-factory-shop-closes-making-724014595",
+  //                 "imageDetails": {
+  //                     "key": "s3-buyer-key",
+  //                     "name": "buyer.jpeg",
+  //                     "value": {
+  //                         "url": "https://www.shutterstock.com/image-photo/interior-garment-factory-shop-closes-making-724014595",
+  //                         "size": "1MB",
+  //                         "width": "100px",
+  //                         "height": "100px",
+  //                         "imageType": "jpeg"
+  //                     }
+  //                 },
+  //                 "parentId": 1,
+  //                 "hierarchyLevel": 2,
+  //                 "createdAt": "2021-12-27T07:05:29.896Z",
+  //                 "updatedAt": "2021-12-27T07:05:29.896Z"
+  //             },
+  //             {
+  //                 "id": 5,
+  //                 "name": "Fibre",
+  //                 "description": "Apparel, Fabric, Yarn, Fibre",
+  //                 "imageUrl": "https://www.shutterstock.com/image-photo/interior-garment-factory-shop-closes-making-724014595",
+  //                 "imageDetails": {
+  //                     "key": "s3-buyer-key",
+  //                     "name": "buyer.jpeg",
+  //                     "value": {
+  //                         "url": "https://www.shutterstock.com/image-photo/interior-garment-factory-shop-closes-making-724014595",
+  //                         "size": "1MB",
+  //                         "width": "100px",
+  //                         "height": "100px",
+  //                         "imageType": "jpeg"
+  //                     }
+  //                 },
+  //                 "parentId": 1,
+  //                 "hierarchyLevel": 2,
+  //                 "createdAt": "2021-12-27T07:05:34.328Z",
+  //                 "updatedAt": "2021-12-27T07:05:34.328Z"
+  //             }
+  //         ]
+  //     },
+  //     {
+  //         "id": 2,
+  //         "name": "Buyer",
+  //         "description": "Apparel, Fabric, Yarn, Fibre",
+  //         "imageUrl": "https://www.shutterstock.com/image-photo/interior-garment-factory-shop-closes-making-724014595",
+  //         "imageDetails": {
+  //             "key": "s3-buyer-key",
+  //             "name": "buyer.jpeg",
+  //             "value": {
+  //                 "url": "https://www.shutterstock.com/image-photo/interior-garment-factory-shop-closes-making-724014595",
+  //                 "size": "1MB",
+  //                 "width": "100px",
+  //                 "height": "100px",
+  //                 "imageType": "jpeg"
+  //             }
+  //         },
+  //         "parentId": null,
+  //         "hierarchyLevel": 1,
+  //         "createdAt": "2021-12-27T07:05:10.892Z",
+  //         "updatedAt": "2021-12-27T07:05:10.892Z"
+  //     }
+  // ]}}
+  // )
   }
 
   handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -85,7 +196,7 @@ class Category extends Component<typeProps, typeState> {
     }
     return (
       <>
-        <div className="category_body" Bdata-testrole="test" data-testid="test">
+        <div className="category_body"  >
           <div className="category_container py-4">
             <div className="choose_category_head">
               <h1>Choose business category</h1>
@@ -93,11 +204,12 @@ class Category extends Component<typeProps, typeState> {
             <form onSubmit={this.setCategory}>
               <div className="category_section">
                 <PerfectScrollbar>
-                  <div className="category_item_section flex-wrap">
+                  <div className="category_item_section flex-wrap" >
                     {this.state.categoryList.business_category ? (
                       this.state.categoryList.business_category.map((data: any) => {
                         return (
-                          <label
+                          <label 
+                        
                             key={'category' + data.id}
                             htmlFor={'category' + data.id}
                             className="category_item "
@@ -111,7 +223,7 @@ class Category extends Component<typeProps, typeState> {
                               <p>{data.description}</p>
                             </div>
                             <div className="category_item_radio">
-                              <input
+                              <input   data-testid={"test"+ data.id}
                                 type="radio"
                                 id={'category' + data.id}
                                 name="category"
@@ -124,7 +236,7 @@ class Category extends Component<typeProps, typeState> {
                         );
                       })
                     ) : (
-                      <div></div>
+                      <div>There is no Data</div>
                     )}
 
                   </div>

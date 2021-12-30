@@ -143,7 +143,9 @@ class Types extends Component<typeProps, typeState> {
                               if (data.id !== 1) {
 
                                 return (
-                                  <label htmlFor={data.id} key={data.id} className="Types_category_item ">
+                                  <label 
+                                  data-testid={"checkbox"}
+                                  htmlFor={data.id} key={data.id} className="Types_category_item ">
                                     <img src={bag} />
                                     <h1>{data.name}</h1>
                                     <div className="Types_category_item_radio">
@@ -172,7 +174,7 @@ class Types extends Component<typeProps, typeState> {
               </PerfectScrollbar>
               <div className="Types_category_btn_section pt-4 px-5">
                 <div className="Types_category_btn w-100">
-                  <Backbutton onClick={this.redirect} />
+                  <Backbutton  onClick={this.redirect} />
                   <div>
                     {this.state.visibility ? (
                       <Nextbutton onClick={this.redirectNext} />

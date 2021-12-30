@@ -14,7 +14,7 @@ interface Props {
 
 export const Backbutton:FC<Props> = (props) => {
   return (
-    <div 
+    <div  data-testid="backbutton"
     className="cbtn back_btn" onClick={props.onClick}>
       <img src={buttonarrowleft} className="back_btn_left" />
       <span>Back </span>
@@ -23,7 +23,7 @@ export const Backbutton:FC<Props> = (props) => {
 };
 export const Nextbutton:FC<Props> = (props) => {
   return (
-    <div 
+    <div data-testid="nextbutton"
      className="cbtn next_btn" onClick={props.onClick}>
       <span>Next </span>
       <img src={buttonarrowright} className="next_btn_right" />
@@ -32,7 +32,7 @@ export const Nextbutton:FC<Props> = (props) => {
 };
 export const DisableNextbutton = (props: Props) => {
   return (
-    <div 
+    <div data-testid="disablenextbutton"
      className="dbtn next_btn">
       <span>Next </span>
       <img src={buttonarrowright} className="next_btn_right" />

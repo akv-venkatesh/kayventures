@@ -116,14 +116,15 @@ class CreateAccount extends Component<typeprops, typestates > {
                 <h3 className="register-card-title">Create Account</h3>
 
                 <div className="input-with-icon">
-                  <input type="text" className="register-input" id=""  placeholder='Name'  name='name'   onChange={handleChange}
+              
+                  <input type="text" aria-label="User_Name" className="register-input" id=""  placeholder='Name'  name='name'   onChange={handleChange}
                                 onBlur={handleBlur}
                                 value={values.name} />
                   <IoPersonCircleOutline className="input-icon" style={{fontSize: "20px"}}/>
                   <div className="validation-error">{errors.name && touched.name && errors.name}</div>
                 </div>
                 <div className="input-with-icon">
-                  <input  type="email" className="register-input" id="" placeholder='Email'  name='email'   onChange={handleChange}
+                  <input  aria-label="User_Email" type="email" className="register-input" id="" placeholder='Email'  name='email'   onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.email}
                           />
@@ -133,7 +134,7 @@ class CreateAccount extends Component<typeprops, typestates > {
                   </div>
                 </div>
                 <div className="input-with-icon">
-                  <input type="text" className="register-input" id="" placeholder='Phone no.'  name='phone'   onChange={handleChange}
+                  <input type="text" aria-label="User_Phone"  className="register-input" id="" placeholder='Phone no.'  name='phone'   onChange={handleChange}
                                 onBlur={handleBlur}
                                 value={values.phone}/>
                   <FaPhoneAlt className="input-icon" />
@@ -144,8 +145,8 @@ class CreateAccount extends Component<typeprops, typestates > {
 							    <label className="form-check-label" htmlFor="rememberme">Remember Me</label> */}
                 </div>
                 <div className="register-buttons">
-                  <span className="login-button"><span>Log In</span></span>
-                  <Button className="signin-button-parent" type="submit">
+                  <span data-testid="loginbutton" className="login-button"><span>Log In</span></span>
+                  <Button title="nextbutton" className="signin-button-parent" type="submit">
                     <span className="signin-button"><span>Next</span></span>
                   </Button>
                   {/* <button className="signin-button">Sign Up</button> */}

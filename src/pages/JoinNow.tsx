@@ -28,13 +28,13 @@ class JoinNow extends Component<{}, typeState>{
         <div className="row manu-container">
           <div className="col-sm-4 header-section">
             <h3 className="manu-title">KAY VENTURES</h3>
-            <p className="manu-discription">
+            <p data-testid="para" className="manu-discription">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
               ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
               aliquip ex ea commodo consequat.
             </p>
-            <div onClick={this.redirect} className="manu-button"><span>Join Now</span></div>
+            <div title="joinnow" onClick={this.redirect} className="manu-button"><span>Join Now</span></div>
             <p className="manu-button-msg">
               Already a member? Then&ensp;<span className="manu-button-msg-link">Log In</span> </p>
           </div>
