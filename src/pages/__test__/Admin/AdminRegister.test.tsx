@@ -1,5 +1,5 @@
 import Adminregister from '../../Admin/AdminRegister';
-import {render, screen} from '@testing-library/react';
+import {fireEvent, render, screen} from '@testing-library/react';
 import{testStore} from "../testStore"
 import {MemoryRouter as Router} from 'react-router-dom';
 let wrapper:any;
@@ -31,4 +31,9 @@ test('register form test',()=>{
     expect(textinputCount).toHaveLength(5);
     const pswinputCount = wrapper.getAllByPlaceholderText('Password');
     expect(pswinputCount).toHaveLength(2);
+    const submitbtn = wrapper.getByRole('button', {name: /save/i});
+    expect(submitbtn).toBeInTheDocument;
+    fireEvent.change(firstName, { target: { value: "anand" } });
+    fireEvent.click(submitbtn);
+    // expect(wrapper.getByText(/Enter firstName/i));
 })

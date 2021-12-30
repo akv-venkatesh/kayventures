@@ -20,21 +20,30 @@ import {
 import ReactTable from "react-table-6";
 import 'react-table-6/react-table.css';
 import './BussinessCategories.css';
+import { connect } from 'react-redux';
+import { invite } from '../../actions/admin/invite'
+import { Button } from 'react-bootstrap';
+
 interface typeState {
     SuperAdmin: boolean,
     inviteAdmin: boolean,
     invitemail: boolean,
-    emailsuccess: boolean
+    emailsuccess: boolean,
+    mailid: any
+}
+interface typeProps{
+    invite:(arg:{})=> void;
 }
 
-class superadmin extends Component<{}, typeState> {
+class superadmin extends Component<typeProps, typeState> {
     constructor(props: any) {
         super(props);
         this.state = {
             SuperAdmin: false,
             inviteAdmin: true,
             invitemail: false,
-            emailsuccess: false
+            emailsuccess: false,
+            mailid: '',
         };
 
         this.inviteAdmin = this.inviteAdmin.bind(this);
@@ -60,11 +69,17 @@ class superadmin extends Component<{}, typeState> {
         })
     }
     invitemail = (e: any) => {
+        e.preventDefault();
+        const data = new FormData(e.target);
         this.setState({
             inviteAdmin: false,
             invitemail: false,
-            emailsuccess: true
+            emailsuccess: true,
+            mailid: data.get('email')
         })
+        this.props.invite({
+            email : data.get('email')
+        });
     }
     backadmin = (e: any) => {
         this.setState({
@@ -181,58 +196,6 @@ class superadmin extends Component<{}, typeState> {
                                                         />
 
                                                     </div>
-                                                    {/* <Table className='sa-table'>
-                                                        <thead>
-                                                            <tr className='head'>
-                                                                <th>Serial No</th>
-                                                                <th>Name</th>
-                                                                <th>Email</th>
-                                                                <th>Phone No</th>
-
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>Sindhu</td>
-                                                                <td>sindhu@keyventuers.com</td>
-                                                                <td>9876543210</td>
-
-
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td>Sindhu</td>
-                                                                <td>sindhu@keyventuers.com</td>
-                                                                <td>9876543210</td>
-
-
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td>Sindhu</td>
-                                                                <td>sindhu@keyventuers.com</td>
-                                                                <td>9876543210</td>
-
-                                                            </tr>
-                                                            <tr>
-                                                                <td>4</td>
-                                                                <td>Sindhu</td>
-                                                                <td>sindhu@keyventuers.com</td>
-                                                                <td>9876543210</td>
-
-
-                                                            </tr>
-                                                            <tr>
-                                                                <td>5</td>
-                                                                <td>Sindhu</td>
-                                                                <td>sindhu@keyventuers.com</td>
-                                                                <td>9876543210</td>
-
-
-                                                            </tr>
-                                                        </tbody>
-                                                    </Table> */}
 
 
                                                   <div className=' superadmin-table-footer d-flex align-items-center  justify-content-between '>
@@ -240,13 +203,6 @@ class superadmin extends Component<{}, typeState> {
                                                             <span>Invite another Super Admin</span>
 
                                                         </div>
-                                                        {/* <div></div> */}
-                                                        {/* <div className='d-flex justify-content-end pe-5 '>
-
-                                                            <div className='px-2'><Backbutton link="" /></div>
-                                                            <div className='d-flex '><h5>1/20</h5></div>
-                                                            <div className='px-2'><Nextbutton link="" /></div>
-                                                        </div> */}
                                                     </div> 
 
 
@@ -273,23 +229,25 @@ class superadmin extends Component<{}, typeState> {
                                                         <div className=' invite_sadmin_email d-flex align-items-center  justify-content-center  flex-column'>
                                                             <h1>Invite a Super Admin</h1>
                                                             <div className='invite_email_body mt-5 d-flex px-5 py-5 flex-column' >
-                                                                <div className='invite_email_field d-flex flex-column '>
-                                                                    <span className='pb-5'>Invite</span>
-                                                                    <div className='invite_email_ifield '>
-                                                                        <FaEnvelope className='mail-icon' />
-                                                                        <input type="text" className='invite_email_inputfield' placeholder='sindhu@kayventures.com' />
+                                                                <form onSubmit={this.invitemail}>
+                                                                    <div className='invite_email_field d-flex flex-column '>
+                                                                        <span className='pb-5'>Invite</span>
+                                                                        <div className='invite_email_ifield '>
+                                                                            <FaEnvelope className='mail-icon' />
+                                                                            <input type="text" name="email" className='invite_email_inputfield' placeholder='Enter Mail Id' />
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div className='pt-5 sendinvite-section d-flex justify-content-end'>
-                                                                    <span className='sendinvite-btn' onClick={this.invitemail}><span>Send Invite </span></span>
-                                                                </div>
+                                                                    <div className='pt-5 sendinvite-section d-flex justify-content-end'>
+                                                                        <Button type="submit" className='sendinvite-btn'><span>Send Invite </span></Button>
+                                                                    </div>
+                                                                </form>
                                                             </div>
                                                         </div> : true ?
                                                             <div className=' invite_sadmin_e_successfully d-flex align-items-center  justify-content-center  flex-column' >
                                                                 <h1>Invite a Super Admin</h1>
                                                                 <div className='invite_e_successfully_body mt-5 d-flex px-5 py-5 flex-column' >
                                                                     <div className='invite_e_successfully_field d-flex align-items-center  justify-content-center h-100 flex-column '>
-                                                                        <span className='invite_e_successfully_field_text mb-4'>Invitation successfully sent to <span className='admin_email_id'>janedoe@kayventures.co.in</span></span>
+                                                                        <span className='invite_e_successfully_field_text mb-4'>Invitation successfully sent to <span className='admin_email_id'>{this.state.mailid}</span></span>
                                                                         <span className='Back-btn mt-4' onClick={this.backadmin}><span>Back</span></span>
                                                                     </div>
                                                                 </div>
@@ -314,4 +272,18 @@ class superadmin extends Component<{}, typeState> {
     }
 }
 
-export default superadmin;
+const mapStateToProps = (state: any) => {
+    return state;
+};
+
+
+const mapDispatchToProps = (dispatch: any, props: any) => {
+return {
+    invite: (data:any) => {
+        console.log(data);
+        dispatch(invite(data));
+        },
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(superadmin);

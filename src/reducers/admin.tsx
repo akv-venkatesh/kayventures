@@ -17,6 +17,12 @@ const adminReducer = (state=initialState, action:actiontype)=> {
       return {
         ...state,
       };
+    case 'INVITE':
+    case 'INVITESUCCESS':
+      console.log('invited');
+      return{
+        ...state,
+      }
     default:
       return state;
   }
