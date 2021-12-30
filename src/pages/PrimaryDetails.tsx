@@ -60,6 +60,8 @@ class ManufacturerPrimaryDetails extends Component<typeProps, typeState> {
     phone: '',
     urlLink: '',
   };
+  
+
 
   render(): JSX.Element {
     console.log(this.props);
@@ -99,6 +101,7 @@ class ManufacturerPrimaryDetails extends Component<typeProps, typeState> {
               }}
               onSubmit={(values, actions) => {
                 var x: any = localStorage.getItem('business_category_id');
+
                 var category_id = JSON.parse(x);
                 var category_types = localStorage.getItem('business_category_types')
                 this.props.setPrimaryDetails({ values, "categoryId": category_id, "subCategoryIds": category_types });
@@ -121,9 +124,13 @@ class ManufacturerPrimaryDetails extends Component<typeProps, typeState> {
                   </div>
                   <div className="primary_form">
                     <div className="primary_form_details">
-                      <label>Organization <span className="required-mark">*</span></label>
+                      <label  htmlFor="organization">Organization <span className="required-mark">*</span></label>
+                      {/* <label htmlFor="organization">Organization</label> */}
                       <div className="input-field-container">
-                        <input type="text"
+                        <input 
+                          aria-label="organization"
+                          id="organization"
+                          type="text"
                           name="organization"
                           placeholder="Name"
                           onChange={handleChange}
@@ -133,9 +140,9 @@ class ManufacturerPrimaryDetails extends Component<typeProps, typeState> {
                       </div>
                     </div>
                     <div className="primary_form_details">
-                      <label>Location <span className="required-mark">*</span></label>
+                      <label htmlFor="location">Location <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                        <input type="text" placeholder="Current location"
+                        <input aria-label="location" id='location' type="text" placeholder="Current location"
                           name="location"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -144,9 +151,9 @@ class ManufacturerPrimaryDetails extends Component<typeProps, typeState> {
                       </div>
                     </div>
                     <div className="primary_form_details">
-                      <label>Name of the person <span className="required-mark">*</span></label>
+                      <label htmlFor="personName">Name of the person <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                        <input type="text" placeholder="Name"
+                        <input aria-label="personName"  id ='personName' type="text" placeholder="Name"
                           name="personName"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -156,9 +163,11 @@ class ManufacturerPrimaryDetails extends Component<typeProps, typeState> {
                       </div>
                     </div>
                     <div className="primary_form_details">
-                      <label>Designation <span className="required-mark">*</span></label>
+                      <label htmlFor="designation">Designation <span className="required-mark">*</span></label>
                       <div className="input-field-container">
                         <input
+                          aria-label="designation"
+                          id="designation"
                           type="text"
                           name="designation"
                           placeholder="Director, head, etc Copy"
@@ -171,9 +180,9 @@ class ManufacturerPrimaryDetails extends Component<typeProps, typeState> {
                     </div>
 
                     <div className="primary_form_details">
-                      <label>E-mail Id(Compant Id) <span className="required-mark">*</span></label>
+                      <label htmlFor="email">E-mail Id(Compant Id) <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                        <input type="text" placeholder="company@xyz.com"
+                        <input aria-label="email" id="email" type="text" placeholder="company@xyz.com"
                           name="email"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -182,9 +191,13 @@ class ManufacturerPrimaryDetails extends Component<typeProps, typeState> {
                       </div>
                     </div>
                     <div className="primary_form_details">
-                      <label>Phone No. <span className="required-mark">*</span></label>
+                      <label htmlFor="phone">Phone No. <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                        <input type="text" placeholder="+91 XXXXXXXXXXX"
+                        <input 
+                          aria-label="phone" 
+                          id="phone"
+                          type="text"
+                          placeholder="+91 XXXXXXXXXXX"
                           name="phone"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -194,8 +207,9 @@ class ManufacturerPrimaryDetails extends Component<typeProps, typeState> {
                       </div>
                     </div>
                     <div className="primary_form_details">
-                      <label>URL link </label>
+                      <label htmlFor="urlLink">URL link</label>
                       <div className="input-field-container"><input
+                        aria-label="urlLink"
                         type="text"
                         placeholder="Paste the website link here"
                         name="urlLink"

@@ -142,7 +142,8 @@ class Login extends Component<typeProps, typeState > {
 													<div className="position-relative">
 														<div className="mt-sm-5 mt-3 d-flex align-items-center">
 															<IoMail className="field-icon"/>
-															<input
+															<input 
+															    aria-label='email'
 																type="email"
 																name="email"
 																onChange={handleChange}
@@ -161,6 +162,7 @@ class Login extends Component<typeProps, typeState > {
 															<RiLockPasswordFill className="field-icon"/>
 															<input
 																type={this.state.psw_vis? 'text':'password'}
+																aria-label='password'
 																name="password"
 																onChange={handleChange}
 																onBlur={handleBlur}
@@ -190,8 +192,6 @@ class Login extends Component<typeProps, typeState > {
 														</button>:<button type="submit" disabled={isSubmitting} className="mt-sm-4 mt-4 login-Login">
 														{this.props.buttonName}
 														</button>}
-
-
 													</div>
 												</form>
 											)
