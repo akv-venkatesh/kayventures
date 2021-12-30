@@ -45,7 +45,7 @@ class BussinessCategories extends React.Component {
 			{ value: 'OnHold', label: 'On Hold' },
 			{ value: 'Approve', label: 'Approve' },
 			{ value: 'Reject', label: 'Reject' },
-			
+
 		]
 
 		const data = [{
@@ -139,7 +139,7 @@ class BussinessCategories extends React.Component {
 		}]
 
 		return (
-			
+
 
 			<>
 				<div className='d-flex flex-wrap h-100 admin-settings'>
@@ -181,20 +181,20 @@ class BussinessCategories extends React.Component {
 									<div className="settings-menu-content h-100 px-2 py-4">
 										<div className="content">
 											<div className="tableFixHead">
-												<ReactTable  
-													data={data}  
-													columns={columns}  
-													defaultPageSize = {6}  
-													pageSizeOptions = {[2,4, 6]}  
+												<ReactTable
+													data={data}
+													columns={columns}
+													defaultPageSize={6}
+													pageSizeOptions={[2, 4, 6]}
 												/>
-												
+
 											</div>
 										</div>
 									</div>
 
 								</div>
 							</div>
-							
+
 						</div>
 					</section>
 				</div>
