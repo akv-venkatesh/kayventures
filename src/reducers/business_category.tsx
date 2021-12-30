@@ -3,7 +3,6 @@ var initialState = {
   category: "",
   response: null,
   business_category_single: '',
-  login_details: "",
   primary_details_status: false,
   Types: []
 }
@@ -18,7 +17,6 @@ const BHomeReducer = (state = initialState, action: actiontype) => {
   switch (action.type) {
 
     case 'GET_BUSINESS_CATEGORY':
-    case 'LOGIN':
     case 'SET_PRIMARY_DETAILS':
     case 'SET_BUSINESS_CATEGORY':
       return {
@@ -30,11 +28,6 @@ const BHomeReducer = (state = initialState, action: actiontype) => {
       return {
         ...state,
         business_category: action.payload
-      };
-    case 'LOGIN_SUCCESS':
-      return {
-        ...state,
-        login_details: action.payload
       };
     case 'SET_PRIMARY_DETAILS_SUCCESS':
       return {

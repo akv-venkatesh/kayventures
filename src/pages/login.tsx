@@ -20,6 +20,7 @@ import  Login from "../component/login/login";
 
 import $ from 'jquery';
 import {Modal,Button} from 'react-bootstrap';
+import { delay } from 'redux-saga/effects';
 
 
 interface MyFormValues {
@@ -30,9 +31,11 @@ interface typeState{
 	show: boolean,
 	psw_vis: boolean,
 	submitSuccess: boolean,
+	successMessage: string,
 }
 interface typeProps{
 	userLogin: (arg:{})=> void;
+	login:any
 }
 
 class ManufacturerLogin extends Component<typeProps, typeState > {
@@ -42,6 +45,7 @@ class ManufacturerLogin extends Component<typeProps, typeState > {
 			show: false,
 			psw_vis: false,
 			submitSuccess: false,
+			successMessage:'',
 		}
 		console.log(props)
 	}
@@ -59,6 +63,21 @@ class ManufacturerLogin extends Component<typeProps, typeState > {
 		this.setState({
 			show: true,
 		});
+	}
+	submit = async() =>{
+		setTimeout(()=>{
+			let data:any = this.props;
+			console.log(data);
+			if(data.login.login_details.code == 200){
+				this.redirect();
+			}
+			else{
+				this.setState({
+					successMessage: this.props.login.login_details.data.message
+				})
+				this.handleShow();
+			}
+		},500);
 	}
 
 	redirect = () => {
@@ -89,116 +108,7 @@ class ManufacturerLogin extends Component<typeProps, typeState > {
 								</div>
 							</div>
 							<div className="col-lg-6 second-half d-flex justify-content-lg-end justify-content-center align-items-center">
-								{/* <div className="login-form p-sm-5 p-3 text-start">
-									<h2>Log In</h2>
-									<Formik
-										initialValues={this.initialValues}
-										validate={values => {
-											let errors = {};	
-											if (!values.email) {
-												errors = {...errors, email:'Enter Email Id'};
-											} else if (
-												!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-												) {
-												errors = {...errors, email:'Invalid Email Id'};
-											}
-											if(!values.password) {
-												errors = {...errors, password : 'Enter Password'};
-											}
-											else if(!/^.{8,}/i.test(values.password)){
-												errors = {...errors, password : 'Psw should be 8 character'};
-											}
-											else if(!/^(?=.*\d).{8,}/.test(values.password)){
-												errors = {...errors, password : 'Psw should have atleat 1 numeric'};
-											}
-											else if(!/^(?=.*[a-z])/.test(values.password)){
-												errors = {...errors, password : 'Psw should have atleat 1 Lowercase'};
-											}
-											else if(!/^(?=.*[A-Z])/.test(values.password)){
-												errors = {...errors, password : 'Psw should have atleat 1 Uppercase'};
-											}
-											else if(!/[^a-zA-Z\d]/.test(values.password)){
-												errors = {...errors, password : 'Psw should have atleat 1 Special Char'};
-											}
-											return errors;
-										}}
-										onSubmit={(values,actions) => {
-											this.handleShow();
-											this.props.userLogin(values);
-											actions.setSubmitting(false);
-										}}
-									>
-										{
-											(
-												{
-													values,
-													errors,
-													touched,
-													handleChange,
-													handleBlur,
-													handleSubmit,
-													isSubmitting,
-												}
-											) => (
-												<form onSubmit={handleSubmit}>
-													<div className="position-relative">
-														<div className="mt-sm-5 mt-3 d-flex align-items-center">
-															<IoMail className="field-icon"/>
-															<input
-																type="email"
-																name="email"
-																onChange={handleChange}
-																onBlur={handleBlur}
-																value={values.email}
-																placeholder='Enter Email'
-																className={!(errors.email && touched.email && errors.email) ? 'form-control' : 'form-control is-invalid'}
-															/>
-														</div>
-														<div className="validation-error"> 
-															{errors.email && touched.email && errors.email}
-														</div>
-													</div>
-													<div className="position-relative">
-														<div className="mt-sm-5 mt-4 d-flex align-items-center">
-															<RiLockPasswordFill className="field-icon"/>
-															<input
-																type={this.state.psw_vis? 'text':'password'}
-																name="password"
-																onChange={handleChange}
-																onBlur={handleBlur}
-																value={values.password}
-																placeholder='Enter Password'
-																className={!(errors.password && touched.password && errors.password) ? 'form-control' : 'form-control is-invalid'}
-															/>
-															{ this.state.psw_vis ? 
-																<FaEyeSlash className="eye-icon" onClick={this.psw_visible}/> :
-																<FaEye className="eye-icon" onClick={this.psw_visible}/>
-															}
-														</div>
-														<div className="validation-error">
-															{errors.password && touched.password && errors.password}
-														</div>
-													</div>
-													<div className="d-flex justify-content-between mt-sm-4 mt-4 flex-wrap ps-3">
-														<div className="form-check me-3 remember">
-															<Field type="checkbox" name="rememberme" value="1" className="form-check-input" id="rememberme"/>
-															<label className="form-check-label" htmlFor="rememberme">Remember Me</label>
-														</div>
-														<Link to="#" className="forgot-password">Forgot password?</Link>
-													</div>
-													<div className="text-end">
-														<button type="submit" disabled={isSubmitting} className="mt-sm-4 mt-4 login-submit">
-															Submit
-														</button>
-													</div>
-												</form>
-											)
-										}
-									</Formik>
-								</div> */}
-
-								{/* <Login/> */}
-								<Login  formName="Login" buttonName="Submit"/>
+								<Login  formName="Login" buttonName="Submit" onSubmit={this.submit}/>
 							</div>
 						</div>
 					</div>
@@ -211,7 +121,7 @@ class ManufacturerLogin extends Component<typeProps, typeState > {
 				<Modal.Body>
 					<div className="text-center">
 							<p className="m-0">Sorry,</p>
-							<p className="m-0">Something went wrong. Use Registration failed</p>
+							<p className="m-0">{this.state.successMessage}</p>
 						</div>
 				</Modal.Body>
 				<Modal.Footer className="modal-footer flex-column">

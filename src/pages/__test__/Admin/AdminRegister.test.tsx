@@ -33,7 +33,8 @@ test('register form test',()=>{
     expect(pswinputCount).toHaveLength(2);
     const submitbtn = wrapper.getByRole('button', {name: /save/i});
     expect(submitbtn).toBeInTheDocument;
-    fireEvent.change(firstName, { target: { value: "anand" } });
     fireEvent.click(submitbtn);
-    // expect(wrapper.getByText(/Enter firstName/i));
+    // expect(wrapper.findByText('sasd')).toBeInTheDocument;
+    fireEvent.change(firstName, { target: { value: "anand" } });
+    expect(wrapper.getByDisplayValue(/anand/i)).toBeInTheDocument;
 })

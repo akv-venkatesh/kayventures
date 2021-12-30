@@ -85,7 +85,7 @@ class Category extends Component<typeProps, typeState> {
     }
     return (
       <>
-        <div className="category_body" Bdata-testrole="test" data-testid="test">
+        <div className="category_body" bdata-testrole="test" data-testid="test">
           <div className="category_container py-4">
             <div className="choose_category_head">
               <h1>Choose business category</h1>

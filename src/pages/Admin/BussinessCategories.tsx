@@ -161,7 +161,7 @@ class BussinessCategories extends React.Component {
 									<div className="d-flex align-items-center " >
 										<label className=''>Business Categories</label>
 										<div className='ms-2' >
-											<Select options={options} width='300px' position='bottom' placeholder='Select Buissness Category'></Select>
+											<Select options={options} width='300px' position='bottom' placeholder='Select Buissness Category' onChange={()=>{}}></Select>
 										</div>
 									</div>
 								</div>
@@ -170,7 +170,7 @@ class BussinessCategories extends React.Component {
 										<label className=''>Status</label>
 										<div className='ms-2'>
 
-											<Select options={options1} width='200px' position='bottom' placeholder='Select'></Select>
+											<Select options={options1} width='200px' position='bottom' placeholder='Select' onChange={()=>{}}></Select>
 										</div>
 									</div>
 								</div>
