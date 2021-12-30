@@ -1,10 +1,28 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import './JoinNow.css';
 
+interface typeState {
 
-class JoinNow extends Component {
-  render(){
+  submitSuccess: boolean,
+}
+class JoinNow extends Component<{}, typeState>{
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      submitSuccess: false,
+    }
+
+  }
+  redirect = () => {
+    this.setState({
+      submitSuccess: true,
+    });
+  };
+  render() {
+    if (this.state.submitSuccess === true) {
+      return <Navigate to="/createaccount" />
+    }
     return (
       <div className="">
         <div className="row manu-container">
@@ -16,15 +34,9 @@ class JoinNow extends Component {
               ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
               aliquip ex ea commodo consequat.
             </p>
-            {/* 
-              <Link to="/createaccount">
-                <div className="manu-button"><span>Join Now</span></div>
-              </Link>
-              <p className="manu-button-msg">
-                Already a member? Then&ensp;
-                <Link to="/login">Log In</Link>
-              </p> 
-            */}
+            <div onClick={this.redirect} className="manu-button"><span>Join Now</span></div>
+            <p className="manu-button-msg">
+              Already a member? Then&ensp;<span className="manu-button-msg-link">Log In</span> </p>
           </div>
           <div className="col-sm-8 bg-img-sec"></div>
         </div>
@@ -34,3 +46,4 @@ class JoinNow extends Component {
 }
 export default JoinNow;
 
+<div >Log In</div>
