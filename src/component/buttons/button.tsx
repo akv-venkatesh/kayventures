@@ -14,25 +14,28 @@ interface Props {
 
 export const Backbutton:FC<Props> = (props) => {
   return (
-    <Link to={props.link} className="cbtn back_btn" onClick={props.onClick}>
+    <div 
+    className="cbtn back_btn" onClick={props.onClick}>
       <img src={buttonarrowleft} className="back_btn_left" />
       <span>Back </span>
-    </Link>
+    </div>
   );
 };
-export const Nextbutton = (props: Props) => {
+export const Nextbutton:FC<Props> = (props) => {
   return (
-    <Link to={props.link} className="cbtn next_btn">
+    <div 
+     className="cbtn next_btn" onClick={props.onClick}>
       <span>Next </span>
       <img src={buttonarrowright} className="next_btn_right" />
-    </Link>
+    </div>
   );
 };
 export const DisableNextbutton = (props: Props) => {
   return (
-    <Link to="#" className="dbtn next_btn">
+    <div 
+     className="dbtn next_btn">
       <span>Next </span>
       <img src={buttonarrowright} className="next_btn_right" />
-    </Link>
+    </div>
   );
 };

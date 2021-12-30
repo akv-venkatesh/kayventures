@@ -25,6 +25,7 @@ interface typeState {
   categoryList?: any,
   typeList?: any,
   gettypes: boolean,
+  redirectSuccess:boolean,
 }
 interface typeProps {
   getBusinessCategory: () => void;
@@ -37,6 +38,7 @@ class Category extends Component<typeProps, typeState> {
       Visibility: false,
       Category: "",
       selectedOption: "",
+      redirectSuccess:false,
       categoryList: {},
       gettypes: false,
       typeList: {}
@@ -68,15 +70,22 @@ class Category extends Component<typeProps, typeState> {
       gettypes: true
     })
   };
-
+  redirect = () => {
+    this.setState({
+      redirectSuccess: true,
+    });
+  };
   render(): JSX.Element {
     if (this.state.gettypes == true) {
       localStorage.setItem("business_category", JSON.stringify(this.state.categoryList));
       return <Navigate to="/types" state={this.state.categoryList} />;
     }
+    if (this.state.redirectSuccess === true) {
+      return <Navigate to="/createaccount" />
+    }
     return (
       <>
-        <div className="category_body" data-testid="test">
+        <div className="category_body" Bdata-testrole="test" data-testid="test">
           <div className="category_container py-4">
             <div className="choose_category_head">
               <h1>Choose business category</h1>
@@ -123,16 +132,16 @@ class Category extends Component<typeProps, typeState> {
               </div>
               <div className="category_btn_section pt-4">
                 <div className="category_btn">
-                  {/* <Backbutton link="/createaccount" /> */}
+                  <Backbutton onClick={ this.redirect} />
                   <div>
-                    {/* {this.state.Visibility ? */}
+                    {this.state.Visibility ?
                       <Button type="submit" className="cbtn next_btn">
                         <span>Next </span>
                         <img src={buttonarrowright} className="next_btn_right" />
-                      </Button>
-                       {/* <DisableNextbutton /> */}
-                      <></>
-                    {/* } */}
+                      </Button>:
+                       <DisableNextbutton />
+                      
+                     } 
                   </div>
                 </div>
               </div>
