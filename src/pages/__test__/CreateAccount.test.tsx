@@ -1,10 +1,11 @@
 import CreateAccount from '../CreateAccount';
-import {render, screen} from '@testing-library/react';
+import {render, screen,fireEvent} from '@testing-library/react';
 import { testStore } from "./testStore"
+import { MemoryRouter as Router } from 'react-router-dom';
 let wrapper: any;
 const setup = (initialState = {}) => {
     const store = testStore(initialState);
-    const wrapper = render(<CreateAccount  />);
+    const wrapper = render(<Router><CreateAccount /></Router>);
     return wrapper;
 }
 beforeEach(() => {
@@ -15,12 +16,14 @@ test('initial test by role',()=>{
 const headingElement = screen.getByRole('heading', {name : 'KAY VENTURES'});
 const CreateAccounttitle =screen.getByRole('heading',{name:'Create Account'})
 const nextbutton =screen.getByRole('button',{name:'Next'})
-// const loginbutton =screen.getByRole('button',{name:'Log in'})
-
 
 expect(headingElement).toBeInTheDocument;
 expect(CreateAccounttitle).toBeInTheDocument;
-// expect(loginbutton).toBeInTheDocument;
 expect(nextbutton).toBeInTheDocument;
+
+const handleClick = jest.fn()
+fireEvent.click(screen.getByText(/Next/i))
+expect(handleClick).toHaveAccessibleName
+fireEvent.click(screen.getByText(/Next/i))
   
 })
