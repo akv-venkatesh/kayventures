@@ -22,6 +22,10 @@ export const KYC = React.lazy(() => import('../pages/settings/kyc'));
 
 export const Settings = React.lazy(() => import('../pages/settings/index'));
 export const Pro_config = React.lazy(() => import('../pages/settings/ProductConfiguration'));
+export const Machinery = React.lazy(() => import('../pages/settings/Machinery/Machinery'));
+export const Machine = React.lazy(() => import('../pages/settings/Machine/Machine'));
+export const Manpower = React.lazy(() => import('../pages/settings/Manpower/Manpower'));
+export const Esg = React.lazy(() => import('../pages/settings/Esg/Esg'));
 
 
 export const Admin = React.lazy(() => import('../pages/Admin/index'));
