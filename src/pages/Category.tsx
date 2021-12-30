@@ -196,7 +196,9 @@ console.log(props);
     }
     return (
       <>
+
         <div className="category_body"  >
+
           <div className="category_container py-4">
             <div className="choose_category_head">
               <h1>Choose business category</h1>

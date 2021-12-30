@@ -20,7 +20,7 @@ import {
 
 
   import { login } from "../../actions/login/login";
-  import { adminlogin, adminLoginSuccess } from '../../actions/admin/login';
+  import { adminlogin } from '../../actions/admin/login';
   
   import $ from 'jquery';
   import {Modal,Button} from 'react-bootstrap';
@@ -41,6 +41,7 @@ import {
 	  adminuserLogin: (arg:{}) => void;
 	  formName:string,
 	  buttonName:string
+	  onSubmit:()=>void
   }
   
 
@@ -59,22 +60,6 @@ class Login extends Component<typeProps, typeState > {
 		this.setState({psw_vis: !this.state.psw_vis});
 	}
 
-  	handleClose = () => {
-		this.setState({
-			show: false,
-		});
-	}
-	handleShow = () => {
-		this.setState({
-			show: true,
-		});
-	}
-
-	redirect = () => {
-		this.setState({
-			submitSuccess: true,
-		});
-	};
 	initialValues: MyFormValues = { email: '',password: ''};
 
 
@@ -116,8 +101,8 @@ class Login extends Component<typeProps, typeState > {
 											return errors;
 										}}
 										onSubmit={(values,actions) => {
-											this.handleShow();
-											if(this.props.formName == 'login'){
+											this.props.onSubmit();
+											if(this.props.formName == 'Login'){
 												this.props.userLogin(values);
 											}
 											if(this.props.formName == 'Super Admin Login'){
@@ -142,7 +127,8 @@ class Login extends Component<typeProps, typeState > {
 													<div className="position-relative">
 														<div className="mt-sm-5 mt-3 d-flex align-items-center">
 															<IoMail className="field-icon"/>
-															<input
+															<input 
+															    aria-label='email'
 																type="email"
 																name="email"
 																onChange={handleChange}
@@ -161,6 +147,7 @@ class Login extends Component<typeProps, typeState > {
 															<RiLockPasswordFill className="field-icon"/>
 															<input
 																type={this.state.psw_vis? 'text':'password'}
+																aria-label='password'
 																name="password"
 																onChange={handleChange}
 																onBlur={handleBlur}
@@ -190,8 +177,6 @@ class Login extends Component<typeProps, typeState > {
 														</button>:<button type="submit" disabled={isSubmitting} className="mt-sm-4 mt-4 login-Login">
 														{this.props.buttonName}
 														</button>}
-
-
 													</div>
 												</form>
 											)

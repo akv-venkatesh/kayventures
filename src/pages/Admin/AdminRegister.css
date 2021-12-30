@@ -169,6 +169,14 @@
   }
 
   .required-mark{
+    color: unset;
+    position: relative;
+  }
+  .required-mark::before{
+    content: '*';
+    position: absolute;
+    right: -10px;
+    top: -8px;
     color: #ff0808;
   }
   .input-field-container{

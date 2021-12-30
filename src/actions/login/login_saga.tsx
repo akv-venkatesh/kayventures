@@ -2,8 +2,9 @@ import { takeEvery, all, call, put, takeLeading,StrictEffect } from "redux-saga/
 import {
   login,
   loginSuccess,
+  loginFailed
 } from "./login";
-import { AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import apibaseURL from "../../api";
 
 interface datatype {
@@ -19,15 +20,19 @@ function* userLogin(action:any) {
       "/user-management/authenticate",action.payload
     );
     switch (response.status) {
-      case 200:
-        const data:datatype = response.data.data;
+      case 200 :
+        const data = response.data;
         console.log(response);
-       yield put(loginSuccess(data));
+        yield put(loginSuccess(data));
+        break;
+      case 400 :
+        const err = response.data;
+        yield put(loginFailed(err));
     }
   } 
   catch (error) {
-    const data = "failed";
-    yield put(loginSuccess(data));
+    const err = error as AxiosError
+    yield put(loginSuccess(err.response));
   }
 }
 

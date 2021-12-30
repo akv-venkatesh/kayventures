@@ -46,7 +46,7 @@ class AdminRegister extends Component<typeProps,typeState> {
     middleName: '',
     newPassword: '',
     conf_password: '',
-    isInvited: false
+    isInvited: true
   };
 
   render():JSX.Element{
@@ -65,13 +65,13 @@ class AdminRegister extends Component<typeProps,typeState> {
                   errors = { ...errors, email: 'Invalid Email Id' };
                 }
                 if (!values.name) {
-                  errors = { ...errors, firstName: 'Enter firstName' };
+                  errors = { ...errors, name: 'Enter firstName' };
                 }
                 if (!values.phoneNumber) {
-                  errors = { ...errors, phone: 'Enter Phone No' };
+                  errors = { ...errors, phoneNumber: 'Enter Phone No' };
                 }
                 if (!values.newPassword) {
-                  errors = { ...errors, password: 'Enter password' };
+                  errors = { ...errors, newPassword: 'Enter password' };
                 }
                 if (!values.conf_password) {
                   errors = { ...errors, conf_password: 'Enter password again' };
@@ -105,12 +105,15 @@ class AdminRegister extends Component<typeProps,typeState> {
                     </h5>
                   </div>
                   <div className="adminreg">
-                   
+
                       <div className="adminreg_details">
-                        <label>First Name <span className="required-mark">*</span></label>
+                        <label htmlFor="firstname">
+                          <span className="required-mark">First Name</span>
+                        </label>
                         <div className="input-field-container">
                           <input type="text" placeholder="Name" 
                           name="name"
+                          id="firstname"
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.name}
@@ -121,10 +124,11 @@ class AdminRegister extends Component<typeProps,typeState> {
                         </div>
                       </div>
                       <div className="adminreg_details">
-                        <label>Middle Name <span className="required-mark">*</span></label>
+                        <label htmlFor="middleName"><span className="required-mark">Middle Name</span></label>
                         <div className="input-field-container">
                           <input type="text" placeholder="Name" 
                           name="middleName"
+                          id="middleName"
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.middleName}
@@ -132,10 +136,11 @@ class AdminRegister extends Component<typeProps,typeState> {
                         </div>
                       </div>
                       <div className="adminreg_details">
-                        <label>Last Name <span className="required-mark">*</span></label>
+                        <label htmlFor="lastname"><span className="required-mark">Last Name </span></label>
                         <div className="input-field-container">
                           <input type="text" placeholder="Name" 
                           name="lastName"
+                          id="lastname"
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.lastName}
@@ -144,11 +149,12 @@ class AdminRegister extends Component<typeProps,typeState> {
                       </div>
   
                       <div className="adminreg_details">
-                        <label>Email Address<span className="required-mark">*</span></label>
+                        <label htmlFor="email"><span className="required-mark">Email Address</span></label>
                         <div className="input-field-container">
                           <input type="text" placeholder="company@xyz.com" 
                           name="email"
                           onChange={handleChange}
+                          id="email"
                           onBlur={handleBlur}
                           value={values.email}/>
                           <div className="validation-error">
@@ -157,10 +163,11 @@ class AdminRegister extends Component<typeProps,typeState> {
                         </div>
                       </div>
                       <div className="adminreg_details">
-                        <label>Phone Number <span className="required-mark">*</span></label>
+                        <label htmlFor="phonenumber"> <span className="required-mark">Phone Number</span></label>
                         <div className="input-field-container">
                           <input type="number" placeholder="+91 XXXXXXXXXXX" 
                           name="phoneNumber"
+                          id="phonenumber"
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.phoneNumber}
@@ -171,13 +178,15 @@ class AdminRegister extends Component<typeProps,typeState> {
                         </div>
                       </div>
                       <div className="adminreg_details">
-                        <label>New Password<span className="required-mark">*</span></label>
+                        <label htmlFor="password"><span className="required-mark">New Password</span></label>
                         <div className="input-field-container">
                           <RiLockPasswordFill className="password"/>
-                          <input type="password" placeholder="New Password" 
+                          <input type="password" placeholder="Password" 
                           name="newPassword"
+                          id="password"
                           onChange={handleChange}
                           onBlur={handleBlur}
+
                           value={values.newPassword}
                           />
                           <AiTwotoneEye className="eyeicon"/>
@@ -187,12 +196,13 @@ class AdminRegister extends Component<typeProps,typeState> {
                         </div>
                       </div>
                       <div className="adminreg_details">
-                        <label>Confirm Password <span className="required-mark">*</span></label>
+                        <label htmlFor="confpassword"> <span className="required-mark">Confirm Password</span></label>
                         <div className="input-field-container">
                           <RiLockPasswordFill className="password"/>
-                          <input type="text" placeholder="Confirm Password" 
+                          <input type="text" placeholder="Password" 
                           name="conf_password"
                           onChange={handleChange}
+                          id="confpassword"
                           onBlur={handleBlur}
                           value={values.conf_password}
                           />
