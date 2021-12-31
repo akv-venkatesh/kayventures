@@ -1,9 +1,10 @@
 import { takeEvery, all, call, put, takeLeading,StrictEffect } from "redux-saga/effects";
 import {
   adminlogin,
-  adminLoginSuccess,
+  adminLoginSuccess,adminLoginFailed
 } from "./login";
-import { AxiosResponse } from "axios";
+
+import { AxiosError, AxiosResponse } from "axios";
 import apibaseURL from "../../api";
 
 interface datatype {
@@ -18,15 +19,20 @@ function* adminLogin(action:any) {
       "/user-management/authenticate",action.payload
     );
     switch (response.status) {
-      case 200:
-        const data:datatype = response.data.data;
+      case 200 :
+        const data = response.data;
         console.log(response);
-       yield put(adminLoginSuccess(data));
+        yield put(adminLoginSuccess(data));
+        break;
+      case 400 :
+        const err = response.data;
+        yield put(adminLoginFailed(err));  
+
     }
   } 
   catch (error) {
-    const data = "failed";
-    yield put(adminLoginSuccess(data));
+    const err = error as AxiosError
+    yield put(adminLoginSuccess(err.response));
   }
 }
 

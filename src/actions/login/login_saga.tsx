@@ -27,7 +27,8 @@ function* userLogin(action:any) {
         break;
       case 400 :
         const err = response.data;
-        yield put(loginFailed(err));
+        yield put(loginFailed(err));  
+
     }
   } 
   catch (error) {

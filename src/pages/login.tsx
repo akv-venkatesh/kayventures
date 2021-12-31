@@ -125,7 +125,7 @@ class ManufacturerLogin extends Component<typeProps, typeState > {
 						</div>
 				</Modal.Body>
 				<Modal.Footer className="modal-footer flex-column">
-				<button type="button" className="modal-signin" data-bs-dismiss="modal" onClick={this.redirect}>Sign in</button>
+				<button type="button" className="modal-signin" data-bs-dismiss="modal" onClick={this.handleClose} >Sign in</button>
 							<p>Thanks</p>
 				</Modal.Footer>
 			</Modal>

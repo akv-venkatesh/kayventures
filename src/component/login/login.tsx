@@ -105,9 +105,12 @@ class Login extends Component<typeProps, typeState > {
 											if(this.props.formName == 'Login'){
 												this.props.userLogin(values);
 											}
-											if(this.props.formName == 'Super Admin Login'){
+											if(this.props.formName =='Super Admin Login'){
 												this.props.adminuserLogin(values);
+												
 											}
+
+											
 											actions.setSubmitting(false);
 										}}
 									>
@@ -174,9 +177,11 @@ class Login extends Component<typeProps, typeState > {
 													<div className="text-end">
 														{this.props.buttonName=="Submit"?<button type="submit" disabled={isSubmitting} className="mt-sm-4 mt-4 login-submit">
 														{this.props.buttonName}
-														</button>:<button type="submit" disabled={isSubmitting} className="mt-sm-4 mt-4 login-Login">
+														</button>:
+														<button type="submit" disabled={isSubmitting} className="mt-sm-4 mt-4 login-Login">
 														{this.props.buttonName}
-														</button>}
+														</button>
+													 } 	
 													</div>
 												</form>
 											)
