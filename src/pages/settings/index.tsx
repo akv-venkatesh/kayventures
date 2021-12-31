@@ -24,7 +24,7 @@ function ManufacturerSettings():JSX.Element {
 		    					<ImMenu className="d-md-none menu-bar" />
 		    				</div>
 		    				<ul className="d-flex mb-0 ps-0">
-		    					<li className="me-3">{localStorage.getItem('business_category')}</li>
+		    					<li className="me-3">{localStorage.getItem('business_categor_name')}</li>
 		    					<li className="me-3 active">Settings</li>
 		    				</ul>
 		    			</div>
