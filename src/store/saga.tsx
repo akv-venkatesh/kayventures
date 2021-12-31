@@ -4,6 +4,8 @@ import loginSaga from '../actions/login/login_saga';
 import adminregistersaga from '../actions/admin/registration_saga';
 import adminloginsaga from '../actions/admin/login_saga';
 import adminInvite from '../actions/admin/invite_saga';
+import adminpasswordChange from '../actions/admin/passwordchange_saga';
+import adminEditProfileSaga from '../actions/admin/editprofile.saga';
 
 export default function* () {
   
@@ -13,6 +15,8 @@ export default function* () {
     adminregistersaga(),
     adminloginsaga(),
     adminInvite(),
+    adminpasswordChange(),
+    adminEditProfileSaga(),
   ]);
   
 }

@@ -14,6 +14,13 @@ import Category from "./Category";
 
 interface typeState {
   showModal: boolean,
+  userData: {
+    name: string
+    email: string
+    phoneno: string
+
+  }
+
 }
 interface MyFormValues {
   organization?: string,
@@ -33,8 +40,17 @@ class PrimaryDetails extends Component<typeProps, typeState> {
 
   constructor(props: any) {
     super(props);
+    let userDetails: any = localStorage.getItem("user_create_account_details");
+    var userData: any = JSON.parse(userDetails);
     this.state = {
       showModal: false,
+      userData: {
+        name: userData.name,
+        email: userData.email,
+        phoneno: userData.phone,
+
+      }
+
     }
   }
 
@@ -52,25 +68,22 @@ class PrimaryDetails extends Component<typeProps, typeState> {
     })
   }
 
-  initialValues: MyFormValues = {
-    organization: '',
-    location: '',
-    personName: '',
-    designation: '',
-    email: '',
-    phone: '',
-    urlLink: '',
-  };
-  
-
-
   render(): JSX.Element {
-    console.log(this.props);
+    const initialValues: MyFormValues = {
+      organization: '',
+      location: '',
+      personName: this.state.userData.name,
+      designation: '',
+      email: this.state.userData.email,
+      phone: this.state.userData.phoneno,
+      urlLink: '',
+    };
+    console.log(this.props)
     return (
       <>
         <div className="d-flex justify-content-center">
           <div className="primary_form_body">
-            <Formik initialValues={this.initialValues}
+            <Formik initialValues={initialValues}
               validate={values => {
                 let errors = {};
                 if (!values.email) {
@@ -125,10 +138,10 @@ class PrimaryDetails extends Component<typeProps, typeState> {
                   </div>
                   <div className="primary_form">
                     <div className="primary_form_details">
-                      <label  htmlFor="organization">Organization <span className="required-mark">*</span></label>
+                      <label htmlFor="organization">Organization <span className="required-mark">*</span></label>
                       {/* <label htmlFor="organization">Organization</label> */}
                       <div className="input-field-container">
-                        <input 
+                        <input
                           aria-label="organization"
                           id="organization"
                           type="text"
@@ -154,7 +167,7 @@ class PrimaryDetails extends Component<typeProps, typeState> {
                     <div className="primary_form_details">
                       <label htmlFor="personName">Name of the person <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                        <input aria-label="personName"  id ='personName' type="text" placeholder="Name"
+                        <input aria-label="personName" id='personName' type="text" placeholder="Name"
                           name="personName"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -194,8 +207,8 @@ class PrimaryDetails extends Component<typeProps, typeState> {
                     <div className="primary_form_details">
                       <label htmlFor="phone">Phone No. <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                        <input 
-                          aria-label="phone" 
+                        <input
+                          aria-label="phone"
                           id="phone"
                           type="text"
                           placeholder="+91 XXXXXXXXXXX"
