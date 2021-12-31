@@ -23,14 +23,12 @@ test('initial test by elements', () => {
 
     const placeThreeElement = screen.queryByPlaceholderText("Select")
     expect(placeThreeElement).toBeInTheDocument;
-
     //lable
     const lableBusiness = screen.queryByLabelText('Business Categories')
     expect(lableBusiness).toBeInTheDocument;
 
     const lableStatus = screen.queryByLabelText('Status')
     expect(lableStatus).toBeInTheDocument;
-
     //Text
     const textSerial = screen.getByText('Serial No')
     expect(textSerial).toBeInTheDocument;
@@ -50,13 +48,13 @@ test('initial test by elements', () => {
     const textActions = screen.getByText('Actions')
     expect(textActions).toBeInTheDocument;
 
+
     async function selectOption(container: HTMLElement, optionText: string) {
         const placeholder = getByText(container, 'Select Buissness Category');
         fireEvent.keyDown(placeholder, keyDownEvent);
         await findByText(container, optionText);
         fireEvent.click(getByText(container, optionText));
     }
-
     async function selectOptions(container: HTMLElement, optionText: string) {
         const placeholder = getByText(container, 'Select');
         fireEvent.keyDown(placeholder, keyDownEvent);
