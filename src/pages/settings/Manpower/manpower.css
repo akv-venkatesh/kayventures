@@ -7,43 +7,24 @@
     flex: 0 0 calc(100% - 300px);
     max-width: calc(100% - 300px);
 }
-.menu_dropdown .form-select{
-    width: 100%;
+
+.manpower_input .form-control{
     height: 40px;
-    margin-bottom: 10px;
-    padding: 0px 30px;
-    line-height: 40px;
-    background: linear-gradient(
-135.37deg
-, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #ebecf0;
-    background-blend-mode: soft-light, normal;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
-    border-radius: 40px;
-    outline: none;
-    color: unset;
-    z-index: 100;
-    position: relative;
-    cursor: pointer;
-    font-size: 14px;
-    color: #0062D7;
-    
+        padding: 0px 15px;
+        background-color: transparent;
+        border-radius: 40px;
+        background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #EBECF0;
+        background-blend-mode: soft-light, normal;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        box-sizing: border-box;
+        box-shadow: inset -3px -3px 10px #FAFBFF, inset 3px 3px 10px #A6ABBD;
+        outline: none;
 }
-.menu_dropdown input{
-    height: 40px;
-    padding: 0px 15px;
-    width: 100% !important;
-    background-color: transparent;
-    border-radius: 40px !important;
-    background: linear-gradient(
-317.7deg
-, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #EBECF0;
-    background-blend-mode: soft-light, normal;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-sizing: border-box;
-    box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
-    outline: none;
-    color: #0062D7 !important;
+.manpower_input input:focus{
+        box-shadow: inset -3px -3px 10px #FAFBFF, inset 3px 3px 10px #A6ABBD;
+        background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #EBECF0;
+        border: unset;
+        outline: none;
 }
 .leftmenu .submit_switch{
     background-color: #3CD070 !important;
