@@ -171,6 +171,27 @@ body .b-settings .main-content-parent{
 .ReactTable .rt-thead .rt-resizable-header{
     padding: 10px!important;
 }
+
 .ReactTable .rt-table{
     border-radius: 10px;
+}
+
+.ReactTable  .dropdown-menu {
+    position: fixed !important;
+    inset: auto 0px 0px auto;
+    transform: translate3d(-76.2222px, -46.3333px, 0px);
+    max-width: 50px !important;
+}
+.ReactTable  .dropdown-menu .dropdown-item{
+   font-size: 14px;
+   padding: 10px 10px 10px 0px !important;
+}
+
+.ReactTable  .dropdown .dropdown-toggle::after {
+    display: none;
+}
+.ReactTable  .dropdown .dropdown-toggle {
+    outline: none;
+    box-shadow: none;
+    height: 10px;
 }

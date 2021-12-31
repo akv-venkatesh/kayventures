@@ -96,8 +96,18 @@ class Types extends Component<typeProps, typeState> {
 
     let types: any = localStorage.getItem("business_category");
     let type = JSON.parse(types);
-    // console.log(type.business_category[0]);
-    localStorage.setItem("business_category_name", type.business_category[parseInt(type.business_category_single) - 1].name);
+    let arrLength = type.business_category.length
+    let category;
+    // console.log(arrLength);
+    for (let i = 0; i < arrLength; i++) {
+      let id = type.business_category[i].id;
+      if (id == type.business_category_single) {
+        category = type.business_category[i]
+      }
+    }
+
+    console.log(category.children);
+    localStorage.setItem("business_category_name", category.name);
     return (
       <>
         <div className="Types_category">
@@ -111,41 +121,39 @@ class Types extends Component<typeProps, typeState> {
                   <div className="Types_category_section px-5">
                     <div className="Types_category_section_container">
                       <div className="Types_category_type">
-                        { }
+                        
                         <label
-                          htmlFor="Manufacturer"
+                          htmlFor={category.name}
                           className="m_category_item m_category_item_img1"
                         >
                           <div className="m_category_item_text">
-                            <h3>{type.business_category[parseInt(type.business_category_single) - 1].name}</h3>
-                            <p>{type.business_category[parseInt(type.business_category_single) - 1].description}</p>
+                            <h3>{category.name}</h3>
+                            <p>{category.description}</p>
                           </div>
                           <div className="m_category_item_radio">
                             <input
                               type="checkbox"
                               // id="Manufacturer"
-                              name="Manufacturer "
-                              value="Manufacturer"
-                              onChange={this.handleChange}
+                              name={category.name}
+                              value={category.id}
+                              // onChange={this.handleChange}
                               checked
                             />
-                            <label htmlFor="Manufacturer"></label>
+                            <label htmlFor={category.id}></label>
                           </div>
                         </label>
                       </div>
                       <div className="Types_category_type_item">
 
                         {
-
-                          Object.entries(type).length !== 0 ? (
-                            type.business_category[parseInt(type.business_category_single) - 1].children.map((data: any, index: number) => {
-
+                        category.children ? (
+                            category.children.map((data: any, index: number) => {
                               if (data.id !== 1) {
 
                                 return (
-                                  <label 
-                                  data-testid={"checkbox"}
-                                  htmlFor={data.id} key={data.id} className="Types_category_item ">
+                                  <label
+                                    data-testid={"checkbox"}
+                                    htmlFor={data.id} key={data.id} className="Types_category_item ">
                                     <img src={bag} />
                                     <h1>{data.name}</h1>
                                     <div className="Types_category_item_radio">
@@ -161,12 +169,18 @@ class Types extends Component<typeProps, typeState> {
                                   </label>
                                 );
                               }
-                            })
+                            }
+
+
+
+                            )
                           )
                             : (
-                              <div></div>
+                              <div> children data not found</div>
                             )
                         }
+
+
                       </div>
                     </div>
                   </div>
@@ -174,7 +188,7 @@ class Types extends Component<typeProps, typeState> {
               </PerfectScrollbar>
               <div className="Types_category_btn_section pt-4 px-5">
                 <div className="Types_category_btn w-100">
-                  <Backbutton  onClick={this.redirect} />
+                  <Backbutton onClick={this.redirect} />
                   <div>
                     {this.state.visibility ? (
                       <Nextbutton onClick={this.redirectNext} />
