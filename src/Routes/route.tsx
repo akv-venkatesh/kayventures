@@ -13,7 +13,7 @@ import {
   Home,
   Settings,
   ProConfigCapacity,
-  KYC,Organization,Organizationinfo,OrganizationinfoModal,
+  KYC, Organization, Organizationinfo, OrganizationinfoModal,
   Productconfig,
   SelectPlan,
   Pro_config,
@@ -41,10 +41,7 @@ class Routers extends React.Component {
           <Route path='/productConfiguration' element={<Productconfig />} />
           <Route path='/SelectPlan' element={<SelectPlan />} />
           <Route path='/product-config' element={<Pro_config />} />
-          <Route path='/machinery' element={<Machinery />} />
-          <Route path='/machine' element={<Machine />} />
-          <Route path='/manpower' element={<Manpower />} />
-          <Route path='/esg' element={<Esg />} />
+
           <Route path='/settings' element={<Settings />} >
             <Route path="kyc" element={<KYC />} />
             <Route path="proconfig" element={<ProConfig />} />
@@ -53,6 +50,10 @@ class Routers extends React.Component {
             <Route path="Organization" element={<Organization />} />
             <Route path="Organizationinfo" element={<Organizationinfo />} />
             <Route path="OrganizationinfoModal" element={<OrganizationinfoModal />} />
+            <Route path="machinery" element={<Machinery />} />
+            <Route path="machine" element={<Machine />} />
+            <Route path="manpower" element={<Manpower />} />
+            <Route path="esg" element={<Esg />} />
           </Route>
 
 

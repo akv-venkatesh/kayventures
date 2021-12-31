@@ -4,7 +4,7 @@ import {
   setBusCategory,
   getBusinessCategory,
   getBusinessCategorySuccess,
-  setPrimaryDetailsSuccess
+  setPrimaryDetailsSuccess,setPrimaryDetailsFailed
 } from "./business_category";
 import { AxiosResponse } from "axios";
 import apibaseURL from "../../api";
@@ -58,18 +58,22 @@ function* setPrimaryDetails(action: any) {
 
   console.log(details);
   try {
-    const response: AxiosResponse = yield call(apibaseURL.post, "/user-management/biz-category-user-signup",
+    const response: AxiosResponse = yield call(apibaseURL.post,"/user-management/biz-category-user-signup",
       details
     );
-    // console.log(response.statusText);
+    console.log(response.status);
     switch (response.status) {
       case 200:
         yield put(setPrimaryDetailsSuccess(true));
         localStorage.setItem("primary_user_details", JSON.stringify(details));
         console.log("primary details done")
-
+        break
+      case 400:
+        yield put(setPrimaryDetailsFailed(true));
+        console.log("Error")
     }
   } catch (error) {
+    console.log('Error in catch ,',error);
     const data = error;
     yield put(setPrimaryDetailsSuccess(false));
   }
