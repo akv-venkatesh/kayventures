@@ -28,27 +28,13 @@ import {
 
 
 class BussinessCategories extends React.Component {
-	render() {
+   state: any = {
 
-
-
-		const options = [
-			{ value: 'all', label: 'All' },
-			{ value: 'Manufactures', label: 'Manufactures' },
-			{ value: 'Buyer', label: 'Buyer' },
-			{ value: 'Job Contractors', label: 'Job Contractors' },
-			{ value: 'Value Additions', label: 'Value Additions' },
-			{ value: 'Processing & Finishing', label: 'Processing & Finishing' }
-		]
-		const options1 = [
-			{ value: 'all', label: 'All' },
-			{ value: 'OnHold', label: 'On Hold' },
-			{ value: 'Approve', label: 'Approve' },
-			{ value: 'Reject', label: 'Reject' },
-
-		]
-
-		const data = [{
+   }
+   constructor(props: any) {
+	   super(props);
+	   this.state ={
+		   data: [{
 			serialno: 1,
 			name: 'Sindhu',
 			email: 'sindhu@keyventuers.com',
@@ -111,7 +97,46 @@ class BussinessCategories extends React.Component {
 			organisation: 'Emproto Techn...',
 			status: 'On Hold',
 			actions: <HiDotsHorizontal />
-		}]
+		}],
+		fiteredData: [],
+	    
+	   }
+	}
+
+	componentDidMount(){
+		const { data } = this.state;
+		this.setState({filterData: data });
+	}
+
+	filterSelected(type: any, el: any){
+        const val = el.value;
+		const { data } = this.state;
+		const temp = data.filter((x: any) => x[type] === val);
+		this.setState({filterData: temp});
+	}
+
+
+	render() {
+
+
+		const { filterData } = this.state;
+
+		const options = [
+			{ value: 'all', label: 'All' },
+			{ value: "Manufacturer", label: 'Manufactures' },
+			{ value: 'Buyer', label: 'Buyer' },
+			{ value: 'Job Contractors', label: 'Job Contractors' },
+			{ value: 'Value Additions', label: 'Value Additions' },
+			{ value: 'Processing & Finishing', label: 'Processing & Finishing' }
+		]
+		const options1 = [
+			{ value: 'all', label: 'All' },
+			{ value: 'On Hold', label: 'On Hold' },
+			{ value: 'Approve', label: 'Approve' },
+			{ value: 'Reject', label: 'Reject' },
+
+		]
+
 		const columns = [{
 			Header: 'Serial No',
 			accessor: 'serialno',
@@ -136,7 +161,9 @@ class BussinessCategories extends React.Component {
 		}, {
 			Header: 'Actions',
 			accessor: 'actions'
-		}]
+		}];
+
+		
 
 		return (
 
@@ -161,7 +188,7 @@ class BussinessCategories extends React.Component {
 									<div className="d-flex align-items-center " >
 										<label className=''>Business Categories</label>
 										<div className='ms-2' >
-											<Select options={options} width='300px' position='bottom' placeholder='Select Buissness Category' onChange={()=>{}}></Select>
+											<Select options={options} width='300px' position='bottom' placeholder='Select Buissness Category' onChange={(e: any)=> this.filterSelected('category', e)}></Select>
 										</div>
 									</div>
 								</div>
@@ -170,7 +197,7 @@ class BussinessCategories extends React.Component {
 										<label className=''>Status</label>
 										<div className='ms-2'>
 
-											<Select options={options1} width='200px' position='bottom' placeholder='Select' onChange={()=>{}}></Select>
+											<Select options={options1} width='200px' position='bottom' placeholder='Select' onChange={(e: any)=> this.filterSelected('status', e)}></Select>
 										</div>
 									</div>
 								</div>
@@ -182,7 +209,7 @@ class BussinessCategories extends React.Component {
 										<div className="content">
 											<div className="tableFixHead">
 												<ReactTable
-													data={data}
+													data={filterData}
 													columns={columns}
 													defaultPageSize={6}
 													pageSizeOptions={[2, 4, 6]}
