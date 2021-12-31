@@ -65,7 +65,7 @@ class BussinessCategories extends React.Component {
 			category: 'Manufacturer',
 			organisation: 'Emproto Techn...',
 			status: 'On Hold',
-			actions: <HiDotsHorizontal />
+			actions:<HiDotsHorizontal />
 		}, {
 			serialno: 3,
 			name: 'Sindhu',
@@ -135,12 +135,19 @@ class BussinessCategories extends React.Component {
 			accessor: 'status'
 		}, {
 			Header: 'Actions',
-			accessor: 'actions'
+			accessor: 'actions',
+			Cell: (value:any) => (<Dropdown>
+				<Dropdown.Toggle variant='tranparent' className='d-flex align-items-center' id="dropdown-basic">
+					<HiDotsHorizontal />
+				</Dropdown.Toggle>
+				<Dropdown.Menu>
+				    <Dropdown.Item>Approve</Dropdown.Item>
+					<Dropdown.Item>Reject</Dropdown.Item>
+					<Dropdown.Item>On Hold</Dropdown.Item>
+				</Dropdown.Menu>
+			</Dropdown>)
 		}]
-
 		return (
-
-
 			<>
 				<div className='d-flex flex-wrap h-100 admin-settings'>
 					<section className='s-sec1'>
@@ -186,6 +193,7 @@ class BussinessCategories extends React.Component {
 													columns={columns}
 													defaultPageSize={6}
 													pageSizeOptions={[2, 4, 6]}
+												
 												/>
 
 											</div>
@@ -199,10 +207,6 @@ class BussinessCategories extends React.Component {
 					</section>
 				</div>
 			</>
-
-
-
-
 		);
 	}
 }
