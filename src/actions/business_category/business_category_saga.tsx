@@ -6,7 +6,7 @@ import {
   getBusinessCategorySuccess,
   setPrimaryDetailsSuccess,setPrimaryDetailsFailed
 } from "./business_category";
-import { AxiosResponse } from "axios";
+import { AxiosResponse,AxiosError } from "axios";
 import apibaseURL from "../../api";
 
 interface datatype {
@@ -73,9 +73,18 @@ function* setPrimaryDetails(action: any) {
         console.log("Error")
     }
   } catch (error) {
-    console.log('Error in catch ,',error);
-    const data = error;
-    yield put(setPrimaryDetailsSuccess(false));
+    // console.log('Error in catch ,',error);
+    // const data = error;
+    // yield put(setPrimaryDetailsSuccess(false));
+    const err = error as AxiosError
+    console.log("Error ---->" ,err.response?.status);
+
+    const errors = err.response?.status
+    switch (errors) {
+        case 400 :
+          console.log("Error Text" ,err.response?.data.message);
+          yield put(setPrimaryDetailsFailed(true));  
+      }
   }
 }
 

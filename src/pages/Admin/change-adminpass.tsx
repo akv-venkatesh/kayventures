@@ -95,6 +95,22 @@ console.log(props);
                                                 if (!values.NewPassword) {
                                                     errors = { ...errors, NewPassword: 'Enter NewPassword' };
                                                 }
+                                                else if(!/^.{8,}/i.test(values.NewPassword)){
+                                                    errors = {...errors, NewPassword : 'Psw should be 8 character'};
+                                                  }
+                                                  else if(!/^(?=.*\d).{8,}/.test(values.NewPassword)){
+                                                    errors = {...errors, NewPassword : 'Psw should have atleat 1 numeric'};
+                                                  }
+                                                  else if(!/^(?=.*[a-z])/.test(values.NewPassword)){
+                                                    errors = {...errors, NewPassword : 'Psw should have atleat 1 Lowercase'};
+                                                  }
+                                                  else if(!/^(?=.*[A-Z])/.test(values.NewPassword)){
+                                                    errors = {...errors, NewPassword : 'Psw should have atleat 1 Uppercase'};
+                                                  }
+                                                  else if(!/[^a-zA-Z\d]/.test(values.NewPassword)){
+                                                    errors = {...errors, NewPassword : 'Psw should have atleat 1 Special Char'};
+                                                  }
+                                                
                                                 if (!values.ConfirmPassword) {
 
                                                     errors = { ...errors, ConfirmPassword: 'Enter Confirm Password' };

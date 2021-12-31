@@ -47,7 +47,12 @@ const BHomeReducer = (state = initialState, action: actiontype) => {
         ...state,
         Types: action.payload
       };
-
+      case'SET_MODELS_CLOSE':
+      return {
+        ...state,
+        primary_details_status: false,
+        primary_details_error:false,
+      };
     default:
       return state;
   }

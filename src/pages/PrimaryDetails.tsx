@@ -36,6 +36,7 @@ interface MyFormValues {
 
 interface typeProps {
   setPrimaryDetails: (arg: Object) => void;
+  setclose: ()=>void;
   businesscategory: any
 }
 class PrimaryDetails extends Component<typeProps, typeState> {
@@ -51,17 +52,12 @@ class PrimaryDetails extends Component<typeProps, typeState> {
         name: userData.name,
         email: userData.email,
         phoneno: userData.phone,
-
       },
- errorMessage:false
+      errorMessage:false
     }
   }
 
-
-
   componentDidMount() {
-
-
 
   }
 
@@ -70,6 +66,7 @@ class PrimaryDetails extends Component<typeProps, typeState> {
       showModal: false,
       errorMessage:false
     })
+    this.props.setclose()
   }
 
   render(): JSX.Element {
@@ -83,6 +80,13 @@ class PrimaryDetails extends Component<typeProps, typeState> {
       urlLink: '',
     };
     console.log(this.props)
+
+    // this.props.businesscategory.primary_details_error ? this.setState({
+    //   errorMessage:true
+    // }) : this.setState({
+    //   errorMessage:false
+    // })
+    
     return (
       <>
         <div className="d-flex justify-content-center">
@@ -272,7 +276,7 @@ class PrimaryDetails extends Component<typeProps, typeState> {
         </Modal>
 
         <Modal
-          show={this.state.errorMessage}
+          show={this.props.businesscategory.primary_details_error}
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered
@@ -303,6 +307,10 @@ const mapDispatchToProps = (dispatch: any, props: any) => {
       dispatch(setPrimaryDetails(primarydetails));
 
     },
+    setclose:()=>{
+      dispatch({type: 'SET_MODELS_CLOSE'});
+
+    }
 
   };
 };
