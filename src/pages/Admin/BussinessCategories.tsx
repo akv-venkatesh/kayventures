@@ -111,8 +111,14 @@ class BussinessCategories extends React.Component {
 	filterSelected(type: any, el: any){
         const val = el.value;
 		const { data } = this.state;
-		const temp = data.filter((x: any) => x[type] === val);
-		this.setState({filterData: temp});
+
+		if(val=="all"){
+			this.setState({filterData: data	});
+		}else{
+			const temp = data.filter((x: any) => x[type] === val);
+			this.setState({filterData: temp});
+		}
+		
 	}
 
 
