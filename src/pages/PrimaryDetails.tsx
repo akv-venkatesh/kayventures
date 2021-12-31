@@ -14,7 +14,9 @@ import Category from "./Category";
 
 interface typeState {
   showModal: boolean,
+  errorMessage:boolean
 }
+
 interface MyFormValues {
   organization?: string,
   location?: string,
@@ -35,6 +37,7 @@ class PrimaryDetails extends Component<typeProps, typeState> {
     super(props);
     this.state = {
       showModal: false,
+      errorMessage:false
     }
   }
 
@@ -48,7 +51,8 @@ class PrimaryDetails extends Component<typeProps, typeState> {
 
   handleHide = () => {
     this.setState({
-      showModal: false
+      showModal: false,
+      errorMessage:false
     })
   }
 
@@ -251,6 +255,21 @@ class PrimaryDetails extends Component<typeProps, typeState> {
             {/* <h5 className="modal-timer">00:30</h5> */}
             <Link to='/verifiedemail'><span className="modal-action-resend"><span>Proceed</span></span></Link>
             <h5 className="modal-alert">The verification will be completed in 2-3 days.</h5>
+          </Modal.Body>
+        </Modal>
+
+        <Modal
+          show={this.state.errorMessage}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+          className="verifyemailmodel"
+          onHide={() => this.handleHide()}
+        >
+          <Modal.Header closeButton></Modal.Header>
+          <Modal.Body  >
+            <h4 className="modal-title">Registration Failed</h4>
+            <h5 className="modal-discription text-center" style={{color:'red'}}>This Email Id Alredy Registered</h5>
           </Modal.Body>
         </Modal>
       </>

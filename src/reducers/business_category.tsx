@@ -4,6 +4,7 @@ var initialState = {
   response: null,
   business_category_single: '',
   primary_details_status: false,
+  primary_details_error:false,
   Types: []
 }
 
@@ -34,6 +35,12 @@ const BHomeReducer = (state = initialState, action: actiontype) => {
         ...state,
         primary_details_status: action.payload
       };
+    case 'SET_PRIMARY_DETAILS_FAILED':
+      console.log(action.payload)
+      return {
+      ...state,
+      primary_details_error: action.payload
+    };
     case 'TYPES':
       console.log(action.payload);
       return {
