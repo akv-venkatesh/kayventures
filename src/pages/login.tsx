@@ -67,17 +67,14 @@ class ManufacturerLogin extends Component<typeProps, typeState> {
 	submit = async () => {
 		setTimeout(() => {
 			let data: any = this.props;
-			console.log(data);
-			if (data.login.login_details.code == 200) {
+			console.log(this.props.login.login_details.code);
+			if (this.props.login.login_details.code == 200) {
+				localStorage.setItem("authenticate-token", this.props.login.login_details.data.token);
 				this.redirect();
-
-				localStorage.setItem("authenticate-token", JSON.stringify(this.props.login.login_details.data.token));
 			}
 			else {
 				this.setState({
 					successMessage: this.props.login.login_details.data.message
-
-
 				})
 				this.handleShow();
 			}
@@ -93,7 +90,7 @@ class ManufacturerLogin extends Component<typeProps, typeState> {
 
 	render(): JSX.Element {
 		if (this.state.submitSuccess === true) {
-			// return <Navigate to="/home" />
+			return <Navigate to="/home" />
 		}
 
 		return (

@@ -8,13 +8,17 @@ import AdminSideNav from '../../component/admin_navigation';
 import Adminprofile from '../../component/adminprofile/profile';
 import "react-perfect-scrollbar/dist/css/styles.css";
 import { BiEditAlt } from "react-icons/bi";
+import { useDispatch, useSelector, connect } from "react-redux";
+import { adminEditProfile } from "../../actions/admin/editprofile";
+
 
 interface typeState {
     SuperAdmin: boolean,
     inviteAdmin: boolean,
     invitemail: boolean,
     emailsuccess: boolean,
-    imgSrc:any
+    imgSrc: any
+    imagefile: any
 }
 
 
@@ -26,9 +30,13 @@ interface EditFormValues {
     phone?: string,
     address?: string,
     description?: string,
-}
 
-class editaccinfo extends Component<{}, typeState> {
+}
+interface typeProps {
+    admineditprofile: (arg: Object) => void;
+    // businesscategory: any
+}
+class editaccinfo extends Component<typeProps, typeState> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -36,7 +44,9 @@ class editaccinfo extends Component<{}, typeState> {
             inviteAdmin: true,
             invitemail: false,
             emailsuccess: false,
-            imgSrc : ''
+            imgSrc: '',
+            imagefile: ''
+
         };
 
 
@@ -58,22 +68,23 @@ class editaccinfo extends Component<{}, typeState> {
 
         //  for selecting logo img
         const onImageChange = (e: any) => {
-            var file =e.target.files[0];
+            var file = e.target.files[0];
             var reader = new FileReader();
             var url = reader.readAsDataURL(file);
-          
-             reader.onloadend = (e:any) => {
+
+            reader.onloadend = (e: any) => {
                 this.setState({
                     imgSrc: reader.result
                 })
-              }
-            console.log(url)
-            console.log(file)
+            }
+            this.setState({ imagefile: file })
+            // console.log(url)
+            // console.log(file)
         }
 
+        console.log(this.props)
 
 
-        //  for selecting logo img
 
         return (
             <>
@@ -130,7 +141,13 @@ class editaccinfo extends Component<{}, typeState> {
                                                         return errors;
                                                     }}
                                                     onSubmit={(values, actions) => {
-                                                        console.log(values)
+                                                        // console.log(values)
+                                                        var token = localStorage.getItem('authenticate-token');
+                                                        // console.log(token);
+                                                        this.props.admineditprofile({ values, 'token': token, "imageFile": this.state.imagefile ,"id":1})
+
+                                                        // this.props.admineditprofile(values);
+
                                                     }}>
                                                     {({ values,
                                                         errors,
@@ -150,7 +167,7 @@ class editaccinfo extends Component<{}, typeState> {
                                                                     <div className='edit-profile-profile-icon'><Field type="file" id="upload_logo" accept="image/png, image/gif, image/jpeg" name="upload_logo" onChange={(e: any) => onImageChange(e)} hidden /> <label htmlFor='upload_logo'><BiEditAlt className="user-edit-icon " /></label></div>
                                                                 </div>
                                                             </div>
-                                                            <Field type="file" id="upload_logo" name="upload_logo" onChange={(e: any) => onImageChange(e)} hidden /> 
+                                                            <Field type="file" id="upload_logo" name="upload_logo" onChange={(e: any) => onImageChange(e)} hidden />
                                                             <div className="field row mt-5 d-flex align-items-center">
                                                                 <h3 className="col-md-2 field-name">First Name<span className="required"> *</span></h3>
                                                                 <div className="col-md-9 input-field-container">
@@ -179,7 +196,7 @@ class editaccinfo extends Component<{}, typeState> {
                                                                         onChange={handleChange}
                                                                         onBlur={handleBlur}
                                                                         value={values.last_name} />
-                                                                        <div className="validation-error">{errors.last_name && touched.last_name && errors.last_name}</div>
+                                                                    <div className="validation-error">{errors.last_name && touched.last_name && errors.last_name}</div>
                                                                 </div>
                                                             </div>
                                                             <div className="field row mt-5 d-flex align-items-center">
@@ -189,7 +206,7 @@ class editaccinfo extends Component<{}, typeState> {
                                                                         onChange={handleChange}
                                                                         onBlur={handleBlur}
                                                                         value={values.email} />
-                                                                        <div className="validation-error">{errors.email && touched.email && errors.email}</div>
+                                                                    <div className="validation-error">{errors.email && touched.email && errors.email}</div>
                                                                 </div>
                                                             </div>
                                                             <div className="field row mt-5 d-flex align-items-center">
@@ -199,7 +216,7 @@ class editaccinfo extends Component<{}, typeState> {
                                                                         onChange={handleChange}
                                                                         onBlur={handleBlur}
                                                                         value={values.phone} />
-                                                                        <div className="validation-error">{errors.phone && touched.phone && errors.phone}</div>
+                                                                    <div className="validation-error">{errors.phone && touched.phone && errors.phone}</div>
                                                                 </div>
                                                             </div>
                                                             <div className="field row mt-5 d-flex align-items-center">
@@ -209,7 +226,7 @@ class editaccinfo extends Component<{}, typeState> {
                                                                         onChange={handleChange}
                                                                         onBlur={handleBlur}
                                                                         value={values.address} />
-                                                                        
+
                                                                 </div>
                                                             </div>
                                                             <div className="field row mt-5 d-flex align-items-center">
@@ -218,7 +235,7 @@ class editaccinfo extends Component<{}, typeState> {
                                                                     <input name="description" type="text" id="" className="input-field" placeholder="Description"
                                                                         onChange={handleChange}
                                                                         onBlur={handleBlur}
-                                                                        value={values.description}/>
+                                                                        value={values.description} />
                                                                 </div>
                                                             </div>
                                                             <div className='btn-section d-flex align-items-center justify-content-end'>
@@ -251,4 +268,23 @@ class editaccinfo extends Component<{}, typeState> {
     }
 }
 
-export default editaccinfo;
+// export default editaccinfo;
+
+const mapStateToProps = (state: any) => {
+    return state;
+};
+
+
+const mapDispatchToProps = (dispatch: any, props: any) => {
+    return {
+        admineditprofile: (editfiles: Object) => {
+            console.log(editfiles);
+
+            dispatch(adminEditProfile(editfiles));
+
+        },
+
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(editaccinfo);

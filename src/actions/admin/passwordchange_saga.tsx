@@ -14,8 +14,8 @@ interface datatype {
 
 function* adminPasswordchange(action:any) {
     
-    console.log("password changed page");
-    console.log(action);
+    // console.log("password changed page");
+    // console.log(action);
 
     yield put(adminPasswordchangeSuccess("4"));     
   try {
