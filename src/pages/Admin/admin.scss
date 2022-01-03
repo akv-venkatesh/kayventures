@@ -646,14 +646,13 @@ a{
       box-sizing: border-box;
       box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
       border-radius: 40px;
-      span {
-        font-family: "Poppins";
-        font-style: normal;
-        font-weight: 500;
-        font-size: 18px;
-        line-height: 27px;
-        color: #ffffff;
-      }
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 27px;
+      color: #ffffff;
+      border: none;
     }
   }
 }
@@ -957,5 +956,16 @@ color: #8B9CAE;
         border: 1px solid #dddddd;
       }
     }
+  }
+}
+
+.input-field-container{
+  position: relative;
+  .validation-error {
+    color: #ff0808;
+    position: absolute;
+    font-size: 14px;
+    left: 20px;
+    bottom: -25px;
   }
 }

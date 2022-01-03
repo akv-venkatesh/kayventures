@@ -66,31 +66,31 @@ class BussinessCategories extends React.Component {
 			name: 'Sindhu',
 			email: 'sindhu@keyventuers.com',
 			phoneno: 9876543210,
-			category: 'Manufacturer',
+			category: 'Buyer',
 			organisation: 'Emproto Techn...',
 			status: 'On Hold',
 			actions: <HiDotsHorizontal />
 		}, {
 			serialno: 5,
-			name: 'Sindhu',
+			name: 'Bindhu',
 			email: 'sindhu@keyventuers.com',
+			phoneno: 7866543210,
+			category: 'Manufacturer',
+			organisation: 'Google Techn...',
+			status: 'On Hold',
+			actions: <HiDotsHorizontal />
+		}, {
+			serialno: 6,
+			name: 'Indhu',
+			email: 'nandhu@keyventuers.com',
 			phoneno: 9876543210,
 			category: 'Manufacturer',
 			organisation: 'Emproto Techn...',
 			status: 'On Hold',
 			actions: <HiDotsHorizontal />
 		}, {
-			serialno: 6,
-			name: 'Sindhu',
-			email: 'sindhu@keyventuers.com',
-			phoneno: 9876543210,
-			category: 'Manufacturer',
-			organisation: 'Emproto Techn...',
-			status: 'On Hold',
-			actions: <HiDotsHorizontal />
-		}, {
-			serialno: 6,
-			name: 'Sindhu',
+			serialno: 7,
+			name: 'Vindhu',
 			email: 'sindhu@keyventuers.com',
 			phoneno: 9876543210,
 			category: 'Manufacturer',
@@ -121,12 +121,24 @@ class BussinessCategories extends React.Component {
 		
 	}
 
+	searchData(e:any){
+        const val = e.target.value;
+		const { data } = this.state;
+		console.log(val.toLowerCase());
+	    const temp = data.filter((value:any) => {
+			return (value.name.toLowerCase().includes(val.toLowerCase())  || value.email.toLowerCase().includes(val.toLowerCase()) ||value.phoneno.toString().toLowerCase().includes(val.toLowerCase()) ||value.organisation.toLowerCase().includes(val.toLowerCase()));
+		  });
+		  console.log(temp);
+		  
+		  this.setState({filterData: temp});
+		
+	}
+
 
 	render() {
 
 
 		const { filterData } = this.state;
-
 		const options = [
 			{ value: 'all', label: 'All' },
 			{ value: "Manufacturer", label: 'Manufactures' },
@@ -140,7 +152,6 @@ class BussinessCategories extends React.Component {
 			{ value: 'On Hold', label: 'On Hold' },
 			{ value: 'Approve', label: 'Approve' },
 			{ value: 'Reject', label: 'Reject' },
-
 		]
 
 		const columns = [{
@@ -190,7 +201,7 @@ class BussinessCategories extends React.Component {
 						<div className="h-100">
 							<div className="navigation align-items-center d-flex justify-content-between">
 								<div className="d-flex align-items-center ps-3">
-									<input type="text" id="" className="input-box form-control" name="search" placeholder="Search" />
+									<input type="text" id="" className="input-box form-control" name="search" onChange={(e: any) => this.searchData(e)} placeholder="Search" />
 								</div>
 								<div className="d-flex align-items-center">
 									<Adminprofile />
@@ -226,9 +237,7 @@ class BussinessCategories extends React.Component {
 													columns={columns}
 													defaultPageSize={6}
 													pageSizeOptions={[2, 4, 6]}
-												
 												/>
-
 											</div>
 										</div>
 									</div>

@@ -247,6 +247,7 @@
     margin-top: 20px;
     margin-bottom: 55px;
     font-weight: 300;
+    justify-content: center;
   }
   .verifyemailmodel .modal-body .modal-alert {
     font-family: "Poppins";

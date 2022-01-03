@@ -100,6 +100,8 @@ class CreateAccount extends Component<typeprops, typestates > {
             }}
             onSubmit={(values,actions) => {
               // handleShow();
+              console.log(values);
+              localStorage.setItem("user_create_account_details", JSON.stringify(values));
               this.setState({
                 submitted: true
               });
