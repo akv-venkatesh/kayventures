@@ -16,6 +16,13 @@ import { AiOutlineRight } from 'react-icons/ai';
 
 interface typeState {
     showSummary: boolean,
+    showMachine: boolean,
+    machineType: string,
+    brandType: string,
+    typeTech: string,
+    machineCount: number,
+    savedMachine: any,
+    machineItems: any,
 }
 
 
@@ -25,6 +32,56 @@ class Machine extends Component<{}, typeState> {
         super(props);
         this.state = {
             showSummary: false,
+            showMachine: false,
+            machineType: '',
+            brandType: '',
+            typeTech: '',
+            machineCount: 0,
+            savedMachine: [],
+            machineItems: [
+                {
+                    name: 'selectMachine',
+                    data: [
+                        {
+                            name: 'Single Needle'
+                        },
+                        {
+                            name: 'Double Needle'
+                        },
+                        {
+                            name: 'Thread Over Look'
+                        }
+                    ]
+                },
+                {
+                    name: 'selectBrand',
+                    data: [
+                        {
+                            name: 'Juki'
+                        },
+                        {
+                            name: 'Pfaff'
+                        },
+                        {
+                            name: 'Brother'
+                        }
+                    ]
+                },
+                {
+                    name: 'selecttech',
+                    data: [
+                        {
+                            name: 'Basic'
+                        },
+                        {
+                            name: 'Process Automated'
+                        },
+                        {
+                            name: 'Computerized'
+                        }
+                    ]
+                },
+            ],
         }
     }
 
@@ -36,6 +93,54 @@ class Machine extends Component<{}, typeState> {
     hideSummary = () => {
         this.setState({
             showSummary: false
+        })
+    }
+    selectMachine = (event: any) => {
+        let value: any = event;
+        this.setState({
+            showMachine: true,
+            machineType: value.value
+        })
+    }
+    selectBrand = (event: any) => {
+        let value: any = event;
+        this.setState({
+            brandType: value.value
+        })
+    }
+    selectTech = (event: any) => {
+        let value: any = event;
+        this.setState({
+            typeTech: value.value
+        })
+    }
+    changeMachineCount = (e: any) => {
+        if (e.currentTarget.value || e.currentTarget.value === "") {
+            this.setState({
+                machineCount: e.currentTarget.value
+            })
+        }
+    }
+    handleSavedMachine = (e: any) => {
+
+        let obj = [{
+            data: [{
+                machineType: e.currentTarget.value
+            }, {
+                brandType: e.currentTarget.value
+            }, {
+                typeTech: e.currentTarget.value
+            }, {
+                machineCount: e.currentTarget.value
+            },
+            ]
+        }];
+        let arr = this.state.savedMachine;
+        arr.push(obj);
+        this.setState({
+            savedMachine: arr,
+        }, () => {
+            console.log(this.state.savedMachine)
         })
     }
 
@@ -63,13 +168,13 @@ class Machine extends Component<{}, typeState> {
                     <h5 className="menu_header">Machine Type</h5>
                     <div className="menu_dropdown mb-3">
                         <div className="mb-3">
-                            <Select options={machine} width='300px' position='bottom' placeholder='Select Machine' onChange={() => { }}></Select>
+                            <Select options={machine} width='300px' position='bottom' placeholder='Select Machine' onChange={this.selectMachine}></Select>
                         </div>
                         <div className="mb-3">
-                            <Select options={brand} width='300px' position='bottom' placeholder='Select Brand' onChange={() => { }}></Select>
+                            <Select options={brand} width='300px' position='bottom' placeholder='Select Brand' onChange={this.selectBrand}></Select>
                         </div>
                         <div className="mb-3">
-                            <Select options={technology} width='300px' position='bottom' placeholder='Select Technology' onChange={() => { }}></Select>
+                            <Select options={technology} width='300px' position='bottom' placeholder='Select Technology' onChange={this.selectTech}></Select>
                         </div>
                     </div>
 
@@ -79,14 +184,15 @@ class Machine extends Component<{}, typeState> {
                             <Form.Control
                                 type="text"
                                 placeholder="0"
-
+                                onChange={this.changeMachineCount}
                             />
                         </div>
 
                         <div className="ms-2 mb-3">
                             <Button
-                                className="btn btn-default submit"
-                                disabled
+                                className="btn btn-secondary submit"
+                                disabled={!this.state.machineCount}
+                                onClick={this.handleSavedMachine}
                             >
                                 Submit
                             </Button>
@@ -97,10 +203,10 @@ class Machine extends Component<{}, typeState> {
                                 type="switch"
                             />
                         </div>
-                        <div className="ms-2">
+                        <div className="">
                             <Button
-                                className="reset_switch btn btn-primary"
-                                disabled
+                                className="btn btn-secondary reset_switch "
+                                disabled={!this.state.machineType}
                             >
                                 Reset
                             </Button>
@@ -122,38 +228,39 @@ class Machine extends Component<{}, typeState> {
                     <div className="box py-5 mt-2">
                         <div className="scroll pb-3">
                             <PerfectScrollbar>
-                                <div className="d-flex flex-wrap pe-4">
-                                    <Container>
-                                        <Row>
-
-                                            <Col xs={3} md={12} className="column d-flex" >
-                                                <div className="machine_items">
-                                                    <div className="machine_image d-flex">
-                                                        <img src={MachineIcon} alt="" />
-                                                        <h3>1</h3>
+                                {this.state.showMachine ?
+                                    <div className="d-flex flex-wrap pe-4">
+                                        <Container>
+                                            <Row>
+                                                <Col xs={3} md={12} className="column d-flex" >
+                                                    <div className="machine_items">
+                                                        <div className="machine_image d-flex">
+                                                            <img src={MachineIcon} alt="" />
+                                                            <h3>{this.state.machineCount}</h3>
+                                                        </div>
+                                                        <p>{this.state.machineType}</p>
                                                     </div>
-
-                                                    <p>juki</p>
-
-
-                                                </div>
-                                                <div className="machine_items_text">
-                                                    <p>Brand</p>
-                                                    <p>tech</p>
-                                                </div>
-                                            </Col>
-                                            <div className="plusIcon d-flex">
-                                                <img src={Vector5} className="image_one" alt="" />
-                                                <p>  Add More </p>
-                                            </div>
-
-                                        </Row>
-                                    </Container>
-                                </div>
+                                                    <div className="machine_items_text">
+                                                        <p>{this.state.brandType}</p>
+                                                        <p>{this.state.typeTech}</p>
+                                                    </div>
+                                                </Col>
+                                                {
+                                                    this.state.typeTech ?
+                                                        <div className="plusIcon d-flex">
+                                                            <button style={{ border: 'none' }} >
+                                                                <img src={Vector5} className="image_one" alt="" />
+                                                            </button>
+                                                            <p>  Add More </p>
+                                                        </div> : null
+                                                }
+                                            </Row>
+                                        </Container>
+                                    </div> : null}
                             </PerfectScrollbar>
                         </div>
                         <div className="summary">
-                            <Button href="#" variant="secondary" size="sm" onClick={this.handleSummary}>
+                            <Button href="#" disabled={!this.state.machineCount} size="sm" onClick={this.handleSummary}>
                                 Summary
                                 <RiArrowDropRightLine />
                             </Button>
@@ -184,61 +291,61 @@ class Machine extends Component<{}, typeState> {
                             </p>
                         </div>
                         <div className="row">
-                            <div className="col-12">
-                                <PerfectScrollbar
-                                    options={{ suppressScrollY: false, suppressScrollX: true }}
-                                    onScrollY={(container) =>
-                                        console.log(`scrolled to: ${container.scrollTop}.`)
-                                    }
-                                >
-                                    <div className="my-3 mx-3">
-                                        <div className="d-flex flex-column">
-                                            <div className="leftmenu d-flex flex-column">
-                                                <div className="menu_dropdown mb-3">
-                                                    <div className="mb-3">
-                                                        <Select options={machine} width='300px' position='bottom' placeholder='Select Machine' onChange={() => { }}></Select>
-                                                    </div>
-                                                    <div className="mb-3">
-                                                        <Select options={brand} width='300px' position='bottom' placeholder='Select Brand' onChange={() => { }}></Select>
-                                                    </div>
-                                                    <div className="mb-3">
-                                                        <Select options={technology} width='300px' position='bottom' placeholder='Select Technology' onChange={() => { }}></Select>
-                                                    </div>
+
+                            <PerfectScrollbar
+                                options={{ suppressScrollY: false, suppressScrollX: true }}
+                                onScrollY={(container) =>
+                                    console.log(`scrolled to: ${container.scrollTop}.`)
+                                }
+                            >
+                                <div className="my-4 mx-3">
+                                    <div className="d-flex">
+                                        <div className="model_leftmenu d-flex flex-column">
+                                            <div className="mb-3">
+                                                <div className="mb-3">
+                                                    <Select options={machine} width='300px' position='bottom' placeholder='Select Machine' onChange={() => { }}></Select>
                                                 </div>
-                                            </div>
-                                            <div className="rightmenu d-flex flex-column">
-                                                <div className="scroll pb-3">
-                                                    <PerfectScrollbar>
-                                                        <div className="d-flex flex-wrap pe-4">
-                                                            <Container>
-                                                                <Row>
-                                                                    <Col xs={3} md={12} className="column d-flex" >
-                                                                        <div className="machine_items">
-                                                                            <div className="machine_image d-flex">
-                                                                                <img src={MachineIcon} alt="" />
-                                                                                <h3>1</h3>
-                                                                            </div>
-                                                                            <p>juki</p>
-                                                                        </div>
-                                                                        <div className="machine_items_text">
-                                                                            <p>Brand</p>
-                                                                            <p>tech</p>
-                                                                        </div>
-                                                                    </Col>
-                                                                    <div className="plusIcon d-flex">
-                                                                        <img src={Vector5} className="image_one" alt="" />
-                                                                        <p>  Add More </p>
-                                                                    </div>
-                                                                </Row>
-                                                            </Container>
-                                                        </div>
-                                                    </PerfectScrollbar>
+                                                <div className="mb-3">
+                                                    <Select options={brand} width='300px' position='bottom' placeholder='Select Brand' onChange={() => { }}></Select>
+                                                </div>
+                                                <div className="mb-3">
+                                                    <Select options={technology} width='300px' position='bottom' placeholder='Select Technology' onChange={() => { }}></Select>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div className="model_rightmenu d-flex flex-column">
+                                            <div className="scroll pb-3">
+                                                <PerfectScrollbar>
+                                                    <div className="d-flex flex-wrap pe-4">
+                                                        <Container>
+                                                            <Row>
+                                                                <Col xs={3} md={12} className="column d-flex w-100" >
+                                                                    <div className="machine_items">
+                                                                        <div className="machine_image d-flex">
+                                                                            <img src={MachineIcon} alt="" />
+                                                                            <h3>1</h3>
+                                                                        </div>
+                                                                        <p>juki</p>
+                                                                    </div>
+                                                                    <div className="machine_items_text">
+                                                                        <p>Brand</p>
+                                                                        <p>tech</p>
+                                                                    </div>
+                                                                </Col>
+                                                                <div className="plusIcon d-flex">
+                                                                    <img src={Vector5} className="image_one" alt="" />
+                                                                    <p>  Add More </p>
+                                                                </div>
+                                                            </Row>
+                                                        </Container>
+                                                    </div>
+                                                </PerfectScrollbar>
+                                            </div>
+                                        </div>
                                     </div>
-                                </PerfectScrollbar>
-                            </div>
+                                </div>
+                            </PerfectScrollbar>
+
                         </div>
                     </Modal.Body>
                 </Modal>
@@ -249,3 +356,4 @@ class Machine extends Component<{}, typeState> {
 
 
 export default Machine;
+
