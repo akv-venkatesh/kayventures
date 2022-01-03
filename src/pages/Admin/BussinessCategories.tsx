@@ -25,12 +25,12 @@ import {
 	DisableNextbutton,
 }
 	from "../../component/buttons/button";
+import { FaEvernote, FaTableTennis } from 'react-icons/fa';
+import { S_IRWXU } from 'constants';
 
 
 class BussinessCategories extends React.Component {
-   state: any = {
-
-   }
+   state: any = {}
    constructor(props: any) {
 	   super(props);
 	   this.state ={
@@ -235,3 +235,4 @@ class BussinessCategories extends React.Component {
 }
 
 export default BussinessCategories;
+
