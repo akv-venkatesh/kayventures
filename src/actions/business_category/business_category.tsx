@@ -30,3 +30,7 @@ export const setPrimaryDetailsSuccess = (payload:any) => ({
     type: 'SET_PRIMARY_DETAILS_SUCCESS',
     payload,
 });
+export const setPrimaryDetailsFailed = (payload:any) => ({
+    type: 'SET_PRIMARY_DETAILS_FAILED',
+    payload,
+});

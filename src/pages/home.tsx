@@ -17,6 +17,7 @@ class ManufacturerHome extends Component<{}, typeState> {
 		this.state ={
 			video_vis: false
 		}
+		
 	}
 	video_visible = () =>{
 		this.setState({

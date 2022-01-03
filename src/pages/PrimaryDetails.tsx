@@ -14,6 +14,15 @@ import Category from "./Category";
 
 interface typeState {
   showModal: boolean,
+
+  userData: {
+    name: string
+    email: string
+    phoneno: string
+
+  }
+
+  errorMessage:boolean
 }
 interface MyFormValues {
   organization?: string,
@@ -27,50 +36,62 @@ interface MyFormValues {
 
 interface typeProps {
   setPrimaryDetails: (arg: Object) => void;
+  setclose: ()=>void;
   businesscategory: any
 }
 class PrimaryDetails extends Component<typeProps, typeState> {
 
   constructor(props: any) {
     super(props);
+    let userDetails: any = localStorage.getItem("user_create_account_details");
+    var userData: any = JSON.parse(userDetails);
     this.state = {
       showModal: false,
+
+      userData: {
+        name: userData.name,
+        email: userData.email,
+        phoneno: userData.phone,
+      },
+      errorMessage:false
     }
   }
 
-
-
   componentDidMount() {
-
-
 
   }
 
   handleHide = () => {
     this.setState({
-      showModal: false
+      showModal: false,
+      errorMessage:false
     })
+    this.props.setclose()
   }
 
-  initialValues: MyFormValues = {
-    organization: '',
-    location: '',
-    personName: '',
-    designation: '',
-    email: '',
-    phone: '',
-    urlLink: '',
-  };
-  
-
-
   render(): JSX.Element {
-    console.log(this.props);
+    const initialValues: MyFormValues = {
+      organization: '',
+      location: '',
+      personName: this.state.userData.name,
+      designation: '',
+      email: this.state.userData.email,
+      phone: this.state.userData.phoneno,
+      urlLink: '',
+    };
+    console.log(this.props)
+
+    // this.props.businesscategory.primary_details_error ? this.setState({
+    //   errorMessage:true
+    // }) : this.setState({
+    //   errorMessage:false
+    // })
+    
     return (
       <>
         <div className="d-flex justify-content-center">
           <div className="primary_form_body">
-            <Formik initialValues={this.initialValues}
+            <Formik initialValues={initialValues}
               validate={values => {
                 let errors = {};
                 if (!values.email) {
@@ -125,10 +146,10 @@ class PrimaryDetails extends Component<typeProps, typeState> {
                   </div>
                   <div className="primary_form">
                     <div className="primary_form_details">
-                      <label  htmlFor="organization">Organization <span className="required-mark">*</span></label>
+                      <label htmlFor="organization">Organization <span className="required-mark">*</span></label>
                       {/* <label htmlFor="organization">Organization</label> */}
                       <div className="input-field-container">
-                        <input 
+                        <input
                           aria-label="organization"
                           id="organization"
                           type="text"
@@ -154,7 +175,7 @@ class PrimaryDetails extends Component<typeProps, typeState> {
                     <div className="primary_form_details">
                       <label htmlFor="personName">Name of the person <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                        <input aria-label="personName"  id ='personName' type="text" placeholder="Name"
+                        <input aria-label="personName" id='personName' type="text" placeholder="Name"
                           name="personName"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -194,8 +215,8 @@ class PrimaryDetails extends Component<typeProps, typeState> {
                     <div className="primary_form_details">
                       <label htmlFor="phone">Phone No. <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                        <input 
-                          aria-label="phone" 
+                        <input
+                          aria-label="phone"
                           id="phone"
                           type="text"
                           placeholder="+91 XXXXXXXXXXX"
@@ -253,6 +274,21 @@ class PrimaryDetails extends Component<typeProps, typeState> {
             <h5 className="modal-alert">The verification will be completed in 2-3 days.</h5>
           </Modal.Body>
         </Modal>
+
+        <Modal
+          show={this.props.businesscategory.primary_details_error}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+          className="verifyemailmodel"
+          onHide={() => this.handleHide()}
+        >
+          <Modal.Header closeButton></Modal.Header>
+          <Modal.Body  >
+            <h4 className="modal-title">Registration Failed</h4>
+            <h5 className="modal-discription text-center" style={{color:'red'}}>This Email Id Alredy Registered</h5>
+          </Modal.Body>
+        </Modal>
       </>
     );
   }
@@ -271,6 +307,10 @@ const mapDispatchToProps = (dispatch: any, props: any) => {
       dispatch(setPrimaryDetails(primarydetails));
 
     },
+    setclose:()=>{
+      dispatch({type: 'SET_MODELS_CLOSE'});
+
+    }
 
   };
 };

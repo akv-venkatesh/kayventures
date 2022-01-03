@@ -14,7 +14,7 @@ interface typeState{
 }
 interface typeProps{
 	// userLogin: (arg:{})=> void;
-	login:any
+	admin:any
 }
 
 class Admin extends React.Component<typeProps, typeState > {
@@ -34,6 +34,7 @@ class Admin extends React.Component<typeProps, typeState > {
 			let data:any = this.props;
 			console.log(data);
 			if(data.admin.admin_details.code == 200){
+				localStorage.setItem("authenticate-token", this.props.admin.admin_details.data.token);
 				this.redirect();
 			}
 			else{
