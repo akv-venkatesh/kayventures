@@ -110,7 +110,7 @@ function Organizationinfo() {
               <div className="row mt-5 d-flex align-items-center">
                 <h3 className="col-md-3">Establishment date<span className='required'> *</span></h3>
                 <div className="col-md-5">
-                    <Field type="date" id="" className="input-date" name="leagal_name" placeholder="Name" />
+                    <Field type="date" id="" className="input-date" name="estimate_date" placeholder="Name" />
                 </div>
               </div>
               <div className="row mt-5 d-flex align-items-center">
@@ -130,8 +130,8 @@ function Organizationinfo() {
 	    	  	<div className="col-md-5 end">
 		      		<div className="position-relative file-upload">
 			  			<label  htmlFor="registration-certificate" className="label-file"  id="file-chosen"></label>
-		      			<Field type="file" id="registration-certificate" name="registration-certificate" hidden/>
-			  			<label htmlFor="registration-certificate"><ImAttachment /></label>
+		      			<Field type="file" id="registration-certificate" name="registration_certificate" hidden/>
+			  			<label htmlFor="registration_certificate"><ImAttachment /></label>
 		      		</div>
 	    	  	</div>
 	    	      </div>
@@ -289,7 +289,9 @@ function Organizationinfo() {
                     />
                   </div>
                 </div>
-                
+                <div className="mt-4 col-md-6 m-auto savebtn">
+                  <button>Save</button>
+                </div>  
                 </div>
 
                          

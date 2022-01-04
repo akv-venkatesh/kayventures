@@ -1,0 +1,115 @@
+body{
+    font-family: poppins;
+}
+
+.facilitymodal {
+    background: #c7d4df;
+     
+}
+.facilitymodal .modal-lg{
+    max-width:55vw;
+}
+.facilitymodal  .modal-content {
+      /* background: linear-gradient(
+          135.37deg,
+          rgba(0, 0, 0, 0.4) 4.29%,
+          rgba(255, 255, 255, 0.4) 95.6%
+        ),
+        rgba(235, 236, 240, 0.7); */
+      background-color: #e6e7eb;
+      background-blend-mode: soft-light, normal;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-sizing: border-box;
+      box-shadow: 8px 4px 14px rgb(0 0 0 / 11%), inset 6px 5px 35px rgb(255 255 255 / 60%);
+      backdrop-filter: blur(12px);
+      /* Note: backdrop-filter has minimal browser support */
+      border-radius: 35px;
+      /* height: 70vh; */
+}
+    
+    
+.facilitymodal .modal-header {
+      border-bottom: 0px;
+}
+    
+    
+.facilitymodal  .modal-header .btn-close {
+      position: absolute;
+      top: -23px;
+      right: 0px;
+      outline: none;
+      box-shadow: none;
+}
+    
+    
+.facilitymodal  .modal-header .btn-close:active {
+      box-shadow: none;
+      outline: none;
+}
+    
+    
+.facilitymodal  .modal-body {
+      /* text-align: center; */
+      /* justify-content: center; */
+      padding: 0px 40px 0 60px;
+}
+    
+.facilitymodal  .modal-body .header_discription  {
+       /* position: relative; */
+       display: flex;
+       margin-bottom: 0px;
+}
+.facilitymodal  .modal-body .header_discription .info-icon{
+         font-size: 22px;
+         color: #0068E5;
+}
+.facilitymodal .modal-body .header_discription p{
+    font-size: 16px;
+    font-weight: 600;
+    color: #0068E5;
+    margin: 3px 0 20px 6px;
+}
+.facilitymodal .modal-body .discription{
+    font-size: 16px;
+    color: #0068E5;
+    /* margin-left: 28px; */
+}
+
+
+.scrollbar-container {
+    position: relative;
+    height:65vh !important;
+    margin:0px 0px 20px 0px;
+    padding-right: 20px;
+    overflow-x: hidden;
+}
+
+.facilitymodal .facilitymod{
+    display: flex;
+    flex-wrap: wrap;
+}
+.facilitymodal .leftmenu {
+    flex: 0 0 300px;
+    max-width: 300px;
+}
+.facilitymodal .rightmenu {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(100% - 300px);
+    max-width: calc(100% - 300px);
+}
+.facilitymodal .infor svg{
+    margin-right: 15px;
+}
+.facilitymodal .infor span{
+    display: inline-flex;
+}
+.facilitymodal .clrblue{
+    color: #0068E5;
+}
+.facilitymodal h5{
+    margin: 23px 0 30px 0;
+    font-weight: 600;
+}
+
+
