@@ -22,6 +22,16 @@ export const KYC = React.lazy(() => import('../pages/settings/kyc'));
 export const Organization = React.lazy(() => import('../pages/settings/Organization'));
 export const Organizationinfo = React.lazy(() => import('../pages/settings/Organization/Organizationinfo'));
 export const OrganizationinfoModal = React.lazy(() => import('../pages/settings/Organization/OrganizationinfoModal'));
+export const OrganizationinfoModalSyn = React.lazy(() => import('../pages/settings/Organization/OrganizationinfoModalSyn'));
+export const Facilitykyc = React.lazy(() => import('../pages/settings/Facilitykyc'));
+export const Facility1 = React.lazy(() => import('../pages/settings/Facilitykyc/Facility1'));
+export const Facilityday = React.lazy(() => import('../pages/settings/Facilitykyc/Facilityday'));
+export const Facilitymodal = React.lazy(() => import('../pages/settings/Facilitykyc/Facilitymodal'));
+
+
+
+
+
 
 export const Settings = React.lazy(() => import('../pages/settings/index'));
 export const Pro_config = React.lazy(() => import('../pages/settings/ProductConfiguration'));

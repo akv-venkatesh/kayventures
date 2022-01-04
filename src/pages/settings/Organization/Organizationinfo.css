@@ -180,5 +180,12 @@ select{
     color: #636d8d;
     font-weight: 400;
 }
+.savebtn button{
+    color: white;
+    background-color: #3CD070;
+    border: 1px solid #3CD070;
+    padding: 3px 15px;
+    border-radius: 5px;
+}
 
 

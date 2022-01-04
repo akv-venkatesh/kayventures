@@ -45,15 +45,15 @@ function Organization():JSX.Element {
 					<div className="mt-5 col-md-8 pb-4 m-auto">
                         <div className="row ">
                             <div className="w-100 d-flex justify-content-center">
-                                <button type="button" className="btn btn-back mx-2 back float-start"><AiFillCaretLeft />&emsp;Back</button>
+                                <button title="backbutton" type="button" className="btn btn-back mx-2 back float-start"><AiFillCaretLeft />&emsp;Back</button>
                                     <div className="w-30 m-auto">
-                                        <button type="button" className="btn btn-default  mx-4 remove">Remove</button>
-                                        <button 
+                                        <button title="removebutton" type="button" className="btn btn-default  mx-4 remove">Remove</button>
+                                        <button title="savebutton"
                                             type="button" 
                                             className="btn btn-default mx-4 saveq"
                                             >Save</button>
                                     </div>
-                                        <button type="submit" className="btn btn-back mx-2 next float-end">Next&emsp;<AiFillCaretRight />
+                                        <button title="nextbutton" type="submit" className="btn btn-back mx-2 next float-end">Next&emsp;<AiFillCaretRight />
                                         </button> 
                             </div>
                         </div>
