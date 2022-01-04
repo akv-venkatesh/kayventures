@@ -20,7 +20,6 @@ import {
 
 
   import { login } from "../../actions/login/login";
-  import { adminlogin } from '../../actions/admin/login';
   
   import $ from 'jquery';
   import {Modal,Button} from 'react-bootstrap';
@@ -203,10 +202,7 @@ const mapDispatchToProps = (dispatch:any, props:any) => {
 	return {
 	  	userLogin: (userDetail:{}) => {
 		  	dispatch(login(userDetail));
-		},
-		adminuserLogin: (userDetail:{}) => {
-			dispatch(adminlogin(userDetail));
-		},
+		}
 	};
 };
   
