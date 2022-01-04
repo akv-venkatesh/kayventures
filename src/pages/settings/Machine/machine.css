@@ -85,8 +85,13 @@
     margin-right: 5px;
 }
 .reset_switch{
-    background-color: #0062D7 !important;
+    margin: 135px 0 0 0px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+box-sizing: border-box;
+box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
+border-radius: 8px;
 }
+
 .machine_items{
     margin: 10px;
     background: linear-gradient(
@@ -105,8 +110,9 @@
     margin-left: 15px;
 }
 .plusIcon p{
-    margin: 5px 7px 0 15px;
-    font-size: 12px;
+    margin: 12px 7px 0 15px;
+    font-size: 15px;
+    color: #0068E5;
 }
 .plusIcon img{
     padding: 4px;
@@ -162,14 +168,10 @@ border-radius: 8px;
     margin-top: 5px;
 }
 /* Model */
-.info-icon{
-    font-size: 22px;
-    color: #0068E5;
+.machine .modal-lg{
+    max-width: 70vw;
 }
-.header_discription{
-    color: #0068E5;
-    font-size: 14px;
-}
+
 .modal-header{
     border-bottom: none;
 }
@@ -179,3 +181,29 @@ background-blend-mode: soft-light, normal;
 box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
 border-radius: 20px;
 }
+.machine .modal-header .btn-close {
+    position: absolute;
+    top: -30px;
+    right: 0px;
+    outline: none;
+    box-shadow: none;
+}
+.machine  .modal-header .btn-close:active {
+    box-shadow: none;
+    outline: none;
+}
+.machine  .modal-body {
+    padding: 0px 40px;
+    height: 500px;
+}
+.machine  .modal-body .header_discription .info-icon{
+    font-size: 22px;
+    color: #0068E5;
+}
+.machine .modal-body .header_discription p{
+    font-size: 11px;
+    font-weight: 500;
+    color: #0068E5;
+    margin: 3px 0 0 6px;
+}
+

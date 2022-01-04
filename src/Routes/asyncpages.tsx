@@ -41,11 +41,5 @@ export const Manpower = React.lazy(() => import('../pages/settings/Manpower/Manp
 export const Esg = React.lazy(() => import('../pages/settings/Esg/Esg'));
 
 
-export const Admin = React.lazy(() => import('../pages/Admin/index'));
-export const AdminRegister = React.lazy(() => import('../pages/Admin/AdminRegister'));
-export const AdminBussinessCategories = React.lazy(() => import('../pages/Admin/BussinessCategories'));
-export const Superadmin = React.lazy(() => import('../pages/Admin/super-admin'));
-export const AdmineditAccInfo = React.lazy(() => import('../pages/Admin/edit-accinfo'));
-export const AdminChangePass = React.lazy(() => import('../pages/Admin/change-adminpass'));
 
 

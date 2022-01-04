@@ -20,8 +20,7 @@ import {
   Machinery,
   Machine,
   Manpower,
-  Esg,
-  Admin, Superadmin, AdmineditAccInfo, AdminChangePass, AdminRegister, AdminBussinessCategories
+  Esg
 } from "./asyncpages";
 
 class Routers extends React.Component {
@@ -62,17 +61,6 @@ class Routers extends React.Component {
             <Route path="manpower" element={<Manpower />} />
             <Route path="esg" element={<Esg />} />
           </Route>
-
-
-          <Route path='/admin' element={<Admin />} />
-          <Route path='/admin-register' element={<AdminRegister />} />
-          <Route path='/admin-bizcategories' element={<AdminBussinessCategories />} />
-          <Route path='/admin/change-pass' element={<AdminChangePass />} />
-          <Route path='/admin/edit-acc-info' element={<AdmineditAccInfo />} />
-
-
-          <Route path='/superadmin' element={<Superadmin />} />
-
         </Routes>
       </div>
     );

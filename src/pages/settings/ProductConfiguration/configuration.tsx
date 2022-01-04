@@ -233,12 +233,12 @@ class ProductGroups extends React.Component<{}, typeState> {
         this.state.selectedgrouptype.some((item:any, i:number)=>{
             if(item.data.length>0){
                 this.setState({
-                    completed:true
+                    completed:true,
                 })
             }
             else{
                 this.setState({
-                    completed:false
+                    completed:false,
                 })
             }
         })
@@ -246,7 +246,8 @@ class ProductGroups extends React.Component<{}, typeState> {
     displaygroupitem = (e:MouseEvent<HTMLElement>, item:any):any =>{
       if(!this.state.completed){
         this.setState({
-          group: item
+          group: item,
+          removebtn: true,
         })
         let arrs:any = [];
         this.state.grouptype.some((e:any, index:number)=>{
@@ -292,7 +293,6 @@ class ProductGroups extends React.Component<{}, typeState> {
           })
           if(arr.length > 0){
             this.setState({
-              savebtn: false,
               removebtn: false,
             })
           }
@@ -306,8 +306,6 @@ class ProductGroups extends React.Component<{}, typeState> {
           },()=>{
               console.log(this.state.groupitemselection)
           })
-        }
-        else{
         }
       }
       this.state.selectedgrouptype.some((event:any, index:number)=>{
@@ -330,11 +328,28 @@ class ProductGroups extends React.Component<{}, typeState> {
               this.setState({
                 selectedgrouptype: arr
               })
+              if(obj.length == 0){
+                this.setState({
+                  removebtn: true
+                })
+              }
             }
           }
       })
       this.setState({
           groupitemselection: []
+      })
+      this.state.selectedgrouptype.some((item:any, i:number)=>{
+        if(item.data.length>0){
+          this.setState({
+              savebtn: false,
+          })
+        }
+        else{
+          this.setState({
+              savebtn: true,
+          })
+        }
       })
     }
 
@@ -349,6 +364,7 @@ class ProductGroups extends React.Component<{}, typeState> {
         selectedproducttype: [],
         savebtn: true,
         removebtn: true,
+        nextbtn: true,
       })
     }
     groupremove = () =>{
@@ -357,6 +373,7 @@ class ProductGroups extends React.Component<{}, typeState> {
         selectedgrouptype: [],
         savebtn: true,
         removebtn: true,
+        nextbtn: true,
       })
     }
     groupitemremove = () =>{
@@ -364,8 +381,20 @@ class ProductGroups extends React.Component<{}, typeState> {
       this.setState({
         savebtn: true,
         removebtn: true,
+        nextbtn: true,
       })
-
+      this.state.selectedgrouptype.some((event:any, index:number)=>{
+        if(event.name==this.state.group){
+          let obj = this.state.selectedgrouptype[index].data;
+          let arr = this.state.selectedgrouptype;
+          obj = [];
+          arr[index].data = obj;
+          this.setState({
+            selectedgrouptype: arr
+          })
+          
+        }
+    })
     }
     productback = () =>{
       
@@ -400,41 +429,42 @@ class ProductGroups extends React.Component<{}, typeState> {
         const state = this.state;
         return (
             <>
-                <div className="mt-2">
-                    <div className="d-flex">
-                        <div className="block-1">
-                            <p className="sewing mt-4 mx-4">Sewing</p>
-                            <div className="garments d-flex py-3 px-3 position-relative mt-4">
-                                <label><AiOutlineSkin />&nbsp;Garments</label>
-                                <label className="gar-con">
+                <div className="h-100">
+                    <div className="d-flex h-100">
+                        <div className="block-1 h-100 pe-3">
+                            <p className="sewing py-3 m-0">Sewing</p>
+                            <div className="garments d-inline-flex align-items-center my-3 position-relative">
+                                <label className="text"><AiOutlineSkin className="mx-2"/>&nbsp;Garments</label>
+                                <label className="gar-con ms-3">
                                     <input type="checkbox" checked hidden/>
                                     <span className="checkmark"></span>
                                 </label>
                             </div>
-                            <div className="sub-categories mt-4">
+                            <div className="sub-categories">
                                 <PerfectScrollbar >
-                                    <ul className="mx-2 me-4 pe-4">
+                                    <ul className="m-0 p-0 me-5">
                                         {
                                             state.selectedproducttype.map((tag:any, index:number)=>
-                                                <li className="px-3 pe-5">{tag.name}</li>
+                                                <li className="py-2" key={tag.name} data-testid={"prod"+index}>{tag.name}</li>
                                             )
                                         }
                                     </ul>
-                                    <div className="accordion">
-                                        <ul className="mx-2 me-4 pe-4">
+                                    <div className="accordion me-5">
+                                        <ul className="p-0 m-0">
                                             <Accordion>
                                                 {
                                                     state.selectedgrouptype.map((group:any, i:number)=>
                                                         <Accordion.Item eventKey={'a'+i} className="mb-2" key={group.name+i}>
                                                             <Accordion.Header className={group.data.length>0 ? 'complete' : 'not-completed'}
                                                                 onClick={(e)=>this.displaygroupitem(e, group.name)}
+                                                                data-testid={'grp'+i}
                                                             > {group.name} 
                                                             </Accordion.Header>
                                                             <Accordion.Body>
-                                                                <ul className="sub-cat px-4">
+                                                                <ul className="sub-cat m-0">
                                                                     {
                                                                         group.data.map((item:any, index:number)=>
-                                                                            <li className="pe-4">{item.name}</li>
+                                                                            <li className="pe-4" key={item.name} >{item.name}</li>
                                                                         )
                                                                     }
                                                                 </ul>
@@ -450,40 +480,43 @@ class ProductGroups extends React.Component<{}, typeState> {
 
                         </div>
                         <div className="block-2">
-                            <div className="box py-3 mt-2 h-100">
+                            <div className="box p-4 h-100">
                               {
                                 state.displayState.length !== 0 ?
                                 (
                                   !state.productselection ?
-                                  <p className="mb-4">Select</p>:
+                                  <p className="m-0 py-3">Select</p>:
                                   !state.groupselection ?
-                                  <p className="mb-4">Select product group</p>:
+                                  <p className="m-0 py-3">Select product group</p>:
                                   !state.completed ?
-                                  <p className="mb-4">Select product items of {state.group}</p>:
+                                  <p className="m-0 py-3">Select product items of {state.group}</p>:
                                   <></>
                                 ):
                                 <></>
                               }
-                                <div className="select-category">
+                                <div className={state.displayState.length !==0 ? "select-category" : "select-category empty"}>
                                   {
                                     state.displayState.length !== 0 ?
                                     <PerfectScrollbar >
-                                      <ul className="category">
+                                      <ul className="category d-flex m-0 p-0 flex-wrap">
                                           {  
                                               state.displayState.map((tag:any, i:number)=>
-                                                  <div>
+                                                  <div className="me-3" key={'key'+i}>
+                                                    <form>
                                                       <input 
-                                                          type="checkbox" 
-                                                          value={tag.name} 
-                                                          name={tag.name} 
-                                                          id={tag.name}
-                                                          required 
-                                                          hidden
-                                                          onChange={!state.productselection ? this.selectproducttype : (!state.groupselection ? this.selectgrouptype : (e)=>this.groupitemselection(e,tag.parent)) }/>
-                                                      <label className="w-100 py-2 d-flex" key={'productType'+i} htmlFor={tag.name}>
-                                                          <p className="w-50 m-0">{tag.name}</p>
-                                                          <span className="checkmark"></span>
+                                                        type="checkbox" 
+                                                        value={tag.name} 
+                                                        name={tag.name} 
+                                                        id={tag.name}
+                                                        data-testid={'testcheck'+i}
+                                                        required
+                                                        hidden
+                                                        onChange={!state.productselection ? this.selectproducttype : (!state.groupselection ? this.selectgrouptype : (e)=>this.groupitemselection(e,tag.parent)) }
+                                                      />
+                                                      <label className="w-100 py-2 justify-content-between align-items-center d-flex" key={'productType'+i} htmlFor={tag.name}>
+                                                          <span className="checkmark">{tag.name}</span>
                                                       </label>
+                                                    </form>
                                                   </div>
                                               )
                                           }
@@ -500,24 +533,25 @@ class ProductGroups extends React.Component<{}, typeState> {
                                     
                                   }
                                 </div>
-                                <div className="pb-4">
-                                    <div className="row ">
-                                        <div className="w-100">
+                                <div className="buttons py-3">
+                                    <div className="">
+                                        <>
                                           {
                                             !state.completed ?
-                                          <>
+                                          <div className="d-flex justify-content-between">
                                             <button 
                                               type="button" 
-                                              className="btn btn-back mx-2 back float-start"
+                                              className="btn btn-back back"
                                               onClick={!state.productselection ? this.productback : (!state.groupselection ? this.groupback : this.groupitemback)}
                                               >
                                               <AiFillCaretLeft />&emsp;Back
                                             </button>
-                                            <div className="w-50 m-auto">
+                                            <div className="d-flex justify-content-center">
                                                 <button 
                                                   type="button" 
                                                   className="btn btn-default mx-4 remove"
                                                   onClick={!state.productselection ? this.productremove : (!state.groupselection ? this.groupremove : this.groupitemremove)}
+                                                  disabled={state.removebtn}
                                                   >
                                                   Remove
                                                 </button>
@@ -533,20 +567,22 @@ class ProductGroups extends React.Component<{}, typeState> {
                                                 
                                             <button 
                                                 type="submit" 
-                                                className="btn btn-back mx-5 next float-end"
+                                                className="btn btn-next next"
                                                 onClick={!state.productselection ? this.showgroup : this.showgroupitem}
                                                 disabled = {state.nextbtn}
                                                 >Next&emsp;<AiFillCaretRight />
                                             </button>
-                                          </> :
-                                          <button 
+                                          </div> :
+                                          <div className="d-flex justify-content-end">
+                                            <button 
                                               type="submit"   
-                                              className="btn btn-back mx-5 next float-end"
+                                              className="btn btn-summary next"
                                               onClick={this.handleShow}
-                                              >Summary
-                                          </button>
+                                              >Summary&emsp;<AiFillCaretRight />
+                                            </button>
+                                          </div>
                                           }
-                                        </div>
+                                        </>
                                     </div>
                                 </div>
                             </div>
@@ -554,244 +590,244 @@ class ProductGroups extends React.Component<{}, typeState> {
                     </div>
                 </div>
                 <Modal
-                    show={this.state.showModel}
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered
-                    className="product_config"
-                    backdropClassName="product_config"
-                    onHide={this.handleHide}
-                    >
-                    <Modal.Header closeButton />
-                      <Modal.Body className="">
-                        <div className="header_discription">
-                          <RiInformationFill className="info-icon" />
-                          <p>
-                            You have completed successfully your product configuration for
-                            garments.
-                          </p>
-                        </div>
-                        <p className="discription">
-                          You have two more categories to configure, only if more than one
-                          category was chosen by the byer or manufacturer. In this example,
-                          we have shown only garments as the only category chosen. Cross
-                          button will take you to the Product Category screen.
-                        </p>
-                        <div className="row">
-                          <div className="col-12">
-                            <PerfectScrollbar
-                              options={{ suppressScrollY: false, suppressScrollX: true }}
-                              onScrollY={(container) =>
-                                console.log(`scrolled to: ${container.scrollTop}.`)
-                              }
-                            >
-                              <div>
-                                <div style={{ padding: "25px 0px" }}>
-                                  <div className="row">
-                                    <div className="col-sm-3">
-                                      <div className="cat-img-bg">
-                                        <img src={vest} className="cat-img" />
-                                      </div>
-                                      <p className="cat-name">Underwear</p>
-                                    </div>
+                  show={this.state.showModel}
+                  size="lg"
+                  aria-labelledby="contained-modal-title-vcenter"
+                  centered
+                  className="product_config"
+                  backdropClassName="product_config"
+                  onHide={this.handleHide}
+                  >
+                  <Modal.Header closeButton />
+                  <Modal.Body className="">
+                    <div className="header_discription">
+                      <RiInformationFill className="info-icon" />
+                      <p>
+                        You have completed successfully your product configuration for
+                        garments.
+                      </p>
+                    </div>
+                    <p className="discription">
+                      You have two more categories to configure, only if more than one
+                      category was chosen by the byer or manufacturer. In this example,
+                      we have shown only garments as the only category chosen. Cross
+                      button will take you to the Product Category screen.
+                    </p>
+                    <div className="">
+                      <div className="scroll">
+                        <PerfectScrollbar
+                          options={{ suppressScrollY: false, suppressScrollX: true }}
+                          onScrollY={(container) =>
+                            console.log(`scrolled to: ${container.scrollTop}.`)
+                          }
+                        >
+                          <div>
+                            <div style={{ padding: "25px 0px" }}>
+                              <div className="row">
+                                <div className="col-sm-3">
+                                  <div className="cat-img-bg">
+                                    <img src={vest} className="cat-img" />
                                   </div>
-                                  <div className="row px-3">
-                                    <div className="col-sm-4">
-                                      <div className="item-container row">
-                                        <div className="item-img-bg col-sm-3">
-                                          <img src={vest} className="item-img" />
-                                        </div>
-                                        <div className="item-name-bg col-sm-9">
-                                          {" "}
-                                          <p className="item-name">Slips</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="col-sm-4">
-                                      <div className="item-container row">
-                                        <div className="item-img-bg col-sm-3">
-                                          <img src={vest} className="item-img" />
-                                        </div>
-                                        <div className="item-name-bg col-sm-9">
-                                          {" "}
-                                          <p className="item-name">Knicker</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="col-sm-4">
-                                      <div className="item-container row">
-                                        <div className="item-img-bg col-sm-3">
-                                          <img src={vest} className="item-img" />
-                                        </div>
-                                        <div className="item-name-bg col-sm-9">
-                                          {" "}
-                                          <p className="item-name">Pants</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                   
-                                  </div>
+                                  <p className="cat-name">Underwear</p>
                                 </div>
-                                <div style={{ padding: "25px 0px" }}>
-                                  <div className="row">
-                                    <div className="col-sm-3">
-                                      <div className="cat-img-bg">
-                                        <img src={vest} className="cat-img" />
-                                      </div>
-                                      <p className="cat-name">Nightwear</p>
+                              </div>
+                              <div className="row px-3">
+                                <div className="col-sm-4">
+                                  <div className="item-container row">
+                                    <div className="item-img-bg col-sm-3">
+                                      <img src={vest} className="item-img" />
                                     </div>
-                                  </div>
-                                  <div className="row px-3">
-                                    <div className="col-sm-4">
-                                      <div className="item-container row">
-                                        <div className="item-img-bg col-sm-3">
-                                          <img src={vest} className="item-img" />
-                                        </div>
-                                        <div className="item-name-bg col-sm-9">
-                                          {" "}
-                                          <p className="item-name">Slips</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="col-sm-4">
-                                      <div className="item-container row">
-                                        <div className="item-img-bg col-sm-3">
-                                          <img src={vest} className="item-img" />
-                                        </div>
-                                        <div className="item-name-bg col-sm-9">
-                                          {" "}
-                                          <p className="item-name">Cheeky</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="col-sm-4">
-                                      <div className="item-container row">
-                                        <div className="item-img-bg col-sm-3">
-                                          <img src={vest} className="item-img" />
-                                        </div>
-                                        <div className="item-name-bg col-sm-9">
-                                          {" "}
-                                          <p className="item-name">Knickers</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="col-sm-4">
-                                      <div className="item-container row">
-                                        <div className="item-img-bg col-sm-3">
-                                          <img src={vest} className="item-img" />
-                                        </div>
-                                        <div className="item-name-bg col-sm-9">
-                                          {" "}
-                                          <p className="item-name">Tanga</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="col-sm-4">
-                                      <div className="item-container row">
-                                        <div className="item-img-bg col-sm-3">
-                                          <img src={vest} className="item-img" />
-                                        </div>
-                                        <div className="item-name-bg col-sm-9">
-                                          {" "}
-                                          <p className="item-name">Brief</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="col-sm-4">
-                                      <div className="item-container row">
-                                        <div className="item-img-bg col-sm-3">
-                                          <img src={vest} className="item-img" />
-                                        </div>
-                                        <div className="item-name-bg col-sm-9">
-                                          {" "}
-                                          <p className="item-name">Cheeky</p>
-                                        </div>
-                                      </div>
+                                    <div className="item-name-bg col-sm-9">
+                                      {" "}
+                                      <p className="item-name">Slips</p>
                                     </div>
                                   </div>
                                 </div>
-                                <div style={{ padding: "25px 0px" }}>
-                                  <div className="row">
-                                    <div className="col-sm-3">
-                                      <div className="cat-img-bg">
-                                        <img src={vest} className="cat-img" />
-                                      </div>
-                                      <p className="cat-name">Nightwear</p>
+                                <div className="col-sm-4">
+                                  <div className="item-container row">
+                                    <div className="item-img-bg col-sm-3">
+                                      <img src={vest} className="item-img" />
+                                    </div>
+                                    <div className="item-name-bg col-sm-9">
+                                      {" "}
+                                      <p className="item-name">Knicker</p>
                                     </div>
                                   </div>
-                                  <div className="row px-3">
-                                    <div className="col-sm-4">
-                                      <div className="item-container row">
-                                        <div className="item-img-bg col-sm-3">
-                                          <img src={vest} className="item-img" />
-                                        </div>
-                                        <div className="item-name-bg col-sm-9">
-                                          {" "}
-                                          <p className="item-name">Slips</p>
-                                        </div>
-                                      </div>
+                                </div>
+                                <div className="col-sm-4">
+                                  <div className="item-container row">
+                                    <div className="item-img-bg col-sm-3">
+                                      <img src={vest} className="item-img" />
                                     </div>
-                                    <div className="col-sm-4">
-                                      <div className="item-container row">
-                                        <div className="item-img-bg col-sm-3">
-                                          <img src={vest} className="item-img" />
-                                        </div>
-                                        <div className="item-name-bg col-sm-9">
-                                          {" "}
-                                          <p className="item-name">Cheeky</p>
-                                        </div>
-                                      </div>
+                                    <div className="item-name-bg col-sm-9">
+                                      {" "}
+                                      <p className="item-name">Pants</p>
                                     </div>
-                                    <div className="col-sm-4">
-                                      <div className="item-container row">
-                                        <div className="item-img-bg col-sm-3">
-                                          <img src={vest} className="item-img" />
-                                        </div>
-                                        <div className="item-name-bg col-sm-9">
-                                          {" "}
-                                          <p className="item-name">Knickers</p>
-                                        </div>
-                                      </div>
+                                  </div>
+                                </div>
+                                
+                              </div>
+                            </div>
+                            <div style={{ padding: "25px 0px" }}>
+                              <div className="row">
+                                <div className="col-sm-3">
+                                  <div className="cat-img-bg">
+                                    <img src={vest} className="cat-img" />
+                                  </div>
+                                  <p className="cat-name">Nightwear</p>
+                                </div>
+                              </div>
+                              <div className="row px-3">
+                                <div className="col-sm-4">
+                                  <div className="item-container row">
+                                    <div className="item-img-bg col-sm-3">
+                                      <img src={vest} className="item-img" />
                                     </div>
-                                    <div className="col-sm-4">
-                                      <div className="item-container row">
-                                        <div className="item-img-bg col-sm-3">
-                                          <img src={vest} className="item-img" />
-                                        </div>
-                                        <div className="item-name-bg col-sm-9">
-                                          {" "}
-                                          <p className="item-name">Tanga</p>
-                                        </div>
-                                      </div>
+                                    <div className="item-name-bg col-sm-9">
+                                      {" "}
+                                      <p className="item-name">Slips</p>
                                     </div>
-                                    <div className="col-sm-4">
-                                      <div className="item-container row">
-                                        <div className="item-img-bg col-sm-3">
-                                          <img src={vest} className="item-img" />
-                                        </div>
-                                        <div className="item-name-bg col-sm-9">
-                                          {" "}
-                                          <p className="item-name">Brief</p>
-                                        </div>
-                                      </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-4">
+                                  <div className="item-container row">
+                                    <div className="item-img-bg col-sm-3">
+                                      <img src={vest} className="item-img" />
                                     </div>
-                                    <div className="col-sm-4">
-                                      <div className="item-container row">
-                                        <div className="item-img-bg col-sm-3">
-                                          <img src={vest} className="item-img" />
-                                        </div>
-                                        <div className="item-name-bg col-sm-9">
-                                          {" "}
-                                          <p className="item-name">Cheeky</p>
-                                        </div>
-                                      </div>
+                                    <div className="item-name-bg col-sm-9">
+                                      {" "}
+                                      <p className="item-name">Cheeky</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-4">
+                                  <div className="item-container row">
+                                    <div className="item-img-bg col-sm-3">
+                                      <img src={vest} className="item-img" />
+                                    </div>
+                                    <div className="item-name-bg col-sm-9">
+                                      {" "}
+                                      <p className="item-name">Knickers</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-4">
+                                  <div className="item-container row">
+                                    <div className="item-img-bg col-sm-3">
+                                      <img src={vest} className="item-img" />
+                                    </div>
+                                    <div className="item-name-bg col-sm-9">
+                                      {" "}
+                                      <p className="item-name">Tanga</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-4">
+                                  <div className="item-container row">
+                                    <div className="item-img-bg col-sm-3">
+                                      <img src={vest} className="item-img" />
+                                    </div>
+                                    <div className="item-name-bg col-sm-9">
+                                      {" "}
+                                      <p className="item-name">Brief</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-4">
+                                  <div className="item-container row">
+                                    <div className="item-img-bg col-sm-3">
+                                      <img src={vest} className="item-img" />
+                                    </div>
+                                    <div className="item-name-bg col-sm-9">
+                                      {" "}
+                                      <p className="item-name">Cheeky</p>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                            </PerfectScrollbar>
+                            </div>
+                            <div style={{ padding: "25px 0px" }}>
+                              <div className="row">
+                                <div className="col-sm-3">
+                                  <div className="cat-img-bg">
+                                    <img src={vest} className="cat-img" />
+                                  </div>
+                                  <p className="cat-name">Nightwear</p>
+                                </div>
+                              </div>
+                              <div className="row px-3">
+                                <div className="col-sm-4">
+                                  <div className="item-container row">
+                                    <div className="item-img-bg col-sm-3">
+                                      <img src={vest} className="item-img" />
+                                    </div>
+                                    <div className="item-name-bg col-sm-9">
+                                      {" "}
+                                      <p className="item-name">Slips</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-4">
+                                  <div className="item-container row">
+                                    <div className="item-img-bg col-sm-3">
+                                      <img src={vest} className="item-img" />
+                                    </div>
+                                    <div className="item-name-bg col-sm-9">
+                                      {" "}
+                                      <p className="item-name">Cheeky</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-4">
+                                  <div className="item-container row">
+                                    <div className="item-img-bg col-sm-3">
+                                      <img src={vest} className="item-img" />
+                                    </div>
+                                    <div className="item-name-bg col-sm-9">
+                                      {" "}
+                                      <p className="item-name">Knickers</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-4">
+                                  <div className="item-container row">
+                                    <div className="item-img-bg col-sm-3">
+                                      <img src={vest} className="item-img" />
+                                    </div>
+                                    <div className="item-name-bg col-sm-9">
+                                      {" "}
+                                      <p className="item-name">Tanga</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-4">
+                                  <div className="item-container row">
+                                    <div className="item-img-bg col-sm-3">
+                                      <img src={vest} className="item-img" />
+                                    </div>
+                                    <div className="item-name-bg col-sm-9">
+                                      {" "}
+                                      <p className="item-name">Brief</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-4">
+                                  <div className="item-container row">
+                                    <div className="item-img-bg col-sm-3">
+                                      <img src={vest} className="item-img" />
+                                    </div>
+                                    <div className="item-name-bg col-sm-9">
+                                      {" "}
+                                      <p className="item-name">Cheeky</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                        </div>
+                        </PerfectScrollbar>
+                      </div>
+                    </div>
                   </Modal.Body>
                 </Modal>
             </>
