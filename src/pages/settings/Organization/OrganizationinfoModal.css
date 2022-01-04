@@ -103,5 +103,55 @@ body{
     width: 25%;
     margin: 40px 0;
 }
-
-
+.organisyn img.logo-img{
+    margin-right: 20px;
+    margin-bottom: 40px;
+}
+.organisyn .syshead{
+    color: rgba(0, 98, 215, 1);
+    font-weight: 600;
+    font-size: 22px;
+}
+.text-muted{
+    --bs-text-opacity: 1;
+    color: #97999b!important;
+    font-weight: 300;
+}
+.organisyn ul{
+    list-style: none;
+    padding: 0;
+}
+.organisyn ul li{
+    margin-bottom: 15px;
+}
+.organisyn .clrchnge{
+    color: #1862d7;
+    margin-left: 20px;
+}
+.organisyn ul h5{
+    margin-bottom: 20px;
+    margin-top: 40px;
+    font-weight: 600;
+}
+.organisyn .clrred{
+    color: red;
+}
+.organisyn ul.rating li{
+    display: inline;
+}
+.organisyn ul.rating .clrchnge{
+    margin-right: 20px;
+}
+.organisyn ul.rating .circle{
+    border-radius: 50%;
+    background: #1862d7;
+    color: white;
+    margin-left: 0px;
+    margin-top: -7px;
+    padding: 0px 6px;
+    font-size: 12px;
+    position: absolute;
+}
+.organisyn ul.rating .clrblue{
+    color: rgba(0, 98, 215, 1);
+}

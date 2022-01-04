@@ -7,8 +7,10 @@ import arrow_left from "../assets/icons/arrows/arrow-left.svg";
 import { Modal, Button } from 'react-bootstrap';
 import { Formik } from 'formik'
 import { Component } from "react";
-import { setPrimaryDetails } from "../actions/business_category/business_category";
+
+import { setPrimaryDetails , getPrimaryDesignation } from "../actions/business_category/business_category";
 import { useDispatch, useSelector, connect } from "react-redux";
+import Select from '../component/dropdown_select_scrollable/slelect'
 import Category from "./Category";
 
 
@@ -22,7 +24,8 @@ interface typeState {
 
   }
 
-  errorMessage:boolean
+  errorMessage:boolean,
+  designations:any
 }
 interface MyFormValues {
   organization?: string,
@@ -37,14 +40,18 @@ interface MyFormValues {
 interface typeProps {
   setPrimaryDetails: (arg: Object) => void;
   setclose: ()=>void;
-  businesscategory: any
+  businesscategory: any;
+  getDesignations:() => void;
+  // primary_designation:any
 }
+
 class PrimaryDetails extends Component<typeProps, typeState> {
 
   constructor(props: any) {
     super(props);
     let userDetails: any = localStorage.getItem("user_create_account_details");
     var userData: any = JSON.parse(userDetails);
+    this.props.getDesignations();
     this.state = {
       showModal: false,
 
@@ -53,12 +60,17 @@ class PrimaryDetails extends Component<typeProps, typeState> {
         email: userData.email,
         phoneno: userData.phone,
       },
-      errorMessage:false
+      errorMessage:false,
+      designations:''
     }
+    
+   
+
+    // this.setState({designations:organizations});
   }
 
   componentDidMount() {
-
+    // this.props.getDesignations();
   }
 
   handleHide = () => {
@@ -80,14 +92,24 @@ class PrimaryDetails extends Component<typeProps, typeState> {
       urlLink: '',
     };
     console.log(this.props)
+    console.log(this.state.designations)
 
-    // this.props.businesscategory.primary_details_error ? this.setState({
-    //   errorMessage:true
-    // }) : this.setState({
-    //   errorMessage:false
-    // })
+    let options:any= []
+
+
+    const designationLoadData = this.props.businesscategory.primary_designation
+    console.log("organizations =>" ,(designationLoadData[0]));
     
+for (let index = 0; index < designationLoadData.length; index++) {
+  const element = designationLoadData[index];
+  options.push({value:element.id , label:element.name })
+}
+
+    console.log(options)
+
     return (
+   
+
       <>
         <div className="d-flex justify-content-center">
           <div className="primary_form_body">
@@ -111,7 +133,7 @@ class PrimaryDetails extends Component<typeProps, typeState> {
                   errors = { ...errors, personName: 'Enter the Name of Person' };
                 }
                 if (!values.designation) {
-                  errors = { ...errors, designation: 'Enter Designation' };
+                  errors = { ...errors, designation: 'Select Designation' };
                 }
                 if (!values.phone) {
                   errors = { ...errors, phone: 'Enter Phone No' };
@@ -122,8 +144,8 @@ class PrimaryDetails extends Component<typeProps, typeState> {
                 return errors;
               }}
               onSubmit={(values, actions) => {
+                // console.log(values)
                 var x: any = localStorage.getItem('business_category_id');
-
                 var category_id = JSON.parse(x);
                 var category_types = localStorage.getItem('business_category_types')
                 this.props.setPrimaryDetails({ values, "categoryId": category_id, "subCategoryIds": category_types });
@@ -135,7 +157,7 @@ class PrimaryDetails extends Component<typeProps, typeState> {
                 handleChange,
                 handleBlur,
                 handleSubmit,
-                isSubmitting, }) => (
+                isSubmitting,setFieldValue  }) => (
                 <form className="primary_form_container" onSubmit={handleSubmit}>
                   <div className="primary_form_head">
                     <Link to="/types"><img src={arrow_left} style={{ cursor: "pointer" }} /></Link>
@@ -157,14 +179,15 @@ class PrimaryDetails extends Component<typeProps, typeState> {
                           placeholder="Name"
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          value={values.organization} />
+                          value={values.organization} className="input"/>
                         <div className="validation-error">{errors.organization && touched.organization && errors.organization}</div>
+                        
                       </div>
                     </div>
                     <div className="primary_form_details">
                       <label htmlFor="location">Location <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                        <input aria-label="location" id='location' type="text" placeholder="Current location"
+                        <input className="input" aria-label="location" id='location' type="text" placeholder="Current location"
                           name="location"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -175,7 +198,7 @@ class PrimaryDetails extends Component<typeProps, typeState> {
                     <div className="primary_form_details">
                       <label htmlFor="personName">Name of the person <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                        <input aria-label="personName" id='personName' type="text" placeholder="Name"
+                        <input className="input" aria-label="personName" id='personName' type="text" placeholder="Name"
                           name="personName"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -187,24 +210,22 @@ class PrimaryDetails extends Component<typeProps, typeState> {
                     <div className="primary_form_details">
                       <label htmlFor="designation">Designation <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                        <input
+                      <Select options={options} width='300px' position='bottom' placeholder='Director, head, etc' onChange={(e: any)=>setFieldValue("designation", e.value)}></Select>
+                      <input
+                        className="input"
                           aria-label="designation"
                           id="designation"
-                          type="text"
+                          type="hidden"
                           name="designation"
-                          placeholder="Director, head, etc Copy"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
                           value={values.designation}
                         />
                         <div className="validation-error">{errors.designation && touched.designation && errors.designation}</div>
                       </div>
                     </div>
-
                     <div className="primary_form_details">
                       <label htmlFor="email">E-mail Id(Compant Id) <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                        <input aria-label="email" id="email" type="text" placeholder="company@xyz.com"
+                        <input className="input" aria-label="email" id="email" type="text" placeholder="company@xyz.com"
                           name="email"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -215,7 +236,7 @@ class PrimaryDetails extends Component<typeProps, typeState> {
                     <div className="primary_form_details">
                       <label htmlFor="phone">Phone No. <span className="required-mark">*</span></label>
                       <div className="input-field-container">
-                        <input
+                        <input className="input"
                           aria-label="phone"
                           id="phone"
                           type="text"
@@ -230,7 +251,7 @@ class PrimaryDetails extends Component<typeProps, typeState> {
                     </div>
                     <div className="primary_form_details">
                       <label htmlFor="urlLink">URL link</label>
-                      <div className="input-field-container"><input
+                      <div className="input-field-container"><input className="input"
                         aria-label="urlLink"
                         type="text"
                         placeholder="Paste the website link here"
@@ -263,14 +284,14 @@ class PrimaryDetails extends Component<typeProps, typeState> {
           aria-labelledby="contained-modal-title-vcenter"
           centered
           className="verifyemailmodel"
-          onHide={() => this.handleHide()}
+          // onHide={() => this.handleHide()}
         >
           <Modal.Header closeButton></Modal.Header>
           <Modal.Body  >
             <h4 className="modal-title">Email Id Verification</h4>
             <h5 className="modal-discription">The link along with the first time test password will be provided for Log In once approved by Super Admin from Kay Ventures. Kindly verify your email id using the link sent to you.</h5>
             {/* <h5 className="modal-timer">00:30</h5> */}
-            <Link to='/verifiedemail'><span className="modal-action-resend"><span>Proceed</span></span></Link>
+            <Link to='/verifyemailpending'><span className="modal-action-resend"><span>Proceed</span></span></Link>
             <h5 className="modal-alert">The verification will be completed in 2-3 days.</h5>
           </Modal.Body>
         </Modal>
@@ -286,7 +307,7 @@ class PrimaryDetails extends Component<typeProps, typeState> {
           <Modal.Header closeButton></Modal.Header>
           <Modal.Body  >
             <h4 className="modal-title">Registration Failed</h4>
-            <h5 className="modal-discription text-center" style={{color:'red'}}>This Email Id Alredy Registered</h5>
+            <h5 className="modal-discription text-center" style={{color:'red'}}>{this.props.businesscategory.primary_details_error_message}</h5>
           </Modal.Body>
         </Modal>
       </>
@@ -303,9 +324,10 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
     setPrimaryDetails: (primarydetails: Object) => {
-
       dispatch(setPrimaryDetails(primarydetails));
-
+    },
+    getDesignations :() => {
+      dispatch(getPrimaryDesignation(''));
     },
     setclose:()=>{
       dispatch({type: 'SET_MODELS_CLOSE'});

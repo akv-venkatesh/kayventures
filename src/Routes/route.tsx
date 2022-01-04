@@ -13,8 +13,8 @@ import {
   Home,
   Settings,
   ProConfigCapacity,
-  KYC, Organization, Organizationinfo, OrganizationinfoModal,
-  Productconfig,
+  KYC, Organization, Organizationinfo, OrganizationinfoModal,OrganizationinfoModalSyn,Facilitykyc,
+  Facility1, Facilityday, Facilitymodal, Productconfig,
   SelectPlan,
   Pro_config,
   Machinery,
@@ -49,6 +49,13 @@ class Routers extends React.Component {
             <Route path="Organization" element={<Organization />} />
             <Route path="Organizationinfo" element={<Organizationinfo />} />
             <Route path="OrganizationinfoModal" element={<OrganizationinfoModal />} />
+            <Route path="OrganizationinfoModalSyn" element={<OrganizationinfoModalSyn />} />
+            <Route path="Facilitykyc" element={<Facilitykyc />} />
+            <Route path="Facility1" element={<Facility1 />} />
+            <Route path="Facilityday" element={<Facilityday />} />
+            <Route path="Facilitymodal" element={<Facilitymodal />} />
+
+
             <Route path="machinery" element={<Machinery />} />
             <Route path="machine" element={<Machine />} />
             <Route path="manpower" element={<Manpower />} />

@@ -79,6 +79,24 @@ test('onChange the product type',()=>{
     expect(wrapper.getByText(/Click on the selected Product groups/i)).toBeInTheDocument;
 
     fireEvent.click(grpshow0);
-    // expect(wrapper.getByTestId('testcheck0')).toBeInTheDocument;
+    expect(wrapper.getByTestId('testcheck0')).toBeInTheDocument;
+    expect(wrapper.getByLabelText(/slips/i)).toBeInTheDocument;
+    expect(savebtn).toHaveAttribute('disabled');
+    expect(removebtn).toHaveAttribute('disabled');
+    
+    fireEvent.click(wrapper.getByLabelText(/slips/i));
+    expect(wrapper.getByLabelText(/slips/i)).toBeChecked();
+    expect(savebtn).not.toHaveAttribute('disabled');
+    expect(removebtn).not.toHaveAttribute('disabled');
+    expect(nextbtn).toHaveAttribute('disabled');
+    
+    fireEvent.click(savebtn);
+    expect(nextbtn).not.toHaveAttribute('disabled');
+
+    fireEvent.click(nextbtn);
+    expect(wrapper.getByRole('button',{name:/summary/i})).toBeInTheDocument;
+
+    fireEvent.click(wrapper.getByRole('button',{name:/summary/i}));
+    expect(wrapper.getByRole('dialog'));
 
 })

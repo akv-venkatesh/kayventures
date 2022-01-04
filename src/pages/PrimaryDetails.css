@@ -58,7 +58,7 @@
     color: #566180;
   }
 
-  .primary_form_details input {
+  .primary_form_details .input {
     background: linear-gradient(
         317.7deg,
         rgba(0, 0, 0, 0.4) 0%,
@@ -89,7 +89,7 @@
     outline: none;
   }
   
-  .primary_form_details input::placeholder {
+  .primary_form_details .input::placeholder {
     font-family: "Poppins";
     font-style: normal;
     font-weight: 300;

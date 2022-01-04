@@ -455,11 +455,12 @@ class ProductGroups extends React.Component<{}, typeState> {
                                                 {
                                                     state.selectedgrouptype.map((group:any, i:number)=>
                                                         <Accordion.Item eventKey={'a'+i} className="mb-2" key={group.name+i}>
-                                                            <Accordion.Header className={group.data.length>0 ? 'complete' : 'not-completed'}
+                                                            <Accordion.Button className={group.data.length>0 ? 'complete' : 'not-completed'}
                                                                 onClick={(e)=>this.displaygroupitem(e, group.name)}
                                                                 data-testid={'grp'+i}
-                                                            > {group.name} 
-                                                            </Accordion.Header>
+                                                              >
+                                                              {group.name}
+                                                            </Accordion.Button>
                                                             <Accordion.Body>
                                                                 <ul className="sub-cat m-0">
                                                                     {

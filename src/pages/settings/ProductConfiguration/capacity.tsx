@@ -19,7 +19,7 @@ import { AiOutlineRight } from "react-icons/ai";
 import Select from '../../../component/dropdown_select/slelect';
 import $ from 'jquery';
 interface typeProps{
-  value:string,
+  // value:string,
 }
 interface typeState {
   selectedOption: string;
@@ -376,6 +376,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                               id={item.name + j}
                                               onChange={(e) => this.productSelect(e, product.name)}
                                               value={item.name}
+                                              data-testid={'prod-grp'+i+j}
                                               hidden
                                               disabled={state.disable_input}
                                             />
@@ -403,15 +404,19 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                     <h2 className="m-0 py-3">Line Definition</h2>
                     <div>
                       <div className=" mb-3">
-                        <Select 
-                          options={LineTypeOptions} 
-                          width='200px' 
-                          position='top' 
-                          placeholder='Line type'
-                          onChange={this.lineTypeChange}
-                          isOptionDisabled={(option:any) => option.disabled}
-                        >
-                        </Select>
+                        <form data-testid="form">
+                          <Select 
+                            options={LineTypeOptions} 
+                            width='200px' 
+                            position='top' 
+                            name="linetype"
+                            id="line-type"
+                            placeholder='Linetype'
+                            onChange={this.lineTypeChange}
+                            isOptionDisabled={(option:any) => option.disabled}
+                          >
+                          </Select>
+                        </form>
                       </div>
 
                       <div className=" mb-2">
@@ -419,7 +424,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                           options={Material_type} 
                           width='200px' 
                           position='top'
-                          laceholder='Material type'
+                          placeholder='Material type'
                           onChange={this.materialTypeChange}
                           disabled={state.disable_input}
                           isOptionDisabled={(option:any) => option.disabled}
@@ -443,6 +448,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                 type="radio"
                                 id={'machine' + i}
                                 name="machine"
+                                data-testid={'machine'+i}
                                 value={name.name}
                                 data-needlecount={name.needle_count}
                                 hidden
@@ -486,6 +492,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                       <div className="ms-3">
                         <Button
                           className="active-save-btn"
+                          data-testid="savemachine"
                           disabled={state.checkedMachine.name && state.machineCount && state.line_number && state.linetype && state.materialtype && state.selected_product_item.length !== 0 ? false : true}
                           onClick={(e) => this.confirmMachine(e, state.machineCount)}>
                           Save
@@ -510,55 +517,62 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                         }
                         <ul className="p-0 m-0">
                           {
-                            state.selected_product_item.map((item: any, index: number) =>
-                              <li className="add-machine-product-item py-2">
-                                <div className="main d-flex align-items-center">
-                                  <BsChevronRight />
-                                  <p className="m-0 ps-2">{item.name}</p>
-                                </div>
-                                <div className="sub ps-4 d-flex align-items-center">
-                                  <BsChevronRight />
-                                  <div className="d-flex ps-2">
-                                    {
-                                      item.data.map((subitem: any, i: number) =>
-                                        <span>{subitem.name}</span>
-                                      )
-                                    }
-                                  </div>
-                                </div>
-                              </li>
-                            )
-                          }
-                          <li className="add-machine-line-type py-2">
-                            {
-                              state.linetype ?
-                                <div className="main d-flex align-items-center">
-                                  <BsChevronRight />
-                                  <p className="m-0 ps-2">{state.linetype}</p>
-                                </div> :
-                                <></>
-                            }
-                            {
-                              state.materialtype ?
-                                <div className="main d-flex align-items-center">
-                                  <BsChevronRight />
-                                  <p className="m-0 ps-2">{state.materialtype}</p>
-                                </div> :
-                                <></>
-                            }
-                          </li>
-
-                          <li className="add-machine-type py-2">
-                            {
-                              state.confirmedMachine.map((item: any, i: number) =>
-                                <div className="main d-flex align-items-center justify-content-between">
-                                  <div className="d-flex align-items-center">
+                            state.line_number !== "" ?
+                              state.selected_product_item.map((item: any, index: number) =>
+                                <li className="add-machine-product-item py-2" key={'machine'+index}>
+                                  <div className="main d-flex align-items-center">
                                     <BsChevronRight />
                                     <p className="m-0 ps-2">{item.name}</p>
                                   </div>
-                                  <p className="m-0">{item.count}</p>
-                                </div>
-                              )
+                                  <div className="sub ps-4 d-flex align-items-center">
+                                    <BsChevronRight />
+                                    <div className="d-flex ps-2">
+                                      {
+                                        item.data.map((subitem: any, i: number) =>
+                                          <span>{subitem.name}</span>
+                                        )
+                                      }
+                                    </div>
+                                  </div>
+                                </li>
+                              ) :
+                              <></>
+                          }
+                          { state.selected_product_item.length !== 0 ?
+                            <li className="add-machine-line-type py-2">
+                              {
+                                state.linetype !== "" && state.selected_product_item.length !==0 ?
+                                  <div className="main d-flex align-items-center">
+                                    <BsChevronRight />
+                                    <p className="m-0 ps-2">{state.linetype}</p>
+                                  </div> :
+                                  <></>
+                              }
+                              {
+                                state.materialtype !== "" && state.linetype !=="" ?
+                                  <div className="main d-flex align-items-center">
+                                    <BsChevronRight />
+                                    <p className="m-0 ps-2">{state.materialtype}</p>
+                                  </div> :
+                                  <></>
+                              }
+                            </li>:
+                            <></>
+                          }
+
+                          <li className="add-machine-type py-2">
+                            {
+                              state.materialtype !==''?
+                                state.confirmedMachine.map((item: any, i: number) =>
+                                  <div className="main d-flex align-items-center justify-content-between">
+                                    <div className="d-flex align-items-center">
+                                      <BsChevronRight />
+                                      <p className="m-0 ps-2">{item.name}</p>
+                                    </div>
+                                    <p className="m-0">{item.count}</p>
+                                  </div>
+                                ) :
+                              <></>
                             }
                           </li>
                         </ul>
