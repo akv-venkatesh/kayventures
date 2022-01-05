@@ -37,6 +37,8 @@ interface typeState {
   showsummary: boolean;
   showModel: boolean;
   disable_input: boolean;
+  count: number;
+  finalstate: any;
 }
 
 const customStyles = {
@@ -151,6 +153,8 @@ class ProductConfiguration extends Component<typeProps, typeState> {
       totalmachinecount: 0,
       showsummary: false,
       disable_input: false,
+      count: -1,
+      finalstate: [],
     };
   }
 
@@ -187,6 +191,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
     }
   }
   productSelect = (event: ChangeEvent<HTMLInputElement>, item: any): any => {
+    let count = -1;
     if (event.currentTarget.checked) {
       this.state.product_item.some((e: any, index: number) => {
         e.data.some((data: any, i: number) => {
@@ -201,9 +206,14 @@ class ProductConfiguration extends Component<typeProps, typeState> {
           if (e.name == item) {
             let obj = { "name": event.currentTarget.value };
             let arr = this.state.selected_product_item;
-            if (this.state.selected_product_item[index].data.filter((checking: any) =>
+            this.state.selected_product_item.map((items:any, ind:number)=>{
+              if(item == items.name){
+                count = ind;
+              }
+            })
+            if (this.state.selected_product_item[count].data.filter((checking: any) =>
               checking.name == event.currentTarget.value).length == 0) {
-              arr[index].data.push(obj);
+              arr[count].data.push(obj);
               this.setState({
                 selected_product_item: arr
               });
@@ -218,9 +228,14 @@ class ProductConfiguration extends Component<typeProps, typeState> {
         e.data.some((data: any, i: number) => {
           if (data.name == event.currentTarget.value) {
             let obj = this.state.selected_product_item;
-            let arr = this.state.selected_product_item[index].data;
+            this.state.selected_product_item.map((items:any, ind:number)=>{
+              if(item == items.name){
+                count = ind;
+              }
+            })
+            let arr = this.state.selected_product_item[count].data;
             arr = arr.filter((el:any) => data.name !== el.name);
-            obj[index].data = arr;
+            obj[count].data = arr;
             this.setState({
               selected_product_item: obj
             })
@@ -234,20 +249,6 @@ class ProductConfiguration extends Component<typeProps, typeState> {
           }
         })
       })
-
-      // let arr = this.state.selectedproducttype;
-      // arr = arr.filter((item:any) => item.name !== e.currentTarget.value);
-      // this.setState({
-      //     selectedproducttype: arr
-      // },()=>{
-      //     console.log(this.state.selectedproducttype)
-      // })
-      // if(arr.length == 0){
-      //   this.setState({
-      //     savebtn: true,
-      //     removebtn: true,
-      //   })
-      // }
     }
   }
 
@@ -315,6 +316,25 @@ class ProductConfiguration extends Component<typeProps, typeState> {
   showSummary = (event: MouseEvent<HTMLButtonElement>) => {
     this.setState({
       showsummary: !this.state.showsummary
+    })
+  }
+
+  addLine = (event:MouseEvent<HTMLButtonElement>) =>{
+    let obj ={
+      lineName : this.state.line_number,
+      data: [{
+        productItem : this.state.selected_product_item,
+        lineType : this.state.linetype,
+        materialType : this.state.materialtype,
+        machine : this.state.confirmedMachine,
+      }]
+    };
+    let arr = this.state.finalstate;
+    arr.push(obj);
+    this.setState({
+      finalstate : arr
+    },()=>{
+      console.log(this.state.finalstate)
     })
   }
 
@@ -404,32 +424,36 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                     <h2 className="m-0 py-3">Line Definition</h2>
                     <div>
                       <div className=" mb-3">
-                        <form data-testid="form">
+                        <form data-testid="form-line-type">
+                          <label htmlFor="line-type" hidden>LineType</label>
                           <Select 
                             options={LineTypeOptions} 
                             width='200px' 
                             position='top' 
                             name="linetype"
-                            id="line-type"
-                            placeholder='Linetype'
+                            inputId="line-type"
+                            placeholder='Line type'
                             onChange={this.lineTypeChange}
                             isOptionDisabled={(option:any) => option.disabled}
-                          >
-                          </Select>
+                          />
                         </form>
                       </div>
 
                       <div className=" mb-2">
-                        <Select 
-                          options={Material_type} 
-                          width='200px' 
-                          position='top'
-                          placeholder='Material type'
-                          onChange={this.materialTypeChange}
-                          disabled={state.disable_input}
-                          isOptionDisabled={(option:any) => option.disabled}
-                        >
-                        </Select>
+                        <form data-testid="form-material-type">
+                          <label htmlFor="material-type" hidden>MaterialType</label>
+                          <Select 
+                            options={Material_type} 
+                            width='200px' 
+                            position='top'
+                            name="materialtype"
+                            inputId="material-type"
+                            placeholder='Material type'
+                            onChange={this.materialTypeChange}
+                            disabled={state.disable_input}
+                            isOptionDisabled={(option:any) => option.disabled}
+                          />
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -529,7 +553,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                     <div className="d-flex ps-2">
                                       {
                                         item.data.map((subitem: any, i: number) =>
-                                          <span>{subitem.name}</span>
+                                          <span key={'prod-item'+i}>{subitem.name}</span>
                                         )
                                       }
                                     </div>
@@ -564,7 +588,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                             {
                               state.materialtype !==''?
                                 state.confirmedMachine.map((item: any, i: number) =>
-                                  <div className="main d-flex align-items-center justify-content-between">
+                                  <div className="main d-flex align-items-center justify-content-between" key={'machine'+i}>
                                     <div className="d-flex align-items-center">
                                       <BsChevronRight />
                                       <p className="m-0 ps-2">{item.name}</p>
@@ -604,6 +628,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                   className="active-btn-save ms-3" 
                                   disabled={state.confirmedMachine.length > 0 ? false : true}
                                   onClick={this.showSummary}
+                                  data-testid={'saveline'}
                                   >
                                   Save
                                 </Button>
@@ -612,6 +637,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                 <Button
                                   className="active-btn"
                                   disabled={state.confirmedMachine.length > 0 ? false : true}
+                                  onClick={this.addLine}
                                 >
                                   Add Line
                                 </Button>
