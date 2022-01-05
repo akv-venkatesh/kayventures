@@ -19,13 +19,11 @@ interface typeState {
     showMachine: boolean,
     addMoreEnable: boolean,
     machineType: any,
-    brandType: string,
-    typeTech: string,
-    machineCount: number,
+    brandType: any,
+    typeTech: any,
+    machineCount: any,
     machineItems: any,
-    selected_machine_item: any,
-    displayState: any,
-    selectedMachine: any,
+    savedState: any,
 }
 
 
@@ -85,9 +83,8 @@ class Machine extends Component<{}, typeState> {
                     ]
                 },
             ],
-            selected_machine_item: [],
-            displayState: [],
-            selectedMachine: [],
+
+            savedState: [],
         }
     }
 
@@ -102,32 +99,26 @@ class Machine extends Component<{}, typeState> {
         })
     }
     selectMachine = (event: any) => {
-
         let value: any = event;
         this.setState({
             showMachine: true,
             machineType: value.value,
-            selected_machine_item: []
         }, () => {
             console.log(value)
         })
     }
     selectBrand = (event: any) => {
-
         let value: any = event;
         this.setState({
             brandType: value.value,
-            selected_machine_item: []
         }, () => {
             console.log(value)
         })
     }
     selectTech = (event: any) => {
-
         let value: any = event;
         this.setState({
             typeTech: value.value,
-            selected_machine_item: []
         })
     }
     changeMachineCount = (e: any) => {
@@ -139,30 +130,22 @@ class Machine extends Component<{}, typeState> {
     }
 
     handleSavedMachine = (e: any) => {
+        let obj = {
+            data: [{
+                machineType: this.state.machineType,
+                machineBrand: this.state.brandType,
+                machineTech: this.state.typeTech,
+                machineCount: this.state.machineCount
+            }]
+        };
+        let arr = this.state.savedState;
+        arr.push(obj);
         this.setState({
             addMoreEnable: true,
-            selected_machine_item: []
+            savedState: arr,
+        }, () => {
+            console.log(this.state.savedState);
         })
-        // if (e.currentTarget.value) {
-        //     let obj = { name: e.currentTarget.value };
-        //     let arr = this.state.selected_machine_item;
-        //     arr.push(obj);
-        //     this.setState({
-        //         selected_machine_item: arr,
-        //         addMoreEnable: true
-        //     }, () => {
-        //         console.log(this.state.selected_machine_item)
-        //     })
-        // }
-        // else {
-        //     let arr = this.state.selected_machine_item;
-        //     arr = arr.filter((item: any) => item.name !== e.currentTarget.value);
-        //     this.setState({
-        //         selected_machine_item: arr
-        //     }, () => {
-        //         console.log(this.state.selected_machine_item)
-        //     })
-        // }
     }
     handleAddMore = () => {
         this.setState({
@@ -206,7 +189,6 @@ class Machine extends Component<{}, typeState> {
                                     onChange={this.selectMachine}
                                 ></Select>
                             </form>
-
                         </div>
                         <div className="mb-3">
                             <form data-testid="machineBrand" >

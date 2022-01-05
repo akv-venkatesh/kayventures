@@ -16,14 +16,16 @@ beforeEach(() => {
 
 test('initial test',()=>{
 const headingElement = screen.getByRole('heading', {name : 'Organization KYC'});
-const backbutton = wrapper.queryByTitle("backbutton");
-const removebutton = wrapper.queryByTitle("removebutton");
-const savebutton = wrapper.queryByTitle("savebutton");
-const nextbutton = wrapper.queryByTitle("nextbutton");
 expect(headingElement).toBeInTheDocument;
+const backbutton = wrapper.queryByTitle("backbutton");
+expect(backbutton).toBeInTheDocument;
+const removebutton = wrapper.queryByTitle("removebutton");
+expect(removebutton).toBeInTheDocument;
+const savebutton = wrapper.queryByTitle("savebutton");
+expect(savebutton).toBeInTheDocument;
+const nextbutton = wrapper.queryByTitle("nextbutton");
+expect(nextbutton).toBeInTheDocument;
+
 })
 
-test('button when the value is clicked', () => {
-    const button = screen.getByRole('button')
-    fireEvent.click(button)
-})
+

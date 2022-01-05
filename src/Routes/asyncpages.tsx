@@ -27,7 +27,9 @@ export const Facilitykyc = React.lazy(() => import('../pages/settings/Facilityky
 export const Facility1 = React.lazy(() => import('../pages/settings/Facilitykyc/Facility1'));
 export const Facilityday = React.lazy(() => import('../pages/settings/Facilitykyc/Facilityday'));
 export const Facilitymodal = React.lazy(() => import('../pages/settings/Facilitykyc/Facilitymodal'));
-
+export const Facilityinfo = React.lazy(() => import('../pages/settings/Facilityinfo'));
+export const Facilityform = React.lazy(() => import('../pages/settings/Facilityinfo/Facilityform'));
+export const Facilityinfomodal = React.lazy(() => import('../pages/settings/Facilityinfo/Facilityinfomodal'));
 
 
 

@@ -62,9 +62,9 @@ class OrganizationinfoModalSyn extends React.Component<{}, typeState> {
                <div className="profilechoose d-flex">
                     <label htmlFor="upload-logo" id="file-chosen"> </label>
                     {/* <Field type="file" id="upload-logo" name="upload_logo" hidden/> */}
-                    <label htmlFor="upload-logo"><img src={logo_img} className="logo-img mr-3" /></label>
+                    <label htmlFor="upload-logo"><img src={logo_img} alt="insertImage" className="logo-img mr-3" /></label>
                     <div><h3 className="syshead">Syndicate Fashions</h3>
-                    <p>Private Limited Company</p>
+                    <p data-testid="para">Private Limited Company</p>
                     <span className="text-muted">DD/MM/YYYY</span></div>
                </div>
                <ul>

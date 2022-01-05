@@ -63,7 +63,7 @@ class Facilitymodal extends React.Component<{}, typeState> {
                 <div className="facilitymod">
                     <div className="leftmenu">
                         <div className="imgleft">
-                            <img src={Image2}/>
+                            <img src={Image2} alt="displayedImage" />
                         </div>
                         <div className="infor">
                             <div className="mt-4">
