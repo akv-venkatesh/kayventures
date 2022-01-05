@@ -98,7 +98,7 @@ class Types extends Component<typeProps, typeState> {
     let type = JSON.parse(types);
     let arrLength = type.business_category.length
     let category;
-    // console.log(arrLength);
+    console.log(arrLength);
     for (let i = 0; i < arrLength; i++) {
       let id = type.business_category[i].id;
       if (id == type.business_category_single) {

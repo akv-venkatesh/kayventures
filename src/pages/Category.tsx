@@ -225,7 +225,7 @@ console.log(props);
                               <p>{data.description}</p>
                             </div>
                             <div className="category_item_radio">
-                              <input   data-testid={"test"+ data.id}
+                              <input data-testid={"test"+ data.id}
                                 type="radio"
                                 id={'category' + data.id}
                                 name="category"
@@ -248,14 +248,17 @@ console.log(props);
                 <div className="category_btn">
                   <Backbutton onClick={ this.redirect} />
                   <div>
-                    {this.state.Visibility ?
-                      <Button type="submit" className="cbtn next_btn">
+                    
+                      <Button 
+                        type="submit" 
+                        data-testid="enableNextButton" 
+                        className="cbtn next_btn"
+                        disabled={this.state.Visibility ? false : true}
+                        >
                         <span>Next </span>
                         <img src={buttonarrowright} className="next_btn_right" />
-                      </Button>:
-                       <DisableNextbutton />
-                      
-                     } 
+                      </Button>
+                      {/* <DisableNextbutton /> */}
                   </div>
                 </div>
               </div>
