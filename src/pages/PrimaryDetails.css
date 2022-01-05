@@ -2,16 +2,22 @@
 /* ######################################### */
 /* PrimaryForm */
 /* ######################################### */
+
+.primary-body{
+  height: 100vh;
+}
 .primary_form_body {
     width: auto;
-    margin-top: 34px;
-    margin-bottom: 34px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     background: rgba(225, 228, 234, 0.5);
     backdrop-filter: blur(4px);
     border-radius: 40px;
+    display: flex;
+    align-items: center;
   }
   .primary_form_container {
-    padding: 40px 60px;
+    padding: 20px 60px;
   }
   
   .primary_form_head h1 {
@@ -43,7 +49,7 @@
   }
 
   .primary_form_details {
-    margin: 35px 0px;
+    margin: 20px 0px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -173,7 +179,7 @@
     position: absolute;
     font-size: 14px;
     right: 20px;
-    bottom: -25px;
+    bottom: -20px;
   }
 
 

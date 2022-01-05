@@ -35,9 +35,9 @@ eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
               aliquip ex ea commodo consequat.
             </p>
             <div title="joinnow" onClick={this.redirect} className="manu-button"><span>Join Now</span></div>
-           <Link to="/Admin"> <div style={{position:"absolute",top:"0px",right:"30px"}} title="joinnow" onClick={this.redirect} className="manu-button"><span>Kay Admin</span></div></Link>
+           {/* <Link to="/Admin"> <div style={{position:"absolute",top:"0px",right:"30px"}} title="joinnow" onClick={this.redirect} className="manu-button"><span>Kay Admin</span></div></Link> */}
             <p className="manu-button-msg">
-              Already a member? Then&ensp;<span className="manu-button-msg-link">Log In</span> </p>
+              Already a member? Then&ensp;<Link to='/login'><span className="manu-button-msg-link">Log In</span></Link></p>
           </div>
           <div className="col-sm-8 bg-img-sec"></div>
         </div>
@@ -46,5 +46,3 @@ eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
   }
 }
 export default JoinNow;
-
-<div >Log In</div>

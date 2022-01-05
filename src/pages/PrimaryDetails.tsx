@@ -108,10 +108,8 @@ for (let index = 0; index < designationLoadData.length; index++) {
     console.log(options)
 
     return (
-   
-
       <>
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center primary-body">
           <div className="primary_form_body">
             <Formik initialValues={initialValues}
               validate={values => {
@@ -138,9 +136,8 @@ for (let index = 0; index < designationLoadData.length; index++) {
                 if (!values.phone) {
                   errors = { ...errors, phone: 'Enter Phone No' };
                 }
-                if (!values.urlLink) {
-                  errors = { ...errors, urlLink: 'Enter URL link' };
-                }
+                // else if (/^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/.test(values.phone)) {
+                //   errors = { ...errors, phone: 'Invalid Phone No' };
                 return errors;
               }}
               onSubmit={(values, actions) => {
@@ -157,7 +154,8 @@ for (let index = 0; index < designationLoadData.length; index++) {
                 handleChange,
                 handleBlur,
                 handleSubmit,
-                isSubmitting,setFieldValue  }) => (
+                isSubmitting,
+                setFieldValue ,isValid,dirty }) => (
                 <form className="primary_form_container" onSubmit={handleSubmit}>
                   <div className="primary_form_head">
                     <Link to="/types"><img src={arrow_left} style={{ cursor: "pointer" }} /></Link>
@@ -265,7 +263,7 @@ for (let index = 0; index < designationLoadData.length; index++) {
                     </div>
                   </div>
                   <div className="primary_form_btn" style={{ display: "flex", justifyContent: "center" }}>
-                    <button type="submit" disabled={isSubmitting}>
+                    <button type="submit" disabled={!(isValid && dirty)}>
                       Submit
                     </button >
                   </div>
