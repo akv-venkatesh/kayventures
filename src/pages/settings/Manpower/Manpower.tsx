@@ -88,10 +88,34 @@ class Manpower extends Component<{}, typeState> {
                     <h5 className="menu_header">Operations</h5>
                     <div className="menu_dropdown mb-3">
                         <div className="mb-3">
-                            <Select options={grade} width='300px' position='bottom' placeholder='Select Grade' onChange={this.handleGrade}></Select>
+                            <form data-testid="grade" >
+                                <label htmlFor="select-grade" hidden>select Grade</label>
+                                <Select
+                                    name="grade"
+                                    inputId="select-grade"
+                                    options={grade}
+                                    width='300px'
+                                    position='bottom'
+                                    placeholder='Select Grade'
+                                    onChange={this.handleGrade}
+                                ></Select>
+                            </form>
+
                         </div>
                         <div className="mb-3">
-                            <Select options={operation} width='300px' position='bottom' placeholder='Select Operation' onChange={this.handleOperation}></Select>
+                            <form data-testid="opertaion">
+                                <label htmlFor="select-operation" hidden>select Opertion</label>
+                                <Select
+                                    name="operation"
+                                    inputId="select-operation"
+                                    options={operation}
+                                    width='300px'
+                                    position='bottom'
+                                    placeholder='Select Operation'
+                                    onChange={this.handleOperation}
+                                ></Select>
+                            </form>
+
                         </div>
                         <div className="manpower_input">
                             <Form.Control
@@ -190,6 +214,7 @@ class Manpower extends Component<{}, typeState> {
                     className="manpower"
                     backdropClassName="manpower"
                     onHide={this.hideSummary}
+                    data-testid="someElemInMyModal"
                 >
                     <Modal.Header closeButton />
                     <Modal.Body className="">

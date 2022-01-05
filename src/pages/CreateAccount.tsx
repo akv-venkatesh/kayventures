@@ -147,7 +147,7 @@ class CreateAccount extends Component<typeprops, typestates > {
 							    <label className="form-check-label" htmlFor="rememberme">Remember Me</label> */}
                 </div>
                 <div className="register-buttons">
-                  <span data-testid="loginbutton" className="login-button"><span>Log In</span></span>
+                  <span data-testid="loginbutton" className="login-button"><Link to='/login'><span>Log In</span></Link></span>
                   <Button title="nextbutton" className="signin-button-parent" type="submit">
                     <span className="signin-button"><span>Next</span></span>
                   </Button>

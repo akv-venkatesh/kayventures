@@ -75,9 +75,10 @@
     border-radius: 8px;
 }
 .leftmenu button:hover{
-    background-color: #3CD070;
+    background-color: #3CD070 !important;
     color: #fff;
 }
+
 .iot_switch{
     display: flex;
 }

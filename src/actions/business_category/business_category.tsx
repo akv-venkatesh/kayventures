@@ -34,3 +34,17 @@ export const setPrimaryDetailsFailed = (payload:any) => ({
     type: 'SET_PRIMARY_DETAILS_FAILED',
     payload,
 });
+
+
+export const getPrimaryDesignation = (payload:any) => ({
+    type: 'GET_PRIMARY_DESIGNATION',
+    payload,
+});
+export const getPrimaryDesignationSuccess = (payload:any) => ({
+    type: 'GET_PRIMARY_DESIGNATION_SUCCESS',
+    payload,
+});
+export const getPrimaryDesignationFailed = (payload:any) => ({
+    type: 'GET_PRIMARY_DESIGNATION_FAILED',
+    payload,
+});

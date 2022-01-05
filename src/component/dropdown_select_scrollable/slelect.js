@@ -31,14 +31,14 @@ class slelect extends Component {
     var PadandMar;
     if(this.props.position == 'bottom'){
         PadandMar={
-            padding:'30px 10px 10px 10px', 
+            padding:'45px 15px 15px 15px', 
             margin : '-35px 0px 0px 0px'
         }
     
     }
     else if (this.props.position == 'top'){
         PadandMar={
-            padding:'10px 10px 30px 10px',
+            padding:'10px 15px 30px 15px',
             margin : '0px 0px -35px 0px' 
         }
     
@@ -58,7 +58,7 @@ class slelect extends Component {
             borderRadius: '40px',
             zIndex:this.state.menuOpened ?  102 : 10 ,
             width:'auto',
-            paddingLeft:'10px',
+            paddingLeft:'20px',
             paddingRight:'10px',
             "&:hover" : {outline:'none'},
         }),
@@ -72,6 +72,23 @@ class slelect extends Component {
             zIndex:100,
             padding:PadandMar.padding,
           }),
+          menuList : (provided) => ({
+            ...provided,
+            maxHeight:"200px",
+            height:'auto',paddingRight:'15px',
+              "&::-webkit-scrollbar" :{
+                                    width: "10px" ,
+                                    background: '#E1E4EA',
+                                    boxShadow: 'inset -4px -4px 9px 2px rgba(255, 255, 255, 0.8), inset 4px 4px 4px #AAB3C5',
+                                    borderRadius: '30px'
+                                  },
+              "&::-webkit-scrollbar-thumb" :{
+                                    background: "#E1E4EA",
+                                    boxShadow: '-4px -4px 16px 2px rgba(255, 255, 255, 0.8), 4px 4px 16px #AAB3C5, inset -4px -4px 16px rgba(255, 255, 255, 0.5), inset 4px 4px 8px rgba(170, 179, 197, 0.25)',
+                                    borderRadius: '20px',
+                                    width:"10px"
+                                  }
+        }),
           option: (provided) => ({
             ...provided,
             borderBottom: '1px dotted #0004',
@@ -110,6 +127,7 @@ class slelect extends Component {
         //   }),
           dropdownIndicator :(provided,state) => ({
               ...provided,
+              display:'none',
             transition: 'all .2s ease',
             // transform: "rotate(-90deg)",
             transform: this.state.menuOpened ? state.selectProps.menuIsOpen && "rotate(0deg)" :"rotate(-90deg)"
@@ -122,9 +140,10 @@ class slelect extends Component {
         <Select 
           {...this.props} 
           isOpen={isOpen} 
-          className='' 
+          className=''
           onMenuOpen={this.onMenuOpen}  
           onMenuClose={this.onMenuClose} 
+          
           styles={customStyles} 
           menuPlacement="auto"  
           onChange={this.handleChange} 

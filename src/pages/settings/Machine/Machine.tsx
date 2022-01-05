@@ -11,18 +11,19 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import { RiArrowDropRightLine, RiInformationFill } from 'react-icons/ri';
 import "react-perfect-scrollbar/dist/css/styles.css";
 import Select from '../../../component/dropdown_select/slelect';
-import { AiOutlineRight } from 'react-icons/ai';
+
 
 
 interface typeState {
     showSummary: boolean,
     showMachine: boolean,
-    machineType: string,
-    brandType: string,
-    typeTech: string,
-    machineCount: number,
-    savedMachine: any,
+    addMoreEnable: boolean,
+    machineType: any,
+    brandType: any,
+    typeTech: any,
+    machineCount: any,
     machineItems: any,
+    savedState: any,
 }
 
 
@@ -33,11 +34,11 @@ class Machine extends Component<{}, typeState> {
         this.state = {
             showSummary: false,
             showMachine: false,
-            machineType: '',
+            addMoreEnable: false,
+            machineType: [],
             brandType: '',
             typeTech: '',
             machineCount: 0,
-            savedMachine: [],
             machineItems: [
                 {
                     name: 'selectMachine',
@@ -82,6 +83,8 @@ class Machine extends Component<{}, typeState> {
                     ]
                 },
             ],
+
+            savedState: [],
         }
     }
 
@@ -99,19 +102,23 @@ class Machine extends Component<{}, typeState> {
         let value: any = event;
         this.setState({
             showMachine: true,
-            machineType: value.value
+            machineType: value.value,
+        }, () => {
+            console.log(value)
         })
     }
     selectBrand = (event: any) => {
         let value: any = event;
         this.setState({
-            brandType: value.value
+            brandType: value.value,
+        }, () => {
+            console.log(value)
         })
     }
     selectTech = (event: any) => {
         let value: any = event;
         this.setState({
-            typeTech: value.value
+            typeTech: value.value,
         })
     }
     changeMachineCount = (e: any) => {
@@ -121,26 +128,28 @@ class Machine extends Component<{}, typeState> {
             })
         }
     }
-    handleSavedMachine = (e: any) => {
 
-        let obj = [{
+    handleSavedMachine = (e: any) => {
+        let obj = {
             data: [{
-                machineType: e.currentTarget.value
-            }, {
-                brandType: e.currentTarget.value
-            }, {
-                typeTech: e.currentTarget.value
-            }, {
-                machineCount: e.currentTarget.value
-            },
-            ]
-        }];
-        let arr = this.state.savedMachine;
+                machineType: this.state.machineType,
+                machineBrand: this.state.brandType,
+                machineTech: this.state.typeTech,
+                machineCount: this.state.machineCount
+            }]
+        };
+        let arr = this.state.savedState;
         arr.push(obj);
         this.setState({
-            savedMachine: arr,
+            addMoreEnable: true,
+            savedState: arr,
         }, () => {
-            console.log(this.state.savedMachine)
+            console.log(this.state.savedState);
+        })
+    }
+    handleAddMore = () => {
+        this.setState({
+            showMachine: true,
         })
     }
 
@@ -168,13 +177,48 @@ class Machine extends Component<{}, typeState> {
                     <h5 className="menu_header">Machine Type</h5>
                     <div className="menu_dropdown mb-3">
                         <div className="mb-3">
-                            <Select options={machine} width='300px' position='bottom' placeholder='Select Machine' onChange={this.selectMachine}></Select>
+                            <form data-testid="machineType">
+                                <label htmlFor="select-machine" hidden>select Machine</label>
+                                <Select
+                                    name="machinetype"
+                                    inputId="select-machine"
+                                    options={machine}
+                                    width='300px'
+                                    position='bottom'
+                                    placeholder='Select Machine'
+                                    onChange={this.selectMachine}
+                                ></Select>
+                            </form>
                         </div>
                         <div className="mb-3">
-                            <Select options={brand} width='300px' position='bottom' placeholder='Select Brand' onChange={this.selectBrand}></Select>
+                            <form data-testid="machineBrand" >
+                                <label htmlFor="select-brand" hidden>select Brand</label>
+                                <Select
+                                    name="machinebrand"
+                                    inputId="select-brand"
+                                    options={brand}
+                                    width='300px'
+                                    position='bottom'
+                                    placeholder='Select Brand'
+                                    onChange={this.selectBrand}
+                                ></Select>
+                            </form>
+
                         </div>
                         <div className="mb-3">
-                            <Select options={technology} width='300px' position='bottom' placeholder='Select Technology' onChange={this.selectTech}></Select>
+                            <form data-testid="machineTech" >
+                                <label htmlFor="select-tech" hidden>select Technology</label>
+                                <Select
+                                    name="machinetech"
+                                    inputId="select-tech"
+                                    options={technology}
+                                    width='300px'
+                                    position='bottom'
+                                    placeholder='Select Technology'
+                                    onChange={this.selectTech}
+                                ></Select>
+                            </form>
+
                         </div>
                     </div>
 
@@ -201,12 +245,14 @@ class Machine extends Component<{}, typeState> {
                             <p className="">IOT Enabled</p>
                             <Form.Check
                                 type="switch"
+                                data-testid="custom-element"
                             />
                         </div>
                         <div className="">
                             <Button
-                                className="btn btn-secondary reset_switch "
-                                disabled={!this.state.machineType}
+                                className="btn btn-secondary reset_switch btn btn-primary"
+                                disabled={!this.state.brandType}
+
                             >
                                 Reset
                             </Button>
@@ -246,9 +292,9 @@ class Machine extends Component<{}, typeState> {
                                                     </div>
                                                 </Col>
                                                 {
-                                                    this.state.typeTech ?
+                                                    this.state.addMoreEnable ?
                                                         <div className="plusIcon d-flex">
-                                                            <button style={{ border: 'none' }} >
+                                                            <button style={{ border: 'none' }} onClick={this.handleAddMore} >
                                                                 <img src={Vector5} className="image_one" alt="" />
                                                             </button>
                                                             <p>  Add More </p>
@@ -260,7 +306,7 @@ class Machine extends Component<{}, typeState> {
                             </PerfectScrollbar>
                         </div>
                         <div className="summary">
-                            <Button href="#" disabled={!this.state.machineCount} size="sm" onClick={this.handleSummary}>
+                            <Button href="#" disabled={!this.state.machineCount} size="sm" onClick={this.handleSummary} data-testid="mySummary">
                                 Summary
                                 <RiArrowDropRightLine />
                             </Button>
@@ -281,6 +327,7 @@ class Machine extends Component<{}, typeState> {
                     className="machine"
                     backdropClassName="machine"
                     onHide={this.hideSummary}
+                    data-testid="someElemInMyModal"
                 >
                     <Modal.Header closeButton />
                     <Modal.Body className="">
