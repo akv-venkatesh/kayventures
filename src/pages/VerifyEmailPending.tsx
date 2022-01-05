@@ -24,7 +24,7 @@ function VerifyEmailPending():JSX.Element {
           className="verifyemailmodel1"
           backdropClassName="verifyemailmodel1"
         >
-          <Modal.Header closeButton></Modal.Header>
+          <Modal.Header></Modal.Header>
          
           <Modal.Body  className="text-center">
             <h4 className="modal-title">THANKS  FOR  SIGNING UP!</h4>

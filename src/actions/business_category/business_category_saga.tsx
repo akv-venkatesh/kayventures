@@ -16,7 +16,6 @@ interface datatype {
 // get category
 function* getCategory() {
   try {
-
     const response: AxiosResponse = yield call(
       apibaseURL.get,
       "/user-management/businessCategories"

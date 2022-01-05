@@ -190,6 +190,7 @@ class Manpower extends Component<{}, typeState> {
                     className="manpower"
                     backdropClassName="manpower"
                     onHide={this.hideSummary}
+                    data-testid="someElemInMyModal"
                 >
                     <Modal.Header closeButton />
                     <Modal.Body className="">

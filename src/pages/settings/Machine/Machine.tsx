@@ -11,18 +11,19 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import { RiArrowDropRightLine, RiInformationFill } from 'react-icons/ri';
 import "react-perfect-scrollbar/dist/css/styles.css";
 import Select from '../../../component/dropdown_select/slelect';
-import { AiOutlineRight } from 'react-icons/ai';
+
 
 
 interface typeState {
     showSummary: boolean,
     showMachine: boolean,
-    machineType: string,
+    machineType: any,
     brandType: string,
     typeTech: string,
     machineCount: number,
-    savedMachine: any,
     machineItems: any,
+    selected_machine_item: any,
+    displayState: any,
 }
 
 
@@ -33,11 +34,10 @@ class Machine extends Component<{}, typeState> {
         this.state = {
             showSummary: false,
             showMachine: false,
-            machineType: '',
+            machineType: [],
             brandType: '',
             typeTech: '',
             machineCount: 0,
-            savedMachine: [],
             machineItems: [
                 {
                     name: 'selectMachine',
@@ -82,6 +82,8 @@ class Machine extends Component<{}, typeState> {
                     ]
                 },
             ],
+            selected_machine_item: [],
+            displayState: [],
         }
     }
 
@@ -121,27 +123,31 @@ class Machine extends Component<{}, typeState> {
             })
         }
     }
-    handleSavedMachine = (e: any) => {
-
-        let obj = [{
-            data: [{
-                machineType: e.currentTarget.value
-            }, {
-                brandType: e.currentTarget.value
-            }, {
-                typeTech: e.currentTarget.value
-            }, {
-                machineCount: e.currentTarget.value
-            },
-            ]
-        }];
-        let arr = this.state.savedMachine;
-        arr.push(obj);
+    componentDidMount() {
         this.setState({
-            savedMachine: arr,
-        }, () => {
-            console.log(this.state.savedMachine)
+            displayState: this.state.machineItems
         })
+    }
+    handleSavedMachine = (e: any) => {
+        if (e.currentTarget.value) {
+            let obj = { name: e.currentTarget.value };
+            let arr = this.state.selected_machine_item;
+            arr.push(obj);
+            this.setState({
+                selected_machine_item: arr
+            }, () => {
+                console.log(this.state.selected_machine_item)
+            })
+        }
+        else {
+            let arr = this.state.selected_machine_item;
+            arr = arr.filter((item: any) => item.name !== e.currentTarget.value);
+            this.setState({
+                selected_machine_item: arr
+            }, () => {
+                console.log(this.state.selected_machine_item)
+            })
+        }
     }
 
 
@@ -168,7 +174,7 @@ class Machine extends Component<{}, typeState> {
                     <h5 className="menu_header">Machine Type</h5>
                     <div className="menu_dropdown mb-3">
                         <div className="mb-3">
-                            <Select options={machine} width='300px' position='bottom' placeholder='Select Machine' onChange={this.selectMachine}></Select>
+                            <Select data-testid="machineNeedle" inputId="needleinput" options={machine} width='300px' position='bottom' placeholder='Select Machine' onChange={this.selectMachine}></Select>
                         </div>
                         <div className="mb-3">
                             <Select options={brand} width='300px' position='bottom' placeholder='Select Brand' onChange={this.selectBrand}></Select>
@@ -201,6 +207,7 @@ class Machine extends Component<{}, typeState> {
                             <p className="">IOT Enabled</p>
                             <Form.Check
                                 type="switch"
+                                data-testid="custom-element"
                             />
                         </div>
                         <div className="">
@@ -260,7 +267,7 @@ class Machine extends Component<{}, typeState> {
                             </PerfectScrollbar>
                         </div>
                         <div className="summary">
-                            <Button href="#" disabled={!this.state.machineCount} size="sm" onClick={this.handleSummary}>
+                            <Button href="#" disabled={!this.state.machineCount} size="sm" onClick={this.handleSummary} data-testid="mySummary">
                                 Summary
                                 <RiArrowDropRightLine />
                             </Button>
@@ -281,6 +288,7 @@ class Machine extends Component<{}, typeState> {
                     className="machine"
                     backdropClassName="machine"
                     onHide={this.hideSummary}
+                    data-testid="someElemInMyModal"
                 >
                     <Modal.Header closeButton />
                     <Modal.Body className="">
