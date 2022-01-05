@@ -160,7 +160,17 @@ class Esg extends Component<{}, typeState> {
                                         <div className="left_column d-flex flex-column">
                                             <h4 className="mb-4">Attach your certificates</h4>
                                             <div className="mb-3">
-                                                <Select options={certificates} width='300px' position='bottom' placeholder='Select Certificate' onChange={() => { }}></Select>
+                                                <form data-testid="environmental">
+                                                    <label htmlFor="select-environmental" hidden>Select Certificate</label>
+                                                    <Select
+                                                        name="environmental"
+                                                        inputId="select-environmental"
+                                                        options={certificates}
+                                                        width='300px'
+                                                        position='bottom'
+                                                        placeholder='Select Certificate'
+                                                        onChange={() => { }}></Select>
+                                                </form>
                                             </div>
                                         </div>
                                         <div className="right_column d-flex flex-column">
@@ -184,7 +194,17 @@ class Esg extends Component<{}, typeState> {
                                                     placeholder="Valid Till"
 
                                                 />
-                                                <Select options={cerifiedby} width='30%' position='bottom' placeholder='Cerified by' onChange={() => { }}></Select>
+                                                <form data-testid="CerifiedBy">
+                                                    <label htmlFor="select-cerifiedby" hidden>Cerified by</label>
+                                                    <Select
+                                                        name="CerifiedBy"
+                                                        inputId="select-cerifiedby"
+                                                        options={cerifiedby}
+                                                        width='30%'
+                                                        position='bottom'
+                                                        placeholder='Cerified by'
+                                                        onChange={() => { }}></Select>
+                                                </form>
                                             </div>
                                             <div className="plusIcon d-flex">
                                                 <img src={Vector5} className="image_one" alt="" />
@@ -216,7 +236,17 @@ class Esg extends Component<{}, typeState> {
                                         <div className="left_column d-flex flex-column">
                                             <h4 className="mb-4">Attach your certificates</h4>
                                             <div className="mb-3">
-                                                <Select options={social} width='300px' position='bottom' placeholder='Select Certificate' onChange={() => { }}></Select>
+                                                <form data-testid="social">
+                                                    <label htmlFor="select-social" hidden>Select Certificate</label>
+                                                    <Select
+                                                        name="social"
+                                                        inputId="select-social"
+                                                        options={social}
+                                                        width='300px'
+                                                        position='bottom'
+                                                        placeholder='Select Certificate'
+                                                        onChange={() => { }}></Select>
+                                                </form>
                                             </div>
                                         </div>
                                         <div className="right_column d-flex flex-column">
@@ -272,7 +302,18 @@ class Esg extends Component<{}, typeState> {
                                         <div className="left_column d-flex flex-column">
                                             <h4 className="mb-4">Attach your certificates</h4>
                                             <div className="mb-3">
-                                                <Select options={Governance} width='300px' position='bottom' placeholder='Select Certificate' onChange={() => { }}></Select>
+                                                <form data-testid="governance">
+                                                    <label htmlFor="select-governance" hidden>Select Certificate</label>
+                                                    <Select
+                                                        name="governance"
+                                                        inputId="select-governance"
+                                                        options={Governance}
+                                                        width='300px'
+                                                        position='bottom'
+                                                        placeholder='Select Certificate'
+                                                        onChange={() => { }}></Select>
+                                                </form>
+
                                             </div>
                                         </div>
                                         <div className="right_column d-flex flex-column">

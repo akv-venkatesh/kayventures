@@ -2,6 +2,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 
 import { MemoryRouter as Router } from 'react-router-dom';
+import selectEvent from 'react-select-event';
 import Manpower from '../../settings/Manpower/Manpower';
 
 
@@ -20,8 +21,8 @@ beforeEach(() => {
 });
 
 
-test('test manpower', () => {
-    const machine = wrapper.getByText('Operations');
+test('test manpower text', () => {
+    const machine = wrapper.getByRole('heading', { name: /Operations/i });
     expect(machine).toBeInTheDocument;
 
     const facilityone = screen.getByText('Facility 1');
@@ -41,8 +42,8 @@ test('test manpower', () => {
     expect(setup).toBeInTheDocument;
 
 })
-
-test('manpower button click', () => {
+//fire events
+test('manpower button click', async () => {
     const submitClick = jest.fn()
     fireEvent.click(screen.getByText(/submit/i))
     expect(submitClick).toBeInTheDocument;
@@ -52,6 +53,29 @@ test('manpower button click', () => {
     const summaryClick = jest.fn()
     fireEvent.click(screen.getByText(/summary/i))
     expect(summaryClick).toBeInTheDocument;
+
+
+    //input chage event
+    const inpute = screen.getByPlaceholderText('Enter no. of operators');
+    fireEvent.change(inpute, { target: { value: "vinoth" } });
+    expect(wrapper.getByDisplayValue(/vinoth/i)).toBeInTheDocument;
+
+    //model box
+    const sumContainer = fireEvent.click(screen.getByRole('button', { name: /summary/i }))
+    const diaContainer = screen.getByRole('dialog');
+    expect(sumContainer).toBeInTheDocument;
+    expect(diaContainer).toBeInTheDocument;
+
+    //selectbox for Grade
+    expect(wrapper.getByTestId('grade')).toHaveFormValues({ grade: '' });
+    await selectEvent.select(wrapper.getByLabelText('select Grade'), ['Grade A']);
+    expect(wrapper.getByTestId('grade')).toHaveFormValues({ grade: 'Grade A' });
+
+    //selectbox for operation
+    expect(wrapper.getByTestId('opertaion')).toHaveFormValues({ opertaion: '' });
+    await selectEvent.select(wrapper.getByLabelText('select Opertion'), ['Tailor']);
+    expect(wrapper.getByTestId('opertaion')).toHaveFormValues({ opertaion: 'Tailor' });
+
 })
 test('manpower button event', () => {
     const buttonA = jest.fn()
@@ -64,20 +88,4 @@ test('manpower button event', () => {
     fireEvent.click(screen.getByText(/Grade C/i))
     expect(buttonC).toBeInTheDocument;
 
-
-    // const sumContainer = fireEvent.click(screen.getByRole('button', { name: /summary/i }))
-    // const diaContainer = screen.getByRole('dialog');
-    // expect(sumContainer).toBeInTheDocument;
-    // expect(diaContainer).toBeInTheDocument;
-
-
-})
-
-
-
-test('input element', () => {
-    const inpute = screen.getByPlaceholderText('Enter no. of operators');
-    expect(inpute).toBeInTheDocument;
-    fireEvent.change(inpute, { target: { value: "vinoth" } });
-    expect(wrapper.getByDisplayValue(/vinoth/i)).toBeInTheDocument;
 })

@@ -17,6 +17,7 @@ import Select from '../../../component/dropdown_select/slelect';
 interface typeState {
     showSummary: boolean,
     showMachine: boolean,
+    addMoreEnable: boolean,
     machineType: any,
     brandType: string,
     typeTech: string,
@@ -24,6 +25,7 @@ interface typeState {
     machineItems: any,
     selected_machine_item: any,
     displayState: any,
+    selectedMachine: any,
 }
 
 
@@ -34,6 +36,7 @@ class Machine extends Component<{}, typeState> {
         this.state = {
             showSummary: false,
             showMachine: false,
+            addMoreEnable: false,
             machineType: [],
             brandType: '',
             typeTech: '',
@@ -84,6 +87,7 @@ class Machine extends Component<{}, typeState> {
             ],
             selected_machine_item: [],
             displayState: [],
+            selectedMachine: [],
         }
     }
 
@@ -98,22 +102,32 @@ class Machine extends Component<{}, typeState> {
         })
     }
     selectMachine = (event: any) => {
+
         let value: any = event;
         this.setState({
             showMachine: true,
-            machineType: value.value
+            machineType: value.value,
+            selected_machine_item: []
+        }, () => {
+            console.log(value)
         })
     }
     selectBrand = (event: any) => {
+
         let value: any = event;
         this.setState({
-            brandType: value.value
+            brandType: value.value,
+            selected_machine_item: []
+        }, () => {
+            console.log(value)
         })
     }
     selectTech = (event: any) => {
+
         let value: any = event;
         this.setState({
-            typeTech: value.value
+            typeTech: value.value,
+            selected_machine_item: []
         })
     }
     changeMachineCount = (e: any) => {
@@ -123,31 +137,37 @@ class Machine extends Component<{}, typeState> {
             })
         }
     }
-    componentDidMount() {
-        this.setState({
-            displayState: this.state.machineItems
-        })
-    }
+
     handleSavedMachine = (e: any) => {
-        if (e.currentTarget.value) {
-            let obj = { name: e.currentTarget.value };
-            let arr = this.state.selected_machine_item;
-            arr.push(obj);
-            this.setState({
-                selected_machine_item: arr
-            }, () => {
-                console.log(this.state.selected_machine_item)
-            })
-        }
-        else {
-            let arr = this.state.selected_machine_item;
-            arr = arr.filter((item: any) => item.name !== e.currentTarget.value);
-            this.setState({
-                selected_machine_item: arr
-            }, () => {
-                console.log(this.state.selected_machine_item)
-            })
-        }
+        this.setState({
+            addMoreEnable: true,
+            selected_machine_item: []
+        })
+        // if (e.currentTarget.value) {
+        //     let obj = { name: e.currentTarget.value };
+        //     let arr = this.state.selected_machine_item;
+        //     arr.push(obj);
+        //     this.setState({
+        //         selected_machine_item: arr,
+        //         addMoreEnable: true
+        //     }, () => {
+        //         console.log(this.state.selected_machine_item)
+        //     })
+        // }
+        // else {
+        //     let arr = this.state.selected_machine_item;
+        //     arr = arr.filter((item: any) => item.name !== e.currentTarget.value);
+        //     this.setState({
+        //         selected_machine_item: arr
+        //     }, () => {
+        //         console.log(this.state.selected_machine_item)
+        //     })
+        // }
+    }
+    handleAddMore = () => {
+        this.setState({
+            showMachine: true,
+        })
     }
 
 
@@ -174,13 +194,49 @@ class Machine extends Component<{}, typeState> {
                     <h5 className="menu_header">Machine Type</h5>
                     <div className="menu_dropdown mb-3">
                         <div className="mb-3">
-                            <Select data-testid="machineNeedle" inputId="needleinput" options={machine} width='300px' position='bottom' placeholder='Select Machine' onChange={this.selectMachine}></Select>
+                            <form data-testid="machineType">
+                                <label htmlFor="select-machine" hidden>select Machine</label>
+                                <Select
+                                    name="machinetype"
+                                    inputId="select-machine"
+                                    options={machine}
+                                    width='300px'
+                                    position='bottom'
+                                    placeholder='Select Machine'
+                                    onChange={this.selectMachine}
+                                ></Select>
+                            </form>
+
                         </div>
                         <div className="mb-3">
-                            <Select options={brand} width='300px' position='bottom' placeholder='Select Brand' onChange={this.selectBrand}></Select>
+                            <form data-testid="machineBrand" >
+                                <label htmlFor="select-brand" hidden>select Brand</label>
+                                <Select
+                                    name="machinebrand"
+                                    inputId="select-brand"
+                                    options={brand}
+                                    width='300px'
+                                    position='bottom'
+                                    placeholder='Select Brand'
+                                    onChange={this.selectBrand}
+                                ></Select>
+                            </form>
+
                         </div>
                         <div className="mb-3">
-                            <Select options={technology} width='300px' position='bottom' placeholder='Select Technology' onChange={this.selectTech}></Select>
+                            <form data-testid="machineTech" >
+                                <label htmlFor="select-tech" hidden>select Technology</label>
+                                <Select
+                                    name="machinetech"
+                                    inputId="select-tech"
+                                    options={technology}
+                                    width='300px'
+                                    position='bottom'
+                                    placeholder='Select Technology'
+                                    onChange={this.selectTech}
+                                ></Select>
+                            </form>
+
                         </div>
                     </div>
 
@@ -212,8 +268,9 @@ class Machine extends Component<{}, typeState> {
                         </div>
                         <div className="">
                             <Button
-                                className="btn btn-secondary reset_switch "
-                                disabled={!this.state.machineType}
+                                className="btn btn-secondary reset_switch btn btn-primary"
+                                disabled={!this.state.brandType}
+
                             >
                                 Reset
                             </Button>
@@ -253,9 +310,9 @@ class Machine extends Component<{}, typeState> {
                                                     </div>
                                                 </Col>
                                                 {
-                                                    this.state.typeTech ?
+                                                    this.state.addMoreEnable ?
                                                         <div className="plusIcon d-flex">
-                                                            <button style={{ border: 'none' }} >
+                                                            <button style={{ border: 'none' }} onClick={this.handleAddMore} >
                                                                 <img src={Vector5} className="image_one" alt="" />
                                                             </button>
                                                             <p>  Add More </p>
