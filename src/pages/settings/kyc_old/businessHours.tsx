@@ -7,6 +7,9 @@ import $ from 'jquery';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
+import DatePicker from 'react-date-picker';
+import 'react-calendar/dist/Calendar.css';
+
 function BusinessHour():JSX.Element {
 	const initialValues={
 		mon_start_time: 0,
@@ -41,6 +44,7 @@ function BusinessHour():JSX.Element {
 				sun_end_time_day: ' ',
 			}
 	}
+	const [value, onChange] = useState(new Date());
   	return (
     <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
   		<div className='h-100 businesshour px-4 py-4'>
@@ -342,6 +346,12 @@ function BusinessHour():JSX.Element {
 									           	</Field>
 						    				</div>	
 								           	<Field type="text" id="holiday1-date" name="holiday1-date" className="mt-4" placeholder="Name" />
+											<DatePicker
+												className="mt-3"
+												clearIcon={null}
+												onChange={onChange}
+												value={value}
+											/>
 					    				</div>
 				    				</div>
 				    				<div className="d-flex py-2">
