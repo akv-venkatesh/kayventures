@@ -181,14 +181,13 @@ color: #0067E5;
     box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
     border-radius: 40px;
     color: #0067E5;
-  
 }
 
  .add-icon{
 font-size: 12px;
 }
 .save-btn {
-  
+  color: white;
 width: 150px;
 display: flex;
 justify-content: center;
