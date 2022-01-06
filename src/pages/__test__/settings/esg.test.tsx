@@ -3,7 +3,7 @@ import { getByRole, render, screen, fireEvent } from '@testing-library/react';
 
 import { MemoryRouter as Router } from 'react-router-dom';
 import selectEvent from 'react-select-event';
-import Esg from '../../settings/Esg/Esg';
+import Esg from '../../settings/kyc/Esg/Esg';
 
 
 

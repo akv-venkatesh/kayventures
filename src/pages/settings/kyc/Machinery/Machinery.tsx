@@ -6,9 +6,9 @@ import { GiSewingMachine } from "react-icons/gi";
 import {
     Nextbutton,
     DisableNextbutton,
-} from "../../../component/buttons/button";
+} from "../../../../component/buttons/button";
 import "./machinery.css";
-import CustomSelect from "../../../component/custom_select";
+
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { JsxFlags } from "typescript";
@@ -16,12 +16,12 @@ import { RiInformationFill } from "react-icons/ri";
 import { AiOutlineRight } from "react-icons/ai";
 import Select from "react-select";
 
-import Vector1 from "../../../assets/icons/various/Vector1.svg"
-import Vector2 from "../../../assets/icons/various/Vector2.svg"
-import Vector3 from "../../../assets/icons/various/Vector3.svg"
-import Vector5 from "../../../assets/icons/various/Vector5.svg"
-import Vector6 from "../../../assets/icons/various/Vector6.svg"
-import Vector4 from "../../../assets/icons/arrows/chevron-right.svg"
+import Vector1 from "../../../../assets/icons/various/Vector1.svg"
+import Vector2 from "../../../../assets/icons/various/Vector2.svg"
+import Vector3 from "../../../../assets/icons/various/Vector3.svg"
+import Vector5 from "../../../../assets/icons/various/Vector5.svg"
+import Vector6 from "../../../../assets/icons/various/Vector6.svg"
+import Vector4 from "../../../../assets/icons/arrows/chevron-right.svg"
 
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';

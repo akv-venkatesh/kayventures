@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Col } from 'react-bootstrap';
 
-import MachineIcon from "../../../assets/icons/various/MachineIcon.svg"
+import MachineIcon from "../../../../assets/icons/various/MachineIcon.svg"
 
 class MachineTypes extends Component {
     render() {
@@ -10,7 +10,7 @@ class MachineTypes extends Component {
                 {/* <div className="machine_items">
                     <div className="machine_image d-flex">
                         <img src={MachineIcon} alt="" />
-                        <h3>{this.state.machineCount}</h3>
+                        <h3>{this.props.machineCount}</h3>
                     </div>
                     <p>{this.props.state.machineType}</p>
                 </div>

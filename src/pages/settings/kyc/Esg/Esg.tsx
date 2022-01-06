@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
 import { Button, Form } from 'react-bootstrap';
 import "./esg.css";
-import Select from '../../../component/dropdown_select/slelect';
+import Select from '../../../../component/dropdown_select/slelect';
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
 
-import Vector3 from "../../../assets/icons/various/Vector3.svg"
-import Vector5 from "../../../assets/icons/various/Vector5.svg"
-import AttachBlue from "../../../assets/icons/basic/paperclip.svg"
-import FileBlue from "../../../assets/icons/file/file-text.svg"
-import ViewImage from "../../../assets/images/ViewImage.png"
-import MapImage from "../../../assets/images/MapImage.png"
-import Navigation from "../../../assets/icons/maps/pin.svg"
-import Call from "../../../assets/icons/call/call-phone.svg"
-import Time from "../../../assets/icons/time/time.svg"
+import Vector3 from "../../../../assets/icons/various/Vector3.svg"
+import Vector5 from "../../../../assets/icons/various/Vector5.svg"
+import AttachBlue from "../../../../assets/icons/basic/paperclip.svg"
+import FileBlue from "../../../../assets/icons/file/file-text.svg"
+import ViewImage from "../../../../assets/images/ViewImage.png"
+import MapImage from "../../../../assets/images/MapImage.png"
+import Navigation from "../../../../assets/icons/maps/pin.svg"
+import Call from "../../../../assets/icons/call/call-phone.svg"
+import Time from "../../../../assets/icons/time/time.svg"
 
 import { RiArrowDropRightLine } from 'react-icons/ri';
 

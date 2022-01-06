@@ -18,7 +18,7 @@ export const Home = React.lazy(() => import('../pages/home'));
 export const KYCBusinessHr = React.lazy(() => import('../pages/settings/index'));
 export const Productconfig = React.lazy(() => import('../pages/settings/ProductConfiguration/configuration'));
 export const SelectPlan = React.lazy(() => import('../pages/SelectPlan/SelectPlan'));
-export const KYC = React.lazy(() => import('../pages/settings/kyc'));
+export const KYC = React.lazy(() => import('../pages/settings/kyc_old'));
 export const Organization = React.lazy(() => import('../pages/settings/Organization'));
 export const Organizationinfo = React.lazy(() => import('../pages/settings/Organization/Organizationinfo'));
 export const OrganizationinfoModal = React.lazy(() => import('../pages/settings/Organization/OrganizationinfoModal'));
@@ -35,10 +35,10 @@ export const Facilitymodal = React.lazy(() => import('../pages/settings/Facility
 
 export const Settings = React.lazy(() => import('../pages/settings/index'));
 export const Pro_config = React.lazy(() => import('../pages/settings/ProductConfiguration'));
-export const Machinery = React.lazy(() => import('../pages/settings/Machinery/Machinery'));
-export const Machine = React.lazy(() => import('../pages/settings/Machine/Machine'));
-export const Manpower = React.lazy(() => import('../pages/settings/Manpower/Manpower'));
-export const Esg = React.lazy(() => import('../pages/settings/Esg/Esg'));
+export const Machinery = React.lazy(() => import('../pages/settings/kyc/Machinery/Machinery'));
+export const Machine = React.lazy(() => import('../pages/settings/kyc/Machine/Machine'));
+export const Manpower = React.lazy(() => import('../pages/settings/kyc/Manpower/Manpower'));
+export const Esg = React.lazy(() => import('../pages/settings/kyc/Esg/Esg'));
 
 
 

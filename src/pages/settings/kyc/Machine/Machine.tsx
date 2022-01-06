@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap';
 import "./machine.css";
 
-import Vector3 from "../../../assets/icons/various/Vector3.svg"
-import MachineIcon from "../../../assets/icons/various/MachineIcon.svg"
-import BottomIcon from "../../../assets/icons/various/BottomIcon.svg"
-import Vector5 from "../../../assets/icons/various/Vector5.svg"
+import Vector3 from "../../../../assets/icons/various/Vector3.svg"
+import MachineIcon from "../../../../assets/icons/various/MachineIcon.svg"
+import BottomIcon from "../../../../assets/icons/various/BottomIcon.svg"
+import Vector5 from "../../../../assets/icons/various/Vector5.svg"
 
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { RiArrowDropRightLine, RiInformationFill } from 'react-icons/ri';
 import "react-perfect-scrollbar/dist/css/styles.css";
-import Select from '../../../component/dropdown_select/slelect';
+import Select from '../../../../component/dropdown_select/slelect';
 
 
 
