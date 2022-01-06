@@ -57,10 +57,6 @@ class Routers extends React.Component {
             <Route path="Facilityinfo" element={<Facilityinfo />} />
             <Route path="Facilityform" element={<Facilityform />} />
             <Route path="Facilityinfomodal" element={<Facilityinfomodal />} />
-
-
-
-
             <Route path="machinery" element={<Machinery />} />
             <Route path="machine" element={<Machine />} />
             <Route path="manpower" element={<Manpower />} />
