@@ -112,11 +112,11 @@ class Facility1 extends Component<{}, typeState> {
                                                     <div className="row mt-5 d-flex ">
                                                         <h3 className="col-md-3">Address<span className='required'> </span></h3>
                                                         <div className="col-md-5">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="Line 1" />
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="Line 2" />
-                                                            <Field type="text" id="" className="input-box add" name="leagal_name" placeholder="State" />
-                                                            <Field type="text" id="" className="input-box add" name="leagal_name" placeholder="Country" />
-                                                            <Field type="text" id="" className="input-box add" name="leagal_name" placeholder="Pincode" />
+                                                            <Field type="text" id="" className="input-box" name="line1" aria-label="line1" placeholder="Line 1" />
+                                                            <Field type="text" id="" className="input-box" name="line2" aria-label="line2" placeholder="Line 2" />
+                                                            <Field type="text" id="" className="input-box add" name="state" aria-label="state" placeholder="State" />
+                                                            <Field type="text" id="" className="input-box add" name="country" aria-label="country" placeholder="Country" />
+                                                            <Field type="text" id="" className="input-box add" name="pincode" aria-label="pincode" placeholder="Pincode" />
                                                         </div>
                                                     </div>
                                                     <div className="row mt-5 d-flex ">
@@ -141,13 +141,13 @@ class Facility1 extends Component<{}, typeState> {
                                                             <option value="blue">Sale Patnership</option>
                                                             </Field>
                                                         </div>
-                                                        <Field type="text" id="" className="input-box" name="leagal_name" placeholder="Mention Number" />
+                                                        <Field type="text" id="" className="input-box" name="mentionnumber" aria-label="mentionnumber" placeholder="Mention Number" />
                                                         </div>
                                                     </div>
                                                     <div className="row mt-5 d-flex ">
                                                         <h3 className="col-md-3">Location Map<span className='required'> </span></h3>
                                                         <div className="col-md-5">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="Paste URL link here" />
+                                                            <Field type="text" id="" className="input-box" name="locationmap" aria-label="locationmap" placeholder="Paste URL link here" />
                                                             <div className="plusIcon d-flex">
                                                                 <img src={Vector5} className="image_one" alt="" />
                                                                 <p>  Add in case of multiple locations</p>
@@ -160,13 +160,13 @@ class Facility1 extends Component<{}, typeState> {
                                                     <div className="row mt-5 d-flex ">
                                                         <h3 className="col-md-3">Service<span className='required'> </span></h3>
                                                         <div className="col-md-5">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="+91 XXXXXXXXX" />
+                                                            <Field type="number" id="" className="input-box" name="service" aria-label="service" placeholder="+91 XXXXXXXXX" />
                                                         </div>
                                                     </div> 
                                                     <div className="row mt-5 d-flex ">
                                                         <h3 className="col-md-3">Customer care administration<span className='required'> </span></h3>
                                                         <div className="col-md-5">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="xyz@gmail.com or company Id" />
+                                                            <Field type="text" id="" className="input-box" name="customercareadministration" aria-label="customercareadministration" placeholder="xyz@gmail.com or company Id" />
                                                             <div className="plusIcon d-flex">
                                                                 <img src={Vector5} className="image_one" alt="" />
                                                                 <p>  Add in case of multiple locations</p>
@@ -179,7 +179,7 @@ class Facility1 extends Component<{}, typeState> {
                                                     <div className="row mt-5 d-flex ">
                                                         <h3 className="col-md-3">Reverse Gecoding<span className='required'> </span></h3>
                                                         <div className="col-md-5">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="Paste the link here" />
+                                                            <Field type="text" id="" className="input-box" name="reversegecoding" aria-label="reversegecoding" placeholder="Paste the link here" />
                                                             <div className="plusIcon d-flex">
                                                                 <img src={Vector5} className="image_one" alt="" />
                                                                 <p>  Add in case of multiple locations</p>

@@ -115,77 +115,77 @@ class Facilityday extends Component<{}, typeState> {
                                                     <div className="row mt-3 d-flex align-items-center">
                                                         <h3 className="col-md-2">Monday<span className='required'> </span></h3>
                                                         <div className="col-md-3 d-flex align-items-center">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="00 hrs" />
+                                                            <Field type="text" id="" className="input-box" name="mondays" aria-label="mondays" placeholder="00 hrs" />
                                                             <span className="time">AM / PM</span>
                                                         </div>
                                                         <div className="col-md-3 d-flex align-items-center">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="00 hrs" />
+                                                            <Field type="text" id="" className="input-box" name="mondaye" aria-label="mondaye" placeholder="00 hrs" />
                                                             <span className="time">AM / PM</span>
                                                         </div>
                                                     </div>
                                                     <div className="row mt-3 d-flex align-items-center">
                                                         <h3 className="col-md-2">Tuesday<span className='required'> </span></h3>
                                                         <div className="col-md-3 d-flex align-items-center">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="00 hrs" />
+                                                            <Field type="text" id="" className="input-box" name="tuesdays" aria-label="tuesdays" placeholder="00 hrs" />
                                                             <span className="time">AM / PM</span>
                                                         </div>
                                                         <div className="col-md-3 d-flex align-items-center">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="00 hrs" />
+                                                            <Field type="text" id="" className="input-box" name="tuesdaye" aria-label="tuesdaye" placeholder="00 hrs" />
                                                             <span className="time">AM / PM</span>
                                                         </div>
                                                     </div>
                                                     <div className="row mt-3 d-flex align-items-center">
                                                         <h3 className="col-md-2">Wednesday<span className='required'> </span></h3>
                                                         <div className="col-md-3 d-flex align-items-center">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="00 hrs" />
+                                                            <Field type="text" id="" className="input-box" name="wednesdays" aria-label="wednesdays" placeholder="00 hrs" />
                                                             <span className="time">AM / PM</span>
                                                         </div>
                                                         <div className="col-md-3 d-flex align-items-center">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="00 hrs" />
+                                                            <Field type="text" id="" className="input-box" name="wednesdaye" aria-label="wednesdaye" placeholder="00 hrs" />
                                                             <span className="time">AM / PM</span>
                                                         </div>
                                                     </div>
                                                     <div className="row mt-3 d-flex align-items-center">
                                                         <h3 className="col-md-2">Thrusday<span className='required'> </span></h3>
                                                         <div className="col-md-3 d-flex align-items-center">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="00 hrs" />
+                                                            <Field type="text" id="" className="input-box" name="thrusdays" aria-label="thrusdays" placeholder="00 hrs" />
                                                             <span className="time">AM / PM</span>
                                                         </div>
                                                         <div className="col-md-3 d-flex align-items-center">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="00 hrs" />
+                                                            <Field type="text" id="" className="input-box" name="thrusdaye" aria-label="thrusdaye" placeholder="00 hrs" />
                                                             <span className="time">AM / PM</span>
                                                         </div>
                                                     </div>
                                                     <div className="row mt-3 d-flex align-items-center">
                                                         <h3 className="col-md-2">Friday<span className='required'> </span></h3>
                                                         <div className="col-md-3 d-flex align-items-center">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="00 hrs" />
+                                                            <Field type="text" id="" className="input-box" name="fridays" aria-label="fridays" placeholder="00 hrs" />
                                                             <span className="time">AM / PM</span>
                                                         </div>
                                                         <div className="col-md-3 d-flex align-items-center">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="00 hrs" />
+                                                            <Field type="text" id="" className="input-box" name="fridaye" aria-label="fridaye" placeholder="00 hrs" />
                                                             <span className="time">AM / PM</span>
                                                         </div>
                                                     </div>
                                                     <div className="row mt-3 d-flex align-items-center">
                                                         <h3 className="col-md-2">Saturday<span className='required'> </span></h3>
                                                         <div className="col-md-3 d-flex align-items-center">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="00 hrs" />
+                                                            <Field type="text" id="" className="input-box" name="saturdays" aria-label="saturdays" placeholder="00 hrs" />
                                                             <span className="time">AM / PM</span>
                                                         </div>
                                                         <div className="col-md-3 d-flex align-items-center">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="00 hrs" />
+                                                            <Field type="text" id="" className="input-box" name="saturdaye" aria-label="saturdaye" placeholder="00 hrs" />
                                                             <span className="time">AM / PM</span>
                                                         </div>
                                                     </div>
                                                     <div className="row mt-3 d-flex align-items-center">
                                                         <h3 className="col-md-2">Sunday<span className='required'> </span></h3>
                                                         <div className="col-md-3 d-flex align-items-center">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="00 hrs" />
+                                                            <Field type="text" id="" className="input-box" name="sundays" aria-label="sundays" placeholder="00 hrs" />
                                                             <span className="time">AM / PM</span>
                                                         </div>
                                                         <div className="col-md-3 d-flex align-items-center">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="00 hrs" />
+                                                            <Field type="text" id="" className="input-box" name="sundaye" aria-label="sundaye" placeholder="00 hrs" />
                                                             <span className="time">AM / PM</span>
                                                         </div>
                                                     </div>
@@ -197,7 +197,7 @@ class Facilityday extends Component<{}, typeState> {
                                                     <h3 className="col-md-2">Holiday 1<span className='required'> </span></h3>
                                                     <div className="col-md-5">
                                                         <div className="d-flex align-items-center">
-                                                            <Field type="text" id="" className="input-box" name="leagal_name" placeholder="Enter name of the holiday" />
+                                                            <Field type="text" id="" aria-label="holiday1" className="input-box" name="holiday1" placeholder="Enter name of the holiday" />
                                                             <BsCalendar3 className="calender"/>
                                                         </div>
                                                         <div className="plusIcon d-flex">

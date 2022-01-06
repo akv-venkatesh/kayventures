@@ -10,6 +10,9 @@
   align-items: center;
   border: none;
 }
+.next_btn:disabled {
+  background-color: silver;
+}
 .dbtn {
   position: relative;
   cursor: pointer;

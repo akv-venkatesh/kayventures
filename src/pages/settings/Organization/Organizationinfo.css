@@ -107,11 +107,11 @@ select::-ms-expand{
 #settings-tab-tabpane-entity , #settings-tab-tabpane-businessHours , #settings-tab-tabpane-taxRegistraton ,#settings-tab-tabpane-rating{
     height: 100%;
 }
-.businesshour .form-bh h3 {
+.businesshour .form-bh label {
     font-size: 14px;
     font-weight: 400;
 }
-.main-content-parent{
+.box{
     background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0 !important;
     background-blend-mode: soft-light, normal !important;
     border: 1px solid rgba(255, 255, 255, 0.4) !important;
@@ -128,6 +128,15 @@ select::-ms-expand{
     width: 100%;
     height: 40px;
     padding: 5px 30px;
+}
+.facility1 {
+    margin-bottom: 20px;
+}
+.facility p {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+    margin-left: 5px;
 }
 .summarybtn{
     width: 125px;
@@ -186,6 +195,64 @@ select{
     border: 1px solid #3CD070;
     padding: 3px 15px;
     border-radius: 5px;
+}
+label svg{
+    color: #0062D7;
+    cursor: pointer;
+}
+label.edit , .calender ,.attach{
+    margin-top: 8px;
+    margin-left: 10px;
+}
+.addsty{
+    margin-right: 10px;
+}
+ul.rating li{
+    display: inline;
+}
+ ul.rating .clrchnge{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+ ul.rating .circle{
+    border-radius: 50%;
+    background: #1862d7;
+    color: white;
+    margin-left: 0px;
+    margin-top: -7px;
+    padding: 0px 6px;
+    font-size: 12px;
+    position: absolute;
+}
+ ul.rating .clrblue{
+    color: rgba(0, 98, 215, 1);
+    font-size: 12px;
+}
+.facility{
+    margin-left: 25px;
+    margin-bottom: 5px;
+}
+.scrollbar-container{
+    margin: 20px;
+}
+.crossicon{
+    background: #EBECF0;
+    border: 1px solid rgba(235, 236, 240, 0.4);
+    box-sizing: border-box;
+    box-shadow: -5px -5px 10px #fafbff;
+    border-radius: 20px;
+    padding: 11px 10px;
+    width: 60px;
+    position: absolute;
+    right: 6%;
+    top: 10%;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.facility1 .vector{
+    width: 12px;
 }
 
 

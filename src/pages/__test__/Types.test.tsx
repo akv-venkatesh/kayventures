@@ -6,23 +6,12 @@ import { MemoryRouter as Router } from 'react-router-dom';
 import store from '../../store/store';
 import { Provider } from 'react-redux';
 import { type } from 'os';
-let wrapper: any;
-
-const setup = (initialState = {
-
-}) => {
-    // const store = testStore(initialState);
-    const wrapper = render(<Router>
-        <Provider store={store}>
-            <Types />
-        </Provider>
-    </Router>);
-    return wrapper;
-}
-beforeEach(() => {
-    wrapper = setup();
-
-});
+const wrapper = render( <Router>
+                            <Provider store={store}>
+                                <Types />
+                            </Provider>
+                        </Router>
+                    );
 test('initial test types', () => {
     //    const type1 = wrapper.getByTestId('test1');
     const type1 = wrapper.getByTestId('test3');
