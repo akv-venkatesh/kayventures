@@ -46,7 +46,7 @@ function Organizationinfo() {
         
         <div className="box mt-2">
           <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
-          <div className="h-100 businesshour px-4 py-5">
+          <div className="h-100 businesshour px-4 pt-1 pb-5">
             
             <div className="ps-lg-5">
               <Formik
