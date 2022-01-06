@@ -44,7 +44,7 @@ function Organizationinfo() {
                 <ImCross className="cross" />
             </div>
         
-        <div className="box h-100 mt-2">
+        <div className="box mt-2">
           <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
           <div className="h-100 businesshour px-4 py-5">
             
@@ -265,21 +265,26 @@ function Organizationinfo() {
                                 <Field aria-lable="" type="file" id="" name="registration-certificate" hidden/>
                                 <label htmlFor=""><ImAttachment /></label>
                               </div>
+                          </div>
+                          <div className="row end">
+                            <div className="col-md-3"></div>
+                            <div className="col-md-9">
                               <div className="add-button d-flex mt-3">
                                 <div className="add-btn addsty">
                                   <BsPlusLg  className="add-icon"/>
                                 </div>
-                                <span>Add</span>
-                                <ul className="rating">
-                                  <li><span className="clrblue">Credit Report<span className="circle">1</span> </span>
-                                  <span className="clrchnge">|</span></li>
-                                  <li><span className="clrblue">Risk Report<span className="circle">1</span></span>
-                                  <span className="clrchnge">|</span></li>
-                                  <li><span className="clrblue">Banking & Relationship Report</span>
-                                  <span className="clrchnge">|</span></li>
-                                  <li><span className="clrblue">Legal Report</span></li>
-                              </ul>
+                                  <span>Add</span>
+                                  <ul className="rating">
+                                    <li><span className="clrblue">Credit Report<span className="circle">1</span> </span>
+                                    <span className="clrchnge">|</span></li>
+                                    <li><span className="clrblue">Risk Report<span className="circle">1</span></span>
+                                    <span className="clrchnge">|</span></li>
+                                    <li><span className="clrblue">Banking & Relationship Report</span>
+                                    <span className="clrchnge">|</span></li>
+                                    <li><span className="clrblue">Legal Report</span></li>
+                                  </ul>
                               </div>
+                            </div>
                           </div>
                         </div>
                       </div>
