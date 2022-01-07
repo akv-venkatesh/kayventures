@@ -5,12 +5,12 @@ import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Field } from "formik";
 import { RiInformationFill } from "react-icons/ri";
-import vest from "../../../assets/images/vest.svg";
+import vest from "../../../../assets/images/vest.svg";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import { ImFilePdf } from "react-icons/im";
 import { IoLockClosedOutline } from "react-icons/io5";
-import logo_img from  '../../../assets/insertImage.png';
+import logo_img from  '../../../../assets/insertImage.png';
 
 interface typeState {
   showModel: boolean;

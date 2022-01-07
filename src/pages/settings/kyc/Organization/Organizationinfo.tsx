@@ -2,8 +2,8 @@ import React,{useState,useEffect, FormEvent} from "react";
 import "./Organizationinfo.css";
 import { Formik ,Form, Field, ErrorMessage } from "formik";
 import { ImAttachment } from "react-icons/im";
-import logo_img from  '../../../assets/insertImage.png';
-import CustomSelect from "../../../component/custom_select";
+import logo_img from  '../../../../assets/insertImage.png';
+import CustomSelect from "../../../../component/custom_select";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import $ from 'jquery';
@@ -11,11 +11,8 @@ import { Button } from "react-bootstrap";
 import { BsPlusLg } from "react-icons/bs";
 import { FaRegEdit , FaRegCalendarAlt } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
-import Vector3 from "../../../assets/icons/various/Vector3.svg"
-
-
-
-import '../../m-login.scss';
+import Vector3 from "../../../../assets/icons/various/Vector3.svg";
+import '../../../m-login.scss';
 
 
 function Organizationinfo() {
@@ -47,9 +44,9 @@ function Organizationinfo() {
                 <ImCross className="cross" />
             </div>
         
-        <div className="box h-100 mt-2">
+        <div className="box mt-2">
           <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
-          <div className="h-100 businesshour px-4 py-5">
+          <div className="h-100 businesshour px-4 pt-1 pb-5">
             
             <div className="ps-lg-5">
               <Formik
@@ -268,21 +265,26 @@ function Organizationinfo() {
                                 <Field aria-lable="" type="file" id="" name="registration-certificate" hidden/>
                                 <label htmlFor=""><ImAttachment /></label>
                               </div>
+                          </div>
+                          <div className="row end">
+                            <div className="col-md-3"></div>
+                            <div className="col-md-9">
                               <div className="add-button d-flex mt-3">
                                 <div className="add-btn addsty">
                                   <BsPlusLg  className="add-icon"/>
                                 </div>
-                                <span>Add</span>
-                                <ul className="rating">
-                                  <li><span className="clrblue">Credit Report<span className="circle">1</span> </span>
-                                  <span className="clrchnge">|</span></li>
-                                  <li><span className="clrblue">Risk Report<span className="circle">1</span></span>
-                                  <span className="clrchnge">|</span></li>
-                                  <li><span className="clrblue">Banking & Relationship Report</span>
-                                  <span className="clrchnge">|</span></li>
-                                  <li><span className="clrblue">Legal Report</span></li>
-                              </ul>
+                                  <span>Add</span>
+                                  <ul className="rating">
+                                    <li><span className="clrblue">Credit Report<span className="circle">1</span> </span>
+                                    <span className="clrchnge">|</span></li>
+                                    <li><span className="clrblue">Risk Report<span className="circle">1</span></span>
+                                    <span className="clrchnge">|</span></li>
+                                    <li><span className="clrblue">Banking & Relationship Report</span>
+                                    <span className="clrchnge">|</span></li>
+                                    <li><span className="clrblue">Legal Report</span></li>
+                                  </ul>
                               </div>
+                            </div>
                           </div>
                         </div>
                       </div>

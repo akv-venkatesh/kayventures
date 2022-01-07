@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { RiInformationFill } from "react-icons/ri";
-import vest from "../../../assets/images/vest.svg";
+import vest from "../../../../assets/images/vest.svg";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import { ImFilePdf } from "react-icons/im";
@@ -12,7 +12,7 @@ import { IoLockClosedOutline } from "react-icons/io5";
 import { BiMap } from "react-icons/bi";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { BsTelephone } from "react-icons/bs";
-import Image2 from "../../../assets/image2.svg";
+import Image2 from "../../../../assets/image2.svg";
 interface typeState {
   showModel: boolean;
 }

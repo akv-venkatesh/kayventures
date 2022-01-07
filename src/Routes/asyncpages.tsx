@@ -19,22 +19,17 @@ export const KYCBusinessHr = React.lazy(() => import('../pages/settings/index'))
 export const Productconfig = React.lazy(() => import('../pages/settings/ProductConfiguration/configuration'));
 export const SelectPlan = React.lazy(() => import('../pages/SelectPlan/SelectPlan'));
 export const KYC = React.lazy(() => import('../pages/settings/kyc_old'));
-export const Organization = React.lazy(() => import('../pages/settings/Organization'));
-export const Organizationinfo = React.lazy(() => import('../pages/settings/Organization/Organizationinfo'));
-export const OrganizationinfoModal = React.lazy(() => import('../pages/settings/Organization/OrganizationinfoModal'));
-export const OrganizationinfoModalSyn = React.lazy(() => import('../pages/settings/Organization/OrganizationinfoModalSyn'));
-export const Facilitykyc = React.lazy(() => import('../pages/settings/Facilitykyc'));
-export const Facility1 = React.lazy(() => import('../pages/settings/Facilitykyc/Facility1'));
-export const Facilityday = React.lazy(() => import('../pages/settings/Facilitykyc/Facilityday'));
-export const Facilitymodal = React.lazy(() => import('../pages/settings/Facilitykyc/Facilitymodal'));
-export const Facilityinfo = React.lazy(() => import('../pages/settings/Facilityinfo'));
-export const Facilityform = React.lazy(() => import('../pages/settings/Facilityinfo/Facilityform'));
-export const Facilityinfomodal = React.lazy(() => import('../pages/settings/Facilityinfo/Facilityinfomodal'));
-
-
-
-
-
+export const Organization = React.lazy(() => import('../pages/settings/kyc/Organization'));
+export const Organizationinfo = React.lazy(() => import('../pages/settings/kyc/Organization/Organizationinfo'));
+export const OrganizationinfoModal = React.lazy(() => import('../pages/settings/kyc/Organization/OrganizationinfoModal'));
+export const OrganizationinfoModalSyn = React.lazy(() => import('../pages/settings/kyc/Organization/OrganizationinfoModalSyn'));
+export const Facilitykyc = React.lazy(() => import('../pages/settings/kyc/Facilitykyc'));
+export const Facility1 = React.lazy(() => import('../pages/settings/kyc/Facilitykyc/Facility1'));
+export const Facilityday = React.lazy(() => import('../pages/settings/kyc/Facilitykyc/Facilityday'));
+export const Facilitymodal = React.lazy(() => import('../pages/settings/kyc/Facilitykyc/Facilitymodal'));
+// export const Facilityinfo = React.lazy(() => import('../pages/settings/kyc/Facilityinfo'));
+export const Facilityform = React.lazy(() => import('../pages/settings/kyc/Facilityinfo/Facilityform'));
+export const Facilityinfomodal = React.lazy(() => import('../pages/settings/kyc/Facilityinfo/Facilityinfomodal'));
 export const Settings = React.lazy(() => import('../pages/settings/index'));
 export const Pro_config = React.lazy(() => import('../pages/settings/ProductConfiguration'));
 export const Machinery = React.lazy(() => import('../pages/settings/kyc/Machinery/Machinery'));

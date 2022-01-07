@@ -6,19 +6,19 @@ import { GiSewingMachine } from "react-icons/gi";
 import {
   Nextbutton,
   DisableNextbutton,
-} from "../../../component/buttons/button";
+} from "../../../../component/buttons/button";
 import "./index.scss";
-import CustomSelect from '../../../component/custom_select';
+import CustomSelect from '../../../../component/custom_select';
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar"
 import { JsxFlags } from "typescript";
 import { RiInformationFill } from "react-icons/ri";
 import { AiOutlineRight } from "react-icons/ai";
-import Vector3 from "../../../assets/icons/various/Vector3.svg"
+import Vector3 from "../../../../assets/icons/various/Vector3.svg"
 
 // import Select from 'react-select';
 
-import Select from '../../../component/dropdown_select/slelect';
+import Select from '../../../../component/dropdown_select/slelect';
 import $ from 'jquery';
 interface typeProps{
   value:string,

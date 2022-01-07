@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { RiInformationFill } from "react-icons/ri";
-import vest from "../../../assets/images/vest.svg";
+import vest from "../../../../assets/images/vest.svg";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import { ImFilePdf , ImCross } from "react-icons/im";
@@ -14,7 +14,8 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel } from 'react-responsive-carousel';
 import { BsTelephone } from "react-icons/bs";
-import Image2 from "../../../assets/image2.svg";
+import Image2 from "../../../../assets/image2.svg";
+import slider from "../../../../assets/slider.svg"
 interface typeState {
   showModel: boolean;
 }
@@ -106,13 +107,13 @@ class Facilityinfomodal extends React.Component<{}, typeState> {
                         <div className="row mt-4 d-flex ">
                                     <Carousel  autoPlay axis="horizontal">
                                         <div>
-                                            <img src="https://picsum.photos/700/400?img=1" />                                                                   
+                                            <img src={slider} alt="slider"/>                                                                 
                                         </div>
                                         <div>
-                                            <img src="https://picsum.photos/700/400?img=2" />                                                                    
+                                        <img src={slider} alt="slider"/>                                                                    
                                         </div>
                                         <div>
-                                        <img src="https://picsum.photos/700/400?img=3" />                                                                   
+                                        <img src={slider} alt="slider"/>                                                                 
                                         </div>
                                     </Carousel>
                              

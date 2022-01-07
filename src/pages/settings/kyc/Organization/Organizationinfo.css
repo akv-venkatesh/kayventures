@@ -117,6 +117,10 @@ select::-ms-expand{
     border: 1px solid rgba(255, 255, 255, 0.4) !important;
     box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd !important;
     border-radius: 40px !important;
+    height: calc(100% - 30px);
+}
+.box .scrollbar-container{
+    height: calc(100% - 30px);
 }
 .custom-select select {
     display: block !important;
@@ -133,8 +137,8 @@ select::-ms-expand{
     margin-bottom: 20px;
 }
 .facility p {
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 19px;
+    font-weight: 600;
     margin: 0;
     margin-left: 5px;
 }
@@ -245,7 +249,7 @@ ul.rating li{
     width: 60px;
     position: absolute;
     right: 6%;
-    top: 10%;
+    top: 11%;
     font-size: 12px;
     display: flex;
     align-items: center;
