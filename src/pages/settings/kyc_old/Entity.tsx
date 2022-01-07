@@ -3,7 +3,6 @@ import "./Entity.css";
 import { Formik ,Form, Field, ErrorMessage } from "formik";
 import { ImAttachment } from "react-icons/im";
 import logo_img from  '../../../assets/insertImage.png';
-import CustomSelect from "../../../component/custom_select";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import $ from 'jquery';
