@@ -107,9 +107,7 @@ border-radius: 8px;
     padding: 10px;
     justify-content: space-between;
 }
-.plusIcon{
-    margin-top: 150px !important;
-}
+
 .plusIcon p{
     margin: 12px 7px 0 15px;
     font-size: 15px;
@@ -163,6 +161,7 @@ border-radius: 8px;
 }
 .bottom_text{
     bottom: 40px;
+
 }
 .bottom_text h6{
     margin-left: 10px;  
@@ -170,6 +169,7 @@ border-radius: 8px;
     color: #0068E5;
     font-size: 12px;
     margin-top: 5px;
+    width: 100%;
 }
 .btn-next{
     background-color: #0068E5;
@@ -177,7 +177,8 @@ border-radius: 8px;
     color: white;
     border-radius: 6px;
     box-shadow: none;
-    margin-left: 500px;        
+    /* margin-top: 500px;        
+    margin-left: 850px;         */
 }
 .btn-next:disabled{
     background-color: silver;
