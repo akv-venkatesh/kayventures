@@ -11,6 +11,8 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import { RiArrowDropRightLine, RiInformationFill } from 'react-icons/ri';
 import "react-perfect-scrollbar/dist/css/styles.css";
 import Select from '../../../../component/dropdown_select/slelect';
+import MachineTypes from './MachineTypes';
+import { AiFillCaretRight } from 'react-icons/ai';
 
 
 
@@ -22,12 +24,14 @@ interface typeState {
     brandType: any,
     typeTech: any,
     machineCount: any,
-    machineItems: any,
+    machineOptions: any,
     savedState: any,
 }
+interface typeProps {
 
+}
 
-class Machine extends Component<{}, typeState> {
+class Machine extends Component<typeProps, typeState> {
 
     constructor(props: any) {
         super(props);
@@ -39,10 +43,10 @@ class Machine extends Component<{}, typeState> {
             brandType: '',
             typeTech: '',
             machineCount: 0,
-            machineItems: [
+            machineOptions: [
                 {
                     name: 'selectMachine',
-                    data: [
+                    machine: [
                         {
                             name: 'Single Needle'
                         },
@@ -56,7 +60,7 @@ class Machine extends Component<{}, typeState> {
                 },
                 {
                     name: 'selectBrand',
-                    data: [
+                    barnd: [
                         {
                             name: 'Juki'
                         },
@@ -70,7 +74,7 @@ class Machine extends Component<{}, typeState> {
                 },
                 {
                     name: 'selecttech',
-                    data: [
+                    technology: [
                         {
                             name: 'Basic'
                         },
@@ -106,6 +110,14 @@ class Machine extends Component<{}, typeState> {
         }, () => {
             console.log(value)
         })
+        // this.setState(prevState => ({
+        //     machineType: [
+        //         this.state.machineType,
+        //         {
+        //             name: value.value
+        //         }
+        //     ]
+        // }))
     }
     selectBrand = (event: any) => {
         let value: any = event;
@@ -146,6 +158,24 @@ class Machine extends Component<{}, typeState> {
         }, () => {
             console.log(this.state.savedState);
         })
+
+        // this.setState(prevState => {
+        //     const state = this.state;
+        //     if (!state) return;
+        //     const arr = newFields.split(",");
+        //     const machine = map(arr, value => ({ value: value, label: value }));
+
+        //     return {
+        //         newFields: "",
+        //         Fields: [
+        //             ...this.state.machine,
+        //             {
+        //                 name: `Field${this.state.machine.length}`,
+        //                 machine
+        //             }
+        //         ]
+        //     };
+        // })
     }
     handleAddMore = () => {
         this.setState({
@@ -155,6 +185,7 @@ class Machine extends Component<{}, typeState> {
 
 
     render() {
+        const { machineOptions } = this.state;
         const machine = [
             { value: 'Single Needle', label: 'Single Needle' },
             { value: 'Double Needle', label: 'Double Needle' },
@@ -174,7 +205,8 @@ class Machine extends Component<{}, typeState> {
         return (
             <div className="machine main d-flex">
                 <div className="leftmenu d-flex flex-column">
-                    <h5 className="menu_header">Machine Type</h5>
+                    <h4 className="mb-4">Sewing</h4>
+                    <h5 >Machine Type</h5>
                     <div className="menu_dropdown mb-3">
                         <div className="mb-3">
                             <form data-testid="machineType">
@@ -224,12 +256,21 @@ class Machine extends Component<{}, typeState> {
 
                     <h5 className="menu_machine_numbers">Add the No. of machines</h5>
                     <div className="mb-3">
-                        <div className="machine_input ms-2 mb-3">
+                        <div className="machine_input mb-3">
                             <Form.Control
                                 type="text"
                                 placeholder="0"
                                 onChange={this.changeMachineCount}
                             />
+                        </div>
+
+                        <div className="iot_switch d-flex mt-4 mb-4">
+                            <p className="mr-5">IOT</p>
+                            <Form.Check
+                                type="switch"
+                                data-testid="custom-element"
+                            />
+                            <p className="ml-5">Enabled</p>
                         </div>
 
                         <div className="ms-2 mb-3">
@@ -241,21 +282,21 @@ class Machine extends Component<{}, typeState> {
                                 Submit
                             </Button>
                         </div>
-                        <div className="iot_switch ms-2">
-                            <p className="">IOT Enabled</p>
-                            <Form.Check
-                                type="switch"
-                                data-testid="custom-element"
-                            />
-                        </div>
+
                         <div className="">
-                            <Button
+                            <div className="plusIcon d-flex">
+                                <button style={{ border: 'none' }} onClick={this.handleAddMore} >
+                                    <img src={Vector5} className="image_one" alt="" />
+                                </button>
+                                <p>  Add More </p>
+                            </div>
+                            {/* <Button
                                 className="btn btn-secondary reset_switch btn btn-primary"
                                 disabled={!this.state.brandType}
 
                             >
                                 Reset
-                            </Button>
+                            </Button> */}
                         </div>
                     </div>
                 </div>
@@ -271,26 +312,19 @@ class Machine extends Component<{}, typeState> {
                         <p>Facility 3</p>
                         <p>|</p>
                     </div>
-                    <div className="box py-5 mt-2">
+                    <div className="box py-5 mt-2 position-relative">
                         <div className="scroll pb-3">
                             <PerfectScrollbar>
                                 {this.state.showMachine ?
                                     <div className="d-flex flex-wrap pe-4">
                                         <Container>
                                             <Row>
-                                                <Col xs={3} md={12} className="column d-flex" >
-                                                    <div className="machine_items">
-                                                        <div className="machine_image d-flex">
-                                                            <img src={MachineIcon} alt="" />
-                                                            <h3>{this.state.machineCount}</h3>
-                                                        </div>
-                                                        <p>{this.state.machineType}</p>
-                                                    </div>
-                                                    <div className="machine_items_text">
-                                                        <p>{this.state.brandType}</p>
-                                                        <p>{this.state.typeTech}</p>
-                                                    </div>
-                                                </Col>
+                                                <MachineTypes
+                                                    machineTypeProps={this.state.machineType}
+                                                    machineBrandProps={this.state.brandType}
+                                                    machineTechProps={this.state.typeTech}
+                                                    machineCountProps={this.state.machineCount}
+                                                />
                                                 {
                                                     this.state.addMoreEnable ?
                                                         <div className="plusIcon d-flex">
@@ -304,6 +338,17 @@ class Machine extends Component<{}, typeState> {
                                         </Container>
                                     </div> : null}
                             </PerfectScrollbar>
+                            <div className="bottom_text d-flex justify-content-center position-absolute">
+                                <img src={BottomIcon} alt="" />
+                                <h6>Add machinary information to view the summary.</h6>
+                                <button
+                                    type="submit"
+                                    className="btn btn-next next"
+                                    disabled
+                                >Next&emsp;<AiFillCaretRight />
+                                </button>
+                            </div>
+
                         </div>
                         <div className="summary">
                             <Button href="#" disabled={!this.state.machineCount} size="sm" onClick={this.handleSummary} data-testid="mySummary">
@@ -312,10 +357,7 @@ class Machine extends Component<{}, typeState> {
                             </Button>
                         </div>
                     </div>
-                    <div className="bottom_text d-flex justify-content-center">
-                        <img src={BottomIcon} alt="" />
-                        <h6>Add machinary information to view the summary.</h6>
-                    </div>
+
                 </div>
 
 

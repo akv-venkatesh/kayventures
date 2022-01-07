@@ -1,11 +1,13 @@
 .leftmenu{
-    flex: 0 0 300px;
-    max-width: 300px;
-    margin-top: 75px;
+    flex: 0 0 350px;
+    max-width: 350px;
 }
 .rightmenu{
-    flex: 0 0 calc(100% - 300px);
-    max-width: calc(100% - 300px);
+    flex: 0 0 calc(100% - 350px);
+    max-width: calc(100% - 350px);
+}
+.leftmenu h4{
+    color: #0068E5;
 }
 .machine_input .form-control{
     height: 40px;
@@ -35,7 +37,7 @@
             box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
             border-radius: 40px;
             width: 100%;
-            height: 600px;
+            height: 640px;
             outline: none;
             padding-left: 55px;
             position: relative;
@@ -55,7 +57,7 @@
 }
 .form-control{
     height: 40px;
-    width: 110px !important;
+    width: 300px;
     padding: 0px 15px;
     background-color: transparent;
     border-radius: 40px !important;
@@ -68,13 +70,13 @@
     box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
     outline: none;
 }
-.leftmenu button{
+.leftmenu .submit{
     background-color: #3CD070;
     color: #fff;
     border: transparent;
     border-radius: 8px;
 }
-.leftmenu button:hover{
+.leftmenu .submit button:hover{
     background-color: #3CD070 !important;
     color: #fff;
 }
@@ -106,9 +108,7 @@ border-radius: 8px;
     justify-content: space-between;
 }
 .plusIcon{
-    margin-top: 15px !important;
-    margin-bottom: 10px;
-    margin-left: 15px;
+    margin-top: 150px !important;
 }
 .plusIcon p{
     margin: 12px 7px 0 15px;
@@ -161,12 +161,26 @@ border-radius: 8px;
     width: 23px;
     height: 30px;
 }
+.bottom_text{
+    bottom: 40px;
+}
 .bottom_text h6{
     margin-left: 10px;  
     margin-bottom: 0;
     color: #0068E5;
     font-size: 12px;
     margin-top: 5px;
+}
+.btn-next{
+    background-color: #0068E5;
+    padding: 0px 10px;
+    color: white;
+    border-radius: 6px;
+    box-shadow: none;
+    margin-left: 500px;        
+}
+.btn-next:disabled{
+    background-color: silver;
 }
 /* Model */
 .machine .modal-lg{
