@@ -8,7 +8,6 @@ import {
   DisableNextbutton,
 } from "../../../../component/buttons/button";
 import "./index.scss";
-import CustomSelect from '../../../../component/custom_select';
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar"
 import { JsxFlags } from "typescript";
@@ -266,7 +265,6 @@ class Facilityinfo extends Component<typeProps, typeState> {
                         <p>|</p>
         </div>
         <div className="box h-100 p-3">
-          <CustomSelect />
           <div className="h-100">
             <div className="capacity h-100">              
               <div className="sec1 h-100">

@@ -7,8 +7,7 @@ import $ from 'jquery';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
-import DatePicker from 'react-date-picker';
-import 'react-calendar/dist/Calendar.css';
+import DatePicker from '../../../component/calendar/calendar';
 
 function BusinessHour():JSX.Element {
 	const initialValues={
@@ -44,9 +43,10 @@ function BusinessHour():JSX.Element {
 				sun_end_time_day: ' ',
 			}
 	}
-	const [value, onChange] = useState(new Date());
+	const datePicker = (e:Date):any =>{
+	}	
   	return (
-    <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
+    <PerfectScrollbar>
   		<div className='h-100 businesshour px-4 py-4'>
 	    	<div className="ps-lg-5">
 		    	<Formik
@@ -68,11 +68,7 @@ function BusinessHour():JSX.Element {
 						return errors;
 					}}
 					onSubmit={(values, { setSubmitting }) => {
-						// setTimeout(() => {
-						// 	alert(JSON.stringify(values, null, 2));
-						// $('#status-check').modal('show');
 						setSubmitting(false);
-						// }, 400);
 					}}
 					>
 					{
@@ -346,12 +342,7 @@ function BusinessHour():JSX.Element {
 									           	</Field>
 						    				</div>	
 								           	<Field type="text" id="holiday1-date" name="holiday1-date" className="mt-4" placeholder="Name" />
-											<DatePicker
-												className="mt-3"
-												clearIcon={null}
-												onChange={onChange}
-												value={value}
-											/>
+											<DatePicker onChange = {(e)=>datePicker(e)}/>
 					    				</div>
 				    				</div>
 				    				<div className="d-flex py-2">
