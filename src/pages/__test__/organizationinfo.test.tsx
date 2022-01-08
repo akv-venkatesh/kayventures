@@ -39,9 +39,9 @@ test('Organizationinfo form test',()=>{
     const summary = wrapper.queryByTitle("summary");    
 })
 
-test('Simulates selection', () => {
-    const { getByTestId, getAllByTestId } = render(<Organizationinfo />);
-    //The value should be the key of the option
-    fireEvent.change(getByTestId('select'), { target: { value: 2 } })
-    //...
-  })
+// test('Simulates selection', () => {
+//     const { getByTestId, getAllByTestId } = render(<Organizationinfo />);
+//     //The value should be the key of the option
+//     fireEvent.change(getByTestId('select'), { target: { value: 2 } })
+//     //...
+// })
