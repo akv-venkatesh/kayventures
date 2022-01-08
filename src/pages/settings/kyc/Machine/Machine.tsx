@@ -289,7 +289,7 @@ class Machine extends Component<typeProps, typeState> {
                                                             <img src={MachineIcon} alt="" />
                                                             <h3>{machine.machineCount}</h3>
                                                         </div>
-                                                        <p>{machine.machineType}</p>
+                                                        <p data-testid="testMachineType">{machine.machineType}</p>
                                                     </div>
                                                     <div className="machine_items_text">
                                                         <p>{machine.machineBrand}</p>
