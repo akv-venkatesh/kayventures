@@ -28,7 +28,6 @@ test('register form test',()=>{
 
 })
 
-
 //fireevents
 
 test('onChange the product type',async ()=>{

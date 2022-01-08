@@ -4,6 +4,7 @@ import{testStore} from "./testStore";
 import {MemoryRouter as Router} from 'react-router-dom';
 let wrapper:any;
 import { Provider } from 'react-redux';
+import selectEvent from 'react-select-event';
 
 const setup = (initialState={})=>{
     const store = testStore(initialState);
@@ -13,16 +14,27 @@ const setup = (initialState={})=>{
 beforeEach(() => {
     wrapper = setup({});
 });
-test('facilityform form test',()=>{
-    const headingElement = screen.getByRole('heading', {name : 'Select Activity'});
+
+test('facilityform form test',async ()=>{
+    const headingElement = screen.getByRole('heading', {name : /Select Activity/i});
     expect(headingElement).toBeInTheDocument;
-    
-    const locationElement = screen.getByRole('heading', {name : 'Location'});
-    expect(locationElement).toBeInTheDocument;
 
-    screen.debug(screen.getByText('Summary'))
+    const Buildingfacade = wrapper.queryByTitle("Building facade");
+    // fireEvent.click(Reception);
+    const Reception = wrapper.queryByTitle("Reception");
 
-    screen.debug(screen.getAllByText('Location'))
+    const Cutting = wrapper.queryByTitle("Cutting");
+    const Sewing = wrapper.queryByTitle("Sewing");
+    const Summary = wrapper.queryByTitle("Summary");
 
-    // const sliderPosterImg = screen.getByAltText(/slider/i)
+        //select Event
+        expect(wrapper.getByTestId('form-line-type')).toHaveFormValues({linetype: ''});
+        await selectEvent.select( wrapper.getByLabelText('LineType'), ['Open']);
+        expect(wrapper.getByTestId('form-line-type')).toHaveFormValues({linetype:'Open'});
+
+        const button = screen.getByRole('button', {name: 'Summary'})
+        fireEvent.click(button)
+
 })
+
+

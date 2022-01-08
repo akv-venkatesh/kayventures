@@ -2,6 +2,7 @@ import Facility1 from '../settings/kyc/Facilitykyc/Facility1';
 import {fireEvent, render, screen} from '@testing-library/react';
 import{testStore} from "./testStore"
 import {MemoryRouter as Router} from 'react-router-dom';
+
 let wrapper:any;
 
 const setup = (initialState={})=>{
@@ -12,7 +13,7 @@ const setup = (initialState={})=>{
 beforeEach(() => {
     wrapper = setup({});
 });
-test('Organizationinfo form test',()=>{
+test('Organizationinfo form test', async ()=>{
     const line1 = wrapper.getByLabelText('line1')
     expect(line1).toBeInTheDocument;
     const line2 = wrapper.getByLabelText('line2')
