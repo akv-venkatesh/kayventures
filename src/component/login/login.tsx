@@ -40,7 +40,6 @@ import {
 	  adminuserLogin: (arg:{}) => void;
 	  formName:string,
 	  buttonName:string
-	  onSubmit:()=>void
   }
   
 
@@ -100,7 +99,6 @@ class Login extends Component<typeProps, typeState > {
 											return errors;
 										}}
 										onSubmit={(values,actions) => {
-											this.props.onSubmit();
 											if(this.props.formName == 'Login'){
 												this.props.userLogin(values);
 											}

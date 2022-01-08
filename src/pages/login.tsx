@@ -64,21 +64,19 @@ class ManufacturerLogin extends Component<typeProps, typeState> {
 			show: true,
 		});
 	}
-	submit = async () => {
-		setTimeout(() => {
-			let data: any = this.props;
-			console.log(this.props.login.login_details.code);
-			if (this.props.login.login_details.code == 200) {
-				localStorage.setItem("authenticate-token", this.props.login.login_details.data.token);
-				this.redirect();
-			}
-			else {
-				this.setState({
-					successMessage: this.props.login.login_details.data.message
-				})
-				this.handleShow();
-			}
-		}, 500);
+
+	componentWillReceiveProps(nextProps:any){
+		let data: any = nextProps;
+		if (data.login.login_details.code == 200) {
+			localStorage.setItem("authenticate-token", data.login.login_details.data.token);
+			this.redirect();
+		}
+		else{
+			this.setState({
+				successMessage: data.login.login_details.data.message
+			})
+			this.handleShow();
+		}
 	}
 
 	redirect = () => {
@@ -108,7 +106,7 @@ class ManufacturerLogin extends Component<typeProps, typeState> {
 								</div>
 							</div>
 							<div className="col-lg-6 second-half d-flex justify-content-lg-end justify-content-center align-items-center">
-								<Login formName="Login" buttonName="Submit" onSubmit={this.submit} />
+								<Login formName="Login" buttonName="Submit" />
 							</div>
 						</div>
 					</div>

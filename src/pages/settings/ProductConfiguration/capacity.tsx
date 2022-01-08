@@ -8,7 +8,6 @@ import {
   DisableNextbutton,
 } from "../../../component/buttons/button";
 import "./capacity.scss";
-import CustomSelect from '../../../component/custom_select';
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar"
 import { JsxFlags } from "typescript";
@@ -360,7 +359,6 @@ class ProductConfiguration extends Component<typeProps, typeState> {
     return (
       <div className="content h-100">
         <div className="h-100 p-3">
-          <CustomSelect />
           <div className="h-100">
             <div className="url-btn">
 
