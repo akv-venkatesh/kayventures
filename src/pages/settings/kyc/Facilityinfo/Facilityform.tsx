@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { ChangeEvent , Component } from 'react'
 import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap';
 import "./Facilityform.css";
 import { Formik , Field, ErrorMessage } from "formik";
@@ -20,6 +20,7 @@ import { ImCross } from "react-icons/im";
 
 
 interface typeState {
+    linetype: string,
     showSummary: boolean,
 }
 
@@ -29,6 +30,7 @@ class Facilityform extends Component<{}, typeState> {
     constructor(props: any) {
         super(props);
         this.state = {
+            linetype :"",
             showSummary: false,
         }
     }
@@ -43,6 +45,19 @@ class Facilityform extends Component<{}, typeState> {
             showSummary: false
         })
     }
+
+    lineTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
+        let value:any = event;
+        this.setState({
+          linetype: value.value
+        })
+      }
+  //  fro selecting logo img
+
+    LineTypeOptions = [
+      { value: 'Open', label: 'Open' },
+      { value: 'Reserved', label: 'Reserved'},
+    ]
 
 
     render() {
@@ -116,19 +131,25 @@ class Facilityform extends Component<{}, typeState> {
                                                 <form onSubmit={handleSubmit} className="ps-xl-5 form-bh">
                                                 <div className="h-100 facilityform">
                                                     <div className="d-flex align-items-center justify-content-space-between">
-                                                        <h5 className="mt-4">Select Activity</h5>
+                                                        <h4 className="mt-4">Select Activity</h4>
                                                     </div>
                                                     <div className="row mt-3 d-flex ">
                                                         <h3 className="col-md-3">Type of Activities<span className='required'></span></h3>
                                                         <div className="col-md-5">
                                                         <div className="custom-select">
-                                                            <Field as="select" name="x">
-                                                            <option value="0">Activity list</option>
-                                                            <option value="red">Garmenting</option>
-                                                            <option value="green">Made ps</option>
-                                                            <option value="blue">Home Textiles</option>
-                                                            <option value="blue">Floor Coverings</option>
-                                                            </Field>
+                                                        <form data-testid="form-line-type">
+                                                        <label htmlFor="line-type" hidden>LineType</label>
+                                                        <Select 
+                                                            options={this.LineTypeOptions} 
+                                                            width='480px' 
+                                                            position='top' 
+                                                            name="linetype"
+                                                            inputId="line-type"
+                                                            placeholder='Line type'
+                                                            onChange={this.lineTypeChange}
+                                                            isOptionDisabled={(option:any) => option.disabled}
+                                                            />
+                                                            </form>
                                                         </div>
                                                         
                                                         </div>
@@ -136,19 +157,16 @@ class Facilityform extends Component<{}, typeState> {
                                                     <div className="row mt-3 d-flex ">
                                                         <h3 className="col-md-3">Sections Within the Unit<span className='required'></span></h3>
                                                         <div className="col-md-5">
-                                                        <div className="custom-select">
-                                                            <Field as="select" name="x">
-                                                            <option value="0">Select from options</option>
-                                                            <option value="red">Building facade</option>
-                                                            <option value="green">Reception</option>
-                                                            <option value="blue">Sewing</option>
-                                                            <option value="blue">Cutting</option>
-                                                            <option value="blue">Stores</option>
-                                                            <option value="blue">Checking</option>
-                                                            <option value="blue">Trimming</option>
-
-                                                            </Field>
-                                                        </div>
+                                                        <Select 
+                                                            options={this.LineTypeOptions} 
+                                                            width='480px' 
+                                                            position='top' 
+                                                            name="linetype"
+                                                            inputId="line-type"
+                                                            placeholder='Line type'
+                                                            onChange={this.lineTypeChange}
+                                                            isOptionDisabled={(option:any) => option.disabled}
+                                                            />
                                                         
                                                         </div>
                                                     </div>

@@ -1,20 +1,18 @@
 import PrmaryDetail from '../PrimaryDetails';
 import {findByRole, render, screen,fireEvent,waitFor} from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
-import{testStore} from "./testStore"
+import Store from "../../store/store"
 import { MemoryRouter as Router } from 'react-router-dom';
 
-
 let wrapper:any;
-
-const setup = (initialState={})=>{
-    const store = testStore(initialState);
-    const wrapper = render(<Router><PrmaryDetail  store={store}/></Router>);
-    return wrapper; 
+let data = {
+    "name": "Anandkumar",
+    "email": "anandkumarabserve@gmail.com",
+    "phone": "1231231234"
 }
-
 beforeEach(() => {
-    wrapper = setup({});
+    localStorage.setItem('user_create_account_details', JSON.stringify(data));
+    wrapper = render(<Router><PrmaryDetail  store={Store}/></Router>);
 });
 
 

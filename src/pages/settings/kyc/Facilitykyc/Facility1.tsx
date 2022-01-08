@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { ChangeEvent , Component } from 'react'
 import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap';
 import "./Facility1.css";
 import { Formik , Field, ErrorMessage } from "formik";
@@ -15,6 +15,7 @@ import { AiOutlineRight , AiFillCaretLeft, AiFillCaretRight } from 'react-icons/
 
 
 interface typeState {
+    linetype: string,
     showSummary: boolean,
 }
 
@@ -24,6 +25,7 @@ class Facility1 extends Component<{}, typeState> {
     constructor(props: any) {
         super(props);
         this.state = {
+            linetype :"",
             showSummary: false,
         }
     }
@@ -38,6 +40,19 @@ class Facility1 extends Component<{}, typeState> {
             showSummary: false
         })
     }
+
+    lineTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
+        let value:any = event;
+        this.setState({
+          linetype: value.value
+        })
+      }
+  //  fro selecting logo img
+
+    LineTypeOptions = [
+      { value: 'Open', label: 'Open' },
+      { value: 'Reserved', label: 'Reserved'},
+    ]
 
 
     render() {
@@ -122,26 +137,19 @@ class Facility1 extends Component<{}, typeState> {
                                                     <div className="row mt-5 d-flex ">
                                                         <h3 className="col-md-3">Location Validity (If any)<span className='required'></span></h3>
                                                         <div className="col-md-5">
-                                                        <div className="custom-select">
-                                                            <Field as="select" name="x">
-                                                            <option value="0">Select from options</option>
-                                                            <option value="red">Private Limited Company</option>
-                                                            <option value="green">LLP</option>
-                                                            <option value="blue">Patnership</option>
-                                                            <option value="blue">Sale Patnership</option>
-                                                            <option value="0">Select from options</option>
-                                                            <option value="red">Private Limited Company</option>
-                                                            <option value="green">LLP</option>
-                                                            <option value="blue">Patnership</option>
-                                                            <option value="blue">Sale Patnership</option>
-                                                            <option value="0">Select from options</option>
-                                                            <option value="red">Private Limited Company</option>
-                                                            <option value="green">LLP</option>
-                                                            <option value="blue">Patnership</option>
-                                                            <option value="blue">Sale Patnership</option>
-                                                            </Field>
-                                                        </div>
-                                                        <Field type="text" id="" className="input-box" name="mentionnumber" aria-label="mentionnumber" placeholder="Mention Number" />
+                                                        <form data-testid="form-line-type">
+                                                        <Select 
+                                                            options={this.LineTypeOptions} 
+                                                            width='480px' 
+                                                            position='top' 
+                                                            name="linetype"
+                                                            inputId="line-type"
+                                                            placeholder='Line type'
+                                                            onChange={this.lineTypeChange}
+                                                            isOptionDisabled={(option:any) => option.disabled}
+                                                            />
+                                                            </form>
+                                                        <Field type="text" id="" className="input-box mt-3" name="mentionnumber" aria-label="mentionnumber" placeholder="Mention Number" />
                                                         </div>
                                                     </div>
                                                     <div className="row mt-5 d-flex ">
