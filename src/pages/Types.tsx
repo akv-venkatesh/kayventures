@@ -34,7 +34,6 @@ class Types extends Component<typeProps, typeState> {
   constructor(props: any) {
 
     super(props);
-    // console.log(props);
     this.state = {
       visibility: false,
       selectedOption: '',
@@ -94,20 +93,21 @@ class Types extends Component<typeProps, typeState> {
     }
 
 
+    let category:any = {};
     let types: any = localStorage.getItem("business_category");
-    let type = JSON.parse(types);
-    let arrLength = type.business_category.length
-    let category;
-    console.log(arrLength);
-    for (let i = 0; i < arrLength; i++) {
-      let id = type.business_category[i].id;
-      if (id == type.business_category_single) {
-        category = type.business_category[i]
+    if(types){
+      let type:any = JSON.parse(types);
+      let arrLength:Number = type.business_category.length
+      for (let i = 0; i < arrLength; i++) {
+        let id = type.business_category[i].id;
+        if (id == type.business_category_single) {
+          category = type.business_category[i]
+        }
       }
+      localStorage.setItem("business_category_name", category.name);
     }
+    
 
-    console.log(category.children);
-    localStorage.setItem("business_category_name", category.name);
     return (
       <>
         <div className="Types_category">
@@ -152,12 +152,12 @@ class Types extends Component<typeProps, typeState> {
 
                                 return (
                                   <label
-                                    data-testid={"checkbox"}
                                     htmlFor={data.id} key={data.id} className="Types_category_item ">
                                     <img src={bag} />
                                     <h1>{data.name}</h1>
                                     <div className="Types_category_item_radio">
                                       <input
+                                        data-testid={"test"+index}
                                         type="checkbox"
                                         id={data.id}
                                         name="types"
@@ -215,7 +215,6 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
     setTypes: (Types: any) => {
-      // console.log(Types);
       dispatch(setTypes(Types));
     }
   };
