@@ -25,13 +25,6 @@ test('test manpower text', () => {
     const machine = wrapper.getByRole('heading', { name: /Operations/i });
     expect(machine).toBeInTheDocument;
 
-    const facilityone = screen.getByText('Facility 1');
-    expect(facilityone).toBeInTheDocument;
-    const facilitytwo = screen.getByText('Facility 2');
-    expect(facilitytwo).toBeInTheDocument;
-    const facilitythree = screen.getByText('Facility 3');
-    expect(facilitythree).toBeInTheDocument;
-
     const machineplace = screen.getByPlaceholderText('Enter no. of operators');
     expect(machineplace).toBeInTheDocument;
     const role = screen.getByRole('heading', { name: 'You can view the manpower resources grade wise' });

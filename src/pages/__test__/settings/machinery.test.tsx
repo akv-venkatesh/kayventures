@@ -26,13 +26,6 @@ test('test machinery text', () => {
     const type = wrapper.getByRole('heading', { name: /Machine Type/i });
     expect(type).toBeInTheDocument;
 
-    const facilityone = wrapper.queryAllByText('Facility 1');
-    expect(facilityone).toBeInTheDocument;
-    const facilitytwo = wrapper.queryAllByText('Facility 2');
-    expect(facilitytwo).toBeInTheDocument;
-    const facilitythree = wrapper.queryAllByText('Facility 3');
-    expect(facilitythree).toBeInTheDocument;
-
     const machineplace = wrapper.queryAllByPlaceholderText('0');
     expect(machineplace).toBeInTheDocument;
     const role = wrapper.queryAllByText('Add machinary information to view the summary.');
@@ -68,7 +61,7 @@ test('onClick clicked', async () => {
     await selectEvent.select(wrapper.getByLabelText('select Technology'), ['Basic']);
     expect(wrapper.getByTestId('machineTech')).toHaveFormValues({ machinetech: 'Basic' });
 
-
+    expect(screen.getByRole('button', { name: /Next/i })).toHaveAttribute('disabled');
     //check event
     const submitButton = wrapper.getByText(/submit/i);
     const testcheck0 = wrapper.getByTestId('custom-element');
@@ -82,6 +75,10 @@ test('onClick clicked', async () => {
     fireEvent.click(submitButton);
     expect(testSummary).not.toHaveAttribute('disabled');
 
+    expect(screen.getByRole('heading', { name: /Add machinary information to view the summary./i })).toBeInTheDocument;
+
+    //nextbutton
+    expect(screen.getByRole('button', { name: /Next/i })).not.toHaveAttribute('disabled');
     //modelbox
     const summaryContainer = fireEvent.click(screen.getByRole('button', { name: /summary/i }))
     const dialogContainer = screen.getByRole('dialog');

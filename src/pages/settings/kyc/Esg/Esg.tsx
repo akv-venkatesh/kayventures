@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form } from 'react-bootstrap';
+import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
 import "./esg.css";
 import Select from '../../../../component/dropdown_select/slelect';
 import PerfectScrollbar from "react-perfect-scrollbar";
@@ -9,13 +9,12 @@ import Vector3 from "../../../../assets/icons/various/Vector3.svg"
 import Vector5 from "../../../../assets/icons/various/Vector5.svg"
 import AttachBlue from "../../../../assets/icons/basic/paperclip.svg"
 import FileBlue from "../../../../assets/icons/file/file-text.svg"
-import ViewImage from "../../../../assets/images/ViewImage.png"
-import MapImage from "../../../../assets/images/MapImage.png"
-import Navigation from "../../../../assets/icons/maps/pin.svg"
-import Call from "../../../../assets/icons/call/call-phone.svg"
-import Time from "../../../../assets/icons/time/time.svg"
 
-import { RiArrowDropRightLine } from 'react-icons/ri';
+import { RiArrowDropRightLine, RiInformationFill } from 'react-icons/ri';
+import DatePicker from '../../../../component/calendar/calendar';
+import { ImAttachment, ImFileText2 } from 'react-icons/im';
+import { FaRegFileAlt } from 'react-icons/fa';
+
 
 
 
@@ -24,6 +23,7 @@ interface typeState {
     initialPage: boolean,
     socialChange: boolean,
     GovernanceChange: boolean,
+    showSummary: boolean,
 
 }
 
@@ -36,6 +36,7 @@ class Esg extends Component<{}, typeState> {
             enviromentalChange: false,
             socialChange: false,
             GovernanceChange: false,
+            showSummary: false,
         }
 
     }
@@ -63,6 +64,17 @@ class Esg extends Component<{}, typeState> {
             socialChange: false,
             enviromentalChange: false,
         });
+    }
+
+    handleSummary = () => {
+        this.setState({
+            showSummary: true,
+        });
+    }
+    hideSummary = () => {
+        this.setState({
+            showSummary: false
+        })
     }
 
     render() {
@@ -94,6 +106,9 @@ class Esg extends Component<{}, typeState> {
             { value: 'Licences', label: 'Licences' }
         ]
 
+        const datePicker = (e: Date): any => {
+        }
+
         return (
             <div className="main d-flex flex-column">
                 <div className="facility d-flex">
@@ -110,46 +125,26 @@ class Esg extends Component<{}, typeState> {
                     <div className="scroll pb-3">
                         <div className="d-flex flex-wrap flex-column pe-4">
                             <div className="box_buttons d-flex justify-content-center">
-                                <Button href="#" variant="light" size="lg" onClick={this.handleEnviromentalChange} >
-                                    Environmental
-                                </Button>
-                                <Button href="#" variant="light" size="lg" onClick={this.handleSocialChange} >
-                                    Social
-                                </Button>
-                                <Button href="#" variant="light" size="lg" onClick={this.handleGovernanceChange}>
-                                    Governance
-                                </Button>
+                                <div className="position-relative">
+                                    <Button href="#" variant="light" size="lg" onClick={this.handleEnviromentalChange} >
+                                        Environmental
+                                    </Button><span className="circle">1</span>
+                                </div>
+                                <div className="position-relative">
+                                    <Button href="#" variant="light" size="lg" onClick={this.handleSocialChange} >
+                                        Social
+                                    </Button><span className="circle">1</span>
+                                </div>
+                                <div className="position-relative">
+                                    <Button href="#" variant="light" size="lg" onClick={this.handleGovernanceChange}>
+                                        Governance
+                                    </Button><span className="circle">1</span>
+                                </div>
                             </div>
                             {this.state.initialPage ?
                                 <div className="box_content d-flex justify-content-center">
-                                    <div className="left_content d-flex flex-column">
-                                        <img src={MapImage} alt="" />
-                                        <div className="d-flex mt-2">
-                                            <img className="address_icon" src={Navigation} alt="" />
-                                            <div className="address_line d-flex flex-column">
-                                                <p>SGG Road</p>
-                                                <p>2nd stage</p>
-                                                <p>Jeevan dani road</p>
-                                                <p>8948295532</p>
-                                                <p>pin code: 000798</p>
-                                            </div>
-                                        </div>
-                                        <div className="d-flex mt-2">
-                                            <img className="address_icon" src={Call} alt="" />
-                                            <div className="address_line d-flex flex-column">
-                                                <p>8948295532</p>
-                                            </div>
-                                        </div>
-                                        <div className="d-flex mt-2">
-                                            <img className="address_icon" src={Time} alt="" />
-                                            <div className="address_line d-flex flex-column">
-                                                <p>Mon- Fri</p>
-                                                <p>8.00AM -7.00PM</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="right_content">
-                                        <img src={ViewImage} alt="" />
+                                    <div className="d-flex flex-column justify-content-center align-items-center">
+                                        <p>Click on the above buttons to add the</p><p> ESG Certificates.</p>
                                     </div>
                                 </div> : null}
                             {/* Initial Page */}
@@ -175,13 +170,12 @@ class Esg extends Component<{}, typeState> {
                                         </div>
                                         <div className="right_column d-flex flex-column">
                                             <div className="input_file d-flex mb-5">
-                                                <Form.Control
-                                                    type="file"
-                                                    placeholder="Attach your certificate here"
-
-                                                />
-                                                <img src={AttachBlue} alt="" />
-                                                <img src={FileBlue} alt="" />
+                                                <div className="position-relative file-upload">
+                                                    <label htmlFor="registration-certificate" className="label-file" id="file-chosen"></label>
+                                                    <label htmlFor="registration-certificate" className="fileupload_inner">Attach your certificate here</label>
+                                                    <input aria-label="registration_certificate" type="file" id="registration-certificate" name="registration_certificate" placeholder="Attach your files here" hidden />
+                                                    <label htmlFor="registration_certificate-file"><ImAttachment /><FaRegFileAlt /></label>
+                                                </div>
                                             </div>
                                             <div className="input_multifile d-flex mb-3">
                                                 <Form.Control
@@ -189,18 +183,14 @@ class Esg extends Component<{}, typeState> {
                                                     placeholder="Certificate No."
 
                                                 />
-                                                <Form.Control
-                                                    type="date"
-                                                    placeholder="Valid Till"
-
-                                                />
+                                                <DatePicker onChange={(e) => datePicker(e)} />
                                                 <form data-testid="CerifiedBy">
                                                     <label htmlFor="select-cerifiedby" hidden>Cerified by</label>
                                                     <Select
                                                         name="CerifiedBy"
                                                         inputId="select-cerifiedby"
                                                         options={cerifiedby}
-                                                        width='30%'
+                                                        width='133%'
                                                         position='bottom'
                                                         placeholder='Cerified by'
                                                         onChange={() => { }}></Select>
@@ -251,13 +241,12 @@ class Esg extends Component<{}, typeState> {
                                         </div>
                                         <div className="right_column d-flex flex-column">
                                             <div className="input_file d-flex mb-5">
-                                                <Form.Control
-                                                    type="file"
-                                                    placeholder="Attach your certificate here"
-
-                                                />
-                                                <img src={AttachBlue} alt="" />
-                                                <img src={FileBlue} alt="" />
+                                                <div className="position-relative file-upload">
+                                                    <label htmlFor="registration-certificate" className="label-file" id="file-chosen"></label>
+                                                    <label htmlFor="registration-certificate" className="fileupload_inner">Attach your certificate here</label>
+                                                    <input aria-label="registration_certificate" type="file" id="registration-certificate" name="registration_certificate" placeholder="Attach your files here" hidden />
+                                                    <label htmlFor="registration_certificate-file"><ImAttachment /><FaRegFileAlt /></label>
+                                                </div>
                                             </div>
                                             <div className="input_multifile d-flex mb-3">
                                                 <Form.Control
@@ -265,11 +254,7 @@ class Esg extends Component<{}, typeState> {
                                                     placeholder="Certificate No."
 
                                                 />
-                                                <Form.Control
-                                                    type="date"
-                                                    placeholder="Valid Till"
-
-                                                />
+                                                <DatePicker onChange={(e) => datePicker(e)} />
                                                 <Select options={cerifiedby} width='30%' position='bottom' placeholder='Cerified by' onChange={() => { }}></Select>
                                             </div>
                                             <div className="plusIcon d-flex">
@@ -318,13 +303,12 @@ class Esg extends Component<{}, typeState> {
                                         </div>
                                         <div className="right_column d-flex flex-column">
                                             <div className="input_file d-flex mb-5">
-                                                <Form.Control
-                                                    type="file"
-                                                    placeholder="Attach your certificate here"
-
-                                                />
-                                                <img src={AttachBlue} alt="" />
-                                                <img src={FileBlue} alt="" />
+                                                <div className="position-relative file-upload">
+                                                    <label htmlFor="registration-certificate" className="label-file" id="file-chosen"></label>
+                                                    <label htmlFor="registration-certificate" className="fileupload_inner">Attach your certificate here</label>
+                                                    <input aria-label="registration_certificate" type="file" id="registration-certificate" name="registration_certificate" placeholder="Attach your files here" hidden />
+                                                    <label htmlFor="registration_certificate-file"><ImAttachment /><FaRegFileAlt /></label>
+                                                </div>
                                             </div>
                                             <div className="input_multifile d-flex mb-3">
                                                 <Form.Control
@@ -332,11 +316,7 @@ class Esg extends Component<{}, typeState> {
                                                     placeholder="Certificate No."
 
                                                 />
-                                                <Form.Control
-                                                    type="date"
-                                                    placeholder="Valid Till"
-
-                                                />
+                                                <DatePicker onChange={(e) => datePicker(e)} />
                                                 <Select options={cerifiedby} width='30%' position='bottom' placeholder='Cerified by' onChange={() => { }}></Select>
                                             </div>
                                             <div className="plusIcon d-flex">
@@ -364,13 +344,131 @@ class Esg extends Component<{}, typeState> {
                             {/* Governance Page */}
                         </div>
                     </div>
-                    <div className="summary">
-                        <Button href="#" variant="secondary" size="sm" disabled>
-                            Summary
-                            <RiArrowDropRightLine />
-                        </Button>
+                    <div className="d-flex">
+                        <div className="summary">
+                            <Button href="#" size="sm" onClick={this.handleSummary} data-testid="mySummary">
+                                Summary
+                                <RiArrowDropRightLine />
+                            </Button>
+                        </div>
                     </div>
                 </div>
+
+                <Modal
+                    show={this.state.showSummary}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                    className="esg"
+                    backdropClassName="esg"
+                    onHide={this.hideSummary}
+                    data-testid="someElemInMyModal"
+                >
+                    <Modal.Header closeButton />
+                    <Modal.Body className="">
+                        <PerfectScrollbar>
+
+
+                            <div className="esg_model_body d-flex flex-column justify-content-center" >
+                                <div className="mb-4">
+                                    <h4 className="header mb-4">
+                                        Environmental
+                                    </h4>
+                                    <Row>
+                                        <Col>
+                                            <div className="d-flex flex-column align-items-center">
+                                                <ImFileText2 />
+                                                <p>EMAS</p>
+                                            </div>
+                                        </Col>
+                                        <Col>
+                                            <div className="d-flex flex-column align-items-center">
+                                                <ImFileText2 />
+                                                <p>Nordic Swan</p>
+                                            </div>
+                                        </Col>
+                                        <Col>
+                                            <div className="d-flex flex-column align-items-center">
+                                                <ImFileText2 />
+                                                <p>EU Flower</p>
+                                            </div>
+                                        </Col>
+                                        <Col>
+                                            <div className="d-flex flex-column align-items-center">
+                                                <ImFileText2 />
+                                                <p>REACH</p>
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                </div>
+
+                                <div className="mb-4">
+                                    <h4 className="header mb-4">
+                                        Social
+                                    </h4>
+                                    <Row>
+                                        <Col>
+                                            <div className="d-flex flex-column align-items-center">
+                                                <ImFileText2 />
+                                                <p>EMAS</p>
+                                            </div>
+                                        </Col>
+                                        <Col>
+                                            <div className="d-flex flex-column align-items-center">
+                                                <ImFileText2 />
+                                                <p>Nordic Swan</p>
+                                            </div>
+                                        </Col>
+                                        <Col>
+                                            <div className="d-flex flex-column align-items-center">
+                                                <ImFileText2 />
+                                                <p>EU Flower</p>
+                                            </div>
+                                        </Col>
+                                        <Col>
+                                            <div className="d-flex flex-column align-items-center">
+                                                <ImFileText2 />
+                                                <p>REACH</p>
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                </div>
+
+                                <div className="mb-4">
+                                    <h4 className="header mb-4">
+                                        Governance
+                                    </h4>
+                                    <Row>
+                                        <Col>
+                                            <div className="d-flex flex-column align-items-center">
+                                                <ImFileText2 />
+                                                <p>EMAS</p>
+                                            </div>
+                                        </Col>
+                                        <Col>
+                                            <div className="d-flex flex-column align-items-center">
+                                                <ImFileText2 />
+                                                <p>Nordic Swan</p>
+                                            </div>
+                                        </Col>
+                                        <Col>
+                                            <div className="d-flex flex-column align-items-center">
+                                                <ImFileText2 />
+                                                <p>EU Flower</p>
+                                            </div>
+                                        </Col>
+                                        <Col>
+                                            <div className="d-flex flex-column align-items-center">
+                                                <ImFileText2 />
+                                                <p>REACH</p>
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                </div>
+                            </div>
+                        </PerfectScrollbar>
+                    </Modal.Body>
+                </Modal>
             </div >
         );
     }

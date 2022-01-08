@@ -26,6 +26,7 @@ interface typeState {
     savedState: any,
     toogleCheck: boolean,
     machineKey: number,
+    selectedOption: any,
 }
 interface typeProps {
 
@@ -36,6 +37,7 @@ class Machine extends Component<typeProps, typeState> {
     constructor(props: any) {
         super(props);
         this.state = {
+            selectedOption: null,
             machineKey: 0,
             showSummary: false,
             showMachine: false,
@@ -66,32 +68,35 @@ class Machine extends Component<typeProps, typeState> {
             showSummary: false
         })
     }
-    selectMachine = (event: any) => {
+    selectMachine = (event: any, selectedOption: any) => {
         let value: any = event;
         let machineValue = [...this.state.savedState];
         machineValue[this.state.machineKey] = { ...machineValue[this.state.machineKey], machineType: value.value };
         this.setState({
             savedState: machineValue,
+            selectedOption
         }, () => {
             console.log(machineValue);
         })
     }
-    selectBrand = (event: any) => {
+    selectBrand = (event: any, selectedOption: any) => {
         let value: any = event;
         let barndValue = [...this.state.savedState];
         barndValue[this.state.machineKey] = { ...barndValue[this.state.machineKey], machineBrand: value.value };
         this.setState({
             savedState: barndValue,
+            selectedOption
         }, () => {
             console.log(barndValue);
         })
     }
-    selectTech = (event: any) => {
+    selectTech = (event: any, selectedOption: any) => {
         let value: any = event;
         let techValue = [...this.state.savedState];
         techValue[this.state.machineKey] = { ...techValue[this.state.machineKey], machineTech: value.value };
         this.setState({
             savedState: techValue,
+            selectedOption
         }, () => {
             console.log(techValue);
         })
@@ -102,6 +107,7 @@ class Machine extends Component<typeProps, typeState> {
             countValue[this.state.machineKey] = { ...countValue[this.state.machineKey], machineCount: e.currentTarget.value };
             this.setState({
                 savedState: countValue,
+
             }, () => {
                 console.log(countValue);
             })
@@ -118,7 +124,7 @@ class Machine extends Component<typeProps, typeState> {
         })
     }
 
-    handleSavedMachine = (e: any) => {
+    handleSavedMachine = (e: any, selectedOption: any) => {
         let obj = {
             machineType: null,
             machineBrand: null,
@@ -144,6 +150,8 @@ class Machine extends Component<typeProps, typeState> {
             addMoreEnable: true,
             savedState: arr,
             machineKey: machineKey,
+            selectedOption: null,
+            toogleCheck: false,
 
         }, () => {
             console.log(this.state.savedState);
@@ -159,6 +167,7 @@ class Machine extends Component<typeProps, typeState> {
 
 
     render() {
+        const { selectedOption } = this.state;
 
         const machine = [
             { value: 'Single Needle', label: 'Single Needle' },
@@ -193,6 +202,7 @@ class Machine extends Component<typeProps, typeState> {
                                     position='bottom'
                                     placeholder='Select Machine'
                                     onChange={this.selectMachine}
+                                    value={selectedOption}
                                 ></Select>
                             </form>
                         </div>
@@ -207,6 +217,7 @@ class Machine extends Component<typeProps, typeState> {
                                     position='bottom'
                                     placeholder='Select Brand'
                                     onChange={this.selectBrand}
+                                    value={selectedOption}
                                 ></Select>
                             </form>
                         </div>
@@ -221,6 +232,7 @@ class Machine extends Component<typeProps, typeState> {
                                     position='bottom'
                                     placeholder='Select Technology'
                                     onChange={this.selectTech}
+                                    value={selectedOption}
                                 ></Select>
                             </form>
 
@@ -249,7 +261,7 @@ class Machine extends Component<typeProps, typeState> {
                             <Button
                                 className="btn btn-secondary submit"
                                 disabled={!this.state.toogleCheck}
-                                onClick={this.handleSavedMachine}
+                                onClick={(e) => this.handleSavedMachine(e, selectedOption)}
                             >
                                 Submit
                             </Button>
