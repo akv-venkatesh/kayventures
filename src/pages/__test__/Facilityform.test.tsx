@@ -1,4 +1,4 @@
-import Facilitykyc from '../settings/Facilityinfo/Facilityform';
+import Facilitykyc from '../settings/kyc/Facilityinfo/Facilityform';
 import {fireEvent, render, screen} from '@testing-library/react';
 import{testStore} from "./testStore";
 import {MemoryRouter as Router} from 'react-router-dom';
@@ -24,5 +24,5 @@ test('facilityform form test',()=>{
 
     screen.debug(screen.getAllByText('Location'))
 
-    const sliderPosterImg = screen.getByAltText(/slider/i)
+    // const sliderPosterImg = screen.getByAltText(/slider/i)
 })

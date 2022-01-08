@@ -1,4 +1,4 @@
-import Facilitymodal from '../settings/Facilitykyc/Facilitymodal';
+import Facilitymodal from '../settings/kyc/Facilitykyc/Facilitymodal';
 import {fireEvent, render, screen} from '@testing-library/react';
 import{testStore} from "./testStore"
 import {MemoryRouter as Router} from 'react-router-dom';

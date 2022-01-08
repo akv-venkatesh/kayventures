@@ -1,4 +1,4 @@
-import Organizationinfo from '../settings/Organization/Organizationinfo';
+import Organizationinfo from '../settings/kyc/Organization/Organizationinfo';
 import {fireEvent, render, screen} from '@testing-library/react';
 import{testStore} from "./testStore"
 import {MemoryRouter as Router} from 'react-router-dom';
