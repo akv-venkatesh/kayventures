@@ -1,4 +1,4 @@
-import Facilitykyc from '../settings/Facilitykyc';
+import Facilitykyc from '../settings/kyc/Facilitykyc';
 import {fireEvent, render, screen} from '@testing-library/react';
 import{testStore} from "./testStore";
 import {MemoryRouter as Router} from 'react-router-dom';

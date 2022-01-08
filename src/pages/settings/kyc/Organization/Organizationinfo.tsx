@@ -1,4 +1,4 @@
-import React,{useState,useEffect, FormEvent} from "react";
+import React,{useState,useEffect, FormEvent,ChangeEvent} from "react";
 import "./Organizationinfo.css";
 import { Formik ,Form, Field, ErrorMessage } from "formik";
 import { ImAttachment } from "react-icons/im";
@@ -12,8 +12,14 @@ import { BsPlusLg } from "react-icons/bs";
 import { FaRegEdit , FaRegCalendarAlt } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import Vector3 from "../../../../assets/icons/various/Vector3.svg";
-import '../../../m-login.scss';
+import Select from '../../../../component/dropdown_select/slelect';
 
+
+import '../../../m-login.scss';
+interface typeState {
+  selectedOption: string;
+  linetype: string;
+  materialtype: string;}
 
 function Organizationinfo() {
   
@@ -31,7 +37,27 @@ function Organizationinfo() {
           // reader.readAsDataURL(event.currentTarget.files[0]);
         }
       }
+      // lineTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
+      //   let value:any = event;
+      //   this:any.setState({
+      //     linetype: value.value
+      //   })
+      // }
   //  fro selecting logo img
+
+
+    // const LineTypeOptions = [
+    //   { value: 'Open', label: 'Open', disabled: state.disable_input},
+    //   { value: 'Reserved', label: 'Reserved', disabled: state.disable_input},
+
+
+    // ]
+
+    // const Material_type = [
+    //   { value: 'Natural', label: 'Natural', disabled: state.disable_input},
+    //   { value: 'Artificial', label: 'Artificial',  disabled: state.disable_input},
+
+    // ]
 
   return (
       <div className="facilitykyc1 h-100 machine main d-flex">
@@ -120,6 +146,19 @@ function Organizationinfo() {
                             <option value="blue">Sale Patnership</option>
                           </Field>
                         </div>
+                        <form data-testid="form-line-type">
+                          <label htmlFor="line-type" hidden>LineType</label>
+                          {/* <Select 
+                            options={LineTypeOptions} 
+                            width='200px' 
+                            position='top' 
+                            name="linetype"
+                            inputId="line-type"
+                            placeholder='Line type'
+                            onChange={this.lineTypeChange}
+                            isOptionDisabled={(option:any) => option.disabled}
+                          /> */}
+                        </form>
                       </div>
                     </div>
                     <div className="row mt-5 d-flex align-items-center position-relative">
