@@ -6,9 +6,26 @@ import rightArrow from "../../assets/icons/arrows/chevron-right.svg";
 import rightTop from "../../assets/icons/arrows/chevron-bottom.svg";
 // import './select.css'
 
+interface typeProps{
+  onChange: (event:any)=>void;
+  position: string;
+  width: any,
+  options?:any,
+  placeholder:any,
+  name?:any,
+  inputId?:any,
+  isOptionDisabled?:any,
+  value?:any,
+  disabled?:any,
+}
+interface typeState{
+  isOpen:boolean,
+  menuOpened: boolean,
+}
 
-class slelect extends Component {
-  constructor(props) {
+
+class slelect extends Component<typeProps,typeState> {
+  constructor(props:any) {
     super(props);
 
     this.state = { isOpen :false,menuOpened:false};
@@ -21,14 +38,14 @@ class slelect extends Component {
     this.setState({isOpen:false,menuOpened:false})
   }
 
-  handleChange = (e)=>{
+  handleChange = (e:any)=>{
     this.props.onChange(e);
   }
 
-  render() {
-    const {isOpen} = this.state;
+  render():JSX.Element {
+    const isOpen = this.state.isOpen;
 
-    var PadandMar;
+    var PadandMar:any;
     if(this.props.position == 'bottom'){
         PadandMar={
             padding:'45px 15px 15px 15px', 
@@ -45,11 +62,11 @@ class slelect extends Component {
     }
     
     const customStyles = {
-        indicatorSeparator : (provided) => ({
+        indicatorSeparator : (provided:any) => ({
             ...provided,
             display : 'none',
         }),
-        control : (provided,state) =>({
+        control : (provided:any,state:any) =>({
             ...provided,
             background: 'linear-gradient(264.35deg, rgba(0, 0, 0, 0.4) -45.5%, rgba(255, 255, 255, 0.4) 46.39%), #EBECF0',
             backgroundBlendMode: 'soft-light, normal',
@@ -62,7 +79,7 @@ class slelect extends Component {
             paddingRight:'10px',
             "&:hover" : {outline:'none'},
         }),
-        menu: (provided, state) => ({
+        menu: (provided:any, state:any) => ({
             ...provided,
             background: 'linear-gradient(175.84deg, rgba(0, 0, 0, 0.4) 49.46%, rgba(255, 255, 255, 0.4) 135.58%), #EBECF0',
             backgroundBlendMode: 'soft-light, normal',
@@ -72,7 +89,7 @@ class slelect extends Component {
             zIndex:100,
             padding:PadandMar.padding,
           }),
-          menuList : (provided) => ({
+          menuList : (provided:any) => ({
             ...provided,
             maxHeight:"200px",
             height:'auto',paddingRight:'15px',
@@ -89,7 +106,7 @@ class slelect extends Component {
                                     width:"10px"
                                   }
         }),
-          option: (provided) => ({
+          option: (provided:any) => ({
             ...provided,
             borderBottom: '1px dotted #0004',
             padding: 10,
@@ -104,13 +121,13 @@ class slelect extends Component {
                 backgroundColor:'transparent'
               }
           }),
-          singleValue : (provided) => ({  
+          singleValue : (provided:any) => ({  
               ...provided,
                backgroundColor:'transparent' ,
             //   paddingLeft:'10px'
             color:'#0062d7'
           }),
-          input : (provided) => ({  
+          input : (provided:any) => ({  
             ...provided,
             "input" : {backgroundColor:'red',color:'#0062d7 !important' } 
 
@@ -125,7 +142,7 @@ class slelect extends Component {
         //         background : `url('${rightTop}') no-repeat center`,
         //       }
         //   }),
-          dropdownIndicator :(provided,state) => ({
+          dropdownIndicator :(provided:any,state:any) => ({
               ...provided,
               display:'none',
             transition: 'all .2s ease',
@@ -139,7 +156,7 @@ class slelect extends Component {
       <div style={{width:this.props.width}}>
         <Select 
           {...this.props} 
-          isOpen={isOpen} 
+          // isOpen= {isOpen} 
           className=''
           onMenuOpen={this.onMenuOpen}  
           onMenuClose={this.onMenuClose} 
