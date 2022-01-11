@@ -68,35 +68,35 @@ class Machine extends Component<typeProps, typeState> {
             showSummary: false
         })
     }
-    selectMachine = (event: any, selectedOption: any) => {
+    selectMachine = (event: any) => {
         let value: any = event;
         let machineValue = [...this.state.savedState];
         machineValue[this.state.machineKey] = { ...machineValue[this.state.machineKey], machineType: value.value };
         this.setState({
             savedState: machineValue,
-            selectedOption
+            selectedOption:event.value
         }, () => {
             console.log(machineValue);
         })
     }
-    selectBrand = (event: any, selectedOption: any) => {
+    selectBrand = (event: any) => {
         let value: any = event;
         let barndValue = [...this.state.savedState];
         barndValue[this.state.machineKey] = { ...barndValue[this.state.machineKey], machineBrand: value.value };
         this.setState({
             savedState: barndValue,
-            selectedOption
+            selectedOption:event.value
         }, () => {
             console.log(barndValue);
         })
     }
-    selectTech = (event: any, selectedOption: any) => {
+    selectTech = (event: any) => {
         let value: any = event;
         let techValue = [...this.state.savedState];
         techValue[this.state.machineKey] = { ...techValue[this.state.machineKey], machineTech: value.value };
         this.setState({
             savedState: techValue,
-            selectedOption
+            selectedOption:event.value
         }, () => {
             console.log(techValue);
         })

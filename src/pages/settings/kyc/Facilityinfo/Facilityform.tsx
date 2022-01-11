@@ -147,7 +147,7 @@ class Facilityform extends Component<{}, typeState> {
                                                             inputId="line-type"
                                                             placeholder='Line type'
                                                             onChange={this.lineTypeChange}
-                                                            isOptionDisabled={(option:any) => option.disabled}
+                                                            // isOptionDisabled={(option:any) => option.disabled}
                                                             />
                                                             </form>
                                                         </div>
@@ -165,7 +165,7 @@ class Facilityform extends Component<{}, typeState> {
                                                             inputId="line-type"
                                                             placeholder='Line type'
                                                             onChange={this.lineTypeChange}
-                                                            isOptionDisabled={(option:any) => option.disabled}
+                                                            // isOptionDisabled={(option:any) => option.disabled}
                                                             />
                                                         
                                                         </div>
