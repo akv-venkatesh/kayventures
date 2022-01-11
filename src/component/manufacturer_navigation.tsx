@@ -15,7 +15,7 @@ class Home extends React.Component {
                 <HiHome className="navg-icons my-3"/>
               </div>
             </NavLink>
-            <NavLink to='/a'>
+            <NavLink to='/dashboard'>
               <div className="icons">
                 <AiOutlineDashboard className="navg-icons my-4"/>
               </div>
