@@ -15,6 +15,10 @@ body {
   font-family: $font-family;
   min-height: 100vh;
 
+  .App {
+    height: 100vh;
+  }
+
   .m-login {
     h1 {
       font-weight: 600;
@@ -645,19 +649,141 @@ body {
       }
     }
   }
+  
+  .m-dashboard{
+    .sec1{
+      flex: 0 0 250px;
+      max-width: 250px;
+      .title{
+        svg{
+          font-size: 20px;
+        }
+        p{
+          font-size: 20px;
+        }
+      }
+      .d-card{
+        width: 100px;
+        background: linear-gradient(0deg, #EBECF0, #EBECF0), #EBECF0;
+        box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
+        border-radius: 10px;
+        padding: 20px 5px;
+        svg{
+          font-size: 20px;
+        }
+        p{
+          font-size: 14px;
+        }
+        span{
+          display: block;
+          width: 60px;
+          margin: auto;
+          height: 3px;
+          background-color: lightgrey;
+        }
+      }
+    }
+    .sec2{
+      flex: 0 0 calc(100% - 250px);
+      max-width: calc(100% - 250px);
+      background: linear-gradient(0deg, #EBECF0, #EBECF0), #EBECF0;
+      border: 1px dashed rgba(255, 255, 255, 0.4);
+      box-shadow: inset 5px 5px 3px #A6ABBD, inset -5px -5px 3px #FAFBFF;
+      border-radius: 20px;
+      padding: 10px;
+      .left-side{
+        flex: 0 0 calc(100% - 400px);
+        max-width: calc(100% - 400px);
+      }
+      .right-side{
+        flex: 0 0 400px;
+        max-width: 400px;
+        background: linear-gradient(0deg, #EBECF0, #EBECF0), #EBECF0;
+        box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
+        border-radius: 20px;
+        padding: 10px;
+        h4{
+          font-size: 18px;
+        }
+        p{
+          &.require{
+            font-weight: 500;
+          }
+        }
+        .percentage{
+          width: 130px;
+          height: 130px;
+          border-radius: 50%;
+          background-color: #DADADA; 
+          margin: auto;
+          span{
+            line-height: 130px;
+            font-size: 28px;
+            color: #0062D7;
+            font-weight: 600;
+          }
+        }
+        .range{
+          display: block;
+          width: 222px;
+          height: 3px;
+          background-color: lightgrey;
+          position: relative;
+          &[data-width]{
+            &:before{
+              content: "";
+              height: 3px;
+              display: block;
+              position: absolute;
+              background-color: #0062D7;
+            }
+          }
+          @for $i from 0 through 100 {
+            &[data-width = "#{$i}"] {
+              &:before{
+                width: #{$i}#{'%'};
+              }
+            }
+          }
+        }
+        .approve{
+          border-radius: 15px;
+          background: linear-gradient(0deg, #EBECF0, #EBECF0), #EBECF0;
+          box-shadow: inset 5px 5px 3px #A6ABBD, inset -5px -5px 3px #FAFBFF;
+          .icon{
+            flex: 0 0 100px;
+            max-width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(0deg, #EBECF0, #EBECF0), #EBECF0;
+            box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
+            border-radius: 150px;
+            line-height: 100px;
+            svg{
+              font-size: 26px;
+              color: #14B426;
+            }
+          }
+          .text{
+            flex: 0 0 calc(100% - 100px);
+            max-width: calc(100% - 100px);
+            h3{
+              font-size: 18px;
+              color: #14B426;
+            }
+            p{
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
 
   .modal-backdrop.show.checkstatus {
     background-color: $backdrop-color;
     backdrop-filter: blur(21px);
     opacity: unset;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  body {
-    .App {
-      height: 100vh;
-    }
   }
 }
 @media screen and (max-width: 991px) {

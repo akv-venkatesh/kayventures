@@ -11,16 +11,17 @@ import {
   ProConfig,
   Types,
   Home,
-  Settings,
   ProConfigCapacity,
   KYC, Organization, Organizationinfo, OrganizationinfoModal,OrganizationinfoModalSyn,Facilitykyc,
   Facility1, Facilityday, Facilitymodal, Productconfig,Facilityform,Facilityinfomodal,
-  SelectPlan,
   Pro_config,
   Machinery,
   Machine,
   Manpower,
-  Esg
+  Esg,
+  Settings,
+  Dashboard,
+  DashboardIndex,
 } from "./asyncpages";
 
 class Routers extends React.Component {
@@ -38,7 +39,6 @@ class Routers extends React.Component {
           <Route path='/login' element={<Login />} />
           <Route path='/home' element={<Home />} />
           <Route path='/productConfiguration' element={<Productconfig />} />
-          <Route path='/SelectPlan' element={<SelectPlan />} />
           <Route path='/product-config' element={<Pro_config />} />
 
           <Route path='/settings' element={<Settings />} >
@@ -54,13 +54,16 @@ class Routers extends React.Component {
             <Route path="Facility1" element={<Facility1 />} />
             <Route path="Facilityday" element={<Facilityday />} />
             <Route path="Facilitymodal" element={<Facilitymodal />} />
-            {/* <Route path="Facilityinfo" element={<Facilityinfo />} /> */}
             <Route path="Facilityform" element={<Facilityform />} />
             <Route path="Facilityinfomodal" element={<Facilityinfomodal />} />
             <Route path="machinery" element={<Machinery />} />
             <Route path="machine" element={<Machine />} />
             <Route path="manpower" element={<Manpower />} />
             <Route path="esg" element={<Esg />} />
+          </Route>
+          
+          <Route path="dashboard" element={<DashboardIndex/>}>
+            <Route index element={<Dashboard/>} />
           </Route>
         </Routes>
       </div>

@@ -78,6 +78,7 @@ class Machine extends Component<typeProps, typeState> {
             showSummary: false
         })
     }
+<<<<<<< HEAD
     activeSubmit = () => {
         const activeState = this.state.savedState[this.state.machineKey];
         if (activeState['machineType'] !== null && activeState['machineBrand'] !== null && activeState['machineTech'] !== null && activeState['iotEnable'] !== null && activeState['machineCount'] !== null) {
@@ -88,35 +89,58 @@ class Machine extends Component<typeProps, typeState> {
         }
     }
     selectMachine = (event: any, selectedMachineOption: any) => {
+=======
+    selectMachine = (event: any) => {
+>>>>>>> 5f57e97a4178cc6fb15de5a4f166ef5806286335
         let value: any = event;
         let machineValue = [...this.state.savedState];
         machineValue[this.state.machineKey] = { ...machineValue[this.state.machineKey], machineType: value.value };
         this.setState({
             initialPage: false,
             savedState: machineValue,
+<<<<<<< HEAD
             selectedMachineOption
+=======
+            selectedOption:event.value
+>>>>>>> 5f57e97a4178cc6fb15de5a4f166ef5806286335
         }, () => {
             console.log(machineValue);
         })
     }
+<<<<<<< HEAD
     selectBrand = (event: any, selectedBrandOption: any) => {
+=======
+    selectBrand = (event: any) => {
+>>>>>>> 5f57e97a4178cc6fb15de5a4f166ef5806286335
         let value: any = event;
         let barndValue = [...this.state.savedState];
         barndValue[this.state.machineKey] = { ...barndValue[this.state.machineKey], machineBrand: value.value };
         this.setState({
             savedState: barndValue,
+<<<<<<< HEAD
             selectedBrandOption
+=======
+            selectedOption:event.value
+>>>>>>> 5f57e97a4178cc6fb15de5a4f166ef5806286335
         }, () => {
             console.log(barndValue);
         })
     }
+<<<<<<< HEAD
     selectTech = (event: any, selectedTechOption: any) => {
+=======
+    selectTech = (event: any) => {
+>>>>>>> 5f57e97a4178cc6fb15de5a4f166ef5806286335
         let value: any = event;
         let techValue = [...this.state.savedState];
         techValue[this.state.machineKey] = { ...techValue[this.state.machineKey], machineTech: value.value };
         this.setState({
             savedState: techValue,
+<<<<<<< HEAD
             selectedTechOption
+=======
+            selectedOption:event.value
+>>>>>>> 5f57e97a4178cc6fb15de5a4f166ef5806286335
         }, () => {
             console.log(techValue);
         })
