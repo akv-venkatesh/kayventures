@@ -61,6 +61,7 @@ class Routers extends React.Component {
             <Route path="manpower" element={<Manpower />} />
             <Route path="esg" element={<Esg />} />
           </Route>
+          
           <Route path="dashboard" element={<DashboardIndex/>}>
             <Route index element={<Dashboard/>} />
           </Route>
