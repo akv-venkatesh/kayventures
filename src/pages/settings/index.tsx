@@ -38,24 +38,6 @@ function ManufacturerSettings(): JSX.Element {
 					</div>
 					<div className="main-content-parent">
 						<div className="d-flex flex-wrap h-100">
-							{/* <div className="settings-menu h-100 d-flex justify-content-center flex-column flex-wrap align-items-center">
-			    				<NavLink to="/settings/kyc" className="text-center">
-			    					<HiOutlineFingerPrint className="settings-icon active"/>
-			    					<p>KYC</p>
-			    				</NavLink>
-			    				<NavLink to="/settings/capacity" className="text-center">
-			    					<HiOutlineFingerPrint className="settings-icon"/>
-			    					<p>Product Configuration</p>
-			    				</NavLink>
-			    				<NavLink to="/settings/operation" className="text-center">
-			    					<HiOutlineFingerPrint className="settings-icon"/>
-			    					<p>Operations</p>
-			    				</NavLink>
-			    				<NavLink to="/settings/progress" className="text-center">
-			    					<HiOutlineFingerPrint className="settings-icon"/>
-			    					<p>Progress Report</p>
-			    				</NavLink>
-			    			</div> */}
 							<div className="settings-menu-content h-100 px-5 py-3">
 								<Outlet />
 							</div>
