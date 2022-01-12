@@ -9,6 +9,16 @@
 .leftmenu h4{
     color: #0068E5;
 }
+.leftmenu_header{
+    flex: 0 0 100px;
+    max-height: 100px;
+}
+.leftmenu_body{
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(100% - 100px);
+    max-height: calc(100% - 100px);
+}
 .machine_input .form-control{
     height: 40px;
         padding: 0px 15px;
@@ -42,6 +52,13 @@
             padding-left: 55px;
             position: relative;
 }
+.initialpage_text{
+    margin-top: 220px;
+}
+.initialpage_text p{
+    margin: 0;
+    opacity: 0.5;
+}
 .facility img{
     width: 16px;
     margin-left: 30px;
@@ -57,7 +74,7 @@
 }
 .form-control{
     height: 40px;
-    width: 300px;
+    width: 250px;
     padding: 0px 15px;
     background-color: transparent;
     border-radius: 40px !important;
@@ -109,15 +126,19 @@ border-radius: 8px;
 }
 
 .plusIcon p{
-    margin: 12px 7px 0 15px;
+    margin: 7px 7px 0 7px;
     font-size: 15px;
-    color: #0068E5;
 }
-.plusIcon img{
-    padding: 4px;
-border: 1px solid rgba(255, 255, 255, 0.4);
-box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px;
-border-radius: 50%;
+.plusIcon svg{
+    background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
+    background-blend-mode: soft-light, normal;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-sizing: border-box;
+    box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
+    border-radius: 40px;
+    width: 30px;
+    height: 30px;
+    opacity: 0.5;
 }
 .machine_items h3{
     margin: 0;
@@ -161,7 +182,7 @@ border-radius: 8px;
 }
 .bottom_text{
     bottom: 40px;
-
+    right: 35px;
 }
 .bottom_text h6{
     margin-left: 10px;  
@@ -170,6 +191,11 @@ border-radius: 8px;
     font-size: 12px;
     margin-top: 5px;
     width: 100%;
+}
+.exclamination svg{
+    color: #0068E5;
+    height: 20px;
+    width: 20px;
 }
 .btn-next{
     background-color: #0068E5;

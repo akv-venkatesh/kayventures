@@ -11,11 +11,13 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import { RiArrowDropRightLine, RiInformationFill } from 'react-icons/ri';
 import "react-perfect-scrollbar/dist/css/styles.css";
 import Select from '../../../../component/dropdown_select/slelect';
-import { AiFillCaretRight } from 'react-icons/ai';
+import { AiFillCaretRight, AiFillExclamationCircle, AiOutlinePlus } from 'react-icons/ai';
+
 
 
 
 interface typeState {
+    initialPage: boolean,
     showSummary: boolean,
     showMachine: boolean,
     addMoreEnable: boolean,
@@ -25,8 +27,12 @@ interface typeState {
     machineCount: any,
     savedState: any,
     toogleCheck: boolean,
-    machineKey: number,
-    selectedOption: any,
+    machineKey: any,
+    selectedMachineOption: any,
+    selectedBrandOption: any,
+    selectedTechOption: any,
+    iotEnable: boolean,
+
 }
 interface typeProps {
 
@@ -37,7 +43,10 @@ class Machine extends Component<typeProps, typeState> {
     constructor(props: any) {
         super(props);
         this.state = {
-            selectedOption: null,
+            initialPage: true,
+            selectedMachineOption: null,
+            selectedBrandOption: null,
+            selectedTechOption: null,
             machineKey: 0,
             showSummary: false,
             showMachine: false,
@@ -46,6 +55,7 @@ class Machine extends Component<typeProps, typeState> {
             brandType: '',
             typeTech: '',
             machineCount: 0,
+            iotEnable: false,
             toogleCheck: false,
             savedState: [{
                 machineType: null,
@@ -68,45 +78,60 @@ class Machine extends Component<typeProps, typeState> {
             showSummary: false
         })
     }
-    selectMachine = (event: any) => {
+    activeSubmit = () => {
+        const activeState = this.state.savedState[this.state.machineKey];
+        if (activeState['machineType'] !== null && activeState['machineBrand'] !== null && activeState['machineTech'] !== null && activeState['iotEnable'] !== null && activeState['machineCount'] !== null) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    selectMachine = (event: any, selectedMachineOption: any) => {
         let value: any = event;
         let machineValue = [...this.state.savedState];
         machineValue[this.state.machineKey] = { ...machineValue[this.state.machineKey], machineType: value.value };
         this.setState({
+            initialPage: false,
             savedState: machineValue,
-            selectedOption:event.value
+            selectedMachineOption
         }, () => {
             console.log(machineValue);
         })
     }
-    selectBrand = (event: any) => {
+    selectBrand = (event: any, selectedBrandOption: any) => {
         let value: any = event;
         let barndValue = [...this.state.savedState];
         barndValue[this.state.machineKey] = { ...barndValue[this.state.machineKey], machineBrand: value.value };
         this.setState({
             savedState: barndValue,
-            selectedOption:event.value
+            selectedBrandOption
         }, () => {
             console.log(barndValue);
         })
     }
-    selectTech = (event: any) => {
+    selectTech = (event: any, selectedTechOption: any) => {
         let value: any = event;
         let techValue = [...this.state.savedState];
         techValue[this.state.machineKey] = { ...techValue[this.state.machineKey], machineTech: value.value };
         this.setState({
             savedState: techValue,
-            selectedOption:event.value
+            selectedTechOption
         }, () => {
             console.log(techValue);
         })
     }
     changeMachineCount = (e: any) => {
+        this.setState({
+            machineCount: e.currentTarget.value
+
+        });
         if (e.currentTarget.value || e.currentTarget.value === "") {
             let countValue = [...this.state.savedState];
             countValue[this.state.machineKey] = { ...countValue[this.state.machineKey], machineCount: e.currentTarget.value };
             this.setState({
                 savedState: countValue,
+                machineCount: e.currentTarget.value
 
             }, () => {
                 console.log(countValue);
@@ -114,6 +139,9 @@ class Machine extends Component<typeProps, typeState> {
         }
     }
     handletoggle_checkbox = (e: any) => {
+        this.setState({
+            iotEnable: e.currentTarget.checked
+        });
         let checkValue = [...this.state.savedState];
         checkValue[this.state.machineKey] = { ...checkValue[this.state.machineKey], iotEnable: e.currentTarget.checked };
         this.setState({
@@ -124,7 +152,7 @@ class Machine extends Component<typeProps, typeState> {
         })
     }
 
-    handleSavedMachine = (e: any, selectedOption: any) => {
+    handleSavedMachine = (e: any) => {
         let obj = {
             machineType: null,
             machineBrand: null,
@@ -150,8 +178,12 @@ class Machine extends Component<typeProps, typeState> {
             addMoreEnable: true,
             savedState: arr,
             machineKey: machineKey,
-            selectedOption: null,
+            selectedMachineOption: null,
+            selectedBrandOption: null,
+            selectedTechOption: null,
             toogleCheck: false,
+            iotEnable: false,
+            machineCount: ''
 
         }, () => {
             console.log(this.state.savedState);
@@ -167,7 +199,6 @@ class Machine extends Component<typeProps, typeState> {
 
 
     render() {
-        const { selectedOption } = this.state;
 
         const machine = [
             { value: 'Single Needle', label: 'Single Needle' },
@@ -188,93 +219,101 @@ class Machine extends Component<typeProps, typeState> {
         return (
             <div className="machine main d-flex">
                 <div className="leftmenu d-flex flex-column">
-                    <h4 className="mb-4">Sewing</h4>
-                    <h5 >Machine Type</h5>
-                    <div className="menu_dropdown mb-3">
-                        <div className="mb-3">
-                            <form data-testid="machineType">
-                                <label htmlFor="select-machine" hidden>select Machine</label>
-                                <Select
-                                    name="machinetype"
-                                    inputId="select-machine"
-                                    options={machine}
-                                    width='300px'
-                                    position='bottom'
-                                    placeholder='Select Machine'
-                                    onChange={this.selectMachine}
-                                    value={selectedOption}
-                                ></Select>
-                            </form>
-                        </div>
-                        <div className="mb-3">
-                            <form data-testid="machineBrand" >
-                                <label htmlFor="select-brand" hidden>select Brand</label>
-                                <Select
-                                    name="machinebrand"
-                                    inputId="select-brand"
-                                    options={brand}
-                                    width='300px'
-                                    position='bottom'
-                                    placeholder='Select Brand'
-                                    onChange={this.selectBrand}
-                                    value={selectedOption}
-                                ></Select>
-                            </form>
-                        </div>
-                        <div className="mb-3">
-                            <form data-testid="machineTech" >
-                                <label htmlFor="select-tech" hidden>select Technology</label>
-                                <Select
-                                    name="machinetech"
-                                    inputId="select-tech"
-                                    options={technology}
-                                    width='300px'
-                                    position='bottom'
-                                    placeholder='Select Technology'
-                                    onChange={this.selectTech}
-                                    value={selectedOption}
-                                ></Select>
-                            </form>
-
+                    <div className=" leftmenu_header d-flex flex-column">
+                        <h4>Sewing</h4>
+                        <div className="plusIcon d-flex mb-2">
+                            <button style={{ border: 'none' }} onClick={this.handleAddMore} >
+                                <AiOutlinePlus />
+                            </button>
+                            <p>  Add Product Category </p>
                         </div>
                     </div>
-                    <h5 className="menu_machine_numbers">Add the No. of machines</h5>
-                    <div className="mb-3">
-                        <div className="machine_input mb-3">
-                            <Form.Control
-                                type="text"
-                                placeholder="0"
-                                onChange={this.changeMachineCount}
-                            />
-                        </div>
-                        <div className="iot_switch d-flex mt-4 mb-4">
-                            <p className="mr-5">IOT</p>
-                            <Form.Check
-                                type="switch"
-                                data-testid="custom-element"
-                                onChange={this.handletoggle_checkbox}
-                            />
-                            {this.state.toogleCheck ? <p className="ml-5">Enabled</p> : <p className="ml-5">Disabled</p>}
-
-                        </div>
-                        <div className="ms-2 mb-3">
-                            <Button
-                                className="btn btn-secondary submit"
-                                disabled={!this.state.toogleCheck}
-                                onClick={(e) => this.handleSavedMachine(e, selectedOption)}
-                            >
-                                Submit
-                            </Button>
-                        </div>
-                        <div className="">
-                            <div className="plusIcon d-flex">
-                                <button style={{ border: 'none' }} onClick={this.handleAddMore} >
-                                    <img src={Vector5} className="image_one" alt="" />
-                                </button>
-                                <p>  Add More </p>
+                    <div className="leftmenu_body d-flex flex-column">
+                        <PerfectScrollbar>
+                            <h5 className="mb-3" >Machine Type</h5>
+                            <div className="menu_dropdown mb-3">
+                                <div className="mb-3">
+                                    <form data-testid="machineType">
+                                        <label htmlFor="select-machine" hidden>select Machine</label>
+                                        <Select
+                                            name="machinetype"
+                                            inputId="select-machine"
+                                            options={machine}
+                                            width='250px'
+                                            position='bottom'
+                                            placeholder='Select Machine'
+                                            onChange={() => { }}
+                                            value={this.state.selectedMachineOption}
+                                        ></Select>
+                                    </form>
+                                </div>
+                                <div className="mb-3">
+                                    <form data-testid="machineBrand" >
+                                        <label htmlFor="select-brand" hidden>select Brand</label>
+                                        <Select
+                                            name="machinebrand"
+                                            inputId="select-brand"
+                                            options={brand}
+                                            width='250px'
+                                            position='bottom'
+                                            placeholder='Select Brand'
+                                            onChange={() => { }}
+                                            value={this.state.selectedBrandOption}
+                                        ></Select>
+                                    </form>
+                                </div>
+                                <div className="mb-3">
+                                    <form data-testid="machineTech" >
+                                        <label htmlFor="select-tech" hidden>select Technology</label>
+                                        <Select
+                                            name="machinetech"
+                                            inputId="select-tech"
+                                            options={technology}
+                                            width='250px'
+                                            position='bottom'
+                                            placeholder='Select Technology'
+                                            onChange={() => { }}
+                                            value={this.state.selectedTechOption}
+                                        ></Select>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
+
+                            <div className="mb-3">
+                                <div className="iot_switch d-flex my-5">
+                                    <p className="mr-5">IOT</p>
+                                    <Form.Check
+                                        type="switch"
+                                        data-testid="custom-element"
+                                        onChange={(e) => this.handletoggle_checkbox(e)}
+                                        checked={this.state.iotEnable}
+                                    />
+                                    {this.state.iotEnable ? <p className="ml-5">Enabled</p> : <p className="ml-5">Disabled</p>}
+
+                                </div>
+                                <h5 className="menu_machine_numbers mb-4">Add the No. of machines</h5>
+                                <div className="machine_input mb-3">
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="0"
+                                        onChange={this.changeMachineCount}
+                                        value={this.state.machineCount}
+                                    />
+                                </div>
+
+                                <div className="ms-2 mb-3">
+                                    <Button
+                                        className="btn btn-secondary submit"
+                                        disabled={this.activeSubmit()}
+                                        onClick={(e) => this.handleSavedMachine(e)}
+                                    >
+                                        Submit
+                                    </Button>
+                                </div>
+                            </div>
+                        </PerfectScrollbar>
                     </div>
+
                 </div>
                 <div className="rightmenu d-flex flex-column">
                     <div className="facility d-flex">
@@ -294,6 +333,10 @@ class Machine extends Component<typeProps, typeState> {
                                 <div className="d-flex flex-wrap pe-4">
                                     <Container>
                                         <Row>
+                                            {
+                                                this.state.initialPage ? <div className="initialpage_text d-flex flex-column align-items-center"><p>Click on the machine type to create</p><p>the machine inventory</p></div> : null
+                                            }
+
                                             {this.state.savedState.map((machine: any) => {
                                                 return machine.machineType !== null && (<Col xs={3} md={12} className="column d-flex" >
                                                     <div className="machine_items">
@@ -303,31 +346,20 @@ class Machine extends Component<typeProps, typeState> {
                                                         </div>
                                                         <p data-testid="testMachineType">{machine.machineType}</p>
                                                     </div>
-                                                    <div className="machine_items_text">
-                                                        <p>{machine.machineBrand}</p>
-                                                        <p>{machine.machineTech}</p>
-                                                    </div>
                                                 </Col>)
                                             })
                                             }
-                                            {
-                                                this.state.addMoreEnable ?
-                                                    <div className="plusIcon d-flex">
-                                                        <button style={{ border: 'none' }} onClick={this.handleAddMore} >
-                                                            <img src={Vector5} className="image_one" alt="" />
-                                                        </button>
-                                                        <p>  Add More </p>
-                                                    </div> : null
-                                            }
+
                                         </Row>
                                     </Container>
                                 </div>
                             </PerfectScrollbar>
-                            <div className="bottom_text d-flex justify-content-around w-100 position-absolute">
-                                {this.state.addMoreEnable ? <div className="d-flex">
-                                    <img src={BottomIcon} alt="" />
-                                    <h6>Add machinary information to view the summary.</h6>
-                                </div> : null}
+                            <div className="bottom_text d-flex position-absolute">
+                                {this.state.addMoreEnable ?
+                                    <div className="exclamination mx-3">
+                                        <AiFillExclamationCircle />
+                                    </div> : null}
+
                                 <div className="d-flex">
                                     <button
                                         type="submit"
@@ -398,6 +430,7 @@ class Machine extends Component<typeProps, typeState> {
                                                             <Row>
                                                                 {this.state.savedState.map((machine: any) => {
                                                                     return machine.machineType !== null && (<Col xs={3} md={12} className="column d-flex" >
+
                                                                         <div className="machine_items">
                                                                             <div className="machine_image d-flex">
                                                                                 <img src={MachineIcon} alt="" />
