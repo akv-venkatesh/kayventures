@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, ChangeEvent } from 'react'
 import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap';
 import "./machine.css";
 
@@ -32,7 +32,6 @@ interface typeState {
     selectedBrandOption: any,
     selectedTechOption: any,
     iotEnable: boolean,
-
 }
 interface typeProps {
 
@@ -87,36 +86,36 @@ class Machine extends Component<typeProps, typeState> {
             return true;
         }
     }
-    selectMachine = (event: any, selectedMachineOption: any) => {
+    selectMachine = (event: ChangeEvent<HTMLInputElement>) => {
         let value: any = event;
         let machineValue = [...this.state.savedState];
         machineValue[this.state.machineKey] = { ...machineValue[this.state.machineKey], machineType: value.value };
         this.setState({
             initialPage: false,
             savedState: machineValue,
-            selectedMachineOption
+            selectedMachineOption: value.value
         }, () => {
-            console.log(machineValue);
+            console.log("selectedMachineOption", this.state.selectedMachineOption);
         })
     }
-    selectBrand = (event: any, selectedBrandOption: any) => {
+    selectBrand = (event: ChangeEvent<HTMLInputElement>) => {
         let value: any = event;
         let barndValue = [...this.state.savedState];
         barndValue[this.state.machineKey] = { ...barndValue[this.state.machineKey], machineBrand: value.value };
         this.setState({
             savedState: barndValue,
-            selectedBrandOption
+            selectedBrandOption: value.value
         }, () => {
             console.log(barndValue);
         })
     }
-    selectTech = (event: any, selectedTechOption: any) => {
+    selectTech = (event: ChangeEvent<HTMLInputElement>) => {
         let value: any = event;
         let techValue = [...this.state.savedState];
         techValue[this.state.machineKey] = { ...techValue[this.state.machineKey], machineTech: value.value };
         this.setState({
             savedState: techValue,
-            selectedTechOption
+            selectedTechOption: value.value
         }, () => {
             console.log(techValue);
         })
@@ -132,7 +131,6 @@ class Machine extends Component<typeProps, typeState> {
             this.setState({
                 savedState: countValue,
                 machineCount: e.currentTarget.value
-
             }, () => {
                 console.log(countValue);
             })
@@ -183,8 +181,7 @@ class Machine extends Component<typeProps, typeState> {
             selectedTechOption: null,
             toogleCheck: false,
             iotEnable: false,
-            machineCount: ''
-
+            machineCount: '',
         }, () => {
             console.log(this.state.savedState);
             console.log(this.state.machineKey);
@@ -242,7 +239,7 @@ class Machine extends Component<typeProps, typeState> {
                                             width='250px'
                                             position='bottom'
                                             placeholder='Select Machine'
-                                            onChange={() => { }}
+                                            onChange={(event: any) => this.selectMachine(event)}
                                             value={this.state.selectedMachineOption}
                                         ></Select>
                                     </form>
@@ -257,7 +254,7 @@ class Machine extends Component<typeProps, typeState> {
                                             width='250px'
                                             position='bottom'
                                             placeholder='Select Brand'
-                                            onChange={() => { }}
+                                            onChange={(event: any) => this.selectBrand(event)}
                                             value={this.state.selectedBrandOption}
                                         ></Select>
                                     </form>
@@ -272,7 +269,7 @@ class Machine extends Component<typeProps, typeState> {
                                             width='250px'
                                             position='bottom'
                                             placeholder='Select Technology'
-                                            onChange={() => { }}
+                                            onChange={(event: any) => this.selectTech(event)}
                                             value={this.state.selectedTechOption}
                                         ></Select>
                                     </form>
