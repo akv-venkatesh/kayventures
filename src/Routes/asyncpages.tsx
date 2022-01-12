@@ -45,6 +45,7 @@ export const Login = React.lazy(() => import('../pages/login'));
 
         export const DashboardIndex = React.lazy(() => import('../pages/dashboard'));
         export const Dashboard = React.lazy(() => import('../pages/dashboard/dashboard'));
+        export const Profile = React.lazy(() => import('../pages/dashboard/profile'));
 
 
 

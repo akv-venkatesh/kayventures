@@ -22,6 +22,7 @@ import {
   Settings,
   Dashboard,
   DashboardIndex,
+  Profile,
 } from "./asyncpages";
 
 class Routers extends React.Component {
@@ -64,6 +65,7 @@ class Routers extends React.Component {
           
           <Route path="dashboard" element={<DashboardIndex/>}>
             <Route index element={<Dashboard/>} />
+            <Route path="profile" element={<Profile/>}/>
           </Route>
         </Routes>
       </div>
