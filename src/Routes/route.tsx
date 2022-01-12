@@ -22,7 +22,9 @@ import {
   Settings,
   Dashboard,
   DashboardIndex,
-  Machinery1,Operation
+
+  Machinery1,Operation,Profile,
+
 } from "./asyncpages";
 
 class Routers extends React.Component {
@@ -64,8 +66,10 @@ class Routers extends React.Component {
             <Route path="esg" element={<Esg />} />
             <Route path="operation" element={<Operation />} />
           </Route>
+          
           <Route path="dashboard" element={<DashboardIndex/>}>
             <Route index element={<Dashboard/>} />
+            <Route path="profile" element={<Profile/>}/>
           </Route>
         </Routes>
       </div>
