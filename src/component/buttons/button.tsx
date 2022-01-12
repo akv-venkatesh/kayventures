@@ -4,6 +4,7 @@ import buttonarrowleft from "../../assets/icons/arrows/buttonarrowleft.svg";
 import buttonarrowright from "../../assets/icons/arrows/buttonarrowright.svg";
 import { FC } from "react";
 import { Link } from 'react-router-dom';
+import { RiArrowRightSLine } from "react-icons/ri";
 
 interface Props {
   children?: React.ReactNode;
@@ -37,5 +38,23 @@ export const DisableNextbutton = (props: Props) => {
       <span>Next </span>
       <img src={buttonarrowright} className="next_btn_right" />
     </div>
+  );
+};
+
+export const DisableBackbutton = (props: Props) => {
+  return (
+    <div data-testid="disablenextbutton1"
+     className="dbtn back_btn">
+      <span>Back </span>
+      <img src={buttonarrowleft} className="back_btn_left" />
+    </div>
+  );
+};
+
+
+
+export const Swmmerybutton:FC<Props> = (props) => {
+  return (
+    <button className='swmmery-btn' onClick={props.onClick}>Summary <span><RiArrowRightSLine className='btn-arrow-right'/></span></button>
   );
 };
