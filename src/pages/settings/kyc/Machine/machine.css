@@ -53,7 +53,7 @@
             position: relative;
 }
 .initialpage_text{
-    margin-top: 220px;
+    margin-top: 250px;
 }
 .initialpage_text p{
     margin: 0;
@@ -92,6 +92,9 @@
     color: #fff;
     border: transparent;
     border-radius: 8px;
+}
+.leftmenu .submit:disabled{
+    background-color: #ccc;
 }
 .leftmenu .submit button:hover{
     background-color: #3CD070 !important;
@@ -172,9 +175,22 @@ border-radius: 8px;
     top: 30px;
     right: 50px;
 }
-.summary a{
+
+.summary button{
     box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
 border-radius: 8px;
+background-color: #0068E5;
+border: transparent;
+}
+.summary button:disabled {
+    background-color: #ccc;
+    border: transparent;
+}
+.summary button:hover {
+    background-color: #0068E5;
+}
+.summary button:focus {
+    background-color: #0068E5;
 }
 .summary svg{
     width: 23px;
@@ -202,26 +218,29 @@ border-radius: 8px;
     padding: 0px 10px;
     color: white;
     border-radius: 6px;
-    box-shadow: none;
-    /* margin-top: 500px;        
-    margin-left: 850px;         */
+    box-shadow: none;       
 }
 .btn-next:disabled{
     background-color: silver;
 }
 /* Model */
 .machine .modal-lg{
-    max-width: 70vw;
+    max-width: 75vw;
 }
 
 .modal-header{
     border-bottom: none;
 }
 .modal-content{
-    background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
+background-color: #e6e7eb;
 background-blend-mode: soft-light, normal;
-box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
-border-radius: 20px;
+border: 1px solid rgba(255, 255, 255, 0.4);
+box-sizing: border-box;
+box-shadow: 8px 4px 14px rgb(0 0 0 / 11%), inset 6px 5px 35px rgb(255 255 255 / 60%);
+-webkit-backdrop-filter: blur(12px);
+backdrop-filter: blur(12px);
+border-radius: 35px;
+
 }
 .machine .modal-header .btn-close {
     position: absolute;
@@ -248,4 +267,14 @@ border-radius: 20px;
     color: #0068E5;
     margin: 3px 0 0 6px;
 }
-
+.modal-body .row{
+    height: 100%;
+}
+.model_leftmenu{
+    flex: 0 0 250px;
+    max-width: 250px;
+}
+.model_rightmenu{
+    flex: 0 0 calc(100% - 250px);
+    max-width: calc(100% - 250px);
+}

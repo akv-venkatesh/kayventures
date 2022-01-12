@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, ChangeEvent } from 'react'
 import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap';
 import "./machine.css";
 
@@ -32,7 +32,7 @@ interface typeState {
     selectedBrandOption: any,
     selectedTechOption: any,
     iotEnable: boolean,
-
+    modelmachineType: any,
 }
 interface typeProps {
 
@@ -54,9 +54,10 @@ class Machine extends Component<typeProps, typeState> {
             machineType: [],
             brandType: '',
             typeTech: '',
-            machineCount: 0,
+            machineCount: '',
             iotEnable: false,
             toogleCheck: false,
+            modelmachineType: false,
             savedState: [{
                 machineType: null,
                 machineBrand: null,
@@ -87,52 +88,52 @@ class Machine extends Component<typeProps, typeState> {
             return true;
         }
     }
-    selectMachine = (event: any, selectedMachineOption: any) => {
+    selectMachine = (event: ChangeEvent<HTMLInputElement>) => {
         let value: any = event;
         let machineValue = [...this.state.savedState];
         machineValue[this.state.machineKey] = { ...machineValue[this.state.machineKey], machineType: value.value };
         this.setState({
             initialPage: false,
             savedState: machineValue,
-            selectedMachineOption
+            selectedMachineOption: value.value
         }, () => {
-            console.log(machineValue);
+            console.log("selectedMachineOption", this.state.selectedMachineOption);
         })
     }
-    selectBrand = (event: any, selectedBrandOption: any) => {
+    selectBrand = (event: ChangeEvent<HTMLInputElement>) => {
         let value: any = event;
         let barndValue = [...this.state.savedState];
         barndValue[this.state.machineKey] = { ...barndValue[this.state.machineKey], machineBrand: value.value };
         this.setState({
             savedState: barndValue,
-            selectedBrandOption
+            selectedBrandOption: value.value
         }, () => {
             console.log(barndValue);
         })
     }
-    selectTech = (event: any, selectedTechOption: any) => {
+    selectTech = (event: ChangeEvent<HTMLInputElement>) => {
         let value: any = event;
         let techValue = [...this.state.savedState];
         techValue[this.state.machineKey] = { ...techValue[this.state.machineKey], machineTech: value.value };
         this.setState({
             savedState: techValue,
-            selectedTechOption
+            selectedTechOption: value.value
         }, () => {
             console.log(techValue);
         })
     }
     changeMachineCount = (e: any) => {
-        this.setState({
-            machineCount: e.currentTarget.value
+        const re = /^[0-9\b]+$/;
+        if (e.currentTarget.value === '' || re.test(e.currentTarget.value)) {
+            this.setState({ machineCount: e.currentTarget.value })
+        }
 
-        });
         if (e.currentTarget.value || e.currentTarget.value === "") {
             let countValue = [...this.state.savedState];
             countValue[this.state.machineKey] = { ...countValue[this.state.machineKey], machineCount: e.currentTarget.value };
             this.setState({
                 savedState: countValue,
                 machineCount: e.currentTarget.value
-
             }, () => {
                 console.log(countValue);
             })
@@ -183,16 +184,21 @@ class Machine extends Component<typeProps, typeState> {
             selectedTechOption: null,
             toogleCheck: false,
             iotEnable: false,
-            machineCount: ''
-
+            machineCount: '',
         }, () => {
-            console.log(this.state.savedState);
+            console.log("saved State=>", this.state.savedState);
             console.log(this.state.machineKey);
         })
     }
     handleAddMore = () => {
         this.setState({
             showMachine: true,
+        })
+    }
+
+    modelMachineFilter = () => {
+        this.setState({
+            modelmachineType: true,
         })
     }
 
@@ -215,6 +221,10 @@ class Machine extends Component<typeProps, typeState> {
             { value: 'Process Automated', label: 'Process Automated' },
             { value: 'Computerized', label: 'Computerized' }
         ]
+        const iot = [
+            { value: 'Enable', label: 'Enable' },
+            { value: 'Disable', label: 'Disable' }
+        ]
 
         return (
             <div className="machine main d-flex">
@@ -229,7 +239,7 @@ class Machine extends Component<typeProps, typeState> {
                         </div>
                     </div>
                     <div className="leftmenu_body d-flex flex-column">
-                        <PerfectScrollbar>
+                        <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
                             <h5 className="mb-3" >Machine Type</h5>
                             <div className="menu_dropdown mb-3">
                                 <div className="mb-3">
@@ -242,7 +252,7 @@ class Machine extends Component<typeProps, typeState> {
                                             width='250px'
                                             position='bottom'
                                             placeholder='Select Machine'
-                                            onChange={() => { }}
+                                            onChange={(event: any) => this.selectMachine(event)}
                                             value={this.state.selectedMachineOption}
                                         ></Select>
                                     </form>
@@ -257,7 +267,7 @@ class Machine extends Component<typeProps, typeState> {
                                             width='250px'
                                             position='bottom'
                                             placeholder='Select Brand'
-                                            onChange={() => { }}
+                                            onChange={(event: any) => this.selectBrand(event)}
                                             value={this.state.selectedBrandOption}
                                         ></Select>
                                     </form>
@@ -272,7 +282,7 @@ class Machine extends Component<typeProps, typeState> {
                                             width='250px'
                                             position='bottom'
                                             placeholder='Select Technology'
-                                            onChange={() => { }}
+                                            onChange={(event: any) => this.selectTech(event)}
                                             value={this.state.selectedTechOption}
                                         ></Select>
                                     </form>
@@ -301,7 +311,7 @@ class Machine extends Component<typeProps, typeState> {
                                     />
                                 </div>
 
-                                <div className="ms-2 mb-3">
+                                <div className="my-5">
                                     <Button
                                         className="btn btn-secondary submit"
                                         disabled={this.activeSubmit()}
@@ -329,7 +339,7 @@ class Machine extends Component<typeProps, typeState> {
                     </div>
                     <div className="box py-5 mt-2 position-relative">
                         <div className="scroll pb-3">
-                            <PerfectScrollbar>
+                            <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
                                 <div className="d-flex flex-wrap pe-4">
                                     <Container>
                                         <Row>
@@ -339,7 +349,7 @@ class Machine extends Component<typeProps, typeState> {
 
                                             {this.state.savedState.map((machine: any) => {
                                                 return machine.machineType !== null && (<Col xs={3} md={12} className="column d-flex" >
-                                                    <div className="machine_items">
+                                                    <div className="machine_items" data-testid="selected_element">
                                                         <div className="machine_image d-flex">
                                                             <img src={MachineIcon} alt="" />
                                                             <h3>{machine.machineCount}</h3>
@@ -372,7 +382,7 @@ class Machine extends Component<typeProps, typeState> {
                         </div>
                         <div className="d-flex">
                             <div className="summary">
-                                <Button href="#" disabled={!this.state.addMoreEnable} size="sm" onClick={this.handleSummary} data-testid="mySummary">
+                                <Button className="btn btn-secondary" disabled={!this.state.addMoreEnable} onClick={this.handleSummary} data-testid="mySummary">
                                     Summary
                                     <RiArrowDropRightLine />
                                 </Button>
@@ -390,7 +400,7 @@ class Machine extends Component<typeProps, typeState> {
                     className="machine"
                     backdropClassName="machine"
                     onHide={this.hideSummary}
-                    data-testid="someElemInMyModal"
+
                 >
                     <Modal.Header closeButton />
                     <Modal.Body className="">
@@ -412,13 +422,60 @@ class Machine extends Component<typeProps, typeState> {
                                         <div className="model_leftmenu d-flex flex-column">
                                             <div className="mb-3">
                                                 <div className="mb-3">
-                                                    <Select options={machine} width='300px' position='bottom' placeholder='Select Machine' onChange={() => { }}></Select>
+                                                    <form data-testid="machineTypeFilter">
+                                                        <label htmlFor="filter-machine" hidden>Select Machine</label>
+                                                        <Select
+                                                            name="machinetypefilter"
+                                                            inputId="filter-machine"
+                                                            options={machine}
+                                                            width='auto'
+                                                            position='bottom'
+                                                            placeholder='Select Machine'
+                                                            onChange={this.modelMachineFilter}
+                                                        ></Select>
+                                                    </form>
                                                 </div>
                                                 <div className="mb-3">
-                                                    <Select options={brand} width='300px' position='bottom' placeholder='Select Brand' onChange={() => { }}></Select>
+                                                    <form data-testid="brandtypeFilter">
+                                                        <label htmlFor="filter-brand" hidden>Select Brand</label>
+                                                        <Select
+                                                            name="brandtypeFilter"
+                                                            inputId="filter-brand"
+                                                            options={brand}
+                                                            width='auto'
+                                                            position='bottom'
+                                                            placeholder='Select Brand'
+                                                            onChange={() => { }}
+                                                        ></Select>
+                                                    </form>
                                                 </div>
                                                 <div className="mb-3">
-                                                    <Select options={technology} width='300px' position='bottom' placeholder='Select Technology' onChange={() => { }}></Select>
+                                                    <form data-testid="techtypefilter">
+                                                        <label htmlFor="filter-tech" hidden>Select Technology</label>
+                                                        <Select
+                                                            name="techtypefilter"
+                                                            inputId="filter-tech"
+                                                            options={technology}
+                                                            width='auto'
+                                                            position='bottom'
+                                                            placeholder='Select Technology'
+                                                            onChange={() => { }}
+                                                        ></Select>
+                                                    </form>
+                                                </div>
+                                                <div className="mb-3">
+                                                    <form data-testid="iottypefilter">
+                                                        <label htmlFor="filter-iot" hidden>IOT</label>
+                                                        <Select
+                                                            name="iottypefilter"
+                                                            inputId="filter-iot"
+                                                            options={iot}
+                                                            width='auto'
+                                                            position='bottom'
+                                                            placeholder='IOT'
+                                                            onChange={() => { }}
+                                                        ></Select>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -438,13 +495,10 @@ class Machine extends Component<typeProps, typeState> {
                                                                             </div>
                                                                             <p>{machine.machineType}</p>
                                                                         </div>
-                                                                        <div className="machine_items_text">
-                                                                            <p>{machine.machineBrand}</p>
-                                                                            <p>{machine.machineTech}</p>
-                                                                        </div>
                                                                     </Col>)
                                                                 })
                                                                 }
+
                                                             </Row>
                                                         </Container>
                                                     </div>
