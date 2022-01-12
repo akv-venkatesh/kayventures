@@ -1,5 +1,5 @@
 
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import { MemoryRouter as Router } from 'react-router-dom';
 import selectEvent from 'react-select-event';
@@ -31,25 +31,25 @@ test('test machinery text', () => {
     const role = wrapper.queryAllByText('Add machinary information to view the summary.');
     expect(role).toBeInTheDocument;
 
+    const addText = wrapper.queryAllByText('Add Product Category');
+    expect(addText).toBeInTheDocument;
+
+    const initialPageText = wrapper.queryAllByText('Click on the machine type to create the machine inventory');
+    expect(initialPageText).toBeInTheDocument;
+    expect(wrapper.queryAllByText('IOT')).toBeInTheDocument;
+
 })
 //fire events
 test('onClick clicked', async () => {
-    const submitClick = jest.fn()
-    fireEvent.click(screen.getByText(/submit/i))
-    expect(submitClick).toBeInTheDocument;
-
-
-    //input box change event
-    const input = screen.getByPlaceholderText('0');
-    fireEvent.change(input, { target: { value: "vinoth" } });
-    expect(wrapper.getByDisplayValue(/vinoth/i)).toBeInTheDocument;
-
+    expect(wrapper.getByRole('button', { name: /Next/i })).toHaveAttribute('disabled');
+    expect(wrapper.getByRole('button', { name: /Submit/i })).toHaveAttribute('disabled');
+    expect(wrapper.getByTestId('custom-element')).not.toBeChecked();
 
     //selectbox for machineType
     expect(wrapper.getByTestId('machineType')).toHaveFormValues({ machinetype: '' });
     await selectEvent.select(wrapper.getByLabelText('select Machine'), ['Single Needle']);
     expect(wrapper.getByTestId('machineType')).toHaveFormValues({ machinetype: 'Single Needle' });
-    expect(wrapper.getByTestId('testMachineType')).toBeInTheDocument;
+    expect(wrapper.getByTestId('selected_element')).toBeInTheDocument;
 
     //selectbox for machineBrand
     expect(wrapper.getByTestId('machineBrand')).toHaveFormValues({ machinebrand: '' });
@@ -61,29 +61,49 @@ test('onClick clicked', async () => {
     await selectEvent.select(wrapper.getByLabelText('select Technology'), ['Basic']);
     expect(wrapper.getByTestId('machineTech')).toHaveFormValues({ machinetech: 'Basic' });
 
-    expect(screen.getByRole('button', { name: /Next/i })).toHaveAttribute('disabled');
+
     //check event
-    const submitButton = wrapper.getByText(/submit/i);
+    expect(wrapper.queryAllByText('Disabled')).toBeInTheDocument;
     const testcheck0 = wrapper.getByTestId('custom-element');
     fireEvent.click(testcheck0);
     expect(testcheck0).toBeChecked();
-    expect(submitButton).not.toHaveAttribute('disabled');
+    expect(wrapper.queryAllByText('Enabled')).toBeInTheDocument;
 
-    const testSummary = screen.getByRole('button', { name: /summary/i })
-    expect(testSummary).not.toHaveAttribute('disabled');
+    //input box change event
+    const input = wrapper.getByPlaceholderText('0');
+    fireEvent.change(input, { target: { value: "vinoth" } });
+    expect(wrapper.getByDisplayValue(/vinoth/i)).toBeInTheDocument;
 
+    expect(wrapper.getByRole('button', { name: /Submit/i })).not.toHaveAttribute('disabled');
+
+    expect(wrapper.getByRole('button', { name: /summary/i })).toHaveAttribute('disabled');
+    expect(wrapper.getByRole('button', { name: /next/i })).toHaveAttribute('disabled');
+
+    const submitButton = wrapper.getByRole('button', { name: /submit/i })
     fireEvent.click(submitButton);
-    expect(testSummary).not.toHaveAttribute('disabled');
+    expect(wrapper.getByRole('button', { name: /summary/i })).not.toHaveAttribute('disabled');
+    expect(wrapper.getByRole('button', { name: /next/i })).not.toHaveAttribute('disabled');
 
-    expect(screen.getByRole('heading', { name: /Add machinary information to view the summary./i })).toBeInTheDocument;
-
-    //nextbutton
-    expect(screen.getByRole('button', { name: /Next/i })).not.toHaveAttribute('disabled');
     //modelbox
-    const summaryContainer = fireEvent.click(screen.getByRole('button', { name: /summary/i }))
-    const dialogContainer = screen.getByRole('dialog');
-    expect(summaryContainer).toBeInTheDocument;
-    expect(dialogContainer).toBeInTheDocument;
+    expect(fireEvent.click(wrapper.getByRole('button', { name: /summary/i }))).toBeInTheDocument;
+    expect(wrapper.getByRole('dialog')).toBeInTheDocument;
+    expect(wrapper.getByText('Select the filters of Machine, Brand and Technology to view the required summary information.')).toBeInTheDocument;
+    //in model box select option
+    expect(wrapper.getByTestId('machineTypeFilter')).toHaveFormValues({ machinetypefilter: '' });
+    await selectEvent.select(wrapper.getByLabelText('Select Machine'), ['Single Needle']);
+    expect(wrapper.getByTestId('machineTypeFilter')).toHaveFormValues({ machinetypefilter: 'Single Needle' });
+
+    expect(wrapper.getByTestId('brandtypeFilter')).toHaveFormValues({ brandtypeFilter: '' });
+    await selectEvent.select(wrapper.getByLabelText('Select Brand'), ['Juki']);
+    expect(wrapper.getByTestId('brandtypeFilter')).toHaveFormValues({ brandtypeFilter: 'Juki' });
+
+    expect(wrapper.getByTestId('techtypefilter')).toHaveFormValues({ techtypefilter: '' });
+    await selectEvent.select(wrapper.getByLabelText('Select Technology'), ['Basic']);
+    expect(wrapper.getByTestId('techtypefilter')).toHaveFormValues({ techtypefilter: 'Basic' });
+
+    expect(wrapper.getByTestId('iottypefilter')).toHaveFormValues({ iottypefilter: '' });
+    await selectEvent.select(wrapper.getByLabelText('IOT'), ['Enable']);
+    expect(wrapper.getByTestId('iottypefilter')).toHaveFormValues({ iottypefilter: 'Enable' });
 
 })
 
