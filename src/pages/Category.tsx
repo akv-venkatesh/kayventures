@@ -175,8 +175,8 @@ console.log(props);
     this.props.setBusCategory(e.currentTarget.value);
   };
 
-  setCategory = (e: any) => {
-    e.preventDefault();
+  setCategory = () => {
+  
     this.setState({
       gettypes: true
     })
@@ -248,17 +248,9 @@ console.log(props);
                 <div className="category_btn">
                   <Backbutton onClick={ this.redirect} />
                   <div>
+                
+                      {this.state.Visibility ? <Nextbutton onClick={this.setCategory} /> :   <DisableNextbutton />}
                     
-                      <Button 
-                        type="submit" 
-                        data-testid="enableNextButton" 
-                        className="cbtn next_btn"
-                        disabled={this.state.Visibility ? false : true}
-                        >
-                        <span>Next </span>
-                        <img src={buttonarrowright} className="next_btn_right" />
-                      </Button>
-                      {/* <DisableNextbutton /> */}
                   </div>
                 </div>
               </div>

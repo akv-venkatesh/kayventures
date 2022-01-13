@@ -220,17 +220,14 @@
 }
 
 .sub-categories{
-  height: calc(100% - 140px);
+  height: calc(100vh - 250px);
+  overflow-y: hidden;
+}
+.inside-scrool{
+  padding-right: 35px;
 }
 
 
- .btn-back, .buttons .btn-next, .buttons .btn-summary {
-  background-color: #0068e5;
-  padding: 0px 10px;
-  color: white;
-  border-radius: 6px;
-  box-shadow: none;
-}
  .btn-back:disabled, .buttons .btn-next:disabled, .buttons .btn-summary:disabled {
   background-color: silver;
 }
@@ -250,6 +247,7 @@
   font-weight: normal;
   font-size: 15px;
   line-height: 22px;
+  border: 1px solid transparent;
 }
  .btn-default.save {
   background-color: #3cd070;
@@ -258,11 +256,11 @@
   font-weight: normal;
   font-size: 15px;
   line-height: 22px;
-  /* identical to box height */
+  border: 1px solid transparent;
+
   
-  
-  
-}
+
+} 
  .btn-default:disabled {
   background: #FFFFFF;
   box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.79), 4px 4px 16px #B8CAD8;
@@ -273,5 +271,68 @@ font-family: 'Poppins';
   font-size: 15px;
   line-height: 22px;
   /* identical to box height */
-   color: #414A67;
+  color: #414A67; 
+}
+.icon-parent{
+  position: relative;
+}
+
+.info-icon
+{
+  position: absolute  ;
+font-size: 20px;
+right: 100px;
+top:5px
+
+}
+
+
+.summery-model.modal-backdrop.show {
+  opacity: 0.7 !important; 
+  background: rgba(184, 202, 216, 0.3);
+  backdrop-filter: blur(21px);
+}
+
+.summery-model .modal-content {
+  background:linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
+  background-blend-mode: soft-light, normal;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-sizing: border-box;
+  box-shadow: 8px 4px 14px rgba(0, 0, 0, 0.08),
+    inset 6px 5px 35px rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 40px;
+  /* width: 767px; */
+  /* height: 384px; */
+}
+
+
+.summery-model  .modal-header {
+  border-bottom: 0px;
+}
+.summery-model .operation-right-panel-title{
+height: 250px;
+}
+
+.summery-model  .modal-header .btn-close {
+  position: absolute;
+  top: -30px;
+  right: 0px;
+  outline: none;
+  box-shadow: none;
+}
+
+
+.summery-model  .modal-header .btn-close:active {
+  box-shadow: none;
+  outline: none;
+}
+
+
+.summery-model .modal-body {
+  /* text-align: center; */
+  justify-content: center;
+  padding: 0px 100px;
+  height: 350px;
 }

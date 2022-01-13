@@ -14,9 +14,9 @@ import bag from "../assets/icons/bag.svg";
 import { Link, Navigate } from "react-router-dom";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import store from "../store/store";
+
 import { setTypes } from "../actions/business_category/business_category";
-import { parse } from "path";
+
 
 interface typeState {
   visibility: boolean,
@@ -93,11 +93,11 @@ class Types extends Component<typeProps, typeState> {
     }
 
 
-    let category:any = {};
+    let category: any = {};
     let types: any = localStorage.getItem("business_category");
-    if(types){
-      let type:any = JSON.parse(types);
-      let arrLength:Number = type.business_category.length
+    if (types) {
+      let type: any = JSON.parse(types);
+      let arrLength: Number = type.business_category.length
       for (let i = 0; i < arrLength; i++) {
         let id = type.business_category[i].id;
         if (id == type.business_category_single) {
@@ -106,7 +106,7 @@ class Types extends Component<typeProps, typeState> {
       }
       localStorage.setItem("business_category_name", category.name);
     }
-    
+
 
     return (
       <>
@@ -121,7 +121,7 @@ class Types extends Component<typeProps, typeState> {
                   <div className="Types_category_section px-5">
                     <div className="Types_category_section_container">
                       <div className="Types_category_type">
-                        
+
                         <label
                           htmlFor={category.name}
                           className="m_category_item m_category_item_img1"
@@ -146,7 +146,7 @@ class Types extends Component<typeProps, typeState> {
                       <div className="Types_category_type_item">
 
                         {
-                        category.children ? (
+                          category.children ? (
                             category.children.map((data: any, index: number) => {
                               if (data.id !== 1) {
 
@@ -157,7 +157,7 @@ class Types extends Component<typeProps, typeState> {
                                     <h1>{data.name}</h1>
                                     <div className="Types_category_item_radio">
                                       <input
-                                        data-testid={"test"+index}
+                                        data-testid={"test" + index}
                                         type="checkbox"
                                         id={data.id}
                                         name="types"
@@ -188,7 +188,8 @@ class Types extends Component<typeProps, typeState> {
               </PerfectScrollbar>
               <div className="Types_category_btn_section pt-4 px-5">
                 <div className="Types_category_btn w-100">
-                  <Backbutton onClick={this.redirect} />
+                  <div>   <Backbutton onClick={this.redirect} /></div>
+
                   <div>
                     {this.state.visibility ? (
                       <Nextbutton onClick={this.redirectNext} />
