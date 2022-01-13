@@ -77,7 +77,7 @@ class CreateAccount extends Component<typeprops, typestates > {
             <div className="col-sm-8 bg-img-sec d-flex align-items-center">
               <div className="register-card">
               <Formik initialValues={initialValues}
-            validate={values => {
+              validate={values => {
               let errors = {};
               if (!values.email) {
                 errors = { ...errors, email: 'Enter Email Id' };

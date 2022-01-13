@@ -13,13 +13,8 @@ import { AiFillExclamationCircle } from "react-icons/ai";
 import { ImCross } from "react-icons/im";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 
-
-
 function Facilitykyc():JSX.Element {
-
-
   	const [key, setKey] = useState('home');
-
 
   	return (
 		<div className="facilitykyc h-100">
@@ -28,10 +23,13 @@ function Facilitykyc():JSX.Element {
 				<h4>Organization info</h4>
 			</div>
 			<div className="content">
-					<div className="orgcon py-5">
-						<div className="imgshow mb-4">
-							<img src={Vector1}/>
-							<p className="text-center my-3">Syndicate Fashions</p>
+					<div className="orgcon pt-5 pb-4">
+						<div className="firstbox">
+							<AiFillExclamationCircle/>
+								<div className="imgshow mb-4">						
+									<img src={Vector1}/>
+									<p className="text-center my-3">Syndicate Fashions</p>
+								</div>
 						</div>
 						<p className="addfac mt-4">Add Facility</p>
 						<div className="pt-2 mb-2 typefacility">
@@ -48,19 +46,19 @@ function Facilitykyc():JSX.Element {
                             </div>
 
 						</div>
-						<span className="mt-3 clickadd"><AiFillExclamationCircle/>Please add the facilities</span>
+						<span className="mt-3 clickadd">Type the Facility name and start adding facilities under Organization</span>
 					</div>
 					<div className="mt-2 col-md-8 pb-4 m-auto">
                         <div className="row ">
-                            <div className="w-100 d-flex justify-content-center">
+                            <div className="w-100 d-flex justify-content-spacebetween">
                                 <button type="button" className="btn btn-back mx-2 back float-start"><AiFillCaretLeft />&emsp;Back</button>
-                                    <div className="w-30 m-auto">
+                                    {/* <div className="w-30 m-auto">
                                         <button type="button" className="btn btn-default  mx-4 remove">Remove</button>
                                         <button 
                                             type="button" 
                                             className="btn btn-default mx-4 saveq"
                                             >Save</button>
-                                    </div>
+                                    </div> */}
                                         <button type="submit" className="btn btn-back mx-2 next float-end">Next&emsp;<AiFillCaretRight />
                                         </button> 
                             </div>

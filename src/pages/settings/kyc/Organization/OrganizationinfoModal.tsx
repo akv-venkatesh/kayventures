@@ -48,7 +48,7 @@ class OrganizationinfoModal extends React.Component<{}, typeState> {
           <Modal.Header closeButton />
           <Modal.Body className="">
             <div className="header_discription mt-5">
-                <p className="topbox">Risk Report  
+                <p className="topbox">Credit Report  
                 </p>
             </div>
             <PerfectScrollbar

@@ -9,6 +9,9 @@ body{
 .organizationinfomodal .modal-lg{
     max-width:55vw;
 }
+.wdth .modal-lg{
+    max-width:45vw;
+}
 .organizationinfomodal  .modal-content {
       /* background: linear-gradient(
           135.37deg,
@@ -51,7 +54,7 @@ body{
 .organizationinfomodal  .modal-body {
       /* text-align: center; */
       /* justify-content: center; */
-      padding: 0px 40px 0 60px;
+      padding: 0px 40px 0 90px;
 }
     
 .organizationinfomodal  .modal-body .header_discription  {
@@ -120,18 +123,40 @@ body{
 .organisyn ul{
     list-style: none;
     padding: 0;
+    font-size: 16px;
 }
 .organisyn ul li{
     margin-bottom: 15px;
 }
 .organisyn .clrchnge{
     color: #1862d7;
-    margin-left: 20px;
 }
-.organisyn ul h5{
+.organisyn h5{
     margin-bottom: 20px;
     margin-top: 40px;
     font-weight: 600;
+    position: relative;
+    width: 70%;
+    border-bottom: 1px solid rgba(85, 97, 128, 0.5);
+    padding-bottom: 5px;}
+.organisyn h5 label{
+    right: 0;
+}
+.wdth30{
+    width: 30%;
+}
+.clrblur{
+    color: #1862d7;
+    font-weight: 500;
+}
+.organisyn h5 svg{
+    color: #1862d7;
+}
+.syshead label{
+    right: 32%;
+}
+h4{
+    font-size: 20px;
 }
 .organisyn .clrred{
     color: red;
@@ -141,6 +166,7 @@ body{
 }
 .organisyn ul.rating .clrchnge{
     margin-right: 20px;
+    margin-left: 20px;
 }
 .organisyn ul.rating .circle{
     border-radius: 50%;
@@ -154,4 +180,32 @@ body{
 }
 .organisyn ul.rating .clrblue{
     color: rgba(0, 98, 215, 1);
+}
+.organization {
+    color: rgba(0, 98, 215, 1);
+}
+.organization button{
+    background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #0062D7;
+background-blend-mode: soft-light, normal;
+border: 1px solid rgba(255, 255, 255, 0.4);
+box-sizing: border-box;
+box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
+border-radius: 40px;
+padding: 8px 50px;
+color: white;
+
+}
+.organbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.organization h5{
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 23px;
+}
+.organization p{
+    font-size: 15px;
+    font-weight: 400;
 }
