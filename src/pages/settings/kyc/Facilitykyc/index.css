@@ -3,6 +3,17 @@
     font-weight: 600;
     display: inline-block;
 }
+.facilitykyc .firstbox{
+    position: relative;
+}
+.facilitykyc .firstbox svg{
+    position: absolute;
+    right: -35px;
+    color: #1862d7;
+}
+.justify-content-spacebetween{
+    justify-content: space-between;
+}
 .facilitykyc .content{
     height: calc(100% - 30px);
     background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0 !important;
@@ -20,7 +31,7 @@
     height: 30px;
 }
 .facilitykyc .orgcon{
-    width: 30%;
+    width: 40%;
     margin:auto;
     display: flex;
     align-content: center;
@@ -33,7 +44,7 @@
     background-blend-mode: soft-light, normal;
     box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
     border-radius: 25px;
-    width: 175px;
+    width: 140px;
     margin: auto;
     display: flex;
     flex-wrap: wrap;

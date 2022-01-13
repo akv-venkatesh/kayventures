@@ -12,17 +12,17 @@ import {
   Types,
   Home,
   ProConfigCapacity,
-  KYC, Organization, Organizationinfo, OrganizationinfoModal,OrganizationinfoModalSyn,Facilitykyc,
+  KYC, Organization, Organizationinfo, OrganizationinfoModal, OrganizationinfoModal1, OrganizationinfoModalSyn, Facilitykyc,
   Facility1, Facilityday, Facilitymodal, Productconfig,Facilityform,Facilityinfomodal,
   Pro_config,
   Machinery,
-  Machine,
-  Manpower,
   Esg,
   Settings,
   Dashboard,
   DashboardIndex,
-  Profile,
+
+  Operation,Profile,
+
 } from "./asyncpages";
 
 class Routers extends React.Component {
@@ -50,6 +50,7 @@ class Routers extends React.Component {
             <Route path="Organization" element={<Organization />} />
             <Route path="Organizationinfo" element={<Organizationinfo />} />
             <Route path="OrganizationinfoModal" element={<OrganizationinfoModal />} />
+            <Route path="OrganizationinfoModal1" element={<OrganizationinfoModal1 />} />
             <Route path="OrganizationinfoModalSyn" element={<OrganizationinfoModalSyn />} />
             <Route path="Facilitykyc" element={<Facilitykyc />} />
             <Route path="Facility1" element={<Facility1 />} />
@@ -58,9 +59,8 @@ class Routers extends React.Component {
             <Route path="Facilityform" element={<Facilityform />} />
             <Route path="Facilityinfomodal" element={<Facilityinfomodal />} />
             <Route path="machinery" element={<Machinery />} />
-            <Route path="machine" element={<Machine />} />
-            <Route path="manpower" element={<Manpower />} />
             <Route path="esg" element={<Esg />} />
+            <Route path="operation" element={<Operation />} />
           </Route>
           
           <Route path="dashboard" element={<DashboardIndex/>}>

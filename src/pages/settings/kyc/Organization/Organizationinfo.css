@@ -21,7 +21,7 @@ input::-webkit-input-placeholder{
     box-shadow: inset -3px -3px 10px #FAFBFF, inset 3px 3px 10px #A6ABBD;
     border-radius: 40px;
     outline: none;
-    color: #0067E5;
+    color: rgba(172, 170, 194, 1);
     font-size: 14px;
 }
 
@@ -41,15 +41,22 @@ input::-webkit-input-placeholder{
 .input-date{
     width: 100%;
     height: 40px;
-    padding: 5px 15px;
+    padding: 5px 30px;
     background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
     background-blend-mode: soft-light, normal;
     border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: inset -3px -3px 10px #FAFBFF, inset 3px 3px 10px #A6ABBD;
     border-radius: 40px;
     outline: none;
-    color: #0067E5;
+    color: rgba(172, 170, 194, 1);
     font-size: 14px;
+}
+.css-1ks0iez-control{
+    padding-left: 20px !important;
+}
+.legal-name::placeholder{
+    color: #0067E5;
+    font-weight: 500;
 }
 
 input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-calendar-picker-indicator   {
@@ -112,15 +119,20 @@ select::-ms-expand{
     font-weight: 400;
 }
 .box{
-    background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0 !important;
-    background-blend-mode: soft-light, normal !important;
-    border: 1px solid rgba(255, 255, 255, 0.4) !important;
-    box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd !important;
-    border-radius: 40px !important;
+    background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #EBECF0;
+    background-blend-mode: soft-light, normal;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-sizing: border-box;
+    box-shadow: inset -5px -5px 10px #FAFBFF, inset 5px 5px 10px #A6ABBD;
+    border-radius: 20px;
     height: calc(100% - 30px);
+    position: relative;
 }
 .box .scrollbar-container{
-    height: calc(100% - 30px);
+    height: calc(100% - 80px);
+}
+.add-button{
+    margin-bottom: 20px;
 }
 .custom-select select {
     display: block !important;
@@ -145,12 +157,22 @@ select::-ms-expand{
 .summarybtn{
     width: 125px;
     margin-right: 40px;
+    color: white;
     background: #CCCCCC;
+    opacity: .5;
     border: 1px solid rgba(255, 255, 255, 0.4);
     box-sizing: border-box;
     box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
     border-radius: 8px;
-    padding: 10px 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    position: fixed;
+    right: 6%;
+}
+.summarybtn svg{
+    margin-left: 3px;
+    font-size: 25px;
 }
 .justify-content-space-between{
     justify-content: space-between;
@@ -203,7 +225,13 @@ select{
 label svg{
     color: #0062D7;
     cursor: pointer;
+    font-size: 18px;
 }
+.add-button span{
+    font-size: 13px;
+    color: #1862d7;
+    font-weight: 500;
+} 
 label.edit , .calender ,.attach{
     margin-top: 8px;
     margin-left: 10px;
@@ -258,5 +286,51 @@ ul.rating li{
 .facility1 .vector{
     width: 12px;
 }
+.btn-default {
+    background: #FFFFFF;
+    box-shadow: -4px -4px 16px 2px rgb(255 255 255 / 79%), 4px 4px 16px #b8cad8;
+    border-radius: 8px;
+    color: rgba(65, 74, 103, 1);
+    font-size: 13px;
+    padding: 6px 25px;
+}
+.remove {
+    position: relative;
+}
+.remove:after {
+    content: " ";
+    position: absolute;
+    background: rgba(0, 0, 0, 0.2);
+    height: 38px;
+    width: 2px;
+    top: 0px;
+    right: -28px;}
 
+.organization .btn-back {
+        width: unset !important;
+        padding: 0px 14px;
+        background: #CCCCCC;
+        box-shadow: -4px -4px 16px 2px rgb(255 255 255 / 79%), 4px 4px 16px #b8cad8;
+        border-radius: 8px;
+        color: #fff;
+        font-size: 14px;
+}
+.organizationinfo .mt-30{
+    margin-top: 30px;
+}
+.organization .fixedbtn{
+        position: fixed;
+        bottom: 60px;
+        background: #edeef1;
+        width: 85%;
+        padding: 0px 27px;
+        margin: 0 13px;
+        z-index: 999;
+        background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #EBECF0;
+        background-blend-mode: soft-light, normal;
+}
+.nextbtn svg{
+    font-size: 28px;
+    margin-right: -10px;
+}
 

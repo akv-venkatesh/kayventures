@@ -1,0 +1,277 @@
+/* first screen */
+
+.operation-right-panel {
+  width: 300px;
+}
+.box-field-area {
+  margin-top: 10px;
+  width: 100%;
+  height: calc(100vh - 180px);
+  background: #ebecf0;
+  background-blend-mode: soft-light, normal;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-sizing: border-box;
+  box-shadow: inset -5px -5px 10px #fafbff, inset 5px 5px 10px #a6abbd;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.operation_area {
+  margin: 0px 40px;
+  padding-left: 30px;
+  height: 100%;
+  overflow: auto;
+  flex-wrap: wrap;
+}
+
+.operation-area-height-body {
+  height: calc(100% - 115px);
+}
+.operation-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.operation_area h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 33px;
+  display: flex;
+
+  align-items: center;
+  text-align: center;
+
+  color: rgba(172, 170, 194, 0.8);
+}
+.operation_area .operation_area_title h1 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 23px;
+  line-height: 35px;
+  color: #566180;
+  margin: 10px 0px 20px 0px ;
+}
+.productconfigutation_btn {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 27px;
+  padding: 10px 20px;
+  color: #0062d7;
+}
+.swmmery-btn {
+  background: #0062d7;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-sizing: border-box;
+  box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+  border-radius: 8px;
+  width: 116px;
+  height: 41px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #ffffff;
+  position: relative;
+}
+
+.swmmery-btn-disable {
+  background: #cccccc;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-sizing: border-box;
+  box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+  border-radius: 8px;
+  width: 116px;
+  height: 41px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #ffffff;
+  position: relative;
+}
+.btn-arrow-right {
+  position: absolute;
+  right: 2px;
+  font-size: 24px;
+  color: white;
+}
+.operation-right-panel-title {
+  padding: 10px 0px 0px 0px;
+}
+.operation-right-panel-title p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 37px;
+  text-align: left;
+  /* identical to box height */
+
+  color: #566180;
+}
+
+/* check out */
+.category > div label {
+  border-bottom: 1px solid #b8cad8;
+}
+.category > div label span {
+  font-size: 16px;
+  font-weight: 400;
+  width: 160px;
+}
+.category > div label span.checkmark {
+  display: block;
+  position: relative;
+}
+.category > div label span.checkmark:before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.category > div input:checked ~ label span.checkmark:after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='none' stroke='%230068E5' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3E%3C/svg%3E");
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-repeat: no-repeat;
+  position: absolute;
+}
+.cat-img-bg{
+  background-color: floralwhite;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+.accordion .accordion-item {
+  background-color: transparent;
+  border: none;
+}
+.accordion .accordion-item button.complete.accordion-button {
+  background-color: #0068e5;
+  color: white;
+}
+.accordion .accordion-item button.complete:after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+.accordion .accordion-item button.complete:not(.collapsed):after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+.accordion .accordion-item button.accordion-button {
+  background: rgba(184, 202, 216, 0.15);
+  padding: 10px;
+  color: #566180;
+  box-shadow: none;
+}
+.accordion .accordion-item button:after {
+  background-image: none;
+}
+.accordion .accordion-item button:not(.collapsed):after {
+  background-image: none;
+}
+.accordion .accordion-item .accordion-body {
+  padding: 0px;
+}
+.accordion .accordion-item .accordion-body ul.sub-cat {
+  padding-left: 12px;
+}
+.accordion .accordion-item .accordion-body ul.sub-cat li {
+  list-style-type: none;
+  padding: 5px 10px;
+
+    border-bottom: 1px solid #B8CAD8;
+
+}
+.accordion .active {
+  color: #fff;
+  background: #0068e5;
+}
+
+.sub-categories{
+  height: calc(100% - 140px);
+}
+
+
+ .btn-back, .buttons .btn-next, .buttons .btn-summary {
+  background-color: #0068e5;
+  padding: 0px 10px;
+  color: white;
+  border-radius: 6px;
+  box-shadow: none;
+}
+ .btn-back:disabled, .buttons .btn-next:disabled, .buttons .btn-summary:disabled {
+  background-color: silver;
+}
+ .btn-default {
+  box-shadow: none;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 6px;
+}
+ .btn-default.remove {
+  background: #FFFFFF;
+  box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.79), 4px 4px 16px #B8CAD8;
+  border-radius: 8px;
+  color: #414A67;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+}
+ .btn-default.save {
+  background-color: #3cd070;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  /* identical to box height */
+  
+  
+  
+}
+ .btn-default:disabled {
+  background: #FFFFFF;
+  box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.79), 4px 4px 16px #B8CAD8;
+  border-radius: 8px;
+font-family: 'Poppins';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  /* identical to box height */
+   color: #414A67;
+}
