@@ -16,14 +16,12 @@ import {
   Facility1, Facilityday, Facilitymodal, Productconfig,Facilityform,Facilityinfomodal,
   Pro_config,
   Machinery,
-  Machine,
-  Manpower,
   Esg,
   Settings,
   Dashboard,
   DashboardIndex,
 
-  Machinery1,Operation,Profile,
+  Operation,Profile,
 
 } from "./asyncpages";
 
@@ -61,9 +59,6 @@ class Routers extends React.Component {
             <Route path="Facilityform" element={<Facilityform />} />
             <Route path="Facilityinfomodal" element={<Facilityinfomodal />} />
             <Route path="machinery" element={<Machinery />} />
-            <Route path="machinery1" element={<Machinery1 />} />
-            <Route path="machine" element={<Machine />} />
-            <Route path="manpower" element={<Manpower />} />
             <Route path="esg" element={<Esg />} />
             <Route path="operation" element={<Operation />} />
           </Route>
