@@ -6,7 +6,7 @@ import { GiSewingMachine } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import {
     Backbutton,
-    Nextbutton,DisableBackbutton,
+    Nextbutton, DisableBackbutton,
     DisableNextbutton,
 } from "../../../../component/buttons/button";
 import "./operations.css";
@@ -32,7 +32,7 @@ import Vector4 from "../../../../assets/icons/arrows/chevron-right.svg"
 
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
-import Machine from '../Machine/Machine';
+
 
 
 interface initialState {
@@ -71,7 +71,7 @@ export class Operations extends Component<{}, initialState> {
 
     };
     redirectBack = () => {
-        this.setState({ nextPageEnable: false,visibility :false});
+        this.setState({ nextPageEnable: false, visibility: false });
 
     };
     productAdd = () => {
@@ -149,7 +149,7 @@ export class Operations extends Component<{}, initialState> {
                                     {this.state.visibility ? (
                                         <button className='swmmery-btn' >Summary <span><RiArrowRightSLine className='btn-arrow-right' /></span></button>
                                     ) : (
-                                        this.state.nextPageEnable ? <button className='swmmery-btn-disable' >Summary <span><RiArrowRightSLine className='btn-arrow-right' /></span></button> : <div className='swmmery-btn-disable' style={{visibility:"hidden"}}> </div>
+                                        this.state.nextPageEnable ? <button className='swmmery-btn-disable' >Summary <span><RiArrowRightSLine className='btn-arrow-right' /></span></button> : <div className='swmmery-btn-disable' style={{ visibility: "hidden" }}> </div>
                                     )}
                                 </div>
                             </div>
@@ -236,7 +236,7 @@ export class Operations extends Component<{}, initialState> {
                                 </div>
                             </PerfectScrollbar>
                             <div className="productconfigutation_btn operation_btn">
-                                <div>{this.state.visibility ? <Backbutton onClick={this.redirectBack} /> :this.state.nextPageEnable?<DisableBackbutton/>: ''}</div>
+                                <div>{this.state.visibility ? <Backbutton onClick={this.redirectBack} /> : this.state.nextPageEnable ? <DisableBackbutton /> : ''}</div>
                                 <div>{this.state.nextPageEnable ? <div> <button
                                     type="button"
                                     className="btn btn-default mx-4 remove"
