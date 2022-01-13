@@ -6,7 +6,7 @@ import Vector3 from "../../../../assets/icons/various/Vector3.svg"
 import MachineIcon from "../../../../assets/icons/various/MachineIcon.svg"
 import BottomIcon from "../../../../assets/icons/various/BottomIcon.svg"
 import Vector5 from "../../../../assets/icons/various/Vector5.svg"
-
+import { ImCross } from "react-icons/im";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { RiArrowDropRightLine, RiInformationFill } from 'react-icons/ri';
 import "react-perfect-scrollbar/dist/css/styles.css";
@@ -79,15 +79,18 @@ class Facility1 extends Component<{}, typeState> {
                     <div className="facility1 d-flex">
                         <img src={Vector3} alt="" />
                         <p>Facility 1</p>
-                        <p>|</p>
+                        {/* <p>|</p>
                         <img src={Vector3} alt="" />
                         <p>Facility 2</p>
                         <p>|</p>
                         <img src={Vector3} alt="" />
                         <p>Facility 3</p>
-                        <p>|</p>
+                        <p>|</p> */}
                     </div>
-                    <div className="box py-5 mt-2">
+                    <div className="crossicon">
+                        <ImCross className="cross" />
+                    </div>
+                    <div className="box pt-3 pb-5 mt-2">
                         <div className="scroll pb-3">
                             <PerfectScrollbar>
                                 <div className="d-flex flex-wrap pe-4 facilityform">
@@ -124,7 +127,7 @@ class Facility1 extends Component<{}, typeState> {
                                                     <div className="d-flex align-items-center justify-content-space-between">
                                                         <h5 className="mt-4">Location</h5>
                                                     </div>
-                                                    <div className="row mt-5 d-flex ">
+                                                    <div className="row mt-4 d-flex ">
                                                         <h3 className="col-md-3">Address<span className='required'> </span></h3>
                                                         <div className="col-md-5">
                                                             <Field type="text" id="" className="input-box" name="line1" aria-label="line1" placeholder="Line 1" />
@@ -134,7 +137,7 @@ class Facility1 extends Component<{}, typeState> {
                                                             <Field type="text" id="" className="input-box add" name="pincode" aria-label="pincode" placeholder="Pincode" />
                                                         </div>
                                                     </div>
-                                                    <div className="row mt-5 d-flex ">
+                                                    <div className="row mt-3 d-flex ">
                                                         <h3 className="col-md-3">Location Validity (If any)<span className='required'></span></h3>
                                                         <div className="col-md-5">
                                                         <form data-testid="form-line-type">
@@ -144,7 +147,7 @@ class Facility1 extends Component<{}, typeState> {
                                                             position='top' 
                                                             name="linetype"
                                                             inputId="line-type"
-                                                            placeholder='Line type'
+                                                            placeholder='Select from options'
                                                             onChange={this.lineTypeChange}
                                                             isOptionDisabled={(option:any) => option.disabled}
                                                             />
@@ -152,10 +155,10 @@ class Facility1 extends Component<{}, typeState> {
                                                         <Field type="text" id="" className="input-box mt-3" name="mentionnumber" aria-label="mentionnumber" placeholder="Mention Number" />
                                                         </div>
                                                     </div>
-                                                    <div className="row mt-5 d-flex ">
-                                                        <h3 className="col-md-3">Location Map<span className='required'> </span></h3>
+                                                    <div className="row mt-3 d-flex ">
+                                                        <h3 className="col-md-3">Reverse Gecoding<span className='required'> </span></h3>
                                                         <div className="col-md-5">
-                                                            <Field type="text" id="" className="input-box" name="locationmap" aria-label="locationmap" placeholder="Paste URL link here" />
+                                                            <Field type="text" id="" className="input-box" name="locationmap" aria-label="locationmap" placeholder="Enter Latitude" />
                                                             <div className="plusIcon d-flex">
                                                                 <img src={Vector5} className="image_one" alt="" />
                                                                 <p>  Add in case of multiple locations</p>
@@ -165,14 +168,14 @@ class Facility1 extends Component<{}, typeState> {
                                                     <div className="d-flex align-items-center justify-content-space-between">
                                                         <h5 className="mt-4">Contact</h5>
                                                     </div>
-                                                    <div className="row mt-5 d-flex ">
-                                                        <h3 className="col-md-3">Service<span className='required'> </span></h3>
+                                                    <div className="row mt-3 d-flex ">
+                                                        <h3 className="col-md-3">Phone No. <span className='required'> </span></h3>
                                                         <div className="col-md-5">
                                                             <Field type="number" id="" className="input-box" name="service" aria-label="service" placeholder="+91 XXXXXXXXX" />
                                                         </div>
                                                     </div> 
-                                                    <div className="row mt-5 d-flex ">
-                                                        <h3 className="col-md-3">Customer care administration<span className='required'> </span></h3>
+                                                    <div className="row mt-3 d-flex ">
+                                                        <h3 className="col-md-3">Email -Id<span className='required'> </span></h3>
                                                         <div className="col-md-5">
                                                             <Field type="text" id="" className="input-box" name="customercareadministration" aria-label="customercareadministration" placeholder="xyz@gmail.com or company Id" />
                                                             <div className="plusIcon d-flex">
@@ -182,19 +185,31 @@ class Facility1 extends Component<{}, typeState> {
                                                         </div>
                                                     </div>
                                                     <div className="d-flex align-items-center justify-content-space-between">
-                                                        <h5 className="mt-4">Location Map</h5>
+                                                        <h5 className="mt-4">Service Contact</h5>
                                                     </div>
-                                                    <div className="row mt-5 d-flex ">
-                                                        <h3 className="col-md-3">Reverse Gecoding<span className='required'> </span></h3>
+                                                    <div className="row mt-3 d-flex ">
+                                                        <h3 className="col-md-3">Type of service<span className='required'> </span></h3>
                                                         <div className="col-md-5">
-                                                            <Field type="text" id="" className="input-box" name="reversegecoding" aria-label="reversegecoding" placeholder="Paste the link here" />
+                                                            <Field type="number" id="" className="input-box" name="service" aria-label="service" placeholder="Customer service, etc" />
+                                                        </div>
+                                                    </div> 
+                                                    <div className="row mt-3 d-flex ">
+                                                        <h3 className="col-md-3">Service<span className='required'> </span></h3>
+                                                        <div className="col-md-5">
+                                                            <Field type="number" id="" className="input-box" name="service" aria-label="service" placeholder="+91 XXXXXXXXX" />
+                                                        </div>
+                                                    </div> 
+                                                    <div className="row mt-3 d-flex ">
+                                                        <h3 className="col-md-3">Customer care administration<span className='required'> </span></h3>
+                                                        <div className="col-md-5">
+                                                            <Field type="text" id="" className="input-box" name="reversegecoding" aria-label="reversegecoding" placeholder="xyz@gmail.com or company Id" />
                                                             <div className="plusIcon d-flex">
                                                                 <img src={Vector5} className="image_one" alt="" />
-                                                                <p>  Add in case of multiple locations</p>
+                                                                <p>  Add in case of multiple service contacts</p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="mt-5 col-md-8 pb-4 m-auto">
+                                                    <div className="mt-5 col-md-9 pb-4 m-auto bottombtn">
                                                         <div className="row ">
                                                             <div className="w-100 d-flex justify-content-center">
                                                                 <button type="button" className="btn btn-back mx-2 back float-start">

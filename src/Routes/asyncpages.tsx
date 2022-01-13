@@ -22,6 +22,7 @@ export const Login = React.lazy(() => import('../pages/login'));
         export const Organization = React.lazy(() => import('../pages/settings/kyc/Organization'));
         export const Organizationinfo = React.lazy(() => import('../pages/settings/kyc/Organization/Organizationinfo'));
         export const OrganizationinfoModal = React.lazy(() => import('../pages/settings/kyc/Organization/OrganizationinfoModal'));
+        export const OrganizationinfoModal1 = React.lazy(() => import('../pages/settings/kyc/Organization/OrganizationinfoModal1'));
         export const OrganizationinfoModalSyn = React.lazy(() => import('../pages/settings/kyc/Organization/OrganizationinfoModalSyn'));
         export const Facilitykyc = React.lazy(() => import('../pages/settings/kyc/Facilitykyc'));
         export const Facility1 = React.lazy(() => import('../pages/settings/kyc/Facilitykyc/Facility1'));
@@ -32,11 +33,11 @@ export const Login = React.lazy(() => import('../pages/login'));
         // export const Settings = React.lazy(() => import('../pages/settings/index'));
         export const Pro_config = React.lazy(() => import('../pages/settings/ProductConfiguration'));
         export const Machinery = React.lazy(() => import('../pages/settings/kyc/Machinery/Machinery'));
-        export const Machinery1 = React.lazy(() => import('../pages/settings/kyc/Machinery/machinery1'));
+        // export const Machinery1 = React.lazy(() => import('../pages/settings/kyc/Machinery/machinery1'));
         export const Operation = React.lazy(() => import('../pages/settings/kyc/Operations/operation'));
 
-        export const Machine = React.lazy(() => import('../pages/settings/kyc/Machine/Machine'));
-        export const Manpower = React.lazy(() => import('../pages/settings/kyc/Manpower/Manpower'));
+        // export const Machine = React.lazy(() => import('../pages/settings/kyc/Machine/Machine'));
+        // export const Manpower = React.lazy(() => import('../pages/settings/kyc/Manpower/Manpower'));
         export const Esg = React.lazy(() => import('../pages/settings/kyc/Esg/Esg'));
 
     // Settings files flow new

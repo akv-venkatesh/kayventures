@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import {
     Backbutton,
     Nextbutton, DisableBackbutton,
-    DisableNextbutton
+DisableNextbutton,
+
 } from "../../../../component/buttons/button";
 import "./operations.css";
 import vest from "../../../../assets/images/vest.svg";
@@ -15,6 +16,7 @@ import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { RiArrowRightSLine } from "react-icons/ri";
 import Stepper from '../../../../component/stepper/stepper'
+
 
 
 
@@ -241,6 +243,7 @@ export class Operations extends Component<{}, initialState> {
                             </PerfectScrollbar>
                             <div className="productconfigutation_btn operation_btn">
                                 <div>{this.state.visibility ? <Backbutton onClick={this.redirectBack} /> : this.state.nextPageEnable ? <Backbutton onClick={this.redirectBack} /> : ''}</div>
+
                                 <div>{this.state.nextPageEnable ? <div> <button
                                     type="button"
                                     className=" btn-default mx-4 remove"

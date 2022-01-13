@@ -209,6 +209,7 @@ body {
         }
         .icons {
           transition: 0.5s;
+          position: relative;
           &:hover {
             box-shadow: 3px 3px 10px 0px #00000066, -3px -3px 4px 0px #0055a4;
             border-radius: 10px;
@@ -221,6 +222,53 @@ body {
             display: inline-block;
             color: #fff;
             cursor: pointer;
+          }
+        }
+      }
+      .settings{
+        .icons {
+          transition: 0.5s;
+          position: relative;
+          .navg-icons {
+            font-size: 30px;
+            display: inline-block;
+            color: #fff;
+          }
+          .setting-process{
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            width: 130px;
+            z-index: 99999;
+            background-color: #163878;
+            padding: 10px;
+            border-radius: 10px;
+            ul{
+              li{
+                padding: 5px 0px;
+                list-style-type: none;
+                display: flex;
+                align-items: center;
+                color: white;
+                p{
+                  margin-left: 10px;
+                  margin-bottom: 0px;
+                }
+              }
+            }
+          }
+          &:hover {
+            box-shadow: 3px 3px 10px 0px #00000066, -3px -3px 4px 0px #0055a4;
+            border-radius: 10px;
+            transition: 0.5s;
+            width: 63px;
+            background-color: #003778;
+          }
+          &:hover{
+            .setting-process{
+              display: block;
+            }
           }
         }
       }
@@ -873,6 +921,10 @@ body {
     .sec1{
       flex: 0 0 300px;
       max-width: 300px;
+      &>div{
+        height: 100%;
+        overflow: hidden;
+      }
       .text{
         background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
         background-blend-mode: soft-light, normal;
@@ -937,6 +989,91 @@ body {
       box-shadow: inset 5px 5px 3px #A6ABBD, inset -5px -5px 3px #FAFBFF;
       border-radius: 20px;
       padding: 10px;
+      input{
+        &.form-control{
+          background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #EBECF0;
+          background-blend-mode: soft-light, normal;
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          box-shadow: inset -3px -3px 10px #FAFBFF, inset 3px 3px 10px #A6ABBD;
+          border-radius: 40px;
+        }
+      }
+      .add-facility-btn{
+        width: 200px;
+        cursor: pointer;
+        svg{
+          width: 30px;
+          height: 30px;
+          padding: 5px;
+          border-radius: 50%;
+          color: #0062d7;
+          background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
+          background-blend-mode: soft-light, normal;
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
+        }
+      }
+      .data{
+        height: calc(100% - 38px);
+        .ReactTable{
+          border: none;
+          .rt-table{
+            .rt-thead{
+              &.-header{
+                box-shadow: none;
+              }
+              .rt-tr{
+                padding: 10px;
+                text-align: left;
+                color: black;
+                font-size: 16px;
+                font-weight: 500;
+              }
+            }
+            .rt-tbody{
+              .rt-tr-group{
+                .rt-tr{
+                  &.-odd{
+                    background-color: white;
+                    padding: 10px;
+                    border-radius: 10px;
+                  }
+                  &.-even{
+                    padding: 10px;
+                    border-radius: 10px;
+                  }
+                  .rt-td{
+                    .completed{
+                      color: #3CD070;
+                    }
+                    .pending{
+                      color: #FF0808;
+                    }
+                    .view{
+                      color: #0062D7;
+                    }
+                    .dropdown{
+                      button{
+                        &#dropdown-basic{
+                          &:after{
+                            content: none;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .pagination-bottom{
+            .-pagination{
+              border: none;
+              box-shadow: none;
+            }
+          }
+        }
+      }
     }
   }
 
