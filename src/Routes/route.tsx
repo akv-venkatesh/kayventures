@@ -1,5 +1,6 @@
 import React, { FC } from "react";
-import { Route, Routes } from "react-router-dom";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { createMemoryHistory } from "history";
 import {
   JoinNow,
   CreateAccount,
@@ -12,21 +13,20 @@ import {
   Types,
   Home,
   ProConfigCapacity,
-  KYC, Organization, Organizationinfo, OrganizationinfoModal,OrganizationinfoModalSyn,Facilitykyc,
-  Facility1, Facilityday, Facilitymodal, Productconfig,Facilityform,Facilityinfomodal,
+  KYC, Organization, Organizationinfo, OrganizationinfoModal, OrganizationinfoModalSyn, Facilitykyc,
+  Facility1, Facilityday, Facilitymodal, Productconfig, Facilityform, Facilityinfomodal,
   Pro_config,
-  Machinery,
-  Machine,
-  Manpower,
+  // Machinery,
   Esg,
   Settings,
   Dashboard,
   DashboardIndex,
-
-  Machinery1,Operation,Profile,
+  MachineryInitialPage,
+  Operation,
+  Profile,
 
 } from "./asyncpages";
-
+const history = createMemoryHistory();
 class Routers extends React.Component {
   render(): JSX.Element {
     return (
@@ -59,17 +59,17 @@ class Routers extends React.Component {
             <Route path="Facilitymodal" element={<Facilitymodal />} />
             <Route path="Facilityform" element={<Facilityform />} />
             <Route path="Facilityinfomodal" element={<Facilityinfomodal />} />
-            <Route path="machinery" element={<Machinery />} />
-            <Route path="machinery1" element={<Machinery1 />} />
-            <Route path="machine" element={<Machine />} />
-            <Route path="manpower" element={<Manpower />} />
+
+            {/* <Route path="machinery" element={<Machinery />} /> */}
+            <Route path="machinery" element={<MachineryInitialPage />} />
+
             <Route path="esg" element={<Esg />} />
             <Route path="operation" element={<Operation />} />
           </Route>
-          
-          <Route path="dashboard" element={<DashboardIndex/>}>
-            <Route index element={<Dashboard/>} />
-            <Route path="profile" element={<Profile/>}/>
+
+          <Route path="dashboard" element={<DashboardIndex />}>
+            <Route index element={<Dashboard />} />
+            <Route path="profile" element={<Profile />} />
           </Route>
         </Routes>
       </div>
