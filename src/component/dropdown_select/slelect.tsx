@@ -42,6 +42,7 @@ class slelect extends Component<typeProps,typeState> {
 
   render():JSX.Element {
     const isOpen = this.state.isOpen;
+    console.log(this.props.value)
 
     var PadandMar:any;
     if(this.props.position == 'bottom'){
@@ -142,7 +143,12 @@ class slelect extends Component<typeProps,typeState> {
           onMenuClose={this.onMenuClose} 
           styles={customStyles} 
           menuPlacement="auto"  
-          onChange={this.handleChange} 
+          onChange={this.handleChange}
+          {...(this.props.value ? 
+            { value: this.props.options.filter((option:any) => option.label === this.props.value)}: 
+            {}
+            )
+          }
         />
       </div>
     );

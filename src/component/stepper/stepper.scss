@@ -1,0 +1,62 @@
+$bg-color: #E5E5E5;
+$color: #566180;
+$hightlight-color: #0062D7;
+$btn-linear1 : rgba(0, 0, 0, 0.4) 4.29%;
+$btn-linear2 : rgba(255, 255, 255, 0.4) 95.6%;
+$btn-linear-deg : 135.37deg;
+$font-family: 'poppins', sans-serif;
+$backdrop-color: rgba(184, 202, 216, 0.7);
+
+.RFS-StepperContainer{
+    .RFS-StepContainer{
+        .RFS-StepMain{
+            .RFS-StepButton{
+                background: #EFF0F4;
+                box-shadow: -4px -4px 16px 2px #FFFFFF, 2px 2px 13px #85A9C4;
+                border-radius: 34px;
+                width:16px;
+                height: 16px;
+                z-index: 101;
+                &.completed{
+                    background: #0062D7;
+                }
+                &.active{
+                    background: #0062D7;
+                }
+                .RFS-StepButtonContent{
+                    display: none;
+                }
+            }
+            .RFS-LabelContainer{
+                margin-top: -50px;
+                .RFS-Label{
+                    margin-top:0px;
+                    font-family: $font-family;
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 15px;
+                    line-height: 18px;
+                    color: #0062D7;
+                }
+            }
+        }
+        .RFS-ConnectorContainer{
+            top: 7px;
+            left: calc((-50% + 10px) - 8px);
+            right: calc((50% + 10px) - 8px);
+            .RFS-Connector{
+                z-index: 100;
+                border-color: #B8CAD8;
+                border-radius: 10px;
+                &.completed{
+                    border-color: #0062D7;
+                }   
+                &.active{
+                    border-color: #0062D7;
+                }
+              
+            }
+        }
+    }
+}
+
