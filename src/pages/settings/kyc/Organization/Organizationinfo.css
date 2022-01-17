@@ -333,4 +333,9 @@ ul.rating li{
     font-size: 28px;
     margin-right: -10px;
 }
+.text-danger{
+    font-size: 12px;
+    margin: 10px;
+    font-weight: 500;
+}
 

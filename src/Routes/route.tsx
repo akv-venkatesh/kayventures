@@ -13,15 +13,15 @@ import {
   Home,
   ProConfigCapacity,
   KYC, Organization, Organizationinfo, OrganizationinfoModal, OrganizationinfoModal1, OrganizationinfoModalSyn, Facilitykyc,
-  Facility1, Facilityday, Facilitymodal, Productconfig,Facilityform,Facilityinfomodal,
+  Facility1, Facilityday, Facilitymodal, Productconfig, Facilityform, Facilityinfomodal,
   Pro_config,
-  Machinery,
+  MachineryInitialPage,
   Esg,
   Settings,
   Dashboard,
   DashboardIndex,
 
-  Operation,Profile,
+  Operation, Profile,
 
 } from "./asyncpages";
 
@@ -58,14 +58,14 @@ class Routers extends React.Component {
             <Route path="Facilitymodal" element={<Facilitymodal />} />
             <Route path="Facilityform" element={<Facilityform />} />
             <Route path="Facilityinfomodal" element={<Facilityinfomodal />} />
-            <Route path="machinery" element={<Machinery />} />
+            <Route path="machinery" element={<MachineryInitialPage />} />
             <Route path="esg" element={<Esg />} />
             <Route path="operation" element={<Operation />} />
           </Route>
-          
-          <Route path="dashboard" element={<DashboardIndex/>}>
-            <Route index element={<Dashboard/>} />
-            <Route path="profile" element={<Profile/>}/>
+
+          <Route path="dashboard" element={<DashboardIndex />}>
+            <Route index element={<Dashboard />} />
+            <Route path="profile" element={<Profile />} />
           </Route>
         </Routes>
       </div>
