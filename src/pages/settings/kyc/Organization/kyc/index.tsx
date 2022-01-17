@@ -475,7 +475,7 @@ class Organization extends Component<{}, typeState> {
 							<div className="box pt-3 mt-2">
 								<div className="scroll">
 									<PerfectScrollbar>
-										<div className="d-flex flex-wrap pe-4 facilityform">
+										<div className="d-flex flex-wrap pe-4 facilityform h-100">
 											<Container>
 												<Row>
 													<Formik
@@ -602,7 +602,7 @@ class Organization extends Component<{}, typeState> {
 										</div>
 									</PerfectScrollbar>
 								</div>
-								<div className="mt-2 col-md-9 pb-2 m-auto bottombtn">
+								<div className="mt-2 col-md-10 pb-2 m-auto bottombtn">
 									<div className="row ">
 										<div className="w-100 d-flex justify-content-center">
 											{/* <button type="button" className="btn btn-back mx-2 back float-start">
@@ -624,7 +624,7 @@ class Organization extends Component<{}, typeState> {
 							</div>
 						</div>
 					</div> :
-					<div className="content h-100">
+					<div className="content">
 						<PerfectScrollbar>
 							<div className='h-100 businesshour px-4 py-4'>
 								<div className="ps-lg-5">
@@ -957,11 +957,11 @@ class Organization extends Component<{}, typeState> {
 														</div>
 													</div>
 					
-														<div className="text-end">
+														{/* <div className="text-end">
 															<button type="submit" disabled={isSubmitting} className="mt-sm-4 mt-4 form-submit">
 																Submit
 															</button>
-														</div>
+														</div> */}
 													</form>
 												)
 											}
@@ -969,6 +969,19 @@ class Organization extends Component<{}, typeState> {
 								</div>
 							</div>
 						</PerfectScrollbar>
+								<div className="mt-3 col-md-12 pb-4 fixedbtn">
+															<div className="row">
+																<div className="w-100 d-flex justify-content-center">
+																	{/* <button title="backbutton" type="button" className="btn btn-back mx-2 back float-start"><AiFillCaretLeft />&emsp;Back</button> */}
+																	<div className="w-30 m-auto">
+																		<button title="removebutton" type="button" className="btn btn-default  mx-4 remove">Clear</button>
+																		<button title="savebutton" onClick={this.step2complete} type="button" className="btn btn-default mx-4 saveq">Save</button>
+																	</div>
+																	<button title="nextbutton" type="submit" className="btn btn-back mx-2 next float-end nextbtn">Next&emsp;<AiFillCaretRight />
+																	</button> 
+																</div>
+															</div>
+														</div> 
 					</div>
 				}
 				<Modal

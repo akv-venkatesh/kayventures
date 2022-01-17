@@ -18,6 +18,7 @@ import {
   DashboardIndex,
   OrgKYC,
   Operation, Profile,
+  Sections,
 
 } from "./asyncpages";
 
@@ -37,20 +38,13 @@ class Routers extends React.Component {
           <Route path='/home' element={<Home />} />
 
           <Route path='/settings' element={<Settings />} >
-            {/* <Route path="proconfig" element={<ProConfig />} /> */}
             {/* <Route path="Capacity" element={<ProConfigCapacity />} /> */}
-            {/* <Route path="productconfiguration" element={<Productconfig />} /> */}
-            {/* <Route path="Organizationinfo" element={<Organizationinfo />} /> */}
-            {/* <Route path="OrganizationinfoModal" element={<OrganizationinfoModal />} /> */}
-            {/* <Route path="OrganizationinfoModal1" element={<OrganizationinfoModal1 />} /> */}
-            {/* <Route path="OrganizationinfoModalSyn" element={<OrganizationinfoModalSyn />} /> */}
             {/* <Route path="Facilitykyc" element={<Facilitykyc />} /> */}
             {/* <Route path="Facility1" element={<Facility1 />} /> */}
             {/* <Route path="Facilityday" element={<Facilityday />} /> */}
             {/* <Route path="Facilitymodal" element={<Facilitymodal />} /> */}
             {/* <Route path="Facilityform" element={<Facilityform />} /> */}
             {/* <Route path="Facilityinfomodal" element={<Facilityinfomodal />} /> */}
-            {/* <Route path="machinery" element={<Machinery />} /> */}
             {/* <Route path="esg" element={<Esg />} /> */}
             {/* <Route path="operation" element={<Operation />} /> */}
 
@@ -74,6 +68,7 @@ class Routers extends React.Component {
                 <Route path="section" element={<Facilityform />} /> */}
               </Route>
             </Route>
+            <Route path='sections' element={<Sections />} />
           </Route>
 
         </Routes>

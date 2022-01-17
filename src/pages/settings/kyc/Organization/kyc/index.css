@@ -490,6 +490,10 @@
                 position: relative;
                 /* height: calc(100% - 70px); */
     }
+    .facilitykyc1 .box .scrollbar-container {
+        margin: 20px;
+        height: 100% !important;
+    }
     .facilitykyc1 .scroll{
         height: calc(100% - 90px);
     }

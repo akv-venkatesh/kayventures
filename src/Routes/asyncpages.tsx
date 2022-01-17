@@ -20,6 +20,7 @@ import React from 'react';
     export const Facilitymodal = React.lazy(() => import('../pages/settings/kyc/Facilitykyc/Facilitymodal'));
     export const Facilityform = React.lazy(() => import('../pages/settings/kyc/Facilityinfo/Facilityform'));
     export const Facilityinfomodal = React.lazy(() => import('../pages/settings/kyc/Facilityinfo/Facilityinfomodal'));
+    export const Sections = React.lazy(() => import('../pages/settings/kyc/Section/Section'));
     // export const Pro_config = React.lazy(() => import('../pages/settings/ProductConfiguration'));
     // export const Esg = React.lazy(() => import('../pages/settings/kyc/Esg/Esg'));
 
@@ -33,7 +34,7 @@ import React from 'react';
             export const Productselect = React.lazy(() => import('../pages/settings/kyc/Organization/product-select/select_product'));
             // export const ProConfigCapacity = React.lazy(() => import('../pages/settings/ProductConfiguration/capacity'));
         //machinery
-            export const Machinery = React.lazy(() => import('../pages/settings/kyc/Machinery/MachineryInitialPage'));
+            export const Machinery = React.lazy(() => import('../pages/settings/kyc/Organization/machinery/MachineryInitialPage'));
         //operation
             export const Operation = React.lazy(() => import('../pages/settings/kyc/Operations/operation'));
 
