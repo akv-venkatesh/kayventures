@@ -2,14 +2,14 @@ import React, { Component, ChangeEvent } from 'react'
 import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap';
 import "./machinery.css";
 
-import Vector3 from "../../../../assets/icons/various/Vector3.svg"
-import MachineIcon from "../../../../assets/icons/various/MachineIcon.svg"
+import Vector3 from "../../../../../assets/icons/various/Vector3.svg"
+import MachineIcon from "../../../../../assets/icons/various/MachineIcon.svg"
 
 
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { RiArrowDropRightLine, RiInformationFill } from 'react-icons/ri';
 import "react-perfect-scrollbar/dist/css/styles.css";
-import Select from '../../../../component/dropdown_select/slelect';
+import Select from '../../../../../component/dropdown_select/slelect';
 import { AiFillCaretRight, AiFillExclamationCircle, AiOutlinePlus } from 'react-icons/ai';
 
 
