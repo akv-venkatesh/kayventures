@@ -11,6 +11,7 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import { Button } from 'react-bootstrap';
 import Machinery from './Machinery';
 import stepper from '../../../../component/stepper/stepper';
+import { AiFillCaretRight } from 'react-icons/ai';
 
 interface initialState {
     visibility: boolean;
@@ -104,7 +105,7 @@ export class MachineryInitialPage extends Component<typeProps, initialState> {
                                                                 name="Weaving"
                                                                 value="Spinning"
                                                                 onChange={this.handleChange}
-                                                                data-testid="inputcheck2"
+                                                                data-testid="inputcheck"
                                                             />
                                                             <label htmlFor="Spinning"></label>
                                                         </div>
@@ -131,7 +132,7 @@ export class MachineryInitialPage extends Component<typeProps, initialState> {
                                                                 name="Weaving"
                                                                 value="Weaving"
                                                                 onChange={this.handleChange}
-                                                                data-testid="inputcheck3"
+                                                                data-testid="inputcheck"
                                                             />
                                                             <label htmlFor="Weaving"></label>
                                                         </div>
@@ -158,7 +159,7 @@ export class MachineryInitialPage extends Component<typeProps, initialState> {
                                                                 name="Weaving"
                                                                 value="Knitting"
                                                                 onChange={this.handleChange}
-                                                                data-testid="inputcheck4"
+                                                                data-testid="inputcheck"
                                                             />
                                                             <label htmlFor="Knitting"></label>
                                                         </div>
@@ -175,15 +176,21 @@ export class MachineryInitialPage extends Component<typeProps, initialState> {
                                 <div className="productconfigutation_button">
                                     <div></div>
                                     {/* <div>There are no machines defined under Spinning, Weaving, Knitting</div> */}
-                                    <div className="next_btn" data-testid="nextbuttonelement"  >
+                                    <div className="next_btn"  >
 
-                                        {this.state.visibility ? (
-                                            <div onClick={this.changeMachineryStart}>
-                                                <Nextbutton />
-                                            </div>
-                                        ) : (
-                                            <DisableNextbutton />
-                                        )}
+
+
+                                        <div className="d-flex">
+                                            <button
+                                                type="submit"
+                                                data-testid="nextbuttonelement"
+                                                className="btn btn-next next"
+                                                disabled={!this.state.visibility}
+                                                onClick={this.changeMachineryStart}
+                                            >Next&emsp;<AiFillCaretRight />
+                                            </button>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
