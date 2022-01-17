@@ -1,17 +1,17 @@
 import React, { ChangeEvent, Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./index.scss";
-import Tshert from "../../../assets/icons/tshert.svg";
-import blackTshert from "../../../assets/icons/blackTshert.svg";
+import "./category.scss";
+import Tshert from "../../../../../assets/icons/tshert.svg";
+import blackTshert from "../../../../../assets/icons/blackTshert.svg";
 import { RiInformationFill } from "react-icons/ri";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { Link } from "react-router-dom";
 import { Field } from "formik";
-import Stepper from '../../../component/stepper/stepper'
+import Stepper from '../../../../../component/stepper/stepper'
 import {
   Nextbutton,
   DisableNextbutton,
-} from "../../../component/buttons/button";
+} from "../../../../../component/buttons/button";
 
 interface typeState {
  
@@ -29,12 +29,13 @@ class ProductConfiguration extends Component<typeProps, typeState> {
     const steps = [{ label: 'KYC', id: 0 }, { label: 'Product Selection', id: 1 }, { label: 'Machinery', id: 2 }, { label: 'Operations', id: 3 }]
     const {handleChange,nextPageChange,state} = this.props;
     return (
-      <> <div>
+      <> 
+      <div className="h-100">
         <div className='my-1  '>
           <Stepper steps={steps} activeStep={1} />
         </div >
         <div className="productconfiguration_body">
-          <div className="productconfiguration_container">
+          <div className="productconfiguration_container h-100">
             <div className="productconfigutation_head">
               <h1>Choose your product category</h1>
             </div>
@@ -42,8 +43,6 @@ class ProductConfiguration extends Component<typeProps, typeState> {
             <div className="productconfigutation_productlist">
 
               <PerfectScrollbar>
-
-                {/* body */}
                 <div className="productconfigutation_product_body">
                   <div className="productconfigutation_product_title">
                     <h1>Spinning</h1>
@@ -71,8 +70,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                     </div>
                   </div>
                 </div>
-                {/* body */}
-                {/* body */}
+                
                 <div className="productconfigutation_product_body">
                   <div className="productconfigutation_product_title">
                     <h1>Sewing</h1>
@@ -154,8 +152,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                     </div>
                   </div>
                 </div>
-                {/* body */}
-                {/* body */}
+                
                 <div className="productconfigutation_product_body">
                   <div className="productconfigutation_product_title">
                     <h1>Weaving</h1>
@@ -183,8 +180,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                     </div>
                   </div>
                 </div>
-                {/* body */}
-                {/* body */}
+                
                 <div className="productconfigutation_product_body">
                   <div className="productconfigutation_product_title">
                     <h1>Knitting</h1>
@@ -212,8 +208,8 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                     </div>
                   </div>
                 </div>
-                {/* body */}
-                </PerfectScrollbar>
+               
+              </PerfectScrollbar>
             </div>
 
             <div className="productconfigutation_button">

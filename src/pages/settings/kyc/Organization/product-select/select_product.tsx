@@ -1,5 +1,5 @@
 import React, { Component, ChangeEvent, MouseEvent } from 'react';
-import './configuration.scss';
+import './select_product.scss';
 import { AiOutlineSkin, AiFillCaretLeft, AiFillCaretRight, AiOutlineRight } from "react-icons/ai";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -11,11 +11,12 @@ import { BsChevronDown, BsChevronRight } from "react-icons/bs";
 import Collapsible from 'react-collapsible';
 import $ from 'jquery';
 import { RiInformationFill } from 'react-icons/ri';
-import vest from "../../../assets/images/vest.svg";
+import vest from "../../../../../assets/images/vest.svg";
 
-import ProConfig from '../ProductConfiguration/index';
+import ProConfig from './category';
 
 interface typeState {
+  step1:boolean,
   producttype: any,
   selectedproducttype: any,
   displayState: any,
@@ -42,19 +43,30 @@ class ProductGroups extends React.Component<{}, typeState> {
     super(props);
 
     this.state = {
+      step1: true,
       showModel: false,
       producttype: [
         {
-          name: "Woven"
+          name: 'material',
+          data:[
+            {
+              name: "Woven"
+            },
+            {
+              name: "Knitted"
+            }
+          ]
         },
         {
-          name: "Knitted"
-        },
-        {
-          name: "Women"
-        },
-        {
-          name: "Men"
+          name: 'whom',
+          data:[
+            {
+              name: "Women"
+            },
+            {
+              name: "Men"
+            }
+          ]
         }
       ],
       productselection: false,
@@ -175,21 +187,6 @@ class ProductGroups extends React.Component<{}, typeState> {
         })
       }
     }
-    else {
-      let arr = this.state.selectedproducttype;
-      arr = arr.filter((item: any) => item.name !== e.currentTarget.value);
-      this.setState({
-        selectedproducttype: arr
-      }, () => {
-        console.log(this.state.selectedproducttype)
-      })
-      if (arr.length == 0) {
-        this.setState({
-          savebtn: true,
-          removebtn: true,
-        })
-      }
-    }
   }
   showgroup = (e: MouseEvent<HTMLButtonElement>) => {
     this.setState({
@@ -198,6 +195,7 @@ class ProductGroups extends React.Component<{}, typeState> {
       nextbtn: true,
       savebtn: true,
       removebtn: true,
+      step1: false,
     })
     $('.category input[type=checkbox]').prop("checked", false);
   }
@@ -433,7 +431,6 @@ class ProductGroups extends React.Component<{}, typeState> {
       removebtn: true,
       selectedgrouptype: [],
       groupselection: false,
-     
     })
     $('.category input[type=checkbox]').prop("checked", false);
   }
@@ -454,10 +451,8 @@ class ProductGroups extends React.Component<{}, typeState> {
     console.log(this.state.selectedOption);
     const state = this.state;
     return (
-
-
-      this.state.prodectPage? <ProConfig state={this.state} nextPageChange={this.nextPageChange} handleChange={this.handleChange}  /> :
-
+      this.state.prodectPage? 
+        <ProConfig state={this.state} nextPageChange={this.nextPageChange} handleChange={this.handleChange}  /> :
         <>
           <div className="h-100">
             <div className="d-flex h-100">
@@ -515,8 +510,7 @@ class ProductGroups extends React.Component<{}, typeState> {
                   {
                     state.displayState.length !== 0 ?
                       (
-                        !state.productselection ?
-                          <p className="m-0 py-3">Select</p> :
+                        !state.productselection ?<></>:
                           !state.groupselection ?
                             <p className="m-0 py-3">Select product group</p> :
                             !state.completed ?
@@ -525,14 +519,51 @@ class ProductGroups extends React.Component<{}, typeState> {
                       ) :
                       <></>
                   }
-                  <div className={state.displayState.length !== 0 ? "select-category" : "select-category empty"}>
+                  <div className={state.displayState.length !== 0 && !state.step1 ? "select-category" : "select-category empty"}>
                     {
+                      state.step1 ?
+                      <PerfectScrollbar >
+                        <ul className="category d-flex m-0 p-0 flex-wrap">
+                          <form>
+                          {
+                            state.displayState.map((tag: any, i: number) =>
+                            <>
+                              <p className="m-0 py-3">Select</p>
+                              <div className="d-flex">
+                                {
+                                  tag.data.map((data:any, index:number)=>
+                                    <>
+                                      <div className="me-3 form-tag" key={'key' + i +index}>
+                                          <input
+                                            type="radio"
+                                            value={data.name}
+                                            name={'product_category'+i}
+                                            id={data.name}
+                                            data-testid={'testcheck' + i}
+                                            required
+                                            hidden
+                                            onChange={this.selectproducttype}
+                                          />
+                                          <label className="w-100 py-2 justify-content-between align-items-center d-flex" key={'productType' + i+index} htmlFor={data.name}>
+                                            <span className="checkmark">{data.name}</span>
+                                          </label>
+                                      </div>
+                                    </>
+                                  )
+                                }
+                              </div>
+                            </>
+                            )
+                          }
+                          </form>
+                        </ul>
+                      </PerfectScrollbar> :
                       state.displayState.length !== 0 ?
                         <PerfectScrollbar >
                           <ul className="category d-flex m-0 p-0 flex-wrap">
                             {
                               state.displayState.map((tag: any, i: number) =>
-                                <div className="me-3" key={'key' + i}>
+                                <div className="me-3 form-tag" key={'key' + i}>
                                   <form>
                                     <input
                                       type="checkbox"
@@ -554,13 +585,13 @@ class ProductGroups extends React.Component<{}, typeState> {
                           </ul>
                         </PerfectScrollbar> :
 
-                        !state.completed ?
-                          <div className="empty-data d-flex h-100 justify-content-center align-items-center">
-                            <p>Click on the selected Product groups </p>
-                          </div> :
-                          <div className="empty-data d-flex h-100 justify-content-center align-items-center">
-                            <p>Click on the summary button to view the selection  </p>
-                          </div>
+                      !state.completed ?
+                        <div className="empty-data d-flex h-100 justify-content-center align-items-center">
+                          <p>Click on the selected Product groups </p>
+                        </div> :
+                        <div className="empty-data d-flex h-100 justify-content-center align-items-center">
+                          <p>Click on the summary button to view the selection  </p>
+                        </div>
 
                     }
                   </div>
