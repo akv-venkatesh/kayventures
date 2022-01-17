@@ -13,15 +13,15 @@ import {
   Home,
   ProConfigCapacity,
   KYC, Organization, Organizationinfo, OrganizationinfoModal, OrganizationinfoModal1, OrganizationinfoModalSyn, Facilitykyc,
-  Facility1, Facilityday, Facilitymodal, Productconfig,Facilityform,Facilityinfomodal,
+  Facility1, Facilityday, Facilitymodal, Productconfig, Facilityform, Facilityinfomodal,
   Pro_config,
-  Machinery,
+  MachineryInitialPage,
   Esg,
   Settings,
   Dashboard,
   DashboardIndex,
 
-  Operation,Profile,
+  Operation, Profile,
 
 } from "./asyncpages";
 

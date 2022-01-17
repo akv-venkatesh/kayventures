@@ -54,31 +54,31 @@ interface Props {
 
 
 
-export const Swmmerybutton:FC<Props> = (props) => {
+export const Swmmerybutton: FC<Props> = (props) => {
   return (
-    <button className='swmmery-btn' onClick={props.onClick}>Summary <span><RiArrowRightSLine className='btn-arrow-right'/></span></button>
+    <button className='swmmery-btn' onClick={props.onClick}>Summary <span><RiArrowRightSLine className='btn-arrow-right' /></span></button>
   );
 };
 
 
-export const Backbutton:FC<Props>=(props)=>{
-  return(
+export const Backbutton: FC<Props> = (props) => {
+  return (
     <button type="button" className=" btn-back " onClick={props.onClick}><AiFillCaretLeft className="left-array-btn" />Back</button>
   )
 }
-export const Nextbutton:FC<Props>=(props)=>{
-  return(
+export const Nextbutton: FC<Props> = (props) => {
+  return (
     <button type="button" className="btn-next" onClick={props.onClick}>Next<AiFillCaretRight className="right-array-btn" /></button>
   )
 }
 
-export const DisableBackbutton:FC<Props>=(props)=>{
-  return(
+export const DisableBackbutton: FC<Props> = (props) => {
+  return (
     <button type="button" className=" dbtn-back " onClick={props.onClick}><AiFillCaretLeft className="left-array-btn" />Back</button>
   )
 }
-export const DisableNextbutton:FC<Props>=(props)=>{
-  return(
+export const DisableNextbutton: FC<Props> = (props) => {
+  return (
     <button type="button" className="dbtn-next" onClick={props.onClick}>Next<AiFillCaretRight className="right-array-btn" /></button>
   )
 }

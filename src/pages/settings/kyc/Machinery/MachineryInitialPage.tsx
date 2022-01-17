@@ -175,10 +175,10 @@ export class MachineryInitialPage extends Component<typeProps, initialState> {
                                 <div className="productconfigutation_button">
                                     <div></div>
                                     {/* <div>There are no machines defined under Spinning, Weaving, Knitting</div> */}
-                                    <div className="next_btn">
+                                    <div className="next_btn" data-testid="nextbuttonelement"  >
 
                                         {this.state.visibility ? (
-                                            <div data-testid="nextbuttonelement" onClick={this.changeMachineryStart}>
+                                            <div onClick={this.changeMachineryStart}>
                                                 <Nextbutton />
                                             </div>
                                         ) : (

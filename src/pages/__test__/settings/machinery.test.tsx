@@ -47,23 +47,16 @@ test('onClick clicked', async () => {
     expect(wrapper.getByText('Spinning')).toBeInTheDocument;
     expect(wrapper.getByText('Weaving')).toBeInTheDocument;
     expect(wrapper.getByText('Knitting')).toBeInTheDocument;
-    // expect(wrapper.getByText('Next')).toBeInTheDocument;
 
-    expect(wrapper.getByTestId('disablenextbutton')).toBeInTheDocument;
-    expect(wrapper.getByTestId('inputcheck1')).toBeInTheDocument;
-    expect(wrapper.getByTestId('inputcheck2')).toBeInTheDocument;
-    expect(wrapper.getByTestId('inputcheck3')).toBeInTheDocument;
-    expect(wrapper.getByTestId('inputcheck4')).toBeInTheDocument;
+    expect(wrapper.getByTestId('nextbuttonelement')).toBeInTheDocument;
 
+    expect(wrapper.getByRole('button', { name: /Next/i })).not.toHaveAttribute('disabled');
 
+    const clickNext = wrapper.getByRole('button', { name: /Next/i })
+    fireEvent.click(clickNext);
 
-
-
-
-    // const machine = wrapper.getByRole('heading', { name: /Add the No. of machines/i });
-    // expect(machine).toBeInTheDocument;
-    // const type = wrapper.getByRole('heading', { name: /Machine Type/i });
-    // expect(type).toBeInTheDocument;
+    expect(wrapper.getByText('Add Product Category')).toBeInTheDocument;
+    // expect(wrapper.getByRole('heading', { name: /Machine Type/i })).toBeInTheDocument;
 
     // const machineplace = wrapper.queryAllByPlaceholderText('0');
     // expect(machineplace).toBeInTheDocument;

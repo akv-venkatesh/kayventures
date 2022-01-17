@@ -31,7 +31,10 @@ interface typeState {
   removebtn: boolean,
   group: string,
   prodectPage: boolean,
-  productSelected:any
+  productSelected:any,
+  visibility:boolean,
+  selectedOption:string
+
 }
 
 class ProductGroups extends React.Component<{}, typeState> {
@@ -134,7 +137,9 @@ class ProductGroups extends React.Component<{}, typeState> {
       removebtn: true,
       group: '',
       prodectPage: true,
-      productSelected:''
+      productSelected:'',
+      visibility: false,
+      selectedOption:'' 
     }
   }
 
@@ -428,22 +433,30 @@ class ProductGroups extends React.Component<{}, typeState> {
       removebtn: true,
       selectedgrouptype: [],
       groupselection: false,
+     
     })
     $('.category input[type=checkbox]').prop("checked", false);
   }
 
   handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // this.setState({ selectedOption: e.target.value });
-    // if (e.target.value) {
-    //   this.setState({ visibility: true });
-    // }
+    this.setState({ selectedOption: e.target.value });
+    if (e.target.value) {
+      this.setState({ visibility: true });
+    }
+ };
+
+  nextPageChange = (e: ChangeEvent<HTMLInputElement>) => {
+   this.setState({ prodectPage: false });
+
+    
   };
   render() {
+    console.log(this.state.selectedOption);
     const state = this.state;
     return (
 
 
-      this.state.prodectPage? <ProConfig   /> :
+      this.state.prodectPage? <ProConfig state={this.state} nextPageChange={this.nextPageChange} handleChange={this.handleChange}  /> :
 
         <>
           <div className="h-100">
