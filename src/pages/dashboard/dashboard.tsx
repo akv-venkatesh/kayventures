@@ -6,11 +6,12 @@ import { HiOutlineThumbUp } from 'react-icons/hi';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import "react-perfect-scrollbar/dist/css/styles.css";
 import { Form } from 'formik';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 interface typeState{
 	process: any,
 	selectedProcess: any,
+	active:boolean
 }	
 class Dashboard extends Component<{},typeState>{
 	constructor(props:any){
@@ -117,6 +118,7 @@ class Dashboard extends Component<{},typeState>{
 				}
 			],
 			selectedProcess: [],
+			active:false,
 		}
 	}
 	selectProcess = (e:any, value:any):any => {
@@ -132,6 +134,9 @@ class Dashboard extends Component<{},typeState>{
 		})
 	}
 	render(){
+		if(this.state.active){
+			return <Navigate to="./profile" state={this.state.process} />
+		}
 		return (
 			<div className='d-flex m-dashboard h-100'>
                 <div className="sec1">
@@ -145,7 +150,7 @@ class Dashboard extends Component<{},typeState>{
 								<div className="d-flex flex-wrap p-3">
 									{
 										this.state.process.map((tag:any, i:number)=>
-											<div>
+											<div >
 												<input name='process' className="process" type="radio" hidden id={tag.name} />
 												<label
 													htmlFor={tag.name}
@@ -173,11 +178,19 @@ class Dashboard extends Component<{},typeState>{
 									<div className="d-flex flex-wrap p-3 h-100">
 										{	this.state.selectedProcess.length ?
 											this.state.selectedProcess.map((tag:any)=>
-												<Link to = "./profile" className="d-card text-center active me-3 mb-3" data-width={tag.progress}>
+												<div
+													onClick={()=>{
+														this.setState({
+															active : true
+														})
+													}}
+													className="d-card text-center active me-3 mb-3" 
+													data-width={tag.progress}
+													>
 													<AiOutlineIdcard />	
 													<p className="m-0 py-2">{tag.name}</p>
 													<span></span>
-												</Link>
+												</div>
 											) :
 											<div className="info d-flex align-items-center">
 												<p>Click the option in left side of the panel to view the status</p>

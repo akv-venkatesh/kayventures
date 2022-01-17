@@ -1,3 +1,16 @@
+
+.productconfiguration_body{
+margin-top: 20px;
+width: 100%;
+height: calc(100vh - 170px);
+background: #ebecf0;
+background-blend-mode: soft-light, normal;
+border: 1px solid rgba(255, 255, 255, 0.4);
+box-sizing: border-box;
+box-shadow: inset -5px -5px 10px #fafbff, inset 5px 5px 10px #a6abbd;
+border-radius: 30px;
+overflow: hidden;
+}
 .productconfiguration_container {
   width: 100%;
 }
@@ -14,7 +27,7 @@
   font-size: 25px;
   line-height: 45px;
   text-align: center;
-  color: #0062d7;
+  color: #566180;
 }
 .productconfigutation_info_section {
   display: flex;
@@ -36,10 +49,11 @@
   align-items: flex-start;
 }
 .productconfigutation_productlist {
-  height: 360px;
+  height: calc(100vh - 350px);
   margin: 0px 40px;
   padding-left: 30px;
   overflow: auto;
+
 }
 
 .productconfigutation_productlist::-webkit-scrollbar {
@@ -67,7 +81,7 @@
   font-size: 22px;
   line-height: 115.5%;
   /* or 32px */
-  color: #0062d7;
+  color: #566180;
 }
 .productconfigutation_product {
   display: flex;
@@ -108,7 +122,7 @@
   font-weight: 500;
   font-size: 15px;
   line-height: 115.5%;
-  color: #0062d7;
+  color: #566180;
 }
 .productconfigutation_product_field label .product_field_circle {
   position: absolute;
@@ -132,6 +146,7 @@
 .productconfigutation_button {
   display: flex;
   justify-content: space-between;
+  padding: 10px 20px;
 }
 
 .productconfigutation_button .next_btn {

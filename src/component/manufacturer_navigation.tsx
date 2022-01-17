@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from "react-router-dom";
-import { HiHome } from "react-icons/hi";
+import { HiHome, HiOutlineCog } from "react-icons/hi";
 import { AiOutlineDashboard } from "react-icons/ai";
 import { BiCog } from "react-icons/bi";
 import { BsGlobe2,BsPlug } from "react-icons/bs";
@@ -20,11 +20,27 @@ class Home extends React.Component {
                 <AiOutlineDashboard className="navg-icons my-4"/>
               </div>
             </NavLink>
-            <NavLink to='/settings'>
+            <div className="settings">
               <div className="icons ">
                 <BiCog className="navg-icons my-4"/>
+                <div className="setting-process">
+                  <ul className="p-0 m-0">
+                    <li>
+                      <HiOutlineCog />
+                      <p>KYC</p>
+                    </li>
+                    <li>
+                      <HiOutlineCog />
+                      <p>Operation</p>
+                    </li>
+                    <li>
+                      <HiOutlineCog />
+                      <p>Network</p>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </NavLink>
+            </div>
             <NavLink to='/b'>
               <div className="icons">
                 <BsGlobe2 className="navg-icons my-4"/>

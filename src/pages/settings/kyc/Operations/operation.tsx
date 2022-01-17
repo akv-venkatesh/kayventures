@@ -1,13 +1,12 @@
 import React, { Component, ChangeEvent } from 'react'
-import { Button, Form, Accordion, Modal } from "react-bootstrap";
-import { BsChevronRight, BsPlus } from "react-icons/bs";
-import { IoCloseOutline } from "react-icons/io5";
-import { GiSewingMachine } from "react-icons/gi";
+import { Button, Form, Accordion, Modal, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { IoIosInformationCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
 import {
     Backbutton,
     Nextbutton, DisableBackbutton,
-    DisableNextbutton,
+DisableNextbutton,
+
 } from "../../../../component/buttons/button";
 import "./operations.css";
 import vest from "../../../../assets/images/vest.svg";
@@ -16,22 +15,10 @@ import $ from 'jquery';
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { RiArrowRightSLine } from "react-icons/ri";
+import Stepper from '../../../../component/stepper/stepper'
 
 
-import { JsxFlags } from "typescript";
-import { RiInformationFill } from "react-icons/ri";
-import { AiOutlineRight } from "react-icons/ai";
-import Select from "react-select";
 
-import Vector1 from "../../../../assets/icons/various/Vector1.svg"
-import Vector2 from "../../../../assets/icons/various/Vector2.svg"
-import Vector3 from "../../../../assets/icons/various/Vector3.svg"
-import Vector5 from "../../../../assets/icons/various/Vector5.svg"
-import Vector6 from "../../../../assets/icons/various/Vector6.svg"
-import Vector4 from "../../../../assets/icons/arrows/chevron-right.svg"
-
-import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tab';
 
 
 
@@ -42,7 +29,10 @@ interface initialState {
     savebtn: boolean,
     removebtn: boolean,
     nextPageEnable: boolean,
-    saveEnable: boolean
+    saveEnable: boolean,
+    producttype: object[],
+    show: boolean,
+    summeryModel: boolean
 }
 
 export class Operations extends Component<{}, initialState> {
@@ -51,12 +41,28 @@ export class Operations extends Component<{}, initialState> {
 
         this.state = {
             visibility: false,
+            show: false,
             selectedOption: "",
             selectedgrouptype: [],
             savebtn: false,
             removebtn: false,
             nextPageEnable: false,
-            saveEnable: false
+            saveEnable: false,
+            summeryModel: false,
+            producttype: [
+                {
+                    name: "Production"
+                },
+                {
+                    name: "R&D"
+                },
+                {
+                    name: "Warehouse"
+                },
+                {
+                    name: "Design"
+                }
+            ],
         };
     }
     handleChange = (e: any) => {
@@ -75,12 +81,19 @@ export class Operations extends Component<{}, initialState> {
 
     };
     productAdd = () => {
-        this.setState({ visibility: true })
+        this.setState({ visibility: true, saveEnable: false })
+        if (this.state.selectedgrouptype.length == 0) {
+            this.setState({
+
+                visibility: false,
+
+            })
+        }
+
     }
     productremove = () => {
         $('.category input[type=checkbox]').prop("checked", false);
         this.setState({
-
             visibility: false,
             saveEnable: false,
             selectedgrouptype: []
@@ -88,35 +101,63 @@ export class Operations extends Component<{}, initialState> {
     }
 
     selectgrouptype = (e: ChangeEvent<HTMLInputElement>) => {
+
+
         let newArray = [...this.state.selectedgrouptype, e.target.value];
         if (this.state.selectedgrouptype.includes(e.target.value)) {
             newArray = newArray.filter(day => day !== e.target.value);
+
         }
         this.setState({
-            selectedgrouptype: newArray,
-            saveEnable: true
+          
+            visibility: false
         })
-
+        if (newArray.length > 0) {
+            this.setState({
+                selectedgrouptype: newArray,
+                saveEnable: true
+            })
+        } else {
+            this.setState({
+                selectedgrouptype: [],
+                saveEnable: false,
+                visibility: false
+            })
+        }
 
     }
     render() {
 
+        const steps = [{ label: 'KYC', id: 0 }, { label: 'Product Selection', id: 1 }, { label: 'Machinery', id: 2 }, { label: 'Operations', id: 3 }]
+
+        const renderTooltip = (props: any) => (
+            <Tooltip id="button-tooltip" {...props}>
+                Simple tooltip
+            </Tooltip>
+        );
         return (
 
             <div>
-                <div className='my-3'>
-                    ----
+
+
+                <div className='my-2 d-flex' style={{ width: '100%' }} >
+                    <div style={{ width: '100px' }}></div>
+                    <div style={{ width: '100%' }}>
+                        <Stepper steps={steps} activeStep={4} />
+                    </div>
                 </div >
                 <div className='operation-section-body d-flex'>
                     <div className='operation-right-panel'>
                         <div className='operation-right-panel-title'>
                             <p>Type of Operation </p>
-                            <div className=" me-5">
+                            <div className=" me-2">
                                 <ul className="p-0 m-0">
                                     <div className="sub-categories">
                                         {this.state.nextPageEnable ?
+                                        
                                             <PerfectScrollbar >
-                                                <Accordion >
+                                                <div className='inside-scrool'>
+                                              <Accordion >
                                                     <Accordion.Item eventKey={'a1'} className="mb-2" >
                                                         <Accordion.Button className={this.state.selectedgrouptype.length > 0 ? 'complete' : 'not-completed'}>
                                                             Select Operation
@@ -132,8 +173,9 @@ export class Operations extends Component<{}, initialState> {
                                                         </Accordion.Body>
                                                     </Accordion.Item>
                                                 </Accordion>
-
-                                            </PerfectScrollbar > : ''
+                                                </div>
+                                            </PerfectScrollbar >: ''
+                                          
                                         }
                                     </div >
                                 </ul>
@@ -147,7 +189,7 @@ export class Operations extends Component<{}, initialState> {
                                 <div className="next_btn">
 
                                     {this.state.visibility ? (
-                                        <button className='swmmery-btn' >Summary <span><RiArrowRightSLine className='btn-arrow-right' /></span></button>
+                                        <button className='swmmery-btn' onClick={() =>{this.setState({summeryModel:true})}} >Summary <span><RiArrowRightSLine className='btn-arrow-right' /></span></button>
                                     ) : (
                                         this.state.nextPageEnable ? <button className='swmmery-btn-disable' >Summary <span><RiArrowRightSLine className='btn-arrow-right' /></span></button> : <div className='swmmery-btn-disable' style={{ visibility: "hidden" }}> </div>
                                     )}
@@ -164,67 +206,31 @@ export class Operations extends Component<{}, initialState> {
                                                 <h1>Select Operations   </h1>
                                             </div>
                                             <ul className="category d-flex m-0 p-0 flex-wrap">
-                                                {/* ......... */}
-                                                <div className="me-5 mb-5">
-                                                    <form className='d-flex'>
-                                                        <div className="cat-img-bg me-4">
-                                                            <img src={vest} className="cat-img" />
-                                                        </div>
-                                                        <div>
-                                                            <input type="checkbox" value='Production' name='1' id="b1" required hidden onChange={this.selectgrouptype} />
 
-                                                            <label className="w-100 py-2 justify-content-between align-items-center d-flex" htmlFor='b1'>
-                                                                <span className="checkmark">   Production</span>
-                                                            </label>
-                                                        </div>
-                                                    </form>
-                                                </div>
 
-                                                <div className="me-5 mb-5 ">
-                                                    <form className='d-flex'>
-                                                        <div className="cat-img-bg me-4">
-                                                            <img src={vest} className="cat-img" />
-                                                        </div>
-                                                        <div>
-                                                            <input type="checkbox" value='R&D' name='1' id="b2" required hidden onChange={this.selectgrouptype} />
+                                                {
+                                                    this.state.producttype.length > 0 ?
+                                                        this.state.producttype.map((tag: any, i: number) =>
+                                                            <div className="me-5 mb-5" key={'key' + i}>
+                                                                <form className='d-flex'>
+                                                                    <div className="cat-img-bg me-4">
+                                                                        <img src={vest} className="cat-img" />
+                                                                    </div>
+                                                                    <div>
+                                                                        <input type="checkbox" value={tag.name}
+                                                                            name={tag.name}
+                                                                            id={tag.name} required hidden checked={this.state.selectedgrouptype.includes(tag.name)} onChange={this.selectgrouptype} />
 
-                                                            <label className="w-100 py-2 justify-content-between align-items-center d-flex" htmlFor='b2'>
-                                                                <span className="checkmark">   R&D</span>
-                                                            </label>
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                                                        <label className="w-100 py-2 justify-content-between align-items-center d-flex" htmlFor={tag.name}>
+                                                                            <span className="checkmark">  {tag.name}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        )
+                                                        : ''
+                                                }
 
-                                                <div className="me-5  mb-5">
-                                                    <form className='d-flex'>
-                                                        <div className="cat-img-bg me-4">
-                                                            <img src={vest} className="cat-img" />
-                                                        </div>
-                                                        <div>
-                                                            <input type="checkbox" value='Warehouse' name='1' id="b3" required hidden onChange={this.selectgrouptype} />
-
-                                                            <label className="w-100 py-2 justify-content-between align-items-center d-flex" htmlFor='b3'>
-                                                                <span className="checkmark">   Warehouse</span>
-                                                            </label>
-                                                        </div>
-                                                    </form>
-                                                </div>
-
-                                                <div className="me-5 mb-5  ">
-                                                    <form className='d-flex'>
-                                                        <div className="cat-img-bg me-4">
-                                                            <img src={vest} className="cat-img" />
-                                                        </div>
-                                                        <div>
-                                                            <input type="checkbox" value='Design' name='1' id="b4" required hidden onChange={this.selectgrouptype} />
-
-                                                            <label className="w-100 py-2 justify-content-between align-items-center d-flex" htmlFor='b4'>
-                                                                <span className="checkmark">   Design</span>
-                                                            </label>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                {/* ......... */}
                                             </ul>
                                         </div>
                                         :
@@ -236,10 +242,11 @@ export class Operations extends Component<{}, initialState> {
                                 </div>
                             </PerfectScrollbar>
                             <div className="productconfigutation_btn operation_btn">
-                                <div>{this.state.visibility ? <Backbutton onClick={this.redirectBack} /> : this.state.nextPageEnable ? <DisableBackbutton /> : ''}</div>
+                                <div>{this.state.visibility ? <Backbutton onClick={this.redirectBack} /> : this.state.nextPageEnable ? <Backbutton onClick={this.redirectBack} /> : ''}</div>
+
                                 <div>{this.state.nextPageEnable ? <div> <button
                                     type="button"
-                                    className="btn btn-default mx-4 remove"
+                                    className=" btn-default mx-4 remove"
                                     onClick={this.productremove}
                                     disabled={this.state.saveEnable ? false : true}
                                 >
@@ -247,26 +254,66 @@ export class Operations extends Component<{}, initialState> {
                                 </button>
                                     <button
                                         type="button"
-                                        className="btn btn-default mx-4 save"
+                                        className=" btn-default mx-4 save"
                                         disabled={this.state.saveEnable ? false : true}
                                         onClick={this.productAdd}
                                     >
                                         Save
                                     </button></div> : ''}</div>
                                 <div className="next_btn">
+
                                     {this.state.visibility ? (
-                                        <Link to="">
-                                            <Nextbutton />
-                                        </Link>
+                                        <><div className='icon-parent'> <IoIosInformationCircle className='info-icon' /> </div> <Link to=""> <Nextbutton /></Link></>
+                                        // <Link to=""><Nextbutton /> </Link>
+
                                     ) : (
                                         this.state.nextPageEnable ? <DisableNextbutton /> : <Nextbutton onClick={this.redirectNext} />
                                     )}
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
+                <Modal
+                    show={this.state.summeryModel}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                    className="summery-model"
+                    backdropClassName="summery-model"
+                    onHide={() =>{this.setState({summeryModel:false})}}
+                >
+                    <Modal.Header  closeButton></Modal.Header>
+                    <Modal.Body className="">
+                    <div className='operation-right-panel-title  '>
+                            <p>Type of Operation </p>
+                        
+                            <PerfectScrollbar >
+                                                <div className='inside-scrool'>
+                            <Accordion defaultActiveKey='a1'>
+                                <Accordion.Item eventKey={'a1'} className="mb-2" >
+                                    <Accordion.Button className={this.state.selectedgrouptype.length > 0 ? 'complete' : 'not-completed'}>
+                                        Select Operation
+                                    </Accordion.Button>
+                                    <Accordion.Body>
+                                        <ul className="sub-cat m-0">
+                                            {
+                                                this.state.selectedgrouptype.map((item: any, index: number) =>
+                                                    <li className="pe-4 text-left" key={index} >{item}</li>
+                                                )
+                                            }
+                                        </ul>
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            </Accordion>
+                            </div>
+                        </PerfectScrollbar >
+                        </div>
+                    </Modal.Body>
+                </Modal>
             </div>
+
 
         )
     }

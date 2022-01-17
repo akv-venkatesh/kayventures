@@ -234,7 +234,7 @@ class Machinery extends Component<typeProps, typeState> {
                             <button style={{ border: 'none' }} onClick={this.handleAddMore} >
                                 <AiOutlinePlus />
                             </button>
-                            <p>  Add Product Category </p>
+                            <p>Add Product Category</p>
                         </div>
                     </div>
                     <div className="leftmenu_body d-flex flex-column">
