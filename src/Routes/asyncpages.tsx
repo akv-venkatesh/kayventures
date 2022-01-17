@@ -39,6 +39,7 @@ export const Operation = React.lazy(() => import('../pages/settings/kyc/Operatio
 // export const Machine = React.lazy(() => import('../pages/settings/kyc/Machine/Machine'));
 // export const Manpower = React.lazy(() => import('../pages/settings/kyc/Manpower/Manpower'));
 export const Esg = React.lazy(() => import('../pages/settings/kyc/Esg/Esg'));
+export const Section = React.lazy(() => import('../pages/settings/kyc/Section/Section'));
 
 // Settings files flow new
 

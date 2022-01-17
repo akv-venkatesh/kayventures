@@ -7,11 +7,11 @@ import { RiInformationFill } from "react-icons/ri";
 import vest from "../../../../assets/images/vest.svg";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
-import { ImFilePdf , ImCross } from "react-icons/im";
+import { ImFilePdf, ImCross } from "react-icons/im";
 import { IoLockClosedOutline } from "react-icons/io5";
 import { BiMap } from "react-icons/bi";
 import { AiOutlineClockCircle } from "react-icons/ai";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import { BsTelephone } from "react-icons/bs";
 import Image2 from "../../../../assets/image2.svg";
@@ -54,78 +54,78 @@ class Facilityinfomodal extends React.Component<{}, typeState> {
           <Modal.Header closeButton />
           <Modal.Body className="">
             <div className="header_discription mt-1">
-                <p className="topbox">Facility 1 
-                </p>
+              <p className="topbox">Facility 1
+              </p>
             </div>
             <PerfectScrollbar
-                        options={{ suppressScrollY: false, suppressScrollX: true }}
-                        onScrollY={(container) =>
-                            console.log(`scrolled to: ${container.scrollTop}.`)
-                        }
-                        >
-                <div className="facilitymod">
-                    <div className="leftmenu">
-                        <div className="imgleft">
-                            <img src={Image2} alt="displayedImage" />
-                        </div>
-                        <div className="infor">
-                            <div className="mt-4">
-                                <BiMap />
-                                <span>SGG Road<br></br>
-                                    2nd stage<br></br>
-                                    Jeevan dani road<br></br>
-                                    8948295532<br></br>
-                                    pin code: 000798</span>
-                            </div>
-                            <div className="mt-4">
-                            <BsTelephone/>
-                                <span>9832239554</span>
-                            </div>
-                            <div className="mt-4">
-                            <AiOutlineClockCircle/>
-                                <span>Mon- Fri <br></br>8.00AM -7.00PM
-                                    </span>
-                            </div>
-                            
-                            
-                        </div>
+              options={{ suppressScrollY: false, suppressScrollX: true }}
+              onScrollY={(container) =>
+                console.log(`scrolled to: ${container.scrollTop}.`)
+              }
+            >
+              <div className="facilitymod">
+                <div className="leftmenu">
+                  <div className="imgleft">
+                    <img src={Image2} alt="displayedImage" />
+                  </div>
+                  <div className="infor">
+                    <div className="mt-4">
+                      <BiMap />
+                      <span>SGG Road<br></br>
+                        2nd stage<br></br>
+                        Jeevan dani road<br></br>
+                        8948295532<br></br>
+                        pin code: 000798</span>
                     </div>
-                    <div className="rightmenu">
-                       <h4>Gallery</h4>
-                       <div className="row mt-4 d-flex">
-                                <div className="btnselect">
-                                    <div className="d-flex">
-                                        <button className="build">Building facade</button>
-                                        <button className="otherbtn"> Reception</button>
-                                    </div>
-                                    <div className="d-flex">
-                                        <button className="otherbtn">Sewing</button>
-                                        <button className="otherbtn">Cutting</button>
-                                    </div>
-                                </div>
-                        </div>
-                        <div className="row mt-4 d-flex ">
-                                    <Carousel  autoPlay axis="horizontal">
-                                        <div>
-                                            <img src={slider} alt="slider"/>                                                                 
-                                        </div>
-                                        <div>
-                                        <img src={slider} alt="slider"/>                                                                    
-                                        </div>
-                                        <div>
-                                        <img src={slider} alt="slider"/>                                                                 
-                                        </div>
-                                    </Carousel>
-                             
-                        </div>
-                       
-                         
+                    <div className="mt-4">
+                      <BsTelephone />
+                      <span>9832239554</span>
                     </div>
-                </div>
+                    <div className="mt-4">
+                      <AiOutlineClockCircle />
+                      <span>Mon- Fri <br></br>8.00AM -7.00PM
+                      </span>
+                    </div>
 
-            
-          
-           </PerfectScrollbar>
+
+                  </div>
+                </div>
+                <div className="rightmenu">
+                  <h4>Gallery</h4>
+                  <div className="row mt-4 d-flex">
+                    <div className="btnselect">
+                      <div className="d-flex">
+                        <button className="build">Building facade</button>
+                        <button className="otherbtn"> Reception</button>
+                      </div>
+                      <div className="d-flex">
+                        <button className="otherbtn">Sewing</button>
+                        <button className="otherbtn">Cutting</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row mt-4 d-flex ">
+                    <Carousel autoPlay axis="horizontal">
+                      <div>
+                        <img src={slider} alt="slider" />
+                      </div>
+                      <div>
+                        <img src={slider} alt="slider" />
+                      </div>
+                      <div>
+                        <img src={slider} alt="slider" />
+                      </div>
+                    </Carousel>
+
+                  </div>
+
+
+                </div>
+              </div>
+
+
+
+            </PerfectScrollbar>
           </Modal.Body>
         </Modal>
       </>

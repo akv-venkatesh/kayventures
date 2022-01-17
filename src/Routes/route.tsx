@@ -16,6 +16,7 @@ import {
   Facility1, Facilityday, Facilitymodal, Productconfig, Facilityform, Facilityinfomodal,
   Pro_config,
   MachineryInitialPage,
+  Section,
   Esg,
   Settings,
   Dashboard,
@@ -61,6 +62,7 @@ class Routers extends React.Component {
             <Route path="machinery" element={<MachineryInitialPage />} />
             <Route path="esg" element={<Esg />} />
             <Route path="operation" element={<Operation />} />
+            <Route path="section" element={<Section />} />
           </Route>
 
           <Route path="dashboard" element={<DashboardIndex />}>
