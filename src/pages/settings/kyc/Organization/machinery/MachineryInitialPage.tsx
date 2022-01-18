@@ -1,16 +1,9 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom";
-import {
-    Nextbutton,
-    DisableNextbutton,
-} from "../../../../../component/buttons/button";
 import "./machinery.css";
 
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar";
-import { Button } from 'react-bootstrap';
 import Machinery from './Machinery';
-import stepper from '../../../../../component/stepper/stepper';
 import { AiFillCaretRight } from 'react-icons/ai';
 import Stepper from '../../../../../component/stepper/stepper';
 
@@ -26,7 +19,6 @@ interface typeProps {
 export class MachineryInitialPage extends Component<typeProps, initialState> {
     constructor(props: any) {
         super(props);
-
         this.state = {
             visibility: false,
             HomePage: true,
@@ -46,13 +38,13 @@ export class MachineryInitialPage extends Component<typeProps, initialState> {
     }
 
     render() {
-        const step = [{ label: 'KYC',id:0}, { label: 'Product Selection',id:1}, { label: 'Machinery',id:2 }, { label: 'Operations',id:3 }];
+        const step = [{ label: 'KYC', id: 0 }, { label: 'Product Selection', id: 1 }, { label: 'Machinery', id: 2 }, { label: 'Operations', id: 3 }];
         console.log(this.state.selectedOption)
         return (
             <div className="h-100">
                 {this.state.HomePage ?
                     <div className="h-100">
-                        <Stepper steps={step} activeStep={2}/>
+                        <Stepper steps={step} activeStep={2} />
                         <div className='box-field-area p-3'>
                             <div className='d-flex flex-column justify-content-center align-items-center h-100'>
                                 <div className='box-field-area-title d-flex flex-column justify-content-center align-items-center my-3'>
@@ -61,13 +53,10 @@ export class MachineryInitialPage extends Component<typeProps, initialState> {
                                 <div className='Machinery_area d-flex'>
                                     <PerfectScrollbar>
                                         <div className="d-flex">
-                                            {/* body */}
-
                                             <div className="Machinery_product">
                                                 <div className="Machinery_product_field ">
                                                     <label htmlFor="Sewing" className="product_field">
                                                         <div className="product_field_item">
-                                                            {/* <img src={Tshert} /> */}
                                                             <span className={this.state.selectedOption === 'Sewing' ? 'selected' : 'unselected'}>Sewing</span>
                                                         </div>
                                                         <div>
@@ -86,15 +75,10 @@ export class MachineryInitialPage extends Component<typeProps, initialState> {
                                                     </label>
                                                 </div>
                                             </div>
-
-                                            {/* body */}
-                                            {/* body */}
-
                                             <div className="Machinery_product">
                                                 <div className="Machinery_product_field ">
                                                     <label htmlFor="Spinning" className="product_field">
                                                         <div className="product_field_item">
-                                                            {/* <img src={Tshert} /> */}
                                                             <span className={this.state.selectedOption === 'Spinning' ? 'selected' : 'unselected'}>Spinning</span>
                                                         </div>
                                                         <div>
@@ -113,15 +97,10 @@ export class MachineryInitialPage extends Component<typeProps, initialState> {
                                                     </label>
                                                 </div>
                                             </div>
-
-                                            {/* body */}
-                                            {/* body */}
-
                                             <div className="Machinery_product">
                                                 <div className="Machinery_product_field ">
                                                     <label htmlFor="Weaving" className="product_field">
                                                         <div className="product_field_item">
-                                                            {/* <img src={Tshert} /> */}
                                                             <span className={this.state.selectedOption === 'Weaving' ? 'selected' : 'unselected'}>Weaving</span>
                                                         </div>
                                                         <div>
@@ -140,15 +119,10 @@ export class MachineryInitialPage extends Component<typeProps, initialState> {
                                                     </label>
                                                 </div>
                                             </div>
-
-                                            {/* body */}
-                                            {/* body */}
-
                                             <div className="Machinery_product">
                                                 <div className="Machinery_product_field ">
                                                     <label htmlFor="Knitting" className="product_field">
                                                         <div className="product_field_item">
-                                                            {/* <img src={Tshert} /> */}
                                                             <span className={this.state.selectedOption === 'Knitting' ? 'selected' : 'unselected'} >Knitting</span>
                                                         </div>
                                                         <div>
@@ -167,19 +141,12 @@ export class MachineryInitialPage extends Component<typeProps, initialState> {
                                                     </label>
                                                 </div>
                                             </div>
-
-                                            {/* body */}
                                         </div>
-
                                     </PerfectScrollbar>
                                 </div>
                                 <div className="productconfigutation_button">
                                     <div></div>
-                                    {/* <div>There are no machines defined under Spinning, Weaving, Knitting</div> */}
                                     <div className="next_btn"  >
-
-
-
                                         <div className="d-flex">
                                             <button
                                                 type="submit"
@@ -190,7 +157,6 @@ export class MachineryInitialPage extends Component<typeProps, initialState> {
                                             >Next&emsp;<AiFillCaretRight />
                                             </button>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -200,7 +166,6 @@ export class MachineryInitialPage extends Component<typeProps, initialState> {
                         <Machinery machineProps={this.state.selectedOption} />
                     </div>
                 }
-
             </div>
 
         )
