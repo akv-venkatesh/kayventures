@@ -7,19 +7,15 @@ import {
     Nextbutton, DisableBackbutton,
 DisableNextbutton,
 
-} from "../../../../component/buttons/button";
+} from "../../../../../component/buttons/button";
 import "./operations.css";
-import vest from "../../../../assets/images/vest.svg";
+import vest from "../../../../../assets/images/vest.svg";
 import $ from 'jquery';
 
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { RiArrowRightSLine } from "react-icons/ri";
-import Stepper from '../../../../component/stepper/stepper'
-
-
-
-
+import Stepper from '../../../../../component/stepper/stepper';
 
 
 interface initialState {
