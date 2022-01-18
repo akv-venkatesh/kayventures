@@ -14,15 +14,7 @@ import React from 'react';
     export const Home = React.lazy(() => import('../pages/home'));
 
 // Setting files --flow old
-    export const Facilitykyc = React.lazy(() => import('../pages/settings/kyc/Facilitykyc'));
-    export const Facility1 = React.lazy(() => import('../pages/settings/kyc/Facilitykyc/Facility1'));
-    export const Facilityday = React.lazy(() => import('../pages/settings/kyc/Facilitykyc/Facilityday'));
-    export const Facilitymodal = React.lazy(() => import('../pages/settings/kyc/Facilitykyc/Facilitymodal'));
-    export const Facilityform = React.lazy(() => import('../pages/settings/kyc/Facilityinfo/Facilityform'));
-    export const Facilityinfomodal = React.lazy(() => import('../pages/settings/kyc/Facilityinfo/Facilityinfomodal'));
     export const Sections = React.lazy(() => import('../pages/settings/kyc/Section/Section'));
-    // export const Pro_config = React.lazy(() => import('../pages/settings/ProductConfiguration'));
-    // export const Esg = React.lazy(() => import('../pages/settings/kyc/Esg/Esg'));
 
 // Settings files flow new
 
@@ -31,14 +23,21 @@ import React from 'react';
         //kyc
             export const OrgKYC = React.lazy(() => import('../pages/settings/kyc/Organization/kyc'));
         //product-select
-            export const Productselect = React.lazy(() => import('../pages/settings/kyc/Organization/product-select/select_product'));
-            // export const ProConfigCapacity = React.lazy(() => import('../pages/settings/ProductConfiguration/capacity'));
+            export const Productselect = React.lazy(() => import('../pages/settings/kyc/Organization/product-select'));
         //machinery
             export const Machinery = React.lazy(() => import('../pages/settings/kyc/Organization/machinery/MachineryInitialPage'));
         //operation
             export const Operation = React.lazy(() => import('../pages/settings/kyc/Organization/operations/operation'));
 
-
+    // Facility
+        //add faclity
+            export const AddFacility = React.lazy(() => import('../pages/settings/kyc/facility/addFacility'));
+        // facility info            
+            export const FacilityInfo = React.lazy(() => import('../pages/settings/kyc/facility/facilityinfo'));
+        // facility product selection
+            export const FacilityProductSelection = React.lazy(() => import('../pages/settings/kyc/facility/productSelection/index'));
+        // capacity
+            export const Capacity = React.lazy(() => import('../pages/settings/kyc/facility/capacity'));
 
 
 
