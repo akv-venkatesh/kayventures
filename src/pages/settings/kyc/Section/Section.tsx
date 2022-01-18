@@ -3,8 +3,8 @@ import "./section.css";
 
 import { Button, Container, Modal, Row } from 'react-bootstrap';
 import { Formik } from "formik";
-import Vector3 from "../../../../assets/icons/various/Vector3.svg"
 import slider from "../../../../assets/slider.svg"
+import Stepper from '../../../../component/stepper/stepper';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
@@ -23,6 +23,9 @@ import Image2 from "../../../../assets/image2.svg";
 interface typeState {
     showModel: boolean,
     showSummary: boolean,
+    isActive: boolean,
+    photoSection: boolean,
+    savedState: any,
 }
 
 class Section extends Component<{}, typeState> {
@@ -32,6 +35,9 @@ class Section extends Component<{}, typeState> {
         this.state = {
             showModel: true,
             showSummary: false,
+            isActive: false,
+            photoSection: false,
+            savedState: [],
         };
     }
 
@@ -51,6 +57,20 @@ class Section extends Component<{}, typeState> {
             showSummary: false
         })
     }
+    handleOnClick = () => {
+        this.setState({
+            isActive: true,
+        })
+    }
+    selectArea = (event: any) => {
+        let value: any = event;
+        let arr = [...this.state.savedState];
+        arr.push(value);
+        this.setState({
+            savedState: arr,
+            photoSection: true
+        })
+    }
 
     render() {
 
@@ -60,23 +80,15 @@ class Section extends Component<{}, typeState> {
             { value: 'Others', label: 'Others' }
         ]
 
+        const step = [{ label: 'KYC', id: 0 }, { label: 'Product Selection', id: 1 }, { label: 'Machinery', id: 2 }, { label: 'Operations', id: 3 }];
+
         return (
             <div className="machine main d-flex facilitykyc1 h-100">
                 <div className="col-md-12 d-flex flex-column h-100">
-                    <div className="facility1 d-flex">
-                        <img src={Vector3} alt="" className="vector" />
-                        <p>Facility 1</p>
-                        <p>|</p>
-                        <img src={Vector3} alt="" className="vector" />
-                        <p>Facility 2</p>
-                        <p>|</p>
-                        <img src={Vector3} alt="" className="vector" />
-                        <p>Facility 3</p>
-                        <p>|</p>
-                    </div>
+                    <Stepper steps={step} activeStep={2} />
                     <div className="box py-5 mt-2">
                         <div className="scroll pb-3">
-                            <PerfectScrollbar>
+                            <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
                                 <div className="d-flex flex-wrap pe-4 facilityform">
                                     <Container>
                                         <Row>
@@ -124,93 +136,92 @@ class Section extends Component<{}, typeState> {
                                                                                 width='250px'
                                                                                 position='bottom'
                                                                                 placeholder='Select from options'
-                                                                                onChange={(e) => (e)}
+                                                                                onChange={(event: any) => this.selectArea(event)}
 
                                                                             ></Select>
                                                                         </form>
                                                                     </div>
                                                                     <div className="option_selected m-3">
-                                                                        <div className="d-flex align-items-center">
-                                                                            <MdArrowForwardIos /><p className="m-0" >Building Area</p>
-                                                                        </div>
-                                                                        <div className="d-flex align-items-center">
-                                                                            <MdArrowForwardIos /><p className="m-0" >Work Area</p>
-                                                                        </div>
-                                                                        <div className="d-flex align-items-center">
-                                                                            <MdArrowForwardIos /><p className="m-0" >Others</p>
-                                                                        </div>
+                                                                        {
+                                                                            this.state.savedState.map((area: any) => {
+                                                                                return (
+                                                                                    <div className="d-flex align-items-center">
+                                                                                        <MdArrowForwardIos /><p className="m-0" >{area.value}</p>
+                                                                                    </div>
+                                                                                )
+                                                                            })
+                                                                        }
                                                                     </div>
-
                                                                 </div>
                                                             </div>
 
-
-                                                            <div className="row mt-3 d-flex ">
-                                                                <h4 className="col-md-3">Add Photos & Videos</h4>
-                                                                <div className="col-md-5">
-                                                                    <div className="btnselect">
-                                                                        <div className="d-flex">
-                                                                            <Button href="#" variant="light" size="lg" >
-                                                                                Building Area
-                                                                            </Button>
-                                                                            <Button href="#" variant="light" size="lg" >
-                                                                                Work Area
-                                                                            </Button>
-                                                                        </div>
-                                                                        <div className="d-flex">
-                                                                            <Button href="#" variant="light" size="lg" >
-                                                                                Others
-                                                                            </Button>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="my-5 d-flex flex-column">
-                                                                        <div className="files d-flex justify-content-evenly align-items-end">
-                                                                            <div className="d-flex justify-content-center align-items-center flex-column p-3 uploadfile_box">
-                                                                                <p className="my-1">Drag the file</p>
-                                                                                <p className="my-1">or</p>
-                                                                                <p className="my-1">Browse from Computer</p>
+                                                            {this.state.photoSection ?
+                                                                <div className="row mt-3 d-flex ">
+                                                                    <h4 className="col-md-3">Add Photos & Videos</h4>
+                                                                    <div className="col-md-5">
+                                                                        <div className="btnselect">
+                                                                            <div className="d-flex">
+                                                                                <Button className={this.state.isActive ? 'active_button' : 'inActive_button'} onClick={this.handleOnClick} variant="light" size="lg" >
+                                                                                    Building Area
+                                                                                </Button>
+                                                                                <Button className={this.state.isActive ? 'active_button' : 'inActive_button'} onClick={this.handleOnClick} variant="light" size="lg" >
+                                                                                    Work Area
+                                                                                </Button>
                                                                             </div>
-                                                                            <div>
-                                                                                <Button
-                                                                                    className="btn btn-secondary save"
-                                                                                    disabled
-                                                                                >
-                                                                                    Save
+                                                                            <div className="d-flex">
+                                                                                <Button className={this.state.isActive ? 'active_button' : 'inActive_button'} onClick={this.handleOnClick} variant="light" size="lg" >
+                                                                                    Others
                                                                                 </Button>
                                                                             </div>
                                                                         </div>
-                                                                        <div className="files_bottom my-3 d-flex justify-content-between align-items-center">
-                                                                            <div className="plusIcon d-flex mb-2">
-                                                                                <button style={{ border: 'none' }} >
-                                                                                    <AiOutlinePlus />
-                                                                                </button>
-                                                                                <p>Add more</p>
+                                                                        <div className="my-5 d-flex flex-column">
+                                                                            <div className="files d-flex justify-content-evenly align-items-end">
+                                                                                <div className="d-flex justify-content-center align-items-center flex-column p-3 uploadfile_box">
+                                                                                    <p className="my-1">Drag the file</p>
+                                                                                    <p className="my-1">or</p>
+                                                                                    <p className="my-1">Browse from Computer</p>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <Button
+                                                                                        className="btn btn-secondary save"
+                                                                                        disabled
+                                                                                    >
+                                                                                        Save
+                                                                                    </Button>
+                                                                                </div>
                                                                             </div>
-                                                                            <div className="d-flex">
-                                                                                <HiOutlineVideoCamera />
-                                                                                <HiOutlineCamera />
+                                                                            <div className="files_bottom my-3 d-flex justify-content-between align-items-center">
+                                                                                <div className="plusIcon d-flex mb-2">
+                                                                                    <button style={{ border: 'none' }} >
+                                                                                        <AiOutlinePlus />
+                                                                                    </button>
+                                                                                    <p>Add more</p>
+                                                                                </div>
+                                                                                <div className="d-flex">
+                                                                                    <HiOutlineVideoCamera />
+                                                                                    <HiOutlineCamera />
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
 
-                                                                    </div>
-                                                                    <div className="w-50" >
-                                                                        <div className="d-flex align-items-center my-3">
-                                                                            <MdArrowForwardIos /><p className="m-0" >Building Area</p>
                                                                         </div>
-                                                                        <Carousel autoPlay axis="horizontal">
-                                                                            <div>
-                                                                                <img src={slider} alt="slider" />
+                                                                        <div className="w-50" >
+                                                                            <div className="d-flex align-items-center my-3">
+                                                                                <MdArrowForwardIos /><p className="m-0" >Building Area</p>
                                                                             </div>
-                                                                            <div>
-                                                                                <img src={slider} alt="slider" />
-                                                                            </div>
-                                                                            <div>
-                                                                                <img src={slider} alt="slider" />
-                                                                            </div>
-                                                                        </Carousel>
+                                                                            <Carousel autoPlay axis="horizontal">
+                                                                                <div>
+                                                                                    <img src={slider} alt="slider" />
+                                                                                </div>
+                                                                                <div>
+                                                                                    <img src={slider} alt="slider" />
+                                                                                </div>
+                                                                                <div>
+                                                                                    <img src={slider} alt="slider" />
+                                                                                </div>
+                                                                            </Carousel>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </div>
+                                                                </div> : null}
                                                         </div>
                                                     </form>
                                                 )}
