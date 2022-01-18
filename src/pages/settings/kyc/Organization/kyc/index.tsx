@@ -150,10 +150,15 @@ class Organization extends Component<{}, typeState> {
 		const { uploadedFile } = this.state;
 		return (
 			<div className="organization h-100">
+				
 				<Stepper steps={steps} activeStep={0} />
+				<div className="box">
+				<div className="d-flex align-items-center justify-content-end pt-4">
+					<button className="summarybtn">Summary<MdKeyboardArrowRight/></button>
+				</div> 
 				{
 					this.state.step1 ? 
-					<div className="content">    
+					<div className="organstep1">    
 						<div className="contentcen">
 							<div className="orgcon">
 								<AiFillExclamationCircle/>
@@ -168,9 +173,10 @@ class Organization extends Component<{}, typeState> {
 						<span className="clickadd">Click to start with the Organization kYC</span>
 					</div> :
 					this.state.step2 ?
-					<div className="organization organstep2 machine main d-flex">
+					<div className="organization organstep2 machine main d-flex step2">
 						<div className="h-100">						
-							<div className="box mt-2 h-100">
+							<div className="mt-2 h-100">
+							
 								<PerfectScrollbar >
 									<div className="h-100 businesshour px-4 pt-1 pb-5 organizationinfo">									
 										<div className="ps-lg-5">
@@ -204,7 +210,7 @@ class Organization extends Component<{}, typeState> {
 													<form onSubmit={handleSubmit} className="ps-xl-5 form-bh">
 														<div className="d-flex align-items-center justify-content-space-between">
 															<h5>Entity</h5>
-															<button className="summarybtn">Summary<MdKeyboardArrowRight/></button>
+															{/* <button className="summarybtn">Summary<MdKeyboardArrowRight/></button> */}
 														</div>
 														
 														<div className="row d-flex align-items-center">
@@ -245,7 +251,7 @@ class Organization extends Component<{}, typeState> {
 																<label htmlFor="line-type" hidden>Select from options</label>
 																<Select 
 																options={this.LineTypeOptions} 
-																width='350px' 
+																width='391px' 
 																position='top' 
 																name="linetype"
 																inputId="line-type"
@@ -450,34 +456,23 @@ class Organization extends Component<{}, typeState> {
 										</div>
 									</div>
 								</PerfectScrollbar>
-								<div className="mt-3 col-md-12 pb-4 fixedbtn">
-															<div className="row">
-																<div className="w-100 d-flex justify-content-center">
-																	{/* <button title="backbutton" type="button" className="btn btn-back mx-2 back float-start"><AiFillCaretLeft />&emsp;Back</button> */}
-																	<div className="w-30 m-auto">
-																		<button title="removebutton" type="button" className="btn btn-default  mx-4 remove">Clear</button>
-																		<button title="savebutton" onClick={this.step2complete} type="button" className="btn btn-default mx-4 saveq">Save</button>
-																	</div>
-																	<button title="nextbutton" type="submit" className="btn btn-back mx-2 next float-end nextbtn">Next&emsp;<AiFillCaretRight />
-																	</button> 
-																</div>
-															</div>
-														</div> 
+								
 							</div>
 						</div>
 					</div> :
 					this.state.step3 ?
-					<div className="machine main d-flex facilitykyc1">
+					<div className="machine main d-flex facilitykyc1 organstep3">
 						<div className="h-100">
 							{/* <div className="crossicon">
 								<ImCross className="cross" />
 							</div> */}
-							<div className="box pt-3 mt-2">
+							<div className="h-100">
+							
 								<div className="scroll">
 									<PerfectScrollbar>
 										<div className="d-flex flex-wrap pe-4 facilityform h-100">
 											<Container>
-												<Row>
+												<div className="ps-xl-5">
 													<Formik
 														initialValues={{
 														
@@ -507,7 +502,7 @@ class Organization extends Component<{}, typeState> {
 															<form onSubmit={handleSubmit} className="ps-xl-5 form-bh">
 															<div className="h-100 facilityform">
 																<div className="d-flex align-items-center justify-content-space-between">
-																	<h5 className="mt-4">Location</h5>
+																	<h5 className="">Location</h5>
 																</div>
 																<div className="row mt-4 d-flex ">
 																	<h3 className="col-md-3">Address<span className='required'> </span></h3>
@@ -572,7 +567,7 @@ class Organization extends Component<{}, typeState> {
 																<div className="row mt-3 d-flex ">
 																	<h3 className="col-md-3">Type of service<span className='required'> </span></h3>
 																	<div className="col-md-5">
-																		<Field type="number" id="" className="input-box" name="service" aria-label="service" placeholder="Customer service, etc" />
+																		<Field type="text" id="" className="input-box" name="service" aria-label="service" placeholder="Customer service, etc" />
 																	</div>
 																</div> 
 																<div className="row mt-3 d-flex ">
@@ -595,36 +590,19 @@ class Organization extends Component<{}, typeState> {
 															</div>          
 															</form>
 														)}
-														</Formik>                                           
+													</Formik>                                           
 													
-												</Row>
+													</div>
 											</Container>
 										</div>
 									</PerfectScrollbar>
 								</div>
-								<div className="mt-2 col-md-10 pb-2 m-auto bottombtn">
-									<div className="row ">
-										<div className="w-100 d-flex justify-content-center">
-											{/* <button type="button" className="btn btn-back mx-2 back float-start">
-												<AiFillCaretLeft />&emsp;Back</button> */}
-													<div className="w-30 m-auto">
-													<button type="button" className="btn btn-default  mx-4 remove">Remove</button>
-													<button type="button" onClick={this.step3complete}
-														className="btn btn-default mx-4 saveq">Save</button>
-													</div>
-													<button type="submit" className="btn btn-back mx-2 next float-end">Next&emsp;<AiFillCaretRight />
-													</button> 
-										</div>
-									</div>
-								</div>
-								<div className="summary">
-									<Button variant="secondary" size="sm">Summary
-									<RiArrowDropRightLine /></Button>
-								</div>            
+								         
 							</div>
 						</div>
 					</div> :
-					<div className="content">
+					<div className="content business organstep4">
+					
 						<PerfectScrollbar>
 							<div className='h-100 businesshour px-4 py-4'>
 								<div className="ps-lg-5">
@@ -667,7 +645,8 @@ class Organization extends Component<{}, typeState> {
 											) => (
 												<form onSubmit={handleSubmit} className="ps-xl-5 form-bh">
 													<div className="weekday mb-5">
-														<div className="d-flex title align-items-center">
+														<h2>Business Hours</h2>
+														<div className="d-flex title align-items-center mt-5">
 															<h2 className="days">Days</h2>
 															<h3 className="start px-3">Start</h3>
 															<h3 className="end px-3">End</h3>
@@ -890,24 +869,6 @@ class Organization extends Component<{}, typeState> {
 															</div>
 														</div>
 													</div>
-													<div className="holiday mb-5">
-														<div className="title">
-															<h2>Weekly Holidays</h2>
-														</div>
-														<div className="d-flex align-items-center py-2">
-															<h3 className="days">Days</h3>
-															<div className="start">
-																<div className="custom-select">
-																	<Field as="select" name="color">
-																		<option value="0">Select One</option>
-																		<option value="red">Red</option>
-																		<option value="green">Green</option>
-																		<option value="blue">Blue</option>
-																	</Field>
-																</div>
-															</div>
-														</div>
-													</div>
 													<div className="holiday ">
 														<div className="title">
 															<h2>Other Holidays</h2>
@@ -969,21 +930,22 @@ class Organization extends Component<{}, typeState> {
 								</div>
 							</div>
 						</PerfectScrollbar>
-								<div className="mt-3 col-md-12 pb-4 fixedbtn">
-															<div className="row">
-																<div className="w-100 d-flex justify-content-center">
-																	{/* <button title="backbutton" type="button" className="btn btn-back mx-2 back float-start"><AiFillCaretLeft />&emsp;Back</button> */}
-																	<div className="w-30 m-auto">
-																		<button title="removebutton" type="button" className="btn btn-default  mx-4 remove">Clear</button>
-																		<button title="savebutton" onClick={this.step2complete} type="button" className="btn btn-default mx-4 saveq">Save</button>
-																	</div>
-																	<button title="nextbutton" type="submit" className="btn btn-back mx-2 next float-end nextbtn">Next&emsp;<AiFillCaretRight />
-																	</button> 
-																</div>
-															</div>
-														</div> 
 					</div>
 				}
+				<div className="col-md-11 m-auto pb-4 pt-4 mb-2 fixedbtn">
+					<div className="row">
+						<div className="w-100 d-flex justify-content-center">
+							{/* <button title="backbutton" type="button" className="btn btn-back mx-2 back float-start"><AiFillCaretLeft />&emsp;Back</button> */}
+							<div className="w-30 m-auto">
+								<button title="removebutton" type="button" className="btn btn-default  mx-4 remove">Clear</button>
+								<button title="savebutton" onClick={this.step2complete} type="button" className="btn btn-default mx-4 saveq">Save</button>
+							</div>
+								<button title="nextbutton" type="submit" className="btn btn-back mx-4 next float-end nextbtn">Next&emsp;<AiFillCaretRight />
+								</button> 
+						</div>
+					</div>
+				</div> 
+				</div>
 				<Modal
 					show={this.state.showModel}
 					onHide = {()=>this.setState({showModel: false})}
@@ -1114,8 +1076,8 @@ class Organization extends Component<{}, typeState> {
 					backdropClassName="organizationinfomodal"
 					>
 					<Modal.Header closeButton />
-					<Modal.Body className="">
-						<div className="header_discription mt-5">
+					<Modal.Body className="pdfmodal">
+						<div className="header_discription">
 							<p className="topbox">Credit Report  
 							</p>
 						</div>

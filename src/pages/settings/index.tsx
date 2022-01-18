@@ -35,7 +35,7 @@ class ManufacturerSettings extends Component{
 						</div>
 						<div className="main-content-parent">
 							<div className="d-flex flex-wrap h-100">
-								<div className="settings-menu-content h-100 px-5 py-3">
+								<div className="settings-menu-content h-100 px-3 py-3">
 									<Outlet />
 								</div>
 							</div>
