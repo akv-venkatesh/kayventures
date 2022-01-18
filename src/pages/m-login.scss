@@ -408,6 +408,7 @@ body {
           flex: 0 0 100%;
           max-width: 100%;
           .content {
+            height: calc(100% - 80px);
             box-shadow: 5px 5px 10px 0px #a6abbd, -5px -5px 10px 0px #fafbff;
             border-radius: 20px;
             background: linear-gradient(
@@ -445,250 +446,248 @@ body {
                 }
               }
             }
-            .tab-content {
-              height: calc(100% - 100px);
-              margin: 20px;
-              &::-webkit-scrollbar {
-                width: 12px;
-              }
-              &::-webkit-scrollbar-track {
-                background-color: lightgrey;
-              }
-              &::-webkit-scrollbar-thumb {
-                background-color: grey;
-              }
-              .businesshour {
-                .form-bh {
+            height: calc(100% - 80px);
+            margin: 20px;
+            &::-webkit-scrollbar {
+              width: 12px;
+            }
+            &::-webkit-scrollbar-track {
+              background-color: lightgrey;
+            }
+            &::-webkit-scrollbar-thumb {
+              background-color: grey;
+            }
+            .businesshour {
+              .form-bh {
+                h3 {
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+                .title {
+                  h2 {
+                    font-size: 24px;
+                  }
                   h3 {
-                    font-size: 14px;
-                    font-weight: 400;
+                    font-size: 16px;
+                    font-weight: 500;
                   }
-                  .title {
-                    h2 {
-                      font-size: 24px;
+                }
+                .weekday {
+                  .days {
+                    width: 150px;
+                  }
+                  .start {
+                    width: 300px;
+                  }
+                  .end {
+                    width: 300px;
+                  }
+                  input {
+                    &[type="number"] {
+                      height: 40px;
+                      border-radius: 40px;
+                      outline: none;
+                      color: unset;
+                      width: 180px;
+                      padding: 5px 15px;
+                      background: linear-gradient(
+                          317.7deg,
+                          rgba(0, 0, 0, 0.4) 0%,
+                          rgba(255, 255, 255, 0.4) 105.18%
+                        ),
+                        #ebecf0;
+                      background-blend-mode: soft-light, normal;
+                      border: 1px solid rgba(255, 255, 255, 0.4);
+                      box-shadow: inset -3px -3px 10px #fafbff,
+                        inset 3px 3px 10px #a6abbd;
+                      -moz-appearance: textfield;
                     }
-                    h3 {
-                      font-size: 16px;
-                      font-weight: 500;
+                    &::-webkit-outer-spin-button,
+                    &::-webkit-inner-spin-button {
+                      -webkit-appearance: none;
+                      margin: 0;
                     }
                   }
-                  .weekday {
-                    .days {
-                      width: 150px;
+                  input {
+                    &:checked {
+                      & ~ label {
+                        span {
+                          &.am {
+                            color: unset;
+                          }
+                          &.pm {
+                            color: $hightlight-color;
+                            font-weight: 500;
+                          }
+                        }
+                      }
                     }
-                    .start {
-                      width: 300px;
+                    & ~ label {
+                      cursor: pointer;
+                      span {
+                        font-size: 14px;
+                        &.am {
+                          color: $hightlight-color;
+                          font-weight: 500;
+                        }
+                        &.pm {
+                          color: unset;
+                        }
+                      }
                     }
-                    .end {
-                      width: 300px;
-                    }
-                    input {
-                      &[type="number"] {
+                  }
+                }
+                .holiday {
+                  .days {
+                    width: 250px;
+                  }
+                  .start {
+                    width: 300px;
+                  }
+                  select {
+                    width: 100%;
+                    height: 40px;
+                    padding: 5px 15px;
+                    background: linear-gradient(
+                        135.37deg,
+                        rgba(0, 0, 0, 0.4) 4.29%,
+                        rgba(255, 255, 255, 0.4) 95.6%
+                      ),
+                      #ebecf0;
+                    background-blend-mode: soft-light, normal;
+                    border: 1px solid rgba(255, 255, 255, 0.4);
+                    box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+                    border-radius: 10px;
+                    outline: none;
+                    color: unset;
+                  }
+                  input {
+                    width: 100%;
+                    height: 40px;
+                    padding: 5px 15px;
+                    background: linear-gradient(
+                        135.37deg,
+                        rgba(0, 0, 0, 0.4) 4.29%,
+                        rgba(255, 255, 255, 0.4) 95.6%
+                      ),
+                      #ebecf0;
+                    background-blend-mode: soft-light, normal;
+                    border: 1px solid rgba(255, 255, 255, 0.4);
+                    box-shadow: inset -3px -3px 10px #fafbff,
+                      inset 3px 3px 10px #a6abbd;
+                    border-radius: 40px;
+                    outline: none;
+                    color: unset;
+                  }
+                }
+                .validation-error {
+                  color: $error-color;
+                  position: absolute;
+                  font-size: 12px;
+                }
+                .form-submit {
+                  background: linear-gradient(
+                      135.37deg,
+                      rgba(0, 0, 0, 0.4) 4.29%,
+                      rgba(255, 255, 255, 0.4) 95.6%
+                    ),
+                    #0062d7;
+                  background-blend-mode: soft-light, normal;
+                  border: 1px solid rgba(255, 255, 255, 0.4);
+                  box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+                  border-radius: 40px;
+                  width: 150px;
+                  height: 50px;
+                  color: white;
+                }
+              }
+            }
+            .rating {
+              .form-bh {
+                h3 {
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+                .start {
+                  // width: 250px;
+                }
+                .end {
+                  .file-upload {
+                    label {
+                      &#file-chosen{
+                        position: static;
+                        display: inline-block;
+                        width: 100%;
                         height: 40px;
-                        border-radius: 40px;
-                        outline: none;
-                        color: unset;
-                        width: 180px;
-                        padding: 5px 15px;
+                        padding: 0px 15px;
+                        line-height: 40px;
                         background: linear-gradient(
-                            317.7deg,
-                            rgba(0, 0, 0, 0.4) 0%,
-                            rgba(255, 255, 255, 0.4) 105.18%
+                            135.37deg,
+                            rgba(0, 0, 0, 0.4) 4.29%,
+                            rgba(255, 255, 255, 0.4) 95.6%
                           ),
                           #ebecf0;
                         background-blend-mode: soft-light, normal;
                         border: 1px solid rgba(255, 255, 255, 0.4);
                         box-shadow: inset -3px -3px 10px #fafbff,
                           inset 3px 3px 10px #a6abbd;
-                        -moz-appearance: textfield;
-                      }
-                      &::-webkit-outer-spin-button,
-                      &::-webkit-inner-spin-button {
-                        -webkit-appearance: none;
-                        margin: 0;
-                      }
-                    }
-                    input {
-                      &:checked {
-                        & ~ label {
-                          span {
-                            &.am {
-                              color: unset;
-                            }
-                            &.pm {
-                              color: $hightlight-color;
-                              font-weight: 500;
-                            }
-                          }
-                        }
-                      }
-                      & ~ label {
-                        cursor: pointer;
-                        span {
-                          font-size: 14px;
-                          &.am {
-                            color: $hightlight-color;
-                            font-weight: 500;
-                          }
-                          &.pm {
-                            color: unset;
-                          }
+                        border-radius: 40px;
+                        outline: none;
+                        color: unset;
+                        font-size: 14px;
+                        &#file-chosen {
+                          width: 100%;
                         }
                       }
                     }
-                  }
-                  .holiday {
-                    .days {
-                      width: 250px;
-                    }
-                    .start {
-                      width: 300px;
-                    }
-                    select {
-                      width: 100%;
+                    label {
+                      position: absolute;
+                      right: -25px;
                       height: 40px;
-                      padding: 5px 15px;
-                      background: linear-gradient(
-                          135.37deg,
-                          rgba(0, 0, 0, 0.4) 4.29%,
-                          rgba(255, 255, 255, 0.4) 95.6%
-                        ),
-                        #ebecf0;
-                      background-blend-mode: soft-light, normal;
-                      border: 1px solid rgba(255, 255, 255, 0.4);
-                      box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
-                      border-radius: 10px;
-                      outline: none;
-                      color: unset;
-                    }
-                    input {
-                      width: 100%;
-                      height: 40px;
-                      padding: 5px 15px;
-                      background: linear-gradient(
-                          135.37deg,
-                          rgba(0, 0, 0, 0.4) 4.29%,
-                          rgba(255, 255, 255, 0.4) 95.6%
-                        ),
-                        #ebecf0;
-                      background-blend-mode: soft-light, normal;
-                      border: 1px solid rgba(255, 255, 255, 0.4);
-                      box-shadow: inset -3px -3px 10px #fafbff,
-                        inset 3px 3px 10px #a6abbd;
-                      border-radius: 40px;
-                      outline: none;
-                      color: unset;
+                      line-height: 40px;
+                      color: $hightlight-color;
+                      cursor: pointer;
                     }
                   }
-                  .validation-error {
-                    color: $error-color;
-                    position: absolute;
-                    font-size: 12px;
-                  }
-                  .form-submit {
+                  input {
+                    width: 100%;
+                    height: 40px;
+                    padding: 5px 15px;
                     background: linear-gradient(
                         135.37deg,
                         rgba(0, 0, 0, 0.4) 4.29%,
                         rgba(255, 255, 255, 0.4) 95.6%
                       ),
-                      #0062d7;
+                      #ebecf0;
                     background-blend-mode: soft-light, normal;
                     border: 1px solid rgba(255, 255, 255, 0.4);
-                    box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+                    box-shadow: inset -3px -3px 10px #fafbff,
+                      inset 3px 3px 10px #a6abbd;
                     border-radius: 40px;
-                    width: 150px;
-                    height: 50px;
-                    color: white;
+                    outline: none;
+                    color: unset;
+                    font-size: 14px;
+                  }
+                  .dual {
+                    input {
+                      // width: 220px;
+                    }
                   }
                 }
-              }
-              .rating {
-                .form-bh {
-                  h3 {
-                    font-size: 14px;
-                    font-weight: 400;
-                  }
-                  .start {
-                    // width: 250px;
-                  }
-                  .end {
-                    .file-upload {
-                      label {
-                        &#file-chosen{
-                          position: static;
-                          display: inline-block;
-                          width: 100%;
-                          height: 40px;
-                          padding: 0px 15px;
-                          line-height: 40px;
-                          background: linear-gradient(
-                              135.37deg,
-                              rgba(0, 0, 0, 0.4) 4.29%,
-                              rgba(255, 255, 255, 0.4) 95.6%
-                            ),
-                            #ebecf0;
-                          background-blend-mode: soft-light, normal;
-                          border: 1px solid rgba(255, 255, 255, 0.4);
-                          box-shadow: inset -3px -3px 10px #fafbff,
-                            inset 3px 3px 10px #a6abbd;
-                          border-radius: 40px;
-                          outline: none;
-                          color: unset;
-                          font-size: 14px;
-                          &#file-chosen {
-                            width: 100%;
-                          }
-                        }
-                      }
-                      label {
-                        position: absolute;
-                        right: -25px;
-                        height: 40px;
-                        line-height: 40px;
-                        color: $hightlight-color;
-                        cursor: pointer;
-                      }
-                    }
-                    input {
-                      width: 100%;
-                      height: 40px;
-                      padding: 5px 15px;
-                      background: linear-gradient(
-                          135.37deg,
-                          rgba(0, 0, 0, 0.4) 4.29%,
-                          rgba(255, 255, 255, 0.4) 95.6%
-                        ),
-                        #ebecf0;
-                      background-blend-mode: soft-light, normal;
-                      border: 1px solid rgba(255, 255, 255, 0.4);
-                      box-shadow: inset -3px -3px 10px #fafbff,
-                        inset 3px 3px 10px #a6abbd;
-                      border-radius: 40px;
-                      outline: none;
-                      color: unset;
-                      font-size: 14px;
-                    }
-                    .dual {
-                      input {
-                        // width: 220px;
-                      }
-                    }
-                  }
-                  .form-submit {
-                    background: linear-gradient(
-                        135.37deg,
-                        rgba(0, 0, 0, 0.4) 4.29%,
-                        rgba(255, 255, 255, 0.4) 95.6%
-                      ),
-                      #0062d7;
-                    background-blend-mode: soft-light, normal;
-                    border: 1px solid rgba(255, 255, 255, 0.4);
-                    box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
-                    border-radius: 40px;
-                    width: 150px;
-                    height: 50px;
-                    color: white;
-                  }
+                .form-submit {
+                  background: linear-gradient(
+                      135.37deg,
+                      rgba(0, 0, 0, 0.4) 4.29%,
+                      rgba(255, 255, 255, 0.4) 95.6%
+                    ),
+                    #0062d7;
+                  background-blend-mode: soft-light, normal;
+                  border: 1px solid rgba(255, 255, 255, 0.4);
+                  box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+                  border-radius: 40px;
+                  width: 150px;
+                  height: 50px;
+                  color: white;
                 }
               }
             }

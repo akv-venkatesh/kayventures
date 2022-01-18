@@ -8,20 +8,17 @@ import {
   PrimaryDetails,
   VerifiedEmail,
   VerifyEmailPending,
-  ProConfig,
   Types,
   Home,
-  ProConfigCapacity,
-  KYC, Organization, Organizationinfo, OrganizationinfoModal, OrganizationinfoModal1, OrganizationinfoModalSyn, Facilitykyc,
-  Facility1, Facilityday, Facilitymodal, Productconfig, Facilityform, Facilityinfomodal,
-  Pro_config,
-  MachineryInitialPage,
-  Esg,
+  Productselect, Facilitykyc,
+  Facility1, Facilityday, Facilitymodal, Facilityform, Facilityinfomodal,
+  Machinery,
   Settings,
   Dashboard,
   DashboardIndex,
-
+  OrgKYC,
   Operation, Profile,
+  Sections,
 
 } from "./asyncpages";
 
@@ -39,34 +36,41 @@ class Routers extends React.Component {
           <Route path="/verifyemailpending" element={<VerifyEmailPending />} />
           <Route path='/login' element={<Login />} />
           <Route path='/home' element={<Home />} />
-          <Route path='/productConfiguration' element={<Productconfig />} />
-          <Route path='/product-config' element={<Pro_config />} />
 
           <Route path='/settings' element={<Settings />} >
-            <Route path="kyc" element={<KYC />} />
-            <Route path="proconfig" element={<ProConfig />} />
-            <Route path="Capacity" element={<ProConfigCapacity />} />
-            <Route path="productconfiguration" element={<Productconfig />} />
-            <Route path="Organization" element={<Organization />} />
-            <Route path="Organizationinfo" element={<Organizationinfo />} />
-            <Route path="OrganizationinfoModal" element={<OrganizationinfoModal />} />
-            <Route path="OrganizationinfoModal1" element={<OrganizationinfoModal1 />} />
-            <Route path="OrganizationinfoModalSyn" element={<OrganizationinfoModalSyn />} />
-            <Route path="Facilitykyc" element={<Facilitykyc />} />
-            <Route path="Facility1" element={<Facility1 />} />
-            <Route path="Facilityday" element={<Facilityday />} />
-            <Route path="Facilitymodal" element={<Facilitymodal />} />
-            <Route path="Facilityform" element={<Facilityform />} />
-            <Route path="Facilityinfomodal" element={<Facilityinfomodal />} />
-            <Route path="machinery" element={<MachineryInitialPage />} />
-            <Route path="esg" element={<Esg />} />
-            <Route path="operation" element={<Operation />} />
+            {/* <Route path="Capacity" element={<ProConfigCapacity />} /> */}
+            {/* <Route path="Facilitykyc" element={<Facilitykyc />} /> */}
+            {/* <Route path="Facility1" element={<Facility1 />} /> */}
+            {/* <Route path="Facilityday" element={<Facilityday />} /> */}
+            {/* <Route path="Facilitymodal" element={<Facilitymodal />} /> */}
+            {/* <Route path="Facilityform" element={<Facilityform />} /> */}
+            {/* <Route path="Facilityinfomodal" element={<Facilityinfomodal />} /> */}
+            {/* <Route path="esg" element={<Esg />} /> */}
+            {/* <Route path="operation" element={<Operation />} /> */}
+
+            <Route path="dashboard" element={<DashboardIndex/>}>
+              <Route index element={<Dashboard/>} />
+              <Route path="profile" element={<Profile/>}/>
+            </Route>
+
+            <Route path="kyc">
+              <Route path="organization">
+                <Route index element={<OrgKYC />} />
+                <Route path="product-selection" element={<Productselect/>} />
+                <Route path="machinery" element={<Machinery/>} />
+                {/* <Route path="operation" element={<Operation />} /> */}
+              </Route>
+              <Route path="facility">
+                {/* <Route index element={<Facilitykyc />} />
+                <Route path="operation" element={<Operation />} />
+                <Route path="product-selection" element={<Productconfig/>} />
+                <Route path="capacity" element={<ProConfigCapacity />} />
+                <Route path="section" element={<Facilityform />} /> */}
+              </Route>
+            </Route>
+            <Route path='sections' element={<Sections />} />
           </Route>
 
-          <Route path="dashboard" element={<DashboardIndex />}>
-            <Route index element={<Dashboard />} />
-            <Route path="profile" element={<Profile />} />
-          </Route>
         </Routes>
       </div>
     );

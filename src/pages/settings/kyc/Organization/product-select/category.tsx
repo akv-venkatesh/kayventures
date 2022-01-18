@@ -1,68 +1,48 @@
 import React, { ChangeEvent, Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./index.scss";
-import Tshert from "../../../assets/icons/tshert.svg";
-
+import "./category.scss";
+import Tshert from "../../../../../assets/icons/tshert.svg";
+import blackTshert from "../../../../../assets/icons/blackTshert.svg";
 import { RiInformationFill } from "react-icons/ri";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { Link } from "react-router-dom";
 import { Field } from "formik";
-import Stepper from '../../../component/stepper/stepper'
+import Stepper from '../../../../../component/stepper/stepper'
 import {
   Nextbutton,
   DisableNextbutton,
-} from "../../../component/buttons/button";
+} from "../../../../../component/buttons/button";
 
 interface typeState {
-  visibility: boolean;
-  selectedOption: string;
+ 
 }
 interface typeProps {
- 
+  handleChange:any,
+  nextPageChange:any,
+ state:any
 }
 class ProductConfiguration extends Component<typeProps, typeState> {
   constructor(props: any) {
     super(props);
-    this.state = {
-      visibility: false,
-      selectedOption: "",
-    };
-  }
-  handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    this.setState({ selectedOption: e.target.value });
-    if (e.target.value) {
-      this.setState({ visibility: true });
-    }
-  };
-  render(): JSX.Element {
+   }
+ render(): JSX.Element {
     const steps = [{ label: 'KYC', id: 0 }, { label: 'Product Selection', id: 1 }, { label: 'Machinery', id: 2 }, { label: 'Operations', id: 3 }]
+    const {handleChange,nextPageChange,state} = this.props;
     return (
-      <> <div>
+      <> 
+      <div className="h-100">
         <div className='my-1  '>
           <Stepper steps={steps} activeStep={1} />
         </div >
         <div className="productconfiguration_body">
-          <div className="productconfiguration_container">
+          <div className="productconfiguration_container h-100">
             <div className="productconfigutation_head">
               <h1>Choose your product category</h1>
-              {/* <span className="productconfigutation_info_section">
-                <span>
-                  <RiInformationFill className="info-icon" />
-                </span>
-                <span className="productconfigutation_info_details">
-                  Multiple selection allowed only if all the categories are
-                  operating under one business name. If the business names are
-                  different, then kindly register separately for each of the
-                  product category.
-                </span>
-              </span> */}
             </div>
 
             <div className="productconfigutation_productlist">
 
               <PerfectScrollbar>
-
-                {/* body */}
                 <div className="productconfigutation_product_body">
                   <div className="productconfigutation_product_title">
                     <h1>Spinning</h1>
@@ -70,7 +50,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                       <div className="productconfigutation_product_field">
                         <label htmlFor="Weaving5" className="product_field">
                           <div className="product_field_item">
-                            <img src={Tshert} />
+                          {state.selectedOption === 'Yarn'?<img src={Tshert} />:<img src={blackTshert} />}
                             <span>Yarn</span>
                           </div>
                           <div>
@@ -79,8 +59,8 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                 type="radio"
                                 id="Weaving5"
                                 name="Weaving"
-                                value="Weaving"
-                                onChange={this.handleChange}
+                                value="Yarn"
+                                onChange={handleChange}
                               />
                               <label htmlFor="Weaving5"></label>
                             </div>
@@ -90,8 +70,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                     </div>
                   </div>
                 </div>
-                {/* body */}
-                {/* body */}
+                
                 <div className="productconfigutation_product_body">
                   <div className="productconfigutation_product_title">
                     <h1>Sewing</h1>
@@ -99,7 +78,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                       <div className="productconfigutation_product_field">
                         <label htmlFor="Weaving2" className="product_field">
                           <div className="product_field_item">
-                            <img src={Tshert} />
+                          {state.selectedOption ==='Garment  ' ?<img src={Tshert} />:<img src={blackTshert} />}
                             <span>Garment</span>
                           </div>
                           <div>
@@ -108,8 +87,8 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                 type="radio"
                                 id="Weaving2"
                                 name="Weaving"
-                                value="Weaving"
-                                onChange={this.handleChange}
+                                value="Garment"
+                                onChange={handleChange}
                               />
                               <label htmlFor="Weaving2"></label>
                             </div>
@@ -117,7 +96,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                         </label>
                         <label htmlFor="Weaving1" className="product_field">
                           <div className="product_field_item">
-                            <img src={Tshert} />
+                          {state.selectedOption ?<img src={Tshert} />:<img src={blackTshert} />}
                             <span>Home Furnishing</span>
                           </div>
                           <div>
@@ -126,8 +105,8 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                 type="radio"
                                 id="Weaving1"
                                 name="Weaving"
-                                value="Weaving"
-                                onChange={this.handleChange}
+                                value="Home Furnishing"
+                                onChange={handleChange}
                               />
                               <label htmlFor="Weaving1"></label>
                             </div>
@@ -135,7 +114,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                         </label>
                         <label htmlFor="Waving" className="product_field">
                           <div className="product_field_item">
-                            <img src={Tshert} />
+                          {state.selectedOption ?<img src={Tshert} />:<img src={blackTshert} />}
                             <span>MadeUps</span>
                           </div>
                           <div>
@@ -144,8 +123,8 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                 type="radio"
                                 id="Waving"
                                 name="Weaving"
-                                value="Weaving"
-                                onChange={this.handleChange}
+                                value="MadeUps"
+                                onChange={handleChange}
                               />
                               <label htmlFor="Waving"></label>
                             </div>
@@ -153,7 +132,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                         </label>
                         <label htmlFor="Weavng" className="product_field">
                           <div className="product_field_item">
-                            <img src={Tshert} />
+                          {state.selectedOption ?<img src={Tshert} />:<img src={blackTshert} />}
                             <span>Floor Covering</span>
                           </div>
                           <div>
@@ -162,8 +141,8 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                 type="radio"
                                 id="Weavng"
                                 name="Weaving"
-                                value="Weaving"
-                                onChange={this.handleChange}
+                                value="Floor Covering"
+                                onChange={handleChange}
                               />
                               <label htmlFor="Weavng"></label>
                             </div>
@@ -173,8 +152,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                     </div>
                   </div>
                 </div>
-                {/* body */}
-                {/* body */}
+                
                 <div className="productconfigutation_product_body">
                   <div className="productconfigutation_product_title">
                     <h1>Weaving</h1>
@@ -182,7 +160,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                       <div className="productconfigutation_product_field">
                         <label htmlFor="Weavin" className="product_field">
                           <div className="product_field_item">
-                            <img src={Tshert} />
+                          {state.selectedOption ?<img src={Tshert} />:<img src={blackTshert} />}
                             <span>Weaving Faabric</span>
                           </div>
                           <div>
@@ -191,8 +169,8 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                 type="radio"
                                 id="Weavin"
                                 name="Weaving"
-                                value="Weaving"
-                                onChange={this.handleChange}
+                                value="Weaving Faabric"
+                                onChange={handleChange}
                               />
                               <label htmlFor="Weavin"></label>
                             </div>
@@ -202,8 +180,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                     </div>
                   </div>
                 </div>
-                {/* body */}
-                {/* body */}
+                
                 <div className="productconfigutation_product_body">
                   <div className="productconfigutation_product_title">
                     <h1>Knitting</h1>
@@ -211,7 +188,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                       <div className="productconfigutation_product_field">
                         <label htmlFor="Weavin6" className="product_field">
                           <div className="product_field_item">
-                            <img src={Tshert} />
+                            {state.selectedOption ?<img src={Tshert} />:<img src={blackTshert} />}
                             <span>Kinitted Faabric</span>
                           </div>
                           <div>
@@ -220,8 +197,8 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                 type="radio"
                                 id="Weavin6"
                                 name="Weaving"
-                                value="Weaving"
-                                onChange={this.handleChange}
+                                value="Kinitted Faabric"
+                                onChange={handleChange}
                               />
                               <label htmlFor="Weavin6"></label>
                             </div>
@@ -231,17 +208,17 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                     </div>
                   </div>
                 </div>
-                {/* body */}
-                </PerfectScrollbar>
+               
+              </PerfectScrollbar>
             </div>
 
             <div className="productconfigutation_button">
               <div></div>
               <div className="next_btn">
                 {/* <Nextbutton /> */}
-                {this.state.visibility ? (
+                {state.visibility ? (
                   //   <Link to="/primarydetails">
-                  <Nextbutton />
+                  <Nextbutton onClick={nextPageChange} />
                   //   </Link>
                 ) : (
                   <DisableNextbutton />

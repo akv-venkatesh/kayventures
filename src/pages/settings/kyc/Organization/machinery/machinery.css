@@ -281,9 +281,8 @@ border-radius: 35px;
 
 /* first screen */
 .box-field-area {
-  margin-top: 20px;
   width: 100%;
-  height: calc(100vh - 170px);
+  height: calc(100% - 60px);
   background: #ebecf0;
   background-blend-mode: soft-light, normal;
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -297,12 +296,13 @@ border-radius: 35px;
   padding-left: 0px;
   overflow: auto;
   flex-wrap: wrap;
+  height: calc(100% - 91px);
 }
 .box-field-area .box-field-area-title {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  font-size: 25px;
+  font-size: 20px;
   line-height: 45px;
   display: flex;
   align-items: center;
