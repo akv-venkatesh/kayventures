@@ -58,7 +58,7 @@ class Routers extends React.Component {
                 <Route index element={<OrgKYC />} />
                 <Route path="product-selection" element={<Productselect/>} />
                 <Route path="machinery" element={<Machinery/>} />
-                {/* <Route path="operation" element={<Operation />} /> */}
+                <Route path="operation" element={<Operation />} />
               </Route>
               <Route path="facility">
                 {/* <Route index element={<Facilitykyc />} />

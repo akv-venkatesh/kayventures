@@ -36,7 +36,7 @@ import React from 'react';
         //machinery
             export const Machinery = React.lazy(() => import('../pages/settings/kyc/Organization/machinery/MachineryInitialPage'));
         //operation
-            export const Operation = React.lazy(() => import('../pages/settings/kyc/Operations/operation'));
+            export const Operation = React.lazy(() => import('../pages/settings/kyc/Organization/operations/operation'));
 
 
 
