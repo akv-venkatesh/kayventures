@@ -1,33 +1,34 @@
+
 .leftmenu {
     display: flex;
     height: 100%;
     flex: 0 0 250px;
     max-width: 250px;
-  }
-  
-  .inner_maintext {
+}
+
+.inner_maintext {
     color: #566180;
     font-size: 18px !important;
-  }
-  .top_text {
+}
+.top_text {
     display: flex;
-  }
-  .top_text svg {
+}
+.top_text svg {
     width: 30px;
     height: 30px;
     border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px;
     border-radius: 50%;
-  }
-  .top_text p {
+}
+.top_text p {
     margin-left: 10px;
     margin-top: 5px;
-  }
-  .select_option {
+}
+.select_option {
     display: flex;
     align-items: center;
-  }
-  .select_heading {
+}
+.select_heading {
     display: flex;
     background: rgba(184, 202, 216, 0.15);
     height: 45px;
@@ -36,15 +37,15 @@
     justify-content: space-evenly;
     align-items: center;
     margin-bottom: 10px;
-  }
-  .select_heading p {
+}
+.select_heading p {
     margin: 0;
-  }
-  .select_heading .inner_image {
+}
+.select_heading .inner_image {
     position: absolute;
     left: 144px;
-  }
-  .select_box {
+}
+.select_box {
     background: rgba(184, 202, 216, 0.15);
     height: 45px;
     border-bottom: 1px solid #b8cad8;
@@ -53,54 +54,54 @@
     margin: 5px 0 10px 18px;
     cursor: pointer;
     padding: 0 20px;
-  }
-  .select_box p {
+}
+.select_box p {
     margin: 0;
     margin-left: 10px;
-  }
-  .select_box img {
+}
+.select_box img {
     width: 22px;
-  }
-  .select_bottom {
+}
+.select_bottom {
     justify-content: flex-end;
     align-items: center;
     padding: 10px;
     margin-top: 10px;
-  }
-  .select_bottom p {
+}
+.select_bottom p {
     margin: 0 7px 0 7px;
     font-size: 12px;
-  }
-  .select_bottom .image_one {
+}
+.select_bottom .image_one {
     padding: 4px;
     border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px;
     border-radius: 50%;
-  }
-  .rightmenu {
+}
+.rightmenu {
     flex: 0 0 calc(100% - 250px);
     max-width: calc(100% - 250px);
-  }
-  .righttop {
+}
+.righttop {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     height: 50px;
     box-shadow: -3px -3px 10px #fafbff, 3px 3px 10px #a6abbd;
     border-radius: 10px;
-  }
-  .righttop .nav {
+}
+.righttop .nav {
     width: 100%;
     justify-content: space-evenly;
-  }
-  .righttop .nav-tabs .nav-item.show .nav-link,
-  .nav-tabs .nav-link:active {
+}
+.righttop .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link:active {
     color: #003b81;
     background-color: #fff;
     border: none;
-  }
-  /* first screen */
-  .box-field-area {
+}
+/* first screen */
+.box-field-area {
     margin-top: 20px;
     width: 100%;
     height: calc(100vh - 170px);
@@ -111,14 +112,14 @@
     box-shadow: inset -5px -5px 10px #fafbff, inset 5px 5px 10px #a6abbd;
     border-radius: 30px;
     overflow: hidden;
-  }
-  .Machinery_area {
+}
+.Machinery_area {
     margin: 0px 40px;
     padding-left: 0px;
     overflow: auto;
     flex-wrap: wrap;
-  }
-  .box-field-area .box-field-area-title {
+}
+.box-field-area .box-field-area-title {
     font-family: "Poppins";
     font-style: normal;
     font-weight: 600;
@@ -127,18 +128,18 @@
     display: flex;
     align-items: center;
     text-align: center;
-  
+
     color: #566180;
-  }
-  
-  .Machinery_product {
+}
+
+.Machinery_product {
     display: flex;
-  }
-  .Machinery_product_field {
+}
+.Machinery_product_field {
     display: flex;
     margin: 30px 0px 50px 0px;
-  }
-  .Machinery_product_field .product_field {
+}
+.Machinery_product_field .product_field {
     width: 250px;
     height: 50px;
     display: flex;
@@ -150,20 +151,20 @@
         135.37deg,
         rgba(0, 0, 0, 0.4) 4.29%,
         rgba(255, 255, 255, 0.4) 95.6%
-      ),
-      #ebecf0;
+    ),
+    #ebecf0;
     background-blend-mode: soft-light, normal;
     box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
     border-radius: 31px;
     position: relative;
-  }
-  .product_field_item {
+}
+.product_field_item {
     margin: 0px 0px 0px 5px;
-  }
-  .product_field_item img {
+}
+.product_field_item img {
     padding: 0px 5px 0px 20px;
-  }
-  .product_field_item .unselected {
+}
+.product_field_item .unselected {
     padding: 0px 0px 0px 20px;
     font-family: "Poppins";
     font-style: normal;
@@ -171,8 +172,8 @@
     font-size: 15px;
     line-height: 115.5%;
     color: #566180;
-  }
-  .product_field_item .selected {
+}
+.product_field_item .selected {
     padding: 0px 0px 0px 20px;
     font-family: "Poppins";
     font-style: normal;
@@ -180,9 +181,9 @@
     font-size: 15px;
     line-height: 115.5%;
     color: rgb(0, 98, 215);
-  }
-  
-  .Machinery_product_field label .product_field_circle {
+}
+
+.Machinery_product_field label .product_field_circle {
     position: absolute;
     width: 30px;
     height: 30px;
@@ -195,13 +196,13 @@
         317.7deg,
         rgba(0, 0, 0, 0.4) 0%,
         rgba(255, 255, 255, 0.4) 105.18%
-      ),
-      #ebecf0;
+    ),
+    #ebecf0;
     background-blend-mode: soft-light, normal;
     box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
     border-radius: 40px;
-  }
-  .productconfigutation_button {
+}
+.productconfigutation_button {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -211,45 +212,45 @@
     font-weight: 500;
     font-size: 15px;
     line-height: 27px;
-  
+
     color: #0062d7;
-  }
-  
-  .productconfigutation_button .next_btn {
+}
+
+.productconfigutation_button .next_btn {
     margin: 10px 50px 10px 0px;
-  }
-  .product_field_circle input[type="radio"] {
+}
+.product_field_circle input[type="radio"] {
     display: none;
-  }
-  .product_field_circle label {
+}
+.product_field_circle label {
     position: relative;
     cursor: pointer;
     font-weight: bold;
     padding-right: 32px;
     width: 25px;
     height: 25px;
-  }
-  .product_field_circle label:nth-last-child(1) {
+}
+.product_field_circle label:nth-last-child(1) {
     padding-right: 0;
-  }
-  .product_field_circle .product_fieldlabel::before {
+}
+.product_field_circle .product_fieldlabel::before {
     position: absolute;
     width: 36px;
     height: 36px;
     right: 15px;
     top: 15px;
-  
+
     background: linear-gradient(
         317.7deg,
         rgba(0, 0, 0, 0.4) 195.53%,
         rgba(255, 255, 255, 0.4) 300.71%
-      ),
-      #ebecf0;
+    ),
+    #ebecf0;
     background-blend-mode: soft-light, normal;
     box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
     border-radius: 40px;
-  }
-  .product_field_circle label::after {
+}
+.product_field_circle label::after {
     content: "";
     display: inline-block;
     width: 25px;
@@ -259,10 +260,10 @@
     margin-left: 0;
     border-radius: 50%;
     transition: all 0.1s;
-  }
-  .product_field_circle input[type="radio"]:checked + label::after {
+}
+.product_field_circle input[type="radio"]:checked + label::after {
     background: rgb(0, 98, 215);
-  }
+}
 .main{
     height: 100%;
 }
@@ -322,4 +323,5 @@
 .product-item-parent-right{
     align-items: center;
     height: 100%;
-}  
+}
+/* add facility step2 */

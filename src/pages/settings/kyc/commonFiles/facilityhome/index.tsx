@@ -1,58 +1,31 @@
-import React, { Component } from 'react'
-import { Button, Form, Accordion, Modal } from "react-bootstrap";
-import { BsChevronRight, BsPlus } from "react-icons/bs";
-import { IoCloseOutline } from "react-icons/io5";
-import { GiSewingMachine } from "react-icons/gi";
-import {
-    Nextbutton,
-    DisableNextbutton,
-} from "../../../../component/buttons/button";
-import "./Addfacility.css";
-
+import { Component } from "react";
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import "react-perfect-scrollbar/dist/css/styles.css";
-import PerfectScrollbar from "react-perfect-scrollbar";
-import { JsxFlags } from "typescript";
-import { RiInformationFill } from "react-icons/ri";
-import { AiOutlineRight } from "react-icons/ai";
-import Select from "react-select";
-
-import Vector1 from "../../../../assets/icons/various/Vector1.svg"
-import Vector2 from "../../../../assets/icons/various/Vector2.svg"
-import Vector3 from "../../../../assets/icons/various/Vector3.svg"
-import Vector5 from "../../../../assets/icons/various/Vector5.svg"
-import Vector6 from "../../../../assets/icons/various/Vector6.svg"
-import Vector4 from "../../../../assets/icons/arrows/chevron-right.svg"
+import Vector1 from "../../../../../assets/images/vest.svg";
+import Vector3 from "../../../../../assets/icons/various/Vector3.svg";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { AiFillCaretRight } from "react-icons/ai";
+import "./index.scss";
 
-
-
-
-import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tab';
-// import Machine from '../Machine/Machine';
-
-
-interface initialState {
-
+interface typeProps {
+    onClick: ()=>void,
 }
-export class Addfacility extends Component<{}, initialState> {
-    constructor(props: any) {
+
+class FacilityHome extends Component<typeProps,{}>{
+    constructor(props:any){
         super(props);
         this.state = {
 
         }
     }
-
-    render() {
-        return (
+    click = () =>{
+        this.props.onClick();
+    }
+    render():JSX.Element{
+        return(
             <div className="main d-flex align-items-center">
                 <div className="leftmenu">
                     <div className="inner">
-                        {/* <div className="top_text">
-                            <BsPlus />
-                            <p>add business categroy</p>
-                        </div> */}
                         <div className="inner_maintext">
                             <h4>Manufacture</h4>
                         </div>
@@ -68,7 +41,7 @@ export class Addfacility extends Component<{}, initialState> {
                                     <p>Synticate Industries </p>
                                 </div>
 
-                                <div className="select_box d-flex">
+                                <div className="select_box d-flex" onClick={this.click}>
                                     <img src={Vector3} alt="" />
                                     <p>Facility 1</p>
                                 </div>
@@ -88,11 +61,10 @@ export class Addfacility extends Component<{}, initialState> {
                         <p>Click on the Facilities one by one to fill in the details relateing to Location, Contact and Business hours</p>  
                     </div>
                     <button title="nextbutton" type="submit" className="btn btn-back mx-2 next float-end nextbtn">Next&emsp;<AiFillCaretRight />
-                        </button>
+                    </button>
                 </div>
             </div>
         )
     }
 }
-
-export default Addfacility
+export default FacilityHome;
