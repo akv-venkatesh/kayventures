@@ -1,35 +1,38 @@
 /* organization step1 */
+    .organization .box{
+    background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0 !important;
+    background-blend-mode: soft-light, normal !important;
+    border: 1 pxsolid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd !important;
+    border-radius: 20px;
+    height: calc(100% - 60px);
+    }
 
-    .organization h4{
+    .organstep1 h4{
         font-size: 17px;
         font-weight: 600;
         display: inline-block;
     }
-    .organization .content{
+    .organstep1{
         /* display: flex; */
-        height: calc(100% - 30px);
-        background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0 !important;
-        background-blend-mode: soft-light, normal !important;
-        border: 1px solid rgba(255, 255, 255, 0.4) !important;
-        box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd !important;
-        border-radius: 40px !important;
+        height: calc(100% - 60px);
+        position: relative;
     }
-    .organization .titleimg{
+    .organstep1 .titleimg{
         width: 15px;
         margin-right: 10px;
     }
-    .organization .title{
-        margin-left: 15px;
+    .organstep1 .title{
         height: 30px;
     }
-    .organization .contentcen{
+    .organstep1 .contentcen{
         display: flex;
         justify-content: center;
         align-items: center;
         height: calc(100% - 60px);
     }
 
-    .organization .imgshow{
+    .organstep1 .imgshow{
         background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
         background-blend-mode: soft-light, normal;
         box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
@@ -41,17 +44,17 @@
         justify-content: center;
         padding: 10px;
     }
-    .organization .imgshow img{
+    .organstep1 .imgshow img{
         height: 45px;
         margin-top: 17px;
     }
-    .organization .imgshow p{
+    .organstep1 .imgshow p{
         font-size: 16px;
         font-weight: 600;
         color: #1862d7;
         line-height: 1.2;
     }
-    .organization .add-btn {
+    .organstep1 .add-btn {
         width: 20px;
         height: 20px;
         display: flex;
@@ -66,17 +69,17 @@
         border-radius: 40px;
         color: #0067E5;
     }
-    .organization .add-button {
+    .organstep1 .add-button {
         display: flex;
         align-items: baseline;
         /* border: 2px dashed #ACAAC2; */
         border-radius: 30px;
         padding: 3px 10px;
     }
-    .add-icon {
+    .organstep1 .add-icon {
         font-size: 12px;
     }
-    .add-button span {
+    .organstep1 .add-button span {
         color: #adafb1;
         margin-right: 20px;
         font-family: 'Poppins';
@@ -85,12 +88,12 @@
         font-size: 12px;
         line-height: 22px;
     }
-    .organization .addfac{
+    .organstep1 .addfac{
         color: rgba(0, 98, 215, 1);
         font-size: 13px;
         font-weight: 500;
     }
-    .organization .clickadd{
+    .organstep1 .clickadd{
         color: #1862d7;
         font-size: 14px;
         font-weight: 600;
@@ -98,13 +101,13 @@
         align-items: center;
         justify-content: center;
     }
-    .organization .orgcon{
+    .organstep1 .orgcon{
         position: relative;
     }
-    .organization .orgcon .org-card{
+    .organstep1 .orgcon .org-card{
         cursor: pointer;
     }
-    .organization .orgcon svg{
+    .organstep1 .orgcon svg{
         position: absolute;
         right: -27px;
         color: #1862d7;
@@ -228,7 +231,7 @@
         color: white;
     }
     .organstep2{
-        height: calc(100% - 70px);
+        height: calc(100% - 140px);
     }
 
 
@@ -239,16 +242,7 @@
         font-size: 14px;
         font-weight: 400;
     }
-    .box{
-        background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #EBECF0;
-        background-blend-mode: soft-light, normal;
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        box-sizing: border-box;
-        box-shadow: inset -5px -5px 10px #FAFBFF, inset 5px 5px 10px #A6ABBD;
-        border-radius: 20px;
-        /* height: calc(100% - 30px); */
-        position: relative;
-    }
+
     /* .box .scrollbar-container{
         height: calc(100% - 80px);
     } */
@@ -277,7 +271,7 @@
     }
     .summarybtn{
         width: 125px;
-        margin-right: 40px;
+        margin-right: 65px;
         color: white;
         background: #CCCCCC;
         opacity: .5;
@@ -288,8 +282,8 @@
         padding: 5px 10px;
         font-size: 14px;
         font-weight: 600;
-        position: fixed;
-        right: 6%;
+        right: 25px;
+        top:25px
     }
     .summarybtn svg{
         margin-left: 3px;
@@ -393,7 +387,7 @@
     }
     .organization .box .scrollbar-container{
         margin: 20px;
-        height: calc(100% - 60px) !important;
+        height: calc(100% - 30px) !important;
     }
     .crossicon{
         background: #EBECF0;
@@ -447,17 +441,10 @@
     .organizationinfo .mt-30{
         margin-top: 30px;
     }
-    .organization .fixedbtn{
-            position: fixed;
-            bottom: 43px;
-            background: #edeef1;
-            width: 85%;
-            padding: 0px 27px;
-            margin: 0 13px;
-            z-index: 999;
+    /* .organization .fixedbtn{
             background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #EBECF0;
             background-blend-mode: soft-light, normal;
-    } 
+    }  */
     .nextbtn svg{
         font-size: 28px;
         margin-right: -10px;
@@ -473,6 +460,13 @@
 
 
 /* organization step3 */
+
+    body .m-settings .s-sec2 .main-content-parent .settings-menu-content .content {
+        box-shadow: none !important;
+        border-radius: 0px !important; 
+        background:none !important;
+         background-blend-mode: none !important;
+    }
 
     .facilitykyc1 .box{
         background: linear-gradient(
@@ -495,7 +489,7 @@
         height: 100% !important;
     }
     .facilitykyc1 .scroll{
-        height: calc(100% - 90px);
+        height: 100%;
     }
     .facility1 img{
         width: 16px;
@@ -723,7 +717,17 @@
         border-radius: 5px;
     }
     .facilitykyc1{
-        height: calc(100% - 80px);
+        height: calc(100% - 140px);
+    }
+    .business .scrollbar-container {
+        height: calc(100% - 110px) !important;
+        margin: 23px 20px 0 20px;
+        }
+    .weekday h2 {
+       font-size: 20px !important;
+    }
+    body .m-settings .s-sec2 .main-content-parent .settings-menu-content .content .businesshour .form-bh .title h2{
+        font-size: 20px !important;
     }
 
 /* organization step3 */
@@ -756,7 +760,11 @@
         backdrop-filter: blur(12px);
         /* Note: backdrop-filter has minimal browser support */
         border-radius: 35px;
-        /* height: 70vh; */
+        height: 70vh;
+    }
+    .organizationinfomodal .modal-body {
+        
+        height: calc(100% - 60px);
     }
         
         
@@ -783,8 +791,9 @@
     .organizationinfomodal  .modal-body {
         /* text-align: center; */
         /* justify-content: center; */
-        padding: 0px 40px 0 90px;
+        padding: 0px 40px 20px 90px;
     }
+
         
     .organizationinfomodal  .modal-body .header_discription  {
         /* position: relative; */
@@ -833,7 +842,7 @@
     }
     .organizationinfomodal .pdf1 {
         width: 25%;
-        margin: 40px 0;
+        margin: 30px 0;
     }
     .organizationinfomodal .organisyn img.logo-img{
         margin-right: 20px;
@@ -936,6 +945,10 @@
     .organizationinfomodal .organization p{
         font-size: 15px;
         font-weight: 400;
+    }
+    .pdfmodal .scrollbar-container {
+        position: relative;
+        height: calc(100% - 70px) !important;
     }
 
 /* organization modal */
