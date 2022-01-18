@@ -49,10 +49,9 @@ export class MachineryInitialPage extends Component<typeProps, initialState> {
         const step = [{ label: 'KYC',id:0}, { label: 'Product Selection',id:1}, { label: 'Machinery',id:2 }, { label: 'Operations',id:3 }];
         console.log(this.state.selectedOption)
         return (
-
             <div className="h-100">
                 {this.state.HomePage ?
-                    (<div className="h-100">
+                    <div className="h-100">
                         <Stepper steps={step} activeStep={2}/>
                         <div className='box-field-area p-3'>
                             <div className='d-flex flex-column justify-content-center align-items-center h-100'>
@@ -196,10 +195,10 @@ export class MachineryInitialPage extends Component<typeProps, initialState> {
                                 </div>
                             </div>
                         </div>
-                    </div>) :
-                    (<div>
+                    </div> :
+                    <div className="h-100">
                         <Machinery machineProps={this.state.selectedOption} />
-                    </div>)
+                    </div>
                 }
 
             </div>

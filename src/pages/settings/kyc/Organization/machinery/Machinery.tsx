@@ -11,7 +11,7 @@ import { RiArrowDropRightLine, RiInformationFill } from 'react-icons/ri';
 import "react-perfect-scrollbar/dist/css/styles.css";
 import Select from '../../../../../component/dropdown_select/slelect';
 import { AiFillCaretRight, AiFillExclamationCircle, AiOutlinePlus } from 'react-icons/ai';
-
+import Stepper from '../../../../../component/stepper/stepper';
 
 
 
@@ -224,10 +224,11 @@ class Machinery extends Component<typeProps, typeState> {
             { value: 'Enable', label: 'Enable' },
             { value: 'Disable', label: 'Disable' }
         ]
+        const step = [{ label: 'KYC', id: 0 }, { label: 'Product Selection', id: 1 }, { label: 'Machinery', id: 2 }, { label: 'Operations', id: 3 }];
 
         return (
-            <div className="machine main d-flex">
-                <div className="leftmenu d-flex flex-column">
+            <div className="machine main d-flex h-100">
+                <div className="leftmenu d-flex flex-column h-100">
                     <div className=" leftmenu_header d-flex flex-column">
                         <h4>{this.props.machineProps}</h4>
                         <div className="plusIcon d-flex mb-2">
@@ -303,14 +304,14 @@ class Machinery extends Component<typeProps, typeState> {
                                 <h5 className="menu_machine_numbers mb-4">Add the No. of machines</h5>
                                 <div className="machine_input mb-3">
                                     <Form.Control
-                                        type="text"
+                                        type="number"
                                         placeholder="0"
                                         onChange={this.changeMachineCount}
                                         value={this.state.machineCount}
                                     />
                                 </div>
 
-                                <div className="my-5">
+                                <div className="my-3">
                                     <Button
                                         className="btn btn-secondary submit"
                                         disabled={this.activeSubmit()}
@@ -325,19 +326,19 @@ class Machinery extends Component<typeProps, typeState> {
 
                 </div>
                 <div className="rightmenu d-flex flex-column">
-                    <div className="facility d-flex">
-                        <img src={Vector3} alt="" />
-                        <p>Facility 1</p>
-                        <p>|</p>
-                        <img src={Vector3} alt="" />
-                        <p>Facility 2</p>
-                        <p>|</p>
-                        <img src={Vector3} alt="" />
-                        <p>Facility 3</p>
-                        <p>|</p>
-                    </div>
-                    <div className="box py-5 mt-2 position-relative">
-                        <div className="scroll pb-3">
+                    
+                    <Stepper steps={step} activeStep={2} />
+
+                    <div className="box py-2 mt-2 position-relative">
+                       <div className="d-flex mt-4 px-5 justify-content-end">
+                            <div className="summary">
+                                <Button className="btn btn-secondary" disabled={!this.state.addMoreEnable} onClick={this.handleSummary} data-testid="mySummary">
+                                    Summary
+                                    <RiArrowDropRightLine />
+                                </Button>
+                            </div>
+                        </div>
+                        <div className="scroll">
                             <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
                                 <div className="d-flex flex-wrap pe-4">
                                     <Container>
@@ -351,7 +352,7 @@ class Machinery extends Component<typeProps, typeState> {
                                                     <div className="machine_items" data-testid="selected_element">
                                                         <div className="machine_image d-flex">
                                                             <img src={MachineIcon} alt="" />
-                                                            <h3>{machine.machineCount}</h3>
+                                                            <h3>{machine.machineCount || 0}</h3>
                                                         </div>
                                                         <p data-testid="testMachineType">{machine.machineType}</p>
                                                     </div>
@@ -363,7 +364,8 @@ class Machinery extends Component<typeProps, typeState> {
                                     </Container>
                                 </div>
                             </PerfectScrollbar>
-                            <div className="bottom_text d-flex position-absolute">
+                        </div>
+                        <div className="bottom_text d-flex justify-content-end px-5">
                                 {this.state.addMoreEnable ?
                                     <div className="exclamination mx-3">
                                         <AiFillExclamationCircle />
@@ -377,16 +379,7 @@ class Machinery extends Component<typeProps, typeState> {
                                     >Next&emsp;<AiFillCaretRight />
                                     </button>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="d-flex">
-                            <div className="summary">
-                                <Button className="btn btn-secondary" disabled={!this.state.addMoreEnable} onClick={this.handleSummary} data-testid="mySummary">
-                                    Summary
-                                    <RiArrowDropRightLine />
-                                </Button>
-                            </div>
-                        </div>
+                            </div>                        
                     </div>
                 </div>
 
