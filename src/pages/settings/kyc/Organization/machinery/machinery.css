@@ -99,43 +99,28 @@
   color: #fff;
 }
 
-.iot_switch{
-  display: flex;
-}
-.iot_switch p{
-  margin-right: 5px;
-}
-.form-switch .form-check-input{
-  /* background-image: url(../../../../../assets/icons/various/shadows.svg); */
-  background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
-background-blend-mode: soft-light, normal;
-box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
-border-radius: 151.5px;
-}
-.form-check-input::before{
-  content: '';
-  width: 10px;
+.iot_switch .form-switch input.form-check-input{
+  background-image: none;
+  border: none;
+  position: relative;
+  box-shadow: none;
   height: 10px;
-  color: #0062D7;
+  cursor: pointer;
 }
-.form-switch .form-check-input:focus{
-  /* background-image: url(../../../../../assets/icons/various/shadows.svg); */
+.iot_switch .form-switch input.form-check-input:before{
+  content: '';
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: block;
+  bottom: -3px;
+  position: absolute;
   background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
-background-blend-mode: soft-light, normal;
-box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
-border-radius: 151.5px;
+  background-blend-mode: soft-light, normal;
+  box-shadow: -2px -3px 10px #ffffff, 5px 5px 10px #a6abbd;
 }
-
-.form-switch .form-check-input:checked{
-  background: #0062D7;
-border-radius: 40px;
-}
-.reset_switch{
-  margin: 135px 0 0 0px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-box-sizing: border-box;
-box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
-border-radius: 8px;
+.iot_switch .form-switch input.form-check-input:checked:before{
+  right: 0;
 }
 
 .machine_items{
@@ -469,11 +454,4 @@ border-radius: 35px;
 }
 .machine .rightmenu .box .scroll{
   height: calc(100% - 120px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.machine .rightmenu .box .scrollbar-container{
-  display: flex;
-  align-items: center;
 }

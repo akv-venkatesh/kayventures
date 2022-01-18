@@ -291,14 +291,15 @@ class Machinery extends Component<typeProps, typeState> {
 
                             <div className="mb-3">
                                 <div className="iot_switch d-flex my-5">
-                                    <p className="mr-5">IOT</p>
+                                    <p className="me-3">IOT</p>
                                     <Form.Check
                                         type="switch"
                                         data-testid="custom-element"
                                         onChange={(e) => this.handletoggle_checkbox(e)}
                                         checked={this.state.iotEnable}
                                     />
-                                    {this.state.iotEnable ? <p className="ml-5">Enabled</p> : <p className="ml-5">Disabled</p>}
+                                    {this.state.iotEnable ? 
+                                    <p className="ms-3">Enabled</p> : <p className="ms-3">Disabled</p>}
 
                                 </div>
                                 <h5 className="menu_machine_numbers mb-4">Add the No. of machines</h5>
@@ -338,15 +339,18 @@ class Machinery extends Component<typeProps, typeState> {
                                 </Button>
                             </div>
                         </div>
-                        <div className="scroll">
+                        <div className={this.state.initialPage ? 'scroll d-flex justify-content-center align-items-center' : 'scroll'}>
+                            {
+                                this.state.initialPage ? 
+                                <div className="initialpage_text d-flex flex-column align-items-center">
+                                    <p>Click on the machine type to create</p>
+                                    <p>the machine inventory</p>
+                                </div> : <></>
+                            }
                             <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
                                 <div className="d-flex flex-wrap pe-4">
                                     <Container>
                                         <Row>
-                                            {
-                                                this.state.initialPage ? <div className="initialpage_text d-flex flex-column align-items-center"><p>Click on the machine type to create</p><p>the machine inventory</p></div> : null
-                                            }
-
                                             {this.state.savedState.map((machine: any) => {
                                                 return machine.machineType !== null && (<Col xs={3} md={12} className="column d-flex" >
                                                     <div className="machine_items" data-testid="selected_element">
