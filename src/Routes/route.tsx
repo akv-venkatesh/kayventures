@@ -10,8 +10,7 @@ import {
   VerifyEmailPending,
   Types,
   Home,
-  Productselect, Facilitykyc,
-  Facility1, Facilityday, Facilitymodal, Facilityform, Facilityinfomodal,
+  Productselect,
   Machinery,
   Settings,
   Dashboard,
@@ -19,7 +18,10 @@ import {
   OrgKYC,
   Operation, Profile,
   Sections,
-
+  AddFacility,
+  FacilityInfo,
+  FacilityProductSelection,
+  Capacity,
 } from "./asyncpages";
 
 class Routers extends React.Component {
@@ -39,8 +41,6 @@ class Routers extends React.Component {
 
           <Route path='/settings' element={<Settings />} >
             {/* <Route path="Capacity" element={<ProConfigCapacity />} /> */}
-            {/* <Route path="Facilitykyc" element={<Facilitykyc />} /> */}
-            {/* <Route path="Facility1" element={<Facility1 />} /> */}
             {/* <Route path="Facilityday" element={<Facilityday />} /> */}
             {/* <Route path="Facilitymodal" element={<Facilitymodal />} /> */}
             {/* <Route path="Facilityform" element={<Facilityform />} /> */}
@@ -58,12 +58,15 @@ class Routers extends React.Component {
                 <Route index element={<OrgKYC />} />
                 <Route path="product-selection" element={<Productselect/>} />
                 <Route path="machinery" element={<Machinery/>} />
-                {/* <Route path="operation" element={<Operation />} /> */}
+                <Route path="operation" element={<Operation />} />
               </Route>
               <Route path="facility">
+                <Route path ="addfacility" element={<AddFacility/>}/>
+                <Route path ="facilityinfo" element={<FacilityInfo/>}/>
+                <Route path ="product-selection" element={<FacilityProductSelection/>} />
+                <Route path="capacity" element={<Capacity />} />
                 {/* <Route index element={<Facilitykyc />} />
                 <Route path="operation" element={<Operation />} />
-                <Route path="product-selection" element={<Productconfig/>} />
                 <Route path="capacity" element={<ProConfigCapacity />} />
                 <Route path="section" element={<Facilityform />} /> */}
               </Route>

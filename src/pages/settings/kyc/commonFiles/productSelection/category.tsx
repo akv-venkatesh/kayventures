@@ -19,7 +19,7 @@ interface typeState {
 interface typeProps {
   handleChange:any,
   nextPageChange:any,
- state:any
+  state:any
 }
 class ProductConfiguration extends Component<typeProps, typeState> {
   constructor(props: any) {
