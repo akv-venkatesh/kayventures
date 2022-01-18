@@ -408,7 +408,7 @@ body {
           flex: 0 0 100%;
           max-width: 100%;
           .content {
-            height: calc(100% - 80px);
+            height: calc(100% - 142px);
             box-shadow: 5px 5px 10px 0px #a6abbd, -5px -5px 10px 0px #fafbff;
             border-radius: 20px;
             background: linear-gradient(
@@ -446,8 +446,6 @@ body {
                 }
               }
             }
-            height: calc(100% - 80px);
-            margin: 20px;
             &::-webkit-scrollbar {
               width: 12px;
             }

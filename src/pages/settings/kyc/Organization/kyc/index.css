@@ -385,10 +385,10 @@
         margin-left: 25px;
         margin-bottom: 5px;
     }
-    .organization .box .scrollbar-container{
+    /* .organization .box .scrollbar-container{
         margin: 20px;
         height: calc(100% - 30px) !important;
-    }
+    } */
     .crossicon{
         background: #EBECF0;
         border: 1px solid rgba(235, 236, 240, 0.4);
