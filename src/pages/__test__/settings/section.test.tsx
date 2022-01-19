@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { MemoryRouter as Router } from 'react-router-dom';
 import selectEvent from 'react-select-event';
 
-import Section from '../../settings/kyc/Section/Section';
+import Section from '../../settings/kyc/Section';
 import { testStore } from '../testStore';
 let wrapper: any;
 

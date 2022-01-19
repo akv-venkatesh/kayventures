@@ -1,5 +1,4 @@
 import React, { Component, ChangeEvent, MouseEvent } from 'react';
-import './index.scss';
 import { AiOutlineSkin, AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -417,7 +416,7 @@ class ProductSelect extends Component<{}, typeState> {
         const state = this.state;
         return(
             <>
-                <div className="h-100">
+                <div className="h-100 kyc-product-select">
                     <div className="d-flex h-100">
                         <div className="block-1 h-100 pe-3">
                             <p className="sewing py-3 m-0">Sewing</p>
