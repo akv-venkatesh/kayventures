@@ -142,7 +142,7 @@ class slelect extends Component<typeProps,typeState> {
           onMenuOpen={this.onMenuOpen}  
           onMenuClose={this.onMenuClose} 
           styles={customStyles} 
-          menuPlacement="auto"  
+          menuPlacement={this.props.position === "bottom" ? "bottom":"top"}  
           onChange={this.handleChange}
           {...(this.props.value ? 
             { value: this.props.options.filter((option:any) => option.label === this.props.value)}: 
