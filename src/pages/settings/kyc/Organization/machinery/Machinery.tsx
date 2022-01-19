@@ -30,7 +30,7 @@ interface typeState {
     selectedBrandOption: any,
     selectedTechOption: any,
     iotEnable: boolean,
-    modelmachineType: any,
+    previewState: any,
 }
 interface typeProps {
     machineProps: any
@@ -55,7 +55,7 @@ class Machinery extends Component<typeProps, typeState> {
             machineCount: '',
             iotEnable: false,
             toogleCheck: false,
-            modelmachineType: false,
+            previewState: [],
             savedState: [{
                 machineType: null,
                 machineBrand: null,
@@ -94,8 +94,6 @@ class Machinery extends Component<typeProps, typeState> {
             initialPage: false,
             savedState: machineValue,
             selectedMachineOption: value.value
-        }, () => {
-            console.log("selectedMachineOption", this.state.selectedMachineOption);
         })
     }
     selectBrand = (event: ChangeEvent<HTMLInputElement>) => {
@@ -105,8 +103,6 @@ class Machinery extends Component<typeProps, typeState> {
         this.setState({
             savedState: barndValue,
             selectedBrandOption: value.value
-        }, () => {
-            console.log(barndValue);
         })
     }
     selectTech = (event: ChangeEvent<HTMLInputElement>) => {
@@ -116,8 +112,6 @@ class Machinery extends Component<typeProps, typeState> {
         this.setState({
             savedState: techValue,
             selectedTechOption: value.value
-        }, () => {
-            console.log(techValue);
         })
     }
     changeMachineCount = (e: any) => {
@@ -132,8 +126,6 @@ class Machinery extends Component<typeProps, typeState> {
             this.setState({
                 savedState: countValue,
                 machineCount: e.currentTarget.value
-            }, () => {
-                console.log(countValue);
             })
         }
     }
@@ -146,8 +138,6 @@ class Machinery extends Component<typeProps, typeState> {
         this.setState({
             savedState: checkValue,
             toogleCheck: true,
-        }, () => {
-            console.log(checkValue);
         })
     }
 
@@ -176,6 +166,7 @@ class Machinery extends Component<typeProps, typeState> {
         this.setState({
             addMoreEnable: true,
             savedState: arr,
+            previewState: arr,
             machineKey: machineKey,
             selectedMachineOption: null,
             selectedBrandOption: null,
@@ -186,6 +177,7 @@ class Machinery extends Component<typeProps, typeState> {
         }, () => {
             console.log("saved State=>", this.state.savedState);
             console.log(this.state.machineKey);
+            console.log("previewState =>", this.state.previewState);
         })
     }
     handleAddMore = () => {
@@ -194,10 +186,26 @@ class Machinery extends Component<typeProps, typeState> {
         })
     }
 
-    modelMachineFilter = () => {
-        this.setState({
-            modelmachineType: true,
-        })
+    modelMachineFilter = (event: any) => {
+        // var savedState = this.state.savedState;
+        // this.setState({
+        //     ...this.state,
+        //     previewState: savedState
+        // }, () => {
+        //     console.log("filterData =>", this.state.previewState);
+        // })
+        // let value: any = event;
+        // if (value == 'Single Needle') {
+        //     var filterValue = this.state.savedState.filter((data: any) => {
+        //         return data.machineType = 'Single Needle';
+        //     })
+        // }
+        // this.setState({
+        //     ...this.state,
+        //     filterData: filterValue,
+        // }, () => {
+        //     console.log("filterData =>", this.state.filterData);
+        // })
     }
 
 
@@ -238,7 +246,7 @@ class Machinery extends Component<typeProps, typeState> {
                         </div>
                     </div>
                     <div className="leftmenu_body d-flex flex-column">
-                        <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
+                        <PerfectScrollbar >
                             <h5 className="mb-3" >Machine Type</h5>
                             <div className="menu_dropdown mb-3">
                                 <div className="mb-3">
@@ -297,8 +305,8 @@ class Machinery extends Component<typeProps, typeState> {
                                         onChange={(e) => this.handletoggle_checkbox(e)}
                                         checked={this.state.iotEnable}
                                     />
-                                    {this.state.iotEnable ? 
-                                    <p className="ms-3">Enabled</p> : <p className="ms-3">Disabled</p>}
+                                    {this.state.iotEnable ?
+                                        <p className="ms-3">Enabled</p> : <p className="ms-3">Disabled</p>}
 
                                 </div>
                                 <h5 className="menu_machine_numbers mb-4">Add the No. of machines</h5>
@@ -326,11 +334,11 @@ class Machinery extends Component<typeProps, typeState> {
 
                 </div>
                 <div className="rightmenu d-flex flex-column">
-                    
+
                     <Stepper steps={step} activeStep={2} />
 
                     <div className="box py-2 mt-2 position-relative">
-                       <div className="d-flex mt-4 px-5 justify-content-end">
+                        <div className="d-flex mt-4 px-5 justify-content-end">
                             <div className="summary">
                                 <Button className="btn btn-secondary" disabled={!this.state.addMoreEnable} onClick={this.handleSummary} data-testid="mySummary">
                                     Summary
@@ -340,13 +348,13 @@ class Machinery extends Component<typeProps, typeState> {
                         </div>
                         <div className={this.state.initialPage ? 'scroll d-flex justify-content-center align-items-center' : 'scroll'}>
                             {
-                                this.state.initialPage ? 
-                                <div className="initialpage_text d-flex flex-column align-items-center">
-                                    <p>Click on the machine type to create</p>
-                                    <p>the machine inventory</p>
-                                </div> : <></>
+                                this.state.initialPage ?
+                                    <div className="initialpage_text d-flex flex-column align-items-center">
+                                        <p>Click on the machine type to create</p>
+                                        <p>the machine inventory</p>
+                                    </div> : <></>
                             }
-                            <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
+                            <PerfectScrollbar >
                                 <div className="d-flex flex-wrap pe-4">
                                     <Container>
                                         <Row>
@@ -369,20 +377,20 @@ class Machinery extends Component<typeProps, typeState> {
                             </PerfectScrollbar>
                         </div>
                         <div className="bottom_text d-flex justify-content-end px-5">
-                                {this.state.addMoreEnable ?
-                                    <div className="exclamination mx-3">
-                                        <AiFillExclamationCircle />
-                                    </div> : null}
+                            {this.state.addMoreEnable ?
+                                <div className="exclamination mx-3">
+                                    <AiFillExclamationCircle />
+                                </div> : null}
 
-                                <div className="d-flex">
-                                    <button
-                                        type="submit"
-                                        className="btn btn-next next"
-                                        disabled={!this.state.addMoreEnable}
-                                    >Next&emsp;<AiFillCaretRight />
-                                    </button>
-                                </div>
-                            </div>                        
+                            <div className="d-flex">
+                                <button
+                                    type="submit"
+                                    className="btn btn-next next"
+                                    disabled={!this.state.addMoreEnable}
+                                >Next&emsp;<AiFillCaretRight />
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -408,9 +416,7 @@ class Machinery extends Component<typeProps, typeState> {
                         <div className="row">
                             <PerfectScrollbar
                                 options={{ suppressScrollY: false, suppressScrollX: true }}
-                                onScrollY={(container) =>
-                                    console.log(`scrolled to: ${container.scrollTop}.`)
-                                }
+
                             >
                                 <div className="my-4 mx-3">
                                     <div className="d-flex">
@@ -426,7 +432,7 @@ class Machinery extends Component<typeProps, typeState> {
                                                             width='auto'
                                                             position='bottom'
                                                             placeholder='Select Machine'
-                                                            onChange={this.modelMachineFilter}
+                                                            onChange={(event: any) => this.modelMachineFilter(event)}
                                                         ></Select>
                                                     </form>
                                                 </div>
@@ -479,22 +485,23 @@ class Machinery extends Component<typeProps, typeState> {
                                                 <PerfectScrollbar>
                                                     <div className="d-flex flex-wrap pe-4">
                                                         <Container>
-                                                            <Row>
-                                                                {this.state.savedState.map((machine: any) => {
-                                                                    return machine.machineType !== null && (<Col xs={3} md={12} className="column d-flex" >
-
-                                                                        <div className="machine_items">
-                                                                            <div className="machine_image d-flex">
-                                                                                <img src={MachineIcon} alt="" />
-                                                                                <h3>{machine.machineCount}</h3>
+                                                            <div className="d-flex flex-wrap">
+                                                                {
+                                                                    this.state.previewState.map((machine: any) => {
+                                                                        return machine.machineType !== null && (
+                                                                            <div className="column d-flex" >
+                                                                                <div className="machine_items">
+                                                                                    <div className="machine_image d-flex">
+                                                                                        <img src={MachineIcon} alt="" />
+                                                                                        <h3>{machine.machineCount}</h3>
+                                                                                    </div>
+                                                                                    <p>{machine.machineType}</p>
+                                                                                </div>
                                                                             </div>
-                                                                            <p>{machine.machineType}</p>
-                                                                        </div>
-                                                                    </Col>)
-                                                                })
+                                                                        )
+                                                                    })
                                                                 }
-
-                                                            </Row>
+                                                            </div>
                                                         </Container>
                                                     </div>
                                                 </PerfectScrollbar>
