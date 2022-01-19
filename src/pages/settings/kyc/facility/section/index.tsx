@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-
+import React, { Component, FormEvent } from 'react';
 import { Button, Container, Modal, Row } from 'react-bootstrap';
-import { Formik } from "formik";
+import { Formik , Field } from "formik";
+import '../../../../m-login.scss';
 import slider from "../../../../../assets/slider.svg"
 import Stepper from '../../../../../component/stepper/stepper';
-
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import PerfectScrollbar from "react-perfect-scrollbar";
@@ -18,6 +17,9 @@ import { BsTelephone } from 'react-icons/bs';
 import { BiMap } from 'react-icons/bi';
 import Image2 from "../../../../../assets/image2.svg";
 import Facilityhome from "../../commonFiles/facilityhome";
+import logo_img from  '../../../../../assets/insertImage.png';
+
+
 
 
 interface typeState {
@@ -25,8 +27,14 @@ interface typeState {
     showSummary: boolean,
     isActive: boolean,
     photoSection: boolean,
+    carousalSection: boolean,
     savedState: any,
-    step1 : boolean,
+    storedState: any,
+    step1:boolean,
+    step2:boolean,
+    uploadlogo:string,
+	uploadedFile?: any,
+    images?:any,
 }
 
 class Section extends Component<{}, typeState> {
@@ -38,10 +46,27 @@ class Section extends Component<{}, typeState> {
             showSummary: false,
             isActive: false,
             photoSection: false,
+            carousalSection: false,
             savedState: [],
+            storedState: [],
             step1: true,
+            step2:true,
+            uploadlogo:"",
+		    uploadedFile: '',
+            images:'',
         };
     }
+   
+    onImageChange = (event:FormEvent<HTMLInputElement>) => {
+		if (event.currentTarget.files && event.currentTarget.files[0]) {
+		  let reader = new FileReader();
+		  reader.onload = (e) => {
+				// setLogoImage(e.target!.result);
+				this.setState({ uploadedFile: reader.result });
+			};
+		  reader.readAsDataURL(event.currentTarget.files[0]);
+		}
+	}
 
     handleShow = () => {
         this.setState({
@@ -73,6 +98,15 @@ class Section extends Component<{}, typeState> {
             photoSection: true
         })
     }
+    selectButton = (event: any) => {
+        let value: any = event;
+        let arr = [...this.state.storedState];
+        arr.push(value);
+        this.setState({
+            storedState:arr,
+            carousalSection: true
+        })
+    }
     step1Complete = () =>{
         this.setState({
             step1: false,
@@ -86,9 +120,8 @@ class Section extends Component<{}, typeState> {
             { value: 'Work Area', label: 'Work Area' },
             { value: 'Others', label: 'Others' }
         ]
-
         const step = [{ label: 'KYC', id: 0 }, { label: 'Product Selection', id: 1 }, { label: 'Machinery', id: 2 }, { label: 'Operations', id: 3 }];
-
+        const { uploadedFile } = this.state;
         return (
             <>
                 {
@@ -172,27 +205,46 @@ class Section extends Component<{}, typeState> {
                                                                                 <h4 className="col-md-3">Add Photos & Videos</h4>
                                                                                 <div className="col-md-5">
                                                                                     <div className="btnselect">
-                                                                                        <div className="d-flex">
-                                                                                            <Button className={this.state.isActive ? 'active_button' : 'inActive_button'} onClick={this.handleOnClick} variant="light" size="lg" >
+                                                                                        <div className="d-flex flex-wrap">
+                                                                                        {
+                                                                                            this.state.savedState.map((area: any) => {
+                                                                                                return (
+                                                                                                    <Button 
+                                                                                                    onClick={(event: any) => this.selectButton(event)} className={this.state.isActive ? 'active_button' : 'inActive_button'}
+                                                                                                    variant="light" size="lg" >
+                                                                                                        <p className="m-0" >{area.value}</p>
+                                                                                                    </Button>
+                                                                                                )
+                                                                                            })
+                                                                                        }
+                                                                                            {/* <Button className={this.state.isActive ? 'active_button' : 'inActive_button'} onClick={this.handleOnClick} variant="light" size="lg" >
                                                                                                 Building Area
-                                                                                            </Button>
-                                                                                            <Button className={this.state.isActive ? 'active_button' : 'inActive_button'} onClick={this.handleOnClick} variant="light" size="lg" >
+                                                                                            </Button> */}
+                                                                                            {/* <Button className={this.state.isActive ? 'active_button' : 'inActive_button'} onClick={this.handleOnClick} variant="light" size="lg" >
                                                                                                 Work Area
-                                                                                            </Button>
+                                                                                            </Button> */}
                                                                                         </div>
-                                                                                        <div className="d-flex">
+                                                                                        {/* <div className="d-flex">
                                                                                             <Button className={this.state.isActive ? 'active_button' : 'inActive_button'} onClick={this.handleOnClick} variant="light" size="lg" >
                                                                                                 Others
                                                                                             </Button>
-                                                                                        </div>
+                                                                                        </div> */}
                                                                                     </div>
+
                                                                                     <div className="my-5 d-flex flex-column">
                                                                                         <div className="files d-flex justify-content-evenly align-items-end">
                                                                                             <div className="d-flex justify-content-center align-items-center flex-column p-3 uploadfile_box">
                                                                                                 <p className="my-1">Drag the file</p>
                                                                                                 <p className="my-1">or</p>
                                                                                                 <p className="my-1">Browse from Computer</p>
+                                                                                                <label htmlFor="upload-logo" id="file-chosen"> </label>
+                                                                                                <Field type="file" id="upload-logo" name="uploadlogo"  onChange={this.onImageChange} hidden/>
+                                                                                                <label htmlFor="upload-logo" className="uploadlogo">
+                                                                                                    <img src={ uploadedFile ? uploadedFile :  logo_img }  className="logo-img" />
+                                                                                                    <label htmlFor="upload-logo" className="uploadlogo"></label>
+                                                                                                </label>
                                                                                             </div>
+                                                                                   
                                                                                             <div>
                                                                                                 <Button
                                                                                                     className="btn btn-secondary save"
@@ -216,22 +268,38 @@ class Section extends Component<{}, typeState> {
                                                                                         </div>
 
                                                                                     </div>
+
+                                                                                    {this.state.carousalSection ?
                                                                                     <div className="w-50" >
                                                                                         <div className="d-flex align-items-center my-3">
-                                                                                            <MdArrowForwardIos /><p className="m-0" >Building Area</p>
+                                                                                            {/* <MdArrowForwardIos /><p className="m-0" >Building Area</p> */}
+                                                                                            {
+                                                                                                this.state.savedState.map((area: any) => {
+                                                                                                    return (
+                                                                                                        <div className="d-flex align-items-center">
+                                                                                                            <MdArrowForwardIos /><p className="m-0" >{area.value}</p>
+                                                                                                        </div>
+                                                                                                    )
+                                                                                                })
+                                                                                            }
                                                                                         </div>
                                                                                         <Carousel autoPlay axis="horizontal">
                                                                                             <div>
-                                                                                                <img src={slider} alt="slider" />
+                                                                                            {/* <MultiImageInput
+                                                                                                images={images}
+                                                                                                setImages={setImages}
+                                                                                            /> */}
+                                                                                            <img src={ uploadedFile ? uploadedFile :  logo_img }  className="logo-img" />
+
                                                                                             </div>
                                                                                             <div>
-                                                                                                <img src={slider} alt="slider" />
+                                                                                            <img src={ uploadedFile ? uploadedFile :  logo_img }  className="logo-img" />
                                                                                             </div>
                                                                                             <div>
-                                                                                                <img src={slider} alt="slider" />
+                                                                                            <img src={ uploadedFile ? uploadedFile :  logo_img }  className="logo-img" />
                                                                                             </div>
                                                                                         </Carousel>
-                                                                                    </div>
+                                                                                    </div> : null}
                                                                                 </div>
                                                                             </div> : null}
                                                                     </div>
@@ -281,7 +349,7 @@ class Section extends Component<{}, typeState> {
                                 <Modal.Header closeButton />
                                 <Modal.Body className="">
                                     <div className="header_discription mt-1">
-                                        <p className="topbox">Facility 1
+                                        <p className="topbox px-3">Facility 1
                                         </p>
                                     </div>
                                     <PerfectScrollbar
@@ -290,7 +358,7 @@ class Section extends Component<{}, typeState> {
                                             console.log(`scrolled to: ${container.scrollTop}.`)
                                         }
                                     >
-                                        <div className="facilitymod">
+                                        <div className="facilitymod px-3">
                                             <div className="leftmenu">
                                                 <div className="imgleft">
                                                     <img src={Image2} alt="displayedImage" />

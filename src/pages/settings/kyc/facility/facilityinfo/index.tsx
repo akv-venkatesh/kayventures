@@ -1,6 +1,5 @@
 import React, { ChangeEvent , Component } from 'react'
 import { Button, Container, Row } from 'react-bootstrap';
-import "./index.scss";
 import { Formik } from "formik";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import PerfectScrollbar from "react-perfect-scrollbar";
@@ -9,6 +8,7 @@ import "react-perfect-scrollbar/dist/css/styles.css";
 import Select from '../../../../../component/dropdown_select/slelect';
 import { ImCross } from "react-icons/im";
 import Facilityhome from '../../commonFiles/facilityhome';
+import '../../../../m-login.scss';
 
 
 
@@ -75,7 +75,7 @@ class Facilityform extends Component<{}, typeState> {
         
         
         return (
-            <>
+            <div className="kyc-facility-facility-info h-100">
             
             {
                 this.state.step1 ?
@@ -189,7 +189,7 @@ class Facilityform extends Component<{}, typeState> {
                     </div>
                 </div>
             }
-            </>
+            </div>
         );
     }
 }
