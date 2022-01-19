@@ -1,6 +1,5 @@
 import React, { ChangeEvent, Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./category.scss";
 import Tshert from "../../../../../assets/icons/tshert.svg";
 import blackTshert from "../../../../../assets/icons/blackTshert.svg";
 import { RiInformationFill } from "react-icons/ri";
@@ -30,7 +29,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
     const {handleChange,nextPageChange,state} = this.props;
     return (
       <> 
-      <div className="h-100">
+      <div className="h-100 kyc-org-prod-select-category">
         <div className='my-1  '>
           <Stepper steps={steps} activeStep={1} />
         </div >

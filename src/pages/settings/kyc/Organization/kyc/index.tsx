@@ -82,7 +82,6 @@ class Organization extends Component<{}, typeState> {
 
 		})
 		console.log(value.value);
-		
 		selectReport.push({name: value.value,files: []})
 		// if (this.state.selectReport.includes(value.value) {
 		//     newArray = newArray.filter(day => day !== value.value);
