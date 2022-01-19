@@ -5210,6 +5210,16 @@ body {
       flex: 0 0 250px;
       max-width: 250px;
     }
+    .model_leftmenu button{
+      background-color: #3CD070;
+      color: #fff;
+      border: transparent;
+      border-radius: 8px;
+  }
+  .model_leftmenu button:hover{
+      background-color: #3CD070;
+      color: #fff;
+  }
     .model_rightmenu{
       flex: 0 0 calc(100% - 250px);
       max-width: calc(100% - 250px);
