@@ -691,7 +691,7 @@ body {
             }
           }
 
-          // kyc-org-kyc
+
           .kyc-org-kyc{
             /* organization step1 */
               .organization .box{
@@ -1859,214 +1859,7 @@ body {
             }
             .btn-next:disabled{
               background-color: silver;
-            }
-            
-            /* =============================================Model========================================== */
-            .modal{
-              background: rgba(184, 202, 216, 0.3);
-              backdrop-filter: blur(5px);
-            }
-            .machine .modal-lg{
-              max-width: 75vw;
-            }
-            
-            .modal-header{
-              border-bottom: none;
-            }
-            .modal-content{
-            background-color: #e6e7eb;
-            background-blend-mode: soft-light, normal;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-sizing: border-box;
-            box-shadow: 8px 4px 14px rgb(0 0 0 / 11%), inset 6px 5px 35px rgb(255 255 255 / 60%);
-            -webkit-backdrop-filter: blur(12px);
-            backdrop-filter: blur(12px);
-            border-radius: 35px;
-            
-            }
-            .machine .modal-header .btn-close {
-              position: absolute;
-              top: -30px;
-              right: 0px;
-              outline: none;
-              box-shadow: none;
-            }
-            .machine .modal-header .btn-close:active {
-              box-shadow: none;
-              outline: none;
-            }
-            .machine .modal-body {
-              padding: 0px 40px;
-              height: 500px;
-            }
-            .machine .modal-body .header_discription .info-icon{
-              font-size: 22px;
-              color: #0068E5;
-            }
-            .machine .modal-body .header_discription p{
-              font-size: 11px;
-              font-weight: 500;
-              color: #0068E5;
-              margin: 3px 0 0 6px;
-            }
-            .modal-body .row{
-              height: 100%;
-            }
-            .model_leftmenu{
-              flex: 0 0 250px;
-              max-width: 250px;
-            }
-            .model_rightmenu{
-              flex: 0 0 calc(100% - 250px);
-              max-width: calc(100% - 250px);
-            }
-            
-            /* Machinery initial page screen */
-            .box-field-area {
-              width: 100%;
-              height: calc(100% - 60px);
-              background: #ebecf0;
-              background-blend-mode: soft-light, normal;
-              border: 1px solid rgba(255, 255, 255, 0.4);
-              box-sizing: border-box;
-              box-shadow: inset -5px -5px 10px #fafbff, inset 5px 5px 10px #a6abbd;
-              border-radius: 30px;
-              overflow: hidden;
-            }
-            .Machinery_area {
-              margin: 0px 40px;
-              padding-left: 0px;
-              overflow: auto;
-              flex-wrap: wrap;
-              height: calc(100% - 91px);
-            }
-            .box-field-area .box-field-area-title {
-              font-family: "Poppins";
-              font-style: normal;
-              font-weight: 600;
-              font-size: 20px;
-              line-height: 45px;
-              display: flex;
-              align-items: center;
-              text-align: center;
-              color: #566180;
-            }
-            .Machinery_product {
-              display: flex;
-            }
-            .Machinery_product_field {
-              display: flex;
-              margin: 30px 0px 50px 0px;
-            }
-            .Machinery_product_field .product_field {
-              width: 250px;
-              height: 50px;
-              display: flex;
-              cursor: pointer;
-              align-items: center;
-              margin: 0px 20px 0px 0px;
-              justify-content: space-between;
-              background: linear-gradient(135.37deg,rgba(0, 0, 0, 0.4) 4.29%,rgba(255, 255, 255, 0.4) 95.6%),#ebecf0;
-              background-blend-mode: soft-light, normal;
-              box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
-              border-radius: 31px;
-              position: relative;
-            }
-            .product_field_item {
-              margin: 0px 0px 0px 5px;
-            }
-            .product_field_item img {
-              padding: 0px 5px 0px 20px;
-            }
-            .product_field_item .unselected {
-              padding: 0px 0px 0px 20px;
-              font-family: "Poppins";
-              font-style: normal;
-              font-weight: 500;
-              font-size: 15px;
-              line-height: 115.5%;
-              color: #566180;
-            }
-            .product_field_item .selected {
-              padding: 0px 0px 0px 20px;
-              font-family: "Poppins";
-              font-style: normal;
-              font-weight: 500;
-              font-size: 15px;
-              line-height: 115.5%;
-              color: rgb(0, 98, 215);
-            }
-            .Machinery_product_field label .product_field_circle {
-              position: absolute;
-              width: 30px;
-              height: 30px;
-              right: 15px;
-              top: 10px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              background: linear-gradient(317.7deg,rgba(0, 0, 0, 0.4) 0%,rgba(255, 255, 255, 0.4) 105.18%),#ebecf0;
-              background-blend-mode: soft-light, normal;
-              box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
-              border-radius: 40px;
-            }
-            .productconfigutation_button {
-              display: flex;
-              justify-content: space-between;
-              width: 100%;
-              align-items: center;
-              font-family: "Poppins";
-              font-style: normal;
-              font-weight: 500;
-              font-size: 15px;
-              line-height: 27px;
-              color: #0062d7;
-            }
-            .productconfigutation_button .next_btn {
-              margin: 10px 50px 10px 0px;
-            }
-            .product_field_circle input[type="radio"] {
-              display: none;
-            }
-            .product_field_circle label {
-              position: relative;
-              cursor: pointer;
-              font-weight: bold;
-              padding-right: 32px;
-              width: 25px;
-              height: 25px;
-            }
-            .product_field_circle label:nth-last-child(1) {
-              padding-right: 0;
-            }
-            .product_field_circle .product_fieldlabel::before {
-              position: absolute;
-              width: 36px;
-              height: 36px;
-              right: 15px;
-              top: 15px;
-              background: linear-gradient(317.7deg,rgba(0, 0, 0, 0.4) 195.53%,rgba(255, 255, 255, 0.4) 300.71%),#ebecf0;
-              background-blend-mode: soft-light, normal;
-              box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
-              border-radius: 40px;
-            }
-            .product_field_circle label::after {
-              content: "";
-              display: inline-block;
-              width: 25px;
-              height: 25px;
-              background: rgba(122, 122, 122, 0);
-              margin: 0px 0px;
-              margin-left: 0;
-              border-radius: 50%;
-              transition: all 0.1s;
-            }
-            .product_field_circle input[type="radio"]:checked + label::after {
-              background: rgb(0, 98, 215);
-            }
-            .machine .rightmenu .box .scroll{
-              height: calc(100% - 120px);
-            }            
+            }           
           }
 
           .kyc-org-operation{
@@ -5412,6 +5205,221 @@ body {
     }
 
 // capacity modal
+
+
+//machinery modal
+
+    /* =============================================Model========================================== */
+    .modal{
+      background: rgba(184, 202, 216, 0.3);
+      backdrop-filter: blur(5px);
+    }
+    .machine .modal-lg{
+      max-width: 75vw;
+    }
+    
+    .modal-header{
+      border-bottom: none;
+    }
+    .modal-content{
+    background-color: #e6e7eb;
+    background-blend-mode: soft-light, normal;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-sizing: border-box;
+    box-shadow: 8px 4px 14px rgb(0 0 0 / 11%), inset 6px 5px 35px rgb(255 255 255 / 60%);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-radius: 35px;
+    
+    }
+    .machine .modal-header .btn-close {
+      position: absolute;
+      top: -30px;
+      right: 0px;
+      outline: none;
+      box-shadow: none;
+    }
+    .machine .modal-header .btn-close:active {
+      box-shadow: none;
+      outline: none;
+    }
+    .machine .modal-body {
+      padding: 0px 40px;
+      height: 500px;
+    }
+    .machine .modal-body .header_discription .info-icon{
+      font-size: 22px;
+      color: #0068E5;
+    }
+    .machine .modal-body .header_discription p{
+      font-size: 11px;
+      font-weight: 500;
+      color: #0068E5;
+      margin: 3px 0 0 6px;
+    }
+    .modal-body .row{
+      height: 100%;
+    }
+    .model_leftmenu{
+      flex: 0 0 250px;
+      max-width: 250px;
+    }
+    .model_rightmenu{
+      flex: 0 0 calc(100% - 250px);
+      max-width: calc(100% - 250px);
+    }
+    
+    /* Machinery initial page screen */
+    .box-field-area {
+      width: 100%;
+      height: calc(100% - 60px);
+      background: #ebecf0;
+      background-blend-mode: soft-light, normal;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-sizing: border-box;
+      box-shadow: inset -5px -5px 10px #fafbff, inset 5px 5px 10px #a6abbd;
+      border-radius: 30px;
+      overflow: hidden;
+    }
+    .Machinery_area {
+      margin: 0px 40px;
+      padding-left: 0px;
+      overflow: auto;
+      flex-wrap: wrap;
+      height: calc(100% - 91px);
+    }
+    .box-field-area .box-field-area-title {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 45px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #566180;
+    }
+    .Machinery_product {
+      display: flex;
+    }
+    .Machinery_product_field {
+      display: flex;
+      margin: 30px 0px 50px 0px;
+    }
+    .Machinery_product_field .product_field {
+      width: 250px;
+      height: 50px;
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+      margin: 0px 20px 0px 0px;
+      justify-content: space-between;
+      background: linear-gradient(135.37deg,rgba(0, 0, 0, 0.4) 4.29%,rgba(255, 255, 255, 0.4) 95.6%),#ebecf0;
+      background-blend-mode: soft-light, normal;
+      box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+      border-radius: 31px;
+      position: relative;
+    }
+    .product_field_item {
+      margin: 0px 0px 0px 5px;
+    }
+    .product_field_item img {
+      padding: 0px 5px 0px 20px;
+    }
+    .product_field_item .unselected {
+      padding: 0px 0px 0px 20px;
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 115.5%;
+      color: #566180;
+    }
+    .product_field_item .selected {
+      padding: 0px 0px 0px 20px;
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 115.5%;
+      color: rgb(0, 98, 215);
+    }
+    .Machinery_product_field label .product_field_circle {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      right: 15px;
+      top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(317.7deg,rgba(0, 0, 0, 0.4) 0%,rgba(255, 255, 255, 0.4) 105.18%),#ebecf0;
+      background-blend-mode: soft-light, normal;
+      box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+      border-radius: 40px;
+    }
+    .productconfigutation_button {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 27px;
+      color: #0062d7;
+    }
+    .productconfigutation_button .next_btn {
+      margin: 10px 50px 10px 0px;
+    }
+    .product_field_circle input[type="radio"] {
+      display: none;
+    }
+    .product_field_circle label {
+      position: relative;
+      cursor: pointer;
+      font-weight: bold;
+      padding-right: 32px;
+      width: 25px;
+      height: 25px;
+    }
+    .product_field_circle label:nth-last-child(1) {
+      padding-right: 0;
+    }
+    .product_field_circle .product_fieldlabel::before {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      right: 15px;
+      top: 15px;
+      background: linear-gradient(317.7deg,rgba(0, 0, 0, 0.4) 195.53%,rgba(255, 255, 255, 0.4) 300.71%),#ebecf0;
+      background-blend-mode: soft-light, normal;
+      box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+      border-radius: 40px;
+    }
+    .product_field_circle label::after {
+      content: "";
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      background: rgba(122, 122, 122, 0);
+      margin: 0px 0px;
+      margin-left: 0;
+      border-radius: 50%;
+      transition: all 0.1s;
+    }
+    .product_field_circle input[type="radio"]:checked + label::after {
+      background: rgb(0, 98, 215);
+    }
+    .machine .rightmenu .box .scroll{
+      height: calc(100% - 120px);
+    }
+
+// machinery modal
+
+
+
 
   .modal-backdrop.show.checkstatus {
     background-color: $backdrop-color;
