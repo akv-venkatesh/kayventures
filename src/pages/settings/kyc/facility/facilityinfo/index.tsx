@@ -8,6 +8,7 @@ import "react-perfect-scrollbar/dist/css/styles.css";
 import Select from '../../../../../component/dropdown_select/slelect';
 import { ImCross } from "react-icons/im";
 import Facilityhome from '../../commonFiles/facilityhome';
+import '../../../../m-login.scss';
 
 
 
@@ -61,12 +62,21 @@ class Facilityform extends Component<{}, typeState> {
             step2: true
         })
     }
+    step2Complete = () =>{
+        this.setState({
+            step1:true,
+            step2:false,
+        })
+    }
     
 
 
     render() {
+        
+        
         return (
-            <div className="h-100 kyc-facility-facility-info">
+            <div className="kyc-facility-facility-info h-100">
+            
             {
                 this.state.step1 ?
                 <Facilityhome onClick={this.step1Complete}/> :
@@ -152,7 +162,14 @@ class Facilityform extends Component<{}, typeState> {
                                                                 </div>
                                                             </div>
                                                             <div className="mt-4 col-md-6 m-auto savebtn">
-                                                                <button>Save</button>
+                                                            
+                                                            {
+                                                                this.state.step2 ?
+                                                                <button onClick={this.step2Complete}>back</button>
+                                                            
+                                                            :<></>
+                                                            }
+                                                            <button>Save</button>
                                                             </div>   
                                                         </div>          
                                                     </form>
