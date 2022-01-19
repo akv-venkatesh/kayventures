@@ -3960,6 +3960,7 @@ body {
           }
 
           .kyc-facility-section{
+            height: 100%;
             .box{
               background: linear-gradient(
                   317.7deg
@@ -3976,6 +3977,11 @@ body {
                       position: relative;
                       height: calc(100% - 70px);
             }
+            label.uploadlogo {
+              opacity: 0;
+              width: 100%;
+              position: absolute;
+          }
             .scroll{
               height: 100%;
             }
@@ -4207,6 +4213,7 @@ body {
               box-sizing: border-box;
               border-radius: 10px;
               width: 80%;
+              position: relative;
             }
 
             .files .save{
@@ -4301,6 +4308,13 @@ body {
             }
 
             /* model */
+            
+             .rightmenumodel{
+              flex-grow: 0;
+              flex-shrink: 0;
+              flex-basis: calc(100% - 250px);
+              max-width: calc(100% - 250px);
+            }
 
             .facilityinfomodal {
             background: rgba(184, 202, 216, 0.3);
@@ -4363,6 +4377,7 @@ body {
             .facilityinfomodal .leftmenu {
               flex: 0 0 300px;
               max-width: 300px;
+              
             }
             .facilityinfomodal .rightmenu {
               flex-grow: 0;
@@ -4923,7 +4938,7 @@ body {
     .facilitymodal .modal-lg{
         max-width:55vw;
     }
-    .facilitymodal  .modal-content {
+     .modal-content {
         /* background: linear-gradient(
             135.37deg,
             rgba(0, 0, 0, 0.4) 4.29%,
@@ -4988,33 +5003,38 @@ body {
         color: #0068E5;
         /* margin-left: 28px; */
     }
-
-    .facilitymodal .facilitymod{
+    .facilitymod
+    { 
         display: flex;
         flex-wrap: wrap;
-    }
-    .facilitymodal .leftmenu {
+  
+    .leftmenu {
         flex: 0 0 300px;
         max-width: 300px;
+        display: unset;
     }
-    .facilitymodal .rightmenu {
+    .rightmenu {
         flex-grow: 0;
         flex-shrink: 0;
         flex-basis: calc(100% - 300px);
         max-width: calc(100% - 300px);
+        background: unset;
+        box-shadow: unset;
+        border: unset;
     }
-    .facilitymodal .infor svg{
+    .infor svg{
         margin-right: 15px;
     }
-    .facilitymodal .infor span{
+     .infor span{
         display: inline-flex;
     }
-    .facilitymodal .clrblue{
+     .clrblue{
         color: #0068E5;
     }
-    .facilitymodal h5{
+    h5{
         margin: 23px 0 30px 0;
         font-weight: 600;
+    }
     }
 
 /* add facility modal */
