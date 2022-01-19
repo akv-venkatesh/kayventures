@@ -1245,7 +1245,7 @@ body {
                 , rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
                     background-blend-mode: soft-light, normal;
                     box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
-                    border-radius: 25px;
+                    border-radius: 20px;
                     width: 130px;
                     padding: 10px;
                     justify-content: space-between;
@@ -1740,7 +1740,7 @@ body {
             , rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
               background-blend-mode: soft-light, normal;
               box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
-              border-radius: 25px;
+              border-radius: 20px;
               width: 130px;
               padding: 10px;
               justify-content: space-between;
@@ -1783,11 +1783,7 @@ body {
               margin-bottom: 0;
               font-size: 14px;
             }
-            .machine_items_text{
-              margin-top: 25px;
-              margin-left: 15px;
-              color: #0062D7;
-            }
+            
             .summary button{
               box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
             border-radius: 8px;
@@ -5179,6 +5175,7 @@ body {
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border-radius: 35px;
+    height: 100%;
     
     }
     .machine .modal-header .btn-close {
@@ -5194,7 +5191,7 @@ body {
     }
     .machine .modal-body {
       padding: 0px 40px;
-      height: 500px;
+      height: 100%;
     }
     .machine .modal-body .header_discription .info-icon{
       font-size: 22px;
@@ -5217,6 +5214,40 @@ body {
       flex: 0 0 calc(100% - 250px);
       max-width: calc(100% - 250px);
     }
+    .machine_items{
+      margin: 10px;
+      background: linear-gradient(
+  135.37deg
+  , rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #EBECF0;
+      background-blend-mode: soft-light, normal;
+      box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+      border-radius: 25px;
+      width: 130px;
+      padding: 10px;
+      justify-content: space-between;
+  }
+  .machine_items h3{
+    margin: 0;
+    font-size: 14px;
+    padding: 2px 0px;
+    background-color: #0062D7;
+    color: white;
+    margin-right: -9px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    width: 50px;
+    height: 20px;
+    text-align: center;
+  }
+  .machine_image{
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .machine_items p{
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 14px;
+  }
     
     /* Machinery initial page screen */
     .box-field-area {

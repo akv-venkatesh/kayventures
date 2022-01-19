@@ -141,7 +141,7 @@ class Organization extends Component<{}, typeState> {
 							this.state.step2 ?
 							<div className="organization organstep2 machine main d-flex step2">
 								<div className="h-100">						
-									<div className="mt-2 h-100">
+									<div className="mt-2 h-100" style={{width:"91vw"}}>
 									
 										<PerfectScrollbar >
 											<div className="h-100 businesshour px-4 pt-1 pb-5 organizationinfo">									
@@ -432,7 +432,7 @@ class Organization extends Component<{}, typeState> {
 									{/* <div className="crossicon">
 										<ImCross className="cross" />
 									</div> */}
-									<div className="h-100">
+									<div className="h-100" style={{width:"91vw"}}>
 									
 										<div className="scroll">
 											<PerfectScrollbar>
