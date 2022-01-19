@@ -937,10 +937,6 @@ body {
                     font-size: 14px;
                     font-weight: 400;
                 }
-            
-                /* .box .scrollbar-container{
-                    height: calc(100% - 80px);
-                } */
                 .add-button{
                     margin-bottom: 20px;
                 }
@@ -1080,10 +1076,6 @@ body {
                     margin-left: 25px;
                     margin-bottom: 5px;
                 }
-                /* .organization .box .scrollbar-container{
-                    margin: 20px;
-                    height: calc(100% - 30px) !important;
-                } */
                 .crossicon{
                     background: #EBECF0;
                     border: 1px solid rgba(235, 236, 240, 0.4);
@@ -1178,10 +1170,6 @@ body {
                             /* padding-left: 55px; */
                             position: relative;
                             /* height: calc(100% - 70px); */
-                }
-                .facilitykyc1 .box .scrollbar-container {
-                    margin: 20px;
-                    height: 100% !important;
                 }
                 .facilitykyc1 .scroll{
                     height: 100%;
@@ -1414,10 +1402,6 @@ body {
                 .facilitykyc1{
                     height: calc(100% - 140px);
                 }
-                .business .scrollbar-container {
-                    height: calc(100% - 110px) !important;
-                    margin: 23px 20px 0 20px;
-                    }
                 .weekday h2 {
                   font-size: 20px !important;
                 }
@@ -1510,15 +1494,6 @@ body {
                     color: #0068E5;
                     /* margin-left: 28px; */
                 }
-            
-            
-                /* .scrollbar-container {
-                    position: relative;
-                    height:65vh !important;
-                    margin:0px 0px 20px 0px;
-                    padding-right: 20px;
-                    overflow-x: hidden;
-                } */
                 .organizationinfomodal .modalorgani svg{
                     color: #1a68e5;
                     font-size: 50px;
@@ -1640,10 +1615,6 @@ body {
                 .organizationinfomodal .organization p{
                     font-size: 15px;
                     font-weight: 400;
-                }
-                .pdfmodal .scrollbar-container {
-                    position: relative;
-                    height: calc(100% - 70px) !important;
                 }
             
             /* organization modal */
@@ -4387,13 +4358,6 @@ body {
               font-size: 16px;
               color: #0068E5;
             }
-            .scrollbar-container {
-              position: relative;
-              height:65vh !important;
-              margin:0px 0px 20px 0px;
-              padding-right: 20px;
-              overflow-x: hidden;
-            }
 
             .facilityinfomodal .facilitymod{
               display: flex;
@@ -4458,12 +4422,6 @@ body {
 
 
           }
-
-
-
-
-
-
 
         }
       }
@@ -5033,15 +4991,6 @@ body {
         font-size: 16px;
         color: #0068E5;
         /* margin-left: 28px; */
-    }
-
-
-    .scrollbar-container {
-        position: relative;
-        height:65vh !important;
-        margin:0px 0px 20px 0px;
-        padding-right: 20px;
-        overflow-x: hidden;
     }
 
     .facilitymodal .facilitymod{
