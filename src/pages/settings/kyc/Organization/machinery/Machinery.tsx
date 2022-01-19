@@ -1,6 +1,5 @@
 import React, { Component, ChangeEvent } from 'react'
 import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap';
-import "./machinery.css";
 
 import Vector3 from "../../../../../assets/icons/various/Vector3.svg"
 import MachineIcon from "../../../../../assets/icons/various/MachineIcon.svg"

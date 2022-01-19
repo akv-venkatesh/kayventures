@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import {
   JoinNow,
@@ -40,13 +40,6 @@ class Routers extends React.Component {
           <Route path='/home' element={<Home />} />
 
           <Route path='/settings' element={<Settings />} >
-            {/* <Route path="Capacity" element={<ProConfigCapacity />} /> */}
-            {/* <Route path="Facilityday" element={<Facilityday />} /> */}
-            {/* <Route path="Facilitymodal" element={<Facilitymodal />} /> */}
-            {/* <Route path="Facilityform" element={<Facilityform />} /> */}
-            {/* <Route path="Facilityinfomodal" element={<Facilityinfomodal />} /> */}
-            {/* <Route path="esg" element={<Esg />} /> */}
-            {/* <Route path="operation" element={<Operation />} /> */}
 
             <Route path="dashboard" element={<DashboardIndex/>}>
               <Route index element={<Dashboard/>} />
@@ -54,24 +47,23 @@ class Routers extends React.Component {
             </Route>
 
             <Route path="kyc">
+
               <Route path="organization">
                 <Route index element={<OrgKYC />} />
                 <Route path="product-selection" element={<Productselect/>} />
                 <Route path="machinery" element={<Machinery/>} />
                 <Route path="operation" element={<Operation />} />
               </Route>
+
               <Route path="facility">
                 <Route path ="addfacility" element={<AddFacility/>}/>
                 <Route path ="facilityinfo" element={<FacilityInfo/>}/>
                 <Route path ="product-selection" element={<FacilityProductSelection/>} />
                 <Route path="capacity" element={<Capacity />} />
-                {/* <Route index element={<Facilitykyc />} />
-                <Route path="operation" element={<Operation />} />
-                <Route path="capacity" element={<ProConfigCapacity />} />
-                <Route path="section" element={<Facilityform />} /> */}
+                <Route path='sections' element={<Sections />} />
               </Route>
+
             </Route>
-            <Route path='sections' element={<Sections />} />
           </Route>
 
         </Routes>

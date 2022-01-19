@@ -1,6 +1,5 @@
 import React, { ChangeEvent , Component } from 'react'
 import { Button, Container, Row } from 'react-bootstrap';
-import "./index.scss";
 import { Formik } from "formik";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import PerfectScrollbar from "react-perfect-scrollbar";
@@ -66,10 +65,8 @@ class Facilityform extends Component<{}, typeState> {
 
 
     render() {
-        
-        
         return (
-            <>
+            <div className="h-100 kyc-facility-facility-info">
             {
                 this.state.step1 ?
                 <Facilityhome onClick={this.step1Complete}/> :
@@ -175,7 +172,7 @@ class Facilityform extends Component<{}, typeState> {
                     </div>
                 </div>
             }
-            </>
+            </div>
         );
     }
 }
