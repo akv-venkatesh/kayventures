@@ -8,7 +8,6 @@ import {
 DisableNextbutton,
 
 } from "../../../../../component/buttons/button";
-import "./operations.css";
 import vest from "../../../../../assets/images/vest.svg";
 import $ from 'jquery';
 
@@ -133,7 +132,7 @@ export class Operations extends Component<{}, initialState> {
         );
         return (
 
-            <div>
+            <div className="h-100 kyc-org-operation">
 
 
                 <div className='my-2 d-flex' style={{ width: '100%' }} >

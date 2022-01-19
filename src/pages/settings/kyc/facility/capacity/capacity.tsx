@@ -7,7 +7,6 @@ import {
   Nextbutton,
   DisableNextbutton,
 } from "../../../../../component/buttons/button";
-import "./capacity.scss";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar"
 import { JsxFlags } from "typescript";
@@ -357,12 +356,9 @@ class ProductConfiguration extends Component<typeProps, typeState> {
     ]
 
     return (
-      <div className="content h-100">
+      <div className="kyc-facility-capacity h-100">
         <div className="h-100 p-3">
           <div className="h-100">
-            <div className="url-btn">
-
-            </div>
             <div className="d-flex capacity h-100">
               <div className="sec1 h-100">
                 <div className="mb-3">
@@ -373,88 +369,90 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                     disabled={state.disable_input}
                   />
                 </div>
-                <div className="d-flex flex-column justify-content-between product-item-parent">
-                  <div className="product-item scroll d-flex">
-                    <div className="w-100">
-                      <h2 className="m-0 py-3">Select Product Item</h2>
-                      <PerfectScrollbar>
-                        <Accordion>
-                          {
-                            state.product_item.map((product: any, i: number) => {
-                              return (
-                                <Accordion.Item eventKey={'a' + i} className="mb-2" key={product.name + i}>
-                                  <Accordion.Header>{product.name}</Accordion.Header>
-                                  <Accordion.Body className="p-0">
-                                    <div className="dropdown active ms-3">
-                                      {
-                                        product.data.map((item: any, j: number) =>
-                                          <div className="py-2 px-4 wear" key={item.name + j}>
-                                            <Form.Check.Input
-                                              type="checkbox"
-                                              id={item.name + j}
-                                              onChange={(e) => this.productSelect(e, product.name)}
-                                              value={item.name}
-                                              data-testid={'prod-grp'+i+j}
-                                              hidden
-                                              disabled={state.disable_input}
-                                            />
-                                            <Form.Check.Label htmlFor={item.name + j} className="w-100 pe-3">
-                                              <div className="d-flex justify-content-between">
-                                                <p className="m-0">{item.name}</p>
-                                                <span className="d-block"></span>
-                                              </div>
-                                            </Form.Check.Label>
-                                          </div>
-                                        )
-                                      }
-                                    </div>
-                                  </Accordion.Body>
-                                </Accordion.Item>
-                              )
-                            })
-                          }
-                        </Accordion>
-                      </PerfectScrollbar>
+                <div className="product-item-parent">
+                  <div className="d-flex flex-column justify-content-between">
+                    <div className="product-item scroll d-flex">
+                      <div className="w-100">
+                        <h2 className="m-0 py-3">Select Product Item</h2>
+                          <Accordion>
+                            {
+                              state.product_item.map((product: any, i: number) => {
+                                return (
+                                  <Accordion.Item eventKey={'a' + i} className="mb-2" key={product.name + i}>
+                                    <Accordion.Header>{product.name}</Accordion.Header>
+                                    <Accordion.Body className="p-0">
+                                      <div className="dropdown active ms-3">
+                                        {
+                                          product.data.map((item: any, j: number) =>
+                                            <div className="py-2 px-4 wear" key={item.name + j}>
+                                              <Form.Check.Input
+                                                type="checkbox"
+                                                id={item.name + j}
+                                                onChange={(e) => this.productSelect(e, product.name)}
+                                                value={item.name}
+                                                data-testid={'prod-grp'+i+j}
+                                                hidden
+                                                disabled={state.disable_input}
+                                              />
+                                              <Form.Check.Label htmlFor={item.name + j} className="w-100 pe-3">
+                                                <div className="d-flex justify-content-between">
+                                                  <p className="m-0">{item.name}</p>
+                                                  <span className="d-block"></span>
+                                                </div>
+                                              </Form.Check.Label>
+                                            </div>
+                                          )
+                                        }
+                                      </div>
+                                    </Accordion.Body>
+                                  </Accordion.Item>
+                                )
+                              })
+                            }
+                          </Accordion>
+                      </div>
+                    </div>
+                    <div className="product-item down-content">
+                      <h2 className="m-0 py-3">Line Definition</h2>
+                      <div>
+                        <div className=" mb-3">
+                          <form data-testid="form-line-type">
+                            <label htmlFor="line-type" hidden>LineType</label>
+                            <Select 
+                              options={LineTypeOptions} 
+                              width='200px' 
+                              position='top' 
+                              name="linetype"
+                              inputId="line-type"
+                              placeholder='Line type'
+                              onChange={this.lineTypeChange}
+                              isOptionDisabled={(option:any) => option.disabled}
+                            />
+                          </form>
+                        </div>
+                      </div>
+                      <div>
+                      <h2 className="m-0 py-3">Material type</h2>
+                        <div className=" mb-2">
+                          <form data-testid="form-material-type">
+                            <label htmlFor="material-type" hidden>MaterialType</label>
+                            <Select 
+                              options={Material_type} 
+                              width='200px' 
+                              position='top'
+                              name="materialtype"
+                              inputId="material-type"
+                              placeholder='Material type'
+                              onChange={this.materialTypeChange}
+                              disabled={state.disable_input}
+                              isOptionDisabled={(option:any) => option.disabled}
+                            />
+                          </form>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="product-item down-content">
-                    <h2 className="m-0 py-3">Line Definition</h2>
-                    <div>
-                      <div className=" mb-3">
-                        <form data-testid="form-line-type">
-                          <label htmlFor="line-type" hidden>LineType</label>
-                          <Select 
-                            options={LineTypeOptions} 
-                            width='200px' 
-                            position='top' 
-                            name="linetype"
-                            inputId="line-type"
-                            placeholder='Line type'
-                            onChange={this.lineTypeChange}
-                            isOptionDisabled={(option:any) => option.disabled}
-                          />
-                        </form>
-                      </div>
-
-                      <div className=" mb-2">
-                        <form data-testid="form-material-type">
-                          <label htmlFor="material-type" hidden>MaterialType</label>
-                          <Select 
-                            options={Material_type} 
-                            width='200px' 
-                            position='top'
-                            name="materialtype"
-                            inputId="material-type"
-                            placeholder='Material type'
-                            onChange={this.materialTypeChange}
-                            disabled={state.disable_input}
-                            isOptionDisabled={(option:any) => option.disabled}
-                          />
-                        </form>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
               <div className="sec2 h-100">

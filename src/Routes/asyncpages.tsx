@@ -11,10 +11,7 @@ import React from 'react';
     export const Login = React.lazy(() => import('../pages/login'));
 
 // Home
-    export const Home = React.lazy(() => import('../pages/home'));
-
-// Setting files --flow old
-    export const Sections = React.lazy(() => import('../pages/settings/kyc/Section/Section'));
+    export const Home = React.lazy(() => import('../pages/home'));    
 
 // Settings files flow new
 
@@ -25,7 +22,7 @@ import React from 'react';
         //product-select
             export const Productselect = React.lazy(() => import('../pages/settings/kyc/Organization/product-select'));
         //machinery
-            export const Machinery = React.lazy(() => import('../pages/settings/kyc/Organization/machinery/MachineryInitialPage'));
+            export const Machinery = React.lazy(() => import('../pages/settings/kyc/Organization/machinery'));
         //operation
             export const Operation = React.lazy(() => import('../pages/settings/kyc/Organization/operations/operation'));
 
@@ -38,6 +35,8 @@ import React from 'react';
             export const FacilityProductSelection = React.lazy(() => import('../pages/settings/kyc/facility/productSelection/index'));
         // capacity
             export const Capacity = React.lazy(() => import('../pages/settings/kyc/facility/capacity'));
+        // sections
+            export const Sections = React.lazy(() => import('../pages/settings/kyc/facility/section'));
 
 
 

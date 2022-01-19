@@ -1,7 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import { Link } from "react-router-dom";
 import '../../../../m-login.scss';
-import "./index.css";
 import $ from 'jquery';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
@@ -170,7 +169,7 @@ class AddFacility extends Component<{}, typeState> {
 	]	
 	render():JSX.Element{
 		return (
-			<>
+			<div className="kyc-facility-addfacility h-100">
 				{
 					this.state.step1 ?
 					<div className="facilitykyc h-100">
@@ -768,7 +767,7 @@ class AddFacility extends Component<{}, typeState> {
 						</PerfectScrollbar>
 					</Modal.Body>
 				</Modal>
-			</>
+			</div>
 		)
 	}
 }

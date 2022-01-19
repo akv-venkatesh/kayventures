@@ -162,7 +162,7 @@ class slelect extends Component<typeProps,typeState> {
           onMenuClose={this.onMenuClose} 
           
           styles={customStyles} 
-          menuPlacement="auto"  
+          menuPlacement={this.props.position == "bottom" ? "bottom":"top"}  
           onChange={this.handleChange} 
         />
       </div>
