@@ -42,6 +42,9 @@ interface typeState{
 	socialChange: boolean,
 	GovernanceChange: boolean,
 	showModel: boolean,
+	// 
+	inputFecilityName: string
+	facilities : string[]
 }
 
 class AddFacility extends Component<{}, typeState> {
@@ -60,6 +63,9 @@ class AddFacility extends Component<{}, typeState> {
             socialChange: false,
             GovernanceChange: false,
 			showModel: false,
+			// 
+			inputFecilityName:'',
+			facilities : []
 		}
 	}
     hideSummary = () => {
@@ -166,8 +172,26 @@ class AddFacility extends Component<{}, typeState> {
 		{ value: 'AA 1000', label: 'AA 1000' },
 		{ value: 'Siatutari', label: 'Siatutari' },
 		{ value: 'Licences', label: 'Licences' }
-	]	
+	]
+	handleAddFacility = () =>{
+		let { inputFecilityName,facilities } =this.state;
+		if(inputFecilityName){
+			facilities.push(inputFecilityName);
+		}
+		this.setState({facilities:facilities,inputFecilityName:''})
+	}
+
+	handleRemoveFacility = (facility:any) =>{
+		let { facilities } =this.state;
+		let filteredfacilities;
+		if(facility){
+			filteredfacilities = facilities.splice(facility,1);
+		}
+		this.setState({facilities:facilities})
+	}
+
 	render():JSX.Element{
+		const { facilities,inputFecilityName} =this.state
 		return (
 			<div className="kyc-facility-addfacility h-100">
 				{
@@ -189,17 +213,22 @@ class AddFacility extends Component<{}, typeState> {
 									<p className="addfac mt-4">Add Facility</p>
 									<div className="pt-2 mb-2 typefacility">
 										<div className="add-button text-center">
-											<span>Type the Facility name</span>
-											<div className="add-btn">
+											<span><input type='text' placeholder='Type the Facility name' value={inputFecilityName} style={{backgroundColor:'transparent',border:'0px solid transparent',}} onChange={(e:any) =>this.setState({inputFecilityName:e.target.value})}/></span> 
+											<div className="add-btn" onClick={()=>this.handleAddFacility()}>
 												<BsPlusLg className="add-icon" />
 											</div>							
 										</div>
-										<div className='facility mt-5'>
-											<ImCross className="cross"/>
-											<img src={clarity_factory_line}/>
-											<span>Facility 1</span>
-										</div>
 
+										{
+										 facilities.map((facility:any,key) => {
+											 return (<div className='facility mt-5'>
+											 <ImCross className="cross" onClick={()=>this.handleRemoveFacility(key)} />
+											 {/* <label id={facility} onClick={(e:any)=>this.handleRemoveFacility(key)}>x</label> */}
+											 <img src={clarity_factory_line}/>
+											 <span>{facility}</span>
+										 </div>)
+										 })
+										}
 									</div>
 									<span className="mt-3 clickadd">Type the Facility name and start adding facilities under Organization</span>
 								</div>
