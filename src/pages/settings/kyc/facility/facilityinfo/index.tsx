@@ -62,6 +62,12 @@ class Facilityform extends Component<{}, typeState> {
             step2: true
         })
     }
+    step2Complete = () =>{
+        this.setState({
+            step1:true,
+            step2:false,
+        })
+    }
     
 
 
@@ -70,6 +76,7 @@ class Facilityform extends Component<{}, typeState> {
         
         return (
             <>
+            
             {
                 this.state.step1 ?
                 <Facilityhome onClick={this.step1Complete}/> :
@@ -155,7 +162,14 @@ class Facilityform extends Component<{}, typeState> {
                                                                 </div>
                                                             </div>
                                                             <div className="mt-4 col-md-6 m-auto savebtn">
-                                                                <button>Save</button>
+                                                            
+                                                            {
+                                                                this.state.step2 ?
+                                                                <button onClick={this.step2Complete}>back</button>
+                                                            
+                                                            :<></>
+                                                            }
+                                                            <button>Save</button>
                                                             </div>   
                                                         </div>          
                                                     </form>
