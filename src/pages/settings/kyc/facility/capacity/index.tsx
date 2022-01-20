@@ -37,13 +37,13 @@ class capacity extends Component<typeProps, typeState>{
         return(
             <>
                 {
-                    this.state.step1 ?
-                    <Facilityhome onClick={this.step1Complete}/>:
+                    !this.state.step1 ?
+                    <Facilityhome onClick={this.step1Complete} selected_Facilities={[]}/>:
                     this.state.step2 ?
                     <CategorySelect
                         onClick={this.step2Complete}
                         />:
-                    this.state.step3 ?
+                    !this.state.step3 ?
                     <Cpcity /> :<></>
                 }
 
