@@ -22,7 +22,7 @@ import React from 'react';
         //product-select
             export const Productselect = React.lazy(() => import('../pages/settings/kyc/Organization/product-select'));
         //machinery
-            export const Machinery = React.lazy(() => import('../pages/settings/kyc/Organization/machinery/MachineryInitialPage'));
+            export const Machinery = React.lazy(() => import('../pages/settings/kyc/Organization/machinery'));
         //operation
             export const Operation = React.lazy(() => import('../pages/settings/kyc/Organization/operations/operation'));
 
