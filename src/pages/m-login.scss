@@ -4468,7 +4468,7 @@ body {
                       min-width: 300px;
                     }
                     h6{
-                      font-size: 14px;
+                      font-size: 16px;
                       font-weight: 300;
                       min-width: 300px;
                     }
@@ -4538,40 +4538,59 @@ body {
                   .scroll{
                     height: calc(100% - 31px - 31px);
                     padding: 5px;
-                    h2 {
-                      font-size: 20px;
-                      font-weight: 600;
-                      color: #0062d7;
-                    }
-                    ul {
-                      li {
-                        list-style-type: none;
-                        .main {
-                          p {
-                            color: #0062d7;
-                          }
-                        }
-                        .sub {
-                          span {
-                            color: grey;
-                            font-size: 14px;
-                            margin-right: 10px;
-                            position: relative;
-                            &:last-child {
-                              &:before {
-                                content: none;
+                    .accordion{
+                      .accordion-item{
+                        background-color: transparent;
+                        border: none;
+                        .accordion-header{
+                          button{
+                            &.accordion-button{
+                              background: none;
+                              padding: 5px;
+                              box-shadow: none;
+                              h2 {
+                                font-size: 16px;
+                                font-weight: 600;
+                                color: #0062d7;
                               }
                             }
-                            &:before {
-                              content: "";
-                              position: absolute;
-                              width: 1.5px;
-                              background-color: grey;
-                              height: 16px;
-                              right: -6px;
-                              top: 0;
-                              bottom: 0;
-                              margin: auto;
+                          }
+                        }
+                        .accordion-body{
+                          ul {
+                            li {
+                              font-size: 14px;
+                              margin: 0px;
+                              list-style-type: none;
+                              .main {
+                                p {
+                                  color: #0062d7;
+                                }
+                              }
+                              .sub {
+                                span {
+                                  color: grey;
+                                  font-size: 14px;
+                                  margin-right: 10px;
+                                  position: relative;
+                                  &:last-child {
+                                    &:before {
+                                      content: none;
+                                    }
+                                  }
+                                  &:before {
+                                    content: "";
+                                    position: absolute;
+                                    width: 1.5px;
+                                    background-color: grey;
+                                    height: 16px;
+                                    right: -6px;
+                                    top: 0;
+                                    bottom: 0;
+                                    margin: auto;
+                                  }
+                                }
+                              }
                             }
                           }
                         }
