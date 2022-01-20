@@ -6,7 +6,8 @@ import Vector3 from "../../../../../assets/icons/various/Vector3.svg";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { AiFillCaretRight } from "react-icons/ai";
 import "./index.scss";
-import Stepper from '../../../../../component/stepper/stepper';
+
+// import Stepper from '../../../../../component/stepper/stepper';
 
 
 interface typeProps {
@@ -21,6 +22,7 @@ class FacilityHome extends Component<typeProps, {}>{
 
         }
     }
+
     // click = (arg:any) => {
     //     console.log(arg)
     //     this.props.onClick(arg);
@@ -61,21 +63,22 @@ class FacilityHome extends Component<typeProps, {}>{
                                                     </div>)
                                         })
                                     }
-
-
                                 </div>
                             </PerfectScrollbar>
                         </div>
                     </div>
                 </div>
-                <div className="rightmenu">
-                    <button className="summarybtn">Summary<MdKeyboardArrowRight /></button>
-                    <div className="d-flex flex-column product-item-parent-right justify-content-center">
-                        <p>Click on the Facilities one by one to fill in the details relateing to Location, Contact and Business hours</p>
+                {/* <div className=""> */}
+                    {/* <Stepper steps={steps} activeStep={2} /> */}
+                    <div className="rightmenu">                        
+                        <button className="summarybtn">Summary<MdKeyboardArrowRight/></button>
+                        <div className="d-flex flex-column product-item-parent-right justify-content-center">                        
+                            <p>Click on Next Button to complete the Facility Info.(Operation selection) of selected facility</p>  
+                        </div>
+                        <button title="nextbutton" type="submit" className="btn btn-back mx-2 next float-end nextbtn">Next&emsp;<AiFillCaretRight />
+                        </button>   
                     </div>
-                    <button title="nextbutton" type="submit" className="btn btn-back mx-2 next float-end nextbtn">Next&emsp;<AiFillCaretRight />
-                    </button>
-                </div>
+                {/* </div> */}
             </div>
         )
     }

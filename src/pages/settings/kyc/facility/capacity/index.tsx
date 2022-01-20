@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Facilityhome from '../../commonFiles/facilityhome';
-import CategorySelect from '../../commonFiles/productSelection/category';
+import CategorySelect from '../../commonFiles/selectCategory';
 import Cpcity from './capacity';
 
 interface typeProps{
@@ -21,17 +21,27 @@ class capacity extends Component<typeProps, typeState>{
             step3: false,
         }
     }
+    step1Complete = () =>{
+        this.setState({
+            step1: false,
+            step2: true,
+        })
+    }
+    step2Complete = () =>{
+        this.setState({
+            step2: false,
+            step3: true,
+        })
+    }
     render(){
         return(
             <>
                 {
                     this.state.step1 ?
-                    <Facilityhome onClick={()=>{}}/>:
+                    <Facilityhome onClick={this.step1Complete}/>:
                     this.state.step2 ?
-                    <CategorySelect 
-                        state={this.state} 
-                        nextPageChange={()=>{}} 
-                        handleChange={()=>{}}
+                    <CategorySelect
+                        onClick={this.step2Complete}
                         />:
                     this.state.step3 ?
                     <Cpcity /> :<></>
