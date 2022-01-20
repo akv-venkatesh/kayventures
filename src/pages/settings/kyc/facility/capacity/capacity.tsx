@@ -11,7 +11,7 @@ import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar"
 import { JsxFlags } from "typescript";
 import { RiInformationFill } from "react-icons/ri";
-import { AiOutlineRight } from "react-icons/ai";
+import { AiOutlinePlus, AiOutlineRight } from "react-icons/ai";
 // import Select from 'react-select';
 
 import Select from '../../../../../component/dropdown_select/slelect';
@@ -20,12 +20,14 @@ interface typeProps{
   // value:string,
 }
 interface typeState {
+  manufacturingActivity: any,
   selectedOption: string;
   line_number: string;
   product_item: any;
   selected_product_item: any;
   product_item_index: number;
   linetype: string;
+  buyerName: string;
   materialtype: string;
   machinery: any;
   checkedMachine: any;
@@ -62,6 +64,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
   constructor(props: any) {
     super(props);
     this.state = {
+      manufacturingActivity: '',
       showModel: false,
       selectedOption: "",
       line_number: '',
@@ -98,6 +101,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
       selected_product_item: [],
       product_item_index: 0,
       linetype: '',
+      buyerName: '',
       materialtype: '',
       machinery: [
         {
@@ -256,6 +260,12 @@ class ProductConfiguration extends Component<typeProps, typeState> {
       linetype: value.value
     })
   }
+  buyerChange = (event: ChangeEvent<HTMLSelectElement>) =>{
+    let value:any = event;
+    this.setState({
+      buyerName: value.value
+    })
+  }
   materialTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
     let value:any = event;
     this.setState({
@@ -335,10 +345,6 @@ class ProductConfiguration extends Component<typeProps, typeState> {
       console.log(this.state.finalstate)
     })
   }
-   
-  buyerChange = () =>{
-
-  }
 
   render(): JSX.Element {
 
@@ -366,7 +372,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
             <div className="d-flex capacity h-100">
               <div className="sec1 h-100">
                 <div>
-                  <h4 className="category-name m-0 py-3">Sewing</h4>
+                  <h4 className="category-name m-0 py-3">{this.state.manufacturingActivity}</h4>
                 </div>
                 <div className="scroll">
                   <PerfectScrollbar>
@@ -415,13 +421,36 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                               }
                                               <div className="extra-product">
                                                 <Accordion>
-                                                  <Accordion.Item eventKey={'a' + i} className="mb-2" key={product.name + i}>
-                                                    <Accordion.Header>{product.name}</Accordion.Header>
+                                                  <Accordion.Item eventKey={'a' + i} className="mb-3" key={product.name + i}>
+                                                    <Accordion.Header className="mt-3">
+                                                      <div className="d-flex ui align-items-center">
+                                                        <AiOutlinePlus  className="me-3"/>
+                                                        <small>Add more product items</small>
+                                                      </div>
+                                                    </Accordion.Header>
                                                     <Accordion.Body className="p-0">
                                                       <div className="dropdown active ms-3">
-                                                        <div>
-                                                          sdfsdf
-                                                        </div>
+                                                        {
+                                                          product.data.map((item: any, j: number) =>
+                                                            <div className="py-2 px-4 wear" key={item.name + j}>
+                                                              <Form.Check.Input
+                                                                type="checkbox"
+                                                                id={'extra'+item.name + j}
+                                                                onChange={(e) => this.productSelect(e, product.name)}
+                                                                value={item.name}
+                                                                data-testid={'prod-grp'+i+j}
+                                                                hidden
+                                                                disabled={state.disable_input}
+                                                              />
+                                                              <Form.Check.Label htmlFor={'extra'+item.name + j} className="w-100 pe-3">
+                                                                <div className="d-flex justify-content-between">
+                                                                  <p className="m-0">{item.name}</p>
+                                                                  <span className="d-block"></span>
+                                                                </div>
+                                                              </Form.Check.Label>
+                                                            </div>
+                                                          )
+                                                        }
                                                       </div>
                                                     </Accordion.Body>
                                                   </Accordion.Item>
@@ -472,14 +501,15 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                       />
                                     </form>
                                     <div className="d-flex justify-content-evenly mt-2">
-                                      <h6>Visibility</h6>
-                                      <div className="visibility d-flex">
-                                        <p>Public</p>
+                                      <h6 className="m-0">Visibility</h6>
+                                      <div className="visibility d-flex align-items-center">
+                                        <p className="m-0 me-2">Public</p>
                                         <Form.Check 
                                           type="switch"
                                           id="custom-switch"
+                                          className="p-0 d-flex align-items-center"
                                         />
-                                        <p>Private</p>
+                                        <p className="m-0 ms-2">Private</p>
                                       </div>
                                     </div>
                                     
@@ -536,7 +566,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                     </div>
                   </PerfectScrollbar>
                 </div>
-                <div>
+                <div className="pt-3">
                   <Button className="submit-btn" disabled>
                     Save
                   </Button>
@@ -592,15 +622,31 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                 </div>
               </div>
               <div className="sec3 h-100">
-                <div className="add-machine p-4 h-100 d-flex flex-column justify-content-between">
+                <div className="add-machine p-4 h-100">
+                  <div className="add-line-number d-flex justify-content-between" >
+                    <div className="d-flex align-items-center">
+                      <AiOutlinePlus />
+                      <p className="ms-2 mb-0">Add Line Number</p>
+                      </div>
+                    <div className="d-flex">
+                      <Button
+                        className="active-btn"
+                        disabled
+                        >
+                        Summary
+                      </Button>
+                    </div>
+                  </div>
                   {state.line_number == '' ?
-                    <div className="d-flex justify-content-center align-items-center h-100">
-                      <p>
-                        There's no Line Definition
-                      </p>
-                    </div> :
                     <>
-                      <div>
+                      <div className="d-flex scroll justify-content-center align-items-center">
+                        <p className="m-0">
+                          There's no Line Definition
+                        </p>
+                      </div> 
+                    </>:
+                    <>
+                      <div className="scroll">
                         {state.line_number !== "" ?
                           <h2>{state.line_number}</h2> : ' '
                         }
@@ -608,12 +654,13 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                           {
                             state.line_number !== "" ?
                               state.selected_product_item.map((item: any, index: number) =>
-                                <li className="add-machine-product-item py-2" key={'machine'+index}>
-                                  <div className="main d-flex align-items-center">
+                                <li className="add-machine-product-item" key={'machine'+index}>
+                                  <div className="main py-1 d-flex align-items-center">
                                     <BsChevronRight />
                                     <p className="m-0 ps-2">{item.name}</p>
                                   </div>
-                                  <div className="sub ps-4 d-flex align-items-center">
+                                  <hr className="m-0"/>
+                                  <div className="sub ps-4 py-1 d-flex align-items-center">
                                     <BsChevronRight />
                                     <div className="d-flex ps-2">
                                       {
@@ -623,33 +670,50 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                       }
                                     </div>
                                   </div>
+                                  <hr className="m-0"/>
                                 </li>
                               ) :
                               <></>
                           }
                           { state.selected_product_item.length !== 0 ?
-                            <li className="add-machine-line-type py-2">
+                            <li className="add-machine-line-type">
                               {
                                 state.linetype !== "" && state.selected_product_item.length !==0 ?
-                                  <div className="main d-flex align-items-center">
-                                    <BsChevronRight />
-                                    <p className="m-0 ps-2">{state.linetype}</p>
-                                  </div> :
+                                  <>
+                                    <div className="main py-1 d-flex align-items-center">
+                                      <BsChevronRight />
+                                      <p className="m-0 ps-2">{state.linetype}</p>
+                                    </div>
+                                    <hr className="m-0" />
+                                    {
+                                      state.buyerName !== '' && state.linetype == 'Reserved' ?
+                                      <div className="sub ps-4 py-1 d-flex align-items-center">
+                                        <BsChevronRight />
+                                        <div className="d-flex ps-2">
+                                          {state.buyerName}
+                                        </div>
+                                      </div> :
+                                      <></>
+                                    }
+                                  </> :
                                   <></>
                               }
                               {
                                 state.materialtype !== "" && state.linetype !=="" ?
-                                  <div className="main d-flex align-items-center">
-                                    <BsChevronRight />
-                                    <p className="m-0 ps-2">{state.materialtype}</p>
-                                  </div> :
+                                  <>
+                                    <div className="main d-flex align-items-center">
+                                      <BsChevronRight />
+                                      <p className="m-0 ps-2">{state.materialtype}</p>
+                                    </div>
+                                    <hr className="m-0" />
+                                  </> :
                                   <></>
                               }
                             </li>:
                             <></>
                           }
 
-                          <li className="add-machine-type py-2">
+                          <li className="add-machine-type">
                             {
                               state.materialtype !==''?
                                 state.confirmedMachine.map((item: any, i: number) =>
@@ -666,7 +730,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                           </li>
                         </ul>
                       </div>
-                      <div className="total-machine">
+                      {/* <div className="total-machine">
                         {state.totalmachinecount > 0 ?
                           <ul className="m-0 p-0 mb-4">
                             <li className="">
@@ -678,46 +742,22 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                           </ul> :
                           <></>
                         }
-                        <div className="d-flex justify-content-center">
-                          {
-                            !state.showsummary ?
-                              <>
-                                <Button
-                                  className="active-btn"
-                                  disabled={state.confirmedMachine.length > 0 ? false : true}
-                                  onClick={this.addMachine}
-                                  >
-                                  Add Machine
-                                </Button>
-                                <Button 
-                                  className="active-btn-save ms-3" 
-                                  disabled={state.confirmedMachine.length > 0 ? false : true}
-                                  onClick={this.showSummary}
-                                  data-testid={'saveline'}
-                                  >
-                                  Save
-                                </Button>
-                              </> :
-                              <>
-                                <Button
-                                  className="active-btn"
-                                  disabled={state.confirmedMachine.length > 0 ? false : true}
-                                  onClick={this.addLine}
-                                >
-                                  Add Line
-                                </Button>
-                                <Button
-                                  className="active-btn ms-3"
-                                  disabled={state.confirmedMachine.length > 0 ? false : true}
-                                  onClick={this.handleShow}>
-                                  Summary
-                                </Button>
-                              </>
-                          }
-                        </div>
-                      </div>
+                      </div> */}
                     </>
                   }
+
+                  <div className="d-flex justify-content-center">
+                    <>
+                      <Button 
+                        className="active-btn-save ms-3" 
+                        disabled={state.confirmedMachine.length > 0 ? false : true}
+                        onClick={this.showSummary}
+                        data-testid={'saveline'}
+                        >
+                        Save
+                      </Button>
+                    </>
+                  </div>
                 </div>
               </div>
             </div>
