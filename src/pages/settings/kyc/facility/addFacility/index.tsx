@@ -28,6 +28,8 @@ import { FaRegFileAlt } from 'react-icons/fa';
 import { BiMap } from 'react-icons/bi';
 import Image2 from "../../../../../assets/image2.svg";
 import FacilityHome from "../../commonFiles/facilityhome";
+import Stepper from '../../../../../component/stepper/stepper';
+
 
 interface typeState{
 	step1: boolean,
@@ -44,7 +46,8 @@ interface typeState{
 	showModel: boolean,
 	// 
 	inputFecilityName: string
-	facilities : string[]
+	facilities : string[],
+	editFacility:any
 }
 
 class AddFacility extends Component<{}, typeState> {
@@ -65,7 +68,8 @@ class AddFacility extends Component<{}, typeState> {
 			showModel: false,
 			// 
 			inputFecilityName:'',
-			facilities : []
+			facilities : [],
+			editFacility:''
 		}
 	}
     hideSummary = () => {
@@ -86,10 +90,11 @@ class AddFacility extends Component<{}, typeState> {
 			step2: true,
 		})
 	}
-	step2Complete = () =>{
+	step2Complete = (facility:any) =>{
 		this.setState({
 			step2: false,
 			step3: true,
+			editFacility:facility
 		})
 	}
 	step3Complete = () =>{
@@ -116,6 +121,7 @@ class AddFacility extends Component<{}, typeState> {
 		  showModel: true,
 		});
 	};
+
 	handleEnviromentalChange = () => {
         this.setState({
             initialPage: false,
@@ -173,6 +179,7 @@ class AddFacility extends Component<{}, typeState> {
 		{ value: 'Siatutari', label: 'Siatutari' },
 		{ value: 'Licences', label: 'Licences' }
 	]
+
 	handleAddFacility = () =>{
 		let { inputFecilityName,facilities } =this.state;
 		if(inputFecilityName){
@@ -184,13 +191,20 @@ class AddFacility extends Component<{}, typeState> {
 	handleRemoveFacility = (facility:any) =>{
 		let { facilities } =this.state;
 		let filteredfacilities;
-		if(facility){
+		if(facility >= 0 ){
 			filteredfacilities = facilities.splice(facility,1);
 		}
 		this.setState({facilities:facilities})
 	}
 
 	render():JSX.Element{
+		const steps = [ { label: 'Add Facility',id:0}, 
+						{ label: 'Facility KYC',id:1}, 
+						{ label: 'Facility Info.',id:2 }, 
+						{ label: 'Product Selection',id:3 },
+						{ label: 'Capacity',id:4 },
+						{ label: 'Sections',id:5 }];
+
 		const { facilities,inputFecilityName} =this.state
 		return (
 			<div className="kyc-facility-addfacility h-100">
@@ -198,8 +212,7 @@ class AddFacility extends Component<{}, typeState> {
 					this.state.step1 ?
 					<div className="facilitykyc h-100">
 						<div className="title my-2">
-							<img src={Vector2} className="titleimg"/>
-							<h4>Organization info</h4>
+						<Stepper steps={steps} activeStep={0} />
 						</div>
 						<div className="content">
 								<div className="orgcon pt-5 pb-4">
@@ -210,7 +223,7 @@ class AddFacility extends Component<{}, typeState> {
 												<p className="text-center my-3">Syndicate Fashions</p>
 											</div>
 									</div>
-									<p className="addfac mt-4">Add Facility</p>
+									<p className="addfac mt-2">Add Facility</p>
 									<div className="pt-2 mb-2 typefacility">
 										<div className="add-button text-center">
 											<span><input type='text' placeholder='Type the Facility name' value={inputFecilityName} style={{backgroundColor:'transparent',border:'0px solid transparent',}} onChange={(e:any) =>this.setState({inputFecilityName:e.target.value})}/></span> 
@@ -218,25 +231,32 @@ class AddFacility extends Component<{}, typeState> {
 												<BsPlusLg className="add-icon" />
 											</div>							
 										</div>
-
+										<div className='facilities-container pt-4 pb-2'>
+										{/* <PerfectScrollbar> */}
 										{
+										 facilities.length > 0 ? 
 										 facilities.map((facility:any,key) => {
-											 return (<div className='facility mt-5'>
+											 return (
+										 	
+											 <div className='facility-item'>
 											 <ImCross className="cross" onClick={()=>this.handleRemoveFacility(key)} />
-											 {/* <label id={facility} onClick={(e:any)=>this.handleRemoveFacility(key)}>x</label> */}
 											 <img src={clarity_factory_line}/>
 											 <span>{facility}</span>
-										 </div>)
-										 })
+										     </div>
+										 	
+										 )
+										 }) : ''
 										}
+									{/* </PerfectScrollbar> */}
+										</div>
 									</div>
-									<span className="mt-3 clickadd">Type the Facility name and start adding facilities under Organization</span>
+									{facilities.length <= 0 ? <span className="mt-5 clickadd">Type the Facility name and start adding facilities under Organization</span> : ''}
 								</div>
-								<div className="mt-2 col-md-8 pb-4 m-auto">
+								<div className="mt-2 col-md-8 pb-4 m-auto faci-add-footer-button">
 									<div className="row ">
 										<div className="w-100 d-flex justify-content-spacebetween">
-											<button type="button" className="btn btn-back mx-2 back float-start"><AiFillCaretLeft />&emsp;Back</button>
-											<button type="submit" onClick={this.step1Complete} className="btn btn-back mx-2 next float-end">Next&emsp;<AiFillCaretRight />
+											<button type="button" className="btn back-btn mx-2 back float-start"><AiFillCaretLeft />&emsp;Back</button>
+											<button type="submit" onClick={this.step1Complete} disabled={facilities.length > 0 ? false:true } className="btn next-btn mx-2 next float-end">Next&emsp;<AiFillCaretRight />
 											</button> 
 										</div>
 									</div>
@@ -244,13 +264,18 @@ class AddFacility extends Component<{}, typeState> {
 						</div>
 					</div> :
 					this.state.step2 ?
-					<FacilityHome onClick={this.step2Complete}/> :
+					<div>
+						<div className="title my-2">
+							<Stepper steps={steps} activeStep={1} />
+						</div>
+						<FacilityHome onClick={(state)=>{this.step2Complete(state)}} selected_Facilities={facilities}/> 
+					</div>:
 					this.state.step3 ?
 					<div className="machine main d-flex facilitykyc1 h-100">
 						<div className="col-md-12 d-flex flex-column h-100">
 							<div className="facility1 d-flex">
 								<img src={Vector3} alt="" />
-								<p>Facility 1</p>
+								<p>{this.state.editFacility}</p>
 							</div>
 							<div className="crossicon">
 								<ImCross className="cross" />
