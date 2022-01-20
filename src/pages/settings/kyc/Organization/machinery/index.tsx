@@ -1,10 +1,7 @@
-import React, { Component, ChangeEvent } from 'react'
+import React, { Component, ChangeEvent, FormEvent, FormEventHandler } from 'react'
 import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap';
 
-import Vector3 from "../../../../../assets/icons/various/Vector3.svg"
 import MachineIcon from "../../../../../assets/icons/various/MachineIcon.svg"
-
-
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { RiArrowDropRightLine, RiInformationFill } from 'react-icons/ri';
 import "react-perfect-scrollbar/dist/css/styles.css";
@@ -12,8 +9,6 @@ import Select from '../../../../../component/dropdown_select/slelect';
 import { AiFillCaretRight, AiFillExclamationCircle, AiOutlinePlus } from 'react-icons/ai';
 import Stepper from '../../../../../component/stepper/stepper';
 import SelectCategory from '../../commonFiles/selectCategory';
-
-
 
 interface typeState {
     manufacturingActivity: any,
@@ -35,6 +30,11 @@ interface typeState {
     previewState: any,
     HomePage: boolean;
     origState: any,
+    machineFilter: any,
+    brandFilter: any,
+    techFilter: any,
+    iotFilter: any,
+    filter: any,
 }
 interface typeProps {
     machineProps: any
@@ -62,6 +62,10 @@ class Machinery extends Component<typeProps, typeState> {
             iotEnable: false,
             toogleCheck: false,
             previewState: [],
+            machineFilter: '',
+            brandFilter: '',
+            techFilter: '',
+            iotFilter: '',
             savedState: [{
                 machineType: null,
                 machineBrand: null,
@@ -71,6 +75,7 @@ class Machinery extends Component<typeProps, typeState> {
                 savedState: false,
             }],
             origState: [],
+            filter: [],
         }
     }
 
@@ -81,12 +86,21 @@ class Machinery extends Component<typeProps, typeState> {
     }
     hideSummary = () => {
         this.setState({
-            showSummary: false
+            showSummary: false,
+            machineFilter: '',
+            brandFilter: '',
+            techFilter: '',
+            iotFilter: '',
+            previewState: this.state.origState,
         })
     }
     activeSubmit = () => {
-        const activeState = this.state.savedState[this.state.machineKey];
-        if (activeState['machineType'] !== null && activeState['machineBrand'] !== null && activeState['machineTech'] !== null && activeState['iotEnable'] !== null && activeState['machineCount'] !== null) {
+        const activeState = this.state.origState;
+        if (activeState['machineType'] !== null &&
+            activeState['machineBrand'] !== null &&
+            activeState['machineTech'] !== null &&
+            activeState['iotEnable'] !== null &&
+            activeState['machineCount'] !== null) {
             return false;
         }
         else {
@@ -157,7 +171,6 @@ class Machinery extends Component<typeProps, typeState> {
             console.log(this.state.savedState);
         })
     }
-
     handleSavedMachine = (e: any) => {
         let obj = [{
             machineType: null,
@@ -170,6 +183,7 @@ class Machinery extends Component<typeProps, typeState> {
 
         let object = this.state.savedState[0];
         let arr = this.state.origState;
+
         arr.push(object);
         this.setState({
             origState: arr,
@@ -183,8 +197,9 @@ class Machinery extends Component<typeProps, typeState> {
             machineCount: '',
             previewState: this.state.origState,
         }, () => {
-            console.log(this.state.origState);
-            console.log(this.state.savedState);
+            console.log("origState =>", this.state.origState);
+            console.log("savedState =>", this.state.savedState);
+            console.log("previewState =>", this.state.previewState);
         })
     }
     handleAddMore = () => {
@@ -193,43 +208,100 @@ class Machinery extends Component<typeProps, typeState> {
         })
     }
 
+    modelFilter: FormEventHandler<HTMLFormElement> = (event) => {
+        event.preventDefault();
+
+        var filterValue = this.state.origState.filter((data: any) => {
+            return (
+                data.machineType == this.state.machineFilter &&
+                data.machineBrand == this.state.brandFilter &&
+                data.machineTech == this.state.techFilter &&
+                data.iotEnable == this.state.iotFilter
+            );
+        })
+        // machineType: this.state.machineFilter,
+        // machineBrand: this.state.brandFilter,
+        // machineTech: this.state.techFilter,
+        // iotEnable: this.state.iotFilter,
+
+
+        // console.log(this.state.filter)
+        // let filter = this.state.filter[0];
+        // var filterValue = this.state.origState.filter(function (item: any) {
+        //     for (let key in filter) {
+        //         if (item[key] === undefined || item[key] === '' || item[key] != filter[key])
+        //             return false;
+        //     }
+        //     return true;
+        // });
+        this.setState({
+            previewState: filterValue,
+        })
+    }
     modelMachineFilter = (event: any) => {
-        let value: any = event.value;
-        console.log(value);
+        // debugger;
+        // let value: any = event.value;
+        // console.log(value);
         // var filterValue = this.state.origState.filter((data: any) => {
         //     return data.machineType == value;
         // })
         // console.log("filterValue=>", filterValue);
+        let obj = { machineType: event.value }
+        // let arr = this.state.filter[0];
+        let arr = this.state.filter;
+        // arr[this.state.machineType] = event.value;
+        arr.push(obj);
         this.setState({
-            previewState: value,
+            machineFilter: event.value,
+            filter: arr,
         }, () => {
-            console.log("filterData =>", this.state.previewState);
+            console.log("machineFilter =>", this.state.machineFilter);
         })
     }
     modelBrandFilter = (event: any) => {
-        let value: any = event.value;
-        console.log(value);
-        // var filterValue = this.state.origState.filter((data: any) => {
-        //     return data.machineBrand == value;
-        // })
-        // console.log("filterValue=>", filterValue);
+        // let value: any = event.value;
+        // console.log(value);
+        // // var filterValue = this.state.origState.filter((data: any) => {
+        // //     return data.machineBrand == value;
+        // // })
+        // // console.log("filterValue=>", filterValue);
+        let obj = { machineBrand: event.value }
+        let arr = this.state.filter;
+        arr.push(obj);
         this.setState({
-            previewState: value,
+            brandFilter: event.value,
+            filter: arr,
         }, () => {
-            console.log("filterData =>", this.state.previewState);
+            console.log("brandFilter =>", this.state.brandFilter);
         })
     }
     modelTechnologyFilter = (event: any) => {
-        let value: any = event.value;
-        console.log(value);
-        // var filterValue = this.state.origState.filter((data: any) => {
-        //     return data.machineTech == value;
-        // })
-        // console.log("filterValue=>", filterValue);
+        // let value: any = event.value;
+        // console.log(value);
+        // // var filterValue = this.state.origState.filter((data: any) => {
+        // //     return data.machineTech == value;
+        // // })
+        // // console.log("filterValue=>", filterValue);
+        let obj = { machineTech: event.value }
+        let arr = this.state.filter;
+        arr.push(obj);
         this.setState({
-            previewState: value,
+            techFilter: event.value,
+            filter: arr,
         }, () => {
-            console.log("filterData =>", this.state.previewState);
+            console.log("techFilter =>", this.state.techFilter);
+        })
+    }
+    modelIotFilter = (event: any) => {
+
+        let obj = { iotEnable: event.value }
+        let arr = this.state.filter;
+        arr.push(obj);
+        this.setState({
+            iotFilter: event.value == "Enable" ? true : false,
+            filter: arr,
+        }, () => {
+            console.log("iotFilter =>", this.state.iotFilter);
         })
     }
 
@@ -360,7 +432,11 @@ class Machinery extends Component<typeProps, typeState> {
                                                 <div className="my-3">
                                                     <Button
                                                         className="btn btn-secondary submit"
-                                                        disabled={false}
+                                                        disabled={!this.state.selectedMachineOption ||
+                                                            !this.state.selectedBrandOption ||
+                                                            !this.state.selectedTechOption ||
+                                                            !this.state.toogleCheck ||
+                                                            !this.state.machineCount}
                                                         onClick={(e) => this.handleSavedMachine(e)}
                                                     >
                                                         Submit
@@ -372,9 +448,7 @@ class Machinery extends Component<typeProps, typeState> {
 
                                 </div>
                                 <div className="rightmenu d-flex flex-column">
-
                                     <Stepper steps={step} activeStep={2} />
-
                                     <div className="box py-2 mt-2 position-relative">
                                         <div className="d-flex mt-4 px-5 justify-content-end">
                                             <div className="summary">
@@ -408,7 +482,6 @@ class Machinery extends Component<typeProps, typeState> {
                                                                 </Col>)
                                                             })
                                                             }
-
                                                         </Row>
                                                     </Container>
                                                 </div>
@@ -419,7 +492,6 @@ class Machinery extends Component<typeProps, typeState> {
                                                 <div className="exclamination mx-3">
                                                     <AiFillExclamationCircle />
                                                 </div> : null}
-
                                             <div className="d-flex">
                                                 <button
                                                     type="submit"
@@ -461,69 +533,66 @@ class Machinery extends Component<typeProps, typeState> {
                                                         <div className="model_leftmenu d-flex flex-column">
                                                             <div className="mb-3">
                                                                 <div className="mb-3">
-                                                                    <form data-testid="machineTypeFilter">
-                                                                        <label htmlFor="filter-machine" hidden>Select Machine</label>
-                                                                        <Select
-                                                                            name="machinetypefilter"
-                                                                            inputId="filter-machine"
-                                                                            options={machine}
-                                                                            width='auto'
-                                                                            position='bottom'
-                                                                            placeholder='Select Machine'
-                                                                            onChange={(event: any) => this.modelMachineFilter(event)}
-                                                                        ></Select>
+                                                                    <form data-testid="machineTypeFilter" onSubmit={this.modelFilter}>
+                                                                        <div>
+                                                                            <div className="mb-3">
+                                                                                <label htmlFor="filter-machine" hidden>Select Machine</label>
+                                                                                <Select
+                                                                                    name="machinetypefilter"
+                                                                                    inputId="filter-machine"
+                                                                                    options={machine}
+                                                                                    width='auto'
+                                                                                    position='bottom'
+                                                                                    placeholder='Select Machine'
+                                                                                    onChange={(event) => this.modelMachineFilter(event)}
+                                                                                ></Select>
+                                                                            </div>
+                                                                            <div className="mb-3">
+                                                                                <label htmlFor="filter-brand" hidden>Select Brand</label>
+                                                                                <Select
+                                                                                    name="brandtypeFilter"
+                                                                                    inputId="filter-brand"
+                                                                                    options={brand}
+                                                                                    width='auto'
+                                                                                    position='bottom'
+                                                                                    placeholder='Select Brand'
+                                                                                    onChange={(event) => this.modelBrandFilter(event)}
+                                                                                ></Select>
+                                                                            </div>
+                                                                            <div className="mb-3">
+                                                                                <label htmlFor="filter-tech" hidden>Select Technology</label>
+                                                                                <Select
+                                                                                    name="techtypefilter"
+                                                                                    inputId="filter-tech"
+                                                                                    options={technology}
+                                                                                    width='auto'
+                                                                                    position='bottom'
+                                                                                    placeholder='Select Technology'
+                                                                                    onChange={(event) => this.modelTechnologyFilter(event)}
+                                                                                ></Select>
+                                                                            </div>
+                                                                            <div className="mb-3">
+                                                                                <label htmlFor="filter-iot" hidden>IOT</label>
+                                                                                <Select
+                                                                                    name="iottypefilter"
+                                                                                    inputId="filter-iot"
+                                                                                    options={iot}
+                                                                                    width='auto'
+                                                                                    position='bottom'
+                                                                                    placeholder='IOT'
+                                                                                    onChange={(event) => this.modelIotFilter(event)}
+                                                                                ></Select>
+                                                                            </div>
+                                                                            <div className="my-3">
+                                                                                <Button
+                                                                                    className="btn btn-secondary submit"
+                                                                                    type="submit"
+                                                                                >
+                                                                                    Submit
+                                                                                </Button>
+                                                                            </div>
+                                                                        </div>
                                                                     </form>
-                                                                </div>
-                                                                <div className="mb-3">
-                                                                    <form data-testid="brandtypeFilter">
-                                                                        <label htmlFor="filter-brand" hidden>Select Brand</label>
-                                                                        <Select
-                                                                            name="brandtypeFilter"
-                                                                            inputId="filter-brand"
-                                                                            options={brand}
-                                                                            width='auto'
-                                                                            position='bottom'
-                                                                            placeholder='Select Brand'
-                                                                            onChange={(event: any) => this.modelBrandFilter(event)}
-                                                                        ></Select>
-                                                                    </form>
-                                                                </div>
-                                                                <div className="mb-3">
-                                                                    <form data-testid="techtypefilter">
-                                                                        <label htmlFor="filter-tech" hidden>Select Technology</label>
-                                                                        <Select
-                                                                            name="techtypefilter"
-                                                                            inputId="filter-tech"
-                                                                            options={technology}
-                                                                            width='auto'
-                                                                            position='bottom'
-                                                                            placeholder='Select Technology'
-                                                                            onChange={(event: any) => this.modelTechnologyFilter(event)}
-                                                                        ></Select>
-                                                                    </form>
-                                                                </div>
-                                                                <div className="mb-3">
-                                                                    <form data-testid="iottypefilter">
-                                                                        <label htmlFor="filter-iot" hidden>IOT</label>
-                                                                        <Select
-                                                                            name="iottypefilter"
-                                                                            inputId="filter-iot"
-                                                                            options={iot}
-                                                                            width='auto'
-                                                                            position='bottom'
-                                                                            placeholder='IOT'
-                                                                            onChange={() => { }}
-                                                                        ></Select>
-                                                                    </form>
-                                                                </div>
-                                                                <div className="my-3">
-                                                                    <Button
-                                                                        className="btn btn-secondary submit"
-                                                                        disabled={false}
-                                                                        onClick={() => { }}
-                                                                    >
-                                                                        Submit
-                                                                    </Button>
                                                                 </div>
                                                             </div>
                                                         </div>
