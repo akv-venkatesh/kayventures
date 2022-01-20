@@ -11,7 +11,7 @@ import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar"
 import { JsxFlags } from "typescript";
 import { RiInformationFill } from "react-icons/ri";
-import { AiOutlineRight } from "react-icons/ai";
+import { AiOutlinePlus, AiOutlineRight } from "react-icons/ai";
 // import Select from 'react-select';
 
 import Select from '../../../../../component/dropdown_select/slelect';
@@ -20,6 +20,7 @@ interface typeProps{
   // value:string,
 }
 interface typeState {
+  manufacturingActivity: any,
   selectedOption: string;
   line_number: string;
   product_item: any;
@@ -62,6 +63,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
   constructor(props: any) {
     super(props);
     this.state = {
+      manufacturingActivity: '',
       showModel: false,
       selectedOption: "",
       line_number: '',
@@ -366,7 +368,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
             <div className="d-flex capacity h-100">
               <div className="sec1 h-100">
                 <div>
-                  <h4 className="category-name m-0 py-3">Sewing</h4>
+                  <h4 className="category-name m-0 py-3">{this.state.manufacturingActivity}</h4>
                 </div>
                 <div className="scroll">
                   <PerfectScrollbar>
@@ -415,13 +417,36 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                               }
                                               <div className="extra-product">
                                                 <Accordion>
-                                                  <Accordion.Item eventKey={'a' + i} className="mb-2" key={product.name + i}>
-                                                    <Accordion.Header>{product.name}</Accordion.Header>
+                                                  <Accordion.Item eventKey={'a' + i} className="mb-3" key={product.name + i}>
+                                                    <Accordion.Header className="mt-3">
+                                                      <div className="d-flex ui align-items-center">
+                                                        <AiOutlinePlus  className="me-3"/>
+                                                        <small>Add more product items</small>
+                                                      </div>
+                                                    </Accordion.Header>
                                                     <Accordion.Body className="p-0">
                                                       <div className="dropdown active ms-3">
-                                                        <div>
-                                                          sdfsdf
-                                                        </div>
+                                                        {
+                                                          product.data.map((item: any, j: number) =>
+                                                            <div className="py-2 px-4 wear" key={item.name + j}>
+                                                              <Form.Check.Input
+                                                                type="checkbox"
+                                                                id={'extra'+item.name + j}
+                                                                onChange={(e) => this.productSelect(e, product.name)}
+                                                                value={item.name}
+                                                                data-testid={'prod-grp'+i+j}
+                                                                hidden
+                                                                disabled={state.disable_input}
+                                                              />
+                                                              <Form.Check.Label htmlFor={'extra'+item.name + j} className="w-100 pe-3">
+                                                                <div className="d-flex justify-content-between">
+                                                                  <p className="m-0">{item.name}</p>
+                                                                  <span className="d-block"></span>
+                                                                </div>
+                                                              </Form.Check.Label>
+                                                            </div>
+                                                          )
+                                                        }
                                                       </div>
                                                     </Accordion.Body>
                                                   </Accordion.Item>
@@ -601,6 +626,20 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                     </div> :
                     <>
                       <div>
+                        <div className="add-line-number d-flex mb-4" >
+                          <div className="d-flex align-items-center">
+                            <AiOutlinePlus />
+                            <p className="ms-3 mb-0">Add Line Number</p>
+                            </div>
+                            <div className="d-flex">
+                            <Button
+                              className="active-btn"
+                              disabled
+                              >
+                              Summary
+                            </Button>
+                          </div>
+                        </div>
                         {state.line_number !== "" ?
                           <h2>{state.line_number}</h2> : ' '
                         }
@@ -623,6 +662,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                       }
                                     </div>
                                   </div>
+                                  <hr />
                                 </li>
                               ) :
                               <></>

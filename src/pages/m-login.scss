@@ -3722,10 +3722,36 @@ body {
                                         }
                                         .extra-product{
                                           .accordion{
+                                            background: #e1e4ea;
+                                            border-radius: 20px;
+                                            box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
                                             .accordion-item{
                                               .accordion-header{
                                                 button{
-
+                                                  background: none;
+                                                  box-shadow: inset -3px -3px 10px #FAFBFF, inset 3px 3px 10px #A6ABBD;
+                                                  border-radius: 40px;
+                                                  padding: 7px 10px;
+                                                  border: none;
+                                                  .ui{
+                                                    svg{
+                                                      width: 22px;
+                                                      height: 22px;
+                                                      padding: 3px;
+                                                      box-shadow: -3px -3px 10px #fafbff, 3px 3px 10px #a6abbd;
+                                                      border-radius: 50%;
+                                                    }
+                                                    small{
+                                                      font-size: 10px;
+                                                    }
+                                                  }
+                                                  &:not(.collapsed){
+                                                    color: unset;
+                                                    &:after{
+                                                      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+                                                      transform: rotate(0deg);
+                                                    }
+                                                  }
                                                 }
                                               }
                                               .accordion-body{
@@ -4070,6 +4096,18 @@ body {
                             font-size: 20px;
                             font-weight: 600;
                             color: #0062D7;
+                        }
+                        .add-line-number{
+                          svg{
+                            box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
+                            border-radius: 40px;
+                            width: 30px;
+                            height: 30px;
+                            padding: 5px;
+                          }
+                          p{
+                            font-size: 10px;
+                          }
                         }
                         ul{
                             li{
