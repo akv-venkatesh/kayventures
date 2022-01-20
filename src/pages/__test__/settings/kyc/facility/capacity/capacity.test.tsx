@@ -1,6 +1,6 @@
 import Capacity from '../../settings/ProductConfiguration/capacity';
 import {fireEvent,findByText, render, screen, getByText   } from '@testing-library/react';
-import{testStore} from "../testStore"
+import{testStore} from "../../../../testStore"
 import {MemoryRouter as Router} from 'react-router-dom';
 let wrapper:any;
 import { Provider } from 'react-redux';

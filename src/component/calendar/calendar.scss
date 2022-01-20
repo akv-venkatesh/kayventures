@@ -5,7 +5,7 @@
       .react-date-picker__inputGroup{
         box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
         border-radius: 50px;
-        width: 300px;
+        width: auto;
         input{
           &.react-date-picker__inputGroup__input{
             box-shadow: none!important;

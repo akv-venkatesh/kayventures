@@ -6,7 +6,7 @@ import selectEvent from 'react-select-event';
 
 
 import MachineryInitialPage from '../../settings/kyc/Machinery/MachineryInitialPage';
-import { testStore } from '../testStore';
+import { testStore } from '../../../../testStore';
 let wrapper: any;
 
 const setup = (initialState = {}) => {
