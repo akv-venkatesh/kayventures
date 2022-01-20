@@ -11,7 +11,7 @@ interface initialState {
     selectedOption: string;
 }
 interface typeProps {
-    onClick : ()=> void,
+    onClick: (arg: any) => void,
 }
 
 export class MachineryInitialPage extends Component<typeProps, initialState> {
@@ -29,8 +29,8 @@ export class MachineryInitialPage extends Component<typeProps, initialState> {
             this.setState({ visibility: true });
         }
     };
-    click = () =>{
-        this.props.onClick();
+    click = () => {
+        this.props.onClick(this.state.selectedOption);
     }
 
     render() {
