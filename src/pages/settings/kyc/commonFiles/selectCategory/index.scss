@@ -1,0 +1,176 @@
+.selectCategory{
+    .box-field-area {
+        margin-top: 20px;
+        width: 100%;
+        height: calc(100vh - 170px);
+        background: #ebecf0;
+        background-blend-mode: soft-light, normal;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        box-sizing: border-box;
+        box-shadow: inset -5px -5px 10px #fafbff, inset 5px 5px 10px #a6abbd;
+        border-radius: 30px;
+        overflow: hidden;
+    }
+    .Machinery_area {
+        margin: 0px 40px;
+        padding-left: 0px;
+        overflow: auto;
+        flex-wrap: wrap;
+        height: calc(100% - 123px);
+    }
+    .box-field-area .box-field-area-title {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 45px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+        color: #566180;
+    }
+
+    .Machinery_product {
+        display: flex;
+    }
+    .Machinery_product_field {
+        display: flex;
+        margin: 30px 0px 50px 0px;
+    }
+    .Machinery_product_field .product_field {
+        width: 250px;
+        height: 50px;
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        margin: 0px 20px 0px 0px;
+        justify-content: space-between;
+        background: linear-gradient(
+            135.37deg,
+            rgba(0, 0, 0, 0.4) 4.29%,
+            rgba(255, 255, 255, 0.4) 95.6%
+        ),
+        #ebecf0;
+        background-blend-mode: soft-light, normal;
+        box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
+        border-radius: 31px;
+        position: relative;
+    }
+    .product_field_item {
+        margin: 0px 0px 0px 5px;
+    }
+    .product_field_item img {
+        padding: 0px 5px 0px 20px;
+    }
+    .product_field_item .unselected {
+        padding: 0px 0px 0px 20px;
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 115.5%;
+        color: #566180;
+    }
+    .product_field_item .selected {
+        padding: 0px 0px 0px 20px;
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 115.5%;
+        color: rgb(0, 98, 215);
+    }
+
+    .Machinery_product_field label .product_field_circle {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        right: 15px;
+        top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+            317.7deg,
+            rgba(0, 0, 0, 0.4) 0%,
+            rgba(255, 255, 255, 0.4) 105.18%
+        ),
+        #ebecf0;
+        background-blend-mode: soft-light, normal;
+        box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+        border-radius: 40px;
+    }
+    .productconfigutation_button {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 27px;
+
+        color: #0062d7;
+        .next_btn {
+            margin: 10px 50px 10px 0px;
+            button{
+                background-color: #0068e5;
+                border: none;
+                padding: 0px 10px;
+                color: white;
+                border-radius: 6px;
+                box-shadow: none;
+                &:disabled{
+                    background-color: silver;
+                }
+            }
+        }
+    }
+    .product_field_circle input[type="radio"] {
+        display: none;
+    }
+    .product_field_circle label {
+        position: relative;
+        cursor: pointer;
+        font-weight: bold;
+        padding-right: 32px;
+        width: 25px;
+        height: 25px;
+    }
+    .product_field_circle label:nth-last-child(1) {
+        padding-right: 0;
+    }
+    .product_field_circle .product_fieldlabel::before {
+        position: absolute;
+        width: 36px;
+        height: 36px;
+        right: 15px;
+        top: 15px;
+
+        background: linear-gradient(
+            317.7deg,
+            rgba(0, 0, 0, 0.4) 195.53%,
+            rgba(255, 255, 255, 0.4) 300.71%
+        ),
+        #ebecf0;
+        background-blend-mode: soft-light, normal;
+        box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+        border-radius: 40px;
+    }
+    .product_field_circle label::after {
+        content: "";
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        background: rgba(122, 122, 122, 0);
+        margin: 0px 0px;
+        margin-left: 0;
+        border-radius: 50%;
+        transition: all 0.1s;
+    }
+    .product_field_circle input[type="radio"]:checked + label::after {
+        background: rgb(0, 98, 215);
+    }
+}
