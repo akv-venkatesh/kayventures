@@ -42,8 +42,6 @@ class slelect extends Component<typeProps,typeState> {
 
   render():JSX.Element {
     const isOpen = this.state.isOpen;
-    console.log(this.props.value)
-
     var PadandMar:any;
     if(this.props.position == 'bottom'){
         PadandMar={

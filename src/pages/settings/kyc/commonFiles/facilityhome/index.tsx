@@ -31,7 +31,7 @@ class FacilityHome extends Component<typeProps, {}>{
         const Facilities = this.props.selected_Facilities
         console.log(Facilities);
         return (
-            <div className="main d-flex align-items-center">
+            <div className="main d-flex">
                 <div className="leftmenu">
                     
                     <div className="inner">

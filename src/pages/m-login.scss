@@ -2896,29 +2896,113 @@ body {
 
             /* add facility step3 */
 
-            .box {
-              background: linear-gradient(
-                  317.7deg,
-                  rgba(0, 0, 0, 0.4) 0%,
-                  rgba(255, 255, 255, 0.4) 105.18%
-                ),
-                #ebecf0;
-              background-blend-mode: soft-light, normal;
-              border: 1px solid rgba(255, 255, 255, 0.4);
-              box-sizing: border-box;
-              box-shadow: inset -3px -3px 10px #fafbff,
-                inset 3px 3px 10px #a6abbd;
-              border-radius: 10px;
-              width: 100%;
-              height: 600px;
-              outline: none;
-              padding-left: 55px;
-              position: relative;
-              height: calc(100% - 70px);
-            }
-            .scroll {
+            .step-3{
               height: 100%;
+              .box {
+                background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #EBECF0;
+                background-blend-mode: soft-light, normal;
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                box-sizing: border-box;
+                box-shadow: inset -5px -5px 10px #FAFBFF, inset 5px 5px 10px #A6ABBD;
+                // border-top-left-radius:0px ;
+                // border-top-left-radius:0px ;
+                border-radius: 0px 0px 20px 20px;
+                width: 100%;
+                height: calc(100% - 25px);
+                outline: none;
+                padding: 45px 15px 0px 35px;
+                position: relative;
+                overflow-x: hidden;
+
+               .plusIcon {
+                 color: unset; 
+                }
+              
+              .scroll {
+                height: calc(100% - 0px);
+                .facilityform{
+                  margin-left:20px !important;
+                  overflow-x: hidden;
+                  .input-parent{
+                    position: relative;
+                    .validation-error{
+                      position: absolute;
+                      bottom:-20px;
+                      right:15px;
+                      color: red;
+                      font-size: 13px;
+                    }
+                  }
+                }
+                .inbox-line3{
+                  width: 100%;
+                  display: flex;
+                  justify-content: space-between;
+                  .add{
+                    width: 32%;
+                    margin: 0px;
+                  }
+                }
+              }
+              .bottombtn {
+                position: absolute;
+                bottom: 15px;
+                width: calc(95%);
+                .next-btn {
+                  width: unset !important;
+                  padding: 2px 12px;
+                  background: #0062d7;
+                  box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.79), 4px 4px 16px #B8CAD8;
+                  border-radius: 6px;
+                  color: #fff;
+                  font-size: 14px;
+                  &:disabled{
+                    background: rgba(204, 204, 204, 1);
+                  }
+                  svg {
+                    font-size: 22px;
+                    margin-right: -10px;
+                  }
+                }
+                .back-btn {
+                  width: unset !important;
+                  padding: 2px 12px;
+                  background: #0062d7;
+                  box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.79), 4px 4px 16px #B8CAD8;
+                  border-radius: 6px;
+                  color: #fff;
+                  font-size: 14px;
+                  &:disabled{
+                    background: rgba(204, 204, 204, 1);
+                  }
+                  svg {
+                    font-size: 22px;
+                    margin-left: -10px;
+                  }
+                }
+               .btn-default {
+                background: #3CD070;
+                box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.79), 4px 4px 16px #B8CAD8;
+                border-radius: 8px;
+                font-size: 13px;
+                position: relative;
+                color: #ffffff;
+                 &:disabled{
+                  background: #ffffff;
+                  box-shadow: -4px -4px 16px 2px rgb(255 255 255 / 79%), 4px 4px 16px #b8cad8;
+                  
+                  color: #414a67;
+                 }
+              }
+              .btn-default.remove {
+                background: #ffffff;
+                box-shadow: -4px -4px 16px 2px rgb(255 255 255 / 79%), 4px 4px 16px #b8cad8;
+                font-size: 13px;
+                position: relative;
+                color: #414a67;
+              }
             }
+          }}
             .facility1 img {
               width: 16px;
               /* margin-left: 30px; */
@@ -2929,15 +3013,16 @@ body {
               color: #1b77e1;
             }
             .crossicon {
-              background: #ebecf0;
+              background: #EBECF0;
               border: 1px solid rgba(235, 236, 240, 0.4);
               box-sizing: border-box;
-              box-shadow: -5px -5px 10px #fafbff;
-              border-radius: 20px;
-              padding: 11px 10px;
+              box-shadow: -5px -5px 10px #FAFBFF;
+              border-top-left-radius: 12px;
+              border-top-right-radius: 12px;
+              padding: 10px 10px;
               width: 60px;
               position: absolute;
-              right: 4%;
+              right: 35px;
               top: 11%;
               font-size: 12px;
               display: flex;
@@ -3169,6 +3254,95 @@ body {
 
             /* add facility step5 */
 
+            .step5-box{
+              height:100%;
+              .box {
+                background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #EBECF0;
+                background-blend-mode: soft-light, normal;
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                box-sizing: border-box;
+                box-shadow: inset -5px -5px 10px #FAFBFF, inset 5px 5px 10px #A6ABBD;
+                // border-top-left-radius:0px ;
+                // border-top-left-radius:0px ;
+                border-radius: 0px 0px 20px 20px;
+                width: 100%;
+                height: calc(100%);
+                outline: none;
+                padding: 15px 15px 0px 35px;
+                position: relative;
+                overflow-x: hidden;
+                .scroll {
+                  height: calc(100% - 0px);
+                  .box_content{
+                    width: 100%;
+                    height:calc(100% - 100px)
+                  }
+                  .box_tab_content{
+                    width: 100%;
+                    height:calc(100% - 100px)
+                  }
+                }
+                .bottombtn {
+                  position: absolute;
+                  bottom: 15px;
+                  width: calc(95%);
+                  .next-btn {
+                    width: unset !important;
+                    padding: 2px 12px;
+                    background: #0062d7;
+                    box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.79), 4px 4px 16px #B8CAD8;
+                    border-radius: 6px;
+                    color: #fff;
+                    font-size: 14px;
+                    &:disabled{
+                      background: rgba(204, 204, 204, 1);
+                    }
+                    svg {
+                      font-size: 22px;
+                      margin-right: -10px;
+                    }
+                  }
+                  .back-btn {
+                    width: unset !important;
+                    padding: 2px 12px;
+                    background: #0062d7;
+                    box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.79), 4px 4px 16px #B8CAD8;
+                    border-radius: 6px;
+                    color: #fff;
+                    font-size: 14px;
+                    &:disabled{
+                      background: rgba(204, 204, 204, 1);
+                    }
+                    svg {
+                      font-size: 22px;
+                      margin-left: -10px;
+                    }
+                  }
+                 .btn-default {
+                  background: #3CD070;
+                  box-shadow: -4px -4px 16px 2px rgba(255, 255, 255, 0.79), 4px 4px 16px #B8CAD8;
+                  border-radius: 8px;
+                  font-size: 13px;
+                  position: relative;
+                  color: #ffffff;
+                   &:disabled{
+                    background: #ffffff;
+                    box-shadow: -4px -4px 16px 2px rgb(255 255 255 / 79%), 4px 4px 16px #b8cad8;
+                    
+                    color: #414a67;
+                   }
+                }
+                .btn-default.remove {
+                  background: #ffffff;
+                  box-shadow: -4px -4px 16px 2px rgb(255 255 255 / 79%), 4px 4px 16px #b8cad8;
+                  font-size: 13px;
+                  position: relative;
+                  color: #414a67;
+                }
+              }
+              }
+            }
+
             .facility img {
               width: 16px;
               margin-left: 30px;
@@ -3195,25 +3369,7 @@ body {
               width: 23px;
               height: 30px;
             }
-            .box {
-              background: linear-gradient(
-                  317.7deg,
-                  rgba(0, 0, 0, 0.4) 0%,
-                  rgba(255, 255, 255, 0.4) 105.18%
-                ),
-                #ebecf0;
-              background-blend-mode: soft-light, normal;
-              border: 1px solid rgba(255, 255, 255, 0.4);
-              box-sizing: border-box;
-              box-shadow: inset -3px -3px 10px #fafbff,
-                inset 3px 3px 10px #a6abbd;
-              border-radius: 40px;
-              width: 100%;
-              height: 650px;
-              outline: none;
-              padding-left: 55px;
-              position: relative;
-            }
+            
             .box_buttons a {
               margin: 10px;
               background: linear-gradient(
@@ -3225,8 +3381,9 @@ body {
               background-blend-mode: soft-light, normal;
               box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px #a6abbd;
               border-radius: 14px;
-              width: 230px;
+              // width: 230px;
               padding: 10px;
+
             }
             .box_buttons a:focus {
               background-color: #0068e5;
@@ -3251,9 +3408,7 @@ body {
               top: 2px;
               box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.35);
             }
-            .box_content {
-              height: 400px;
-            }
+          
             .box_content p {
               margin: 0;
               opacity: 0.5;
@@ -6058,13 +6213,13 @@ body {
     /* margin-left: 28px; */
   }
 
-  .scrollbar-container {
-    position: relative;
-    height: 65vh !important;
-    margin: 0px 0px 20px 0px;
-    padding-right: 20px;
-    overflow-x: hidden;
-  }
+  // .scrollbar-container {
+  //   position: relative;
+  //   height: 65vh !important;
+  //   margin: 0px 0px 20px 0px;
+  //   padding-right: 20px;
+  //   overflow-x: hidden;
+  // }
 
   .facilitymodal .facilitymod {
     display: flex;
