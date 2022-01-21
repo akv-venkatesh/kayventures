@@ -25,7 +25,6 @@ interface typeState{
 class slelect extends Component<typeProps,typeState> {
   constructor(props:any) {
     super(props);
-
     this.state = { isOpen :false,menuOpened:false};
   }
 
@@ -42,8 +41,6 @@ class slelect extends Component<typeProps,typeState> {
 
   render():JSX.Element {
     const isOpen = this.state.isOpen;
-    // console.log(this.props.value)
-
     var PadandMar:any;
     if(this.props.position == 'bottom'){
         PadandMar={

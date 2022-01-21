@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, MouseEvent } from "react";
 import Facilityhome from '../../commonFiles/facilityhome';
 import CategorySelect from '../../commonFiles/selectCategory';
 import Cpcity from './capacity';
@@ -10,6 +10,7 @@ interface typeState{
     step1: boolean,
     step2: boolean,
     step3: boolean,
+    category: any,
 }
 
 class capacity extends Component<typeProps, typeState>{
@@ -19,6 +20,7 @@ class capacity extends Component<typeProps, typeState>{
             step1: true,
             step2: false,
             step3: false,
+            category: '',
         }
     }
     step1Complete = () =>{
@@ -27,24 +29,25 @@ class capacity extends Component<typeProps, typeState>{
             step2: true,
         })
     }
-    step2Complete = () =>{
+    step2Complete = (e:MouseEvent<HTMLElement>) =>{
         this.setState({
             step2: false,
             step3: true,
+            category: e,
         })
     }
     render(){
         return(
             <>
                 {
-                    this.state.step1 ?
-                    <Facilityhome onClick={this.step1Complete}/>:
+                    !this.state.step1 ?
+                    <Facilityhome onClick={this.step1Complete} selected_Facilities={[]}/>:
                     this.state.step2 ?
                     <CategorySelect
-                        onClick={this.step2Complete}
+                        onClick={(e)=>this.step2Complete(e)}
                         />:
-                    this.state.step3 ?
-                    <Cpcity /> :<></>
+                    !this.state.step3 ?
+                    <Cpcity category={this.state.category}/> :<></>
                 }
 
             </>

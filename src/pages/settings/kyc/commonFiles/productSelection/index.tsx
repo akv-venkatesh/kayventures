@@ -1,5 +1,5 @@
 import React, { Component, ChangeEvent, MouseEvent } from 'react';
-import { AiOutlineSkin, AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
+import { AiOutlineSkin, AiFillCaretLeft, AiFillCaretRight, AiOutlineRight } from "react-icons/ai";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { Accordion, Modal } from "react-bootstrap";
@@ -165,20 +165,20 @@ class ProductSelect extends Component<{}, typeState> {
     }
     selectproducttype = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.currentTarget.checked) {
-        let obj = { name: e.currentTarget.value };
-        let arr = this.state.selectedproducttype;
-        arr.push(obj);
-        this.setState({
-            selectedproducttype: arr
-        }, () => {
-            console.log(this.state.selectedproducttype)
-        })
-        if (this.state.selectedproducttype.length > 0) {
+            let obj = { name: e.currentTarget.value };
+            let arr = this.state.selectedproducttype;
+            arr.push(obj);
             this.setState({
-            savebtn: false,
-            removebtn: false,
+                selectedproducttype: arr
+            }, () => {
+                console.log(this.state.selectedproducttype)
             })
-        }
+            if (this.state.selectedproducttype.length > 0) {
+                this.setState({
+                    savebtn: false,
+                    removebtn: false,
+                })
+            }
         }
     }
     showgroup = (e: MouseEvent<HTMLButtonElement>) => {
@@ -614,244 +614,19 @@ class ProductSelect extends Component<{}, typeState> {
                     </div>
                 </div>
                 <Modal
-                    show={this.state.showModel}
+                    show={state.showModel}
                     size="lg"
                     aria-labelledby="contained-modal-title-vcenter"
                     centered
-                    className="product_config"
-                    backdropClassName="product_config"
+                    className="capacity"
+                    backdropClassName="capacity"
                     onHide={this.handleHide}
                 >
                     <Modal.Header closeButton />
                     <Modal.Body className="">
-                    <div className="header_discription">
-                        <RiInformationFill className="info-icon" />
-                        <p>
-                        You have completed successfully your product configuration for
-                        garments.
-                        </p>
-                    </div>
-                    <p className="discription">
-                        You have two more categories to configure, only if more than one
-                        category was chosen by the byer or manufacturer. In this example,
-                        we have shown only garments as the only category chosen. Cross
-                        button will take you to the Product Category screen.
-                    </p>
-                    <div className="">
-                        <div className="scroll">
-                        <PerfectScrollbar
-                            options={{ suppressScrollY: false, suppressScrollX: true }}
-                            onScrollY={(container) =>
-                            console.log(`scrolled to: ${container.scrollTop}.`)
-                            }
-                        >
-                            <div>
-                            <div style={{ padding: "25px 0px" }}>
-                                <div className="row">
-                                <div className="col-sm-3">
-                                    <div className="cat-img-bg">
-                                    <img src={vest} className="cat-img" />
-                                    </div>
-                                    <p className="cat-name">Underwear</p>
-                                </div>
-                                </div>
-                                <div className="row px-3">
-                                <div className="col-sm-4">
-                                    <div className="item-container row">
-                                    <div className="item-img-bg col-sm-3">
-                                        <img src={vest} className="item-img" />
-                                    </div>
-                                    <div className="item-name-bg col-sm-9">
-                                        {" "}
-                                        <p className="item-name">Slips</p>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div className="col-sm-4">
-                                    <div className="item-container row">
-                                    <div className="item-img-bg col-sm-3">
-                                        <img src={vest} className="item-img" />
-                                    </div>
-                                    <div className="item-name-bg col-sm-9">
-                                        {" "}
-                                        <p className="item-name">Knicker</p>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div className="col-sm-4">
-                                    <div className="item-container row">
-                                    <div className="item-img-bg col-sm-3">
-                                        <img src={vest} className="item-img" />
-                                    </div>
-                                    <div className="item-name-bg col-sm-9">
-                                        {" "}
-                                        <p className="item-name">Pants</p>
-                                    </div>
-                                    </div>
-                                </div>
-
-                                </div>
-                            </div>
-                            <div style={{ padding: "25px 0px" }}>
-                                <div className="row">
-                                <div className="col-sm-3">
-                                    <div className="cat-img-bg">
-                                    <img src={vest} className="cat-img" />
-                                    </div>
-                                    <p className="cat-name">Nightwear</p>
-                                </div>
-                                </div>
-                                <div className="row px-3">
-                                <div className="col-sm-4">
-                                    <div className="item-container row">
-                                    <div className="item-img-bg col-sm-3">
-                                        <img src={vest} className="item-img" />
-                                    </div>
-                                    <div className="item-name-bg col-sm-9">
-                                        {" "}
-                                        <p className="item-name">Slips</p>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div className="col-sm-4">
-                                    <div className="item-container row">
-                                    <div className="item-img-bg col-sm-3">
-                                        <img src={vest} className="item-img" />
-                                    </div>
-                                    <div className="item-name-bg col-sm-9">
-                                        {" "}
-                                        <p className="item-name">Cheeky</p>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div className="col-sm-4">
-                                    <div className="item-container row">
-                                    <div className="item-img-bg col-sm-3">
-                                        <img src={vest} className="item-img" />
-                                    </div>
-                                    <div className="item-name-bg col-sm-9">
-                                        {" "}
-                                        <p className="item-name">Knickers</p>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div className="col-sm-4">
-                                    <div className="item-container row">
-                                    <div className="item-img-bg col-sm-3">
-                                        <img src={vest} className="item-img" />
-                                    </div>
-                                    <div className="item-name-bg col-sm-9">
-                                        {" "}
-                                        <p className="item-name">Tanga</p>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div className="col-sm-4">
-                                    <div className="item-container row">
-                                    <div className="item-img-bg col-sm-3">
-                                        <img src={vest} className="item-img" />
-                                    </div>
-                                    <div className="item-name-bg col-sm-9">
-                                        {" "}
-                                        <p className="item-name">Brief</p>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div className="col-sm-4">
-                                    <div className="item-container row">
-                                    <div className="item-img-bg col-sm-3">
-                                        <img src={vest} className="item-img" />
-                                    </div>
-                                    <div className="item-name-bg col-sm-9">
-                                        {" "}
-                                        <p className="item-name">Cheeky</p>
-                                    </div>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                            <div style={{ padding: "25px 0px" }}>
-                                <div className="row">
-                                <div className="col-sm-3">
-                                    <div className="cat-img-bg">
-                                    <img src={vest} className="cat-img" />
-                                    </div>
-                                    <p className="cat-name">Nightwear</p>
-                                </div>
-                                </div>
-                                <div className="row px-3">
-                                <div className="col-sm-4">
-                                    <div className="item-container row">
-                                    <div className="item-img-bg col-sm-3">
-                                        <img src={vest} className="item-img" />
-                                    </div>
-                                    <div className="item-name-bg col-sm-9">
-                                        {" "}
-                                        <p className="item-name">Slips</p>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div className="col-sm-4">
-                                    <div className="item-container row">
-                                    <div className="item-img-bg col-sm-3">
-                                        <img src={vest} className="item-img" />
-                                    </div>
-                                    <div className="item-name-bg col-sm-9">
-                                        {" "}
-                                        <p className="item-name">Cheeky</p>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div className="col-sm-4">
-                                    <div className="item-container row">
-                                    <div className="item-img-bg col-sm-3">
-                                        <img src={vest} className="item-img" />
-                                    </div>
-                                    <div className="item-name-bg col-sm-9">
-                                        {" "}
-                                        <p className="item-name">Knickers</p>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div className="col-sm-4">
-                                    <div className="item-container row">
-                                    <div className="item-img-bg col-sm-3">
-                                        <img src={vest} className="item-img" />
-                                    </div>
-                                    <div className="item-name-bg col-sm-9">
-                                        {" "}
-                                        <p className="item-name">Tanga</p>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div className="col-sm-4">
-                                    <div className="item-container row">
-                                    <div className="item-img-bg col-sm-3">
-                                        <img src={vest} className="item-img" />
-                                    </div>
-                                    <div className="item-name-bg col-sm-9">
-                                        {" "}
-                                        <p className="item-name">Brief</p>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div className="col-sm-4">
-                                    <div className="item-container row">
-                                    <div className="item-img-bg col-sm-3">
-                                        <img src={vest} className="item-img" />
-                                    </div>
-                                    <div className="item-name-bg col-sm-9">
-                                        {" "}
-                                        <p className="item-name">Cheeky</p>
-                                    </div>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                        </PerfectScrollbar>
+                        <div className="">
+                            
                         </div>
-                    </div>
                     </Modal.Body>
                 </Modal>
             </>
