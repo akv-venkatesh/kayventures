@@ -1,6 +1,5 @@
 import React, { Component, ChangeEvent, FormEvent, FormEventHandler } from 'react'
 import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap';
-
 import MachineIcon from "../../../../../assets/icons/various/MachineIcon.svg"
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { RiArrowDropRightLine, RiInformationFill } from 'react-icons/ri';
@@ -35,6 +34,7 @@ interface typeState {
     techFilter: any,
     iotFilter: any,
     filter: any,
+    firstComponent: boolean,
 }
 interface typeProps {
     machineProps: any
@@ -66,6 +66,7 @@ class Machinery extends Component<typeProps, typeState> {
             brandFilter: '',
             techFilter: '',
             iotFilter: '',
+            firstComponent: false,
             savedState: [{
                 machineType: null,
                 machineBrand: null,
@@ -113,10 +114,13 @@ class Machinery extends Component<typeProps, typeState> {
         machineValue[this.state.machineKey] = { ...machineValue[this.state.machineKey], machineType: value.value };
         this.setState({
             initialPage: false,
+            firstComponent: true,
             savedState: machineValue,
-            selectedMachineOption: value.value
+            selectedMachineOption: value.value,
+
         }, () => {
             console.log(this.state.savedState);
+            console.log(this.state.firstComponent);
         })
     }
     selectBrand = (event: ChangeEvent<HTMLInputElement>) => {
@@ -328,8 +332,8 @@ class Machinery extends Component<typeProps, typeState> {
         ]
         const technology = [
             { value: 'Basic', label: 'Basic' },
-            { value: 'Process Automated', label: 'Process Automated' },
-            { value: 'Computerized', label: 'Computerized' }
+            { value: 'Semi Automated', label: 'Semi Automated' },
+            { value: 'Fully Automated', label: 'Fully Automated' }
         ]
         const iot = [
             { value: 'Enable', label: 'Enable' },
@@ -338,12 +342,12 @@ class Machinery extends Component<typeProps, typeState> {
         const step = [{ label: 'KYC', id: 0 }, { label: 'Product Selection', id: 1 }, { label: 'Machinery', id: 2 }, { label: 'Operations', id: 3 }];
 
         return (
-
-            <div className="h-100 kyc-org-machinery">
-                <div className="h-100">
-                    {
-                        this.state.HomePage ?
-                            <SelectCategory onClick={(e) => this.changeMachineryStart(e)} /> :
+            <>
+            {
+                this.state.HomePage ?
+                    <SelectCategory onClick={(e) => this.changeMachineryStart(e)} /> :
+                    <div className="h-100 kyc-org-machinery">
+                        <div className="h-100">
                             <div className="machine main d-flex h-100">
                                 <div className="leftmenu d-flex flex-column h-100">
                                     <div className=" leftmenu_header d-flex flex-column">
@@ -435,7 +439,6 @@ class Machinery extends Component<typeProps, typeState> {
                                                         disabled={!this.state.selectedMachineOption ||
                                                             !this.state.selectedBrandOption ||
                                                             !this.state.selectedTechOption ||
-                                                            !this.state.toogleCheck ||
                                                             !this.state.machineCount}
                                                         onClick={(e) => this.handleSavedMachine(e)}
                                                     >
@@ -469,9 +472,9 @@ class Machinery extends Component<typeProps, typeState> {
                                             <PerfectScrollbar >
                                                 <div className="d-flex flex-wrap pe-4">
                                                     <Container>
-                                                        <Row>
-                                                            {this.state.origState.map((machine: any) => {
-                                                                return machine.machineType !== null && (<Col xs={3} md={12} className="column d-flex" >
+                                                        <Row>{
+                                                            this.state.origState.map((machine: any) => {
+                                                                return (<Col xs={3} md={12} className="column d-flex" >
                                                                     <div className="machine_items" data-testid="selected_element">
                                                                         <div className="machine_image d-flex">
                                                                             <img src={MachineIcon} alt="" />
@@ -481,7 +484,7 @@ class Machinery extends Component<typeProps, typeState> {
                                                                     </div>
                                                                 </Col>)
                                                             })
-                                                            }
+                                                        }
                                                         </Row>
                                                     </Container>
                                                 </div>
@@ -587,6 +590,7 @@ class Machinery extends Component<typeProps, typeState> {
                                                                                 <Button
                                                                                     className="btn btn-secondary submit"
                                                                                     type="submit"
+                                                                                    disabled={!this.state.machineFilter || !this.state.brandFilter || !this.state.techFilter}
                                                                                 >
                                                                                     Submit
                                                                                 </Button>
@@ -632,9 +636,10 @@ class Machinery extends Component<typeProps, typeState> {
                                 </Modal>
                             </div>
 
-                    }
-                </div>
-            </div>
+                        </div>
+                    </div>
+            }
+            </>
         );
     }
 }

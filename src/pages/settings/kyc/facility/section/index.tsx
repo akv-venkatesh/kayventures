@@ -22,6 +22,7 @@ import logo_img from  '../../../../../assets/insertImage.png';
 
 
 
+
 interface typeState {
     showModel: boolean,
     showSummary: boolean,
@@ -30,15 +31,18 @@ interface typeState {
     carousalSection: boolean,
     savedState: any,
     storedState: any,
+    uploadedFile: any,
     step1:boolean,
     step2:boolean,
     uploadlogo:string,
-	uploadedFile?: any,
     images?:any,
+    file:any,
+    
 }
 
 class Section extends Component<{}, typeState> {
-
+    fileObj : any = [];
+    fileArray : any = [];
     constructor(props: any) {
         super(props);
         this.state = {
@@ -49,14 +53,32 @@ class Section extends Component<{}, typeState> {
             carousalSection: false,
             savedState: [],
             storedState: [],
+            uploadedFile:[],
             step1: true,
             step2:true,
             uploadlogo:"",
-		    uploadedFile: '',
             images:'',
+            file: [null],
         };
+        this.uploadMultipleFiles = this.uploadMultipleFiles.bind(this)
+        this.uploadFiles = this.uploadFiles.bind(this)
     }
-   
+
+    uploadMultipleFiles = (e: any) => {
+        let obj = {file : e.target.files}
+        this.fileObj.push(e.target.files)
+        for (let i = 0; i < this.fileObj[0].length; i++) {
+            this.fileArray.push(URL.createObjectURL(this.fileObj[0][i]))
+        }
+        console.log(this.fileArray)
+        this.setState({ file: this.fileArray })
+    }
+ 
+    uploadFiles = (e: any) => {
+        e.preventDefault()
+        console.log(this.state.file)
+    }
+
     onImageChange = (event:FormEvent<HTMLInputElement>) => {
 		if (event.currentTarget.files && event.currentTarget.files[0]) {
 		  let reader = new FileReader();
@@ -66,7 +88,17 @@ class Section extends Component<{}, typeState> {
 			};
 		  reader.readAsDataURL(event.currentTarget.files[0]);
 		}
+        // let value: any = event;
+        // let arr = [...this.state.uploadedFile];
+        // arr.push(value);
+        // this.setState({
+        //     uploadedFile: arr,
+        // })
 	}
+
+   
+
+
 
     handleShow = () => {
         this.setState({
@@ -98,6 +130,16 @@ class Section extends Component<{}, typeState> {
             photoSection: true
         })
     }
+
+
+    // selectImage = (event: any) => {
+    //     let value: any = event;
+    //     let arr = [...this.state.uploadedFile];
+    //     arr.push(value);
+    //     this.setState({
+    //         uploadedFile: arr,
+    //     })
+    // }
     selectButton = (event: any) => {
         let value: any = event;
         let arr = [...this.state.storedState];
@@ -238,13 +280,19 @@ class Section extends Component<{}, typeState> {
                                                                                                 <p className="my-1">or</p>
                                                                                                 <p className="my-1">Browse from Computer</p>
                                                                                                 <label htmlFor="upload-logo" id="file-chosen"> </label>
-                                                                                                <Field type="file" id="upload-logo" name="uploadlogo"  onChange={this.onImageChange} hidden/>
+                                                                                                <Field type="file" id="upload-logo" name="uploadlogo"  
+                                                                                                // onChange={this.onImageChange}
+                                                                                                onChange={(event: any) => this.onImageChange(event)} 
+                                                                                                hidden/>
                                                                                                 <label htmlFor="upload-logo" className="uploadlogo">
                                                                                                     <img src={ uploadedFile ? uploadedFile :  logo_img }  className="logo-img" />
                                                                                                     <label htmlFor="upload-logo" className="uploadlogo"></label>
                                                                                                 </label>
                                                                                             </div>
-                                                                                   
+                                                                                            <div className="form-group">
+                                                                                                <input type="file" className="form-control" onChange={this.uploadMultipleFiles} multiple />
+                                                                                            </div>
+                                                                                            <button type="button" className="btn btn-danger btn-block" onClick={this.uploadFiles}>Upload</button>
                                                                                             <div>
                                                                                                 <Button
                                                                                                     className="btn btn-secondary save"
@@ -284,20 +332,18 @@ class Section extends Component<{}, typeState> {
                                                                                             }
                                                                                         </div>
                                                                                         <Carousel autoPlay axis="horizontal">
-                                                                                            <div>
-                                                                                            {/* <MultiImageInput
-                                                                                                images={images}
-                                                                                                setImages={setImages}
-                                                                                            /> */}
+                                                                                            {/* <div>
                                                                                             <img src={ uploadedFile ? uploadedFile :  logo_img }  className="logo-img" />
-
-                                                                                            </div>
-                                                                                            <div>
+                                                                                            </div> */}
+                                                                                            {/* <div>
                                                                                             <img src={ uploadedFile ? uploadedFile :  logo_img }  className="logo-img" />
                                                                                             </div>
                                                                                             <div>
                                                                                             <img src={ uploadedFile ? uploadedFile :  logo_img }  className="logo-img" />
-                                                                                            </div>
+                                                                                            </div> */}
+                                                                                           {(this.fileArray || []).map((url:any) => (
+                                                                                                <img src={url} alt="..." />
+                                                                                            ))}
                                                                                         </Carousel>
                                                                                     </div> : null}
                                                                                 </div>
@@ -404,7 +450,7 @@ class Section extends Component<{}, typeState> {
                                                 </div>
                                                 <div className="row mt-4 d-flex ">
                                                     <Carousel autoPlay axis="horizontal">
-                                                        <div>
+                                                        {/* <div>
                                                             <img src={slider} alt="slider" />
                                                         </div>
                                                         <div>
@@ -412,7 +458,11 @@ class Section extends Component<{}, typeState> {
                                                         </div>
                                                         <div>
                                                             <img src={slider} alt="slider" />
-                                                        </div>
+                                                        </div> */}
+
+                                                            {this.fileArray.map((url : any ,i : number) => (
+                                                                <img src={url[i]} alt="..." />
+                                                            ))}
                                                     </Carousel>
                                                 </div>
                                             </div>
