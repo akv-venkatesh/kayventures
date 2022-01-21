@@ -11,13 +11,16 @@ import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar"
 import { JsxFlags } from "typescript";
 import { RiInformationFill } from "react-icons/ri";
-import { AiOutlineRight } from "react-icons/ai";
+import { AiOutlinePlus, AiOutlineRight } from "react-icons/ai";
 // import Select from 'react-select';
 
 import Select from '../../../../../component/dropdown_select/slelect';
 import $ from 'jquery';
+import AccordionItem from "react-bootstrap/esm/AccordionItem";
+import AccordionHeader from "react-bootstrap/esm/AccordionHeader";
+import AccordionBody from "react-bootstrap/esm/AccordionBody";
 interface typeProps{
-  // value:string,
+  category: string,
 }
 interface typeState {
   selectedOption: string;
@@ -26,7 +29,8 @@ interface typeState {
   selected_product_item: any;
   product_item_index: number;
   linetype: string;
-  materialtype: string;
+  buyerName: string;
+  materialtype: any;
   machinery: any;
   checkedMachine: any;
   confirmedMachine: any;
@@ -37,6 +41,9 @@ interface typeState {
   disable_input: boolean;
   count: number;
   finalstate: any;
+  selectedMaterialType: any,
+  optperday: any;
+  machinesAssigned: any;
 }
 
 const customStyles = {
@@ -98,7 +105,37 @@ class ProductConfiguration extends Component<typeProps, typeState> {
       selected_product_item: [],
       product_item_index: 0,
       linetype: '',
-      materialtype: '',
+      buyerName: '',
+      materialtype: [
+        {
+          name: 'type1',
+          option: [
+            {
+              name: 'option1',
+            },
+            {
+              name: 'option2',
+            },
+            {
+              name: 'option3',
+            },
+          ]
+        },
+        {
+          name: 'type2',
+          option: [
+            {
+              name: 'option1',
+            },
+            {
+              name: 'option2',
+            },
+            {
+              name: 'option3',
+            },
+          ]
+        }
+      ],
       machinery: [
         {
           name: 'Single Needle',
@@ -148,11 +185,14 @@ class ProductConfiguration extends Component<typeProps, typeState> {
       checkedMachine: [],
       confirmedMachine: [],
       machineCount: 0,
-      totalmachinecount: 0,
+      totalmachinecount: 300,
       showsummary: false,
       disable_input: false,
       count: -1,
       finalstate: [],
+      selectedMaterialType: [],
+      optperday: [],
+      machinesAssigned: '',
     };
   }
 
@@ -181,6 +221,16 @@ class ProductConfiguration extends Component<typeProps, typeState> {
   check = (name: any) => {
     if (this.state.selected_product_item.length !== 0) {
       return this.state.selected_product_item.some(function (el: any) {
+        return el.name === name;
+      });
+    }
+    else {
+      return false;
+    }
+  }
+  checkoptperday = (name: any) => {
+    if (this.state.optperday.length !== 0) {
+      return this.state.optperday.some(function (el: any) {
         return el.name === name;
       });
     }
@@ -256,10 +306,26 @@ class ProductConfiguration extends Component<typeProps, typeState> {
       linetype: value.value
     })
   }
-  materialTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
+  buyerChange = (event: ChangeEvent<HTMLSelectElement>) =>{
     let value:any = event;
     this.setState({
-      materialtype: value.value
+      buyerName: value.value
+    })
+  }
+  materialTypeChange = (event: ChangeEvent<HTMLSelectElement>, item:any):any => {
+    let value:any = event.currentTarget;
+    let obj = [{
+      name: item,
+      option: [
+        {
+          name: value.value
+        }
+      ]
+    }];
+    this.setState({
+      selectedMaterialType: obj,
+    },()=>{
+      console.log(this.state.selectedMaterialType);
     })
   }
 
@@ -335,9 +401,43 @@ class ProductConfiguration extends Component<typeProps, typeState> {
       console.log(this.state.finalstate)
     })
   }
-   
-  buyerChange = () =>{
 
+  changeitemperday = (event: ChangeEvent<HTMLInputElement>, item:any, subitem:any) =>{
+    let count = -1;
+    this.state.product_item.some((e: any, index: number) => {
+      e.data.some((data: any, i: number) => {
+        debugger;
+        if (!this.checkoptperday(e.name) && e.name == item) {
+          let obj = { "name": e.name, data: [] };
+          let arr = this.state.optperday;
+          arr.push(obj);
+          this.setState({
+            optperday: arr
+          })
+        }
+        if (e.name == item) {
+          if(data.name == subitem){
+            let obj = { [data.name] : event.currentTarget.value };
+            let arr = this.state.optperday;
+            this.state.optperday.map((items:any, ind:number)=>{
+              if(item == items.name){
+                count = ind;
+              }
+            })
+            // if (this.state.optperday[count].data.filter((checking: any) =>
+            //   checking.name == subitem).length == 0) {
+              arr[count].data.push(obj);
+              this.setState({
+                optperday: arr
+              },()=>{
+                console.log(this.state.optperday);
+              });
+              return;
+            // }
+          }
+        }
+      })
+    })
   }
 
   render(): JSX.Element {
@@ -366,7 +466,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
             <div className="d-flex capacity h-100">
               <div className="sec1 h-100">
                 <div>
-                  <h4 className="category-name m-0 py-3">Sewing</h4>
+                  <h4 className="category-name m-0 py-3">{this.props.category}</h4>
                 </div>
                 <div className="scroll">
                   <PerfectScrollbar>
@@ -415,13 +515,36 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                               }
                                               <div className="extra-product">
                                                 <Accordion>
-                                                  <Accordion.Item eventKey={'a' + i} className="mb-2" key={product.name + i}>
-                                                    <Accordion.Header>{product.name}</Accordion.Header>
+                                                  <Accordion.Item eventKey={'a' + i} className="mb-3" key={product.name + i}>
+                                                    <Accordion.Header className="mt-3">
+                                                      <div className="d-flex ui align-items-center">
+                                                        <AiOutlinePlus  className="me-3"/>
+                                                        <small>Add more product items</small>
+                                                      </div>
+                                                    </Accordion.Header>
                                                     <Accordion.Body className="p-0">
                                                       <div className="dropdown active ms-3">
-                                                        <div>
-                                                          sdfsdf
-                                                        </div>
+                                                        {
+                                                          product.data.map((item: any, j: number) =>
+                                                            <div className="py-2 px-4 wear" key={item.name + j}>
+                                                              <Form.Check.Input
+                                                                type="checkbox"
+                                                                id={'extra'+item.name + j}
+                                                                onChange={(e) => this.productSelect(e, product.name)}
+                                                                value={item.name}
+                                                                data-testid={'prod-grp'+i+j}
+                                                                hidden
+                                                                disabled={state.disable_input}
+                                                              />
+                                                              <Form.Check.Label htmlFor={'extra'+item.name + j} className="w-100 pe-3">
+                                                                <div className="d-flex justify-content-between">
+                                                                  <p className="m-0">{item.name}</p>
+                                                                  <span className="d-block"></span>
+                                                                </div>
+                                                              </Form.Check.Label>
+                                                            </div>
+                                                          )
+                                                        }
                                                       </div>
                                                     </Accordion.Body>
                                                   </Accordion.Item>
@@ -472,14 +595,15 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                       />
                                     </form>
                                     <div className="d-flex justify-content-evenly mt-2">
-                                      <h6>Visibility</h6>
-                                      <div className="visibility d-flex">
-                                        <p>Public</p>
+                                      <h6 className="m-0">Visibility</h6>
+                                      <div className="visibility d-flex align-items-center">
+                                        <p className="m-0 me-2">Public</p>
                                         <Form.Check 
                                           type="switch"
                                           id="custom-switch"
+                                          className="p-0 d-flex align-items-center"
                                         />
-                                        <p>Private</p>
+                                        <p className="m-0 ms-2">Private</p>
                                       </div>
                                     </div>
                                     
@@ -493,28 +617,28 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                               <Form>
                                 <Accordion>
                                   {
-                                    state.product_item.map((product: any, i: number) => {
+                                    state.materialtype.map((item: any, i: number) => {
                                       return (
-                                        <Accordion.Item eventKey={'a' + i} className="mb-2" key={product.name + i}>
-                                          <Accordion.Header>{product.name}</Accordion.Header>
+                                        <Accordion.Item eventKey={'a' + i} className="mb-2" key={item.name + i}>
+                                          <Accordion.Header>{item.name}</Accordion.Header>
                                           <Accordion.Body className="p-0">
                                             <div className="dropdown active ms-3">
                                               {
-                                                product.data.map((item: any, j: number) =>
-                                                  <div className="wear" key={item.name + j}>
+                                                item.option.map((option: any, j: number) =>
+                                                  <div className="wear" key={option.name + j}>
                                                     <Form.Check.Input
                                                       type="radio"
-                                                      id={'mat-type'+item.name}
+                                                      id={'mat-type'+i+j}
                                                       name={'matType'}
-                                                      onChange={(e) => this.productSelect(e, product.name)}
-                                                      value={item.name}
+                                                      onChange={(e:any) => this.materialTypeChange(e, item.name)}
+                                                      value={option.name}
                                                       data-testid={'materialType'+i+j}
                                                       hidden
                                                       disabled={state.disable_input}
                                                     />
-                                                    <Form.Check.Label htmlFor={'mat-type'+item.name} className="w-100 mt-1 py-2 px-4">
+                                                    <Form.Check.Label htmlFor={'mat-type'+i+j} className="w-100 mt-1 py-2 px-4">
                                                       <div className="d-flex justify-content-between">
-                                                        <p className="m-0">{item.name}</p>
+                                                        <p className="m-0">{option.name}</p>
                                                         <span className=""></span>
                                                       </div>
                                                     </Form.Check.Label>
@@ -536,7 +660,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                     </div>
                   </PerfectScrollbar>
                 </div>
-                <div>
+                <div className="pt-3">
                   <Button className="submit-btn" disabled>
                     Save
                   </Button>
@@ -566,22 +690,28 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                             <h4 className="m-0">Products Produced</h4>
                             <h4 className="m-0">Production output-per day</h4>
                           </div>
-                          <div className="d-flex py-3">
-                            <h6 className="m-0">Machines assigned to this line</h6>
-                            <label htmlFor="" className="setmachineinput d-flex align-items-center">
-                              <Form.Control type="number" name="machines" />
-                              <span>/</span>
-                              <h4 className="m-0">300</h4>
-                            </label>
-                          </div>
-                          <div className="d-flex py-3">
-                          <h6 className="m-0">Machines assigned to this line</h6>
-                          <label htmlFor="" className="setmachineinput d-flex align-items-center">
-                            <Form.Control type="number" name="machines" />
-                            <span>/</span>
-                            <h4 className="m-0">300</h4>
-                          </label>
-                        </div>
+                          {
+                            state.selected_product_item.map((item: any, index: number) =>
+                              <>
+                                {
+                                  item.data.map((subitem: any, i: number) =>
+                                    <div className="d-flex align-items-center py-3">
+                                      <h6 className="m-0">{subitem.name}</h6>
+                                      <label htmlFor="" className="setmachineinput d-flex align-items-center">
+                                        <Form.Control 
+                                          type="number"
+                                          name="machines"
+                                          onChange = {(e:any)=>this.changeitemperday(e, item.name , subitem.name)}
+                                        />
+                                        <span>/</span>
+                                        <h4 className="m-0">day</h4>
+                                      </label>
+                                    </div>
+                                  )
+                                }
+                              </>
+                            ) 
+                          } 
                         </div>
                       </PerfectScrollbar>
                     </div>
@@ -592,132 +722,157 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                 </div>
               </div>
               <div className="sec3 h-100">
-                <div className="add-machine p-4 h-100 d-flex flex-column justify-content-between">
-                  {state.line_number == '' ?
-                    <div className="d-flex justify-content-center align-items-center h-100">
-                      <p>
-                        There's no Line Definition
-                      </p>
-                    </div> :
-                    <>
-                      <div>
-                        {state.line_number !== "" ?
-                          <h2>{state.line_number}</h2> : ' '
-                        }
-                        <ul className="p-0 m-0">
-                          {
-                            state.line_number !== "" ?
-                              state.selected_product_item.map((item: any, index: number) =>
-                                <li className="add-machine-product-item py-2" key={'machine'+index}>
-                                  <div className="main d-flex align-items-center">
-                                    <BsChevronRight />
-                                    <p className="m-0 ps-2">{item.name}</p>
-                                  </div>
-                                  <div className="sub ps-4 d-flex align-items-center">
-                                    <BsChevronRight />
-                                    <div className="d-flex ps-2">
-                                      {
-                                        item.data.map((subitem: any, i: number) =>
-                                          <span key={'prod-item'+i}>{subitem.name}</span>
-                                        )
-                                      }
-                                    </div>
-                                  </div>
-                                </li>
-                              ) :
-                              <></>
-                          }
-                          { state.selected_product_item.length !== 0 ?
-                            <li className="add-machine-line-type py-2">
-                              {
-                                state.linetype !== "" && state.selected_product_item.length !==0 ?
-                                  <div className="main d-flex align-items-center">
-                                    <BsChevronRight />
-                                    <p className="m-0 ps-2">{state.linetype}</p>
-                                  </div> :
-                                  <></>
-                              }
-                              {
-                                state.materialtype !== "" && state.linetype !=="" ?
-                                  <div className="main d-flex align-items-center">
-                                    <BsChevronRight />
-                                    <p className="m-0 ps-2">{state.materialtype}</p>
-                                  </div> :
-                                  <></>
-                              }
-                            </li>:
-                            <></>
-                          }
-
-                          <li className="add-machine-type py-2">
-                            {
-                              state.materialtype !==''?
-                                state.confirmedMachine.map((item: any, i: number) =>
-                                  <div className="main d-flex align-items-center justify-content-between" key={'machine'+i}>
-                                    <div className="d-flex align-items-center">
-                                      <BsChevronRight />
-                                      <p className="m-0 ps-2">{item.name}</p>
-                                    </div>
-                                    <p className="m-0">{item.count}</p>
-                                  </div>
-                                ) :
-                              <></>
-                            }
-                          </li>
-                        </ul>
+                <div className="add-machine p-4 h-100">
+                  <div className="add-line-number d-flex justify-content-between" >
+                    <div className="d-flex align-items-center">
+                      <AiOutlinePlus />
+                      <p className="ms-2 mb-0">Add Line Number</p>
                       </div>
-                      <div className="total-machine">
-                        {state.totalmachinecount > 0 ?
-                          <ul className="m-0 p-0 mb-4">
-                            <li className="">
-                              <div className="main d-flex justify-content-between align-items-center">
-                                <p className="m-0">Total Machines Selected</p>
-                                <p className="m-0">{state.totalmachinecount}</p>
-                              </div>
-                            </li>
-                          </ul> :
-                          <></>
-                        }
-                        <div className="d-flex justify-content-center">
-                          {
-                            !state.showsummary ?
-                              <>
-                                <Button
-                                  className="active-btn"
-                                  disabled={state.confirmedMachine.length > 0 ? false : true}
-                                  onClick={this.addMachine}
-                                  >
-                                  Add Machine
-                                </Button>
-                                <Button 
-                                  className="active-btn-save ms-3" 
-                                  disabled={state.confirmedMachine.length > 0 ? false : true}
-                                  onClick={this.showSummary}
-                                  data-testid={'saveline'}
-                                  >
-                                  Save
-                                </Button>
-                              </> :
-                              <>
-                                <Button
-                                  className="active-btn"
-                                  disabled={state.confirmedMachine.length > 0 ? false : true}
-                                  onClick={this.addLine}
-                                >
-                                  Add Line
-                                </Button>
-                                <Button
-                                  className="active-btn ms-3"
-                                  disabled={state.confirmedMachine.length > 0 ? false : true}
-                                  onClick={this.handleShow}>
-                                  Summary
-                                </Button>
-                              </>
-                          }
-                        </div>
+                    <div className="d-flex">
+                      <Button
+                        className="active-btn"
+                        disabled
+                        >
+                        Summary
+                      </Button>
+                    </div>
+                  </div>
+                  {state.line_number == '' ?
+                    <>
+                      <div className="d-flex scroll justify-content-center align-items-center">
+                        <p className="m-0">
+                          There's no Line Definition
+                        </p>
+                      </div> 
+                    </>:
+                    <>
+                      <div className="scroll">
+                        <PerfectScrollbar>
+                          <Accordion className="pe-4">
+                            <AccordionItem eventKey={'a' + 1} className="mb-2" key={'name' + 1}>
+                              <AccordionHeader>
+                                {state.line_number !== "" ?
+                                  <h2>{state.line_number}</h2> : ' '
+                                }
+                              </AccordionHeader>
+                              <AccordionBody className="p-0">
+                                <div className="">
+                                  <ul className="p-0 m-0">
+                                    {
+                                      state.line_number !== "" ?
+                                        state.selected_product_item.map((item: any, index: number) =>
+                                          <li className="add-machine-product-item" key={'machine'+index}>
+                                            <div className="main py-1 d-flex align-items-center">
+                                              <BsChevronRight />
+                                              <p className="m-0 ps-2">{item.name}</p>
+                                            </div>
+                                            <hr className="m-0"/>
+                                            <div className="sub ps-4 py-1 d-flex align-items-center">
+                                              <BsChevronRight />
+                                              <div className="d-flex ps-2">
+                                                {
+                                                  item.data.map((subitem: any, i: number) =>
+                                                    <span key={'prod-item'+i}>{subitem.name}</span>
+                                                  )
+                                                }
+                                              </div>
+                                            </div>
+                                            <hr className="m-0"/>
+                                          </li>
+                                        ) :
+                                        <></>
+                                    }
+                                    { state.selected_product_item.length !== 0 ?
+                                      <li className="add-machine-line-type">
+                                        {
+                                          state.linetype !== "" && state.selected_product_item.length !==0 ?
+                                            <>
+                                              <div className="main py-1 d-flex align-items-center">
+                                                <BsChevronRight />
+                                                <p className="m-0 ps-2">{state.linetype}</p>
+                                              </div>
+                                              <hr className="m-0" />
+                                              {
+                                                state.buyerName !== '' && state.linetype == 'Reserved' ?
+                                                <div className="sub ps-4 py-1 d-flex align-items-center">
+                                                  <BsChevronRight />
+                                                  <div className="d-flex ps-2">
+                                                    {state.buyerName}
+                                                  </div>
+                                                </div> :
+                                                <></>
+                                              }
+                                            </> :
+                                            <></>
+                                        }
+                                        {
+                                          state.materialtype !== "" && state.linetype !=="" ?
+                                            <>
+                                              {
+                                                state.selectedMaterialType.map((item:any, i:number)=>
+                                                  <>
+                                                    <div className="main d-flex align-items-center">
+                                                      <BsChevronRight />
+                                                      <p className="m-0 ps-2">{item.name}</p>
+                                                    </div>
+                                                    <hr className="m-0" />
+                                                    {
+                                                      item.option.map((option:any, index:number)=>
+                                                        <div className="sub ps-4 py-1 d-flex align-items-center">
+                                                          <BsChevronRight />
+                                                          <div className="d-flex ps-2">
+                                                            {option.name}
+                                                          </div>
+                                                        </div>
+                                                      )
+                                                    }
+                                                  </>
+                                                )
+                                              }
+                                            </> :
+                                            <></>
+                                        }
+                                      </li>:
+                                      <></>
+                                    }
+
+                                    <li className="add-machine-type">
+                                      {
+                                        state.materialtype !==''?
+                                          state.confirmedMachine.map((item: any, i: number) =>
+                                            <div className="main d-flex align-items-center justify-content-between" key={'machine'+i}>
+                                              <div className="d-flex align-items-center">
+                                                <BsChevronRight />
+                                                <p className="m-0 ps-2">{item.name}</p>
+                                              </div>
+                                              <p className="m-0">{item.count}</p>
+                                            </div>
+                                          ) :
+                                        <></>
+                                      }
+                                    </li>
+                                  </ul>
+                                </div>
+                              </AccordionBody>
+                            </AccordionItem>
+                          </Accordion>
+                        </PerfectScrollbar>
                       </div>
                     </>
                   }
+
+                  <div className="d-flex justify-content-center">
+                    <>
+                      <Button 
+                        className="active-btn-save ms-3" 
+                        disabled={state.confirmedMachine.length > 0 ? false : true}
+                        onClick={this.showSummary}
+                        data-testid={'saveline'}
+                        >
+                        Save
+                      </Button>
+                    </>
+                  </div>
                 </div>
               </div>
             </div>

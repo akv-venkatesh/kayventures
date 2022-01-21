@@ -25,7 +25,6 @@ interface typeState{
 class slelect extends Component<typeProps,typeState> {
   constructor(props:any) {
     super(props);
-
     this.state = { isOpen :false,menuOpened:false};
   }
 
