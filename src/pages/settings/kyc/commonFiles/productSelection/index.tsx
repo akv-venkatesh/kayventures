@@ -687,8 +687,8 @@ class ProductSelect extends Component<{}, typeState> {
                                 <span className='checmark'></span>
                             </div>
                             <ul className="p-0 m-0 py-3">
-                                <li className='py-2'>knitted</li>
-                                <li className='py-2'>woven</li>    
+                                <li className='py-2'>{state.selectedproducttype[0].material}</li>
+                                <li className='py-2'>{state.selectedproducttype[0].whom}</li>
                             </ul>
                             <Accordion>
                                 {
