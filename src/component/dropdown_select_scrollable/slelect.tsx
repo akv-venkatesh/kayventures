@@ -144,7 +144,7 @@ class slelect extends Component<typeProps,typeState> {
         //   }),
           dropdownIndicator :(provided:any,state:any) => ({
               ...provided,
-              display:'none',
+             
             transition: 'all .2s ease',
             // transform: "rotate(-90deg)",
             transform: this.state.menuOpened ? state.selectProps.menuIsOpen && "rotate(0deg)" :"rotate(-90deg)"
@@ -160,7 +160,6 @@ class slelect extends Component<typeProps,typeState> {
           className=''
           onMenuOpen={this.onMenuOpen}  
           onMenuClose={this.onMenuClose} 
-          
           styles={customStyles} 
           menuPlacement={this.props.position == "bottom" ? "bottom":"top"}  
           onChange={this.handleChange} 

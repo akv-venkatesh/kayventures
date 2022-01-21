@@ -3129,13 +3129,14 @@ body {
             }
           }}
             .facility1 img {
-              width: 16px;
+              width: 20px;
               /* margin-left: 30px; */
               align-items: baseline;
+              color: #0062d7;
             }
             .facility1 {
               margin-bottom: 5px;
-              color: #1b77e1;
+              color: #0062d7;
             }
             .crossicon {
               background: #EBECF0;
@@ -3398,13 +3399,123 @@ body {
                 overflow-x: hidden;
                 .scroll {
                   height: calc(100% - 0px);
+                  .box_buttons{
+                    .tab-btn{
+                      margin: 10px;
+                      background: #EBECF0;
+                      border: 1px solid rgba(255, 255, 255, 0.4);
+                      box-sizing: border-box;
+                      box-shadow: -10px -10px 20px #FAFBFF, 10px 10px 20px #A6ABBD;
+                      border-radius: 20px;
+                      padding: 10px;
+                      width:200px;
+                      font-family: "Poppins";
+                      font-style: normal;
+                      color:#000000;
+                    }
+                    .tab-btn.active{
+                      margin: 10px;
+                      background: #0062D7;
+                      border: 1px solid rgba(255, 255, 255, 0.4);
+                      box-sizing: border-box;
+                      box-shadow: -10px -10px 20px #FAFBFF, 10px 10px 20px #A6ABBD;
+                      border-radius: 20px;
+                      padding: 10px;
+                      width:200px;
+                      font-family: "Poppins";
+                      font-style: normal;
+                      color:#FFFFFF;
+                    }
+
+                  }
                   .box_content{
                     width: 100%;
-                    height:calc(100% - 100px)
+                    height:calc(100% - 100px);
                   }
+                  
                   .box_tab_content{
                     width: 100%;
-                    height:calc(100% - 100px)
+                    height:calc(100% - 130px);
+                    .certificates-container{
+                      padding-left: 40px;
+                      // display: flex;
+                      // justify-content: center;
+                      .certificates-content{
+                        width: 80%;                       
+                        .right_column{
+                          padding: 0px 10px !important;
+                        }
+                        .right_column{
+                          margin-top: 0px;
+                          padding: 0px 10px !important;
+                          .input_file{
+                            width:100%;
+                            .file-upload{ 
+                             width: 100%;
+                              label.label-file {
+                                display: inline-block;
+                                width: 100%;
+                                max-width: 100%;
+                                height: 40px;
+                                padding: 0px 15px;
+                                line-height: 40px;
+                                background: linear-gradient(135.37deg, rgba(0, 0, 0, 0.4) 4.29%, rgba(255, 255, 255, 0.4) 95.6%), #ebecf0;
+                                background-blend-mode: soft-light, normal;
+                                border: 1px solid rgba(255, 255, 255, 0.4);
+                                box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+                                border-radius: 40px;
+                                outline: none;
+                                color: unset;
+                                font-size: 14px;
+                                position: static;
+                              }
+                              .upload-icon{
+                                position: absolute;
+                              right: -25px;
+                              height: 40px;
+                              line-height: 40px;
+                              color: #0062d7;
+                              cursor: pointer;
+                            }
+                            .certificates-filename{
+                              position: absolute;
+                              right: -150px;
+                              bottom: -17px;
+                              line-height: 40px;
+                              color: #0062d7;
+                              cursor: pointer;
+                            }
+                             }
+                          }
+                          .input_multifile{
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                            .input_file{
+                              width: 32%;
+                              .form-control{
+                                min-width: 100%;
+                                height: 40px;
+                                padding: 0px 15px;
+                                background-color: transparent;
+                                border-radius: 40px;
+                                background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #ebecf0;
+                                background-blend-mode: soft-light, normal;
+                                border: 1px solid rgba(255, 255, 255, 0.4);
+                                box-sizing: border-box;
+                                box-shadow: inset -3px -3px 10px #fafbff, inset 3px 3px 10px #a6abbd;
+                                outline: none;
+                              }
+                            }
+                          }
+                          .plusIcon{
+                            .certificatesErrorMsg{
+                              color:red;
+                            }
+                          }
+                        }
+                      }
+                    }
                   }
                 }
                 .bottombtn {
