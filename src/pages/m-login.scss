@@ -1801,6 +1801,16 @@ body {
               border: unset;
               outline: none;
             }
+            .machine_input input::-webkit-outer-spin-button,
+            .machine_input input::-webkit-inner-spin-button {
+              /* Chrome, Safari, Edge, Opera */
+              -webkit-appearance: none;
+              margin: 0;
+            }
+              .machine_input input[type=number] {
+                /* Firefox */
+                -moz-appearance: textfield;
+              }
             .box {
               background: linear-gradient(
                   317.7deg,
@@ -6100,12 +6110,31 @@ body {
     .capacity .linenum1 {
       padding: 20px;
     }
+    .capacity .linenum1 .top_lines{
+      color: #0062D7;
+    }
+    .capacity .linenum1 .bottom_products{
+      color: #0062D7;
+    }
+    .capacity .linenum1 hr{
+      margin: 5px;
+    }
+    .capacity .linenum1 svg{
+      color: #566180;
+      margin-right: 5px;
+      margin-top: 3px;
+      width: 17px;
+      height: 17px;
+      opacity: 0.6;
+    }
+    .capacity .linenum1 .first_line{
+      color: #566180;
+    }
     .capacity .ml-30 {
       margin-left: 30px;
     }
     .capacity .back-color {
       padding: 20px;
-      background: #dddedf;
     }
     .capacity ul {
       color: rgba(0, 98, 215, 1);
