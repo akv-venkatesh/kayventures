@@ -39,12 +39,12 @@ class Routers extends React.Component {
           <Route path='/login' element={<Login />} />
           <Route path='/home' element={<Home />} />
 
-          <Route path='/settings' element={<Settings />} >
+          <Route path="dashboard" element={<DashboardIndex/>}>
+            <Route index element={<Dashboard/>} />
+            <Route path="profile" element={<Profile/>}/>
+          </Route>
 
-            <Route path="dashboard" element={<DashboardIndex/>}>
-              <Route index element={<Dashboard/>} />
-              <Route path="profile" element={<Profile/>}/>
-            </Route>
+          <Route path='/settings' element={<Settings />} >
 
             <Route path="kyc">
 

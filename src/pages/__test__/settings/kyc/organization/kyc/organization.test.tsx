@@ -1,6 +1,6 @@
 import Organization from '../settings/kyc/Organization';
 import {render, screen,fireEvent, queryByTitle} from '@testing-library/react';
-import { testStore } from "./testStore"
+import { testStore } from "../../../../testStore"
 import { MemoryRouter as Router } from 'react-router-dom';
 let wrapper: any;
 const setup = (initialState = {}) => {

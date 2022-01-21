@@ -6,27 +6,34 @@ import Vector3 from "../../../../../assets/icons/various/Vector3.svg";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { AiFillCaretRight } from "react-icons/ai";
 import "./index.scss";
+
 // import Stepper from '../../../../../component/stepper/stepper';
 
+
 interface typeProps {
-    onClick: ()=>void,
+    onClick: (arg:any) => any,
+    selected_Facilities?: any
 }
 
-class FacilityHome extends Component<typeProps,{}>{
-    constructor(props:any){
+class FacilityHome extends Component<typeProps, {}>{
+    constructor(props: any) {
         super(props);
         this.state = {
 
         }
     }
-    click = () =>{
-        this.props.onClick();
-    }
-    render():JSX.Element{
-    // const steps = [{ label: 'KYC',id:0}, { label: 'Product Selection',id:1}, { label: 'Machinery',id:2 }, { label: 'Operations',id:3 }];
-        return(
-            <div className="main d-flex align-items-center">
+
+    // click = (arg:any) => {
+    //     console.log(arg)
+    //     this.props.onClick(arg);
+    // }
+    render(): JSX.Element {
+        const Facilities = this.props.selected_Facilities
+        console.log(Facilities);
+        return (
+            <div className="main d-flex">
                 <div className="leftmenu">
+                    
                     <div className="inner">
                         <div className="inner_maintext">
                             <h4>Manufacture</h4>
@@ -35,38 +42,41 @@ class FacilityHome extends Component<typeProps,{}>{
                             <h6>Sweing</h6>
                         </div>
                         <div className="lefthgt">
-                        <PerfectScrollbar>
-                            <div className="d-flex flex-column justify-content-between product-item-parent">
-                                <div className="select_heading mt-3">
-                                    <img src={Vector1} alt="" />
-                                    {/* <img src={Vector2} className="inner_image" alt="" /> */}
-                                    <p>Synticate Industries </p>
+                            <PerfectScrollbar>
+                                <div className="d-flex flex-column justify-content-between product-item-parent">
+                                    <div className="select_heading mt-3">
+                                        <img src={Vector1} alt="" />
+                                        {/* <img src={Vector2} className="inner_image" alt="" /> */}
+                                        <p>Synticate Industries </p>
+                                    </div>
+                                    {
+                                        //   selected_Facilities.length > 0 ?
+                                        Facilities.map((facility: any) => { 
+                                            return (<div className="select_box_container">
+                                                    {/* <input type='radio' name="facilities"  id={facility} value={facility} style={{display:'none'}} onChange={(e:any)=>{console.log(e.target.value)}}/> */}
+                                                    {/* <label style={{width:"100%"}} htmlFor={facility}> */}
+                                                        <div className="select_box d-flex"  onClick={()=>this.props.onClick(facility)}>
+                                                            <img src={Vector3} alt="" />
+                                                            <p>{facility}</p>
+                                                        </div>
+                                                    {/* </label> */}
+                                                    </div>)
+                                        })
+                                    }
                                 </div>
-
-                                <div className="select_box d-flex">
-                                    <img src={Vector3} alt="" />
-                                    <p>Facility 1</p>
-                                </div>
-                                {/* <div className="select_box d-flex">
-                                    <img src={Vector3} alt="" />
-                                    <p>Facility 2</p>
-                                </div> */}
-
-                            </div>
-                        </PerfectScrollbar>
+                            </PerfectScrollbar>
                         </div>
                     </div>
                 </div>
-                
                 {/* <div className=""> */}
                     {/* <Stepper steps={steps} activeStep={2} /> */}
                     <div className="rightmenu">                        
-                        {/* <button className="summarybtn">Summary<MdKeyboardArrowRight/></button> */}
+                        <button className="summarybtn">Summary<MdKeyboardArrowRight/></button>
                         <div className="d-flex flex-column product-item-parent-right justify-content-center">                        
                             <p>Click on Next Button to complete the Facility Info.(Operation selection) of selected facility</p>  
                         </div>
-                        <button title="nextbutton" type="submit" className="btn btn-back mx-2 next float-end nextbtn" onClick={this.click}>Next&emsp;<AiFillCaretRight />
-                        </button>
+                        <button title="nextbutton" type="submit" className="btn btn-back mx-2 next float-end nextbtn">Next&emsp;<AiFillCaretRight />
+                        </button>   
                     </div>
                 {/* </div> */}
             </div>
