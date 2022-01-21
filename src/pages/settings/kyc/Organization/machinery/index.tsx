@@ -1,6 +1,5 @@
 import React, { Component, ChangeEvent, FormEvent, FormEventHandler } from 'react'
 import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap';
-
 import MachineIcon from "../../../../../assets/icons/various/MachineIcon.svg"
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { RiArrowDropRightLine, RiInformationFill } from 'react-icons/ri';
@@ -343,12 +342,12 @@ class Machinery extends Component<typeProps, typeState> {
         const step = [{ label: 'KYC', id: 0 }, { label: 'Product Selection', id: 1 }, { label: 'Machinery', id: 2 }, { label: 'Operations', id: 3 }];
 
         return (
-
-            <div className="h-100 kyc-org-machinery">
-                <div className="h-100">
-                    {
-                        this.state.HomePage ?
-                            <SelectCategory onClick={(e) => this.changeMachineryStart(e)} /> :
+            <>
+            {
+                this.state.HomePage ?
+                    <SelectCategory onClick={(e) => this.changeMachineryStart(e)} /> :
+                    <div className="h-100 kyc-org-machinery">
+                        <div className="h-100">
                             <div className="machine main d-flex h-100">
                                 <div className="leftmenu d-flex flex-column h-100">
                                     <div className=" leftmenu_header d-flex flex-column">
@@ -637,9 +636,10 @@ class Machinery extends Component<typeProps, typeState> {
                                 </Modal>
                             </div>
 
-                    }
-                </div>
-            </div>
+                        </div>
+                    </div>
+            }
+            </>
         );
     }
 }

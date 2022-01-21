@@ -31,13 +31,13 @@ interface typeState {
   product_item_index: number;
   linetype: string;
   buyerName: string;
+  buyertype: string;
   materialtype: any;
   machinery: any;
   checkedMachine: any;
   confirmedMachine: any;
   machineCount: number;
   totalmachinecount: number;
-  showsummary: boolean;
   showModel: boolean;
   disable_input: boolean;
   count: number;
@@ -111,6 +111,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
       product_item_index: 0,
       linetype: '',
       buyerName: '',
+      buyertype: 'public',
       materialtype: [
         {
           name: 'type1',
@@ -191,7 +192,6 @@ class ProductConfiguration extends Component<typeProps, typeState> {
       confirmedMachine: [],
       machineCount: 0,
       totalmachinecount: 300,
-      showsummary: false,
       disable_input: false,
       count: -1,
       finalstate: [],
@@ -389,46 +389,21 @@ class ProductConfiguration extends Component<typeProps, typeState> {
     })
   }
 
-  showSummary = (event: MouseEvent<HTMLButtonElement>) => {
-    this.setState({
-      showsummary: !this.state.showsummary
-    })
-  }
-
   addLine = (event:MouseEvent<HTMLElement>) =>{
-    if(!this.state.stepright){
-      let obj ={
-        lineName : this.state.line_number,
-        data: [{
-          productItem : this.state.selected_product_item,
-          lineType : this.state.linetype,
-          buyer: this.state.buyerName,
-          materialType : this.state.selectedMaterialType,
-          machine_for_line : this.state.machineCount,
-          optperdat: this.state.optperday
-        }]
-      };
-      let arr = this.state.finalstate;
-      arr.push(obj);
-      this.setState({
-        finalstate : arr
-      },()=>{
-        console.log(this.state.finalstate)
-      })
-      this.setState({
-        stepleft: true,
-        stepmid: false,
-        stepmidbtn: true,
-        stepright: true,
-        line_number: '',
-        linetype: '',
-        selected_product_item: [],
-        selectedMaterialType: []
-      })
-      $('input[type=number]').val('');
-      $('input[type = checkbox').prop('checked',false);
-      $('input[type = radio').prop('checked',false);
-    }
+    this.setState({
+      stepleft: true,
+      stepmid: false,
+      stepmidbtn: true,
+      stepright: true,
+      line_number: '',
+      linetype: '',
+      selected_product_item: [],
+      selectedMaterialType: [],
+      optperday: [],
+    })
+    $('input[type=number]').val('');
+    $('input[type = checkbox').prop('checked',false);
+    $('input[type = radio').prop('checked',false);
   }
 
   changeitemperday = (event: ChangeEvent<HTMLInputElement>, item: any, subitem: any) => {
@@ -502,25 +477,51 @@ class ProductConfiguration extends Component<typeProps, typeState> {
     this.setState({
       stepmidbtn: true,
       stepright: false,
+    },()=>{
+      if(!this.state.stepright){
+        let obj ={
+          lineName : this.state.line_number,
+          data: [{
+            productItem : this.state.selected_product_item,
+            lineType : this.state.linetype,
+            buyer: this.state.buyerName,
+            buyerType: this.state.buyertype,
+            materialType : this.state.selectedMaterialType,
+            machine_for_line : this.state.machineCount,
+            optperdat: this.state.optperday
+          }]
+        };
+        let arr = this.state.finalstate;
+        arr.push(obj);
+        this.setState({
+          finalstate : arr
+        },()=>{
+          console.log(this.state.finalstate)
+        })
+      }
     })
+  }
+  buyertypeChange = (e:ChangeEvent<HTMLInputElement>) =>{
+    if(e.currentTarget.checked){
+      this.setState({
+        buyertype: 'private'
+      })
+    }
+    else{
+      this.setState({
+        buyertype: 'puclic'
+      })
+    }
   }
 
   render(): JSX.Element {
 
-
     const state = this.state;
-
 
     const LineTypeOptions = [
       { value: 'Open', label: 'Open', disabled: state.disable_input },
       { value: 'Reserved', label: 'Reserved', disabled: state.disable_input },
 
-
-    ]
-
-    const Material_type = [
-      { value: 'Natural', label: 'Natural', disabled: state.disable_input },
-      { value: 'Artificial', label: 'Artificial', disabled: state.disable_input },
 
     ]
 
@@ -667,6 +668,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                                           <Form.Check
                                             type="switch"
                                             id="custom-switch"
+                                            onChange = {this.buyertypeChange}
                                             className="p-0 d-flex align-items-center"
                                           />
                                           <p className="m-0 ms-2">Private</p>
@@ -815,8 +817,9 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                     <div className="d-flex">
                       <Button
                         className="active-btn"
-                        disabled
-                      >
+                        disabled = {state.stepright}
+                        onClick= {this.handleShow}
+                        >
                         Summary
                       </Button>
                     </div>
@@ -994,7 +997,6 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                       <Button 
                         className="active-btn-save ms-3" 
                         disabled={state.stepright}
-                        onClick={this.showSummary}
                         data-testid={'saveline'}
                         >
                         Next
@@ -1007,7 +1009,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
             </div>
           </div>
           <Modal
-            show={true}
+            show={state.showModel}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
@@ -1020,100 +1022,137 @@ class ProductConfiguration extends Component<typeProps, typeState> {
 
               <div className="row">
                 <div className="col-12">
-                  <PerfectScrollbar
-                    options={{ suppressScrollY: false, suppressScrollX: true }}
-                    onScrollY={(container) =>
-                      console.log(`scrolled to: ${container.scrollTop}.`)
-                    }
-                  >
+                  <PerfectScrollbar>
                     <div className="my-3 mx-3">
                       <div className="col-md-12">
                         <div className="linenum1 back-color">
                           <div className="top_lines">
                             <h4>Facility 1</h4>
-                            <h3>Sewing</h3>
+                            <h3>{this.props.category}</h3>
                           </div>
-                          <div className="bottom_products py-2">
-                            <h5>Line number 1</h5>
-                            <ul className="px-2" >
-                              <div className="product_first d-flex justify-content-between p-1">
-                                <div className="first_line d-flex w-25">
-                                  <AiOutlineRight />
-                                  <span>Product items</span>
-                                </div>
-                                <div className="d-flex w-75 justify-content-evenly">
-                                  <div className="d-flex">
-                                    <AiOutlineRight />
-                                    <span>Innerwear</span>
-                                  </div>
-                                  <div className="d-flex">
-                                    <AiOutlineRight />
-                                    <span>Knickers | Panties</span>
-                                  </div>
-                                </div>
+                          {
+                            this.state.finalstate.map((item:any, i:number)=>
+                              <div className="bottom_products py-2">
+                                <h5>{item.lineName}</h5>
+                                {
+                                  item.data.map((data:any, j:number)=>
+                                  <>
+
+                                    <ul className="" >
+                                      {
+                                        data.productItem.map((subdata:any, k:number)=>
+                                          <>
+                                            <div className="product_first d-flex justify-content-between p-1">
+                                              <div className="first_line d-flex w-25">
+                                                <AiOutlineRight />
+                                                <span>Product items</span>
+                                              </div>
+                                              <div className="d-flex w-75 justify-content-evenly">
+                                                <div className="d-flex">
+                                                  <AiOutlineRight />
+                                                  <span>{subdata.name}</span>
+                                                </div>
+                                                <div className="d-flex">
+                                                  <AiOutlineRight />
+                                                  <span>
+                                                    {
+                                                      subdata.data.map((sub_subdata:any, l:number)=>
+                                                        <>
+                                                          {sub_subdata.name} | 
+                                                        </>
+                                                      )
+                                                    }
+                                                  </span>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <hr />
+                                          </>
+                                        )
+                                      }
+                                      {
+                                        data.materialType.map((type:any, k:number)=>
+                                          <>
+                                            <div className="product_first d-flex justify-content-between p-1">
+                                              <div className="first_line d-flex w-25">
+                                                <AiOutlineRight />
+                                                <span>Material Type</span>
+                                              </div>
+                                              <div className="d-flex w-75 justify-content-evenly">
+                                                <div className="d-flex">
+                                                  <AiOutlineRight />
+                                                  <span>{type.name}</span>
+                                                </div>
+                                                <div className="d-flex">
+                                                  <AiOutlineRight />
+                                                  <span>{type.option[0].name}</span>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <hr />
+                                          </>
+                                        )
+                                      }
+                                      <div className="product_first d-flex justify-content-between p-1">
+                                        <div className="first_line d-flex w-25">
+                                          <AiOutlineRight />
+                                          <span>Line Type</span>
+                                        </div>
+                                        <div className="d-flex w-75 justify-content-evenly">
+                                          <div className="d-flex">
+                                            <AiOutlineRight />
+                                            <span>{data.lineType}</span>
+                                          </div>
+                                          <div className="d-flex">
+                                            <AiOutlineRight />
+                                            <span>{data.buyer} | {data.buyerType}</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <hr />
+                                    </ul>
+                                    <ul>
+                                      <div className="d-flex p-1">
+                                        <div className="first_line d-flex w-50">
+                                          <AiOutlineRight />
+                                          <span>Machine for production line</span>
+                                        </div>
+                                        <div>
+                                          <span>{data.machine_for_line}</span>
+                                        </div>
+                                      </div>
+                                      <hr />
+                                    </ul>
+                                    <ul>
+                                      {
+                                        data.optperdat.map((capacity:any, k:number)=>
+                                        <>
+                                          {
+                                            capacity.data.map((datas:any, l:number)=>
+                                            <div className="d-flex p-1">
+                                              <div className="d-flex w-25">
+                                                <AiOutlineRight />
+                                                <span>{Object.keys(datas)}</span>
+                                              </div>
+                                              <div>
+                                                <span>{Object.values(datas)}</span>
+                                                <span className="first_line">/ per day</span>
+                                              </div>
+                                            </div>
+                                            )
+                                          }
+                                          <hr />
+                                        </>
+                                        )
+                                      }
+                                    </ul>
+                                  </>
+                                  )
+                                }
                               </div>
-                              <hr />
-                              <div className="product_first d-flex justify-content-between p-1">
-                                <div className="first_line d-flex w-25">
-                                  <AiOutlineRight />
-                                  <span>Line Type</span>
-                                </div>
-                                <div className="d-flex w-75 justify-content-evenly">
-                                  <div className="d-flex">
-                                    <AiOutlineRight />
-                                    <span>Innerwear</span>
-                                  </div>
-                                  <div className="d-flex">
-                                    <AiOutlineRight />
-                                    <span>Knickers | Panties</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <hr />
-                              <div className="product_first d-flex justify-content-between p-1">
-                                <div className="first_line d-flex w-25">
-                                  <AiOutlineRight />
-                                  <span>Material Type</span>
-                                </div>
-                                <div className="d-flex w-75 justify-content-evenly">
-                                  <div className="d-flex">
-                                    <AiOutlineRight />
-                                    <span>Innerwear</span>
-                                  </div>
-                                  <div className="d-flex">
-                                    <AiOutlineRight />
-                                    <span>Knickers | Panties</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <hr />
-                            </ul>
-                            <ul>
-                              <div className="d-flex p-1">
-                                <div className="first_line d-flex w-50">
-                                  <AiOutlineRight />
-                                  <span>Machine for production line</span>
-                                </div>
-                                <div>
-                                  <span>150</span>
-                                </div>
-                              </div>
-                              <hr />
-                            </ul>
-                            <ul>
-                              <div className="d-flex p-1">
-                                <div className="d-flex w-25">
-                                  <AiOutlineRight />
-                                  <span>Knickers</span>
-                                </div>
-                                <div >
-                                  <span>320</span>
-                                  <span className="first_line">/ per day</span>
-                                </div>
-                              </div>
-                              <hr />
-                            </ul>
-                          </div>
+                            )
+                          }
+                            
 
 
                         </div>

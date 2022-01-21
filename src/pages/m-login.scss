@@ -1757,6 +1757,11 @@ body {
             .rightmenu {
               flex: 0 0 calc(100% - 350px);
               max-width: calc(100% - 350px);
+              .box{
+                .scroll{
+                  height: calc(100% - 78px - 24px);
+                }
+              }
             }
             .leftmenu h4 {
               color: #0068e5;
@@ -4798,11 +4803,15 @@ body {
                     }
                   }
                   .add-line-number{
+                    >div{
+                      &:first-child{
+                        cursor: pointer;
+                      }
+                    }
                     .active{
                       color: #2d63d7;
                       font-weight: 500;
                     }
-                    cursor: pointer;
                     svg{
                       box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
                       border-radius: 40px;
