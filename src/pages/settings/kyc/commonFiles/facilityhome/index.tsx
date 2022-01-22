@@ -11,7 +11,9 @@ import "./index.scss";
 
 
 interface typeProps {
-    onClick: (arg:any) => any,
+    onClick? : any,
+    onClickNext?: any,
+    onClickBack?: any,
     selected_Facilities?: any
 }
 
@@ -28,7 +30,7 @@ class FacilityHome extends Component<typeProps, {}>{
     //     this.props.onClick(arg);
     // }
     render(): JSX.Element {
-        const Facilities = this.props.selected_Facilities
+        const Facilities = this.props.selected_Facilities? this.props.selected_Facilities : []
         console.log(Facilities);
         return (
             <div className="main d-flex">

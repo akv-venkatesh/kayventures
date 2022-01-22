@@ -9,7 +9,7 @@ import Vector5 from "../../../../../assets/icons/various/Vector5.svg"
 import { Link } from 'react-router-dom';
 
 interface typeProps {
-    onClick: () => void,
+    onClick?: any,
     onClickNext?: any,
     onClickBack?: any,
     onClickSendValues?: any,
@@ -30,9 +30,11 @@ class Businesshour extends Component<typeProps, typeState>{
 
     datePicker = (e: Date): any => {
     }
+    
     click = () => {
         this.props.onClick();
     }
+
     handleChange(index: any, value: any, name: any) {
         let otherholidayValues = this.state.otherholidayValues;
         otherholidayValues[index][name] = value;
@@ -436,8 +438,8 @@ class Businesshour extends Component<typeProps, typeState>{
                                                 >Save
                                                 </button>}
                                             </div>
-                                            <button type="button" disabled={parentState.step3Nextbtn} onClick={onClickNext} className="btn-next" >Next<AiFillCaretRight className="right-array-btn" /></button>
-
+                                            <button type="button"  onClick={onClickNext} className="btn-next" >Next<AiFillCaretRight className="right-array-btn" /></button>
+{/* disabled={parentState.step3Nextbtn} */}
                                         </div>
                                     </div>
                                 </div>
