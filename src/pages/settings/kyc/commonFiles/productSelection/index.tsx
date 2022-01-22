@@ -7,6 +7,9 @@ import Collapsible from 'react-collapsible';
 import $ from 'jquery';
 import { RiInformationFill } from 'react-icons/ri';
 import vest from "../../../../../assets/images/vest.svg";
+import { FacilityInfo } from '../../../../../Routes/asyncpages';
+import { HiInformationCircle } from 'react-icons/hi';
+import { IoShirt } from 'react-icons/io5';
 
 interface typeState {
     step1:boolean,
@@ -132,7 +135,12 @@ class ProductSelect extends Component<{}, typeState> {
             }
         ],
         groupselection: false,
-        selectedproducttype: [],
+        selectedproducttype: [
+            {
+                material: '',
+                whom: '',
+            }
+        ],
         selectedgrouptype: [],
         displayState: [],
         groupitemselection: [],
@@ -164,21 +172,41 @@ class ProductSelect extends Component<{}, typeState> {
         })
     }
     selectproducttype = (e: ChangeEvent<HTMLInputElement>) => {
-        if (e.currentTarget.checked) {
-            let obj = { name: e.currentTarget.value };
-            let arr = this.state.selectedproducttype;
-            arr.push(obj);
+        let arr = this.state.selectedproducttype;
+        arr[0].material = e.currentTarget.value;
+        this.setState({
+            selectedproducttype: arr
+        })
+        if (this.state.selectedproducttype[0].material !== '' && this.state.selectedproducttype[0].whom !== '') {
             this.setState({
-                selectedproducttype: arr
-            }, () => {
-                console.log(this.state.selectedproducttype)
+                savebtn: false,
+                removebtn: false,
             })
-            if (this.state.selectedproducttype.length > 0) {
-                this.setState({
-                    savebtn: false,
-                    removebtn: false,
-                })
-            }
+        }
+        else{
+            this.setState({
+                savebtn: true,
+                removebtn: true,
+            })
+        }
+    }
+    selectwhom = (e:ChangeEvent<HTMLInputElement>)=>{
+        let arr = this.state.selectedproducttype;
+        arr[0].whom = e.currentTarget.value;
+        this.setState({
+            selectedproducttype: arr
+        })
+        if (this.state.selectedproducttype[0].material !== '' && this.state.selectedproducttype[0].whom !== '') {
+            this.setState({
+                savebtn: false,
+                removebtn: false,
+            })
+        }
+        else{
+            this.setState({
+                savebtn: true,
+                removebtn: true,
+            })
         }
     }
     showgroup = (e: MouseEvent<HTMLButtonElement>) => {
@@ -394,7 +422,13 @@ class ProductSelect extends Component<{}, typeState> {
         savebtn: true,
         removebtn: true,
         selectedgrouptype: [],
-        selectedproducttype: [],
+        selectedproducttype: [
+            {
+                material: '',
+                whom: '',
+            }
+        ],
+        step1: true,
         })
         $('.category input[type=checkbox]').prop("checked", false);
     }
@@ -430,11 +464,22 @@ class ProductSelect extends Component<{}, typeState> {
                             <div className="sub-categories">
                             <PerfectScrollbar >
                                 <ul className="m-0 p-0 me-5">
-                                {
-                                    state.selectedproducttype.map((tag: any, index: number) =>
-                                    <li className="py-2" key={tag.name} data-testid={"prod" + index}>{tag.name}</li>
-                                    )
-                                }
+                                    {
+                                        state.selectedproducttype.length !== 0 ?
+                                        <>
+                                            {
+                                                state.selectedproducttype[0].material !== '' ?
+                                                <li className="py-2" data-testid={"prod1"}>{state.selectedproducttype[0].material}</li>:
+                                                <></>
+                                            }
+                                            {
+                                                state.selectedproducttype[0].whom !== '' ?
+                                                <li className="py-2" data-testid={"prod2"}>{state.selectedproducttype[0].whom}</li>:
+                                                <></>
+                                            }
+                                        </> :
+                                        <></>
+                                    }
                                 </ul>
                                 <div className="accordion me-5">
                                 <ul className="p-0 m-0">
@@ -490,30 +535,30 @@ class ProductSelect extends Component<{}, typeState> {
                                     {
                                         state.displayState.map((tag: any, i: number) =>
                                         <>
-                                        <p className="m-0 py-3">Select</p>
-                                        <div className="d-flex">
-                                            {
-                                            tag.data.map((data:any, index:number)=>
-                                                <>
-                                                <div className="me-3 form-tag" key={'key' + i +index}>
-                                                    <input
-                                                        type="radio"
-                                                        value={data.name}
-                                                        name={'product_category'+i}
-                                                        id={data.name}
-                                                        data-testid={'testcheck' + i}
-                                                        required
-                                                        hidden
-                                                        onChange={this.selectproducttype}
-                                                    />
-                                                    <label className="w-100 py-2 justify-content-between align-items-center d-flex" key={'productType' + i+index} htmlFor={data.name}>
-                                                        <span className="checkmark">{data.name}</span>
-                                                    </label>
-                                                </div>
-                                                </>
-                                            )
-                                            }
-                                        </div>
+                                            <p className="m-0 py-3">Select</p>
+                                            <div className="d-flex">
+                                                {
+                                                tag.data.map((data:any, index:number)=>
+                                                    <>
+                                                    <div className="me-3 form-tag" key={'key' + i +index}>
+                                                        <input
+                                                            type="radio"
+                                                            value={data.name}
+                                                            name={'product_category'+i}
+                                                            id={data.name}
+                                                            data-testid={'testcheck' + i}
+                                                            required
+                                                            hidden
+                                                            onChange={tag.name == 'material' ? this.selectproducttype : this.selectwhom}
+                                                        />
+                                                        <label className="w-100 py-2 justify-content-between align-items-center d-flex" key={'productType' + i+index} htmlFor={data.name}>
+                                                            <span className="checkmark">{data.name}</span>
+                                                        </label>
+                                                    </div>
+                                                    </>
+                                                )
+                                                }
+                                            </div>
                                         </>
                                         )
                                     }
@@ -537,8 +582,11 @@ class ProductSelect extends Component<{}, typeState> {
                                                 hidden
                                                 onChange={!state.productselection ? this.selectproducttype : (!state.groupselection ? this.selectgrouptype : (e) => this.groupitemselection(e, tag.parent))}
                                                 />
-                                                <label className="w-100 py-2 justify-content-between align-items-center d-flex" key={'productType' + i} htmlFor={tag.name}>
-                                                <span className="checkmark">{tag.name}</span>
+                                                <label className="w-100 justify-content-between align-items-center d-flex" key={'productType' + i} htmlFor={tag.name}>
+                                                    <IoShirt />
+                                                    <div className="py-3 d-flex">
+                                                        <span className="checkmark">{tag.name}</span>
+                                                    </div>
                                                 </label>
                                             </form>
                                             </div>
@@ -616,16 +664,55 @@ class ProductSelect extends Component<{}, typeState> {
                 <Modal
                     show={state.showModel}
                     size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
                     centered
-                    className="capacity"
-                    backdropClassName="capacity"
+                    className="product-selection-modal"
+                    backdropClassName="product-selection-modal"
                     onHide={this.handleHide}
                 >
                     <Modal.Header closeButton />
                     <Modal.Body className="">
-                        <div className="">
-                            
+                        <div className="p-4">
+                            <div className='d-flex title'>
+                                <HiInformationCircle />
+                                <p className='ms-3 m-0'>You have successfully completed your product configuration for sewing - garments.</p>
+                            </div>
+                            <h2 className='m-0 py-3'>
+                                sewing
+                            </h2>
+                            <div className="d-flex category align-items-center">
+                                <IoShirt />
+                                <h3 className="m-0 px-3">
+                                    Garments
+                                </h3>
+                                <span className='checmark'></span>
+                            </div>
+                            <ul className="p-0 m-0 py-3">
+                                <li className='py-2'>{state.selectedproducttype[0].material}</li>
+                                <li className='py-2'>{state.selectedproducttype[0].whom}</li>
+                            </ul>
+                            <Accordion>
+                                {
+                                    state.selectedgrouptype.map((group: any, i: number) =>
+                                    <Accordion.Item eventKey={'a' + i} className="mb-2" key={group.name + i}>
+                                        <Accordion.Button className={group.data.length > 0 ? 'complete' : 'not-completed'}
+                                        onClick={(e) => this.displaygroupitem(e, group.name)}
+                                        data-testid={'grp' + i}
+                                        >
+                                        {group.name}
+                                        </Accordion.Button>
+                                        <Accordion.Body>
+                                        <ul className="sub-cat m-0">
+                                            {
+                                            group.data.map((item: any, index: number) =>
+                                                <li className="pe-4 py-2" key={item.name} >{item.name}</li>
+                                            )
+                                            }
+                                        </ul>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                    )
+                                }
+                            </Accordion>
                         </div>
                     </Modal.Body>
                 </Modal>

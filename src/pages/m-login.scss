@@ -894,13 +894,6 @@ body {
               right: -27px;
               color: #1862d7;
             }
-            .scrollbar-container {
-              position: relative;
-              height: 60vh !important;
-              margin: 0px 0px 20px 0px;
-              padding-right: 20px;
-              overflow-x: hidden;
-            }
             /* organization step1 */
 
             /* organization step2 */
@@ -1061,10 +1054,6 @@ body {
               font-size: 14px;
               font-weight: 400;
             }
-
-            /* .box .scrollbar-container{
-                    height: calc(100% - 80px);
-                } */
             .add-button {
               margin-bottom: 20px;
             }
@@ -1232,10 +1221,6 @@ body {
               margin-left: 25px;
               margin-bottom: 5px;
             }
-            /* .organization .box .scrollbar-container{
-                    margin: 20px;
-                    height: calc(100% - 30px) !important;
-                } */
             .crossicon {
               background: #ebecf0;
               border: 1px solid rgba(235, 236, 240, 0.4);
@@ -2082,13 +2067,6 @@ body {
 
               color: #566180;
             }
-            .scrollbar-container {
-              position: relative;
-              height: 53vh !important;
-              margin: 0px 0px 20px 0px;
-              padding-right: 20px;
-              overflow-x: hidden;
-            }
 
             /* check out */
             .category > div label {
@@ -2393,7 +2371,18 @@ body {
                   .category {
                     .form-tag {
                       label {
-                        border-bottom: 1px solid #b8cad8;
+                        svg{
+                          width: 50px;
+                          height: 50px;
+                          color: #0068e5;
+                          margin-right: 10px;
+                          background: white;
+                          padding: 10px;
+                          border-radius: 5px;
+                        }
+                        &>div{
+                          border-bottom: 1px solid #b8cad8;
+                        }
                         span {
                           font-size: 16px;
                           font-weight: 400;
@@ -7085,14 +7074,6 @@ body {
   /* margin-left: 28px; */
 }
 
-.scrollbar-container {
-  position: relative;
-  height: 65vh !important;
-  margin: 0px 0px 20px 0px;
-  padding-right: 20px;
-  overflow-x: hidden;
-}
-
 .facilitymodal .facilitymod {
   display: flex;
   flex-wrap: wrap;
@@ -8284,14 +8265,6 @@ body {
         max-width:55vw;
     }
      .modal-content {
-        /* background: linear-gradient(
->>>>>>> 93d92b546553e4a79691de1837495526ba6eac5a
-            135.37deg,
-            rgba(0, 0, 0, 0.4) 4.29%,
-            rgba(255, 255, 255, 0.4) 95.6%
-            ),
-            rgba(235, 236, 240, 0.7); */
-
         background-color: #e6e7eb;
         background-blend-mode: soft-light, normal;
         border: 1px solid rgba(255, 255, 255, 0.4);
@@ -8350,44 +8323,39 @@ body {
         color: #0068E5;
         /* margin-left: 28px; */
     }
-    .facilitymod
-    { 
+    .facilitymod{ 
         display: flex;
         flex-wrap: wrap;
   
-    .leftmenu {
-        flex: 0 0 300px;
-        max-width: 300px;
-        display: unset;
-    }
-    .rightmenu {
-        flex-grow: 0;
-        flex-shrink: 0;
-        flex-basis: calc(100% - 300px);
-        max-width: calc(100% - 300px);
-        background: unset;
-        box-shadow: unset;
-        border: unset;
-    }
-    .infor svg{
-        margin-right: 15px;
-    }
-     .infor span{
-        display: inline-flex;
-    }
+        .leftmenu {
+            flex: 0 0 300px;
+            max-width: 300px;
+            display: unset;
+        }
+        .rightmenu {
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: calc(100% - 300px);
+            max-width: calc(100% - 300px);
+            background: unset;
+            box-shadow: unset;
+            border: unset;
+        }
+        .infor svg{
+            margin-right: 15px;
+        }
+        .infor span{
+            display: inline-flex;
+        }
      .clrblue{
         color: #0068E5;
-    }
-    h5{
-        margin: 23px 0 30px 0;
-        font-weight: 600;
-    }
+      }
+      h5{
+          margin: 23px 0 30px 0;
+          font-weight: 600;
+      }
     }
 
-/* add facility modal */
-
-
-//machinery modal
     /* Machinery initial page screen */
     .box-field-area {
       width: 100%;
@@ -8537,6 +8505,134 @@ body {
     }
   }
 
+  .modal{
+    &.product-selection-modal{
+      .modal-dialog{
+        .modal-content{
+          .modal-header{
+            position: relative;
+            padding: 0px;
+            button{
+              &.btn-close{
+                position: absolute;
+                right: -10px;
+                top: -10px;
+              }
+            }
+          }
+          .modal-body{
+            .title{
+              svg{
+                color: #0062D7;
+                width: 25px;
+                height: 25px;
+              }
+              p{
+                font-size: 14px;
+                color: #0062D7;
+              }
+            }
+            h2{
+              font-size: 26px;
+              color: #0062D7;
+              font-weight: 600;
+            }
+            .category{
+              padding: 10px 15px;
+              width: max-content;
+              box-shadow: -5px -5px 10px #FAFBFF, 5px 5px 10px #A6ABBD;
+              border-radius: 40px;
+              svg{
+                color: #0062D7;
+                width: 30px;
+                height: 30px;
+              }
+              h3{
+                font-size: 18px;
+                font-weight: 500;
+                color: #0062D7;
+              }
+              span{
+                width: 40px;
+                height: 40px;
+                position: relative;
+                &.checmark{
+                  &:before{
+                    content: '';
+                    background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #EBECF0;
+                    background-blend-mode: soft-light, normal;
+                    box-shadow: inset -3px -3px 10px #FAFBFF, inset 3px 3px 10px #A6ABBD;
+                    border-radius: 50%;
+                    width: 30px;
+                    height: 30px;
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                  }
+                  &:after{
+                    content: '';
+                    width: 22px;
+                    height: 22px;
+                    display: block;
+                    border-radius: 50%;
+                    background-color: #0062D7;
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                  }
+                }
+              }
+            }
+            ul{
+              li{
+                width: 300px;
+                font-size: 18px;
+                list-style-type: none;
+                border-bottom: 1px solid #B8CAD8;
+              }
+            }
+            .accordion{
+              .accordion-item{
+                button{
+                  font-size: 18px;
+                  color: unset;
+                  &.accordion-button{
+                    background: rgba(184, 202, 216, 0.15);
+                    box-shadow: none;
+                  }
+                  &:not(.collapsed){
+                    background-color: #0062D7;
+                    color: white;
+                  }
+                }
+                .accordion-collapse{
+                  .accordion-body{
+                    padding: 0px;
+                    ul{
+                      &.sub-cat{
+                        li{
+                          width: 100%;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      } 
+    }
+  }
+    
+
+  
+
 //product select modal
-    // }
-  // }
