@@ -11,7 +11,11 @@ interface typeState{
     step2: boolean,
     step3: boolean,
     category: any,
+    facilities: any
 }
+
+const facilities = localStorage.getItem('facilities');
+let facility = facilities?.split(',')
 
 class capacity extends Component<typeProps, typeState>{
     constructor(props:any){
@@ -21,6 +25,7 @@ class capacity extends Component<typeProps, typeState>{
             step2: false,
             step3: false,
             category: '',
+            facilities: facility,
         }
     }
     step1Complete = () =>{
@@ -40,13 +45,13 @@ class capacity extends Component<typeProps, typeState>{
         return(
             <>
                 {
-                    !this.state.step1 ?
-                    <Facilityhome onClick={this.step1Complete} selected_Facilities={[]}/>:
+                    this.state.step1 ?
+                    <Facilityhome onClick={this.step1Complete} selected_Facilities={this.state.facilities}/>:
                     this.state.step2 ?
                     <CategorySelect
                         onClick={(e)=>this.step2Complete(e)}
                         />:
-                    !this.state.step3 ?
+                    this.state.step3 ?
                     <Cpcity category={this.state.category}/> :<></>
                 }
 

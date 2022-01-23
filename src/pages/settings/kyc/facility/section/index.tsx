@@ -18,6 +18,8 @@ import { BiMap } from 'react-icons/bi';
 import Image2 from "../../../../../assets/image2.svg";
 import Facilityhome from "../../commonFiles/facilityhome";
 import logo_img from  '../../../../../assets/insertImage.png';
+import { ImCross } from 'react-icons/im';
+import Facility from "../../../../../assets/icons/facility.svg";
 
 
 
@@ -37,8 +39,13 @@ interface typeState {
     uploadlogo:string,
     images?:any,
     file:any,
-    
+    facilities: any
+	editFacility: any,
 }
+
+
+const facilities = localStorage.getItem('facilities');
+let facility = facilities?.split(',')
 
 class Section extends Component<{}, typeState> {
     fileObj : any = [];
@@ -59,6 +66,8 @@ class Section extends Component<{}, typeState> {
             uploadlogo:"",
             images:'',
             file: [null],
+            facilities: facility,
+            editFacility: '',
         };
         this.uploadMultipleFiles = this.uploadMultipleFiles.bind(this)
         this.uploadFiles = this.uploadFiles.bind(this)
@@ -168,13 +177,27 @@ class Section extends Component<{}, typeState> {
             <>
                 {
                     this.state.step1 ? 
-                    <Facilityhome onClick={this.step1Complete}/> :
-                    <div className="kyc-facility-section">
-                        <div className="machine main d-flex facilitykyc1 h-100">
-                            <div className="col-md-12 d-flex flex-column h-100">
-                                <Stepper steps={step} activeStep={2} />
-                                <div className="box py-5 mt-2">
-                                    <div className="scroll pb-3">
+                    <Facilityhome onClick={this.step1Complete} selected_Facilities={this.state.facilities}/> :
+                    <div className="kyc-facility-section h-100">
+                        <div className="machine main facilitykyc1 h-100">
+                            <div className=" h-100">
+                                <div className="d-flex justify-content-between">
+									<div className="facility1 d-flex">
+										<img src={Facility} alt="" />
+										<p>{this.state.editFacility}</p>
+									</div>
+									<div className="crossicon">
+										<ImCross className="cross" />
+									</div>
+								</div>
+                                <div className="box p-3">
+                                    <div className="summary d-flex justify-content-end py-2">
+                                        <Button className="btn btn-secondary" onClick={this.handleSummary}>
+                                            Summary
+                                            <RiArrowDropRightLine />
+                                        </Button>
+                                    </div>
+                                    <div className="scroll">
                                         <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
                                             <div className="d-flex flex-wrap pe-4 facilityform">
                                                 <Container>
@@ -357,7 +380,7 @@ class Section extends Component<{}, typeState> {
                                             </div>
                                         </PerfectScrollbar>
                                     </div>
-                                    <div className="bottom_switch w-50">
+                                    <div className="bottom_switch py-3 d-flex justify-content-center">
                                         <button
                                             type="button"
                                             className="btn btn-default mx-4 remove"
@@ -371,12 +394,6 @@ class Section extends Component<{}, typeState> {
                                         >
                                             Save
                                         </button>
-                                    </div>
-                                    <div className="summary">
-                                        <Button className="btn btn-secondary" onClick={this.handleSummary}>
-                                            Summary
-                                            <RiArrowDropRightLine />
-                                        </Button>
                                     </div>
                                 </div>
                             </div>

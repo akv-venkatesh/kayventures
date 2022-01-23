@@ -68,34 +68,27 @@ class Businesshour extends Component<typeProps, typeState>{
             sat_end_time: 0,
             sun_start_time: 0,
             sun_end_time: 0,
-            day:
-            {
-                mon_start_time_day: '',
-                mon_end_time_day: '',
-                tue_start_time_day: '',
-                tue_end_time_day: '',
-                wed_start_time_day: '',
-                wed_end_time_day: '',
-                thur_start_time_day: '',
-                thur_end_time_day: '',
-                fri_start_time_day: '',
-                fri_end_time_day: '',
-                sat_start_time_day: '',
-                sat_end_time_day: '',
-                sun_start_time_day: '',
-                sun_end_time_day: ' ',
-            }
-
-            //    this.state.otherholidayValues.map((element:any, index:any) => (
-
-            //     ))
+            mon_start_time_day: 'am',
+            mon_end_time_day: 'am',
+            tue_start_time_day: 'am',
+            tue_end_time_day: 'am',
+            wed_start_time_day: 'am',
+            wed_end_time_day: 'am',
+            thur_start_time_day: 'am',
+            thur_end_time_day: 'am',
+            fri_start_time_day: 'am',
+            fri_end_time_day: 'am',
+            sat_start_time_day: 'am',
+            sat_end_time_day: 'am',
+            sun_start_time_day: 'am',
+            sun_end_time_day: 'am',
         }
         console.log(this.state.otherholidayValues);
         const { onClickNext, onClickBack, onClickSendValues, parentState } = this.props;
         return (
 
 
-            <div className='businesshour'>
+            <div className='businesshour h-100'>
                 <Formik
                     initialValues={initialValues}
                     validate={(values: any) => {
@@ -110,14 +103,47 @@ class Businesshour extends Component<typeProps, typeState>{
                                 errors[val] = 'Enter a value within "12 "';
                             }
                         })
+                        if(values['mon_end_time_day'] == values['mon_start_time_day']){
+                            if(values['mon_end_time'] < values['mon_start_time']){
+                                errors['mon_end_time'] = 'Enter a correct value';
+                            }
+                        }
+                        if(values['tue_end_time_day'] == values['tue_start_time_day']){
+                            if(values['tue_end_time'] < values['tue_start_time']){
+                                errors['tue_end_time'] = 'Enter a correct value';
+                            }
+                        }
+                        if(values['wed_end_time_day'] == values['wed_start_time_day']){
+                            if(values['wed_end_time'] < values['wed_start_time']){
+                                errors['wed_end_time'] = 'Enter a correct value';
+                            }
+                        }
+                        if(values['thu_end_time_day'] == values['thu_start_time_day']){
+                            if(values['thu_end_time'] < values['thu_start_time']){
+                                errors['thu_end_time'] = 'Enter a correct value';
+                            }
+                        }
+                        if(values['fri_end_time_day'] == values['fri_start_time_day']){
+                            if(values['fri_end_time'] < values['fri_start_time']){
+                                errors['fri_end_time'] = 'Enter a correct value';
+                            }
+                        }
+                        if(values['sat_end_time_day'] == values['sat_start_time_day']){
+                            if(values['sat_end_time'] < values['sat_start_time']){
+                                errors['sat_end_time'] = 'Enter a correct value';
+                            }
+                        }
+                        if(values['sun_end_time_day'] == values['sun_start_time_day']){
+                            if(values['sun_end_time'] < values['sun_start_time']){
+                                errors['sun_end_time'] = 'Enter a correct value';
+                            }
+                        }
                         // console.log(errors);
 
                         return errors;
                     }}
                     onSubmit={(values, { setSubmitting }) => {
-                        // console.log('step3', values,this.state.otherholidayValues)
                         this.props.onClickSendValues(values, this.state.otherholidayValues)
-
                     }}
 
                 >
@@ -411,7 +437,7 @@ class Businesshour extends Component<typeProps, typeState>{
                                     </div>
                                 </PerfectScrollbar>
                                 {/* footer   button */}
-                                <div className="col-md-11 m-auto  " style={{ padding: "0px 14px 0px 0px " }}>
+                                <div className="px-5 py-3 m-auto  ">
                                     <div className="row">
                                         <div className="w-100 d-flex justify-content-center">
                                             <button title="backbutton" type="button" onClick={onClickBack} className=" btn-back " ><AiFillCaretLeft className="left-array-btn" />Back</button>

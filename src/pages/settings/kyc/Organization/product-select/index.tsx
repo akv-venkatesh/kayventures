@@ -2,12 +2,13 @@ import React, { Component, ChangeEvent } from 'react';
 
 import ProConfig from '../../commonFiles/productSelection/category';
 import ProductSelect from '../../commonFiles/productSelection';
+import { Navigate } from 'react-router-dom';
 
 interface typeState {
   step1:boolean,
   prodectPage: boolean,
   selectedOption: any,
-  visibility: boolean,
+  finish: boolean,
 }
 
 class ProductGroups extends Component<{}, typeState> {
@@ -18,31 +19,45 @@ class ProductGroups extends Component<{}, typeState> {
       step1: true, 
       prodectPage: true,
       selectedOption: "",
-      visibility: false,
+      finish: false,
     }
   }
 
   handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    this.setState({ selectedOption: e.target.value });
-    if (e.target.value) {
-      this.setState({ visibility: true });
-    }
+    console.log(e)
+    this.setState({ selectedOption: e });
   };
 
   nextPageChange = (e: ChangeEvent<HTMLInputElement>) => {
     this.setState({ prodectPage: false });
+    this.setState({ selectedOption: e });
   };
+  complete = () =>{
+    this.setState({ prodectPage: true });
+  }
+  nextpage = () =>{
+    this.setState({
+        finish : true
+    })
+  }
   render() {
+    if(this.state.finish){
+      return <Navigate to = "/settings/kyc/organization/machinery" />
+    }
     return (
       <>
         {
         this.state.prodectPage? 
           <ProConfig 
-            state={this.state} 
-            nextPageChange={this.nextPageChange} 
-            handleChange={this.handleChange}  
+            state={this.state}
+            nextPageChange={(e:any)=>this.nextPageChange(e)} 
+            // handleChange={(e:any)=>this.handleChange(e)}  
             /> :
-          <ProductSelect />
+          <ProductSelect 
+            category={this.state.selectedOption}
+            onComplete = {this.complete}
+            nextpage = {this.nextpage}
+          />
         }
       </>
     )

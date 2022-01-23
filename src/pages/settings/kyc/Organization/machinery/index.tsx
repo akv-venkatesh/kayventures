@@ -8,6 +8,7 @@ import Select from '../../../../../component/dropdown_select/slelect';
 import { AiFillCaretRight, AiFillExclamationCircle, AiOutlinePlus } from 'react-icons/ai';
 import Stepper from '../../../../../component/stepper/stepper';
 import SelectCategory from '../../commonFiles/selectCategory';
+import { Navigate } from 'react-router-dom';
 
 interface typeState {
     manufacturingActivity: any,
@@ -35,6 +36,7 @@ interface typeState {
     iotFilter: any,
     filter: any,
     firstComponent: boolean,
+    finish: boolean,
 }
 interface typeProps {
     machineProps: any
@@ -77,6 +79,7 @@ class Machinery extends Component<typeProps, typeState> {
             }],
             origState: [],
             filter: [],
+            finish: false,
         }
     }
 
@@ -316,7 +319,11 @@ class Machinery extends Component<typeProps, typeState> {
             manufacturingActivity: e,
         })
     }
-
+    complete = () =>{
+        this.setState({
+            finish : true,
+        })
+    }
 
     render() {
 
@@ -340,6 +347,10 @@ class Machinery extends Component<typeProps, typeState> {
             { value: 'Disable', label: 'Disable' }
         ]
         const step = [{ label: 'KYC', id: 0 }, { label: 'Product Selection', id: 1 }, { label: 'Machinery', id: 2 }, { label: 'Operations', id: 3 }];
+
+        if(this.state.finish){
+            return <Navigate to = "/settings/kyc/organization/operation" />
+        }
 
         return (
             <>
@@ -500,6 +511,7 @@ class Machinery extends Component<typeProps, typeState> {
                                                     type="submit"
                                                     className="btn btn-next next"
                                                     disabled={!this.state.addMoreEnable}
+                                                    onClick={this.complete}
                                                 >Next&emsp;<AiFillCaretRight />
                                                 </button>
                                             </div>

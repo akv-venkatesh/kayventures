@@ -20,6 +20,7 @@ import AccordionItem from "react-bootstrap/esm/AccordionItem";
 import AccordionHeader from "react-bootstrap/esm/AccordionHeader";
 import AccordionBody from "react-bootstrap/esm/AccordionBody";
 import { MouseEventHandler } from "react";
+import { Navigate } from "react-router-dom";
 interface typeProps{
   category: string,
 }
@@ -49,6 +50,7 @@ interface typeState {
   stepmid: boolean,
   stepmidbtn: boolean,
   stepright: boolean,
+  finish: boolean,
 }
 
 const customStyles = {
@@ -202,6 +204,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
       stepmid: false,
       stepmidbtn: true,
       stepright: true,
+      finish: false,
     };
   }
 
@@ -513,7 +516,11 @@ class ProductConfiguration extends Component<typeProps, typeState> {
       })
     }
   }
-
+  finish = () =>{
+    this.setState({
+      finish: true
+    })
+  }
   render(): JSX.Element {
 
     const state = this.state;
@@ -524,7 +531,9 @@ class ProductConfiguration extends Component<typeProps, typeState> {
 
 
     ]
-
+    if(this.state.finish){
+      return <Navigate to = "/settings/kyc/facility/sections" />
+    }
     return (
       <div className="kyc-facility-capacity h-100">
         <div className="h-100 p-3">
@@ -998,6 +1007,7 @@ class ProductConfiguration extends Component<typeProps, typeState> {
                         className="active-btn-save ms-3" 
                         disabled={state.stepright}
                         data-testid={'saveline'}
+                        onClick = {this.finish}
                         >
                         Next
                         <RiArrowRightSFill />

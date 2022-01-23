@@ -133,9 +133,6 @@
     border-radius: 8px;
     color: #fff;
     font-size: 14px;
-    position: absolute;
-    bottom: 29px;
-    right: 61px;
 }
 .nextbtn svg {
     font-size: 28px;
@@ -153,13 +150,10 @@
     padding: 8px 10px;
     font-size: 14px;
     font-weight: 600;
-    position: fixed;
-    right: 6%;
-    top:175px
 }
 .product-item-parent-right{
     align-items: center;
-    height:calc(100vh - 170px);
+    height:calc(100% - 28px - 39px);
 }
 
 .select_box_container{

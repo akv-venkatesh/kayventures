@@ -33,7 +33,7 @@ class FacilityHome extends Component<typeProps, {}>{
         const Facilities = this.props.selected_Facilities? this.props.selected_Facilities : []
         console.log(Facilities);
         return (
-            <div className="main d-flex">
+            <div className="main d-flex h-100">
                 <div className="leftmenu">
                     
                     <div className="inner">
@@ -72,13 +72,19 @@ class FacilityHome extends Component<typeProps, {}>{
                 </div>
                 {/* <div className=""> */}
                     {/* <Stepper steps={steps} activeStep={2} /> */}
-                    <div className="rightmenu">                        
-                        <button className="summarybtn">Summary<MdKeyboardArrowRight/></button>
+                    <div className="rightmenu p-3">                        
+                        <div className="d-flex justify-content-end">
+                            <button className="summarybtn">Summary<MdKeyboardArrowRight/></button>
+                        </div>
                         <div className="d-flex flex-column product-item-parent-right justify-content-center">                        
                             <p>Click on Next Button to complete the Facility Info.(Operation selection) of selected facility</p>  
                         </div>
-                        <button title="nextbutton" type="submit" className="btn btn-back mx-2 next float-end nextbtn">Next&emsp;<AiFillCaretRight />
-                        </button>   
+                        <div className="d-flex justify-content-end">
+                            <button title="nextbutton" type="submit" className="btn btn-back mx-2 next float-end nextbtn">
+                                Next&emsp;
+                                <AiFillCaretRight />
+                            </button> 
+                        </div>  
                     </div>
                 {/* </div> */}
             </div>

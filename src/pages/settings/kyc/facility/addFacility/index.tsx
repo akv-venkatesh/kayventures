@@ -609,482 +609,489 @@ class AddFacility extends Component<{}, typeState> {
 								</div>
 							</div>
 						</div> :
-						this.state.step2 ?
-							<div>
-								<div className="title my-2">
-							
-								{
-									stepper(this.state.stepPosition)
-								}
-									{/* <Stepper steps={steps} activeStep={this.state.stepPosition} /> */}
-								</div>
-								<FacilityHome onClick={this.handleEditFacility} selected_Facilities={facilities} />
-							</div> :
-							this.state.step3 ?
-								<div className="machine main d-flex facilitykyc1 h-100">
-									<div className="col-md-12 d-flex flex-column h-100">
-										<div className="facility1 d-flex">
-											<img src={Facility} alt="" />
-											<p>{this.state.editFacility}</p>
-										</div>
-										<div className="crossicon">
-											<ImCross className="cross" />
-										</div>
-										<Formik
-											initialValues={step3InitialValues}
-											validate={(values) => {
-												let errors = {};
-												if (!values.contactEmail) {
-													errors = { ...errors, contactEmail: 'Enter Email Id' };
-												} else if (
-													!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.contactEmail)
-												) {
-													errors = { ...errors, contactEmail: 'Invalid Email Id' };
-												}
-												if (!((values.addrLine1 || values.addrLine2) && (values.state && values.country && values.pincode))) {
-													errors = { ...errors, address: 'Enter All adresss fields' };
-												}
-												if (!values.contactPhone) {
-													errors = { ...errors, contactPhone: 'Enter Location' };
-												}
-												if (!values.addrLineType) {
-													errors = { ...errors, addrLineType: 'Select Location Type' };
-												}
-												if (!values.mentionNumber) {
-													errors = { ...errors, mentionNumber: 'Enter Mention Number' };
-												}
-												if (!values.locationMap) {
-													errors = { ...errors, locationMap: 'Enter Latitude and Longitude' };
-												}
-												if (!values.typeofService) {
-													errors = { ...errors, typeofService: 'Enter Type Of Service' };
-												}
-												if (!values.service) {
-													errors = { ...errors, service: 'Enter Service Name' };
-												}
-												if (!values.customercareAdministration) {
-													errors = { ...errors, customercareAdministration: 'Enter Customercare Administration' };
-												} else if (
-													!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.contactEmail)
-												) {
-													errors = { ...errors, customercareAdministration: 'Invalid Email Id' };
-												}
-												
-
-												return errors;
-											}}
-											onSubmit={(values, { setSubmitting }) => {
-												console.log(values)
-												let orginfo  =  {
-													location : {
-														addressLine1 : values.addrLine1,
-														addressLine2 : values.addrLine2,
-														state :values.state,
-														country:values.country,
-														pincode:values.pincode,
-														locationType : values.addrLineType,
-														locationMentionNumber : values.mentionNumber,
-														geolocation : values.locationMap
-													},
-													contact : {
-														email : values.contactEmail,
-														phone : values.contactPhone
-													},
-													serviceContact : {
-														typeOfService : values.typeofService,
-														service : values.service, 
-														customercareAdministration : values.customercareAdministration
-													}
-												}
-												this.setState({ step3NextButton: false, orgInfo: orginfo })
-											}}
-										>
-											{({
-												values,
-												errors,
-												touched,
-												handleChange,
-												handleBlur,
-												handleSubmit,
-												isSubmitting, setFieldValue, isValid, dirty
-											}) => (
-												<form onSubmit={handleSubmit} className="form-bh step-3">
-													{/* <div className="step-3"> */}
-													<div className="box pb-5 mt-2">
-														<div className="scroll pb-3">
-															<PerfectScrollbar>
-																<div className="d-flex flex-wrap pe-4 facilityform">
-																	<Container>
-																		<Row>
-																			<div className="h-100 facilityform ps-xl-5">
-																				<div className="d-flex align-items-center justify-content-space-between">
-																					<h5 className="mt-4">Location</h5>
-																				</div>
-																				<div className="row mt-4 d-flex ">
-																					<h3 className="col-md-3">Address<span className='required'> </span></h3>
-																					<div className="col-md-5 input-parent">
-																						<Field type="text" id="" className="input-box" name="addrLine1" aria-label="line1" onChange={handleChange} onBlur={handleBlur} value={values.addrLine1} placeholder="Line 1" />
-																						<Field type="text" id="" className="input-box" name="addrLine2" aria-label="line2" placeholder="Line 2" onChange={handleChange} onBlur={handleBlur} value={values.addrLine2} />
-																						<div className='inbox-line3'>
-																							<Field type="text" id="" className="input-box add" name="state" aria-label="state" placeholder="State" onChange={handleChange} onBlur={handleBlur} value={values.state} />
-																							<Field type="text" id="" className="input-box add" name="country" aria-label="country" placeholder="Country" onChange={handleChange} onBlur={handleBlur} value={values.country} />
-																							<Field type="text" id="" className="input-box add" name="pincode" aria-label="pincode" placeholder="Pincode" onChange={handleChange} onBlur={handleBlur} value={values.pincode} />
-																						</div><br />
-																						<p className="validation-error" style={{ color: 'red' }}>{errors.address}</p>
-																					</div>
-																				</div>
-																				<div className="row mt-5 d-flex ">
-																					<h3 className="col-md-3">Location Validity (<span style={{ color: '#0067E5' }}>If any</span>)</h3>
-																					<div className="col-md-4 input-parent">
-																						{/* <form data-testid="form-line-type"> */}
-																						<Select
-																							options={this.LineTypeOptions}
-																							width='100%'
-																							position='top'
-																							// name="addrLineType"
-																							inputId="line-type"
-																							placeholder='Select from options'
-																							onChange={(e: any) => setFieldValue("addrLineType", e.value)}
-																							isOptionDisabled={(option: any) => option.disabled}
-																						/>
-																						{/* </form> */}
-																						<p className="validation-error" style={{ color: 'red' }}>{errors.addrLineType && touched.addrLineType && errors.addrLineType}</p>
-																						<Field type="hidden" id="" className="input-box mt-3" name="addrLineType" aria-label="addrLineType" placeholder="Mention Number" onChange={handleChange} onBlur={handleBlur} value={values.addrLineType} />
-																						<Field type="text" id="" className="input-box mt-3" name="mentionNumber" aria-label="mentionNumber" placeholder="Mention Number" onChange={handleChange} onBlur={handleBlur} value={values.mentionNumber} />
-																						<p className="validation-error" style={{ color: 'red' }}>{errors.mentionNumber && touched.mentionNumber && errors.mentionNumber}</p>
-																					</div>
-																				</div>
-																				<div className="row  mt-5 d-flex ">
-																					<h3 className="col-md-3">Reverse Gecoding<span className='required'> </span></h3>
-																					<div className="col-md-4 input-parent">
-																					<div className="position-relative">
-																						<Field type="text" id="" className="input-box" name="locationMap" aria-label="locationMap" placeholder="Enter Latitude" onChange={handleChange} onBlur={handleBlur} value={values.locationMap} />
-																						<p className="validation-error" style={{ color: 'red' }}>{errors.locationMap && touched.locationMap && errors.locationMap}</p>
-																						</div>
-																						<div className="plusIcon d-flex">
-																							<img src={Vector5} className="image_one" alt="" />
-																							<p>Add in case of multiple locations</p>
-																						</div>
-																					</div>
-																				</div>
-																				<div className="d-flex align-items-center justify-content-space-between">
-																					<h5 className="mt-4">Contact</h5>
-																				</div>
-																				<div className="row mt-3 d-flex ">
-																					<h3 className="col-md-3">Phone No. <span className='required'> </span></h3>
-																					<div className="col-md-4 input-parent">
-																						<Field type="number" id="" className="input-box" name="contactPhone" aria-label="contactPhone" placeholder="+91 XXXXXXXXX" onChange={handleChange} onBlur={handleBlur} value={values.contactPhone} />
-																						<p className="validation-error" style={{ color: 'red' }}>{errors.contactPhone && touched.contactPhone && errors.contactPhone}</p>
-																					</div>
-																				</div>
-																				<div className="row mt-3 d-flex ">
-																					<h3 className="col-md-3">Email -Id<span className='required'> </span></h3>
-																					<div className="col-md-4 input-parent">
-																						<div className="position-relative"><Field type="text" id="" className="input-box" name="contactEmail" aria-label="contactEmail" placeholder="xyz@gmail.com or company Id" onChange={handleChange} onBlur={handleBlur} value={values.contactEmail} />
-																						<p className="validation-error" style={{ color: 'red' }}>{errors.contactEmail && touched.contactEmail && errors.contactEmail}</p>
-																						</div><div className="plusIcon d-flex">
-																							<img src={Vector5} className="image_one" alt="" />
-																							<p>Add in case of multiple contacts</p>
-																						</div>
-																					</div>
-																				</div>
-																				<div className="d-flex align-items-center justify-content-space-between">
-																					<h5 className="mt-4">Service Contact</h5>
-																				</div>
-																				<div className="row mt-3 d-flex ">
-																					<h3 className="col-md-3">Type of service<span className='required'> </span></h3>
-																					<div className="col-md-4 input-parent">
-																						<Field type="text" id="" className="input-box" name="typeofService" aria-label="typeofService" placeholder="Customer service, etc" onChange={handleChange} onBlur={handleBlur} value={values.typeofService} />
-																						<p className="validation-error" style={{ color: 'red' }}>{errors.typeofService && touched.typeofService && errors.typeofService}</p>
-																					</div>
-																				</div>
-																				<div className="row mt-3 d-flex ">
-																					<h3 className="col-md-3">Service<span className='required'> </span></h3>
-																					<div className="col-md-4 input-parent">
-																						<Field type="number" id="" className="input-box" name="service" aria-label="service" placeholder="+91 XXXXXXXXX" onChange={handleChange} onBlur={handleBlur} value={values.service} />
-																						<p className="validation-error" style={{ color: 'red' }}>{errors.service && touched.service && errors.service}</p>
-																					</div>
-																				</div>
-																				<div className="row mt-3 d-flex ">
-																					<h3 className="col-md-3">Customer care administration<span className='required'> </span></h3>
-																					<div className="col-md-4 input-parent">
-																						<div className="position-relative"><Field type="text" id="" className="input-box" name="customercareAdministration" aria-label="customercareAdministration" placeholder="xyz@gmail.com or company Id" onChange={handleChange} onBlur={handleBlur} value={values.customercareAdministration} />
-																						<p className="validation-error" style={{ color: 'red' }}>{errors.customercareAdministration && touched.customercareAdministration && errors.customercareAdministration}</p>
-																						</div>
-																						<div className="plusIcon d-flex">
-																							<img src={Vector5} className="image_one" alt="" />
-																							<p>Add in case of multiple service contacts</p>
-																						</div>
-																					</div>
-																				</div>
-																			</div>
-																		</Row>
-																	</Container>
-																</div>
-															</PerfectScrollbar>
-														</div>
-														<div className="summary">
-															<Button href="#" variant="secondary" size="sm">Summary
-																<RiArrowDropRightLine /></Button>
-														</div>
-														<div className="mt-5 m-auto bottombtn">
-															<div className="row ">
-																<div className="d-flex justify-content-center">
-																	<button type="button" className="btn back-btn mx-2 back float-start" onClick={this.step3Back}><AiFillCaretLeft />&ensp;Back</button>
-																	<div className="m-auto">
-																		<button type="button" className="btn btn-default  mx-4 remove " >Remove</button>
-																		<button type="submit" className="btn btn-default mx-4 saveq" disabled={!(isValid && dirty)} >Save</button>
-																	</div>
-																	<button type="button" className="btn next-btn mx-2 next float-end" onClick={this.step3Complete} disabled={this.state.step3NextButton} >Next&ensp;<AiFillCaretRight/> </button>
-																</div>
-															</div>
-														</div>
-													</div>
-													{/* </div> */}
-												</form>
-											)}
-										</Formik>
+					this.state.step2 ?
+						<div className="h-100">
+							<div className="title my-2">
+						
+							{
+								stepper(this.state.stepPosition)
+							}
+								{/* <Stepper steps={steps} activeStep={this.state.stepPosition} /> */}
+							</div>
+							<FacilityHome onClick={this.handleEditFacility} selected_Facilities={facilities} />
+						</div> :
+					this.state.step3 ?
+						<div className="machine main facilitykyc1 h-100">
+							<div className=" h-100">
+								<div className="d-flex justify-content-between">
+									<div className="facility1 d-flex">
+										<img src={Facility} alt="" />
+										<p>{this.state.editFacility}</p>
 									</div>
-								</div> :
-								this.state.step4 ?
-								<div className="machine main d-flex facilitykyc1 h-100">
-											<div className="col-md-12 d-flex flex-column h-100">
-												<div className="facility1 d-flex">
-													<img src={Facility} alt="" />
-													<p>{this.state.editFacility}</p>
-												</div>
-												<div className="crossicon">
-													<ImCross className="cross" />
-												</div>
-												<div className='step4-box'>
-													<div className="box mt-2">
-														{/* <div className="content"> */}
-														<div className="summary">
-															<Button href="#" variant="secondary" size="sm">Summary
-																<RiArrowDropRightLine /></Button>
-														</div>
-															<Businesshour onClickNext={this.step4Complete} onClickBack={this.step4Back} onClickSendValues={this.handleSaveHolidays}/>
-														{/* </div> */}
-													</div>
-												</div>
-											</div>
+									<div className="crossicon">
+										<ImCross className="cross" />
+									</div>
+								</div>
+								<Formik
+									initialValues={step3InitialValues}
+									validate={(values) => {
+										let errors = {};
+										if (!values.contactEmail) {
+											errors = { ...errors, contactEmail: 'Enter Email Id' };
+										} else if (
+											!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.contactEmail)
+										) {
+											errors = { ...errors, contactEmail: 'Invalid Email Id' };
+										}
+										if (!((values.addrLine1 || values.addrLine2) && (values.state && values.country && values.pincode))) {
+											errors = { ...errors, address: 'Enter All adresss fields' };
+										}
+										if (!values.contactPhone) {
+											errors = { ...errors, contactPhone: 'Enter Location' };
+										}
+										if (!values.addrLineType) {
+											errors = { ...errors, addrLineType: 'Select Location Type' };
+										}
+										if (!values.mentionNumber) {
+											errors = { ...errors, mentionNumber: 'Enter Mention Number' };
+										}
+										if (!values.locationMap) {
+											errors = { ...errors, locationMap: 'Enter Latitude and Longitude' };
+										}
+										if (!values.typeofService) {
+											errors = { ...errors, typeofService: 'Enter Type Of Service' };
+										}
+										if (!values.service) {
+											errors = { ...errors, service: 'Enter Service Name' };
+										}
+										if (!values.customercareAdministration) {
+											errors = { ...errors, customercareAdministration: 'Enter Customercare Administration' };
+										} else if (
+											!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.contactEmail)
+										) {
+											errors = { ...errors, customercareAdministration: 'Invalid Email Id' };
+										}
+										
 
-										</div>:
-									this.state.step5 ?
-										<div className="machine main d-flex facilitykyc1 h-100">
-											<div className="col-md-12 d-flex flex-column h-100">
-												<div className="facility1 d-flex">
-													<img src={Facility} alt="" />
-													<p>{this.state.editFacility}</p>
+										return errors;
+									}}
+									onSubmit={(values, { setSubmitting }) => {
+										console.log(values)
+										let orginfo  =  {
+											location : {
+												addressLine1 : values.addrLine1,
+												addressLine2 : values.addrLine2,
+												state :values.state,
+												country:values.country,
+												pincode:values.pincode,
+												locationType : values.addrLineType,
+												locationMentionNumber : values.mentionNumber,
+												geolocation : values.locationMap
+											},
+											contact : {
+												email : values.contactEmail,
+												phone : values.contactPhone
+											},
+											serviceContact : {
+												typeOfService : values.typeofService,
+												service : values.service, 
+												customercareAdministration : values.customercareAdministration
+											}
+										}
+										this.setState({ step3NextButton: false, orgInfo: orginfo })
+									}}
+								>
+									{({
+										values,
+										errors,
+										touched,
+										handleChange,
+										handleBlur,
+										handleSubmit,
+										isSubmitting, setFieldValue, isValid, dirty
+									}) => (
+										<form onSubmit={handleSubmit} className="form-bh step-3">
+											{/* <div className="step-3"> */}
+											<div className="box p-3">
+
+												<div className="summary pb-3 d-flex justify-content-end">
+													<Button variant="secondary" size="sm">Summary
+														<RiArrowDropRightLine />
+													</Button>
 												</div>
-												<div className="crossicon">
-													<ImCross className="cross" />
-												</div>
-												<div className='step5-box'>
-													<div className="box mt-2">
-														<div className="scroll pb-3">
-															{/* <div className="d-flex flex-wrap flex-column pe-4"> */}
-															{/* step5ActiveTab:{ Environmental:false, Social:false, Governance:false } */}
-															<div className="box_buttons d-flex justify-content-center pb-3">
-																<div className="position-relative">
-																	<Button href="#" variant="light" className={this.state.step5ActiveTab.Environmental ? "tab-btn active" : "tab-btn"} size="lg" onClick={this.handleEnviromentalChange} >
-																		Environmental
-																	</Button> {this.state.enviromentalCertificatesCount > 0 ? <span className="circle">{this.state.enviromentalCertificatesCount}</span> : " "}
-																</div>
-																<div className="position-relative">
-																	<Button href="#" variant="light" className={this.state.step5ActiveTab.Social ? "tab-btn active" : "tab-btn"} size="lg" onClick={this.handleSocialChange} >
-																		Social
-																	</Button>{this.state.socialCertificatesCount > 0 ? <span className="circle">{this.state.socialCertificatesCount}</span> : " "}
-																</div>
-																<div className="position-relative">
-																	<Button href="#" variant="light" className={this.state.step5ActiveTab.Governance ? "tab-btn active" : "tab-btn"} size="lg" onClick={this.handleGovernanceChange}>
-																		Governance
-																	</Button>{this.state.governanceCertificatesCount > 0 ? <span className="circle">{this.state.governanceCertificatesCount}</span> : " "}
-																</div>
-															</div>
-															{this.state.initialPage ?
-																<div className="box_content d-flex justify-content-center">
-																	<div className="d-flex flex-column justify-content-center align-items-center">
-																		<p>Click on the above buttons to add the</p><p> ESG Certificates.</p>
+												<div className="scroll pb-3">
+													<PerfectScrollbar>
+														<div className="d-flex flex-wrap pe-4 facilityform">
+															<Container>
+																<Row>
+																	<div className="h-100 facilityform ps-xl-5">
+																		<div className="d-flex align-items-center justify-content-space-between">
+																			<h5 className="mt-4">Location</h5>
+																		</div>
+																		<div className="row mt-4 d-flex ">
+																			<h3 className="col-md-3">Address<span className='required'> </span></h3>
+																			<div className="col-md-5 input-parent">
+																				<Field type="text" id="" className="input-box" name="addrLine1" aria-label="line1" onChange={handleChange} onBlur={handleBlur} value={values.addrLine1} placeholder="Line 1" />
+																				<Field type="text" id="" className="input-box" name="addrLine2" aria-label="line2" placeholder="Line 2" onChange={handleChange} onBlur={handleBlur} value={values.addrLine2} />
+																				<div className='inbox-line3'>
+																					<Field type="text" id="" className="input-box add" name="state" aria-label="state" placeholder="State" onChange={handleChange} onBlur={handleBlur} value={values.state} />
+																					<Field type="text" id="" className="input-box add" name="country" aria-label="country" placeholder="Country" onChange={handleChange} onBlur={handleBlur} value={values.country} />
+																					<Field type="text" id="" className="input-box add" name="pincode" aria-label="pincode" placeholder="Pincode" onChange={handleChange} onBlur={handleBlur} value={values.pincode} />
+																				</div><br />
+																				<p className="validation-error" style={{ color: 'red' }}>{errors.address}</p>
+																			</div>
+																		</div>
+																		<div className="row mt-5 d-flex ">
+																			<h3 className="col-md-3">Location Validity (<span style={{ color: '#0067E5' }}>If any</span>)</h3>
+																			<div className="col-md-4 input-parent">
+																				{/* <form data-testid="form-line-type"> */}
+																				<Select
+																					options={this.LineTypeOptions}
+																					width='100%'
+																					position='top'
+																					// name="addrLineType"
+																					inputId="line-type"
+																					placeholder='Select from options'
+																					onChange={(e: any) => setFieldValue("addrLineType", e.value)}
+																					isOptionDisabled={(option: any) => option.disabled}
+																				/>
+																				{/* </form> */}
+																				<p className="validation-error" style={{ color: 'red' }}>{errors.addrLineType && touched.addrLineType && errors.addrLineType}</p>
+																				<Field type="hidden" id="" className="input-box mt-3" name="addrLineType" aria-label="addrLineType" placeholder="Mention Number" onChange={handleChange} onBlur={handleBlur} value={values.addrLineType} />
+																				<Field type="text" id="" className="input-box mt-3" name="mentionNumber" aria-label="mentionNumber" placeholder="Mention Number" onChange={handleChange} onBlur={handleBlur} value={values.mentionNumber} />
+																				<p className="validation-error" style={{ color: 'red' }}>{errors.mentionNumber && touched.mentionNumber && errors.mentionNumber}</p>
+																			</div>
+																		</div>
+																		<div className="row  mt-5 d-flex ">
+																			<h3 className="col-md-3">Reverse Gecoding<span className='required'> </span></h3>
+																			<div className="col-md-4 input-parent">
+																			<div className="position-relative">
+																				<Field type="text" id="" className="input-box" name="locationMap" aria-label="locationMap" placeholder="Enter Latitude" onChange={handleChange} onBlur={handleBlur} value={values.locationMap} />
+																				<p className="validation-error" style={{ color: 'red' }}>{errors.locationMap && touched.locationMap && errors.locationMap}</p>
+																				</div>
+																				<div className="plusIcon d-flex">
+																					<img src={Vector5} className="image_one" alt="" />
+																					<p>Add in case of multiple locations</p>
+																				</div>
+																			</div>
+																		</div>
+																		<div className="d-flex align-items-center justify-content-space-between">
+																			<h5 className="mt-4">Contact</h5>
+																		</div>
+																		<div className="row mt-3 d-flex ">
+																			<h3 className="col-md-3">Phone No. <span className='required'> </span></h3>
+																			<div className="col-md-4 input-parent">
+																				<Field type="number" id="" className="input-box" name="contactPhone" aria-label="contactPhone" placeholder="+91 XXXXXXXXX" onChange={handleChange} onBlur={handleBlur} value={values.contactPhone} />
+																				<p className="validation-error" style={{ color: 'red' }}>{errors.contactPhone && touched.contactPhone && errors.contactPhone}</p>
+																			</div>
+																		</div>
+																		<div className="row mt-3 d-flex ">
+																			<h3 className="col-md-3">Email -Id<span className='required'> </span></h3>
+																			<div className="col-md-4 input-parent">
+																				<div className="position-relative"><Field type="text" id="" className="input-box" name="contactEmail" aria-label="contactEmail" placeholder="xyz@gmail.com or company Id" onChange={handleChange} onBlur={handleBlur} value={values.contactEmail} />
+																				<p className="validation-error" style={{ color: 'red' }}>{errors.contactEmail && touched.contactEmail && errors.contactEmail}</p>
+																				</div><div className="plusIcon d-flex">
+																					<img src={Vector5} className="image_one" alt="" />
+																					<p>Add in case of multiple contacts</p>
+																				</div>
+																			</div>
+																		</div>
+																		<div className="d-flex align-items-center justify-content-space-between">
+																			<h5 className="mt-4">Service Contact</h5>
+																		</div>
+																		<div className="row mt-3 d-flex ">
+																			<h3 className="col-md-3">Type of service<span className='required'> </span></h3>
+																			<div className="col-md-4 input-parent">
+																				<Field type="text" id="" className="input-box" name="typeofService" aria-label="typeofService" placeholder="Customer service, etc" onChange={handleChange} onBlur={handleBlur} value={values.typeofService} />
+																				<p className="validation-error" style={{ color: 'red' }}>{errors.typeofService && touched.typeofService && errors.typeofService}</p>
+																			</div>
+																		</div>
+																		<div className="row mt-3 d-flex ">
+																			<h3 className="col-md-3">Service<span className='required'> </span></h3>
+																			<div className="col-md-4 input-parent">
+																				<Field type="number" id="" className="input-box" name="service" aria-label="service" placeholder="+91 XXXXXXXXX" onChange={handleChange} onBlur={handleBlur} value={values.service} />
+																				<p className="validation-error" style={{ color: 'red' }}>{errors.service && touched.service && errors.service}</p>
+																			</div>
+																		</div>
+																		<div className="row mt-3 d-flex ">
+																			<h3 className="col-md-3">Customer care administration<span className='required'> </span></h3>
+																			<div className="col-md-4 input-parent">
+																				<div className="position-relative"><Field type="text" id="" className="input-box" name="customercareAdministration" aria-label="customercareAdministration" placeholder="xyz@gmail.com or company Id" onChange={handleChange} onBlur={handleBlur} value={values.customercareAdministration} />
+																				<p className="validation-error" style={{ color: 'red' }}>{errors.customercareAdministration && touched.customercareAdministration && errors.customercareAdministration}</p>
+																				</div>
+																				<div className="plusIcon d-flex">
+																					<img src={Vector5} className="image_one" alt="" />
+																					<p>Add in case of multiple service contacts</p>
+																				</div>
+																			</div>
+																		</div>
 																	</div>
-																</div> :
-																<div className="box_tab_content">
-																	{/* Initial Page */}
-																	{this.state.enviromentalChange ?
-																		<PerfectScrollbar>
-																			<div className="certificates-container">
-																				<div className="row certificates-content">
-																					<div className='col-md-12 pb-3'>
-																						<h4 className="">Attach your certificates</h4>
-																					</div>
-																					<div className='col-md-12 py-3 row'>
-																						<div className="left_column col-md-4 d-flex flex-column">
-																							<div className="mb-3">
-																								<form data-testid="governance">
-																									<label htmlFor="select-governance" hidden>Select Certificate</label>
-																									<Select
-																										name="governance"
-																										inputId="select-governance"
-																										options={this.environmental}
-																										width='100%'
-																										position='bottom'
-																										placeholder='Select Certificate'
-																										onChange={(value) => {this.handleCertificateTypeChange(value)}}></Select>
-																								</form>
-																							</div>
-																						</div>
-																						<div className="right_column col-md-8">
-																							<div className="input_file d-flex mb-4">
-																								<div className="position-relative file-upload">
-																									<label htmlFor="registration-certificate" className="label-file" id="file-chosen">Attach your certificate here</label>
-																									<input aria-label="registration-certificate" type="file" id="registration-certificate" name="registration-certificate"  onChange={(e)=>{this.handleCertificateFileChange(e)}}  placeholder="Attach your files here" hidden />
-																									<label htmlFor="registration-certificate" className='upload-icon'><ImAttachment /></label>
-																									{this.state.certificateFileName ? <p className='certificates-filename'><FaRegFileAlt /> {this.state.certificateFileName}</p>: ''}
-																								</div>
-																							</div>
-																							<div className="input_multifile d-flex mb-3 ">
-																								<div className='input_file'><Form.Control type="text" onChange={(e) => this.handleCertificateNoChange(e.target.value)}  value={this.state.certificateNo} placeholder="Certificate No." /></div>
-																								<div className='input_file'><DatePicker onChange={(value) => this.handleCertificateValidChange(value)}  /></div>
-																								<div className='input_file'><ScrollSelect options={this.cerifiedby} width='100%' position='bottom' placeholder='Cerified by' onChange={(value) => this.handleCertificateByChange(value)}></ScrollSelect></div>
-																							</div>
-																							<div className="plusIcon d-flex">
-																								<img src={Vector5} className="image_one" alt="" onClick={() => this.handleAddEnvironnentalCertificate()} />
-																								<p onClick={() => this.handleAddEnvironnentalCertificate()}>Add</p>
-																								{this.state.certificatesErrorMsg ? <p className='certificatesErrorMsg'>{this.state.certificatesErrorMsg}</p>: ''}
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																			</div>
-																		</PerfectScrollbar> : null}
-																	{/* enviromental Page */}
-
-																	{this.state.socialChange ?
-																		<PerfectScrollbar>
-																			<div className="certificates-container">
-																				<div className="row certificates-content">
-																					<div className='col-md-12 pb-3'>
-																						<h4 className="">Attach your certificates</h4>
-																					</div>
-																					<div className='col-md-12 py-3 row'>
-																						<div className="left_column col-md-4 d-flex flex-column">
-																							<div className="mb-3">
-																								<form data-testid="governance">
-																									<label htmlFor="select-governance" hidden>Select Certificate</label>
-																									<Select
-																										name="governance"
-																										inputId="select-governance"
-																										options={this.social}
-																										width='100%'
-																										position='bottom'
-																										placeholder='Select Certificate'
-																										onChange={(value) => {this.handleCertificateTypeChange(value)}}></Select>
-																								</form>
-																							</div>
-																						</div>
-																						<div className="right_column col-md-8">
-																							<div className="input_file d-flex mb-4">
-																								<div className="position-relative file-upload">
-																									<label htmlFor="registration-certificate" className="label-file" id="file-chosen">Attach your certificate here</label>
-																									<input aria-label="registration-certificate" type="file" id="registration-certificate" name="registration-certificate"  onChange={(e)=>{this.handleCertificateFileChange(e)}}  placeholder="Attach your files here" hidden />
-																									<label htmlFor="registration-certificate" className='upload-icon'><ImAttachment /></label>
-																									{this.state.certificateFileName ? <p className='certificates-filename'><FaRegFileAlt /> {this.state.certificateFileName}</p>: ''}
-																								</div>
-																							</div>
-																							<div className="input_multifile d-flex mb-3 ">
-																								<div className='input_file'><Form.Control type="text" onChange={(e) => this.handleCertificateNoChange(e.target.value)} value={this.state.certificateNo} placeholder="Certificate No." /></div>
-																								<div className='input_file'><DatePicker onChange={(value) => this.handleCertificateValidChange(value)} /></div>
-																								<div className='input_file'><ScrollSelect options={this.cerifiedby} width='100%' position='bottom' placeholder='Cerified by' onChange={(value) => this.handleCertificateByChange(value)}></ScrollSelect></div>
-																							</div>
-																							<div className="plusIcon d-flex">
-																								<img src={Vector5} className="image_one" alt="" onClick={() => this.handleAddSocialCertificate()} />
-																								<p onClick={() => this.handleAddSocialCertificate()}>Add</p>
-																								{this.state.certificatesErrorMsg ? <p className='certificatesErrorMsg'>{this.state.certificatesErrorMsg}</p>: ''}
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																			</div>
-																		</PerfectScrollbar> : null}
-																	{/* Social Page */}
-
-																	{this.state.GovernanceChange ?
-																		<PerfectScrollbar>
-																			<div className="certificates-container">
-																				<div className="row certificates-content">
-																					<div className='col-md-12 pb-3'>
-																						<h4 className="">Attach your certificates</h4>
-																					</div>
-																					<div className='col-md-12 py-3 row'>
-																						<div className="left_column col-md-4 d-flex flex-column">
-																							<div className="mb-3">
-																								<form data-testid="governance">
-																									<label htmlFor="select-governance" hidden>Select Certificate</label>
-																									<Select
-																										name="governance"
-																										inputId="select-governance"
-																										options={this.governance}
-																										width='100%'
-																										position='bottom'
-																										placeholder='Select Certificate'
-																										onChange={(value) => {this.handleCertificateTypeChange(value)}}></Select>
-																								</form>
-																							</div>
-																						</div>
-																						<div className="right_column col-md-8">
-																							<div className="input_file d-flex mb-4">
-																								<div className="position-relative file-upload">
-																									<label htmlFor="registration-certificate" className="label-file" id="file-chosen">Attach your certificate here</label>
-																									<input aria-label="registration-certificate" type="file" id="registration-certificate" name="registration-certificate" onChange={(e)=>{this.handleCertificateFileChange(e)}} placeholder="Attach your files here" hidden />
-																									<label htmlFor="registration-certificate" className='upload-icon'><ImAttachment /></label>
-																									{this.state.certificateFileName ? <p className='certificates-filename'><FaRegFileAlt /> {this.state.certificateFileName}</p>: ''}
-																								</div>
-																							</div>
-																							<div className="input_multifile d-flex mb-3 ">
-																								<div className='input_file'><Form.Control onChange={(e) => this.handleCertificateNoChange(e.target.value)} type="text" value={this.state.certificateNo} placeholder="Certificate No." /></div>
-																								<div className='input_file'><DatePicker onChange={(value) => this.handleCertificateValidChange(value)} /></div>
-																								<div className='input_file'><ScrollSelect options={this.cerifiedby} width='100%' position='bottom' placeholder='Cerified by' onChange={(value) => this.handleCertificateByChange(value)}></ScrollSelect></div>
-																							</div>
-																							<div className="plusIcon d-flex" >
-																								<img src={Vector5} className="image_one" alt="" onClick={() => this.handleAddGovernanceCertificate()} />
-																								<p onClick={() => this.handleAddGovernanceCertificate()}>Add</p>
-																								{this.state.certificatesErrorMsg ? <p className='certificatesErrorMsg'>{this.state.certificatesErrorMsg}</p>: ''}
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																			</div>
-																		</PerfectScrollbar> : null}
-																	{/* Governance Page */}
-																</div>
-															}
+																</Row>
+															</Container>
 														</div>
-														<div className="summary">
-															<Button href="#" variant="secondary" size="sm" disabled={this.state.summaryButton ? false : true} onClick={this.handleShow}>Summary
-																<RiArrowDropRightLine /></Button>
-														</div>
-														<div className="mt-5 m-auto bottombtn">
-															<div className="row ">
-																<div className="d-flex justify-content-center">
-																	<button type="button" onClick={this.step5Back} className="btn back-btn mx-2 back float-start"><AiFillCaretLeft />&ensp;Back</button>
-																	
-																	<div className="m-auto">
-																		<button type="button" className="btn btn-default  mx-4 remove"  >Remove</button>
-																		<button type="submit" className="btn btn-default mx-4 saveq" onClick={() =>this.handleSaveCertificates()} disabled={ this.state.enviromentalCertificatesCount || this.state.socialCertificatesCount || this.state.governanceCertificatesCount  ? false : true  }>Save</button>
-																	</div>
-																	
-																	<OverlayTrigger trigger="click" placement="top" overlay={popover2}>
-																		<Button className="info-pop-btn" disabled={this.state.step5NextButton ? false : true} ><MdInfo className="info-pop-icon"/> </Button>
-																	</OverlayTrigger>
-																	<button type="button" className="btn next-btn mx-2 next float-end" onClick={() => {console.log(this.state.certificates)}} disabled={this.state.step5NextButton ? false : true} >Next&ensp;<AiFillCaretRight /> </button>
-																</div>
+													</PerfectScrollbar>
+												</div>
+												<div className="py-3 m-auto bottombtn">
+													<div className="">
+														<div className="d-flex justify-content-center">
+															<button type="button" className="btn back-btn mx-2 back float-start" onClick={this.step3Back}><AiFillCaretLeft />&ensp;Back</button>
+															<div className="m-auto">
+																<button type="button" className="btn btn-default  mx-4 remove " >Remove</button>
+																<button type="submit" className="btn btn-default mx-4 saveq" disabled={!(isValid && dirty)} >Save</button>
 															</div>
+															<button type="button" className="btn next-btn mx-2 next float-end" onClick={this.step3Complete} disabled={this.state.step3NextButton} >Next&ensp;<AiFillCaretRight/> </button>
 														</div>
 													</div>
 												</div>
 											</div>
-										</div> :
-										<></>
+											{/* </div> */}
+										</form>
+									)}
+								</Formik>
+							</div>
+						</div> :
+					this.state.step4 ?
+						<div className="machine main facilitykyc1 h-100">
+							<div className=" h-100">
+								<div className="d-flex justify-content-between">
+									<div className="facility1 d-flex">
+										<img src={Facility} alt="" />
+										<p>{this.state.editFacility}</p>
+									</div>
+									<div className="crossicon">
+										<ImCross className="cross" />
+									</div>
+								</div>
+								<div className='step4-box'>
+									<div className="box">
+										{/* <div className="content"> */}
+										<div className="summary py-3 d-flex justify-content-end">
+											<Button variant="secondary" size="sm">Summary
+												<RiArrowDropRightLine /></Button>
+										</div>
+											<Businesshour onClickNext={this.step4Complete} onClickBack={this.step4Back} onClickSendValues={this.handleSaveHolidays}/>
+										{/* </div> */}
+									</div>
+								</div>
+							</div>
+						</div>:
+					this.state.step5 ?
+						<div className="machine main d-flex facilitykyc1 h-100">
+							<div className="col-md-12 d-flex flex-column h-100">
+								<div className="d-flex justify-content-between">
+									<div className="facility1 d-flex">
+										<img src={Facility} alt="" />
+										<p>{this.state.editFacility}</p>
+									</div>
+									<div className="crossicon">
+										<ImCross className="cross" />
+									</div>
+								</div>
+								<div className='step5-box'>
+									<div className="box">
+										<div className="summary d-flex justify-content-end py-3">
+											<Button href="#" variant="secondary" size="sm" disabled={this.state.summaryButton ? false : true} onClick={this.handleShow}>Summary
+												<RiArrowDropRightLine /></Button>
+										</div>
+										<div className="scroll">
+											{/* <div className="d-flex flex-wrap flex-column pe-4"> */}
+											{/* step5ActiveTab:{ Environmental:false, Social:false, Governance:false } */}
+											<div className="box_buttons d-flex justify-content-center pb-3">
+												<div className="position-relative">
+													<Button href="#" variant="light" className={this.state.step5ActiveTab.Environmental ? "tab-btn active" : "tab-btn"} size="lg" onClick={this.handleEnviromentalChange} >
+														Environmental
+													</Button> {this.state.enviromentalCertificatesCount > 0 ? <span className="circle">{this.state.enviromentalCertificatesCount}</span> : " "}
+												</div>
+												<div className="position-relative">
+													<Button href="#" variant="light" className={this.state.step5ActiveTab.Social ? "tab-btn active" : "tab-btn"} size="lg" onClick={this.handleSocialChange} >
+														Social
+													</Button>{this.state.socialCertificatesCount > 0 ? <span className="circle">{this.state.socialCertificatesCount}</span> : " "}
+												</div>
+												<div className="position-relative">
+													<Button href="#" variant="light" className={this.state.step5ActiveTab.Governance ? "tab-btn active" : "tab-btn"} size="lg" onClick={this.handleGovernanceChange}>
+														Governance
+													</Button>{this.state.governanceCertificatesCount > 0 ? <span className="circle">{this.state.governanceCertificatesCount}</span> : " "}
+												</div>
+											</div>
+											{this.state.initialPage ?
+												<div className="box_content d-flex justify-content-center">
+													<div className="d-flex flex-column justify-content-center align-items-center">
+														<p>Click on the above buttons to add the</p><p> ESG Certificates.</p>
+													</div>
+												</div> :
+												<div className="box_tab_content">
+													{/* Initial Page */}
+													{this.state.enviromentalChange ?
+														<PerfectScrollbar>
+															<div className="certificates-container">
+																<div className="row certificates-content">
+																	<div className='col-md-12 pb-3'>
+																		<h4 className="">Attach your certificates</h4>
+																	</div>
+																	<div className='col-md-12 py-3 row'>
+																		<div className="left_column col-md-4 d-flex flex-column">
+																			<div className="mb-3">
+																				<form data-testid="governance">
+																					<label htmlFor="select-governance" hidden>Select Certificate</label>
+																					<Select
+																						name="governance"
+																						inputId="select-governance"
+																						options={this.environmental}
+																						width='100%'
+																						position='bottom'
+																						placeholder='Select Certificate'
+																						onChange={(value) => {this.handleCertificateTypeChange(value)}}></Select>
+																				</form>
+																			</div>
+																		</div>
+																		<div className="right_column col-md-8">
+																			<div className="input_file d-flex mb-4">
+																				<div className="position-relative file-upload">
+																					<label htmlFor="registration-certificate" className="label-file" id="file-chosen">Attach your certificate here</label>
+																					<input aria-label="registration-certificate" type="file" id="registration-certificate" name="registration-certificate"  onChange={(e)=>{this.handleCertificateFileChange(e)}}  placeholder="Attach your files here" hidden />
+																					<label htmlFor="registration-certificate" className='upload-icon'><ImAttachment /></label>
+																					{this.state.certificateFileName ? <p className='certificates-filename'><FaRegFileAlt /> {this.state.certificateFileName}</p>: ''}
+																				</div>
+																			</div>
+																			<div className="input_multifile d-flex mb-3 ">
+																				<div className='input_file'><Form.Control type="text" onChange={(e) => this.handleCertificateNoChange(e.target.value)}  value={this.state.certificateNo} placeholder="Certificate No." /></div>
+																				<div className='input_file'><DatePicker onChange={(value) => this.handleCertificateValidChange(value)}  /></div>
+																				<div className='input_file'><ScrollSelect options={this.cerifiedby} width='100%' position='bottom' placeholder='Cerified by' onChange={(value) => this.handleCertificateByChange(value)}></ScrollSelect></div>
+																			</div>
+																			<div className="plusIcon d-flex">
+																				<img src={Vector5} className="image_one" alt="" onClick={() => this.handleAddEnvironnentalCertificate()} />
+																				<p onClick={() => this.handleAddEnvironnentalCertificate()}>Add</p>
+																				{this.state.certificatesErrorMsg ? <p className='certificatesErrorMsg'>{this.state.certificatesErrorMsg}</p>: ''}
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</PerfectScrollbar> : null}
+													{/* enviromental Page */}
+
+													{this.state.socialChange ?
+														<PerfectScrollbar>
+															<div className="certificates-container">
+																<div className="row certificates-content">
+																	<div className='col-md-12 pb-3'>
+																		<h4 className="">Attach your certificates</h4>
+																	</div>
+																	<div className='col-md-12 py-3 row'>
+																		<div className="left_column col-md-4 d-flex flex-column">
+																			<div className="mb-3">
+																				<form data-testid="governance">
+																					<label htmlFor="select-governance" hidden>Select Certificate</label>
+																					<Select
+																						name="governance"
+																						inputId="select-governance"
+																						options={this.social}
+																						width='100%'
+																						position='bottom'
+																						placeholder='Select Certificate'
+																						onChange={(value) => {this.handleCertificateTypeChange(value)}}></Select>
+																				</form>
+																			</div>
+																		</div>
+																		<div className="right_column col-md-8">
+																			<div className="input_file d-flex mb-4">
+																				<div className="position-relative file-upload">
+																					<label htmlFor="registration-certificate" className="label-file" id="file-chosen">Attach your certificate here</label>
+																					<input aria-label="registration-certificate" type="file" id="registration-certificate" name="registration-certificate"  onChange={(e)=>{this.handleCertificateFileChange(e)}}  placeholder="Attach your files here" hidden />
+																					<label htmlFor="registration-certificate" className='upload-icon'><ImAttachment /></label>
+																					{this.state.certificateFileName ? <p className='certificates-filename'><FaRegFileAlt /> {this.state.certificateFileName}</p>: ''}
+																				</div>
+																			</div>
+																			<div className="input_multifile d-flex mb-3 ">
+																				<div className='input_file'><Form.Control type="text" onChange={(e) => this.handleCertificateNoChange(e.target.value)} value={this.state.certificateNo} placeholder="Certificate No." /></div>
+																				<div className='input_file'><DatePicker onChange={(value) => this.handleCertificateValidChange(value)} /></div>
+																				<div className='input_file'><ScrollSelect options={this.cerifiedby} width='100%' position='bottom' placeholder='Cerified by' onChange={(value) => this.handleCertificateByChange(value)}></ScrollSelect></div>
+																			</div>
+																			<div className="plusIcon d-flex">
+																				<img src={Vector5} className="image_one" alt="" onClick={() => this.handleAddSocialCertificate()} />
+																				<p onClick={() => this.handleAddSocialCertificate()}>Add</p>
+																				{this.state.certificatesErrorMsg ? <p className='certificatesErrorMsg'>{this.state.certificatesErrorMsg}</p>: ''}
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</PerfectScrollbar> : null}
+													{/* Social Page */}
+
+													{this.state.GovernanceChange ?
+														<PerfectScrollbar>
+															<div className="certificates-container">
+																<div className="row certificates-content">
+																	<div className='col-md-12 pb-3'>
+																		<h4 className="">Attach your certificates</h4>
+																	</div>
+																	<div className='col-md-12 py-3 row'>
+																		<div className="left_column col-md-4 d-flex flex-column">
+																			<div className="mb-3">
+																				<form data-testid="governance">
+																					<label htmlFor="select-governance" hidden>Select Certificate</label>
+																					<Select
+																						name="governance"
+																						inputId="select-governance"
+																						options={this.governance}
+																						width='100%'
+																						position='bottom'
+																						placeholder='Select Certificate'
+																						onChange={(value) => {this.handleCertificateTypeChange(value)}}></Select>
+																				</form>
+																			</div>
+																		</div>
+																		<div className="right_column col-md-8">
+																			<div className="input_file d-flex mb-4">
+																				<div className="position-relative file-upload">
+																					<label htmlFor="registration-certificate" className="label-file" id="file-chosen">Attach your certificate here</label>
+																					<input aria-label="registration-certificate" type="file" id="registration-certificate" name="registration-certificate" onChange={(e)=>{this.handleCertificateFileChange(e)}} placeholder="Attach your files here" hidden />
+																					<label htmlFor="registration-certificate" className='upload-icon'><ImAttachment /></label>
+																					{this.state.certificateFileName ? <p className='certificates-filename'><FaRegFileAlt /> {this.state.certificateFileName}</p>: ''}
+																				</div>
+																			</div>
+																			<div className="input_multifile d-flex mb-3 ">
+																				<div className='input_file'><Form.Control onChange={(e) => this.handleCertificateNoChange(e.target.value)} type="text" value={this.state.certificateNo} placeholder="Certificate No." /></div>
+																				<div className='input_file'><DatePicker onChange={(value) => this.handleCertificateValidChange(value)} /></div>
+																				<div className='input_file'><ScrollSelect options={this.cerifiedby} width='100%' position='bottom' placeholder='Cerified by' onChange={(value) => this.handleCertificateByChange(value)}></ScrollSelect></div>
+																			</div>
+																			<div className="plusIcon d-flex" >
+																				<img src={Vector5} className="image_one" alt="" onClick={() => this.handleAddGovernanceCertificate()} />
+																				<p onClick={() => this.handleAddGovernanceCertificate()}>Add</p>
+																				{this.state.certificatesErrorMsg ? <p className='certificatesErrorMsg'>{this.state.certificatesErrorMsg}</p>: ''}
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</PerfectScrollbar> : null}
+													{/* Governance Page */}
+												</div>
+											}
+										</div>
+										<div className="py-3 m-auto bottombtn">
+											<div className="row ">
+												<div className="d-flex justify-content-center">
+													<button type="button" onClick={this.step5Back} className="btn back-btn mx-2 back"><AiFillCaretLeft />&ensp;Back</button>
+													
+													<div className="m-auto">
+														<button type="button" className="btn btn-default  mx-4 remove"  >Remove</button>
+														<button type="submit" className="btn btn-default mx-4 saveq" onClick={() =>this.handleSaveCertificates()} disabled={ this.state.enviromentalCertificatesCount || this.state.socialCertificatesCount || this.state.governanceCertificatesCount  ? false : true  }>Save</button>
+													</div>
+													
+													<OverlayTrigger trigger="click" placement="top" overlay={popover2}>
+														<Button className="info-pop-btn" disabled={this.state.step5NextButton ? false : true} ><MdInfo className="info-pop-icon"/> </Button>
+													</OverlayTrigger>
+													<button type="button" className="btn next-btn mx-2 next " onClick={() => {console.log(this.state.certificates)}} disabled={this.state.step5NextButton ? false : true} >Next&ensp;<AiFillCaretRight /> </button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div> :
+						<></>
 				}
 
 
@@ -1250,24 +1257,6 @@ class AddFacility extends Component<{}, typeState> {
 						</div>
 					</Modal.Body>
 				</Modal>
-
-
-				<Modal
-					show={this.state.firstModel}
-					size="lg"
-					aria-labelledby="contained-modal-title-vcenter"
-					centered
-					className="addfacilityfirstmodal"
-					// onHide={() => this.handleHide()}
-					>
-					<Modal.Header></Modal.Header>
-						<Modal.Body className="p-5">
-							<h4 className="modal-title">What is a Facility ?</h4>
-							<h5 className="modal-discription mt-4">A Facility is a place where youmight be running one or more of the operations indicated in your Organization KYC</h5><br />
-							<h5 className="modal-discription">Please add the facilities under the Organization KYC and compile their KYC’s separately</h5>
-							<div className="bttn-container text-center mt-4"><Button className="bttn" onClick={()=>this.setState({firstModel:false})}>Okay</Button></div>
-						</Modal.Body>
-					</Modal>
 
 			</div>
 		)

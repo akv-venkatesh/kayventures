@@ -52,7 +52,8 @@ interface typeState {
 	step1Nextbtn: boolean,
 	step2Nextbtn: boolean,
 	step3Nextbtn: boolean,
-	submitbtn: boolean
+	submitbtn: boolean,
+	orgcomplete: boolean,
 }
 
 class Organization extends Component<{}, typeState> {
@@ -84,7 +85,8 @@ class Organization extends Component<{}, typeState> {
 			step1Nextbtn: true,
 			step2Nextbtn: true,
 			step3Nextbtn: true,
-			submitbtn: true
+			submitbtn: true,
+			orgcomplete: false,
 		}
 	}
 
@@ -217,14 +219,10 @@ class Organization extends Component<{}, typeState> {
 	}
 
 
-	productPageRoute = (e: any) => {
-
-		console.log('/settings/kyc/Organization/product-selection');
-		{/* <Redirect to="/settings/kyc/Organization/product-selection" /> */ }
-		if (true) {
-			return <Navigate to="/settings/kyc/Organization/product-selection" />
-		}
-
+	productPageRoute = (e: any) => {		
+		this.setState({
+			orgcomplete: true,
+		})
 	}
 
 
@@ -240,6 +238,7 @@ class Organization extends Component<{}, typeState> {
 	]
 
 	render(): React.ReactNode {
+
 		const steps = [{ label: 'KYC', id: 0 }, { label: 'Product Selection', id: 1 }, { label: 'Machinery', id: 2 }, { label: 'Operations', id: 3 }];
 		console.log(this.state.step1FromValues);
 		console.log(this.state.step2FromValues)
@@ -281,6 +280,10 @@ class Organization extends Component<{}, typeState> {
 		});
 		const { uploadedFileimage, uploadedFile } = this.state;
 		// console.log(uploadedFile);
+
+		if(this.state.orgcomplete){
+			return <Navigate to="/settings/kyc/Organization/product-selection" />
+		}
 		return (
 			<div className="kyc-org-kyc h-100">
 				<div className="organization h-100">
@@ -295,7 +298,7 @@ class Organization extends Component<{}, typeState> {
 						}
 						{
 							this.state.step1 ?
-								<div className="organstep1">
+								<div className="organstep1 h-100">
 									<div className="contentcen">
 										<div className="orgcon">
 											<AiFillExclamationCircle />
@@ -307,12 +310,12 @@ class Organization extends Component<{}, typeState> {
 											</div>
 										</div>
 									</div>
-									<span className="clickadd">Click to start with the Organization kYC</span>
+									<span className="clickadd py-3">Click to start with the Organization kYC</span>
 								</div> :
 								this.state.step2 ?
-									<div className="organization organstep2 machine main d-flex step2">
+									<div className="organization organstep2 machine main step2">
 										<div className="h-100">
-											<div className=" h-100" style={{ width: "91vw" }}>
+											<div className=" h-100">
 												<Formik
 													initialValues={{
 														leagalname: '',
@@ -353,7 +356,7 @@ class Organization extends Component<{}, typeState> {
 													}) => (
 														<form onSubmit={handleSubmit} className="ps-xl-5 form-bh">
 															<PerfectScrollbar >
-																<div className="h-100 businesshour px-4 pt-1 pb-5 organizationinfo">
+																<div className="h-100 px-4 pt-1 pb-5 organizationinfo">
 																	<div className="ps-lg-5">
 
 																		<div className="d-flex align-items-center justify-content-space-between">
@@ -380,7 +383,7 @@ class Organization extends Component<{}, typeState> {
 																			<label className="col-md-3" htmlFor="upload-logo" id="file-chosen">Legal name of the company<span className='required'> </span></label>
 																			<div className="col-md-4">
 																				<label htmlFor="leagal_name" id="leagal_name"> </label>
-																				<Field aria-label="leagal_name" type="text" id="" className="input-box legal-name" name="leagalname" placeholder="Syndicate Fashions"
+																				<Field aria-label="leagal_name" type="text" id="" className="input-box legal-name" name="leagalname" placeholder="Enter Name"
 																					onChange={handleChange}
 																					onBlur={handleBlur}
 																					value={values.leagalname} />
@@ -646,7 +649,7 @@ class Organization extends Component<{}, typeState> {
 															</PerfectScrollbar>
 
 															{/* footer   button */}
-															<div className="col-md-11 m-auto ">
+															<div className="px-5 py-3 m-auto ">
 																<div className="row">
 																	<div className="w-100 d-flex justify-content-center">
 																		<button title="backbutton" onClick={this.step0complete} type="button" className=" btn-back " ><AiFillCaretLeft className="left-array-btn" />Back</button>
@@ -688,19 +691,17 @@ class Organization extends Component<{}, typeState> {
 													)}
 												</Formik>
 											</div>
-
-
 										</div>
 									</div> :
 									this.state.step3 ?
-										<div className="machine main d-flex facilitykyc1 organstep3">
+										<div className="machine main facilitykyc1 organstep3">
 											<div className="h-100">
 												{/* <div className="crossicon">
-										<ImCross className="cross" />
-									</div> */}
-												<div className="h-100" style={{ width: "91vw" }}>
+													<ImCross className="cross" />
+												</div> */}
+												<div className="h-100">
 
-													<div className="scroll">
+													<div className="scroll h-100">
 														<Formik
 															initialValues={step3InitialValues}
 															validate={(values) => {
@@ -862,7 +863,7 @@ class Organization extends Component<{}, typeState> {
 																		</div>
 																	</PerfectScrollbar>
 																	{/* footer   button */}
-																	<div className="col-md-11 m-auto  ">
+																	<div className=" px-5 py-3 m-auto  ">
 																		<div className="row">
 																			<div className="w-100 d-flex justify-content-center">
 																				<button title="backbutton" type="button" onClick={this.step1complete} className=" btn-back " ><AiFillCaretLeft className="left-array-btn" />Back</button>
@@ -926,17 +927,13 @@ class Organization extends Component<{}, typeState> {
 						id="org_summary"
 						backdropClassName="org_summary-back"
 					>
-						<Modal.Header closeButton />
-						<Modal.Body className="">
+						<Modal.Header closeButton  className='p-0'/>
+						<Modal.Body className="p-4">
 
-							<div className="organisyn">
+							<div className="organisyn h-100">
 
-								<PerfectScrollbar
-									options={{ suppressScrollY: false, suppressScrollX: true }}
-									onScrollY={(container) =>
-										console.log(`scrolled to: ${container.scrollTop}.`)
-									}
-								><div className="profilechoose d-flex">
+								<PerfectScrollbar>
+									<div className="profilechoose d-flex">
 										<label htmlFor="upload-logo" id="file-chosen"> </label>
 										{/* <Field type="file" id="upload-logo" name="upload_logo" hidden/> */}
 										<label htmlFor="upload-logo"><img src={uploadedFileimage ? uploadedFileimage : logo_img} alt="insertImage" className="logo-img mr-3" /></label>
@@ -946,9 +943,9 @@ class Organization extends Component<{}, typeState> {
 											<span className="text-muted">DD/MM/YYYY</span></div>
 
 										{/* step1: boolean,
-	step2: boolean,
-	step3: boolean,
-	step4 */}
+											step2: boolean,
+											step3: boolean,
+											step4 */}
 									</div>
 									<ul>
 										<li><span>PAN Number <span className="clrred">*</span></span>
@@ -981,7 +978,7 @@ class Organization extends Component<{}, typeState> {
 									</ul>
 
 									<h5>Company Link<label className="position-absolute edit"><FaRegEdit onClick={() => this.setState({ showModel: false, step2: true, step3: false, step4: false })} /></label></h5>
-									<ul className="row">
+									<ul className="">
 
 										<li className="d-flex">
 											<span className="wdth30">Website Link</span>
@@ -994,7 +991,7 @@ class Organization extends Component<{}, typeState> {
 									</ul>
 
 									<h5>Location<label className="position-absolute edit"><FaRegEdit onClick={() => this.setState({ showModel: false, step2: false, step3: true, step4: false })} /></label></h5>
-									<ul className="row">
+									<ul className="">
 										<li className="d-flex">
 											<span className="wdth30">Location 1:-</span>
 											<div>
@@ -1007,34 +1004,118 @@ class Organization extends Component<{}, typeState> {
 									</ul>
 									<h5>Business Hours<label className="position-absolute edit"><FaRegEdit onClick={() => this.setState({ showModel: false, step2: false, step3: false, step4: true })} /></label></h5>
 									<h4>Days</h4>
-									<ul className="row">
+									<ul className="">
 										<li className="d-flex">
 											<span className="wdth30">Monday</span>
-											<span className="clrblur">8 AM - 6PM</span>
+											<span className="clrblur">
+												{
+													this.state.step3FromValues ?
+													<>
+														<span>{this.state.step3FromValues.value.mon_start_time}</span>
+														<span>{this.state.step3FromValues.value.mon_start_time_day}</span>
+														- 
+														<span>{this.state.step3FromValues.value.mon_end_time}</span>
+														<span>{this.state.step3FromValues.value.mon_end_time_day}</span>
+													</> :
+													<></>
+												}
+											</span>
 										</li>
 										<li className="d-flex">
 											<span className="wdth30">Tuesday</span>
-											<span className="clrblur">8 AM - 6PM</span>
+											<span className="clrblur">
+												{	
+													this.state.step3FromValues ?
+													<>
+														<span>{this.state.step3FromValues.value.tue_start_time}</span>
+														<span>{this.state.step3FromValues.value.tue_start_time_day}</span>
+														- 
+														<span>{this.state.step3FromValues.value.tue_end_time}</span>
+														<span>{this.state.step3FromValues.value.tue_end_time_day}</span>
+													</> :
+													<></>
+												}
+											</span>
 										</li>
 										<li className="d-flex">
 											<span className="wdth30">Wednesday</span>
-											<span className="clrblur">8 AM - 6PM</span>
+											<span className="clrblur">
+												{	
+													this.state.step3FromValues ?
+													<>
+														<span>{this.state.step3FromValues.value.wed_start_time}</span>
+														<span>{this.state.step3FromValues.value.wed_start_time_day}</span>
+														- 
+														<span>{this.state.step3FromValues.value.wed_end_time}</span>
+														<span>{this.state.step3FromValues.value.wed_end_time_day}</span>
+													</> :
+													<></>
+												}
+											</span>
 										</li>
 										<li className="d-flex">
 											<span className="wdth30">Thrusday</span>
-											<span className="clrblur">8 AM - 6PM</span>
+											<span className="clrblur">
+												{	
+													this.state.step3FromValues ?
+													<>
+														<span>{this.state.step3FromValues.value.thur_start_time}</span>
+														<span>{this.state.step3FromValues.value.thur_start_time_day}</span>
+														- 
+														<span>{this.state.step3FromValues.value.thur_end_time}</span>
+														<span>{this.state.step3FromValues.value.thur_end_time_day}</span>
+													</> :
+													<></>
+												}
+											</span>
 										</li>
 										<li className="d-flex">
 											<span className="wdth30">Friday</span>
-											<span className="clrblur">8 AM - 6PM</span>
+											<span className="clrblur">
+												{	
+													this.state.step3FromValues ?
+													<>
+														<span>{this.state.step3FromValues.value.fri_start_time}</span>
+														<span>{this.state.step3FromValues.value.fri_start_time_day}</span>
+														- 
+														<span>{this.state.step3FromValues.value.fri_end_time}</span>
+														<span>{this.state.step3FromValues.value.fri_end_time_day}</span>
+													</> :
+													<></>
+												}
+											</span>
 										</li>
 										<li className="d-flex">
 											<span className="wdth30">Saturday</span>
-											<span className="clrblur">8 AM - 6PM</span>
+											<span className="clrblur">
+												{	
+													this.state.step3FromValues ?
+													<>
+														<span>{this.state.step3FromValues.value.sat_start_time}</span>
+														<span>{this.state.step3FromValues.value.sat_start_time_day}</span>
+														- 
+														<span>{this.state.step3FromValues.value.sat_end_time}</span>
+														<span>{this.state.step3FromValues.value.sat_end_time_day}</span>
+													</> :
+													<></>
+												}
+											</span>
 										</li>
 										<li className="d-flex">
 											<span className="wdth30">Sunday</span>
-											<span className="clrblur">8 AM - 6PM</span>
+											<span className="clrblur">
+												{	
+													this.state.step3FromValues ?
+													<>
+														<span>{this.state.step3FromValues.value.sun_start_time}</span>
+														<span>{this.state.step3FromValues.value.sun_start_time_day}</span>
+														- 
+														<span>{this.state.step3FromValues.value.sun_end_time}</span>
+														<span>{this.state.step3FromValues.value.sun_end_time_day}</span>
+													</> :
+													<></>
+												}
+											</span>
 										</li>
 
 									</ul>

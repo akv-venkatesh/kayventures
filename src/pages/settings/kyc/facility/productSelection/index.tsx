@@ -1,12 +1,14 @@
 import { ChangeEvent, Component } from "react";
 import ProConfig from '../../commonFiles/productSelection/category';
 import ProductSelect from '../../commonFiles/productSelection';
+import { Navigate } from "react-router-dom";
 
 interface typeState {
     step1:boolean,
     prodectPage: boolean,
     selectedOption: any,
     visibility: boolean,
+    finish: boolean
 }
 
 class ProductSelection extends Component<{}, typeState>{
@@ -17,6 +19,7 @@ class ProductSelection extends Component<{}, typeState>{
             prodectPage: true,
             selectedOption: "",
             visibility: false,
+            finish: false
         }
     }
       
@@ -30,17 +33,31 @@ class ProductSelection extends Component<{}, typeState>{
     nextPageChange = (e: ChangeEvent<HTMLInputElement>) => {
         this.setState({ prodectPage: false });
     };
+
+    nextpage = () =>{
+        this.setState({
+            finish : true
+        })
+    }
+
     render():JSX.Element{
+        if(this.state.finish){
+            return <Navigate to = "/settings/kyc/facility/capacity" />
+        }
         return(
             <>
                 {
                 this.state.prodectPage ? 
                 <ProConfig 
                     state={this.state} 
-                    nextPageChange={this.nextPageChange} 
-                    handleChange={this.handleChange}  
+                    nextPageChange={this.nextPageChange}
+                    // handleChange={this.handleChange}  
                     /> :
-                <ProductSelect />
+                <ProductSelect 
+                    category={this.state.selectedOption}
+                    onComplete = {()=>{}}
+                    nextpage = {this.nextpage}
+                />
                 }
             </>
         )

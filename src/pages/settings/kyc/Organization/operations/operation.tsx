@@ -1,7 +1,7 @@
 import React, { Component, ChangeEvent } from 'react'
 import { Button, Form, Accordion, Modal, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { IoIosInformationCircle } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import {
     Backbutton,
     Nextbutton, DisableBackbutton,
@@ -28,6 +28,8 @@ interface initialState {
     producttype: object[],
     show: boolean,
     summeryModel: boolean
+    finish: boolean,
+    facilityentry:boolean,
 }
 
 export class Operations extends Component<{}, initialState> {
@@ -35,6 +37,7 @@ export class Operations extends Component<{}, initialState> {
         super(props);
 
         this.state = {
+            finish:false,
             visibility: false,
             show: false,
             selectedOption: "",
@@ -58,6 +61,7 @@ export class Operations extends Component<{}, initialState> {
                     name: "Design"
                 }
             ],
+            facilityentry:false,
         };
     }
     handleChange = (e: any) => {
@@ -121,6 +125,19 @@ export class Operations extends Component<{}, initialState> {
         }
 
     }
+
+    finish = () =>{
+        this.setState({
+            facilityentry : true
+        })
+    }
+    finishbymodal = () =>{
+        this.setState({
+            finish : true
+        })
+    }
+    
+
     render() {
 
         const steps = [{ label: 'KYC', id: 0 }, { label: 'Product Selection', id: 1 }, { label: 'Machinery', id: 2 }, { label: 'Operations', id: 3 }]
@@ -130,6 +147,11 @@ export class Operations extends Component<{}, initialState> {
                 Simple tooltip
             </Tooltip>
         );
+        
+        if(this.state.finish){
+            return <Navigate to = "/settings/kyc/facility/addfacility" />
+        }
+
         return (
 
             <div className="h-100 kyc-org-operation">
@@ -152,7 +174,7 @@ export class Operations extends Component<{}, initialState> {
                                         
                                             <PerfectScrollbar >
                                                 <div className='inside-scrool'>
-                                              <Accordion >
+                                                <Accordion >
                                                     <Accordion.Item eventKey={'a1'} className="mb-2" >
                                                         <Accordion.Button className={this.state.selectedgrouptype.length > 0 ? 'complete' : 'not-completed'}>
                                                             Select Operation
@@ -177,32 +199,50 @@ export class Operations extends Component<{}, initialState> {
                             </div>
                         </div>
                     </div>
-                    <div className='box-field-area p-3'>
-                        <div className='box-field-area-top'>
-                            <div className="productconfigutation_btn">
-                                <div></div>
-                                <div className="next_btn">
-
-                                    {this.state.visibility ? (
-                                        <button className='swmmery-btn' onClick={() =>{this.setState({summeryModel:true})}} >Summary <span><RiArrowRightSLine className='btn-arrow-right' /></span></button>
-                                    ) : (
-                                        this.state.nextPageEnable ? <button className='swmmery-btn-disable' >Summary <span><RiArrowRightSLine className='btn-arrow-right' /></span></button> : <div className='swmmery-btn-disable' style={{ visibility: "hidden" }}> </div>
-                                    )}
+                    <div className='box-field-area p-3 h-100'>
+                        {
+                            this.state.visibility ?
+                            <div className='box-field-area-top'>
+                                <div className="productconfigutation_btn justify-content-end">
+                                    <div className="next_btn">
+                                            <button 
+                                                className='swmmery-btn' 
+                                                onClick={() =>{this.setState({summeryModel:true})}} 
+                                            >
+                                                Summary 
+                                                <span>
+                                                    <RiArrowRightSLine className='btn-arrow-right' />
+                                                </span>
+                                            </button>
+                                        
+                                    </div>
+                                </div>
+                            </div> :
+                            this.state.nextPageEnable ? 
+                            <div className="box-field-area-top">
+                                <div className="productconfigutation_btn justify-content-end">
+                                    <div className="next_btn">
+                                        <button className='swmmery-btn-disable' >
+                                            Summary 
+                                            <span>
+                                                <RiArrowRightSLine className='btn-arrow-right' />
+                                            </span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className='operation-area-height-body'>
+                            :<></>
+                        }
+                        <div className={!this.state.nextPageEnable ? 'operation-area-height-body' : 'operation-area-height-body active'}>
                             {/* <div style={{height:"450px"}}> */}
                             <PerfectScrollbar>
-                                <div className='operation_area my-2 h-100'>
+                                <div className={!this.state.nextPageEnable ? 'operation_area h-100 d-flex align-items-center justify-content-center': 'operation_area h-100' }>
                                     {this.state.nextPageEnable ?
                                         <div>
                                             <div className='operation_area_title' >
                                                 <h1>Select Operations   </h1>
                                             </div>
                                             <ul className="category d-flex m-0 p-0 flex-wrap">
-
-
                                                 {
                                                     this.state.producttype.length > 0 ?
                                                         this.state.producttype.map((tag: any, i: number) =>
@@ -236,37 +276,43 @@ export class Operations extends Component<{}, initialState> {
                                     }
                                 </div>
                             </PerfectScrollbar>
-                            <div className="productconfigutation_btn operation_btn">
-                                <div>{this.state.visibility ? <Backbutton onClick={this.redirectBack} /> : this.state.nextPageEnable ? <Backbutton onClick={this.redirectBack} /> : ''}</div>
+                        </div>
 
-                                <div>{this.state.nextPageEnable ? <div> <button
+                        <div className="productconfigutation_btn operation_btn">
+                            <div>{this.state.visibility ? <Backbutton onClick={this.redirectBack} /> : this.state.nextPageEnable ? <Backbutton onClick={this.redirectBack} /> : ''}</div>
+
+                            <div>{this.state.nextPageEnable ? <div> <button
+                                type="button"
+                                className=" btn-default mx-4 remove"
+                                onClick={this.productremove}
+                                disabled={this.state.saveEnable ? false : true}
+                            >
+                                Clear
+                            </button>
+                                <button
                                     type="button"
-                                    className=" btn-default mx-4 remove"
-                                    onClick={this.productremove}
+                                    className=" btn-default mx-4 save"
                                     disabled={this.state.saveEnable ? false : true}
+                                    onClick={this.productAdd}
                                 >
-                                    Clear
-                                </button>
-                                    <button
-                                        type="button"
-                                        className=" btn-default mx-4 save"
-                                        disabled={this.state.saveEnable ? false : true}
-                                        onClick={this.productAdd}
-                                    >
-                                        Save
-                                    </button></div> : ''}</div>
-                                <div className="next_btn">
+                                    Save
+                                </button></div> : ''}</div>
+                            <div className="next_btn">
 
-                                    {this.state.visibility ? (
-                                        <><div className='icon-parent'> <IoIosInformationCircle className='info-icon' /> </div> <Link to=""> <Nextbutton /></Link></>
-                                        // <Link to=""><Nextbutton /> </Link>
-
-                                    ) : (
-                                        this.state.nextPageEnable ? <DisableNextbutton /> : <Nextbutton onClick={this.redirectNext} />
-                                    )}
-                                </div>
-
+                                {
+                                    this.state.visibility ?
+                                    <>
+                                        <div className='icon-parent'> 
+                                            <IoIosInformationCircle className='info-icon' /> 
+                                        </div>
+                                        <Nextbutton onClick={this.finish}/>
+                                    </>: 
+                                    this.state.nextPageEnable ? 
+                                        <DisableNextbutton /> : 
+                                        <Nextbutton onClick={this.redirectNext} />
+                                }
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -291,11 +337,11 @@ export class Operations extends Component<{}, initialState> {
                                     <Accordion.Button className={this.state.selectedgrouptype.length > 0 ? 'complete' : 'not-completed'}>
                                         Select Operation
                                     </Accordion.Button>
-                                    <Accordion.Body>
+                                    <Accordion.Body className='p-0'>
                                         <ul className="sub-cat m-0">
                                             {
                                                 this.state.selectedgrouptype.map((item: any, index: number) =>
-                                                    <li className="pe-4 text-left" key={index} >{item}</li>
+                                                    <li className="pe-4 py-3 text-left" key={index} >{item}</li>
                                                 )
                                             }
                                         </ul>
@@ -307,6 +353,22 @@ export class Operations extends Component<{}, initialState> {
                         </div>
                     </Modal.Body>
                 </Modal>
+                <Modal
+					show={this.state.facilityentry}
+					size="lg"
+					aria-labelledby="contained-modal-title-vcenter"
+					centered
+					className="addfacilityfirstmodal"
+					// onHide={() => this.handleHide()}
+					>
+					<Modal.Header></Modal.Header>
+					<Modal.Body className="p-5">
+						<h4 className="modal-title">What is a Facility ?</h4>
+						<h5 className="modal-discription mt-4">A Facility is a place where youmight be running one or more of the operations indicated in your Organization KYC</h5><br />
+						<h5 className="modal-discription">Please add the facilities under the Organization KYC and compile their KYC’s separately</h5>
+						<div className="bttn-container text-center mt-4"><Button className="bttn" onClick={this.finishbymodal}>Okay</Button></div>
+					</Modal.Body>
+				</Modal>
             </div>
 
 

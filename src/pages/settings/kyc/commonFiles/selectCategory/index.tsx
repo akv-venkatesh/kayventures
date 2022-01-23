@@ -34,10 +34,12 @@ export class MachineryInitialPage extends Component<typeProps, initialState> {
     }
 
     render() {
+        const step = [{ label: 'KYC', id: 0 }, { label: 'Product Selection', id: 1 }, { label: 'Machinery', id: 2 }, { label: 'Operations', id: 3 }];
         console.log(this.state.selectedOption)
         return (
             <div className="selectCategory h-100">
-                <div className='box-field-area p-3 h-100'>
+                <Stepper steps={step} activeStep={2} />
+                <div className='box-field-area p-3'>
                     <div className='h-100'>
                         <div className='box-field-area-title d-flex flex-column justify-content-center align-items-center py-3'>
                             <span >Select the manufacturing activity to complete the machinery selection</span>

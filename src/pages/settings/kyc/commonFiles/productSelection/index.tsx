@@ -10,7 +10,14 @@ import vest from "../../../../../assets/images/vest.svg";
 import { FacilityInfo } from '../../../../../Routes/asyncpages';
 import { HiInformationCircle } from 'react-icons/hi';
 import { IoShirt } from 'react-icons/io5';
+import { BiPlus, BiPlusCircle } from 'react-icons/bi';
+import { Navigate } from 'react-router-dom';
 
+interface typeProps {
+    category: any,
+    onComplete:()=> void,
+    nextpage: ()=> void,
+}
 interface typeState {
     step1:boolean,
     producttype: any,
@@ -31,10 +38,12 @@ interface typeState {
     productSelected:any,
     visibility:boolean,
     selectedOption:string
-
+    finish: boolean,
 }
 
-class ProductSelect extends Component<{}, typeState> {
+
+
+class ProductSelect extends Component<typeProps, typeState> {
     constructor(props: any) {
         super(props);
 
@@ -152,7 +161,8 @@ class ProductSelect extends Component<{}, typeState> {
         prodectPage: true,
         productSelected:'',
         visibility: false,
-        selectedOption:'' 
+        selectedOption:'' ,
+        finish: false,
         }
     }
 
@@ -445,218 +455,242 @@ class ProductSelect extends Component<{}, typeState> {
         })
         $('.category input[type=checkbox]').prop("checked", false);
     }
+    complete = () =>{
+        this.props.onComplete()
+    }
     render(){
         console.log(this.state.selectedOption);
+        console.log(this.props.category)
         const state = this.state;
+        if(state.finish){
+            return <Navigate to = "/settings/kyc/organization/machinery" />
+        }
         return(
             <>
                 <div className="h-100 kyc-product-select">
                     <div className="d-flex h-100">
                         <div className="block-1 h-100 pe-3">
-                            <p className="sewing py-3 m-0">Sewing</p>
+                            <p className="sewing py-3 m-0">{this.props.category.category_parent}</p>
                             <div className="garments d-inline-flex align-items-center my-3 position-relative">
-                            <label className="text"><AiOutlineSkin className="mx-2" />&nbsp;Garments</label>
-                            <label className="gar-con ms-3">
-                                <input type="checkbox" checked hidden />
-                                <span className="checkmark"></span>
-                            </label>
+                                <label className="text"><AiOutlineSkin className="mx-2" />&nbsp;{this.props.category.category}</label>
+                                <label className="gar-con ms-3">
+                                    <input type="checkbox" checked hidden />
+                                    <span className="checkmark"></span>
+                                </label>
                             </div>
                             <div className="sub-categories">
-                            <PerfectScrollbar >
-                                <ul className="m-0 p-0 me-5">
-                                    {
-                                        state.selectedproducttype.length !== 0 ?
-                                        <>
-                                            {
-                                                state.selectedproducttype[0].material !== '' ?
-                                                <li className="py-2" data-testid={"prod1"}>{state.selectedproducttype[0].material}</li>:
-                                                <></>
-                                            }
-                                            {
-                                                state.selectedproducttype[0].whom !== '' ?
-                                                <li className="py-2" data-testid={"prod2"}>{state.selectedproducttype[0].whom}</li>:
-                                                <></>
-                                            }
-                                        </> :
-                                        <></>
-                                    }
-                                </ul>
-                                <div className="accordion me-5">
-                                <ul className="p-0 m-0">
-                                    <Accordion>
-                                    {
-                                        state.selectedgrouptype.map((group: any, i: number) =>
-                                        <Accordion.Item eventKey={'a' + i} className="mb-2" key={group.name + i}>
-                                            <Accordion.Button className={group.data.length > 0 ? 'complete' : 'not-completed'}
-                                            onClick={(e) => this.displaygroupitem(e, group.name)}
-                                            data-testid={'grp' + i}
-                                            >
-                                            {group.name}
-                                            </Accordion.Button>
-                                            <Accordion.Body>
-                                            <ul className="sub-cat m-0">
+                                <PerfectScrollbar >
+                                    <ul className="m-0 p-0 me-5">
+                                        {
+                                            state.selectedproducttype.length !== 0 ?
+                                            <>
                                                 {
-                                                group.data.map((item: any, index: number) =>
-                                                    <li className="pe-4" key={item.name} >{item.name}</li>
-                                                )
+                                                    state.selectedproducttype[0].material !== '' ?
+                                                    <li className="py-2" data-testid={"prod1"}>{state.selectedproducttype[0].material}</li>:
+                                                    <></>
                                                 }
-                                            </ul>
-                                            </Accordion.Body>
-                                        </Accordion.Item>
-                                        )
-                                    }
-                                    </Accordion>
-                                </ul>
-                                </div>
-                            </PerfectScrollbar>
+                                                {
+                                                    state.selectedproducttype[0].whom !== '' ?
+                                                    <li className="py-2" data-testid={"prod2"}>{state.selectedproducttype[0].whom}</li>:
+                                                    <></>
+                                                }
+                                            </> :
+                                            <></>
+                                        }
+                                    </ul>
+                                    <div className="accordion me-5">
+                                        <ul className="p-0 m-0">
+                                            <Accordion>
+                                            {
+                                                state.selectedgrouptype.map((group: any, i: number) =>
+                                                <Accordion.Item eventKey={'a' + i} className="mb-2" key={group.name + i}>
+                                                    <Accordion.Button className={group.data.length > 0 ? 'complete' : 'not-completed'}
+                                                    onClick={(e) => this.displaygroupitem(e, group.name)}
+                                                    data-testid={'grp' + i}
+                                                    >
+                                                    {group.name}
+                                                    </Accordion.Button>
+                                                    <Accordion.Body>
+                                                    <ul className="sub-cat m-0">
+                                                        {
+                                                        group.data.map((item: any, index: number) =>
+                                                            <li className="pe-4" key={item.name} >{item.name}</li>
+                                                        )
+                                                        }
+                                                    </ul>
+                                                    </Accordion.Body>
+                                                </Accordion.Item>
+                                                )
+                                            }
+                                            </Accordion>
+                                        </ul>
+                                    </div>
+                                </PerfectScrollbar>
                             </div>
-
+                            {
+                                this.state.completed ?
+                                <div 
+                                    className='add-category py-3'
+                                    onClick={this.complete}
+                                    >
+                                    <div className="d-flex">
+                                        <BiPlus className='me-3'/>
+                                        add Product Category
+                                    </div>
+                                </div>:
+                                <></>
+                            }
                         </div>
                         <div className="block-2">
                             <div className="box p-4 h-100">
-                            {
-                                state.displayState.length !== 0 ?
-                                (
-                                    !state.productselection ?<></>:
-                                    !state.groupselection ?
-                                        <p className="m-0 py-3">Select product group</p> :
-                                        !state.completed ?
-                                        <p className="m-0 py-3">Select product items of {state.group}</p> :
-                                        <></>
-                                ) :
-                                <></>
-                            }
-                            <div className={state.displayState.length !== 0 && !state.step1 ? "select-category" : "select-category empty"}>
+                                <div className="d-flex justify-content-end">
+                                    <button
+                                        type="submit"
+                                        className="btn-summary next"
+                                        disabled = {!this.state.completed}
+                                        onClick={this.handleShow}
+                                    >Summary&emsp;<AiFillCaretRight />
+                                    </button>
+                                </div>
                                 {
-                                state.step1 ?
-                                <PerfectScrollbar >
-                                    <ul className="category d-flex m-0 p-0 flex-wrap">
-                                    <form>
+                                    state.displayState.length !== 0 ?
+                                    (
+                                        !state.productselection ?<></>:
+                                        !state.groupselection ?
+                                            <p className="m-0 py-3">Select product group</p> :
+                                            !state.completed ?
+                                            <p className="m-0 py-3">Select product items of {state.group}</p> :
+                                            <></>
+                                    ) :
+                                    <></>
+                                }
+                                <div className={state.displayState.length !== 0 && !state.step1 ? "select-category" : "select-category empty"}>
                                     {
-                                        state.displayState.map((tag: any, i: number) =>
+                                    state.step1 ?
+                                    <PerfectScrollbar >
+                                        <ul className="category d-flex m-0 p-0 flex-wrap">
+                                        <form>
+                                        {
+                                            state.displayState.map((tag: any, i: number) =>
+                                            <>
+                                                <p className="m-0 py-3">Select</p>
+                                                <div className="d-flex">
+                                                    {
+                                                    tag.data.map((data:any, index:number)=>
+                                                        <>
+                                                        <div className="me-3 form-tag" key={'key' + i +index}>
+                                                            <input
+                                                                type="radio"
+                                                                value={data.name}
+                                                                name={'product_category'+i}
+                                                                id={data.name}
+                                                                data-testid={'testcheck' + i}
+                                                                required
+                                                                hidden
+                                                                onChange={tag.name == 'material' ? this.selectproducttype : this.selectwhom}
+                                                            />
+                                                            <label className="w-100 py-2 justify-content-between align-items-center d-flex" key={'productType' + i+index} htmlFor={data.name}>
+                                                                <span className="checkmark">{data.name}</span>
+                                                            </label>
+                                                        </div>
+                                                        </>
+                                                    )
+                                                    }
+                                                </div>
+                                            </>
+                                            )
+                                        }
+                                        </form>
+                                        </ul>
+                                    </PerfectScrollbar> :
+                                    state.displayState.length !== 0 ?
+                                        <PerfectScrollbar >
+                                        <ul className="category d-flex m-0 p-0 flex-wrap">
+                                            {
+                                            state.displayState.map((tag: any, i: number) =>
+                                                <div className="me-3 form-tag" key={'key' + i}>
+                                                <form>
+                                                    <input
+                                                    type="checkbox"
+                                                    value={tag.name}
+                                                    name={tag.name}
+                                                    id={tag.name}
+                                                    data-testid={'testcheck' + i}
+                                                    required
+                                                    hidden
+                                                    onChange={!state.productselection ? this.selectproducttype : (!state.groupselection ? this.selectgrouptype : (e) => this.groupitemselection(e, tag.parent))}
+                                                    />
+                                                    <label className="w-100 justify-content-between align-items-center d-flex" key={'productType' + i} htmlFor={tag.name}>
+                                                        <IoShirt />
+                                                        <div className="py-3 d-flex">
+                                                            <span className="checkmark">{tag.name}</span>
+                                                        </div>
+                                                    </label>
+                                                </form>
+                                                </div>
+                                            )
+                                            }
+                                        </ul>
+                                        </PerfectScrollbar> :
+
+                                    !state.completed ?
+                                        <div className="empty-data d-flex h-100 justify-content-center align-items-center">
+                                        <p>Click on the selected Product groups </p>
+                                        </div> :
+                                        <div className="empty-data d-flex h-100 justify-content-center align-items-center">
+                                        <p>Click on the summary button to view the selection  </p>
+                                        </div>
+
+                                    }
+                                </div>
+                                <div className="buttons py-3">
+                                    <div className="">
                                         <>
-                                            <p className="m-0 py-3">Select</p>
-                                            <div className="d-flex">
+                                            
+                                            <div className={state.completed ? "d-flex justify-content-end" : "d-flex justify-content-between"}>
                                                 {
-                                                tag.data.map((data:any, index:number)=>
-                                                    <>
-                                                    <div className="me-3 form-tag" key={'key' + i +index}>
-                                                        <input
-                                                            type="radio"
-                                                            value={data.name}
-                                                            name={'product_category'+i}
-                                                            id={data.name}
-                                                            data-testid={'testcheck' + i}
-                                                            required
-                                                            hidden
-                                                            onChange={tag.name == 'material' ? this.selectproducttype : this.selectwhom}
-                                                        />
-                                                        <label className="w-100 py-2 justify-content-between align-items-center d-flex" key={'productType' + i+index} htmlFor={data.name}>
-                                                            <span className="checkmark">{data.name}</span>
-                                                        </label>
+                                                !state.completed ?
+                                                <>
+                                                    <button
+                                                        type="button"
+                                                        className="btn btn-back back"
+                                                        onClick={!state.productselection ? this.productback : (!state.groupselection ? this.groupback : this.groupitemback)}
+                                                    >
+                                                        <AiFillCaretLeft />&emsp;Back
+                                                    </button>
+                                                    <div className="d-flex justify-content-center">
+                                                        <button
+                                                        type="button"
+                                                        className="btn btn-default mx-4 remove"
+                                                        onClick={!state.productselection ? this.productremove : (!state.groupselection ? this.groupremove : this.groupitemremove)}
+                                                        disabled={state.removebtn}
+                                                        >
+                                                        Remove
+                                                        </button>
+                                                        <button
+                                                        type="button"
+                                                        className="btn btn-default mx-4 save"
+                                                        disabled={state.savebtn}
+                                                        onClick={this.save}
+                                                        >
+                                                        Save
+                                                        </button>
                                                     </div>
-                                                    </>
-                                                )
+                                                </> :
+                                                <></>
                                                 }
+                                                <button
+                                                    type="submit"
+                                                    className="btn btn-next next"
+                                                    onClick={this.state.completed ? this.props.nextpage : !state.productselection ? this.showgroup : this.showgroupitem}
+                                                    disabled={state.completed ? false : state.nextbtn}
+                                                    >
+                                                    Next&emsp;<AiFillCaretRight />
+                                                </button>
                                             </div>
                                         </>
-                                        )
-                                    }
-                                    </form>
-                                    </ul>
-                                </PerfectScrollbar> :
-                                state.displayState.length !== 0 ?
-                                    <PerfectScrollbar >
-                                    <ul className="category d-flex m-0 p-0 flex-wrap">
-                                        {
-                                        state.displayState.map((tag: any, i: number) =>
-                                            <div className="me-3 form-tag" key={'key' + i}>
-                                            <form>
-                                                <input
-                                                type="checkbox"
-                                                value={tag.name}
-                                                name={tag.name}
-                                                id={tag.name}
-                                                data-testid={'testcheck' + i}
-                                                required
-                                                hidden
-                                                onChange={!state.productselection ? this.selectproducttype : (!state.groupselection ? this.selectgrouptype : (e) => this.groupitemselection(e, tag.parent))}
-                                                />
-                                                <label className="w-100 justify-content-between align-items-center d-flex" key={'productType' + i} htmlFor={tag.name}>
-                                                    <IoShirt />
-                                                    <div className="py-3 d-flex">
-                                                        <span className="checkmark">{tag.name}</span>
-                                                    </div>
-                                                </label>
-                                            </form>
-                                            </div>
-                                        )
-                                        }
-                                    </ul>
-                                    </PerfectScrollbar> :
-
-                                !state.completed ?
-                                    <div className="empty-data d-flex h-100 justify-content-center align-items-center">
-                                    <p>Click on the selected Product groups </p>
-                                    </div> :
-                                    <div className="empty-data d-flex h-100 justify-content-center align-items-center">
-                                    <p>Click on the summary button to view the selection  </p>
                                     </div>
-
-                                }
-                            </div>
-                            <div className="buttons py-3">
-                                <div className="">
-                                <>
-                                    {
-                                    !state.completed ?
-                                        <div className="d-flex justify-content-between">
-                                        <button
-                                            type="button"
-                                            className="btn btn-back back"
-                                            onClick={!state.productselection ? this.productback : (!state.groupselection ? this.groupback : this.groupitemback)}
-                                        >
-                                            <AiFillCaretLeft />&emsp;Back
-                                        </button>
-                                        <div className="d-flex justify-content-center">
-                                            <button
-                                            type="button"
-                                            className="btn btn-default mx-4 remove"
-                                            onClick={!state.productselection ? this.productremove : (!state.groupselection ? this.groupremove : this.groupitemremove)}
-                                            disabled={state.removebtn}
-                                            >
-                                            Remove
-                                            </button>
-                                            <button
-                                            type="button"
-                                            className="btn btn-default mx-4 save"
-                                            disabled={state.savebtn}
-                                            onClick={this.save}
-                                            >
-                                            Save
-                                            </button>
-                                        </div>
-
-                                        <button
-                                            type="submit"
-                                            className="btn btn-next next"
-                                            onClick={!state.productselection ? this.showgroup : this.showgroupitem}
-                                            disabled={state.nextbtn}
-                                        >Next&emsp;<AiFillCaretRight />
-                                        </button>
-                                        </div> :
-                                        <div className="d-flex justify-content-end">
-                                        <button
-                                            type="submit"
-                                            className="btn btn-summary next"
-                                            onClick={this.handleShow}
-                                        >Summary&emsp;<AiFillCaretRight />
-                                        </button>
-                                        </div>
-                                    }
-                                </>
                                 </div>
-                            </div>
                             </div>
                         </div>
                     </div>
@@ -677,12 +711,12 @@ class ProductSelect extends Component<{}, typeState> {
                                 <p className='ms-3 m-0'>You have successfully completed your product configuration for sewing - garments.</p>
                             </div>
                             <h2 className='m-0 py-3'>
-                                sewing
+                                {this.props.category.category_parent}
                             </h2>
                             <div className="d-flex category align-items-center">
                                 <IoShirt />
                                 <h3 className="m-0 px-3">
-                                    Garments
+                                    {this.props.category.category}
                                 </h3>
                                 <span className='checmark'></span>
                             </div>
